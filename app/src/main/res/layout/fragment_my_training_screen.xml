@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background ="@color/tertiary"
+    >
+
+    <com.google.android.material.search.SearchBar
+        android:id="@+id/searchBar"
+        style="@style/searchview_Card"
+        android:hint="Suche"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_constraints">
+
+
+        <EditText
+            app:backgroundTint="@color/white"
+            android:background="@android:color/transparent"
+            android:textColor="@color/white"
+            android:id="@+id/searchBar_textInput"
+            android:layout_width="match_parent"
+            android:paddingLeft="64dp"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    </com.google.android.material.search.SearchBar>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/myTraining_nav"
+        style="@style/tab_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        app:tabTextColor="@color/white"
+        app:tabSelectedTextColor="@color/tertiary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchBar" >
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/myWorkouts"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:text="Mein Training" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/myProgression"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:text="Fortschritt" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/exercises"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:text="Übungen" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/myTraining_viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/myTraining_nav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbar_constraints"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/toolbarLayout"
+            android:background="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/settingsBtn"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="16dp"
+                android:backgroundTint="#00FFFFFF"
+                android:src="@drawable/account_icon" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="22dp"
+                android:text="Mein Training"
+                android:textColor="#FFFFFF"
+                android:textSize="28dp" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_gravity="center"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:src="@drawable/applogo" />
+
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

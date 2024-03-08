@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--suppress ALL -->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/logInScreen">
+    <fragment
+        android:id="@+id/logInScreen"
+        android:name="ui.LogInScreen"
+        android:label="LogInScreen" >
+        <action
+            android:id="@+id/action_logInScreen_to_homeScreen"
+            app:destination="@id/homeScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeScreen"
+        android:name="ui.MyHomeScreen"
+        android:label="HomeScreen" >
+        <action
+            android:id="@+id/action_homeScreen_to_homeContentDetailView"
+            app:destination="@id/homeContentDetailView" />
+    </fragment>
+    <fragment
+        android:id="@+id/myTrainingScreen"
+        android:name="ui.MyTrainingScreen"
+        android:label="MyTrainingScreen" >
+        <action
+            android:id="@+id/action_myTrainingScreen_to_trainingNav1"
+            app:destination="@id/trainingNav1" />
+        <action
+            android:id="@+id/action_myTrainingScreen_to_progressionNav2"
+            app:destination="@id/progressionNav2" />
+        <action
+            android:id="@+id/action_myTrainingScreen_to_exercisesNav3"
+            app:destination="@id/exercisesNav3" />
+    </fragment>
+    <fragment
+        android:id="@+id/myNutrionScreen"
+        android:name="ui.MyNutrionScreen"
+        android:label="MyNutrionScreen" />
+    <fragment
+        android:id="@+id/homeContentDetailView"
+        android:name="ui.MyHomeContentDetailView"
+        android:label="fragment_home_content_detail_view"
+        tools:layout="@layout/fragment_home_content_detail_view" >
+        <action
+            android:id="@+id/action_homeContentDetailView_to_homeScreen"
+            app:destination="@id/homeScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/exercisesNav3"
+        android:name="ui.ExercisesNav3"
+        android:label="fragment_exercises_nav3"
+        tools:layout="@layout/fragment_exercises_nav3" />
+    <fragment
+        android:id="@+id/trainingNav1"
+        android:name="ui.TrainingNav1"
+        android:label="fragment_training_nav1"
+        tools:layout="@layout/fragment_training_nav1" />
+    <fragment
+        android:id="@+id/progressionNav2"
+        android:name="ui.ProgressionNav2"
+        android:label="fragment_progression_nav2"
+        tools:layout="@layout/fragment_progression_nav2" />
+    <fragment
+        android:id="@+id/mySettings"
+        android:name="ui.MySettingsScreen"
+        android:label="Settings" />
+</navigation>

@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">ShapeMinder_AppIdee</string>
+    <string name="eMailInput">E-Mail Adresse eingeben...</string>
+    <string name="passwordInput">Passwort eingeben...</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="title1">Erholung</string>
+    <string name="title2">Training</string>
+    <string name="title3">Ernährung</string>
+
+    <string name="text1">Erholung...s</string>
+    <string name="text2">Training ist...</string>
+    <string name="text3">Ernährung ist ..</string>
+
+
+    <string name="ecBenchpress">Bankdrücken</string>
+    <string name="ecShoulderpress">Schulterdrücken</string>
+    <string name="ecPullups">Klimmzüge</string>
+    <string name="ecDeadlift">Kreuzheben</string>
+    <string name="ecSquats">Kniebeuge</string>
+
+    <string name="bpArme">Arme</string>
+    <string name="bpBeine">Beine</string>
+    <string name="bpSchulter">Schulter</string>
+    <string name="bpRücken">Rücken</string>
+    <string name="bpBauch">Bauch</string>
+    <string name="bpBrust">Brust</string>
+
+</resources>

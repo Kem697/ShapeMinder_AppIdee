@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/logInConstraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_colour"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/logInText"
+        android:layout_width="272dp"
+        android:layout_height="99dp"
+        android:layout_margin="10dp"
+        android:layout_marginStart="192dp"
+        android:layout_marginEnd="129dp"
+        android:layout_marginBottom="60dp"
+        android:text="Bitte nenne deine Anmeldedaten:"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textIsSelectable="false"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/inputEmailCard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/logInButton"
+        style="@style/customButton"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="62dp"
+        android:layout_marginEnd="32dp"
+        android:text="Anmelden"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.245"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputPasswordCard"
+        app:layout_constraintVertical_bias="0.144" />
+
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="226dp"
+        android:layout_height="142dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="60dp"
+        android:src="@drawable/applogo"
+        app:layout_constraintBottom_toTopOf="@+id/logInText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/inputEmailCard"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="428dp"
+        android:layout_marginEnd="32dp"
+        style="@style/customUserInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <EditText
+            android:id="@+id/inputEmail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/roboto"
+            android:background="@null"
+            android:padding="12dp"
+            android:textSize="16dp"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="@string/eMailInput" />
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/inputPasswordCard"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        style="@style/customUserInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputEmailCard">
+
+        <EditText
+            android:id="@+id/inputPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp"
+            android:fontFamily="@font/roboto"
+            android:textSize="16dp"
+            android:background="@null"
+            android:hint="@string/passwordInput"
+            android:ems="10"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

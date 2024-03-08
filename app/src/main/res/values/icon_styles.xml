@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="main_icon_styles" parent="Theme.MaterialComponents">
+        <item name="iconTint">@color/white</item>
+    </style>
+</resources>
