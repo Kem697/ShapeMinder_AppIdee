@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
@@ -77,6 +78,9 @@ class MyTrainingScreen : Fragment() {
 
 
     }
+
+
+
 
 
 }

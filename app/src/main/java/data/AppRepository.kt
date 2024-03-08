@@ -40,7 +40,7 @@ class AppRepository {
 
     fun loadBodyparts(): List<Content>{
         return listOf(
-            Content(R.string.bpBauch, R.string.text1, R.drawable.content1_img,true),
+            Content(R.string.bpBauch, R.string.text1, R.drawable.bp5abs,true),
             Content(R.string.bpArme, R.string.title2,R.drawable.bp1arms,true),
             Content(R.string.bpSchulter, R.string.title3, R.drawable.bp3shoulders,true),
             Content(R.string.bpRücken, R.string.text1, R.drawable.bp4back,true),
