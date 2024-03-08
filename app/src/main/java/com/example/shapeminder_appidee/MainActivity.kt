@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
         /*Diese Codezeilen dienen zum Aufsetzen der BottumNavigationView. Erst dadurch,
         * kann über eine UI Interaktion mit NavBar der Screenwechsel innerhalb der
         * App ermöglicht werden.*/
