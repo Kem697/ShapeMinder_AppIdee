@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-
         /*Mit diesem Aufruf spreche ich meine Hauptnavigationsleiste an,
         * um die Indikatorfarbe des aktiven Icons meines Elements zu verändern.
         * Über den Stylesheet konnte ich diese Veränderung nicht vornehmen. Somit
