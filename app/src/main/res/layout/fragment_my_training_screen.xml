@@ -7,7 +7,7 @@
     >
 
     <com.google.android.material.search.SearchBar
-        android:id="@+id/searchBar"
+        android:id="@+id/myT_searchBar"
         style="@style/searchview_Card"
         android:hint="Suche"
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             app:backgroundTint="@color/white"
             android:background="@android:color/transparent"
             android:textColor="@color/white"
-            android:id="@+id/searchBar_textInput"
+            android:id="@+id/myT_searchBar_textInput"
             android:layout_width="match_parent"
             android:paddingLeft="64dp"
             android:layout_height="match_parent"
@@ -40,7 +40,7 @@
         app:tabSelectedTextColor="@color/tertiary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchBar" >
+        app:layout_constraintTop_toBottomOf="@+id/myT_searchBar" >
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/myWorkouts"

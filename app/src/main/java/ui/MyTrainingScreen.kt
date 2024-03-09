@@ -6,13 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
+import android.widget.EditText
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.FragmentManager
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.example.shapeminder_appidee.MainActivity
 import com.example.shapeminder_appidee.R
+import com.example.shapeminder_appidee.databinding.FragmentMyTrainingScreenBinding
+import com.google.android.material.search.SearchBar
 import com.google.android.material.tabs.TabLayout
 
 
@@ -22,24 +23,19 @@ class MyTrainingScreen : Fragment() {
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager
 
-    /*    private lateinit var binding: FragmentMyTrainingScreenBinding*/
+
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        /* binding = FragmentMyTrainingScreenBinding.inflate(layoutInflater)
-         return binding.root*/
-
         return inflater.inflate(R.layout.fragment_my_training_screen, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-//        tabLayout = binding.myTrainingNav
-//        viewPager = binding.myTrainingViewPager
+        searchInput()
 
         /*
         *Mithilfe eines Youtube Videos und ChatGpt habe ich
@@ -77,10 +73,45 @@ class MyTrainingScreen : Fragment() {
         tabLayout.setupWithViewPager(viewPager)
 
 
+
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        setDefaultHint()
+    }
+    fun searchInput() {
+        var mainActivity = activity as MainActivity
+        var searchBarTextInput = mainActivity.findViewById<EditText>(R.id.myT_searchBar_textInput)
+        searchBarTextInput.addTextChangedListener {
+            var userInput = searchBarTextInput.text
+            if (userInput.isNotBlank()) {
+                var searchBar = mainActivity.findViewById<SearchBar>(R.id.myT_searchBar)
+                searchBar.setText(userInput)
+            }
+        }
+
+    }
+    fun setDefaultHint(){
+        var mainActivity = activity as MainActivity
+        var searchBar = mainActivity.findViewById<SearchBar>(R.id.myT_searchBar)
+        var searchBarTextInput = mainActivity.findViewById<EditText>(R.id.myT_searchBar_textInput)
+        searchBar.hint = "Suche"
+        if (searchBarTextInput.text.isNotBlank()){
+            searchBarTextInput.text.clear()
+            searchBar.setText("")
+        }
+
     }
 
 
 
 
 
+
+
+
 }
+
+
