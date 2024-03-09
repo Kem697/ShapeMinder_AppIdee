@@ -146,7 +146,6 @@
         <com.google.android.material.search.SearchBar
             android:id="@+id/searchBar"
             style="@style/searchview_Card"
-            android:hint="Suche"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginLeft="16dp"
@@ -158,9 +157,6 @@
 
 
             <EditText
-                app:backgroundTint="@color/white"
-                android:background="@android:color/transparent"
-                android:textColor="@color/white"
                 android:id="@+id/searchBar_textInput"
                 android:layout_width="match_parent"
                 android:paddingLeft="64dp"
