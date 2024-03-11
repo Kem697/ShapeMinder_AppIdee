@@ -81,10 +81,7 @@ class ItemAdapter(
                 holder.binding.root.findNavController().navigate(R.id.homeContentDetailView)
             }
 
-         /*   holder.binding.materialCardView.setOnClickListener {
-                viewModel.navigateToExerciseList(content)
-                holder.binding.root.findNavController().navigate(R.id.exerciseListFragment)
-            }*/
+
         }
 
         else if (holder is ExerciseListItemViewHolder){

@@ -56,6 +56,15 @@
         <action
             android:id="@+id/action_exercisesNav3_to_exerciseListFragment"
             app:destination="@id/exerciseListFragment" />
+        <action
+            android:id="@+id/action_exercisesNav3_to_exerciseListFragment2"
+            app:destination="@id/exerciseListFragment" />
+        <action
+            android:id="@+id/action_exercisesNav3_to_exerciseListFragment3"
+            app:destination="@id/exerciseListFragment" />
+        <action
+            android:id="@+id/action_exercisesNav3_to_exerciseListFragment4"
+            app:destination="@id/exerciseListFragment" />
     </fragment>
     <fragment
         android:id="@+id/trainingNav1"

@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import com.example.shapeminder_appidee.R
 import model.Content
 import ui.HomeViewModel
@@ -88,7 +89,13 @@ class GridAdapter(
         viewHolder.textViewTitle.setText(item.stringRessourceTitle)
         viewHolder.imageViewIcon.setImageResource(item.imageRessource)
 
+        viewHolder.imageViewIcon.setOnClickListener {
+            viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
+        }
+
         return itemView!!
     }
+
+
 
 }

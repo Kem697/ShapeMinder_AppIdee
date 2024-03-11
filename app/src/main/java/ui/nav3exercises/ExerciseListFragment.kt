@@ -32,9 +32,9 @@ class ExerciseListFragment : Fragment() {
         viewModel.exercisesByBodyparts.observe(viewLifecycleOwner){
             binding.listOfExercises.adapter = ItemAdapter(it,viewModel)
         }
-        viewModel.selectedExercisesByBodypart.observe(viewLifecycleOwner){
-            viewModel.navigateToExerciseList(it)
-        }
+//        viewModel.selectedExercisesByBodypart.observe(viewLifecycleOwner){
+//            viewModel.navigateToExerciseList(it)
+//        }
     }
 
 
