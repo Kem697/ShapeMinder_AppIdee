@@ -52,7 +52,11 @@
         android:id="@+id/exercisesNav3"
         android:name="ui.ExercisesNav3"
         android:label="fragment_exercises_nav3"
-        tools:layout="@layout/fragment_exercises_nav3" />
+        tools:layout="@layout/fragment_exercises_nav3" >
+        <action
+            android:id="@+id/action_exercisesNav3_to_exerciseListFragment"
+            app:destination="@id/exerciseListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/trainingNav1"
         android:name="ui.TrainingNav1"
@@ -67,4 +71,8 @@
         android:id="@+id/mySettings"
         android:name="ui.MySettingsScreen"
         android:label="Settings" />
+    <fragment
+        android:id="@+id/exerciseListFragment"
+        android:name="ui.nav3exercises.ExerciseListFragment"
+        android:label="ExerciseListFragment" />
 </navigation>

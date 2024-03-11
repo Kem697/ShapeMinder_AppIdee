@@ -33,7 +33,7 @@ class TabNavAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
         fragmentTitles.add(title)
     }
 
-    override fun getPageTitle(position: Int): CharSequence? {
+    override fun getPageTitle(position: Int): CharSequence {
         return fragmentTitles[position]
     }
 }

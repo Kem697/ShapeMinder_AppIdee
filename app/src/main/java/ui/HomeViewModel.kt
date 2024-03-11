@@ -12,6 +12,7 @@ class HomeViewModel: ViewModel() {
     private val allContent = repository.content
     private val allExercises = repository.exercises
     private val allBodyparts = repository.bodyParts
+    private var allExercisesByBodyparts = repository.exercisesByBodyparts
 
     var index = 0
 
@@ -52,8 +53,27 @@ class HomeViewModel: ViewModel() {
 
 
 
+    private var _selectedExercisesByBodypart = MutableLiveData(allExercisesByBodyparts[index])
+    val selectedExercisesByBodypart : LiveData<Content>
+        get() = _selectedExercisesByBodypart
+
+
+
+
+    private var _exercisesByBodyparts = MutableLiveData(allExercisesByBodyparts)
+
+    val exercisesByBodyparts: LiveData<List<Content>>
+        get() = _exercisesByBodyparts
+
+
+
     fun navigateDetailView(content: Content) {
         _selectedContent.value = content
+    }
+
+
+    fun navigateToExerciseList(selectedExercise: Content) {
+        _selectedExercisesByBodypart.value = selectedExercise
     }
 
 }

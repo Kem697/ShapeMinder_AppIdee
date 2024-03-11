@@ -33,5 +33,19 @@
 
 
 
+    <style name="customSecondaryButton" parent="android:Widget.TextView">
+        <item name="cornerRadius">30dp</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">@color/black</item>
+        <item name="android:backgroundTint">#FFFFFF</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/tertiary</item>
+        <item name="fontFamily">"@font/roboto"</item>
+        <item name="iconTint">@color/tertiary</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+
+
 
 </resources>

@@ -28,4 +28,8 @@
     <string name="bpBauch">Bauch</string>
     <string name="bpBrust">Brust</string>
 
+
+    <string name="weBicepscurls">Bizepscurls</string>
+    <string name="weText1">Diese Übung trainiert...</string>
+
 </resources>
