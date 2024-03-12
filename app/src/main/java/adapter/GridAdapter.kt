@@ -91,9 +91,12 @@ class GridAdapter(
 
         /*Navigations in der Bodyparts Liste.*/
 
-        viewHolder.imageViewIcon.setOnClickListener {
-            viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
+
+            viewHolder.imageViewIcon.setOnClickListener {
+                viewModel.navigateToExerciseList(item)
+                viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
         }
+
 
         return itemView!!
     }

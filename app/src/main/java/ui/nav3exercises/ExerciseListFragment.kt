@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -33,10 +34,9 @@ class ExerciseListFragment : Fragment() {
         viewModel.exercisesByBodyparts.observe(viewLifecycleOwner){
             binding.listOfExercises.adapter = ItemAdapter(it,viewModel)
         }
-//        viewModel.selectedExercisesByBodypart.observe(viewLifecycleOwner){
-//            viewModel.navigateToExerciseList(it)
-//        }
 
+        searchInput()
+        setDefaultHint()
         navigateBack()
     }
 
@@ -45,6 +45,23 @@ class ExerciseListFragment : Fragment() {
         binding.backBtn.setOnClickListener {
             findNavController().navigateUp()
         }
+    }
+    fun searchInput() {
+        var searchBar = binding.myTSearchBarTextInput
+        searchBar.addTextChangedListener {
+            var userInput = binding.myTSearchBarTextInput.text
+            if (userInput.isNotBlank()) {
+                binding.myTSearchBar.setText(userInput)
+            }
+        }
+    }
+    fun setDefaultHint(){
+        binding.myTSearchBar.hint = "Suche"
+        if (binding.myTSearchBarTextInput.text.isNotBlank()){
+            binding.myTSearchBarTextInput.text.clear()
+            binding.myTSearchBar.setText("")
+        }
+
     }
 
 
