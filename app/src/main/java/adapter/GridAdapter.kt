@@ -89,6 +89,8 @@ class GridAdapter(
         viewHolder.textViewTitle.setText(item.stringRessourceTitle)
         viewHolder.imageViewIcon.setImageResource(item.imageRessource)
 
+        /*Navigations in der Bodyparts Liste.*/
+
         viewHolder.imageViewIcon.setOnClickListener {
             viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
         }

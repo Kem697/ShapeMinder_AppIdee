@@ -46,7 +46,7 @@ class ItemAdapter(
 
     override fun getItemViewType(position: Int): Int {
         val item = dataset[position]
-        return if (item.isExercise) {
+        return if (item.isExercise && !item.isInExerciseList) {
             smallContentCard
         } else if (item.isExercise && item.isInExerciseList){
             exerciseListCards
