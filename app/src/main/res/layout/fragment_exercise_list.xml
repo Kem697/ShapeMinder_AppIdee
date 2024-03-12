@@ -51,13 +51,13 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageButton
-                android:id="@+id/settingsBtn"
+                android:id="@+id/backBtn"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginLeft="16dp"
                 android:backgroundTint="#00FFFFFF"
-                android:src="@drawable/account_icon" />
+                android:src="@drawable/arrow_back_fill0_wght400_grad0_opsz24" />
 
             <TextView
                 android:id="@+id/textView"
@@ -149,15 +149,16 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardContentView"
         style="@style/content_CardDecription"
-        android:backgroundTint="#D5FEF5E7"
-        app:strokeColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#D5FEF5E7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sortByNameBtn"
+        app:strokeColor="@color/white">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listOfExercises"
@@ -165,7 +166,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/list_item_exercise"/>
+            tools:listitem="@layout/list_item_exercise" />
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
@@ -176,7 +177,7 @@
         android:layout_marginLeft="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Sortiere A-Z"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialCardExerciseHeader" />
 

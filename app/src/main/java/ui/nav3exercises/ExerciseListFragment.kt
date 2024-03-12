@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentExerciseListBinding
 import ui.HomeViewModel
@@ -35,6 +36,15 @@ class ExerciseListFragment : Fragment() {
 //        viewModel.selectedExercisesByBodypart.observe(viewLifecycleOwner){
 //            viewModel.navigateToExerciseList(it)
 //        }
+
+        navigateBack()
+    }
+
+
+    fun navigateBack(){
+        binding.backBtn.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
 
