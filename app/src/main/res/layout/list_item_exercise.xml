@@ -12,7 +12,7 @@
         style="@style/content_Card"
         android:backgroundTint="#FEF5E7"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -24,7 +24,7 @@
 
             <ImageView
                 android:id="@+id/contentImage"
-                android:layout_width="120dp"
+                android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:layout_margin="16dp"
                 android:scaleType="fitXY"

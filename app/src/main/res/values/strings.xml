@@ -29,7 +29,22 @@
     <string name="bpBrust">Brust</string>
 
 
+    <string name="weKH_Bicepscurls">Kurzhantel Bizepscurls</string>
+    <string name="weLH_Bicepscurls">Langhantel Bizepscurls</string>
+    <string name="weSZ_Bicepscurls">SZ-Bizepscurls</string>
+
+    <string name="weKH_Shoulderpress">Kurzhantel Schulterdrücken</string>
+
+    <!--    <string name="weBicepscurls">Bizepscurls</string>
     <string name="weBicepscurls">Bizepscurls</string>
-    <string name="weText1">Diese Übung trainiert...</string>
+    <string name="weBicepscurls">Bizepscurls</string>
+    <string name="weBicepscurls">Bizepscurls</string>
+    <string name="weBicepscurls">Bizepscurls</string>-->
+
+    <string name="weKH_BicepscurlsInstruction">Diese Übung trainiert...</string>
+    <string name="weLH_BicepscurlsInstructions">1</string>
+    <string name="weSZ_BicepscurlsInstructions">2</string>
+    <string name="weKH_ShoulderpressInstructions">Damit machst du</string>
+
 
 </resources>

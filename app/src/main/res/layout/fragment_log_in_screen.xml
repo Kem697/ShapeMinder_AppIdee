@@ -43,6 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/inputPasswordCard"
         app:layout_constraintVertical_bias="0.144" />
 
+
     <ImageView
         android:id="@+id/appLogo"
         android:layout_width="226dp"

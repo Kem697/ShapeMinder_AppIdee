@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.shapeminder_appidee.databinding.FragmentExerciseListBinding
 import com.example.shapeminder_appidee.databinding.FragmentExercisesNav3Binding
 
 

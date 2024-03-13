@@ -1,4 +1,7 @@
+import android.content.ContentValues.TAG
 import android.content.Context
+import android.nfc.Tag
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +10,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
 import com.example.shapeminder_appidee.R
+import com.example.shapeminder_appidee.databinding.FragmentExerciseListBinding
+import data.AppRepository
 import model.Content
 import ui.HomeViewModel
 
@@ -50,7 +55,7 @@ class GridAdapter(
 
     private val dataset: List<Content>,
     private val viewModel: HomeViewModel,
-    private val context: Context
+    private val context: Context,
 ) : BaseAdapter() {
 
     private inner class ViewHolder(view: View) {
@@ -85,22 +90,38 @@ class GridAdapter(
         }
 
         val item = dataset[position]
-
         viewHolder.textViewTitle.setText(item.stringRessourceTitle)
         viewHolder.imageViewIcon.setImageResource(item.imageRessource)
 
         /*Navigations in der Bodyparts Liste.*/
 
 
-            viewHolder.imageViewIcon.setOnClickListener {
-                viewModel.navigateToExerciseList(item)
-                viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
+        /*Mit dieser When Verzweigen werden die View Elemente meines Gridlayouts angesprochen.
+        * Zunächst einmal wird nur jenes Element anwählbar sein, welches den Titel Arme trägt.
+        * Das Problem hierbei ist es meinen Datensatz überzugeben, dessen Eigenschaft Bodypart
+        * mit dem Argument "Arme" zugewiesen ist.*/
+
+        when (viewHolder.textViewTitle.text) {
+
+            "Arme" -> {
+                viewHolder.imageViewIcon.setOnClickListener {
+                    viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
+                }
+            }
+
+            "Bauch" -> {}
+            "Schulter" -> {}
+            "Rücken" -> {}
+            "Beine" -> {}
+            "Brust" -> {}
         }
+
+
+
 
 
         return itemView!!
     }
-
 
 
 }

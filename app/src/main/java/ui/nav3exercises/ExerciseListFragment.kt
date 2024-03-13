@@ -7,12 +7,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isInvisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentExerciseListBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import ui.HomeViewModel
 
 class ExerciseListFragment : Fragment() {
@@ -35,10 +37,13 @@ class ExerciseListFragment : Fragment() {
             binding.listOfExercises.adapter = ItemAdapter(it,viewModel)
         }
 
+
         searchInput()
         setDefaultHint()
         navigateBack()
     }
+
+
 
 
     fun navigateBack(){

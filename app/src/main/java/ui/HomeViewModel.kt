@@ -14,6 +14,7 @@ class HomeViewModel: ViewModel() {
     private val allBodyparts = repository.bodyParts
     private var allExercisesByBodyparts = repository.exercisesByBodyparts
 
+
     var index = 0
 
     private var _contents = MutableLiveData(allContent)
@@ -64,6 +65,11 @@ class HomeViewModel: ViewModel() {
 
     val exercisesByBodyparts: LiveData<List<Content>>
         get() = _exercisesByBodyparts
+
+
+
+
+
 
 
 
