@@ -103,31 +103,63 @@ class GridAdapter(
         * Nachtrag: Die when Verzweigung wurde erweitert, indem eine Methode aus meinem ViewModel
         * zum filtern der Liste aufgerufen worden ist. Hierbei wird eine Parameter, welcher ein
         * Stringwert ist, meine Methode übergeben, sodass meine LiveData gefiltert bzw. nach dem
-        * Filter aktualisiert wird!*/
+        * Filter aktualisiert wird.
+        * getContentTitle dient für die Sortierung der Inhalt in diesem Screen.*/
 
         when (viewHolder.textViewTitle.text) {
-
             "Arme" -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedBodypart = "Arme" // Beispiel für ausgewählten Körperteil
+                    val selectedBodypart = "Arme"
+                    viewModel.getContentTitle(selectedBodypart)
                     viewModel.filterExercisesByBodypart(selectedBodypart)
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
                 }
             }
 
             "Bauch" -> {
-
-            }
-            "Schulter" -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedBodypart = "Schulter" // Beispiel für ausgewählten Körperteil
+                    val selectedBodypart = "Bauch"
+                    viewModel.getContentTitle(selectedBodypart)
                     viewModel.filterExercisesByBodypart(selectedBodypart)
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
                 }
             }
-            "Rücken" -> {}
-            "Beine" -> {}
-            "Brust" -> {}
+
+            "Schulter" -> {
+                viewHolder.imageViewIcon.setOnClickListener {
+                    val selectedBodypart = "Schulter"
+                    viewModel.getContentTitle(selectedBodypart)
+                    viewModel.filterExercisesByBodypart(selectedBodypart)
+                    viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
+                }
+            }
+
+            "Rücken" -> {
+                viewHolder.imageViewIcon.setOnClickListener {
+                    val selectedBodypart = "Rücken"
+                    viewModel.getContentTitle(selectedBodypart)
+                    viewModel.filterExercisesByBodypart(selectedBodypart)
+                    viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
+                }
+            }
+
+            "Beine" -> {
+                viewHolder.imageViewIcon.setOnClickListener {
+                    val selectedBodypart = "Beine"
+                    viewModel.getContentTitle(selectedBodypart)
+                    viewModel.filterExercisesByBodypart(selectedBodypart)
+                    viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
+                }
+            }
+
+            "Brust" -> {
+                viewHolder.imageViewIcon.setOnClickListener {
+                    val selectedBodypart = "Brust"
+                    viewModel.getContentTitle(selectedBodypart)
+                    viewModel.filterExercisesByBodypart(selectedBodypart)
+                    viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
+                }
+            }
         }
 
 

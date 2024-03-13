@@ -68,6 +68,18 @@ class HomeViewModel: ViewModel() {
     val exercisesByBodyparts: LiveData<List<Content>>
         get() = _exercisesByBodyparts
 
+/*
+*    Ich habe die _selectedContentTitle LiveData- Variabel erstellt,
+*    um den Wert des contentTitle zu speichern:
+*    Auf diese Weise wird der Wert des contentTitle im ViewModel gesetzt,
+*    und das Fragment ExerciseListFragment kann darauf zugreifen, um die
+*    Übungen entsprechend zu sortieren, wenn der Benutzer auf den Sortieren-Button klickt.*/
+
+
+    private val _selectedContentTitle = MutableLiveData<String>()
+    val selectedContentTitle: LiveData<String>
+        get() = _selectedContentTitle
+
 
 
     /*Diese Methode dient dazu, um meinen Datensatz im Nachhinein mit
@@ -80,6 +92,34 @@ class HomeViewModel: ViewModel() {
         }
     }
 
+    /*
+    * Aktueller Stand: Sortierfunktion funktioniert nicht.
+    * Mit dieser Methode wird die Sortierfunktion nach alphabetischer Reihenfolge
+    * zur Ilustration absteigend sortiert. Das erste Problem war, dass bei der Sortierung wieder nicht nach
+    * entsprechend der Körperpartieren gefiltert worden ist. Mit der Methode getContentTitle wird
+    * die Liste nochmals nach Körperpartie gefiltert, sobald der Nutzer den View mit dem jeweiligen
+    * Namen z.B. Arme anklickt. */
+
+    fun sortExercisesByAlphabet(bodypart: String){
+        viewModelScope.launch{
+            val filteredExercises = allExercisesByBodyparts.filter { it.bodyPart == bodypart }
+            val sortedExercises = filteredExercises.sortedByDescending { it.stringRessourceText }
+            _exercisesByBodyparts.value = sortedExercises.filter { it.bodyPart == bodypart }
+        }
+    }
+
+
+/* Um die entsprechende TextView Id aus einer anderen Fragment Klasse herauszuholen,
+ *  habe ich die Methode getContentTitle im ViewModel erstellt, um den Wert des contentTitles zu setzen.
+ *  Dadurch, dass diese Methode im viewModel Fragment ist, kann ich sie in meinen anderen Fragmentklassen
+ *  aufrufen. (ViewModel hilft, um Fragment übergreifend zu kommunizieren.). Die Methode wird dann
+ *  in den when Verzweigungen aufgerufen die Bezeichnung der Körperpartie als Parameter übergeben.
+ *
+*/
+
+    fun getContentTitle(bodypart: String) {
+       _selectedContentTitle.value = bodypart
+    }
 
 
 
@@ -90,8 +130,6 @@ class HomeViewModel: ViewModel() {
     }
 
 
-    fun navigateToExerciseList(selectedExercise: Content) {
-        _selectedExercisesByBodypart.value = selectedExercise
-    }
+
 
 }
