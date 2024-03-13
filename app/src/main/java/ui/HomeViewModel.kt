@@ -3,7 +3,9 @@ package ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import data.AppRepository
+import kotlinx.coroutines.launch
 import model.Content
 
 class HomeViewModel: ViewModel() {
@@ -67,6 +69,16 @@ class HomeViewModel: ViewModel() {
         get() = _exercisesByBodyparts
 
 
+
+    /*Diese Methode dient dazu, um meinen Datensatz im Nachhinein mit
+    * eine Eigenschaft zu überprüfen und sie nach dem dem übergebenen Argument zu filtern.
+    * Die Methode wird anschließend in meinem GridAdapter aufgerufen.*/
+    fun filterExercisesByBodypart(bodypart: String) {
+        viewModelScope.launch {
+            val filteredExercises = allExercisesByBodyparts.filter { it.bodyPart == bodypart }
+            _exercisesByBodyparts.value = filteredExercises
+        }
+    }
 
 
 

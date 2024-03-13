@@ -99,18 +99,32 @@ class GridAdapter(
         /*Mit dieser When Verzweigen werden die View Elemente meines Gridlayouts angesprochen.
         * Zunächst einmal wird nur jenes Element anwählbar sein, welches den Titel Arme trägt.
         * Das Problem hierbei ist es meinen Datensatz überzugeben, dessen Eigenschaft Bodypart
-        * mit dem Argument "Arme" zugewiesen ist.*/
+        * mit dem Argument "Arme" zugewiesen ist.
+        * Nachtrag: Die when Verzweigung wurde erweitert, indem eine Methode aus meinem ViewModel
+        * zum filtern der Liste aufgerufen worden ist. Hierbei wird eine Parameter, welcher ein
+        * Stringwert ist, meine Methode übergeben, sodass meine LiveData gefiltert bzw. nach dem
+        * Filter aktualisiert wird!*/
 
         when (viewHolder.textViewTitle.text) {
 
             "Arme" -> {
                 viewHolder.imageViewIcon.setOnClickListener {
+                    val selectedBodypart = "Arme" // Beispiel für ausgewählten Körperteil
+                    viewModel.filterExercisesByBodypart(selectedBodypart)
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
                 }
             }
 
-            "Bauch" -> {}
-            "Schulter" -> {}
+            "Bauch" -> {
+
+            }
+            "Schulter" -> {
+                viewHolder.imageViewIcon.setOnClickListener {
+                    val selectedBodypart = "Schulter" // Beispiel für ausgewählten Körperteil
+                    viewModel.filterExercisesByBodypart(selectedBodypart)
+                    viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
+                }
+            }
             "Rücken" -> {}
             "Beine" -> {}
             "Brust" -> {}
