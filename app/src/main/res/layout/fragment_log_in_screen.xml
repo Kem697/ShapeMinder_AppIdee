@@ -17,16 +17,15 @@
         android:layout_margin="10dp"
         android:layout_marginStart="192dp"
         android:layout_marginEnd="129dp"
-        android:layout_marginBottom="60dp"
         android:text="Bitte nenne deine Anmeldedaten:"
-        android:textColor="@color/black"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textIsSelectable="false"
         android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/inputEmailCard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appLogo" />
 
     <Button
         android:id="@+id/logInButton"
@@ -35,13 +34,29 @@
         android:layout_height="60dp"
         android:layout_marginStart="62dp"
         android:layout_marginEnd="32dp"
+        android:layout_marginTop="16dp"
         android:text="Anmelden"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.245"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputPasswordCard"
-        app:layout_constraintVertical_bias="0.144" />
+        app:layout_constraintTop_toBottomOf="@+id/inputPasswordCard" />
+
+    <Button
+        android:id="@+id/RegisterButton"
+        style="@style/customButton"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/tertiary"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="62dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="8dp"
+        android:text="Registrieren"
+        app:strokeWidth ="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.245"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logInButton" />
 
 
     <ImageView
@@ -49,36 +64,33 @@
         android:layout_width="226dp"
         android:layout_height="142dp"
         android:layout_marginTop="100dp"
-        android:layout_marginBottom="60dp"
         android:src="@drawable/applogo"
-        app:layout_constraintBottom_toTopOf="@+id/logInText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/inputEmailCard"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="428dp"
-        android:layout_marginEnd="32dp"
         style="@style/customUserInput"
+        android:layout_marginStart="76dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toBottomOf="@+id/logInText">
 
         <EditText
             android:id="@+id/inputEmail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/roboto"
             android:background="@null"
-            android:padding="12dp"
-            android:textSize="16dp"
             android:ems="10"
+            android:fontFamily="@font/roboto"
+            android:hint="@string/eMailInput"
             android:inputType="text"
-            android:hint="@string/eMailInput" />
+            android:padding="12dp"
+            android:textSize="16dp" />
     </com.google.android.material.card.MaterialCardView>
 
 
