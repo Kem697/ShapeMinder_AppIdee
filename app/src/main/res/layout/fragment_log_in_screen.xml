@@ -42,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@+id/inputPasswordCard" />
 
     <Button
-        android:id="@+id/RegisterButton"
+        android:id="@+id/registerButton"
         style="@style/customButton"
         android:backgroundTint="@color/white"
         android:textColor="@color/tertiary"

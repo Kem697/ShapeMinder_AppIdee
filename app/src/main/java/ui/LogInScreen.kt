@@ -49,6 +49,11 @@ class LogInScreen : Fragment() {
             }
         }
 
+
+        binding.registerButton.setOnClickListener {
+            findNavController().navigate(R.id.registerScreen)
+        }
+
     }
 
 

@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_logInScreen_to_homeScreen"
             app:destination="@id/homeScreen" />
+        <action
+            android:id="@+id/action_logInScreen_to_registerScreen"
+            app:destination="@id/registerScreen" />
     </fragment>
     <fragment
         android:id="@+id/homeScreen"
@@ -84,4 +87,8 @@
         android:id="@+id/exerciseListFragment"
         android:name="ui.nav3exercises.ExerciseListFragment"
         android:label="ExerciseListFragment" />
+    <fragment
+        android:id="@+id/registerScreen"
+        android:name="ui.RegisterScreen"
+        android:label="RegisterScreen" />
 </navigation>

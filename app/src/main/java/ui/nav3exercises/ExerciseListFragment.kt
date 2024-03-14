@@ -45,6 +45,8 @@ class ExerciseListFragment : Fragment() {
         navigateBack()
     }
 
+    
+
 
     fun navigateBack() {
         binding.backBtn.setOnClickListener {
@@ -99,6 +101,9 @@ class ExerciseListFragment : Fragment() {
             viewModel.sortExercisesByAlphabet(selectedBodypart)
         }
     }
+
+
+
 
 
 

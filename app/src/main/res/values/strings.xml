@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">ShapeMinder_AppIdee</string>
     <string name="eMailInput">E-Mail Adresse eingeben...</string>
+    <string name="nameInput">Vor - und Nachnamen eingeben...</string>
     <string name="passwordInput">Passwort eingeben...</string>
+    <string name="passwordRepeatInput">Passwort wiederholen...</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
