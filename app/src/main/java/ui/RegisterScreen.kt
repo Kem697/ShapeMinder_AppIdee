@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentRegisterScreenBinding
 
 
@@ -28,6 +30,7 @@ class RegisterScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        register()
         backNav()
     }
 
@@ -38,6 +41,32 @@ class RegisterScreen : Fragment() {
             findNavController().navigateUp()
         }
     }
+
+
+    fun register(){
+        binding.submitButton.setOnClickListener {
+            var nameInput = binding.inputName.text.toString()
+            var emailInput = binding.inputEmail.text.toString()
+            var passwordInput = binding.inputPassword.text.toString()
+            var passwordRepeatInput = binding.inputPasswordRepeat.text.toString()
+
+
+            if (emailInput.isNotBlank() && passwordInput.isNotBlank()
+                && nameInput.isNotBlank() && passwordRepeatInput.isNotBlank()
+                && passwordInput == passwordRepeatInput) {
+                binding.inputEmail.text.clear()
+                binding.inputPassword.text.clear()
+                findNavController().navigate(R.id.homeScreen)
+            } else {
+                Toast.makeText(binding.root.context, "Bitte mach eine Eingabe !", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
+
+
+
+    }
+
 
 
 }

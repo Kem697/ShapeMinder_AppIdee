@@ -26,7 +26,15 @@ class MySettingsScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        logout()
 
+    }
+
+
+    fun logout(){
+        binding.optionCard8.setOnClickListener {
+            findNavController().navigate(R.id.logInScreen)
+        }
     }
 
 
