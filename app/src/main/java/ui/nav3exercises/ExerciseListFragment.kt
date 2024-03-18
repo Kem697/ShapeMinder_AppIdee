@@ -44,7 +44,7 @@ class ExerciseListFragment : Fragment() {
             * die Anzahl der Übungen pro Körperpartie entsprechen der
             * Körperpartie aktualisiert wird */
             binding.title.setText(it.first().bodyPart)
-            binding.subTitle.setText("Anzahl von Übungen: ${it.size}.")
+            binding.subTitle.setText("Anzahl von Übungen: ${it.size}")
 
             /*When Verzweigung dient dazu die korrekten Bilder zu setzen,
             * wenn das  initialisierte Argument mit dem des Körperparts

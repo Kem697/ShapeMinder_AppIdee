@@ -34,8 +34,14 @@
     <string name="weKH_Bicepscurls">Kurzhantel Bizepscurls</string>
     <string name="weLH_Bicepscurls">Langhantel Bizepscurls</string>
     <string name="weSZ_Bicepscurls">SZ-Bizepscurls</string>
-
+    <string name="we_Pull_ups">Klimmzüge</string>
+    <string name="weKH_Benchpress">Kurzhantel Bankdrücken</string>
+    <string name="weLH_Benchpress">Langhantel Bizepscurls</string>
+    <string name="weSZ_Push_ups">Liegestütze</string>
     <string name="weKH_Shoulderpress">Kurzhantel Schulterdrücken</string>
+    <string name="we_Crunches">Crunches</string>
+    <string name="weSquats">Kniebeuge</string>
+
 
     <!--    <string name="weBicepscurls">Bizepscurls</string>
     <string name="weBicepscurls">Bizepscurls</string>
@@ -47,6 +53,13 @@
     <string name="weLH_BicepscurlsInstructions">1</string>
     <string name="weSZ_BicepscurlsInstructions">2</string>
     <string name="weKH_ShoulderpressInstructions">Damit machst du</string>
+    <string name="we_Pull_upsInstructions">12</string>
+    <string name="we_CrunchesInstructions">Crunches</string>
+    <string name="weKH_BenchpressInstructions">1</string>
+    <string name="weLH_BenchpressInstructions">2</string>
+    <string name="weSZ_Push_upsInstructions">3</string>
+    <string name="weSquatsInstructions">Kniebeuge</string>
+
 
 
 </resources>
