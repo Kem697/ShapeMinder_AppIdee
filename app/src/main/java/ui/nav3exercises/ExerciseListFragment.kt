@@ -51,32 +51,32 @@ class ExerciseListFragment : Fragment() {
             * wenn das  initialisierte Argument mit dem des Körperparts
             * übereinstimmt. Die Verzweigung ist noch fehlerbehaftet.*/
 
-//            when (it.first().bodyPart) {
-//                "Arme" -> {
-//                    binding.bodyPartView.setImageResource(R.drawable.bp1arms)
-//                }
-//                /*"Bauch"->{
-//                    binding.bodyPartView.setImageResource(R.drawable.bp5abs)
-//                }*/
-//
-//                "Schulter" -> {
-//                    binding.bodyPartView.setImageResource(R.drawable.bp3shoulders)
-//                }
-//
-//                /* "Rücken"->{
-//                     binding.bodyPartView.setImageResource(R.drawable.bp4back)
-//                 }
-//                 "Beine"->{
-//                     binding.bodyPartView.setImageResource(R.drawable.bp2legs)
-//                 }
-//                 "Brust"->{
-//                     binding.bodyPartView.setImageResource(R.drawable.bp6chest)
-//                 }*/
-//
-//                else-> {
-//                    binding.bodyPartView.setImageResource(R.drawable.applogo)
-//                }
-//            }
+            when (it.first().bodyPart) {
+                "Arme" -> {
+                    binding.bodyPartView.setImageResource(R.drawable.bp1arms)
+                }
+                "Bauch"->{
+                    binding.bodyPartView.setImageResource(R.drawable.bp5abs)
+                }
+
+                "Schulter" -> {
+                    binding.bodyPartView.setImageResource(R.drawable.bp3shoulders)
+                }
+
+                 "Rücken"->{
+                     binding.bodyPartView.setImageResource(R.drawable.bp4back)
+                 }
+                 "Beine"->{
+                     binding.bodyPartView.setImageResource(R.drawable.bp2legs)
+                 }
+                 "Brust"->{
+                     binding.bodyPartView.setImageResource(R.drawable.bp6chest)
+                 }
+
+                else-> {
+                    binding.bodyPartView.setImageResource(R.drawable.applogo)
+                }
+            }
 
         }
 

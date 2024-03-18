@@ -49,8 +49,6 @@ class RegisterScreen : Fragment() {
             var emailInput = binding.inputEmail.text.toString()
             var passwordInput = binding.inputPassword.text.toString()
             var passwordRepeatInput = binding.inputPasswordRepeat.text.toString()
-
-
             if (emailInput.isNotBlank() && passwordInput.isNotBlank()
                 && nameInput.isNotBlank() && passwordRepeatInput.isNotBlank()
                 && passwordInput == passwordRepeatInput) {

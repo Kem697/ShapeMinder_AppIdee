@@ -108,9 +108,9 @@
             <LinearLayout
                 android:layout_marginTop="12dp"
                 android:layout_marginLeft="12dp"
+                android:layout_marginRight="64dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="160dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -137,11 +137,12 @@
 
             <ImageView
                 android:id="@+id/bodyPartView"
-                android:layout_marginRight="16dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                tools:src="@tools:sample/avatars" />
+                android:layout_margin="8dp"
+                android:layout_width="90dp"
+                android:layout_gravity="end|center"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                tools:src="@drawable/bp2legs" />
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
