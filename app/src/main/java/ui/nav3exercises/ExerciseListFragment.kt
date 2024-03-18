@@ -35,9 +35,10 @@ class ExerciseListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sortByAlphabet()
         viewModel.exercisesByBodyparts.observe(viewLifecycleOwner) {
             binding.listOfExercises.adapter = ItemAdapter(it, viewModel)
-            sortByAlphabet()
+
             /*Mit diesen Befehlen initialisiere meine ViewElemente mit
             * den initialisierten Argumenten in den jeweiligen Eigenschaften
             * meines Content Objekts. Dies führt dazu, dass der Titel und
@@ -132,12 +133,29 @@ class ExerciseListFragment : Fragment() {
          wenn der Benutzer auf den Sortieren-Button klickt, und berücksichtigt dabei den ausgewählten Körperteil.
 
         */
+
+
+
+
     fun sortByAlphabet() {
+        var isSortedDescending = false
         binding.sortByNameBtn.setOnClickListener {
+            isSortedDescending = !isSortedDescending
+            if (isSortedDescending) {
+                binding.sortByNameBtn.text = "Sortiere A-Z"
+            } else {
+                binding.sortByNameBtn.text = "Sortiere Z-A"
+            }
+
             val selectedBodypart = viewModel.selectedContentTitle.value ?: return@setOnClickListener
-            viewModel.sortExercisesByAlphabet(selectedBodypart)
+            viewModel.sortExercisesByAlphabet(selectedBodypart, isSortedDescending)
         }
     }
+
+
+
+
+
 
 
 }

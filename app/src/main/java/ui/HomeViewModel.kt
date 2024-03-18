@@ -100,22 +100,28 @@ class HomeViewModel: ViewModel() {
     * die Liste nochmals nach Körperpartie gefiltert, sobald der Nutzer den View mit dem jeweiligen
     * Namen z.B. Arme anklickt. */
 
-    fun sortExercisesByAlphabet(bodypart: String){
-        viewModelScope.launch{
+
+    fun sortExercisesByAlphabet(bodypart: String, sort: Boolean) {
+        viewModelScope.launch {
             val filteredExercises = allExercisesByBodyparts.filter { it.bodyPart == bodypart }
-            val sortedExercises = filteredExercises.sortedByDescending { it.stringRessourceText }
-            _exercisesByBodyparts.value = sortedExercises.filter { it.bodyPart == bodypart }
+            val sortedExercises = if (sort) {
+                filteredExercises.sortedByDescending { it.stringRessourceText }
+            } else {
+                filteredExercises.sortedBy { it.stringRessourceText }
+            }
+            _exercisesByBodyparts.value = sortedExercises
         }
     }
 
 
-/* Um die entsprechende TextView Id aus einer anderen Fragment Klasse herauszuholen,
- *  habe ich die Methode getContentTitle im ViewModel erstellt, um den Wert des contentTitles zu setzen.
- *  Dadurch, dass diese Methode im viewModel Fragment ist, kann ich sie in meinen anderen Fragmentklassen
- *  aufrufen. (ViewModel hilft, um Fragment übergreifend zu kommunizieren.). Die Methode wird dann
- *  in den when Verzweigungen aufgerufen die Bezeichnung der Körperpartie als Parameter übergeben.
- *
-*/
+
+    /* Um die entsprechende TextView Id aus einer anderen Fragment Klasse herauszuholen,
+     *  habe ich die Methode getContentTitle im ViewModel erstellt, um den Wert des contentTitles zu setzen.
+     *  Dadurch, dass diese Methode im viewModel Fragment ist, kann ich sie in meinen anderen Fragmentklassen
+     *  aufrufen. (ViewModel hilft, um Fragment übergreifend zu kommunizieren.). Die Methode wird dann
+     *  in den when Verzweigungen aufgerufen die Bezeichnung der Körperpartie als Parameter übergeben.
+     *
+    */
 
     fun getContentTitle(bodypart: String) {
        _selectedContentTitle.value = bodypart
