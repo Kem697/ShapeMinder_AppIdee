@@ -8,15 +8,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.core.view.isInvisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.example.shapeminder_appidee.MainActivity
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentExerciseListBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import ui.HomeViewModel
 
 class ExerciseListFragment : Fragment() {
@@ -137,6 +141,11 @@ class ExerciseListFragment : Fragment() {
 
 
 
+
+
+
+
+
     fun sortByAlphabet() {
         var isSortedDescending = false
         binding.sortByNameBtn.setOnClickListener {
@@ -151,6 +160,32 @@ class ExerciseListFragment : Fragment() {
             viewModel.sortExercisesByAlphabet(selectedBodypart, isSortedDescending)
         }
     }
+
+
+
+
+
+
+/*Diese Funktion ist eine Anbahnung zur Filteroption mittels einer RadioGroup.
+* Die Funktion muss noch weiter ausgebaut werden.*/
+
+//    fun sortRadioGroup() {
+//        var dialog = BottomSheetDialog(activity as MainActivity, R.style.transparent)
+//        dialog.setContentView(R.layout.dialog_sheet)
+//        dialog.setCancelable(true)
+//        dialog.setCanceledOnTouchOutside(true)
+//        var isSortedDescending = false
+//
+//        binding.sortByNameBtn.setOnClickListener {
+//            isSortedDescending = !isSortedDescending
+//            dialog.show()
+//            var group = requireActivity().findViewById<RadioGroup>(R.id.radioG_exerciseSort)
+//            group.setOnCheckedChangeListener { group, checkedId -> }
+//            val selectedBodypart = viewModel.selectedContentTitle.value ?: return@setOnClickListener
+//            viewModel.sortExercisesByAlphabet(selectedBodypart, isSortedDescending)
+//        }
+//
+//    }
 
 
 
