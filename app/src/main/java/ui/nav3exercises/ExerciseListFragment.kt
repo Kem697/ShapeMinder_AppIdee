@@ -2,6 +2,7 @@ package ui.nav3exercises
 
 import adapter.ItemAdapter
 import android.content.ClipData.Item
+import android.content.res.ColorStateList
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +12,8 @@ import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.core.view.get
 import androidx.core.view.isInvisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
@@ -39,7 +42,7 @@ class ExerciseListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sortByAlphabet()
+        sortRadioGroup()
         viewModel.exercisesByBodyparts.observe(viewLifecycleOwner) {
             binding.listOfExercises.adapter = ItemAdapter(it, viewModel)
 
@@ -138,54 +141,66 @@ class ExerciseListFragment : Fragment() {
 
         */
 
-
-
-
-
-
-
-
-
-    fun sortByAlphabet() {
-        var isSortedDescending = false
-        binding.sortByNameBtn.setOnClickListener {
-            isSortedDescending = !isSortedDescending
-            if (isSortedDescending) {
-                binding.sortByNameBtn.text = "Sortiere A-Z"
-            } else {
-                binding.sortByNameBtn.text = "Sortiere Z-A"
-            }
-
-            val selectedBodypart = viewModel.selectedContentTitle.value ?: return@setOnClickListener
-            viewModel.sortExercisesByAlphabet(selectedBodypart, isSortedDescending)
-        }
-    }
-
-
-
-
-
-
-/*Diese Funktion ist eine Anbahnung zur Filteroption mittels einer RadioGroup.
-* Die Funktion muss noch weiter ausgebaut werden.*/
-
-//    fun sortRadioGroup() {
-//        var dialog = BottomSheetDialog(activity as MainActivity, R.style.transparent)
-//        dialog.setContentView(R.layout.dialog_sheet)
-//        dialog.setCancelable(true)
-//        dialog.setCanceledOnTouchOutside(true)
+//    fun sortByAlphabet() {
 //        var isSortedDescending = false
-//
 //        binding.sortByNameBtn.setOnClickListener {
 //            isSortedDescending = !isSortedDescending
-//            dialog.show()
-//            var group = requireActivity().findViewById<RadioGroup>(R.id.radioG_exerciseSort)
-//            group.setOnCheckedChangeListener { group, checkedId -> }
+//            if (isSortedDescending) {
+//                binding.sortByNameBtn.text = "Sortiere A-Z"
+//            } else {
+//                binding.sortByNameBtn.text = "Sortiere Z-A"
+//            }
+//
 //            val selectedBodypart = viewModel.selectedContentTitle.value ?: return@setOnClickListener
 //            viewModel.sortExercisesByAlphabet(selectedBodypart, isSortedDescending)
 //        }
-//
 //    }
+
+
+/*Diese Funktion ist eine Anbahnung zur Filteroption mittels einer RadioGroup.
+* Die Funktion wurde ausgebaut und ersetzt die sortByAlphabet Funktion.*/
+    fun sortRadioGroup() {
+        var dialog = BottomSheetDialog(activity as MainActivity, R.style.transparent)
+        dialog.setContentView(R.layout.dialog_sheet)
+        dialog.setCancelable(true)
+        dialog.setCanceledOnTouchOutside(true)
+        var isSortedDescending = false
+
+        // Listener für den Button sortByNameBtn
+        binding.sortByNameBtn.setOnClickListener {
+            // Um den Dialog nur einmal zu zeigen, prüfen Sie zuerst, ob er nicht bereits gezeigt wird
+            if (!dialog.isShowing) {
+                /*Hier wird die Farbe des "Check"-Elements auf die Farbe tertiary gesetzt.
+                * */
+                dialog.findViewById<RadioButton>(R.id.a_z_ascending)!!.buttonTintList = ColorStateList.valueOf(
+                    ContextCompat.getColor(requireContext(), R.color.tertiary))
+                dialog.findViewById<RadioButton>(R.id.z_a_descending)!!.buttonTintList = ColorStateList.valueOf(
+                    ContextCompat.getColor(requireContext(), R.color.tertiary))
+                // Anschließend wird der Dialog geöffnet.
+                dialog.show()
+            }
+
+            // Listener für die Auswahl der RadioButtons innerhalb des Dialogs
+            dialog.findViewById<RadioGroup>(R.id.radioG_exerciseSort)?.setOnCheckedChangeListener { group, checkedId ->
+                // Hier können Sie den Code für die Sortierung der Übungen implementieren
+                val selectedBodypart = viewModel.selectedContentTitle.value ?: return@setOnCheckedChangeListener
+                // Je nachdem, welcher RadioButton ausgewählt wurde, können Sie die Übungen sortieren
+                when (checkedId) {
+                    R.id.a_z_ascending -> {
+                        isSortedDescending = false
+                        viewModel.sortExercisesByAlphabet(selectedBodypart, isSortedDescending)
+                    }
+                    R.id.z_a_descending -> {
+                        isSortedDescending = true
+                        viewModel.sortExercisesByAlphabet(selectedBodypart, isSortedDescending)
+                    }
+                    // Weitere RadioButton-Optionen können hier hinzugefügt werden
+                }
+                // Schließen Sie den Dialog, nachdem eine Auswahl getroffen wurde
+                dialog.dismiss()
+            }
+        }
+    }
 
 
 

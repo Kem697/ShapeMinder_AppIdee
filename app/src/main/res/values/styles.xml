@@ -68,6 +68,9 @@
 
     <style name="transparent" parent="CardView">
         <item name="android:backgroundTint">#00FEF5E7</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+        <item name="android:buttonTint">@color/tertiary</item>
     </style>
 
 
