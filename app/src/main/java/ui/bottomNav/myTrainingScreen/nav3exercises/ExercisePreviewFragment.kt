@@ -26,7 +26,10 @@ class ExercisePreviewFragment : Fragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        /*Mit der Grußen When und dem binding.title.setText steuere ich
+        * Anzeige der Übungsnamen und der beanspruchen Muskelgruppe */
         super.onViewCreated(view, savedInstanceState)
+        navigateBack()
         viewModel.selectedContent.observe(viewLifecycleOwner) {
             binding.title.setText(it.stringRessourceTitle)
             when (it.bodyPart) {
@@ -60,6 +63,10 @@ class ExercisePreviewFragment : Fragment() {
             }
         }
 
+
+    }
+
+    fun navigateBack(){
         binding.backBtn.setOnClickListener {
             findNavController().navigateUp()
         }

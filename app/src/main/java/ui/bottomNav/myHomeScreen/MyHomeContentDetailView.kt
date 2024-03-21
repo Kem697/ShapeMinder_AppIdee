@@ -49,7 +49,7 @@ class MyHomeContentDetailView : Fragment() {
 
     fun navigateBack(){
         binding.backBtn.setOnClickListener {
-            findNavController().navigate(R.id.homeScreen)
+            findNavController().navigateUp()
         }
     }
 
