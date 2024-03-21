@@ -1,7 +1,4 @@
-import android.content.ContentValues.TAG
 import android.content.Context
-import android.nfc.Tag
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
 import com.example.shapeminder_appidee.R
-import com.example.shapeminder_appidee.databinding.FragmentExerciseListBinding
-import data.AppRepository
 import model.Content
-import ui.HomeViewModel
+import ui.viewModel.HomeViewModel
 
 /*Dieser Code definiert einen Adapter (`GridAdapter`), der verwendet wird,
 um Daten an ein GridView in Android zu binden. Hier ist eine Erklärung des Codes:

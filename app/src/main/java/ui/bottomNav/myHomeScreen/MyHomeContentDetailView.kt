@@ -1,4 +1,4 @@
-package ui
+package ui.bottomNav.myHomeScreen
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentHomeContentDetailViewBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import ui.viewModel.HomeViewModel
 
 class MyHomeContentDetailView : Fragment() {
 
@@ -34,7 +35,6 @@ class MyHomeContentDetailView : Fragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         super.onViewCreated(view, savedInstanceState)
         var navigationBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
         navigationBar.isInvisible = true

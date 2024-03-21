@@ -1,4 +1,4 @@
-package ui
+package ui.bottomNav.myTrainingScreen
 
 import adapter.TabNavAdapter
 import android.os.Bundle
@@ -12,9 +12,11 @@ import androidx.fragment.app.FragmentManager
 import androidx.viewpager.widget.ViewPager
 import com.example.shapeminder_appidee.MainActivity
 import com.example.shapeminder_appidee.R
-import com.example.shapeminder_appidee.databinding.FragmentMyTrainingScreenBinding
 import com.google.android.material.search.SearchBar
 import com.google.android.material.tabs.TabLayout
+import ui.bottomNav.myTrainingScreen.nav1myTraining.TrainingNav1
+import ui.bottomNav.myTrainingScreen.nav3exercises.ExercisesNav3
+import ui.bottomNav.myTrainingScreen.nav2progression.ProgressionNav2
 
 
 class MyTrainingScreen : Fragment() {

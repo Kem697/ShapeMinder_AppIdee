@@ -1,4 +1,4 @@
-package ui.nav3exercises
+package ui.bottomNav.myTrainingScreen.nav3exercises
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,9 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentExercisePreviewBinding
-import ui.HomeViewModel
+import ui.viewModel.HomeViewModel
 
 
 class ExercisePreviewFragment : Fragment() {

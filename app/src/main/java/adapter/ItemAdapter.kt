@@ -23,7 +23,7 @@ import com.example.shapeminder_appidee.databinding.ListItemBinding
 import com.example.shapeminder_appidee.databinding.ListItemExerciseBinding
 import com.example.shapeminder_appidee.databinding.ListItemMyTrainingBinding
 import model.Content
-import ui.HomeViewModel
+import ui.viewModel.HomeViewModel
 
 class ItemAdapter(
     private val dataset: List<Content>,

@@ -1,4 +1,4 @@
-package ui
+package ui.bottomNav.myTrainingScreen.nav2progression
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -1,4 +1,4 @@
-package ui
+package ui.bottomNav.myTrainingScreen.nav3exercises
 
 import GridAdapter
 import android.os.Bundle
@@ -7,9 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
-import com.example.shapeminder_appidee.databinding.FragmentExerciseListBinding
 import com.example.shapeminder_appidee.databinding.FragmentExercisesNav3Binding
+import ui.viewModel.HomeViewModel
 
 
 class ExercisesNav3 : Fragment() {

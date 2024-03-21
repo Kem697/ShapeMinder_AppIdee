@@ -1,30 +1,23 @@
-package ui.nav3exercises
+package ui.bottomNav.myTrainingScreen.nav3exercises
 
 import adapter.ItemAdapter
-import android.content.ClipData.Item
 import android.content.res.ColorStateList
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.core.view.get
-import androidx.core.view.isInvisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.MainActivity
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentExerciseListBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import ui.HomeViewModel
+import ui.viewModel.HomeViewModel
 
 class ExerciseListFragment : Fragment() {
     private lateinit var binding: FragmentExerciseListBinding

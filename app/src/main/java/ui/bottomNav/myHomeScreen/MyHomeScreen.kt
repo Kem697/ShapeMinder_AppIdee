@@ -1,7 +1,6 @@
-package ui
+package ui.bottomNav.myHomeScreen
 
 import adapter.ItemAdapter
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +12,7 @@ import androidx.fragment.app.activityViewModels
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentHomeScreenBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import ui.viewModel.HomeViewModel
 
 
 class MyHomeScreen : Fragment() {

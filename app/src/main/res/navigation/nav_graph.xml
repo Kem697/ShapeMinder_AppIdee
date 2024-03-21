@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeScreen"
-        android:name="ui.MyHomeScreen"
+        android:name="ui.bottomNav.myHomeScreen.MyHomeScreen"
         android:label="HomeScreen" >
         <action
             android:id="@+id/action_homeScreen_to_homeContentDetailView"
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/myTrainingScreen"
-        android:name="ui.MyTrainingScreen"
+        android:name="ui.bottomNav.myTrainingScreen.MyTrainingScreen"
         android:label="MyTrainingScreen" >
         <action
             android:id="@+id/action_myTrainingScreen_to_trainingNav1"
@@ -40,11 +40,11 @@
     </fragment>
     <fragment
         android:id="@+id/myNutrionScreen"
-        android:name="ui.MyNutrionScreen"
+        android:name="ui.bottomNav.myNutritionScreen.MyNutrionScreen"
         android:label="MyNutrionScreen" />
     <fragment
         android:id="@+id/homeContentDetailView"
-        android:name="ui.MyHomeContentDetailView"
+        android:name="ui.bottomNav.myHomeScreen.MyHomeContentDetailView"
         android:label="fragment_home_content_detail_view"
         tools:layout="@layout/fragment_home_content_detail_view" >
         <action
@@ -53,7 +53,7 @@
     </fragment>
     <fragment
         android:id="@+id/exercisesNav3"
-        android:name="ui.ExercisesNav3"
+        android:name="ui.bottomNav.myTrainingScreen.nav3exercises.ExercisesNav3"
         android:label="fragment_exercises_nav3"
         tools:layout="@layout/fragment_exercises_nav3" >
         <action
@@ -71,21 +71,21 @@
     </fragment>
     <fragment
         android:id="@+id/trainingNav1"
-        android:name="ui.TrainingNav1"
+        android:name="ui.bottomNav.myTrainingScreen.nav1myTraining.TrainingNav1"
         android:label="fragment_training_nav1"
         tools:layout="@layout/fragment_training_nav1" />
     <fragment
         android:id="@+id/progressionNav2"
-        android:name="ui.ProgressionNav2"
+        android:name="ui.bottomNav.myTrainingScreen.nav2progression.ProgressionNav2"
         android:label="fragment_progression_nav2"
         tools:layout="@layout/fragment_progression_nav2" />
     <fragment
         android:id="@+id/mySettings"
-        android:name="ui.MySettingsScreen"
+        android:name="ui.bottomNav.mySettingsScreen.MySettingsScreen"
         android:label="Settings" />
     <fragment
         android:id="@+id/exerciseListFragment"
-        android:name="ui.nav3exercises.ExerciseListFragment"
+        android:name="ui.bottomNav.myTrainingScreen.nav3exercises.ExerciseListFragment"
         android:label="ExerciseListFragment" >
         <action
             android:id="@+id/action_exerciseListFragment_to_exercisePreviewFragment"
@@ -97,7 +97,7 @@
         android:label="RegisterScreen" />
     <fragment
         android:id="@+id/exercisePreviewFragment"
-        android:name="ui.nav3exercises.ExercisePreviewFragment"
+        android:name="ui.bottomNav.myTrainingScreen.nav3exercises.ExercisePreviewFragment"
         android:label="fragment_exercise_preview"
         tools:layout="@layout/fragment_exercise_preview" />
 </navigation>

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/tertiary"
-    tools:context="ui.nav3exercises.ExercisePreviewFragment">
+    tools:context="ui.bottomNav.myTrainingScreen.nav3exercises.ExercisePreviewFragment">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
