@@ -86,9 +86,18 @@
     <fragment
         android:id="@+id/exerciseListFragment"
         android:name="ui.nav3exercises.ExerciseListFragment"
-        android:label="ExerciseListFragment" />
+        android:label="ExerciseListFragment" >
+        <action
+            android:id="@+id/action_exerciseListFragment_to_exercisePreviewFragment"
+            app:destination="@id/exercisePreviewFragment" />
+    </fragment>
     <fragment
         android:id="@+id/registerScreen"
         android:name="ui.RegisterScreen"
         android:label="RegisterScreen" />
+    <fragment
+        android:id="@+id/exercisePreviewFragment"
+        android:name="ui.nav3exercises.ExercisePreviewFragment"
+        android:label="fragment_exercise_preview"
+        tools:layout="@layout/fragment_exercise_preview" />
 </navigation>

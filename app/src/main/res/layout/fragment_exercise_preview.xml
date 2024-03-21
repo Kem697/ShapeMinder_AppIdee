@@ -72,6 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_margin="16dp"
+            app:strokeColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_constraints">
@@ -112,6 +113,8 @@
                 </LinearLayout>
 
 
+
+
                 <ImageView
                     android:id="@+id/bodyPartView"
                     android:layout_width="90dp"
@@ -122,6 +125,119 @@
                     tools:src="@drawable/bp2legs" />
             </LinearLayout>
 
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView2"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_margin="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardPreviewHeader"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp">
+
+            <ImageView
+                android:id="@+id/viedeo_View"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/bp2legs">
+
+            </ImageView>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <ImageButton
+            android:id="@+id/playBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/white"
+            android:scaleType="centerCrop"
+            android:src="@drawable/play_arrow_fill1_wght400_grad0_opsz24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
+
+
+        <ImageButton
+            android:id="@+id/shareBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="16dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/white"
+            android:scaleType="centerCrop"
+            android:src="@drawable/share_fill1_wght400_grad0_opsz24"
+            app:layout_constraintStart_toEndOf="@+id/playBtn"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/addTrainingBtn"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="16dp"
+            android:fontFamily="@font/montserrat"
+            app:icon="@drawable/add_fill0_wght400_grad0_opsz24"
+            android:backgroundTint="@color/black"
+            android:text="Training"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView3"
+            style="@style/content_CardDecription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shareBtn"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp">
+
+
+            <TextView
+                android:id="@+id/descriptionHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:padding="8dp"
+                android:text="Übungsausführung"
+                android:fontFamily="@font/montserrat"
+                android:textSize="20dp"/>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView4"
+            style="@style/content_CardDecription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView3"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp">
+
+
+            <TextView
+                android:id="@+id/descriptionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:fontFamily="@font/montserrat"
+                android:padding="8dp"
+                android:text="Übungsausführung"
+                android:textAlignment="center"
+                android:textSize="16dp" />
         </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
