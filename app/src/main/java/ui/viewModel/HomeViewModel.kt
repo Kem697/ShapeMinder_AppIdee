@@ -116,7 +116,7 @@ class HomeViewModel: ViewModel() {
     }
 
 
-    fun filterExerciseByUserInput(userInput: String){
+    fun filterExerciseByUserInput(userInput: String) {
         if (userInput.isNotBlank()){
             viewModelScope.launch {
                 val searchedExercise = allExercisesByBodyparts.filter { it.stringRessourceTitle.toString() == userInput }
@@ -127,11 +127,26 @@ class HomeViewModel: ViewModel() {
                     _exercisesByBodyparts.value = searchedExercise
                 }
             }
-
-
         }
-
     }
+
+
+
+
+//
+//    fun filterExercisesByTitle(userInput: String): List<Content> {
+//        viewModelScope.launch {
+//            val searchedExercise = allExercisesByBodyparts.filter { it.stringRessourceTitle.toString() == userInput }
+//            _exercisesByBodyparts.value = searchedExercise
+//        }
+//        return _exercisesByBodyparts.value!!
+//    }
+//
+//
+//    fun resetFilter() {
+//        _exercisesByBodyparts.value = allExercisesByBodyparts
+//    }
+
 
 
 
