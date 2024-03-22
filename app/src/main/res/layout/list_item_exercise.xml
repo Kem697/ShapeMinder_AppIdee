@@ -40,7 +40,7 @@
 
                 <TextView
                     android:id="@+id/contentTitle"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:fontFamily="@font/roboto"
@@ -56,6 +56,16 @@
                     android:text="TextView"
                     android:textColor="@color/black"
                     android:textSize="16dp" />
+
+
+                <ImageButton
+                    android:id="@+id/saveExerciseBtn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_gravity="end"
+                    android:backgroundTint="#00FFFFFF"
+                    android:src="@drawable/favorite_fill0_wght400_grad0_opsz24"/>
             </LinearLayout>
 
 

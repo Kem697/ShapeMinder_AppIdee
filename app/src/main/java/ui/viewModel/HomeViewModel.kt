@@ -1,5 +1,7 @@
 package ui.viewModel
 
+import adapter.ItemAdapter
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -112,6 +114,25 @@ class HomeViewModel: ViewModel() {
             _exercisesByBodyparts.value = sortedExercises
         }
     }
+
+
+    fun filterExerciseByUserInput(userInput: String){
+        if (userInput.isNotBlank()){
+            viewModelScope.launch {
+                val searchedExercise = allExercisesByBodyparts.filter { it.stringRessourceTitle.toString() == userInput }
+                if (searchedExercise.isNullOrEmpty()){
+                    _selectedExercise.value = _selectedExercise.value
+                }
+                else{
+                    _exercisesByBodyparts.value = searchedExercise
+                }
+            }
+
+
+        }
+
+    }
+
 
 
 

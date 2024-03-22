@@ -1,6 +1,6 @@
 package ui.bottomNav.myTrainingScreen
 
-import adapter.TabNavAdapter
+import adapter.MyTrainingTabNavAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -62,7 +62,7 @@ class MyTrainingScreen : Fragment() {
         val fragmentManager: FragmentManager = childFragmentManager
 
         // Erstellen Sie dann den TabNavAdapter und übergeben Sie den FragmentManager
-        val tabNavAdapter = TabNavAdapter(fragmentManager)
+        val tabNavAdapter = MyTrainingTabNavAdapter(fragmentManager)
 
         // Fügen Sie Ihre Fragmente zum Adapter hinzu (Beispielhaft)
         tabNavAdapter.addFragment(TrainingNav1(), "Mein Training")

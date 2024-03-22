@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 
 /*Diese Adapterklasse wird zum Einrichten der Tabnavigation benötigt.*/
 
-class TabNavAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+class MyTrainingTabNavAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     /*Ich habe hiere zwei Eigenschaften erstellt, die im Nachhinein, die
     * einzelne Fragmente und dessen Titel abspeichert. Standdarmäßig handelt
