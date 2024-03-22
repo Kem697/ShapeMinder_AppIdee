@@ -61,25 +61,25 @@ class ExerciseListFragment : Fragment() {
     /*Filter Funktion zur Filterung der Daten muss bearbeitet werden.*/
 
 
-    fun searchInput() {
-        var searchBar = binding.myTSearchBarTextInput
-        searchBar.addTextChangedListener { editable ->
-            var userInput = editable.toString()
-            if (userInput != null) {
-                if (userInput.isNotBlank()) {
-                    var searchedExercise =
-                        viewModel.exercisesByBodyparts.value?.filter { it.stringRessourceTitle.toString() == userInput }
-                    updatedAdapterAfterSearch(searchedExercise!!)
-                    var tag = "Filter???"
-                    Log.i(tag, "Werden die Inhalte hier gefiltert. :$searchedExercise")
-                    binding.myTSearchBar.setText(userInput)
-                } else {
-                    binding.myTSearchBar.clearText()
-                    updateAdapter()
+        fun searchInput() {
+            var searchBar = binding.myTSearchBarTextInput
+            searchBar.addTextChangedListener { editable ->
+                var userInput = editable.toString()
+                if (userInput != null) {
+                    if (userInput.isNotBlank()) {
+                        var searchedExercise =
+                            viewModel.exercisesByBodyparts.value?.filter { it.stringRessourceTitle.toString() == userInput }
+                        updatedAdapterAfterSearch(searchedExercise!!)
+                        var tag = "Filter???"
+                        Log.i(tag, "Werden die Inhalte hier gefiltert. :$searchedExercise")
+                        binding.myTSearchBar.setText(userInput)
+                    } else {
+                        binding.myTSearchBar.clearText()
+                        updateAdapter()
+                    }
                 }
             }
         }
-    }
 
 
 //    fun searchInput() {
@@ -87,22 +87,48 @@ class ExerciseListFragment : Fragment() {
 //        searchBar.addTextChangedListener { editable ->
 //            val userInput = editable.toString()
 //            if (userInput.isNotBlank()) {
-//                viewModel.filterExercisesByTitle(userInput)
-//            } else {
-//                viewModel.resetFilter()
-//            }
-//        }
-//
-//        // LiveData beobachten und auf Änderungen reagieren
-//        viewModel.exercisesByBodyparts.observe(viewLifecycleOwner) { filteredExercises ->
-//            filteredExercises?.let {
-//                val tag = "Filter???"
-//                Log.i(tag, "Werden die Inhalte hier gefiltert. : $it")
-//                // Hier können Sie den Adapter aktualisieren oder andere Aktionen basierend auf den gefilterten Übungen durchführen
+//                val result = viewModel.filterExerciseByUserInput(userInput)
+//                val tag = "Filter22???"
+//                Log.i(
+//                    tag,
+//                    "Werden die Inhalte hier gefiltert. : $result"
+//                )
+//                // LiveData beobachten und auf Änderungen reagieren
+//                if (result.isNullOrEmpty()) {
+//                    updateAdapter()
+//                } else {
+//                    updatedAdapterAfterSearch(result)
+//                    viewModel.exercisesByBodyparts.observe(viewLifecycleOwner) { filteredExercises ->
+//                        filteredExercises?.let {
+//                            val tag = "Filter???"
+//                            Log.i(tag, "Werden die Inhalte hier gefiltert. : $it")
+//                            // Hier können Sie den Adapter aktualisieren oder andere Aktionen basierend auf den gefilterten Übungen durchführen
+//                        }
+//                    }
+//                }
 //            }
 //        }
 //    }
 
+
+
+//    fun searchInput() {
+//        val searchBar = binding.searchBarInput
+//        searchBar.addTextChangedListener { editable ->
+//            val input = editable.toString()
+//            if (input.isNotBlank()) {
+//                var result = viewModel.randomDestinations.value?.filter { it.name.common == input }
+//                Log.e(tag,"$result")
+//                if (result.isNullOrEmpty()){
+//                    updateAdapter()
+//                } else{
+//                    binding.rvExplore.adapter = ItemAdapter(result!!,viewModel)
+//                }
+//                binding.searchBar.hint = input
+//            }
+//        }
+//
+//    }
 
 
     fun setDefaultHint() {

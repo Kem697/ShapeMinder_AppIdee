@@ -116,36 +116,37 @@ class HomeViewModel: ViewModel() {
     }
 
 
-    fun filterExerciseByUserInput(userInput: String) {
-        if (userInput.isNotBlank()){
-            viewModelScope.launch {
-                val searchedExercise = allExercisesByBodyparts.filter { it.stringRessourceTitle.toString() == userInput }
-                if (searchedExercise.isNullOrEmpty()){
-                    _selectedExercise.value = _selectedExercise.value
-                }
-                else{
-                    _exercisesByBodyparts.value = searchedExercise
-                }
-            }
+//    fun filterExerciseByUserInput(userInput: String): List<Content> {
+//        viewModelScope.launch {
+//            val getExercises = allExercisesByBodyparts.filter { it.stringRessourceTitle.toString() == userInput }
+//            val searchedExercise = if (getExercises.isNullOrEmpty()){
+//                _exercisesByBodyparts.value = allExercisesByBodyparts
+//            } else{
+//                _exercisesByBodyparts.value = getExercises
+//            }
+//            _exercisesByBodyparts.value = searchedExercise
+//
+//        }
+//
+//    }
+
+
+
+
+
+
+    fun filterExercisesByTitle(userInput: String): List<Content> {
+        viewModelScope.launch {
+            val searchedExercise = allExercisesByBodyparts.filter { it.stringRessourceTitle.toString() == userInput }
+            _exercisesByBodyparts.value = searchedExercise
         }
+        return _exercisesByBodyparts.value!!
     }
 
 
-
-
-//
-//    fun filterExercisesByTitle(userInput: String): List<Content> {
-//        viewModelScope.launch {
-//            val searchedExercise = allExercisesByBodyparts.filter { it.stringRessourceTitle.toString() == userInput }
-//            _exercisesByBodyparts.value = searchedExercise
-//        }
-//        return _exercisesByBodyparts.value!!
-//    }
-//
-//
-//    fun resetFilter() {
-//        _exercisesByBodyparts.value = allExercisesByBodyparts
-//    }
+    fun resetFilter() {
+        _exercisesByBodyparts.value = allExercisesByBodyparts
+    }
 
 
 
