@@ -50,7 +50,6 @@ Das ist im Wesentlichen die Funktionalität des `GridAdapter`. Es verbindet die 
 
 
 class GridAdapterMyNutrition(
-
     private val dataset: List<Food>,
     private val viewModel: HomeViewModel,
     private val context: Context,
@@ -149,7 +148,6 @@ class GridAdapterMyNutrition(
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
                 }
             }
-
             "Brust" -> {
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedBodypart = "Brust"
