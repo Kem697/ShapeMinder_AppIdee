@@ -39,7 +39,7 @@ class ExerciseListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         sortRadioGroup()
         setUpAdapter()
-        searchInput()
+//        searchInput()
         navigateBack()
         onResume()
     }
@@ -50,85 +50,30 @@ class ExerciseListFragment : Fragment() {
 
     }
 
-
-    fun navigateBack() {
-        binding.backBtn.setOnClickListener {
-            findNavController().navigateUp()
-        }
-    }
+    /*Filter Funktion zur Filterung der Daten muss bearbeitet werden.
+    * Sobald der erste Buchstabe eingeben wird, kriege eine NoSuchElementException
+    * Fehlermeldung im Logcat angezeigt. Die Liste ist leer deswegen.*/
 
 
-    /*Filter Funktion zur Filterung der Daten muss bearbeitet werden.*/
 
-
-        fun searchInput() {
-            var searchBar = binding.myTSearchBarTextInput
-            searchBar.addTextChangedListener { editable ->
-                var userInput = editable.toString()
-                if (userInput != null) {
-                    if (userInput.isNotBlank()) {
-                        var searchedExercise =
-                            viewModel.exercisesByBodyparts.value?.filter { it.stringRessourceTitle.toString() == userInput }
-                        updatedAdapterAfterSearch(searchedExercise!!)
-                        var tag = "Filter???"
-                        Log.i(tag, "Werden die Inhalte hier gefiltert. :$searchedExercise")
-                        binding.myTSearchBar.setText(userInput)
-                    } else {
-                        binding.myTSearchBar.clearText()
-                        updateAdapter()
-                    }
-                }
+/*    fun searchInput() {
+        var searchBar = binding.myTSearchBarTextInput
+        searchBar.addTextChangedListener { editable ->
+            var userInput = editable.toString()
+            if (userInput.isNotBlank()) {
+                var searchedExercise = viewModel.filterExercisesByTitle(userInput)
+                var tag = "Filter???"
+                Log.i(tag, "Werden die Inhalte hier gefiltert. :$searchedExercise $userInput")
+                binding.myTSearchBar.setText(userInput)
+            } else {
+                binding.myTSearchBar.clearText()
+                updateAdapter()
             }
         }
-
-
-//    fun searchInput() {
-//        val searchBar = binding.myTSearchBarTextInput
-//        searchBar.addTextChangedListener { editable ->
-//            val userInput = editable.toString()
-//            if (userInput.isNotBlank()) {
-//                val result = viewModel.filterExerciseByUserInput(userInput)
-//                val tag = "Filter22???"
-//                Log.i(
-//                    tag,
-//                    "Werden die Inhalte hier gefiltert. : $result"
-//                )
-//                // LiveData beobachten und auf Änderungen reagieren
-//                if (result.isNullOrEmpty()) {
-//                    updateAdapter()
-//                } else {
-//                    updatedAdapterAfterSearch(result)
-//                    viewModel.exercisesByBodyparts.observe(viewLifecycleOwner) { filteredExercises ->
-//                        filteredExercises?.let {
-//                            val tag = "Filter???"
-//                            Log.i(tag, "Werden die Inhalte hier gefiltert. : $it")
-//                            // Hier können Sie den Adapter aktualisieren oder andere Aktionen basierend auf den gefilterten Übungen durchführen
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
+    }*/
 
 
 
-//    fun searchInput() {
-//        val searchBar = binding.searchBarInput
-//        searchBar.addTextChangedListener { editable ->
-//            val input = editable.toString()
-//            if (input.isNotBlank()) {
-//                var result = viewModel.randomDestinations.value?.filter { it.name.common == input }
-//                Log.e(tag,"$result")
-//                if (result.isNullOrEmpty()){
-//                    updateAdapter()
-//                } else{
-//                    binding.rvExplore.adapter = ItemAdapter(result!!,viewModel)
-//                }
-//                binding.searchBar.hint = input
-//            }
-//        }
-//
-//    }
 
 
     fun setDefaultHint() {
@@ -194,34 +139,30 @@ class ExerciseListFragment : Fragment() {
         }
     }
 
-
     fun updateAdapter() {
         viewModel.exercisesByBodyparts.observe(viewLifecycleOwner) {
             binding.listOfExercises.adapter = ItemAdapter(it, viewModel)
         }
     }
 
-    fun updatedAdapterAfterSearch(filteredExercises: List<Content>) {
-        binding.listOfExercises.adapter = ItemAdapter(filteredExercises, viewModel)
-    }
-
     fun setUpAdapter() {
-        viewModel.exercisesByBodyparts.observe(viewLifecycleOwner) {
-            binding.listOfExercises.adapter = ItemAdapter(it, viewModel)
+        viewModel.exercisesByBodyparts.observe(viewLifecycleOwner) { exercise ->
+            binding.listOfExercises.adapter = ItemAdapter(exercise, viewModel)
 
             /*Mit diesen Befehlen initialisiere meine ViewElemente mit
             * den initialisierten Argumenten in den jeweiligen Eigenschaften
             * meines Content Objekts. Dies führt dazu, dass der Titel und
             * die Anzahl der Übungen pro Körperpartie entsprechen der
             * Körperpartie aktualisiert wird */
-            binding.title.setText(it.first().bodyPart)
-            binding.subTitle.setText("Anzahl von Übungen: ${it.size}")
+            binding.title.setText(exercise.first().bodyPart)
+            binding.subTitle.setText("Anzahl von Übungen: ${exercise.size}")
+
 
             /*When Verzweigung dient dazu die korrekten Bilder zu setzen,
             * wenn das  initialisierte Argument mit dem des Körperparts
             * übereinstimmt. Die Verzweigung ist noch fehlerbehaftet.*/
 
-            when (it.first().bodyPart) {
+            when (exercise.first().bodyPart) {
                 "Arme" -> {
                     binding.bodyPartView.setImageResource(R.drawable.bp1arms)
                 }
@@ -251,6 +192,12 @@ class ExerciseListFragment : Fragment() {
                 }
             }
 
+        }
+    }
+
+    fun navigateBack() {
+        binding.backBtn.setOnClickListener {
+            findNavController().navigateUp()
         }
     }
 

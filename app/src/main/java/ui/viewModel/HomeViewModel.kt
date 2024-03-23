@@ -1,7 +1,5 @@
 package ui.viewModel
 
-import adapter.ItemAdapter
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -116,33 +114,23 @@ class HomeViewModel: ViewModel() {
     }
 
 
-//    fun filterExerciseByUserInput(userInput: String): List<Content> {
-//        viewModelScope.launch {
-//            val getExercises = allExercisesByBodyparts.filter { it.stringRessourceTitle.toString() == userInput }
-//            val searchedExercise = if (getExercises.isNullOrEmpty()){
-//                _exercisesByBodyparts.value = allExercisesByBodyparts
-//            } else{
-//                _exercisesByBodyparts.value = getExercises
-//            }
-//            _exercisesByBodyparts.value = searchedExercise
-//
-//        }
-//
-//    }
 
 
+    /*Diese beiden Funktionen sollten zur Filterung der Übungen abhängig von
+    * der Nutzereingabe dienen. Leider funktionieren diese beiden Funktionen
+    * nicht, wenn ich sie im Fragment aufrufe. Das Probleme konnte ich seit zwei Tagen nicht
+    * lösen.*/
 
-
-
-
-    fun filterExercisesByTitle(userInput: String): List<Content> {
+    fun filterExercisesByTitle(userInput: String){
         viewModelScope.launch {
-            val searchedExercise = allExercisesByBodyparts.filter { it.stringRessourceTitle.toString() == userInput }
-            _exercisesByBodyparts.value = searchedExercise
+            val getExercise = allExercisesByBodyparts?.filter { it.stringRessourceTitle.toString() == userInput }
+            if (getExercise!=null){
+                _exercisesByBodyparts.value = getExercise
+            } else{
+                resetFilter()
+            }
         }
-        return _exercisesByBodyparts.value!!
     }
-
 
     fun resetFilter() {
         _exercisesByBodyparts.value = allExercisesByBodyparts
