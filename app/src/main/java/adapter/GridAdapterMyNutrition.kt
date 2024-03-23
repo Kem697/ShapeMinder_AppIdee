@@ -56,8 +56,8 @@ class GridAdapterMyNutrition(
 ) : BaseAdapter() {
 
     private inner class ViewHolder(view: View) {
-        val textViewTitle: TextView = view.findViewById(R.id.contentTitle)
-        val imageViewIcon: ImageView = view.findViewById(R.id.contentImage)
+        val textViewTitle: TextView = view.findViewById(R.id.foodCatContentTitle)
+        val imageViewIcon: ImageView = view.findViewById(R.id.foodCatContentImage)
     }
 
     override fun getCount(): Int {

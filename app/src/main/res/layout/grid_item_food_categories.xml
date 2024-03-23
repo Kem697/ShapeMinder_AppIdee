@@ -7,7 +7,7 @@
     >
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/materialCardView"
+        android:id="@+id/foodCatMaterialCardView"
         style="@style/content_Card"
         android:layout_width="170dp"
         android:layout_height="200dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/contentImage"
+            android:id="@+id/foodCatContentImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
@@ -31,7 +31,7 @@
             tools:srcCompat="@drawable/ec1squats_img" />
 
         <TextView
-            android:id="@+id/contentTitle"
+            android:id="@+id/foodCatContentTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
