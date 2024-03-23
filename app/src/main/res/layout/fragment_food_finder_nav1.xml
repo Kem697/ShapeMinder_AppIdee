@@ -33,7 +33,7 @@
             android:id="@+id/materialCardContentView"
             style="@style/content_CardDecription"
             android:layout_width="match_parent"
-            android:layout_height="660dp"
+            android:layout_height="680dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginRight="16dp"

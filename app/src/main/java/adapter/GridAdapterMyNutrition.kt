@@ -104,56 +104,38 @@ class GridAdapterMyNutrition(
         * getContentTitle dient für die Sortierung der Inhalt in diesem Screen.*/
 
         when (viewHolder.textViewTitle.text) {
-            "Arme" -> {
+            "Getreide" -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedBodypart = "Arme"
-                    viewModel.getContentTitle(selectedBodypart)
-                    viewModel.filterExercisesByBodypart(selectedBodypart)
-                    viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
+                    val selectedCategory = "Getreide"
                 }
             }
 
-            "Bauch" -> {
+            "Obst und Gemüse" -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedBodypart = "Bauch"
-                    viewModel.getContentTitle(selectedBodypart)
-                    viewModel.filterExercisesByBodypart(selectedBodypart)
-                    viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
+                    val selectedCategory = "Obst und Gemüse"
                 }
             }
 
-            "Schulter" -> {
+            "Käse, Molkerei und Eier" -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedBodypart = "Schulter"
-                    viewModel.getContentTitle(selectedBodypart)
-                    viewModel.filterExercisesByBodypart(selectedBodypart)
-                    viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
+                    val selectedCategory = "Käse, Molkerei und Eier"
                 }
             }
 
-            "Rücken" -> {
+            "Öle und Fette" -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedBodypart = "Rücken"
-                    viewModel.getContentTitle(selectedBodypart)
-                    viewModel.filterExercisesByBodypart(selectedBodypart)
-                    viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
+                    val selectedCategory = "Öle und Fette"
                 }
             }
 
-            "Beine" -> {
+            "Fleisch und Fisch" -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedBodypart = "Beine"
-                    viewModel.getContentTitle(selectedBodypart)
-                    viewModel.filterExercisesByBodypart(selectedBodypart)
-                    viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
+                    val selectedCategory = "Fleisch und Fisch"
                 }
             }
-            "Brust" -> {
+            "Süssigkeiten" -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedBodypart = "Brust"
-                    viewModel.getContentTitle(selectedBodypart)
-                    viewModel.filterExercisesByBodypart(selectedBodypart)
-                    viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
+                    val selectedCategory = "Süssigkeiten"
                 }
             }
         }

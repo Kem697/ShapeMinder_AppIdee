@@ -78,7 +78,7 @@ class AppRepository {
             Food(R.string.gc_milk_and_eg,R.drawable.content3_img,"Molkerei und Eier",true),
             Food(R.string.gc_oil_and_fats,R.drawable.content3_img,"Öle und Fette",true),
             Food(R.string.gc_meat_and_fish,R.drawable.content3_img,"Fleisch und Fisch",true),
-            Food(R.string.gc_meat_and_fish,R.drawable.content3_img,"Fleisch und Fisch",true)
+            Food(R.string.gc_sweets,R.drawable.content3_img,"Fleisch und Fisch",true)
         )
     }
 
