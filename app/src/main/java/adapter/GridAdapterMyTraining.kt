@@ -46,7 +46,7 @@ Das ist im Wesentlichen die Funktionalität des `GridAdapter`. Es verbindet die 
 
 
 
-class GridAdapter(
+class GridAdapterMyTraining(
 
     private val dataset: List<Content>,
     private val viewModel: HomeViewModel,

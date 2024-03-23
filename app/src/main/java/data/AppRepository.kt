@@ -2,6 +2,7 @@ package data
 
 import com.example.shapeminder_appidee.R
 import model.Content
+import model.Food
 
 /*Meinem Repository habe ich eine neue Liste von Content hinzugefügt und
 * als Membereigenschaft gespeichert.*/
@@ -12,6 +13,7 @@ class AppRepository {
     var exercises = loadExercises()
     var bodyParts = loadBodyparts()
     var exercisesByBodyparts = loadExercisesByBodypart()
+    var groceryCategories = loadGroceryCategories()
 
 
 
@@ -65,6 +67,18 @@ class AppRepository {
             Content(R.string.weSZ_Push_ups,R.string.weSZ_BicepscurlsInstructions, R.drawable.bp1arms,true,true,"Brust"),
             Content(R.string.weKH_Benchpress,R.string.weKH_ShoulderpressInstructions, R.drawable.bp1arms,true,true,"Brust"),
             Content(R.string.weLH_Benchpress,R.string.weKH_ShoulderpressInstructions, R.drawable.bp1arms,true,true,"Brust"),
+        )
+    }
+
+
+    fun loadGroceryCategories(): List<Food>{
+        return listOf(
+            Food(R.string.gc_grain_and_corn,R.drawable.content3_img,"Getreide",true),
+            Food(R.string.gc_fruits_and_vegetable,R.drawable.content3_img,"Obst und Gemüse",true),
+            Food(R.string.gc_milk_and_eg,R.drawable.content3_img,"Molkerei und Eier",true),
+            Food(R.string.gc_oil_and_fats,R.drawable.content3_img,"Öle und Fette",true),
+            Food(R.string.gc_meat_and_fish,R.drawable.content3_img,"Fleisch und Fisch",true),
+            Food(R.string.gc_meat_and_fish,R.drawable.content3_img,"Fleisch und Fisch",true)
         )
     }
 

@@ -1,6 +1,7 @@
 package ui.bottomNav.myHomeScreen
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -36,8 +37,8 @@ class MyHomeContentDetailView : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var navigationBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
-        navigationBar.isInvisible = true
+//        var navigationBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
+//        navigationBar.isInvisible = true
         navigateBack()
         viewModel.selectedContent.observe(viewLifecycleOwner){
             binding.contentImage.setImageResource(it.imageRessource)
@@ -53,5 +54,13 @@ class MyHomeContentDetailView : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        var navigationBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        navigationBar.isInvisible = true
+
+        var tag = "Pause"
+        Log.e(tag,"Ist der Screen pausiert?")
+    }
 
 }

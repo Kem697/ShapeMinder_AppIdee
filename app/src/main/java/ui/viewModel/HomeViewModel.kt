@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import data.AppRepository
 import kotlinx.coroutines.launch
 import model.Content
+import model.Food
 
 class HomeViewModel: ViewModel() {
 
@@ -15,6 +16,7 @@ class HomeViewModel: ViewModel() {
     private val allExercises = repository.exercises
     private val allBodyparts = repository.bodyParts
     private var allExercisesByBodyparts = repository.exercisesByBodyparts
+    private var groceryCategories = repository.groceryCategories
 
 
     var index = 0
@@ -29,7 +31,6 @@ class HomeViewModel: ViewModel() {
 
     val bodyparts: LiveData<List<Content>>
         get() = _bodyparts
-
 
 
     /*Ich habe hier eine neue LiveData erstellt, um die Liste
@@ -50,9 +51,12 @@ class HomeViewModel: ViewModel() {
         get() = _selectedExercise
 
 
+
+
     private var _selectedContent = MutableLiveData(allContent[index])
     val selectedContent : LiveData<Content>
         get() = _selectedContent
+
 
 
 
@@ -60,6 +64,11 @@ class HomeViewModel: ViewModel() {
     val selectedExercisesByBodypart : LiveData<Content>
         get() = _selectedExercisesByBodypart
 
+
+
+    private var _foodCategories = MutableLiveData(groceryCategories)
+    val foodCategories : LiveData<List<Food>>
+        get() = _foodCategories
 
 
 
@@ -123,7 +132,7 @@ class HomeViewModel: ViewModel() {
 
     fun filterExercisesByTitle(userInput: String){
         viewModelScope.launch {
-            val getExercise = allExercisesByBodyparts?.filter { it.stringRessourceTitle.toString() == userInput }
+            val getExercise = _exercisesByBodyparts.value?.filter { it.stringRessourceTitle.toString() == userInput }
             if (getExercise!=null){
                 _exercisesByBodyparts.value = getExercise
             } else{
@@ -135,8 +144,6 @@ class HomeViewModel: ViewModel() {
     fun resetFilter() {
         _exercisesByBodyparts.value = allExercisesByBodyparts
     }
-
-
 
 
 
@@ -159,6 +166,9 @@ class HomeViewModel: ViewModel() {
     fun navigateDetailView(content: Content) {
         _selectedContent.value = content
     }
+
+
+
 
 
 

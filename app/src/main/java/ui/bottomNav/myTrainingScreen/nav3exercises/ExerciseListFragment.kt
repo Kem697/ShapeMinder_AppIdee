@@ -11,12 +11,14 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.core.content.ContextCompat
+import androidx.core.view.isInvisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.MainActivity
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentExerciseListBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import model.Content
 import ui.viewModel.HomeViewModel
@@ -39,16 +41,20 @@ class ExerciseListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         sortRadioGroup()
         setUpAdapter()
-//        searchInput()
+        searchInput()
         navigateBack()
-        onResume()
     }
 
     override fun onResume() {
         super.onResume()
+        var navigationBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        navigationBar.isInvisible = true
+        var tag = "Pause"
+        Log.e(tag,"Ist der Screen pausiert?")
         setDefaultHint()
-
     }
+
+
 
     /*Filter Funktion zur Filterung der Daten muss bearbeitet werden.
     * Sobald der erste Buchstabe eingeben wird, kriege eine NoSuchElementException
@@ -56,21 +62,23 @@ class ExerciseListFragment : Fragment() {
 
 
 
-/*    fun searchInput() {
+    fun searchInput() {
         var searchBar = binding.myTSearchBarTextInput
         searchBar.addTextChangedListener { editable ->
             var userInput = editable.toString()
             if (userInput.isNotBlank()) {
-                var searchedExercise = viewModel.filterExercisesByTitle(userInput)
-                var tag = "Filter???"
-                Log.i(tag, "Werden die Inhalte hier gefiltert. :$searchedExercise $userInput")
                 binding.myTSearchBar.setText(userInput)
+                var tag = "Filter???"
+                Log.i(tag, "Werden die Inhalte hier gefiltert. :${userInput.firstOrNull()}")
+                var searchedExercise = viewModel.filterExercisesByTitle(userInput)
+                var tag2 = "Absturz???"
+                Log.i(tag2,"Leere Liste?: $searchedExercise" )
             } else {
                 binding.myTSearchBar.clearText()
                 updateAdapter()
             }
         }
-    }*/
+    }
 
 
 

@@ -1,6 +1,6 @@
 package ui.bottomNav.myTrainingScreen.nav3exercises
 
-import GridAdapter
+import GridAdapterMyTraining
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -30,7 +30,7 @@ class ExercisesNav3 : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.bodyparts.observe(viewLifecycleOwner){
-            binding.bodypartsGrid.adapter = GridAdapter(it,viewModel,requireContext())
+            binding.bodypartsGrid.adapter = GridAdapterMyTraining(it,viewModel,requireContext())
         }
     }
 

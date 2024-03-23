@@ -39,10 +39,6 @@
             app:destination="@id/exercisesNav3" />
     </fragment>
     <fragment
-        android:id="@+id/myNutrionScreen"
-        android:name="ui.bottomNav.myNutritionScreen.MyNutrionScreen"
-        android:label="MyNutrionScreen" />
-    <fragment
         android:id="@+id/homeContentDetailView"
         android:name="ui.bottomNav.myHomeScreen.MyHomeContentDetailView"
         android:label="fragment_home_content_detail_view"
@@ -94,10 +90,43 @@
     <fragment
         android:id="@+id/registerScreen"
         android:name="ui.RegisterScreen"
-        android:label="RegisterScreen" />
+        android:label="RegisterScreen" >
+        <action
+            android:id="@+id/action_registerScreen_to_homeScreen"
+            app:destination="@id/homeScreen" />
+    </fragment>
     <fragment
         android:id="@+id/exercisePreviewFragment"
         android:name="ui.bottomNav.myTrainingScreen.nav3exercises.ExercisePreviewFragment"
         android:label="fragment_exercise_preview"
         tools:layout="@layout/fragment_exercise_preview" />
+    <fragment
+        android:id="@+id/diaryNav2Fragment"
+        android:name="ui.bottomNav.myNutritionScreen.nav2diary.DiaryNav2Fragment"
+        android:label="fragment_diary_nav2"
+        tools:layout="@layout/fragment_diary_nav2" />
+    <fragment
+        android:id="@+id/foodFinderNav1Fragment"
+        android:name="ui.bottomNav.myNutritionScreen.nav1foodFinder.FoodFinderNav1Fragment"
+        android:label="fragment_food_finder_nav1"
+        tools:layout="@layout/fragment_food_finder_nav1" />
+    <fragment
+        android:id="@+id/groceryListNav3Fragment"
+        android:name="ui.bottomNav.myNutritionScreen.nav3groceryList.GroceryListNav3Fragment"
+        android:label="fragment_grocery_list_nav3"
+        tools:layout="@layout/fragment_grocery_list_nav3" />
+    <fragment
+        android:id="@+id/myNutrionScreen"
+        android:name="ui.bottomNav.myTrainingScreen.MyNutrionScreen"
+        android:label="MyNutrionScreen" >
+        <action
+            android:id="@+id/action_myNutrionScreen3_to_foodFinderNav1Fragment"
+            app:destination="@id/foodFinderNav1Fragment" />
+        <action
+            android:id="@+id/action_myNutrionScreen3_to_diaryNav2Fragment"
+            app:destination="@id/diaryNav2Fragment" />
+        <action
+            android:id="@+id/action_myNutrionScreen3_to_groceryListNav3Fragment"
+            app:destination="@id/groceryListNav3Fragment" />
+    </fragment>
 </navigation>
