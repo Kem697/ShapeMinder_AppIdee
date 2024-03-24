@@ -25,6 +25,7 @@ import ui.viewModel.HomeViewModel
 
 class ExerciseListFragment : Fragment() {
     private lateinit var binding: FragmentExerciseListBinding
+
     val viewModel: HomeViewModel by activityViewModels()
 
 
@@ -39,6 +40,8 @@ class ExerciseListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        var tag = "Zu den Übungen"
+        Log.i(tag,"ViewCreated wird aufgerufen?")
         sortRadioGroup()
         setUpAdapter()
         searchInput()
@@ -67,16 +70,28 @@ class ExerciseListFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         setDefaultHint()
+        var tag = "Fragment Wechsel"
+        Log.i(tag,"Stopp wird aufgerufen?")
     }
 
 
-    /*Filter Funktion zur Filterung der Daten muss bearbeitet werden.
-    * Sobald der erste Buchstabe eingeben wird, kriege eine NoSuchElementException
-    * Fehlermeldung im Logcat angezeigt. Die Liste ist leer deswegen.*/
+    /*
+    * Die Filterfunktion funktioniert jetzt und ich kann meine Liste abhängig
+    * von der Nutzereingabe filtern. Das Problem war, dass der Eingabewert
+    * nicht mit dem Namen der Übung in der View verglichen wird, sondern mit
+    * des stringRessourceTitle id nummer. Es konnte nie ein vegleichen
+    * stattfinden, da ich mit einer Zifferneingabe vergleichen musste.
+    * Deshalb habe ich meinem ViewModel den Context übergeben. Dadurch
+    * kann ich mir den festgelegten Wert meiner Stringressource Id heraus
+    * holen. Näheres in der viewModel.filterExercisesByTitle(userInput, bodyPart,context)
+    * Methode.
+
+    * */
 
 
     fun searchInput() {
         var searchBar = binding.myTSearchBarTextInput
+        val context = requireContext()
         searchBar.addTextChangedListener { editable ->
             var userInput = editable.toString()
             var bodyPart = binding.title.text.toString()
@@ -84,7 +99,7 @@ class ExerciseListFragment : Fragment() {
                 binding.myTSearchBar.setText(userInput)
                 var tag = "Filter???"
                 Log.i(tag, "Werden die Inhalte hier gefiltert. :${userInput}")
-                viewModel.filterExercisesByTitle(userInput, bodyPart)
+                viewModel.filterExercisesByTitle(userInput, bodyPart,context)
             } else {
                 binding.myTSearchBar.clearText()
                 updateAdapter()
@@ -97,19 +112,15 @@ class ExerciseListFragment : Fragment() {
         }
 
     }
-
-
     fun setDefaultHint() {
         binding.myTSearchBar.hint = "Suche"
         if (binding.myTSearchBarTextInput.text.isNotBlank()) {
             binding.myTSearchBarTextInput.text.clear()
+            binding.myTSearchBarTextInput.text.clearSpans()
             binding.myTSearchBar.clearText()
         }
 
     }
-
-    /*Diese Funktion ist eine Anbahnung zur Filteroption mittels einer RadioGroup.
-    * Die Funktion wurde ausgebaut und ersetzt die sortByAlphabet Funktion.*/
 
     fun sortRadioGroup() {
         var dialog = BottomSheetDialog(activity as MainActivity, R.style.transparent)

@@ -1,6 +1,8 @@
 package ui.viewModel
 
+import android.content.Context
 import android.util.Log
+import androidx.core.content.ContextCompat.getString
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -105,7 +107,7 @@ class HomeViewModel: ViewModel() {
     }
 
     /*
-    * Aktueller Stand: Sortierfunktion funktioniert nicht.
+    * Aktueller Stand: Sortierfunktion funktioniert.
     * Mit dieser Methode wird die Sortierfunktion nach alphabetischer Reihenfolge
     * zur Ilustration absteigend sortiert. Das erste Problem war, dass bei der Sortierung wieder nicht nach
     * entsprechend der Körperpartieren gefiltert worden ist. Mit der Methode getContentTitle wird
@@ -144,10 +146,11 @@ class HomeViewModel: ViewModel() {
 
 
 
-    fun filterExercisesByTitle(userInput: String, bodypart: String){
+    fun filterExercisesByTitle(userInput: String, bodypart: String, context: Context){
 
         viewModelScope.launch {
-            val filteredExercises = _exercisesByBodyparts.value?.filter { it.stringRessourceTitle.toString().contains(userInput, ignoreCase = true) }
+            val filteredExercises = _exercisesByBodyparts.value?.filter {    val xmlValue = context.getString(it.stringRessourceTitle)
+                xmlValue.contains(userInput, ignoreCase = true) }
             if (filteredExercises != null) {
                 if (filteredExercises.isNotEmpty()) {
                     _exercisesByBodyparts.value = filteredExercises
