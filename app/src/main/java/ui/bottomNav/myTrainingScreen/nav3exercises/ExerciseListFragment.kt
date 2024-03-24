@@ -26,6 +26,7 @@ import ui.viewModel.HomeViewModel
 class ExerciseListFragment : Fragment() {
     private lateinit var binding: FragmentExerciseListBinding
 
+
     val viewModel: HomeViewModel by activityViewModels()
 
 
@@ -70,6 +71,8 @@ class ExerciseListFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         setDefaultHint()
+        var bodyPart = binding.title.text.toString()
+        viewModel.resetFilter(bodyPart)
         var tag = "Fragment Wechsel"
         Log.i(tag,"Stopp wird aufgerufen?")
     }
@@ -105,13 +108,9 @@ class ExerciseListFragment : Fragment() {
                 updateAdapter()
             }
         }
-        viewModel.exercisesByBodyparts.observe(viewLifecycleOwner) {
-            var tag1 = "Adapter Aufruf???"
-            Log.i(tag1,"Wird aufgerufen? $it")
-            binding.listOfExercises.adapter = ItemAdapter(it, viewModel)
-        }
-
     }
+
+
     fun setDefaultHint() {
         binding.myTSearchBar.hint = "Suche"
         if (binding.myTSearchBarTextInput.text.isNotBlank()) {
@@ -173,14 +172,15 @@ class ExerciseListFragment : Fragment() {
     }
 
     fun updateAdapter() {
-        viewModel.exercisesByBodyparts.observe(viewLifecycleOwner) {
-            binding.listOfExercises.adapter = ItemAdapter(it, viewModel)
+        viewModel.exercisesByBodyparts.observe(viewLifecycleOwner) {exercise->
+            binding.listOfExercises.adapter = ItemAdapter(exercise, viewModel)
         }
     }
 
     fun setUpAdapter() {
         viewModel.exercisesByBodyparts.observe(viewLifecycleOwner) { exercise ->
             binding.listOfExercises.adapter = ItemAdapter(exercise, viewModel)
+
 
             /*Mit diesen Befehlen initialisiere meine ViewElemente mit
             * den initialisierten Argumenten in den jeweiligen Eigenschaften

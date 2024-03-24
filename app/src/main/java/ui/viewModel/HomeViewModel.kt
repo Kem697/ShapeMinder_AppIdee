@@ -93,9 +93,6 @@ class HomeViewModel: ViewModel() {
     val selectedContentTitle: LiveData<String>
         get() = _selectedContentTitle
 
-
-
-
     /*Diese Methode dient dazu, um meinen Datensatz im Nachhinein mit
     * eine Eigenschaft zu überprüfen und sie nach dem dem übergebenen Argument zu filtern.
     * Die Methode wird anschließend in meinem GridAdapter aufgerufen.*/
@@ -126,9 +123,6 @@ class HomeViewModel: ViewModel() {
            _exercisesByBodyparts.value = sortedExercises
         }
     }
-
-
-
 
     /*Diese beiden Funktionen sollten zur Filterung der Übungen abhängig von
     * der Nutzereingabe dienen. Leider funktionieren diese beiden Funktionen
@@ -168,7 +162,6 @@ class HomeViewModel: ViewModel() {
     }
 
 
-
     /* Um die entsprechende TextView Id aus einer anderen Fragment Klasse herauszuholen,
      *  habe ich die Methode getContentTitle im ViewModel erstellt, um den Wert des contentTitles zu setzen.
      *  Dadurch, dass diese Methode im viewModel Fragment ist, kann ich sie in meinen anderen Fragmentklassen
@@ -180,7 +173,6 @@ class HomeViewModel: ViewModel() {
     fun getContentTitle(bodypart: String) {
        _selectedContentTitle.value = bodypart
     }
-
 
     fun navigateDetailView(content: Content) {
         _selectedContent.value = content
