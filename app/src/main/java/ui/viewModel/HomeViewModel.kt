@@ -1,10 +1,12 @@
 package ui.viewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import data.AppRepository
+import com.example.shapeminder_appidee.R
+import model.data.AppRepository
 import kotlinx.coroutines.launch
 import model.Content
 import model.Food
@@ -91,6 +93,7 @@ class HomeViewModel: ViewModel() {
 
 
 
+
     /*Diese Methode dient dazu, um meinen Datensatz im Nachhinein mit
     * eine Eigenschaft zu überprüfen und sie nach dem dem übergebenen Argument zu filtern.
     * Die Methode wird anschließend in meinem GridAdapter aufgerufen.*/
@@ -118,7 +121,7 @@ class HomeViewModel: ViewModel() {
             } else {
                 filteredExercises.sortedBy { it.stringRessourceText }
             }
-            _exercisesByBodyparts.value = sortedExercises
+           _exercisesByBodyparts.value = sortedExercises
         }
     }
 
@@ -127,22 +130,38 @@ class HomeViewModel: ViewModel() {
 
     /*Diese beiden Funktionen sollten zur Filterung der Übungen abhängig von
     * der Nutzereingabe dienen. Leider funktionieren diese beiden Funktionen
-    * nicht, wenn ich sie im Fragment aufrufe. Das Probleme konnte ich seit zwei Tagen nicht
-    * lösen.*/
+    * nicht, wenn ich sie im Fragment aufrufe. Stand jetzt führt die Nutzereingabe
+    * nicht zum Absturz. Nachtrag: Die Liste aus allen Übungen wird nicht mehr angezeigt.
+    * Ich habe nämlich die resetFilter() Funtkionen um einen Parameter, welcher die Körperpartie
+    * enthält erweitert. Dadurch werden die Übungen abhängig von der Körperpartie wiedergegeben.
+    *
+    * Zur Erklärung:
+    * Zunächst einmal sollen die Übungen nach Körpterteil gefiltert werden.
+    * Dadurch sollen nur die Übungen abhängig von der Körperpartie angezeigt werden.
+    * Anschließend werden die Übungen nach Nutzereingabe gefiltert, sodass nicht alle Übungen.
+    *
+    */
 
-    fun filterExercisesByTitle(userInput: String){
+
+
+    fun filterExercisesByTitle(userInput: String, bodypart: String){
+
         viewModelScope.launch {
-            val getExercise = _exercisesByBodyparts.value?.filter { it.stringRessourceTitle.toString() == userInput }
-            if (getExercise!=null){
-                _exercisesByBodyparts.value = getExercise
-            } else{
-                resetFilter()
+            val filteredExercises = _exercisesByBodyparts.value?.filter { it.stringRessourceTitle.toString().contains(userInput, ignoreCase = true) }
+            if (filteredExercises != null) {
+                if (filteredExercises.isNotEmpty()) {
+                    _exercisesByBodyparts.value = filteredExercises
+                    var tag4 = "Filter in ViewModel??"
+                    Log.e(tag4,"Wurde gefiltert?: $filteredExercises")
+                } else {
+                    resetFilter(bodypart)
+                }
             }
         }
     }
 
-    fun resetFilter() {
-        _exercisesByBodyparts.value = allExercisesByBodyparts
+    fun resetFilter(bodypart: String) {
+        _exercisesByBodyparts.value = allExercisesByBodyparts.filter { it.bodyPart == bodypart }
     }
 
 
@@ -160,17 +179,8 @@ class HomeViewModel: ViewModel() {
     }
 
 
-
-
-
     fun navigateDetailView(content: Content) {
         _selectedContent.value = content
     }
-
-
-
-
-
-
 
 }

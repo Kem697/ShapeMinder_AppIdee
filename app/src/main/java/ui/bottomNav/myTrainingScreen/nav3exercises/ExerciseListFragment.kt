@@ -45,15 +45,29 @@ class ExerciseListFragment : Fragment() {
         navigateBack()
     }
 
+
+    /*Wenn der Screen angezeigt wird, soll die Hauptnavigationsleiste
+    * ausgeblendet werden, damit die App sich in einem Screen festfährt.
+    * */
     override fun onResume() {
         super.onResume()
-        var navigationBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        var navigationBar =
+            requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
         navigationBar.isInvisible = true
         var tag = "Pause"
-        Log.e(tag,"Ist der Screen pausiert?")
-        setDefaultHint()
+        Log.e(tag, "Ist der Screen pausiert?")
     }
 
+    /* Sobald der Screen verlassen wird, wird die Suchleiste zurückgesetzt.
+   * Dadurch wird ein Absturz der App beim Fragmentwechseln verhindert, da
+   * letzte ungelöschte Nutzereingabe die searchInput Funktion aufruft,
+   * welche die Elemente abhängig vom Eingabewert filtert.
+   * */
+
+    override fun onStop() {
+        super.onStop()
+        setDefaultHint()
+    }
 
 
     /*Filter Funktion zur Filterung der Daten muss bearbeitet werden.
@@ -61,27 +75,28 @@ class ExerciseListFragment : Fragment() {
     * Fehlermeldung im Logcat angezeigt. Die Liste ist leer deswegen.*/
 
 
-
     fun searchInput() {
         var searchBar = binding.myTSearchBarTextInput
         searchBar.addTextChangedListener { editable ->
             var userInput = editable.toString()
+            var bodyPart = binding.title.text.toString()
             if (userInput.isNotBlank()) {
                 binding.myTSearchBar.setText(userInput)
                 var tag = "Filter???"
-                Log.i(tag, "Werden die Inhalte hier gefiltert. :${userInput.firstOrNull()}")
-                var searchedExercise = viewModel.filterExercisesByTitle(userInput)
-                var tag2 = "Absturz???"
-                Log.i(tag2,"Leere Liste?: $searchedExercise" )
+                Log.i(tag, "Werden die Inhalte hier gefiltert. :${userInput}")
+                viewModel.filterExercisesByTitle(userInput, bodyPart)
             } else {
                 binding.myTSearchBar.clearText()
                 updateAdapter()
             }
         }
+        viewModel.exercisesByBodyparts.observe(viewLifecycleOwner) {
+            var tag1 = "Adapter Aufruf???"
+            Log.i(tag1,"Wird aufgerufen? $it")
+            binding.listOfExercises.adapter = ItemAdapter(it, viewModel)
+        }
+
     }
-
-
-
 
 
     fun setDefaultHint() {
@@ -95,7 +110,6 @@ class ExerciseListFragment : Fragment() {
 
     /*Diese Funktion ist eine Anbahnung zur Filteroption mittels einer RadioGroup.
     * Die Funktion wurde ausgebaut und ersetzt die sortByAlphabet Funktion.*/
-
 
     fun sortRadioGroup() {
         var dialog = BottomSheetDialog(activity as MainActivity, R.style.transparent)
