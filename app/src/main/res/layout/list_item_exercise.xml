@@ -17,6 +17,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+        <ImageButton
+            android:id="@+id/saveExerciseBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="8dp"
+            android:scaleType="centerCrop"
+            android:backgroundTint="#00FFFFFF"
+            android:src="@drawable/favorite_fill0_wght400_grad0_opsz24" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -26,15 +36,16 @@
                 android:id="@+id/contentImage"
                 android:layout_width="80dp"
                 android:layout_height="match_parent"
-                android:layout_margin="16dp"
+                android:layout_margin="8dp"
                 android:scaleType="fitXY"
                 tools:srcCompat="@drawable/content1_img" />
 
             <LinearLayout
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
@@ -58,14 +69,6 @@
                     android:textSize="16dp" />
 
 
-                <ImageButton
-                    android:id="@+id/saveExerciseBtn"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_gravity="end"
-                    android:backgroundTint="#00FFFFFF"
-                    android:src="@drawable/favorite_fill0_wght400_grad0_opsz24"/>
             </LinearLayout>
 
 
