@@ -42,8 +42,8 @@ class ExerciseListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         var tag = "Zu den Übungen"
         Log.i(tag,"ViewCreated wird aufgerufen?")
-        sortRadioGroup()
         setUpAdapter()
+        sortRadioGroup()
         searchInput()
         navigateBack()
     }
