@@ -103,6 +103,11 @@ class ExerciseListFragment : Fragment() {
                 var tag = "Filter???"
                 Log.i(tag, "Werden die Inhalte hier gefiltert. :${userInput}")
                 viewModel.filterExercisesByTitle(userInput, bodyPart,context)
+//                if (userInput.isNullOrEmpty()){
+//                    var log = "Suchleiste leer??"
+//                    Log.i(log,"Eingabe in der Suchleiste: $userInput")
+//                    viewModel.resetFilter(bodyPart)
+//                }
             } else {
                 binding.myTSearchBar.clearText()
                 updateAdapter()
