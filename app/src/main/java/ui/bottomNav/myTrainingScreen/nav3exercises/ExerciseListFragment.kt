@@ -25,10 +25,8 @@ import ui.viewModel.HomeViewModel
 
 class ExerciseListFragment : Fragment() {
     private lateinit var binding: FragmentExerciseListBinding
-
-
     val viewModel: HomeViewModel by activityViewModels()
-
+    private lateinit var orginalExercises : List<Content>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,22 +40,31 @@ class ExerciseListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var tag = "Zu den Übungen"
-        Log.i(tag,"ViewCreated wird aufgerufen?")
+        Log.i(tag, "ViewCreated wird aufgerufen?")
         setUpAdapter()
         sortRadioGroup()
         searchInput()
         navigateBack()
     }
 
-
     /*Wenn der Screen angezeigt wird, soll die Hauptnavigationsleiste
     * ausgeblendet werden, damit die App sich in einem Screen festfährt.
     * */
+
     override fun onResume() {
         super.onResume()
         var navigationBar =
             requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
         navigationBar.isInvisible = true
+        /*Mit den unten stehende zwei Zeilen setze ich meine Liste von Übungen
+        * auf ihren Ursprungszustand zurück, sobald der Nutzer zum anderen Screen
+        * navigiert. Hierbei über viewmodel.resetFilter meiner Liste der Übungen
+        * aller Körperpartien mit dem contentTitle (also die Körperteile) gefiltert,
+        * um für jede Kategorie den passenden Datensatz an Übungen zu zeigen.
+        * */
+
+        var bodyPart = viewModel.selectedContentTitle.value
+        viewModel.resetFilter(bodyPart!!)
         var tag = "Pause"
         Log.e(tag, "Ist der Screen pausiert?")
     }
@@ -71,12 +78,13 @@ class ExerciseListFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         setDefaultHint()
-        var bodyPart = binding.title.text.toString()
-        viewModel.resetFilter(bodyPart)
         var tag = "Fragment Wechsel"
-        Log.i(tag,"Stopp wird aufgerufen?")
+        Log.i(tag, "Stopp wird aufgerufen?")
     }
 
+    override fun onStart() {
+        super.onStart()
+    }
 
     /*
     * Die Filterfunktion funktioniert jetzt und ich kann meine Liste abhängig
@@ -91,7 +99,6 @@ class ExerciseListFragment : Fragment() {
 
     * */
 
-
     fun searchInput() {
         var searchBar = binding.myTSearchBarTextInput
         val context = requireContext()
@@ -102,19 +109,15 @@ class ExerciseListFragment : Fragment() {
                 binding.myTSearchBar.setText(userInput)
                 var tag = "Filter???"
                 Log.i(tag, "Werden die Inhalte hier gefiltert. :${userInput}")
-                viewModel.filterExercisesByTitle(userInput, bodyPart,context)
-//                if (userInput.isNullOrEmpty()){
-//                    var log = "Suchleiste leer??"
-//                    Log.i(log,"Eingabe in der Suchleiste: $userInput")
-//                    viewModel.resetFilter(bodyPart)
-//                }
-            } else {
+                viewModel.filterExercisesByTitle(userInput, bodyPart, context)
+            }   else {
+                searchBar.text.clear()
                 binding.myTSearchBar.clearText()
-                updateAdapter()
+                viewModel.resetFilter(bodyPart)
+                viewModel.setOriginalList(orginalExercises,bodyPart)
             }
         }
     }
-
 
     fun setDefaultHint() {
         binding.myTSearchBar.hint = "Suche"
@@ -123,7 +126,6 @@ class ExerciseListFragment : Fragment() {
             binding.myTSearchBarTextInput.text.clearSpans()
             binding.myTSearchBar.clearText()
         }
-
     }
 
     fun sortRadioGroup() {
@@ -177,16 +179,15 @@ class ExerciseListFragment : Fragment() {
     }
 
     fun updateAdapter() {
-        viewModel.exercisesByBodyparts.observe(viewLifecycleOwner) {exercise->
+        viewModel.exercisesByBodyparts.observe(viewLifecycleOwner) { exercise ->
             binding.listOfExercises.adapter = ItemAdapter(exercise, viewModel)
         }
     }
 
     fun setUpAdapter() {
         viewModel.exercisesByBodyparts.observe(viewLifecycleOwner) { exercise ->
+            orginalExercises = exercise
             binding.listOfExercises.adapter = ItemAdapter(exercise, viewModel)
-
-
             /*Mit diesen Befehlen initialisiere meine ViewElemente mit
             * den initialisierten Argumenten in den jeweiligen Eigenschaften
             * meines Content Objekts. Dies führt dazu, dass der Titel und
@@ -229,9 +230,9 @@ class ExerciseListFragment : Fragment() {
                     binding.bodyPartView.setImageResource(R.drawable.applogo)
                 }
             }
-
         }
     }
+
 
     fun navigateBack() {
         binding.backBtn.setOnClickListener {

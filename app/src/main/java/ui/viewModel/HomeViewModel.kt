@@ -13,8 +13,7 @@ import kotlinx.coroutines.launch
 import model.Content
 import model.Food
 
-class HomeViewModel: ViewModel() {
-
+class HomeViewModel : ViewModel() {
     private val repository = AppRepository()
     private val allContent = repository.content
     private val allExercises = repository.exercises
@@ -22,26 +21,21 @@ class HomeViewModel: ViewModel() {
     private var allExercisesByBodyparts = repository.exercisesByBodyparts
     private var groceryCategories = repository.groceryCategories
 
-
     var index = 0
 
     private var _contents = MutableLiveData(allContent)
-
-        val contents: LiveData<List<Content>>
+    val contents: LiveData<List<Content>>
         get() = _contents
 
 
     private var _bodyparts = MutableLiveData(allBodyparts)
-
     val bodyparts: LiveData<List<Content>>
         get() = _bodyparts
-
 
     /*Ich habe hier eine neue LiveData erstellt, um die Liste
     * von Krafttrainingsübungen durch meine UI beobachten zu lassen.*/
 
     private var _exercises = MutableLiveData(allExercises)
-
     val exercises: LiveData<List<Content>>
         get() = _exercises
 
@@ -51,29 +45,23 @@ class HomeViewModel: ViewModel() {
     * */
 
     private var _selectedExercise = MutableLiveData(allExercises[index])
-    val selectedExercise : LiveData<Content>
+    val selectedExercise: LiveData<Content>
         get() = _selectedExercise
 
 
-
-
     private var _selectedContent = MutableLiveData(allContent[index])
-    val selectedContent : LiveData<Content>
+    val selectedContent: LiveData<Content>
         get() = _selectedContent
 
 
-
-
     private var _selectedExercisesByBodypart = MutableLiveData(allExercisesByBodyparts[index])
-    val selectedExercisesByBodypart : LiveData<Content>
+    val selectedExercisesByBodypart: LiveData<Content>
         get() = _selectedExercisesByBodypart
 
 
-
     private var _foodCategories = MutableLiveData(groceryCategories)
-    val foodCategories : LiveData<List<Food>>
+    val foodCategories: LiveData<List<Food>>
         get() = _foodCategories
-
 
 
     private var _exercisesByBodyparts = MutableLiveData(allExercisesByBodyparts)
@@ -81,12 +69,12 @@ class HomeViewModel: ViewModel() {
     val exercisesByBodyparts: LiveData<List<Content>>
         get() = _exercisesByBodyparts
 
-/*
-*    Ich habe die _selectedContentTitle LiveData- Variabel erstellt,
-*    um den Wert des contentTitle zu speichern:
-*    Auf diese Weise wird der Wert des contentTitle im ViewModel gesetzt,
-*    und das Fragment ExerciseListFragment kann darauf zugreifen, um die
-*    Übungen entsprechend zu sortieren, wenn der Benutzer auf den Sortieren-Button klickt.*/
+    /*
+    *    Ich habe die _selectedContentTitle LiveData- Variabel erstellt,
+    *    um den Wert des contentTitle zu speichern:
+    *    Auf diese Weise wird der Wert des contentTitle im ViewModel gesetzt,
+    *    und das Fragment ExerciseListFragment kann darauf zugreifen, um die
+    *    Übungen entsprechend zu sortieren, wenn der Benutzer auf den Sortieren-Button klickt.*/
 
 
     private val _selectedContentTitle = MutableLiveData<String>()
@@ -120,7 +108,7 @@ class HomeViewModel: ViewModel() {
             } else {
                 filteredExercises.sortedBy { it.stringRessourceText }
             }
-           _exercisesByBodyparts.value = sortedExercises
+            _exercisesByBodyparts.value = sortedExercises
         }
     }
 
@@ -139,17 +127,17 @@ class HomeViewModel: ViewModel() {
     */
 
 
-
-    fun filterExercisesByTitle(userInput: String, bodypart: String, context: Context){
-
+    fun filterExercisesByTitle(userInput: String, bodypart: String, context: Context) {
         viewModelScope.launch {
-            val filteredExercises = _exercisesByBodyparts.value?.filter {    val xmlValue = context.getString(it.stringRessourceTitle)
-                xmlValue.contains(userInput, ignoreCase = true) }
+            val filteredExercises = _exercisesByBodyparts.value?.filter {
+                val xmlValue = context.getString(it.stringRessourceTitle)
+                xmlValue.contains(userInput, ignoreCase = true)
+            }
             if (filteredExercises != null) {
                 if (filteredExercises.isNotEmpty()) {
                     _exercisesByBodyparts.value = filteredExercises
                     var tag4 = "Filter in ViewModel??"
-                    Log.e(tag4,"Wurde gefiltert?: $filteredExercises")
+                    Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
                 } else {
                     resetFilter(bodypart)
                 }
@@ -171,11 +159,16 @@ class HomeViewModel: ViewModel() {
     */
 
     fun getContentTitle(bodypart: String) {
-       _selectedContentTitle.value = bodypart
+        _selectedContentTitle.value = bodypart
     }
 
     fun navigateDetailView(content: Content) {
         _selectedContent.value = content
+    }
+
+    fun setOriginalList(exercises: List<Content>, bodypart: String) {
+        exercises.filter { it.bodyPart == bodypart }
+        _exercisesByBodyparts.value = exercises
     }
 
 }
