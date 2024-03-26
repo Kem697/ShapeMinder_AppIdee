@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentExercisePreviewBinding
 import ui.viewModel.HomeViewModel
 
@@ -35,30 +36,39 @@ class ExercisePreviewFragment : Fragment() {
             when (it.bodyPart) {
                 "Arme" -> {
                     binding.subTitle.text = "Arm Übung"
+                    binding.bodyPartView.setImageResource(R.drawable.bp1arms)
                 }
 
                 "Bauch" -> {
                     binding.subTitle.text = "Bauch Übung"
+                    binding.bodyPartView.setImageResource(R.drawable.bp5abs)
+
                 }
 
                 "Schulter" -> {
                     binding.subTitle.text = "Schulter Übung"
+                    binding.bodyPartView.setImageResource(R.drawable.bp3shoulders)
 
 
                 }
 
                 "Rücken" -> {
                     binding.subTitle.text = "Rücken übung"
+                    binding.bodyPartView.setImageResource(R.drawable.bp4back)
+
 
                 }
 
                 "Beine" -> {
                     binding.subTitle.text = "Bein übung"
+                    binding.bodyPartView.setImageResource(R.drawable.bp2legs)
+
 
                 }
 
                 "Brust" -> {
                     binding.subTitle.text = "Brust Übung"
+                    binding.bodyPartView.setImageResource(R.drawable.bp6chest)
                 }
             }
         }

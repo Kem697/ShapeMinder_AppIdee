@@ -76,8 +76,8 @@ class AppRepository {
     fun loadGroceryCategories(): List<Food>{
         return listOf(
             Food(R.string.gc_grain_and_corn,R.drawable.content3_img,"Getreide",true),
-            Food(R.string.gc_fruits_and_vegetable,R.drawable.content3_img,"Obst und Gemüse",true),
-            Food(R.string.gc_milk_and_eg,R.drawable.content3_img,"Molkerei und Eier",true),
+            Food(R.string.gc_fruits_and_vegetable,R.drawable.foodcat4_fruits_and_vegetables,"Obst und Gemüse",true),
+            Food(R.string.gc_milk_and_eg,R.drawable.foodcat5_milk_and_eggs,"Molkerei und Eier",true),
             Food(R.string.gc_oil_and_fats,R.drawable.foodcat2_oil_img,"Öle und Fette",true),
             Food(R.string.gc_meat_and_fish,R.drawable.content3_img,"Fleisch und Fisch",true),
             Food(R.string.gc_sweets,R.drawable.content3_img,"Süssigkeiten",true)

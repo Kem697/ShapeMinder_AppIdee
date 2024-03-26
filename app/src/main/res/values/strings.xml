@@ -31,16 +31,16 @@
     <string name="bpBrust">Brust</string>
 
 
-    <string name="weKH_Bicepscurls">Kurzhantel Bizepscurls</string>
-    <string name="weLH_Bicepscurls">Langhantel Bizepscurls</string>
+    <string name="weKH_Bicepscurls">KH Bizepscurls</string>
+    <string name="weLH_Bicepscurls">LH Bizepscurls</string>
     <string name="weSZ_Bicepscurls">SZ-Bizepscurls</string>
     <string name="we_Pull_ups">Klimmzüge</string>
-    <string name="weKH_Benchpress">Kurzhantel Bankdrücken</string>
-    <string name="weLH_Benchpress">Langhantel Bankdrücken</string>
-    <string name="weLH_Incline_Benchpress">Langhantel Schrägbankdrücken</string>
-    <string name="weKH_Incline_Benchpress">Kurzhantel Schrägbankdrücken</string>
+    <string name="weKH_Benchpress">KH Bankdrücken</string>
+    <string name="weLH_Benchpress">LH Bankdrücken</string>
+    <string name="weLH_Incline_Benchpress">LH Schrägbankdrücken</string>
+    <string name="weKH_Incline_Benchpress">KH Schrägbankdrücken</string>
     <string name="weSZ_Push_ups">Liegestütze</string>
-    <string name="weKH_Shoulderpress">Kurzhantel Schulterdrücken</string>
+    <string name="weKH_Shoulderpress">KH Schulterdrücken</string>
     <string name="we_Crunches">Crunches</string>
     <string name="weSquats">Kniebeuge</string>
 
