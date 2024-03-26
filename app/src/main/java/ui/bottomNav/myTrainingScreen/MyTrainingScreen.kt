@@ -78,6 +78,7 @@ class MyTrainingScreen : Fragment() {
         // Verknüpfen Sie das TabLayout mit dem ViewPager
         tabLayout.setupWithViewPager(viewPager)
 
+
     }
 
 

@@ -171,4 +171,15 @@ class HomeViewModel : ViewModel() {
         _exercisesByBodyparts.value = exercises
     }
 
+
+    fun isSaved(saved: Boolean) {
+//        var savedExercise: MutableList<Content> = mutableListOf()
+        for (exercise in _exercisesByBodyparts.value!!) {
+            exercise.isSaved = saved
+//            if (exercise.isSaved){
+//                savedExercise.add(exercise)
+//            }
+        }
+//        _exercises.value = savedExercise
+    }
 }

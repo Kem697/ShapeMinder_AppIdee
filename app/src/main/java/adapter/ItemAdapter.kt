@@ -14,8 +14,10 @@ package adapter
 * leider nicht zur Listenansicht, da ich die Navigation nicht programmieren kann.*/
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isInvisible
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shapeminder_appidee.R
@@ -91,6 +93,21 @@ class ItemAdapter(
             holder.binding.materialCardView.setOnClickListener {
                 viewModel.navigateDetailView(content)
                 holder.binding.root.findNavController().navigate(R.id.exercisePreviewFragment)
+            }
+
+            holder.binding.saveExerciseBtn.setOnClickListener {
+                if (!content.isSaved) {
+                    viewModel.isSaved(!content.isSaved)
+                    holder.binding.saveExerciseBtn.setImageResource(R.drawable.favorite_fill0_wght400_grad0_opsz24)
+                    var tag  = "Fehler"
+                    Log.e(tag,"Element:$position")
+                } else {
+                    viewModel.isSaved(!content.isSaved)
+                    content.isSaved = false
+                    holder.binding.saveExerciseBtn.setImageResource(R.drawable.favorite_fill1_wght400_grad0_opsz24)
+                    var tag  = "Fehler"
+                    Log.e(tag,"Element:$position")
+                }
             }
         }
 

@@ -99,7 +99,11 @@ class ExerciseListFragment : Fragment() {
 
     * */
 
-    fun saveExercise(){}
+    fun saveExercise(){
+    }
+
+
+
 
     fun searchInput() {
         var searchBar = binding.myTSearchBarTextInput
