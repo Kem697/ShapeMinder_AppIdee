@@ -82,8 +82,6 @@ class ItemAdapter(
                 viewModel.navigateDetailView(content)
                 holder.binding.root.findNavController().navigate(R.id.homeContentDetailView)
             }
-
-
         }
 
         else if (holder is ExerciseListItemViewHolder){

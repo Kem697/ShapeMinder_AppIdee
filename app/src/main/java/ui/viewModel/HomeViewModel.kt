@@ -69,6 +69,15 @@ class HomeViewModel : ViewModel() {
     val exercisesByBodyparts: LiveData<List<Content>>
         get() = _exercisesByBodyparts
 
+
+
+    private var _savedExercises = MutableLiveData<List<Content>>()
+    val savedExercises: LiveData<List<Content>>
+
+        get() = _savedExercises
+
+
+
     /*
     *    Ich habe die _selectedContentTitle LiveData- Variabel erstellt,
     *    um den Wert des contentTitle zu speichern:
@@ -173,13 +182,29 @@ class HomeViewModel : ViewModel() {
 
 
     fun isSaved(saved: Boolean) {
-//        var savedExercise: MutableList<Content> = mutableListOf()
+        var savedExercises: MutableList<Content> = mutableListOf()
         for (exercise in _exercisesByBodyparts.value!!) {
             exercise.isSaved = saved
-//            if (exercise.isSaved){
-//                savedExercise.add(exercise)
-//            }
+            savedExercises.add(exercise)
         }
-//        _exercises.value = savedExercise
+        _savedExercises.value= savedExercises
     }
+
+
+//    fun isSaved(saved: Boolean, exercise: Content) {
+//        val updatedExercises = _savedExercises.value?.toMutableList() ?: mutableListOf()
+//
+//        val index = updatedExercises.indexOfFirst { it == exercise }
+//        if (index != -1) {
+//            // Wenn die Übung in der Liste vorhanden ist, aktualisiere den Zustand
+//            updatedExercises[index].isSaved = saved
+//        } else {
+//            // Ansonsten füge die Übung zur Liste hinzu
+//            updatedExercises.add(exercise.copy(isSaved = saved))
+//        }
+//
+//        _savedExercises.value = updatedExercises
+//    }
+
+
 }
