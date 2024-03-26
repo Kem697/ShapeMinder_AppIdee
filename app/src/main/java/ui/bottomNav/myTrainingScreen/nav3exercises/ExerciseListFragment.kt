@@ -99,6 +99,8 @@ class ExerciseListFragment : Fragment() {
 
     * */
 
+    fun saveExercise(){}
+
     fun searchInput() {
         var searchBar = binding.myTSearchBarTextInput
         val context = requireContext()
@@ -178,12 +180,6 @@ class ExerciseListFragment : Fragment() {
         }
     }
 
-    fun updateAdapter() {
-        viewModel.exercisesByBodyparts.observe(viewLifecycleOwner) { exercise ->
-            binding.listOfExercises.adapter = ItemAdapter(exercise, viewModel)
-        }
-    }
-
     fun setUpAdapter() {
         viewModel.exercisesByBodyparts.observe(viewLifecycleOwner) { exercise ->
             orginalExercises = exercise
@@ -232,7 +228,6 @@ class ExerciseListFragment : Fragment() {
             }
         }
     }
-
 
     fun navigateBack() {
         binding.backBtn.setOnClickListener {
