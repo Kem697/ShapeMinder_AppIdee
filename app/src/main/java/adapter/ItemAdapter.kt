@@ -27,6 +27,8 @@ import com.example.shapeminder_appidee.databinding.ListItemMyTrainingBinding
 import model.Content
 import ui.viewModel.HomeViewModel
 
+
+
 class ItemAdapter(
     private val dataset: List<Content>,
     private val viewModel: HomeViewModel
