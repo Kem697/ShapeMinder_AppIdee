@@ -5,14 +5,11 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 
 
-/*Diese Adapterklasse wird zum Einrichten der Tabnavigation benötigt.*/
+
 
 class MyNutritionTabNavAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
-    /*Ich habe hiere zwei Eigenschaften erstellt, die im Nachhinein, die
-    * einzelne Fragmente und dessen Titel abspeichert. Standdarmäßig handelt
-    * es sich um eine leere Array/Anordnung Liste von Fragment (var fragments)
-    * und Fragmenttiteln (fragmentTitles).*/
+
 
     private var fragments: ArrayList<Fragment> = arrayListOf()
     private var fragmentTitles: ArrayList<String> = arrayListOf()
@@ -26,7 +23,6 @@ class MyNutritionTabNavAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
         return fragments[position]
     }
 
-    /*Diese Funktion fügt den Fragmenttitel und die Fragmente hinzu. */
 
     fun addFragment(fragment: Fragment, title: String) {
         fragments.add(fragment)
