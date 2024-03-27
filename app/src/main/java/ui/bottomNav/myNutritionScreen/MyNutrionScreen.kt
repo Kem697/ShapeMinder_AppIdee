@@ -38,7 +38,7 @@ class MyNutrionScreen : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         searchInput()
 
-        /*
+        /*DE:
         *Mithilfe eines Youtube Videos und ChatGpt habe ich
         * eine Tab Navigation in einem Fragment meiner App
         * eingerichtet. Problem war, dass ich über das Binding
@@ -46,6 +46,17 @@ class MyNutrionScreen : Fragment() {
         * musste ich die MainActivity aufrufen, um über findViewById
         * die erforderten Elemente für die Zuweisung meines Tablayouts und
         * ViewPagers einzurichten.
+        *
+        * */
+
+        /*EN:
+        *With the help of a Youtube video and ChatGpt I have
+        * a tab navigation in a fragment of my app
+        * set it up. The problem was that I could not address the view elements via the binding
+        * could not address the view elements. Therefore
+        * I had to call the MainActivity to find the required elements via findViewById
+        * to set up the required elements for the assignment of my tab layout and
+        * ViewPager via findViewById.
         *
         * */
 

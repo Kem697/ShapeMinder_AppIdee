@@ -25,9 +25,15 @@ class TrainingNav1 : Fragment() {
         return binding.root
     }
 
-    /*Ich habe hier den Recycler Views meiner Layouts den ItemAdapter zugewiesen.
+    /*DE:
+    *Ich habe hier den Recycler Views meiner Layouts den ItemAdapter zugewiesen.
     * Dazu habe ich vorher eine neue LiveDate erstellt, die eine Liste von
     * Content aus Kraftrainingsübungen enthält (isExercise = true)*/
+
+    /*EN:
+    *I have assigned the ItemAdapter to the recycler views of my layouts here.
+    * I have previously created a new LiveDate that contains a list of
+    * Content from strength training exercises (isExercise = true)*/
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

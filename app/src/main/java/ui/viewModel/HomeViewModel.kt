@@ -32,17 +32,29 @@ class HomeViewModel : ViewModel() {
     val bodyparts: LiveData<List<Content>>
         get() = _bodyparts
 
-    /*Ich habe hier eine neue LiveData erstellt, um die Liste
+    /*DE:
+    *Ich habe hier eine neue LiveData erstellt, um die Liste
     * von Krafttrainingsübungen durch meine UI beobachten zu lassen.*/
+
+    /*EN:
+    * I ve created a livedata, which poses my exercises. This step is important
+    * to allow my ui to observe the aimed data for the recyclerview initialization.
+    * */
+
 
     private var _exercises = MutableLiveData(allExercises)
     val exercises: LiveData<List<Content>>
         get() = _exercises
 
-    /*Diese LiveData habe ich erstellt, um im Nach-
+    /*DE:
+    * Diese LiveData habe ich erstellt, um im Nach-
     * hinein auf eine gewählte Kraftrainingsübung zu
     * zugreifen.
     * */
+
+    /*EN:
+    * I ve created this livedata to fetch a specific
+    * ecercise of my dataset of exercises.*/
 
     private var _selectedExercise = MutableLiveData(allExercises[index])
     val selectedExercise: LiveData<Content>
@@ -78,21 +90,40 @@ class HomeViewModel : ViewModel() {
 
 
 
-    /*
-    *    Ich habe die _selectedContentTitle LiveData- Variabel erstellt,
-    *    um den Wert des contentTitle zu speichern:
-    *    Auf diese Weise wird der Wert des contentTitle im ViewModel gesetzt,
-    *    und das Fragment ExerciseListFragment kann darauf zugreifen, um die
-    *    Übungen entsprechend zu sortieren, wenn der Benutzer auf den Sortieren-Button klickt.*/
+    /*DE:
+    * Ich habe die _selectedContentTitle LiveData- Variabel erstellt,
+    * um den Wert des contentTitle zu speichern:
+    * Auf diese Weise wird der Wert des contentTitle im ViewModel gesetzt,
+    * und das Fragment ExerciseListFragment kann darauf zugreifen, um die
+    * Übungen entsprechend zu sortieren, wenn der Benutzer auf den Sortieren-Button klickt.
+    * */
+
+    /*EN:
+    * I created the _selectedContentTitle LiveData variable,
+    * to store the value of the contentTitle:
+    * This way the value of the contentTitle is set in the ViewModel,
+    * and the ExerciseListFragment fragment can access it to sort the
+    * exercises accordingly when the user clicks the sort button.
+    * */
 
 
     private val _selectedContentTitle = MutableLiveData<String>()
     val selectedContentTitle: LiveData<String>
         get() = _selectedContentTitle
 
-    /*Diese Methode dient dazu, um meinen Datensatz im Nachhinein mit
+    /*DE:
+    *Diese Methode dient dazu, um meinen Datensatz im Nachhinein mit
     * eine Eigenschaft zu überprüfen und sie nach dem dem übergebenen Argument zu filtern.
     * Die Methode wird anschließend in meinem GridAdapter aufgerufen.*/
+
+    /*EN:
+*This method is used to check my data set afterwards with
+* to check a property and filter it according to the passed argument.
+* The method is then called in my GridAdapter */
+
+
+
+
     fun filterExercisesByBodypart(bodypart: String) {
         viewModelScope.launch {
             val filteredExercises = allExercisesByBodyparts.filter { it.bodyPart == bodypart }
@@ -100,13 +131,21 @@ class HomeViewModel : ViewModel() {
         }
     }
 
-    /*
+    /*DE:
     * Aktueller Stand: Sortierfunktion funktioniert.
     * Mit dieser Methode wird die Sortierfunktion nach alphabetischer Reihenfolge
     * zur Ilustration absteigend sortiert. Das erste Problem war, dass bei der Sortierung wieder nicht nach
     * entsprechend der Körperpartieren gefiltert worden ist. Mit der Methode getContentTitle wird
     * die Liste nochmals nach Körperpartie gefiltert, sobald der Nutzer den View mit dem jeweiligen
     * Namen z.B. Arme anklickt. */
+
+    /*EN:
+    * Current status: Sort function works.
+    * With this method, the sort function is sorted in alphabetical order
+    * sorted in descending order for illustration. The first problem was that the sorting was again not filtered by
+    * according to the body parts. With the method getContentTitle
+    * the list is filtered again by body part as soon as the user clicks on the view with the respective
+    * name, e.g. arms. */
 
 
     fun sortExercisesByAlphabet(bodypart: String, sort: Boolean) {
@@ -121,7 +160,8 @@ class HomeViewModel : ViewModel() {
         }
     }
 
-    /*Diese beiden Funktionen sollten zur Filterung der Übungen abhängig von
+    /*DE:
+    *Diese beiden Funktionen sollten zur Filterung der Übungen abhängig von
     * der Nutzereingabe dienen. Leider funktionieren diese beiden Funktionen
     * nicht, wenn ich sie im Fragment aufrufe. Stand jetzt führt die Nutzereingabe
     * nicht zum Absturz. Nachtrag: Die Liste aus allen Übungen wird nicht mehr angezeigt.
@@ -132,6 +172,21 @@ class HomeViewModel : ViewModel() {
     * Zunächst einmal sollen die Übungen nach Körpterteil gefiltert werden.
     * Dadurch sollen nur die Übungen abhängig von der Körperpartie angezeigt werden.
     * Anschließend werden die Übungen nach Nutzereingabe gefiltert, sodass nicht alle Übungen.
+    *
+    */
+
+    /*EN:
+    *These two functions should be used to filter the exercises depending on
+    * of the user input. Unfortunately, these two functions
+    * do not work when I call them in the fragment. As of now, the user input
+    * does not lead to a crash. Addendum: The list of all exercises is no longer displayed.
+    * I have added a parameter to the resetFilter() functions which contains the body part.
+    * has been added. As a result, the exercises are displayed depending on the body part.
+    *
+    * Explanation:
+    * First of all, the exercises should be filtered by body part.
+    * This means that only the exercises depending on the body part will be displayed.
+    * Then the exercises are filtered according to user input so that not all exercises are displayed.
     *
     */
 
@@ -159,11 +214,21 @@ class HomeViewModel : ViewModel() {
     }
 
 
-    /* Um die entsprechende TextView Id aus einer anderen Fragment Klasse herauszuholen,
+    /*DE:
+     *Um die entsprechende TextView Id aus einer anderen Fragment Klasse herauszuholen,
      *  habe ich die Methode getContentTitle im ViewModel erstellt, um den Wert des contentTitles zu setzen.
      *  Dadurch, dass diese Methode im viewModel Fragment ist, kann ich sie in meinen anderen Fragmentklassen
      *  aufrufen. (ViewModel hilft, um Fragment übergreifend zu kommunizieren.). Die Methode wird dann
      *  in den when Verzweigungen aufgerufen die Bezeichnung der Körperpartie als Parameter übergeben.
+     *
+    */
+
+    /*EN:
+     *To get the corresponding TextView Id from another fragment class,
+     * I have created the method getContentTitle in the ViewModel to set the value of the contentTitle.
+     * Because this method is in the viewModel fragment, I can call it in my other fragment classes.
+     * in my other fragment classes. (ViewModel helps to communicate across fragments). The method is then called
+     * The method is then called in the when branches and the name of the body part is passed as a parameter.
      *
     */
 

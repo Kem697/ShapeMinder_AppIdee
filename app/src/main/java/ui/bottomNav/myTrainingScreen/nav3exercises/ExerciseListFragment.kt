@@ -47,8 +47,14 @@ class ExerciseListFragment : Fragment() {
         navigateBack()
     }
 
-    /*Wenn der Screen angezeigt wird, soll die Hauptnavigationsleiste
+    /*DE:
+    *Wenn der Screen angezeigt wird, soll die Hauptnavigationsleiste
     * ausgeblendet werden, damit die App sich in einem Screen festfährt.
+    * */
+
+    /*EN:
+    *When the screen is displayed, the main navigation bar should be
+    *should be hidden so that the app gets stuck in a screen.
     * */
 
     override fun onResume() {
@@ -56,12 +62,23 @@ class ExerciseListFragment : Fragment() {
         var navigationBar =
             requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
         navigationBar.isInvisible = true
-        /*Mit den unten stehende zwei Zeilen setze ich meine Liste von Übungen
-        * auf ihren Ursprungszustand zurück, sobald der Nutzer zum anderen Screen
-        * navigiert. Hierbei über viewmodel.resetFilter meiner Liste der Übungen
-        * aller Körperpartien mit dem contentTitle (also die Körperteile) gefiltert,
-        * um für jede Kategorie den passenden Datensatz an Übungen zu zeigen.
-        * */
+
+    /*DE:
+    *Mit den unten stehende zwei Zeilen setze ich meine Liste von Übungen
+    * auf ihren Ursprungszustand zurück, sobald der Nutzer zum anderen Screen
+    * navigiert. Hierbei über viewmodel.resetFilter meiner Liste der Übungen
+    * aller Körperpartien mit dem contentTitle (also die Körperteile) gefiltert,
+    * um für jede Kategorie den passenden Datensatz an Übungen zu zeigen.
+    * */
+
+    /*EN:
+    *With the two lines below I reset my list of exercises
+    * to their original state as soon as the user navigates to the other screen
+    * navigates to the other screen. This is done via viewmodel.resetFilter of my list of exercises
+    * of all body parts filtered with the contentTitle (i.e. the body parts),
+    * to show the appropriate data set of exercises for each category.
+    * */
+
 
         var bodyPart = viewModel.selectedContentTitle.value
         viewModel.resetFilter(bodyPart!!)
@@ -69,11 +86,19 @@ class ExerciseListFragment : Fragment() {
         Log.e(tag, "Ist der Screen pausiert?")
     }
 
-    /* Sobald der Screen verlassen wird, wird die Suchleiste zurückgesetzt.
+    /*DE:
+   * Sobald der Screen verlassen wird, wird die Suchleiste zurückgesetzt.
    * Dadurch wird ein Absturz der App beim Fragmentwechseln verhindert, da
    * letzte ungelöschte Nutzereingabe die searchInput Funktion aufruft,
    * welche die Elemente abhängig vom Eingabewert filtert.
    * */
+
+    /*EN:
+    * As soon as the screen is exited, the search bar is reset.
+    * This prevents the app from crashing when switching fragments, as
+    * the last undeleted user input calls the searchInput function,
+    * which filters the elements depending on the input value.
+    * */
 
     override fun onStop() {
         super.onStop()
@@ -82,11 +107,8 @@ class ExerciseListFragment : Fragment() {
         Log.i(tag, "Stopp wird aufgerufen?")
     }
 
-    override fun onStart() {
-        super.onStart()
-    }
 
-    /*
+    /*DE:
     * Die Filterfunktion funktioniert jetzt und ich kann meine Liste abhängig
     * von der Nutzereingabe filtern. Das Problem war, dass der Eingabewert
     * nicht mit dem Namen der Übung in der View verglichen wird, sondern mit
@@ -99,10 +121,21 @@ class ExerciseListFragment : Fragment() {
 
     * */
 
+    /*EN:
+    * The filter function now works and I can filter my list depending on
+    * depending on the user input. The problem was that the input value
+    * is not compared with the name of the exercise in the view, but with
+    * of the stringResourceTitle id number. There could never be a comparison
+    * because I had to compare with a numeric input.
+    * That's why I passed the context to my ViewModel. This way
+    * I can retrieve the specified value of my string resource id.
+    * out. More details in the viewModel.filterExercisesByTitle(userInput, bodyPart,context)
+    * method.
+
+    * */
+
     fun saveExercise(){
     }
-
-
 
 
     fun searchInput() {
@@ -141,12 +174,14 @@ class ExerciseListFragment : Fragment() {
         dialog.setCanceledOnTouchOutside(true)
         var isSortedDescending = false
 
-        // Listener für den Button sortByNameBtn
         binding.sortByNameBtn.setOnClickListener {
-            // Um den Dialog nur einmal zu zeigen, prüfen Sie zuerst, ob er nicht bereits gezeigt wird
+            // DE:Um den Dialog nur einmal zu zeigen, prüfen Sie zuerst, ob er nicht bereits gezeigt wird
+            // EN:To show the dialog only once, first check that it is not already shown.
+
             if (!dialog.isShowing) {
-                /*Hier wird die Farbe des "Check"-Elements auf die Farbe tertiary gesetzt.
-                * */
+            // DE: Hier wird die Farbe des "Check"-Elements auf die Farbe tertiary gesetzt.
+                // EN: Here, the color of the "Check" element is set to the color tertiary.
+
                 dialog.findViewById<RadioButton>(R.id.a_z_ascending)!!.buttonTintList =
                     ColorStateList.valueOf(
                         ContextCompat.getColor(requireContext(), R.color.tertiary)
@@ -155,17 +190,21 @@ class ExerciseListFragment : Fragment() {
                     ColorStateList.valueOf(
                         ContextCompat.getColor(requireContext(), R.color.tertiary)
                     )
-                // Anschließend wird der Dialog geöffnet.
+                // DE: Anschließend wird der Dialog geöffnet.
+                // EN: Then the dialog opens.
                 dialog.show()
             }
 
             // Listener für die Auswahl der RadioButtons innerhalb des Dialogs
+
             dialog.findViewById<RadioGroup>(R.id.radioG_exerciseSort)
                 ?.setOnCheckedChangeListener { group, checkedId ->
-                    // Hier können Sie den Code für die Sortierung der Übungen implementieren
+                    // DE: Hier können Sie den Code für die Sortierung der Übungen implementieren
+                    // EN: The following code sorts the exercises
                     val selectedBodypart =
                         viewModel.selectedContentTitle.value ?: return@setOnCheckedChangeListener
-                    // Je nachdem, welcher RadioButton ausgewählt wurde, können Sie die Übungen sortieren
+                    // DE: Je nachdem, welcher RadioButton ausgewählt wurde, können Sie die Übungen sortieren
+                    // EN: Dependent, which radio button the user selects, the exercises will sort.
                     when (checkedId) {
                         R.id.a_z_ascending -> {
                             isSortedDescending = false
@@ -176,9 +215,9 @@ class ExerciseListFragment : Fragment() {
                             isSortedDescending = true
                             viewModel.sortExercisesByAlphabet(selectedBodypart, isSortedDescending)
                         }
-                        // Weitere RadioButton-Optionen können hier hinzugefügt werden
                     }
-                    // Schließen Sie den Dialog, nachdem eine Auswahl getroffen wurde
+                    //DE: Schließen Sie den Dialog, nachdem eine Auswahl getroffen wurde
+                    //EN: After the user selected his choose, the dialog will close.
                     dialog.dismiss()
                 }
         }
@@ -188,18 +227,35 @@ class ExerciseListFragment : Fragment() {
         viewModel.exercisesByBodyparts.observe(viewLifecycleOwner) { exercise ->
             orginalExercises = exercise
             binding.listOfExercises.adapter = ItemAdapter(exercise, viewModel)
-            /*Mit diesen Befehlen initialisiere meine ViewElemente mit
+
+            /*DE:
+            *Mit diesen Befehlen initialisiere meine ViewElemente mit
             * den initialisierten Argumenten in den jeweiligen Eigenschaften
             * meines Content Objekts. Dies führt dazu, dass der Titel und
             * die Anzahl der Übungen pro Körperpartie entsprechen der
             * Körperpartie aktualisiert wird */
+
+            /*EN:
+            *Use these commands to initialize my ViewElements with
+            * the initialized arguments in the respective properties
+            * of my content object. This results in the title and
+            * the number of exercises per body part are updated according to the
+            * body part is updated */
+
             binding.title.setText(exercise.first().bodyPart)
             binding.subTitle.setText("Anzahl von Übungen: ${exercise.size}")
 
 
-            /*When Verzweigung dient dazu die korrekten Bilder zu setzen,
+            /*DE:
+            * When Verzweigung dient dazu die korrekten Bilder zu setzen,
             * wenn das  initialisierte Argument mit dem des Körperparts
             * übereinstimmt. Die Verzweigung ist noch fehlerbehaftet.*/
+
+            /*EN:
+            * When branching is used to set the correct images,
+            * if the initialized argument matches that of the body part
+            * matches that of the body part. The branch is still error-prone */
+
 
             when (exercise.first().bodyPart) {
                 "Arme" -> {

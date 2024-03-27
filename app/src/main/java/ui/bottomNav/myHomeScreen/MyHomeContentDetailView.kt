@@ -30,15 +30,19 @@ class MyHomeContentDetailView : Fragment() {
         return binding.root
     }
 
-    /*Die Datasource wurde gegen eine Repository getauscht, um auf
+    /*DE:
+    *Die Datasource wurde gegen eine Repository getauscht, um auf
     * Live Daten zuzugreifen. Hierzu habe Live Daten zur Contentliste und
     * zum ausgewählten Content erstellt.*/
+
+    /*EN:
+    *The datasource was exchanged for a repository in order to access
+    * access live data. For this purpose, live data for the content list and
+    * created for the selected content. */
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        var navigationBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
-//        navigationBar.isInvisible = true
         navigateBack()
         viewModel.selectedContent.observe(viewLifecycleOwner){
             binding.contentImage.setImageResource(it.imageRessource)

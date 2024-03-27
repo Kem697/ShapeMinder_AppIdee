@@ -27,8 +27,14 @@ class ExercisePreviewFragment : Fragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        /*Mit der Grußen When und dem binding.title.setText steuere ich
-        * Anzeige der Übungsnamen und der beanspruchen Muskelgruppe */
+        /*DE:
+        *Mit der großen When Verzweigung und dem binding.title.setText deklariere ich,
+        * welcher Übungsname und die beanspruchte Muskelgruppe in der UI angezeigt*/
+
+        /*EN:
+        * With binding.title.setText in the big when branch, I declare which
+        * exercise name and approached muscle group will display in the ui.*/
+
         super.onViewCreated(view, savedInstanceState)
         navigateBack()
         viewModel.selectedContent.observe(viewLifecycleOwner) {

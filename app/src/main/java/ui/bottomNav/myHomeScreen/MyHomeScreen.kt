@@ -29,10 +29,30 @@ class MyHomeScreen : Fragment() {
         return binding.root
     }
 
-    /*Mein Adapter beobachtet nun die Live Daten aus dem Repository.
+    /*DE:
+    * Mein Adapter beobachtet nun die Live Daten aus dem Repository.
     * Zur Darstellung der Daten in der View ist dies nicht zwingend notwendig.
     * Für die Navigation zu den Detailansichten (siehe ItemAdapter) hilft das
-    * aber bei der Datenübertragung.*/
+    * aber bei der Datenübertragung.
+    *
+    /*
+
+    Kommentar zum home_fragment_xml.:
+    <!--Durch orientation kann ich deklarieren, in welche
+    Richtung sich mein Recyclerview scrollen lässt.
+    Hierbei ist jedoch das Problem, dass ich nicht
+    weiß, wie mein Screen sich vertikal und horizontal
+    scrollen lässt. Ich werde daran noch arbeiten-->
+    */
+
+    *
+    * */
+
+    /*EN:
+    * My adapter now monitors the live data from the repository.
+    * This is not absolutely necessary for displaying the data in the view.
+    * For navigation to the detailed views (see ItemAdapter) this helps
+    * but for data transfer.*/
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -54,8 +74,7 @@ class MyHomeScreen : Fragment() {
 
 
 
-
-/*
+    /*  DE :
     Die beiden Funktionen searchInput() und setDefaultHint() haben unterschiedliche Aufgaben:
 
     1.	searchInput():
@@ -76,6 +95,29 @@ class MyHomeScreen : Fragment() {
     •	Diese Funktion stellt sicher, dass das Suchfeld jedes Mal, wenn sie aufgerufen wird, auf den Standardzustand zurückgesetzt wird,
     um konsistentes Verhalten zu gewährleisten, wenn das Fragment geladen oder neu geladen wird.
     */
+
+    /* EN :
+    The two functions searchInput() and setDefaultHint() have different tasks:
+
+    1. searchInput():
+    - This function is responsible for monitoring the search box (searchBar) and responding to user input.
+    - It adds a TextChangedListener to the search field, which is called each time the text in the search field changes.
+    - Within the TextChangedListener, the entered user text is retrieved (binding.searchBarTextInput.text),
+    and if it is not empty (isNotBlank()), the text of the search field (binding.searchBar) is set to the entered text.
+    - This function therefore reacts when the user enters something in the search field,
+    and then updates the text of the search field accordingly.
+
+    2. setDefaultHint():
+    - This function is called to set the hint text of the search box to "Search" by default.
+    - It sets the hint text of the search box to "Search" (binding.searchBar.hint = "Search"),
+    so that users know that they can search there.
+    - It also checks whether there is already text in the search field (binding.searchBarTextInput.text.isNotBlank()).
+    - If there is text, the text of the search field is deleted (binding.searchBarTextInput.text.clear())
+    and the search field is reset (binding.searchBar.setText("")) to ensure that it is empty.
+    - This function ensures that the search field is reset to the default state each time it is called,
+    to ensure consistent behavior when the fragment is loaded or reloaded.
+    */
+
 
 
     fun searchInput() {
@@ -103,13 +145,3 @@ class MyHomeScreen : Fragment() {
 
 
 
-
-/*
-
-Kommentar zum home_fragment_xml.:
-<!--Durch orientation kann ich deklarieren, in welche
-Richtung sich mein Recyclerview scrollen lässt.
-Hierbei ist jedoch das Problem, dass ich nicht
-weiß, wie mein Screen sich vertikal und horizontal
-scrollen lässt. Ich werde daran noch arbeiten-->
-*/

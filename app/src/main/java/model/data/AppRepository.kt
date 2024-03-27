@@ -4,8 +4,12 @@ import com.example.shapeminder_appidee.R
 import model.Content
 import model.Food
 
-/*Meinem Repository habe ich eine neue Liste von Content hinzugefügt und
+    /*DE:
+*Meinem Repository habe ich eine neue Liste von Content hinzugefügt und
 * als Membereigenschaft gespeichert.*/
+
+    /*EN:
+* This is my repository which contains the hardcoded content of my app.*/
 
 class AppRepository {
 
