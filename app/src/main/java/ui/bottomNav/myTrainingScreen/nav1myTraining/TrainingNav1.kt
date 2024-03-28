@@ -43,8 +43,8 @@ class TrainingNav1 : Fragment() {
         }
 
         viewModel.savedExercises.observe(viewLifecycleOwner){
-            var savedExercises = it.filter { it.isSaved }
-            binding.rvFavouriteExercises.adapter = ItemAdapter(savedExercises,viewModel)
+//            var savedExercises = it.filter { it.isSaved }
+            binding.rvFavouriteExercises.adapter = ItemAdapter(it,viewModel)
         }
     }
 

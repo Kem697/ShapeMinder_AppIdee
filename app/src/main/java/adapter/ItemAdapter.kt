@@ -109,18 +109,26 @@ class ItemAdapter(
                 holder.binding.root.findNavController().navigate(R.id.exercisePreviewFragment)
             }
 
-            holder.binding.saveExerciseBtn.setOnClickListener {
-                if (!content.isSaved) {
-                    viewModel.isSaved(!content.isSaved)
+            var saveBtn = holder.binding.saveExerciseBtn
+            saveBtn.setImageResource(if (content.isSaved)R.drawable.favorite_fill1_wght400_grad0_opsz24 else R.drawable.favorite_fill0_wght400_grad0_opsz24)
+            saveBtn.setOnClickListener {
+                if (content.isSaved) {
+//                    viewModel.isSaved(content.isSaved,content)
+                    viewModel.isSaved(content.isSaved,content)
+                    viewModel.savedExercises.value?.removeAt(position)
+                    viewModel.savedExercises.value?.remove(content)
                     holder.binding.saveExerciseBtn.setImageResource(R.drawable.favorite_fill0_wght400_grad0_opsz24)
-                    var tag  = "Fehler"
-                    Log.e(tag,"Element:$position")
-                } else {
-                    viewModel.isSaved(!content.isSaved)
                     content.isSaved = false
-                    holder.binding.saveExerciseBtn.setImageResource(R.drawable.favorite_fill1_wght400_grad0_opsz24)
                     var tag  = "Fehler"
-                    Log.e(tag,"Element:$position")
+                    Log.e(tag,"Element:${position} ${content.isSaved} ${viewModel.savedExercises.value}")
+                } else {
+//                    viewModel.isSaved(!content.isSaved)
+//                    viewModel.savedExercises.value?.remove(content)
+                    viewModel.isSaved(!content.isSaved,content)
+                    holder.binding.saveExerciseBtn.setImageResource(R.drawable.favorite_fill1_wght400_grad0_opsz24)
+                    content.isSaved = true
+                    var tag  = "Fehler"
+                    Log.e(tag,"Element:$position ${content.isSaved} ${viewModel.savedExercises.value}")
                 }
             }
         }

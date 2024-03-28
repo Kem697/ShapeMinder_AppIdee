@@ -82,12 +82,9 @@ class HomeViewModel : ViewModel() {
         get() = _exercisesByBodyparts
 
 
-
-    private var _savedExercises = MutableLiveData<List<Content>>()
-    val savedExercises: LiveData<List<Content>>
-
+    private var _savedExercises = MutableLiveData<MutableList<Content>>()
+    val savedExercises: LiveData<MutableList<Content>>
         get() = _savedExercises
-
 
 
     /*DE:
@@ -120,8 +117,6 @@ class HomeViewModel : ViewModel() {
 *This method is used to check my data set afterwards with
 * to check a property and filter it according to the passed argument.
 * The method is then called in my GridAdapter */
-
-
 
 
     fun filterExercisesByBodypart(bodypart: String) {
@@ -246,30 +241,46 @@ class HomeViewModel : ViewModel() {
     }
 
 
+/*
     fun isSaved(saved: Boolean) {
         var savedExercises: MutableList<Content> = mutableListOf()
         for (exercise in _exercisesByBodyparts.value!!) {
             exercise.isSaved = saved
             savedExercises.add(exercise)
         }
-        _savedExercises.value= savedExercises
+
+        _savedExercises.value = savedExercises
     }
+*/
 
 
-//    fun isSaved(saved: Boolean, exercise: Content) {
-//        val updatedExercises = _savedExercises.value?.toMutableList() ?: mutableListOf()
-//
-//        val index = updatedExercises.indexOfFirst { it == exercise }
-//        if (index != -1) {
-//            // Wenn die Übung in der Liste vorhanden ist, aktualisiere den Zustand
-//            updatedExercises[index].isSaved = saved
-//        } else {
-//            // Ansonsten füge die Übung zur Liste hinzu
-//            updatedExercises.add(exercise.copy(isSaved = saved))
-//        }
-//
-//        _savedExercises.value = updatedExercises
-//    }
+      /*  fun isSaved(saved: Boolean, exercise: Content) {
+            val updatedExercises = _savedExercises.value?.toMutableList() ?: mutableListOf()
+
+            val index = updatedExercises.indexOfFirst { it == exercise }
+            if (index != -1) {
+                // Wenn die Übung in der Liste vorhanden ist, aktualisiere den Zustand
+                updatedExercises[index].isSaved = saved
+            } else {
+                // Ansonsten füge die Übung zur Liste hinzu
+                updatedExercises.add(exercise.copy(isSaved = saved))
+            }
+
+            _savedExercises.value = updatedExercises
+        }*/
+
+
+        fun isSaved(saved: Boolean, exercise: Content) {
+            val updatedExercises = _savedExercises.value?.toMutableList() ?: mutableListOf()
+
+            if (saved) {
+                updatedExercises.add(exercise)
+            } else {
+                updatedExercises.remove(exercise)
+            }
+
+            _savedExercises.value = updatedExercises
+        }
 
 
 }
