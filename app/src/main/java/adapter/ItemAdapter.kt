@@ -109,6 +109,10 @@ class ItemAdapter(
                 holder.binding.root.findNavController().navigate(R.id.exercisePreviewFragment)
             }
 
+            /*This explantation and improvement of this code is necessary.
+            * I need to relocate the code parts, which assign the erasing of my exercises
+            * from saved exercise list. These parts ar line 122 and 123.*/
+
             var saveBtn = holder.binding.saveExerciseBtn
             saveBtn.setImageResource(if (content.isSaved)R.drawable.favorite_fill1_wght400_grad0_opsz24 else R.drawable.favorite_fill0_wght400_grad0_opsz24)
             saveBtn.setOnClickListener {

@@ -271,7 +271,7 @@ class HomeViewModel : ViewModel() {
 
 
         fun isSaved(saved: Boolean, exercise: Content) {
-            val updatedExercises = _savedExercises.value?.toMutableList() ?: mutableListOf()
+            val updatedExercises = _savedExercises.value?: mutableListOf()
 
             if (saved) {
                 updatedExercises.add(exercise)
@@ -281,6 +281,4 @@ class HomeViewModel : ViewModel() {
 
             _savedExercises.value = updatedExercises
         }
-
-
 }
