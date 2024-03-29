@@ -161,7 +161,7 @@ class ExercisePreviewFragment : Fragment() {
     }
 
 
-/*
+    /*
     fun restartVideo() {
 //        var restartBtn =
         val filename = R.raw.kh_bizespcurls
