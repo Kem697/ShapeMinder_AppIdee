@@ -275,8 +275,12 @@ class HomeViewModel : ViewModel() {
 
             if (saved) {
                 updatedExercises.add(exercise)
-            } else {
+                var tag  = "Fehler"
+                Log.e(tag,"Übung wirdd gespeichert!!:${exercise} Zustand: ${saved}. Die Liste enthält: ${updatedExercises.size}")
+            } else  {
                 updatedExercises.remove(exercise)
+                var tag  = "Fehler"
+                Log.e(tag,"Übung wird entfernt!!:${exercise} Zustand: ${saved} ${updatedExercises}")
             }
 
             _savedExercises.value = updatedExercises
