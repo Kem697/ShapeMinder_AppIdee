@@ -136,14 +136,14 @@
             app:strokeColor="@color/white"
             app:strokeWidth="2dp">
 
-            <ImageView
+            <VideoView
                 android:id="@+id/viedeo_View"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
                 android:src="@drawable/bp2legs">
 
-            </ImageView>
+            </VideoView>
 
         </com.google.android.material.card.MaterialCardView>
 

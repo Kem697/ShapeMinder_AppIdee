@@ -1,10 +1,13 @@
 package ui.bottomNav.myTrainingScreen.nav3exercises
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.MediaController
+import android.widget.VideoView
 import androidx.core.view.isInvisible
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -81,7 +84,6 @@ class ExercisePreviewFragment : Fragment() {
             }
         }
 
-
     }
 
 
@@ -104,5 +106,16 @@ class ExercisePreviewFragment : Fragment() {
             findNavController().navigateUp()
         }
     }
+
+
+//    fun playVideo(){
+//        val filename = "video"
+//        val filePlace = "android.resource://" + packageName + "/raw/" + R.raw.video
+//        val videoView = binding.viedeoView.setVideoURI()
+//        videoView.setVideoURI(Uri.parse(filePlace))
+//        videoView.setMediaController(MediaController( requireContext()))
+//        videoView.start()
+//    }
+
 
 }
