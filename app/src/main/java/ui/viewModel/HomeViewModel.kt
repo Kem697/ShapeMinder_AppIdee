@@ -284,21 +284,31 @@ class HomeViewModel : ViewModel() {
     * wobei entsprechende Protokolleinträge erstellt werden, um den Vorgang zu verfolgen.*/
 
     fun isSaved(saved: Boolean, exercise: Content) {
-            val updatedExercises = _savedExercises.value?: mutableListOf()
+        val updatedExercises = _savedExercises.value ?: mutableListOf()
 
-            if (saved) {
-                updatedExercises.add(exercise)
-                var tag  = "Fehler"
-                Log.e(tag,"Übung wirdd gespeichert!!:${exercise} Zustand: ${saved}. Die Liste enthält: ${updatedExercises.size}")
-            } else  {
-                updatedExercises.remove(exercise)
-                var tag  = "Fehler"
-                Log.e(tag,"Übung wird entfernt!!:${exercise} Zustand: ${saved} ${updatedExercises}")
-            }
-
-            _savedExercises.value = updatedExercises
+        if (saved) {
+            updatedExercises.add(exercise)
+            var tag = "Fehler"
+            Log.e(
+                tag,
+                "Übung wirdd gespeichert!!:${exercise} Zustand: ${saved}. Die Liste enthält: ${updatedExercises.size}"
+            )
+        } else {
+            updatedExercises.remove(exercise)
+            var tag = "Fehler"
+            Log.e(tag, "Übung wird entfernt!!:${exercise} Zustand: ${saved} ${updatedExercises}")
         }
+
+//        updatedExercises.let {
+//            it.forEach {
+//                it.isInExerciseList = false
+//            }
+//        }
+
+
+        _savedExercises.value = updatedExercises
     }
+}
 
 
 

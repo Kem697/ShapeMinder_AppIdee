@@ -42,7 +42,6 @@ import model.Content
 import ui.viewModel.HomeViewModel
 
 
-
 class ItemAdapter(
     private val dataset: List<Content>,
     private val viewModel: HomeViewModel
@@ -64,9 +63,12 @@ class ItemAdapter(
 
     override fun getItemViewType(position: Int): Int {
         val item = dataset[position]
+        val savedExercise = dataset[position].isSaved
         return if (item.isExercise && !item.isInExerciseList) {
             smallContentCard
-        } else if (item.isExercise && item.isInExerciseList){
+        } /*else if (savedExercise && item.isExercise &&!item.isInExerciseList) {
+            smallContentCard
+        }*/ else if (item.isExercise && item.isInExerciseList) {
             exerciseListCards
         } else {
             contentCard
@@ -79,13 +81,17 @@ class ItemAdapter(
             val binding =
                 ListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             ContentItemViewHolder(binding)
-        }  else if (viewType ==exerciseListCards){
+        } else if (viewType == exerciseListCards) {
             val binding =
-               ListItemExerciseBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                ListItemExerciseBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             ExerciseListItemViewHolder(binding)
         } else {
-            val binding = ListItemMyTrainingBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-                SmallContentItemViewHolder(binding)
+            val binding = ListItemMyTrainingBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+            SmallContentItemViewHolder(binding)
         }
     }
 
@@ -98,9 +104,7 @@ class ItemAdapter(
                 viewModel.navigateDetailView(content)
                 holder.binding.root.findNavController().navigate(R.id.homeContentDetailView)
             }
-        }
-
-        else if (holder is ExerciseListItemViewHolder){
+        } else if (holder is ExerciseListItemViewHolder) {
             holder.binding.contentImage.setImageResource(content.imageRessource)
             holder.binding.contentTitle.setText(content.stringRessourceTitle)
             holder.binding.contentTextSnippet.setText(content.stringRessourceText)
@@ -133,25 +137,34 @@ class ItemAdapter(
             * */
 
             var saveBtn = holder.binding.saveExerciseBtn
-            saveBtn.setImageResource(if (content.isSaved)R.drawable.favorite_fill1_wght400_grad0_opsz24 else R.drawable.favorite_fill0_wght400_grad0_opsz24)
+            saveBtn.setImageResource(if (content.isSaved) R.drawable.favorite_fill1_wght400_grad0_opsz24 else R.drawable.favorite_fill0_wght400_grad0_opsz24)
             saveBtn.setOnClickListener {
                 if (content.isSaved) {
-                    viewModel.isSaved(!content.isSaved,content)
+                    viewModel.isSaved(!content.isSaved, content)
                     holder.binding.saveExerciseBtn.setImageResource(R.drawable.favorite_fill0_wght400_grad0_opsz24)
                     content.isSaved = false
-                    var tag  = "Fehler"
-                    Log.e(tag,"Ungespeichertes Element:${position} ${content.isSaved} ${viewModel.savedExercises.value}")
+                    var tag = "Fehler"
+                    Log.e(
+                        tag,
+                        "Ungespeichertes Element:${position} ${content.isSaved} ${viewModel.savedExercises.value}"
+                    )
                 } else {
-                    viewModel.isSaved(!content.isSaved,content)
+                    viewModel.isSaved(!content.isSaved, content)
                     holder.binding.saveExerciseBtn.setImageResource(R.drawable.favorite_fill1_wght400_grad0_opsz24)
                     content.isSaved = true
-                    var tag  = "Fehler"
-                    Log.e(tag,"Gespeichertes Element:$position ${content.isSaved} ${viewModel.savedExercises.value}")
+                    var tag = "Fehler"
+                    Log.e(
+                        tag,
+                        "Gespeichertes Element:$position ${content.isSaved} ${viewModel.savedExercises.value}"
+                    )
                 }
             }
         }
 
-        else if (holder is SmallContentItemViewHolder) {
+
+
+
+         else if (holder is SmallContentItemViewHolder) {
             holder.binding.contentImage.setImageResource(content.imageRessource)
             holder.binding.contentTitle.setText(content.stringRessourceTitle)
             holder.binding.materialCardView.setOnClickListener {
@@ -159,6 +172,8 @@ class ItemAdapter(
                 holder.binding.root.findNavController().navigate(R.id.homeContentDetailView)
             }
         }
+
+
     }
 
     override fun getItemCount(): Int {
