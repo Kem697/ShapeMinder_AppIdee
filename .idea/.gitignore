@@ -1,3 +1,9 @@
 # Default ignored files
 /shelf/
+
+res/
+raw.kh_bizepscurls.mp4
+
+
+# Ignore workspace.xml
 /workspace.xml
