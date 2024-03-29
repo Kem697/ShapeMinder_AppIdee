@@ -168,8 +168,13 @@ class ItemAdapter(
             holder.binding.contentImage.setImageResource(content.imageRessource)
             holder.binding.contentTitle.setText(content.stringRessourceTitle)
             holder.binding.materialCardView.setOnClickListener {
-                viewModel.navigateDetailView(content)
-                holder.binding.root.findNavController().navigate(R.id.homeContentDetailView)
+                if (content.isSaved && !content.isInExerciseList){
+                    viewModel.navigateDetailView(content)
+                    holder.binding.root.findNavController().navigate(R.id.exercisePreviewFragment)
+                } else{
+                    viewModel.navigateDetailView(content)
+                    holder.binding.root.findNavController().navigate(R.id.homeContentDetailView)
+                }
             }
         }
 

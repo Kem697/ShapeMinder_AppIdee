@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isInvisible
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentExercisePreviewBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import ui.viewModel.HomeViewModel
 
 
@@ -80,6 +82,21 @@ class ExercisePreviewFragment : Fragment() {
         }
 
 
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        var navigationBar =
+            requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        navigationBar.isInvisible = true
+    }
+
+    override fun onStop() {
+        super.onStop()
+        var navigationBar =
+        requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        navigationBar.isInvisible = false
     }
 
     fun navigateBack(){
