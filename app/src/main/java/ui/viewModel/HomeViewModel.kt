@@ -241,36 +241,49 @@ class HomeViewModel : ViewModel() {
     }
 
 
-/*
-    fun isSaved(saved: Boolean) {
-        var savedExercises: MutableList<Content> = mutableListOf()
-        for (exercise in _exercisesByBodyparts.value!!) {
-            exercise.isSaved = saved
-            savedExercises.add(exercise)
-        }
-
-        _savedExercises.value = savedExercises
-    }
+    /*EN:
+ *This code is used to update the save status of an exercise
+ *and to manage the list of saved exercises accordingly.
+ *The function expects two parameters that indicate whether the exercises should be saved
+ *or not. With `val updatedExercises = _savedExercises.value?: mutableListOf()`:
+ *the list of updated exercises is retrieved from the LiveData object `_savedExercises`.
+ *If this LiveData object has not yet been initialized, an empty list is created.
+ *In the `if (saved) { ... } else { ... }` statements are checked,
+ *whether the exercise should be saved (`saved` is true) or not (false).
+ *Depending on this, the exercise is either added to the list or removed from the list.
+ *In the block for the case that the exercise is to be saved (`saved == true`),
+ *the exercise `exercise` is added to the list of updated exercises (`updatedExercises.add(exercise)`).
+ *In the block for the case that the exercise should not be saved (`saved == false`),
+ *The exercise `exercise` is removed from the list of updated exercises (`updatedExercises.remove(exercise)`).
+ * With `_savedExercises.value = updatedExercises`: the list of updated exercises is finally added back to the LiveData object.
+ * exercises is reassigned to the LiveData object `_savedExercises` so that all observers can be informed of the changes.
+ * To summarize, this function is used,
+ * to update the save status of an exercise and manage the list of saved exercises,
+ * creating corresponding log entries to track the process.
 */
 
 
-      /*  fun isSaved(saved: Boolean, exercise: Content) {
-            val updatedExercises = _savedExercises.value?.toMutableList() ?: mutableListOf()
+    /*DE:
+    *Dieser Code dient dazu, den Speicherstatus einer Übung
+    *zu aktualisieren und die Liste der gespeicherten Übungen entsprechend zu verwalten.
+    *Die Funktion erwarte zwei Parameter, die angeben, ob die Übungen gespeichert werden soll
+    *oder nicht. Mit `val updatedExercises = _savedExercises.value?: mutableListOf()`:
+    *wird die Liste der aktualisierten Übungen aus dem LiveData-Objekt `_savedExercises` geholt.
+    *Falls dieses LiveData-Objekt noch nicht initialisiert wurde, wird eine leere Liste erstellt.
+    *In den `if (saved) { ... } else { ... }` Anweisungen wird überprüft,
+    *ob die Übung gespeichert werden soll (`saved` ist true) oder nicht (false).
+    *Abhängig davon wird entweder die Übung zur Liste hinzugefügt oder aus der Liste entfernt.
+    *Im Block für den Fall, dass die Übung gespeichert werden soll (`saved == true`),
+    *wird die Übung `exercise` der Liste der aktualisierten Übungen hinzugefügt (`updatedExercises.add(exercise)`).
+    *Im Block für den Fall, dass die Übung nicht gespeichert werden soll (`saved == false`),
+    *wird die Übung `exercise` aus der Liste der aktualisierten Übungen entfernt (`updatedExercises.remove(exercise)`).
+    * Mit `_savedExercises.value = updatedExercises`: wird schließlich wird die Liste der aktualisierten
+    * Übungen wieder dem LiveData-Objekt `_savedExercises` zugewiesen, damit alle Observer
+    * über die Änderungen informiert werden können.Zusammenfassend wird diese Funktion verwendet,
+    * um den Speicherstatus einer Übung zu aktualisieren und die Liste der gespeicherten Übungen zu verwalten,
+    * wobei entsprechende Protokolleinträge erstellt werden, um den Vorgang zu verfolgen.*/
 
-            val index = updatedExercises.indexOfFirst { it == exercise }
-            if (index != -1) {
-                // Wenn die Übung in der Liste vorhanden ist, aktualisiere den Zustand
-                updatedExercises[index].isSaved = saved
-            } else {
-                // Ansonsten füge die Übung zur Liste hinzu
-                updatedExercises.add(exercise.copy(isSaved = saved))
-            }
-
-            _savedExercises.value = updatedExercises
-        }*/
-
-
-        fun isSaved(saved: Boolean, exercise: Content) {
+    fun isSaved(saved: Boolean, exercise: Content) {
             val updatedExercises = _savedExercises.value?: mutableListOf()
 
             if (saved) {
@@ -285,4 +298,9 @@ class HomeViewModel : ViewModel() {
 
             _savedExercises.value = updatedExercises
         }
-}
+    }
+
+
+
+
+

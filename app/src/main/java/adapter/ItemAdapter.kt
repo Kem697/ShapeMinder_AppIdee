@@ -109,9 +109,28 @@ class ItemAdapter(
                 holder.binding.root.findNavController().navigate(R.id.exercisePreviewFragment)
             }
 
-            /*This explantation and improvement of this code is necessary.
-            * I need to relocate the code parts, which assign the erasing of my exercises
-            * from saved exercise list. These parts ar line 122 and 123.*/
+
+            /*DE.
+            *Der Code setzt das Bild der saveBtn je nach Zustand des Inhalts.
+            *Wenn der Inhalt nicht gespeichert ist, erscheint die Schaltfläche als schwarz umrandetes Herz, andernfalls
+            *erscheint sie rot ausgefüllt. Klickt der Benutzer dann auf die Schaltfläche, führt das Programm den else{}
+            *Block aus und die Schaltfläche ändert ihr Aussehen in ein rot gefülltes Herz. Außerdem
+            *wird die Übung in den savedExercise liveData hinzugefügt. Das Speichern der Übung wird
+            *wird in der Methode viewModel.isSaved() behandelt. Wenn der Benutzer auf die Schaltfläche "Speichern" klickt, wobei die Schaltfläche als rot gefülltes Herz erscheint,
+            *führt der Code den if (content.isSaved) Block aus. In diesem Block ändert die Schaltfläche
+            *ändert die Schaltfläche ihr Aussehen in ihr Standardaussehen und entfernt die gespeicherte Übung.
+            */
+
+            /*EN:
+            * The code sets the image of the saveBtn depending on the state of the content.
+            * If the content is not saved, the button appears as a black bordered heart, else
+            * it will appear red filled. Then user clicks the button, the program executes the else{}
+            * block and the button changes his appearance to a red filled heart. Also
+            * the exercise will be added in the savedExercise liveData. The saving of the exercise will
+            * be handled in the viewModel.isSaved() method. If the user clicks the save button, where the button appears as a red filled heart ,
+            * the code executes the if (content.isSaved) block. In this block the button
+            * changes his appearance to its default appearance and removes the saved exercise.
+            * */
 
             var saveBtn = holder.binding.saveExerciseBtn
             saveBtn.setImageResource(if (content.isSaved)R.drawable.favorite_fill1_wght400_grad0_opsz24 else R.drawable.favorite_fill0_wght400_grad0_opsz24)
