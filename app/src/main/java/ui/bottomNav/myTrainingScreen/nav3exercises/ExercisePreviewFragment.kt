@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentExercisePreviewBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import model.Content
 import ui.viewModel.HomeViewModel
 
 
@@ -87,6 +88,7 @@ class ExercisePreviewFragment : Fragment() {
                     binding.bodyPartView.setImageResource(R.drawable.bp6chest)
                 }
             }
+            saveExercise(it)
         }
 
         playVideo()
@@ -172,6 +174,39 @@ class ExercisePreviewFragment : Fragment() {
 
     }
 */
+
+
+    /*DE:
+    * Ich habe in die Detailansicht eine Funktion implementiert, welche die Speicher-
+    * funktion in der Detailansicht der Fitnessübung ermöglicht. Die Funktion erwartet
+    * als Parameter ein Objekt der Klasse Content. Hierbei handelt es sich, um die
+    * Kraftitrainingsübung, dessen Speicherzustand genändert werden soll. Im Endeffekt
+    * ist der Code fast identisch mit dem Code aus der ItemAdapter.kt. */
+
+    /*En:
+     * Ive implemented a function to save the selected content. The code is similar
+     * to the code in the ItemAdapter class, but the main distinction of this function
+     * is that it expects an object as a parameter. This object is the selected training
+     * exercises  due will observed as liveData. Hence the code will invoked in the observer,
+     * their i can set the related liveData in this function.
+      */
+
+
+    fun saveExercise(content: Content){
+        var saveBtn = binding.saveExerciseBtn
+        saveBtn.setImageResource(if (content.isSaved) R.drawable.favorite_fill1_wght400_grad0_opsz24 else R.drawable.favorite_fill0_wght400_grad0_opsz24)
+        saveBtn.setOnClickListener {
+            if (content.isSaved) {
+                viewModel.isSaved(!content.isSaved, content)
+                binding.saveExerciseBtn.setImageResource(R.drawable.favorite_fill0_wght400_grad0_opsz24)
+                content.isSaved = false
+            } else {
+                viewModel.isSaved(!content.isSaved, content)
+                binding.saveExerciseBtn.setImageResource(R.drawable.favorite_fill1_wght400_grad0_opsz24)
+                content.isSaved = true
+            }
+        }
+    }
 
 
 }

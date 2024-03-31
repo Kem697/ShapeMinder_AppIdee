@@ -172,6 +172,19 @@
             app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
 
 
+        <ImageButton
+            android:id="@+id/saveExerciseBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="16dp"
+            android:layout_marginTop="27dp"
+            android:backgroundTint="@color/white"
+            android:scaleType="centerCrop"
+            android:src="@drawable/favorite_fill0_wght400_grad0_opsz24"
+            app:layout_constraintStart_toEndOf="@+id/shareBtn"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/addTrainingBtn"
             android:layout_width="150dp"
