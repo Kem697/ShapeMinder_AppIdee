@@ -185,7 +185,6 @@ class ExercisePreviewFragment : Fragment() {
     }
 */
 
-
     /*DE:
     * Ich habe in die Detailansicht eine Funktion implementiert, welche die Speicher-
     * funktion in der Detailansicht der Fitnessübung ermöglicht. Die Funktion erwartet
