@@ -91,7 +91,7 @@ class ExercisePreviewFragment : Fragment() {
             saveExercise(it)
         }
 
-        playVideo()
+//        playVideo()
 
     }
 
@@ -125,7 +125,17 @@ class ExercisePreviewFragment : Fragment() {
     }
 
 
-    /*Kommentieren.....*/
+    /*Kommentieren
+    DE: Die Playvideo Funktion funktioniert.
+    Ich habe sie jedoch auskommentiert, da ich Probleme beim
+    Pushen auf GitHub habe, wenn ich das Video in meinem Ressourcenmanager
+    hinterlegt habe. Dementsprechend habe ich mich entschieden das Video
+    aus meinem Ressourcenmanager vorerst zu entfernen. Dadurch
+    funktioniert die Funktion aber nicht, weil es ein Video zum
+    Laden erwartet.......*/
+
+
+/*
     fun playVideo() {
         var playBtn = binding.playBtn
         val filename = R.raw.kh_bizespcurls
@@ -161,6 +171,7 @@ class ExercisePreviewFragment : Fragment() {
             }
         }
     }
+*/
 
 
     /*
