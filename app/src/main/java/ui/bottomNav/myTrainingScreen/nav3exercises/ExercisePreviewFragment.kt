@@ -173,7 +173,6 @@ class ExercisePreviewFragment : Fragment() {
     }
 */
 
-
     /*
     fun restartVideo() {
 //        var restartBtn =
