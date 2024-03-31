@@ -134,7 +134,6 @@ class ExercisePreviewFragment : Fragment() {
     funktioniert die Funktion aber nicht, weil es ein Video zum
     Laden erwartet.......*/
 
-
 /*
     fun playVideo() {
         var playBtn = binding.playBtn
