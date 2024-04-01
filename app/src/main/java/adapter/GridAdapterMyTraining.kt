@@ -83,7 +83,6 @@ otherwise a new view is blown up. In this method, the data object is bound to th
 This is essentially the functionality of the `GridAdapter`. It connects the data in `dataset` with the view elements in `R.layout.grid_item_bodyparts` and ensures that they are displayed correctly in the GridView.
 
 */
-
 class GridAdapterMyTraining(
 
     private val dataset: List<Content>,
