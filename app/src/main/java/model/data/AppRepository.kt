@@ -73,6 +73,7 @@ class AppRepository {
             Content(R.string.weLH_Benchpress,R.string.weKH_ShoulderpressInstructions, R.drawable.bp1arms,true,true,"Brust",false),
             Content(R.string.weLH_Incline_Benchpress,R.string.weKH_ShoulderpressInstructions, R.drawable.bp1arms,true,true,"Brust",false),
             Content(R.string.weKH_Incline_Benchpress,R.string.weKH_ShoulderpressInstructions, R.drawable.bp1arms,true,true,"Brust",false),
+            Content(R.string.we_Dips,R.string.we_DipsInstructions, R.drawable.bp1arms,true,true,"Brust",false),
         )
     }
 

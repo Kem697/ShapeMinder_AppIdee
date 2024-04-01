@@ -95,4 +95,7 @@ class TrainingNav1 : Fragment() {
         }
     }
 
+
+
+
 }

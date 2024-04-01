@@ -11,6 +11,7 @@ import android.widget.EditText
 import androidx.core.view.isInvisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.activityViewModels
 import androidx.viewpager.widget.ViewPager
 import com.example.shapeminder_appidee.MainActivity
 import com.example.shapeminder_appidee.R
@@ -20,6 +21,7 @@ import com.google.android.material.tabs.TabLayout
 import ui.bottomNav.myTrainingScreen.nav1myTraining.TrainingNav1
 import ui.bottomNav.myTrainingScreen.nav3exercises.ExercisesNav3
 import ui.bottomNav.myTrainingScreen.nav2progression.ProgressionNav2
+import ui.viewModel.HomeViewModel
 
 
 class MyTrainingScreen : Fragment() {
@@ -27,6 +29,7 @@ class MyTrainingScreen : Fragment() {
 
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager
+    val viewModel: HomeViewModel by activityViewModels()
 
 
 
@@ -89,6 +92,11 @@ class MyTrainingScreen : Fragment() {
         navigationBar.isInvisible = false
         var tag = "Pause"
         Log.e(tag,"Ist der Screen pausiert?")
+    }
+
+
+    override fun onStop() {
+        super.onStop()
         setDefaultHint()
     }
 
@@ -116,6 +124,30 @@ class MyTrainingScreen : Fragment() {
         }
 
     }
+
+
+
+//    fun searchInput() {
+//        var searchBar = requireActivity().findViewById<EditText>(R.id.myT_searchBar_textInput)
+//        val context = requireContext()
+//        searchBar.addTextChangedListener { editable ->
+//            var userInput = editable.toString()
+////            var bodyPart = requireActivity().findViewById<>()binding.title.text.toString()
+//            if (userInput.isNotBlank()) {
+////                binding.myTSearchBar.setText(userInput)
+//                var tag = "Filter???"
+//                Log.i(tag, "Werden die Inhalte hier gefiltert. :${userInput}")
+//                viewModel.filterSavedExercisesByTitle(userInput)
+//
+////                viewModel.filterExercisesByTitle(userInput, bodyPart, context)
+//            }   else {
+//                searchBar.text.clear()
+////                binding.myTSearchBar.clearText()
+////                viewModel.resetFilter(bodyPart)
+////                viewModel.setOriginalList(orginalExercises,bodyPart)
+//            }
+//        }
+//    }
 
 
 

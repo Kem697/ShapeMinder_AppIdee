@@ -299,15 +299,33 @@ class HomeViewModel : ViewModel() {
             Log.e(tag, "Übung wird entfernt!!:${exercise} Zustand: ${saved} ${updatedExercises}")
         }
 
-//        updatedExercises.let {
-//            it.forEach {
-//                it.isInExerciseList = false
-//            }
-//        }
-
-
         _savedExercises.value = updatedExercises
     }
+
+
+
+
+
+//    fun filterSavedExercisesByTitle(userInput: String, bodypart: String, context: Context) {
+//        viewModelScope.launch {
+//            val filteredExercises = _savedExercises.value?.filter {
+//                val xmlValue = context.getString(it.stringRessourceTitle)
+//                xmlValue.contains(userInput, ignoreCase = true)
+//            }
+//            if (filteredExercises != null) {
+//                if (filteredExercises.isNotEmpty()) {
+//                    _savedExercises.value = filteredExercises.toMutableList()
+//                    var tag4 = "Filter in ViewModel??"
+//                    Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
+//                } else {
+//                    resetFilter(bodypart)
+//                }
+//            }
+//        }
+//    }
+
+
+
 }
 
 

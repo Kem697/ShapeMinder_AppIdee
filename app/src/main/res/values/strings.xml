@@ -39,6 +39,8 @@
     <string name="weLH_Benchpress">LH Bankdrücken</string>
     <string name="weLH_Incline_Benchpress">LH Schrägbankdrücken</string>
     <string name="weKH_Incline_Benchpress">KH Schrägbankdrücken</string>
+    <string name="we_Dips">Dips</string>
+
     <string name="weSZ_Push_ups">Liegestütze</string>
     <string name="weKH_Shoulderpress">KH Schulterdrücken</string>
     <string name="we_Crunches">Crunches</string>
@@ -55,6 +57,7 @@
     <string name="weLH_BicepscurlsInstructions">1</string>
     <string name="weSZ_BicepscurlsInstructions">2</string>
     <string name="weKH_ShoulderpressInstructions">Damit machst du</string>
+    <string name="we_DipsInstructions">Das sind...</string>
     <string name="we_Pull_upsInstructions">12</string>
     <string name="we_CrunchesInstructions">Crunches</string>
     <string name="weKH_BenchpressInstructions">1</string>

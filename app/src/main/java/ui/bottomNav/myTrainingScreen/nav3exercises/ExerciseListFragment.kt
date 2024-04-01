@@ -134,9 +134,6 @@ class ExerciseListFragment : Fragment() {
 
     * */
 
-    fun saveExercise(){
-    }
-
 
     fun searchInput() {
         var searchBar = binding.myTSearchBarTextInput
@@ -169,7 +166,7 @@ class ExerciseListFragment : Fragment() {
 
     fun sortRadioGroup() {
         var dialog = BottomSheetDialog(activity as MainActivity, R.style.transparent)
-        dialog.setContentView(R.layout.dialog_sheet)
+        dialog.setContentView(R.layout.dialog_sheet_sort)
         dialog.setCancelable(true)
         dialog.setCanceledOnTouchOutside(true)
         var isSortedDescending = false

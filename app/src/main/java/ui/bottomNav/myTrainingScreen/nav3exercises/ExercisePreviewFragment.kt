@@ -1,5 +1,6 @@
 package ui.bottomNav.myTrainingScreen.nav3exercises
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -89,6 +90,7 @@ class ExercisePreviewFragment : Fragment() {
                 }
             }
             saveExercise(it)
+//            shareExercise()
         }
 
 //        playVideo()
@@ -215,6 +217,25 @@ class ExercisePreviewFragment : Fragment() {
             }
         }
     }
+
+
+
+    /*DE:
+    * Muss überarbeitet werden..*/
+
+/*
+    fun shareExercise(){
+        var sharBtn = binding.shareBtn
+        val url = "https://www.youtube.com/watch?v=2qOOGrcxuTE"
+        sharBtn.setOnClickListener {
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.type = "text/plain"
+            intent.putExtra("Hey, schau dir diese Übung für dein Workout an",url)
+            val chooser = Intent.createChooser(intent, "Teile den Inhalt mit:")
+            startActivity(chooser)
+        }
+    }
+*/
 
 
 }
