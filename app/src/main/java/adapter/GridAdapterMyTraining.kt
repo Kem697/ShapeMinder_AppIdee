@@ -209,7 +209,6 @@ class GridAdapterMyTraining(
         }
 
 
-
         return itemView!!
     }
 
