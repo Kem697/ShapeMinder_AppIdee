@@ -70,7 +70,6 @@ to determine the size of the data source (`dataset`),
 a single item at a specific position and the unique ID of an item.
 These methods are used by the adapter class to provide the data for the GridView.
 
-
 5 Method `getView`**: This method is called when an element of the GridView needs to be displayed.
 If a "recyclable" view (`convertView`) exists, it is reused,
 otherwise a new view is blown up. In this method, the data object is bound to the view elements of the GridView element.
