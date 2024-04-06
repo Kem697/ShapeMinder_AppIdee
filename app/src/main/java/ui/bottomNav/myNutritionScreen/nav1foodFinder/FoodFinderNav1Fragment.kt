@@ -24,7 +24,7 @@ class FoodFinderNav1Fragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentFoodFinderNav1Binding.inflate(layoutInflater)
         return binding.root
     }

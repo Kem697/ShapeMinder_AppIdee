@@ -8,8 +8,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
 import androidx.core.widget.addTextChangedListener
@@ -20,18 +23,19 @@ import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentExerciseListBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.button.MaterialButton
 import model.Content
 import ui.viewModel.HomeViewModel
 
 class ExerciseListFragment : Fragment() {
     private lateinit var binding: FragmentExerciseListBinding
     val viewModel: HomeViewModel by activityViewModels()
-    private lateinit var orginalExercises : List<Content>
+    private lateinit var orginalExercises: List<Content>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentExerciseListBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -45,6 +49,7 @@ class ExerciseListFragment : Fragment() {
         sortRadioGroup()
         searchInput()
         navigateBack()
+        setFilter()
     }
 
     /*DE:
@@ -63,21 +68,21 @@ class ExerciseListFragment : Fragment() {
             requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
         navigationBar.isInvisible = true
 
-    /*DE:
-    *Mit den unten stehende zwei Zeilen setze ich meine Liste von Übungen
-    * auf ihren Ursprungszustand zurück, sobald der Nutzer zum anderen Screen
-    * navigiert. Hierbei über viewmodel.resetFilter meiner Liste der Übungen
-    * aller Körperpartien mit dem contentTitle (also die Körperteile) gefiltert,
-    * um für jede Kategorie den passenden Datensatz an Übungen zu zeigen.
-    * */
+        /*DE:
+        *Mit den unten stehende zwei Zeilen setze ich meine Liste von Übungen
+        * auf ihren Ursprungszustand zurück, sobald der Nutzer zum anderen Screen
+        * navigiert. Hierbei über viewmodel.resetFilter meiner Liste der Übungen
+        * aller Körperpartien mit dem contentTitle (also die Körperteile) gefiltert,
+        * um für jede Kategorie den passenden Datensatz an Übungen zu zeigen.
+        * */
 
-    /*EN:
-    *With the two lines below I reset my list of exercises
-    * to their original state as soon as the user navigates to the other screen
-    * navigates to the other screen. This is done via viewmodel.resetFilter of my list of exercises
-    * of all body parts filtered with the contentTitle (i.e. the body parts),
-    * to show the appropriate data set of exercises for each category.
-    * */
+        /*EN:
+        *With the two lines below I reset my list of exercises
+        * to their original state as soon as the user navigates to the other screen
+        * navigates to the other screen. This is done via viewmodel.resetFilter of my list of exercises
+        * of all body parts filtered with the contentTitle (i.e. the body parts),
+        * to show the appropriate data set of exercises for each category.
+        * */
 
 
         var bodyPart = viewModel.selectedContentTitle.value
@@ -146,11 +151,11 @@ class ExerciseListFragment : Fragment() {
                 var tag = "Filter???"
                 Log.i(tag, "Werden die Inhalte hier gefiltert. :${userInput}")
                 viewModel.filterExercisesByTitle(userInput, bodyPart, context)
-            }   else {
+            } else {
                 searchBar.text.clear()
                 binding.myTSearchBar.clearText()
                 viewModel.resetFilter(bodyPart)
-                viewModel.setOriginalList(orginalExercises,bodyPart)
+                viewModel.setOriginalList(orginalExercises, bodyPart)
             }
         }
     }
@@ -162,6 +167,169 @@ class ExerciseListFragment : Fragment() {
             binding.myTSearchBarTextInput.text.clearSpans()
             binding.myTSearchBar.clearText()
         }
+    }
+
+    fun setFilter() {
+        var dialog = BottomSheetDialog(activity as MainActivity, R.style.transparent)
+        dialog.setContentView(R.layout.dialog_sheet_filter)
+        dialog.setCancelable(true)
+        dialog.setCanceledOnTouchOutside(true)
+
+        binding.setFilterBtn.setOnClickListener {
+            if (!dialog.isShowing) {
+                dialog.show()
+                var resetFilterBtn = dialog.findViewById<Button>(R.id.reset_Btn)
+                var tag = "Button gefunden?"
+                Log.i(tag, "Button wurde nicht gefunden: $resetFilterBtn")
+
+                var sec1AllBtn = dialog.findViewById<ImageButton>(R.id.sec1_all_Btn)
+                var sDumbellExBtn = dialog.findViewById<ImageButton>(R.id.sec1_short_dumbell_Btn)
+                var lDumbellExBtn = dialog.findViewById<ImageButton>(R.id.sec1_long_dumbell_Btn)
+                var bodyweightExBtn = dialog.findViewById<ImageButton>(R.id.sec1_own_bodyweight_Btn)
+
+                var sec2AllBtn = dialog.findViewById<ImageButton>(R.id.sec2_all_Btn)
+                var onlyVideoExBtn = dialog.findViewById<ImageButton>(R.id.sec2_with_video_Btn)
+                var noVideoExBtn = dialog.findViewById<ImageButton>(R.id.sec2_no_video_Btn)
+
+                var resultsBtn = dialog.findViewById<MaterialButton>(R.id.results_Btn)
+                var cancelBtn = dialog.findViewById<MaterialButton>(R.id.cancel_Btn)
+
+
+                resetFilterBtn?.setOnClickListener {
+                    sec1AllBtn?.setImageResource(R.drawable.all_checked)
+                    sec1AllBtn?.isSelected = true
+
+                    sDumbellExBtn?.setImageResource(R.drawable.short_dumbell_unchecked)
+                    sDumbellExBtn?.isSelected = false
+                    lDumbellExBtn?.setImageResource(R.drawable.long_dumbell_unchecked)
+                    lDumbellExBtn?.isSelected = false
+
+                    bodyweightExBtn?.setImageResource(R.drawable.bodyweight_unchecked)
+                    bodyweightExBtn?.isSelected = false
+
+                    sec2AllBtn?.setImageResource(R.drawable.all_checked)
+                    sec2AllBtn?.isSelected = true
+
+                    onlyVideoExBtn?.setImageResource(R.drawable.video_unchecked)
+                    onlyVideoExBtn?.isSelected = false
+
+                    noVideoExBtn?.setImageResource(R.drawable.no_video_unchecked)
+                    noVideoExBtn?.isSelected = false
+                }
+
+                sec1AllBtn?.setImageResource(if (!sec1AllBtn.isSelected) R.drawable.all_checked else R.drawable.all_unchecked)
+                sec1AllBtn?.setOnClickListener {
+                    sec1AllBtn.setImageResource(R.drawable.all_checked)
+                    sDumbellExBtn?.setImageResource(R.drawable.short_dumbell_unchecked)
+                    lDumbellExBtn?.setImageResource(R.drawable.long_dumbell_unchecked)
+                    bodyweightExBtn?.setImageResource(R.drawable.bodyweight_unchecked)
+                    sec1AllBtn.isSelected = true
+                    var tag = "All1 Button"
+                    Log.i(tag,"Der Button wurde AN gewählt?: ${sec1AllBtn.isSelected}")
+
+                }
+
+                sDumbellExBtn?.setImageResource(if (sDumbellExBtn.isSelected) R.drawable.short_dumbell_checked else R.drawable.short_dumbell_unchecked)
+                sDumbellExBtn?.setOnClickListener {
+             /*       if (sDumbellExBtn.isSelected){
+                        sDumbellExBtn.setImageResource(R.drawable.short_dumbell_unchecked)
+                        sec1AllBtn?.setImageResource(R.drawable.all_unchecked)
+                        lDumbellExBtn?.setImageResource(R.drawable.long_dumbell_unchecked)
+                        bodyweightExBtn?.setImageResource(R.drawable.bodyweight_unchecked)
+                        sDumbellExBtn.isSelected = false
+                        var tag = "Kurzhantel Button"
+                        Log.i(tag,"Der Button wurde AB gewählt?: ${sDumbellExBtn.isSelected}")
+                    }*/
+                        sDumbellExBtn.setImageResource(R.drawable.short_dumbell_checked)
+                        sec1AllBtn?.setImageResource(R.drawable.all_unchecked)
+                        lDumbellExBtn?.setImageResource(R.drawable.long_dumbell_unchecked)
+                        bodyweightExBtn?.setImageResource(R.drawable.bodyweight_unchecked)
+                        sDumbellExBtn.isSelected = true
+                        var tag = "Kurzhantel Button"
+                        Log.i(tag,"Der Button wurde AN gewählt?: ${sDumbellExBtn.isSelected}")
+                }
+
+                lDumbellExBtn?.setImageResource(if (lDumbellExBtn.isSelected) R.drawable.long_dumbell_checked else R.drawable.long_dumbell_unchecked)
+                lDumbellExBtn?.setOnClickListener {
+                    lDumbellExBtn.setImageResource(R.drawable.long_dumbell_checked)
+                    sec1AllBtn?.setImageResource(R.drawable.all_unchecked)
+                    sDumbellExBtn?.setImageResource(R.drawable.short_dumbell_unchecked)
+                    bodyweightExBtn?.setImageResource(R.drawable.bodyweight_unchecked)
+                    lDumbellExBtn?.isSelected = true
+                    var tag = "Langhantel Button"
+                    Log.i(tag,"Der Button wurde AN gewählt?: ${lDumbellExBtn.isSelected}")
+                }
+
+                bodyweightExBtn?.setImageResource(if (bodyweightExBtn.isSelected) R.drawable.bodyweight_checked else R.drawable.bodyweight_unchecked)
+                bodyweightExBtn?.setOnClickListener {
+                    bodyweightExBtn.setImageResource(R.drawable.bodyweight_checked)
+                    sec1AllBtn?.setImageResource(R.drawable.all_unchecked)
+                    sDumbellExBtn?.setImageResource(R.drawable.short_dumbell_unchecked)
+                    lDumbellExBtn?.setImageResource(R.drawable.long_dumbell_unchecked)
+                    bodyweightExBtn?.isSelected = true
+                    var tag = "Bodyweight Button"
+                    Log.i(tag,"Der Button wurde AN gewählt?: ${bodyweightExBtn.isSelected}")
+                }
+
+
+                sec2AllBtn?.setImageResource(if (!sec2AllBtn.isSelected) R.drawable.all_checked else R.drawable.all_unchecked)
+                sec2AllBtn?.setOnClickListener {
+                    sec2AllBtn.setImageResource(R.drawable.all_checked)
+                    onlyVideoExBtn?.setImageResource(R.drawable.video_unchecked)
+                    noVideoExBtn?.setImageResource(R.drawable.no_video_unchecked)
+                    sec2AllBtn.isSelected = true
+                    var tag = "All2 Button"
+                    Log.i(tag,"Der Button wurde AN gewählt?: ${sec2AllBtn.isSelected}")
+
+                }
+
+
+                onlyVideoExBtn?.setImageResource(if (onlyVideoExBtn.isSelected) R.drawable.video_checked else R.drawable.video_unchecked)
+                onlyVideoExBtn?.setOnClickListener {
+                    onlyVideoExBtn.setImageResource(R.drawable.video_checked)
+                    sec2AllBtn?.setImageResource(R.drawable.all_unchecked)
+                    noVideoExBtn?.setImageResource(R.drawable.no_video_unchecked)
+                    onlyVideoExBtn.isSelected = true
+                    var tag = "Video Button"
+                    Log.i(tag,"Der Button wurde AN gewählt?: ${onlyVideoExBtn.isSelected}")
+                }
+
+
+                noVideoExBtn?.setImageResource(if (noVideoExBtn.isSelected) R.drawable.no_video_checked else R.drawable.no_video_unchecked)
+                noVideoExBtn?.setOnClickListener {
+                    noVideoExBtn.setImageResource(R.drawable.no_video_checked)
+                    sec2AllBtn?.setImageResource(R.drawable.all_unchecked)
+                    onlyVideoExBtn?.setImageResource(R.drawable.video_unchecked)
+                    noVideoExBtn.isSelected = true
+                    var tag = "Kein Video Button"
+                    Log.i(tag,"Der Button wurde AN gewählt?: ${noVideoExBtn.isSelected}")
+//                    when(noVideoExBtn.isSelected){
+//                        true->{
+//                            dialog.findViewById<TextView>(R.id.sec2_no_video)?.textSize =16f
+//                        }
+//                        false->{
+//                            dialog.findViewById<TextView>(R.id.sec2_no_video)?.textSize =12f
+//                        }
+//                    }
+                }
+
+
+
+                cancelBtn?.setOnClickListener {
+                    dialog.cancel()
+                    sec1AllBtn?.isSelected = false
+                    sDumbellExBtn?.isSelected = false
+                    lDumbellExBtn?.isSelected = false
+                    bodyweightExBtn?.isSelected = false
+
+                    sec2AllBtn?.isSelected = false
+                    onlyVideoExBtn?.isSelected = false
+                    noVideoExBtn?.isSelected = false
+                }
+            }
+        }
+
+
     }
 
     fun sortRadioGroup() {
@@ -176,7 +344,7 @@ class ExerciseListFragment : Fragment() {
             // EN:To show the dialog only once, first check that it is not already shown.
 
             if (!dialog.isShowing) {
-            // DE: Hier wird die Farbe des "Check"-Elements auf die Farbe tertiary gesetzt.
+                // DE: Hier wird die Farbe des "Check"-Elements auf die Farbe tertiary gesetzt.
                 // EN: Here, the color of the "Check" element is set to the color tertiary.
 
                 dialog.findViewById<RadioButton>(R.id.a_z_ascending)!!.buttonTintList =

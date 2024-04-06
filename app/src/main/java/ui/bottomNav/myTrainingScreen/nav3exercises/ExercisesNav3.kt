@@ -21,7 +21,7 @@ class ExercisesNav3 : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentExercisesNav3Binding.inflate(layoutInflater)
         return binding.root
     }

@@ -15,14 +15,10 @@ class RegisterScreen : Fragment() {
     private lateinit var binding: FragmentRegisterScreenBinding
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentRegisterScreenBinding.inflate(layoutInflater)
         return binding.root
     }

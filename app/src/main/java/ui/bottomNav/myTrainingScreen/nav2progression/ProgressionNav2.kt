@@ -15,7 +15,7 @@ class ProgressionNav2 : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentProgressionNav2Binding.inflate(layoutInflater)
         return binding.root
     }

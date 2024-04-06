@@ -25,7 +25,7 @@ class MyHomeContentDetailView : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentHomeContentDetailViewBinding.inflate(layoutInflater)
         return binding.root
     }

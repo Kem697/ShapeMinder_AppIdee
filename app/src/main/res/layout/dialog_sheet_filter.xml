@@ -6,7 +6,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="200dp">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -18,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/reset_Btn"
             android:layout_width="wrap_content"
             android:layout_gravity="end"
@@ -38,24 +39,23 @@
                 android:id="@+id/header_bottomSheet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
                 android:layout_gravity="start|center"
-                android:textStyle="bold"
+                android:layout_margin="16dp"
                 android:text="Filter nach"
-                android:textSize="30dp" />
+                android:textSize="30dp"
+                android:textStyle="bold" />
 
 
             <TextView
                 android:id="@+id/title1_equipment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
                 android:layout_gravity="start|center"
-                android:textStyle="bold"
+                android:layout_margin="16dp"
                 android:fontFamily="@font/montserrat"
                 android:text="Geräte"
-                android:textSize="20dp" />
-
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
 
             <LinearLayout
@@ -66,28 +66,28 @@
                 android:layout_margin="4dp">
 
                 <ImageButton
-                    android:id="@+id/all"
+                    android:id="@+id/sec1_all_Btn"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:text="Alle"
-                    android:scaleType="centerCrop"
-                    android:backgroundTint="@color/white"
                     android:layout_margin="8dp"
+                    android:backgroundTint="@color/white"
                     android:checked="true"
-                    android:src="@drawable/all_unchecked"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/all_checked"
+                    android:text="Alle"
                     android:textSize="20dp">
 
 
                 </ImageButton>
 
                 <ImageButton
-                    android:id="@+id/short_dumbell"
+                    android:id="@+id/sec1_short_dumbell_Btn"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
+                    android:layout_margin="8dp"
                     android:backgroundTint="@color/white"
                     android:scaleType="centerCrop"
                     android:src="@drawable/short_dumbell_unchecked"
-                    android:layout_margin="8dp"
                     android:text="Kurzhantel"
                     android:textSize="20dp">
 
@@ -95,30 +95,28 @@
 
 
                 <ImageButton
-                    android:id="@+id/long_dumbell"
+                    android:id="@+id/sec1_long_dumbell_Btn"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:backgroundTint="@color/white"
-                    android:text="Langhantel"
                     android:layout_margin="8dp"
-                    android:textSize="20dp"
+                    android:backgroundTint="@color/white"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/long_dumbell_unchecked">
+                    android:src="@drawable/long_dumbell_unchecked"
+                    android:text="Langhantel"
+                    android:textSize="20dp">
 
                 </ImageButton>
 
 
-
-
                 <ImageButton
-                    android:id="@+id/own_bodyweight"
+                    android:id="@+id/sec1_own_bodyweight_Btn"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:backgroundTint="@color/white"
                     android:layout_margin="8dp"
-                    android:text="Eigengewicht"
+                    android:backgroundTint="@color/white"
                     android:scaleType="centerCrop"
                     android:src="@drawable/bodyweight_unchecked"
+                    android:text="Eigengewicht"
                     android:textSize="20dp">
 
                 </ImageButton>
@@ -138,10 +136,10 @@
                     android:id="@+id/sec1_all"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12dp"
                     android:layout_marginLeft="48dp"
-                    android:textStyle="bold"
-                    android:text="Alle">
+                    android:text="Alle"
+                    android:textSize="12dp"
+                    android:textStyle="bold">
 
                 </TextView>
 
@@ -149,8 +147,8 @@
                     android:id="@+id/sec1_short_dumbell"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Kurzhantel"
                     android:layout_marginLeft="36dp"
+                    android:text="Kurzhantel"
                     android:textSize="12dp"
                     android:textStyle="bold">
 
@@ -160,10 +158,10 @@
                     android:id="@+id/sec1_long_dumbell"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12dp"
                     android:layout_marginLeft="16dp"
-                    android:textStyle="bold"
-                    android:text="Langhantel">
+                    android:text="Langhantel"
+                    android:textSize="12dp"
+                    android:textStyle="bold">
 
                 </TextView>
 
@@ -171,14 +169,13 @@
                     android:id="@+id/sec1_own_bodyweight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12dp"
-                    android:layout_marginLeft="14dp"
-                    android:textStyle="bold"
                     android:layout_gravity="end"
-                    android:text="Eigengewicht">
+                    android:layout_marginLeft="14dp"
+                    android:text="Eigengewicht"
+                    android:textSize="12dp"
+                    android:textStyle="bold">
 
                 </TextView>
-
 
 
             </LinearLayout>
@@ -188,12 +185,12 @@
                 android:id="@+id/title2_instruction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
                 android:layout_gravity="start|center"
-                android:textStyle="bold"
+                android:layout_margin="16dp"
                 android:fontFamily="@font/montserrat"
                 android:text="Beschreibung"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/section2_instruction_filter"
@@ -203,41 +200,41 @@
                 android:layout_margin="8dp">
 
                 <ImageButton
-                    android:id="@+id/all2"
+                    android:id="@+id/sec2_all_Btn"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:backgroundTint="@color/white"
                     android:layout_margin="8dp"
-                    android:text="Alle"
-                    android:scaleType="centerCrop"
+                    android:backgroundTint="@color/white"
                     android:checked="true"
-                    android:src="@drawable/all_unchecked"
-                    android:textSize="20dp">
-
-                </ImageButton>
-
-                <ImageButton
-                    android:id="@+id/with_video"
-                    android:layout_width="70dp"
-                    android:layout_margin="8dp"
-                    android:backgroundTint="@color/white"
-                    android:layout_height="70dp"
-                    android:text="Nur Video"
-                    android:src="@drawable/video_unchecked"
                     android:scaleType="centerCrop"
+                    android:src="@drawable/all_checked"
+                    android:text="Alle"
                     android:textSize="20dp">
 
                 </ImageButton>
 
                 <ImageButton
-                    android:id="@+id/without_video"
+                    android:id="@+id/sec2_with_video_Btn"
                     android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_margin="8dp"
                     android:backgroundTint="@color/white"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/video_unchecked"
+                    android:text="Nur Video"
+                    android:textSize="20dp">
+
+                </ImageButton>
+
+                <ImageButton
+                    android:id="@+id/sec2_no_video_Btn"
+                    android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:text="Ohne Video"
+                    android:layout_margin="8dp"
+                    android:backgroundTint="@color/white"
                     android:scaleType="centerCrop"
                     android:src="@drawable/no_video_unchecked"
+                    android:text="Ohne Video"
                     android:textSize="20dp">
 
                 </ImageButton>
@@ -252,47 +249,70 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="16dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginRight="16dp">
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp">
 
                 <TextView
                     android:id="@+id/sec2_all"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12dp"
                     android:layout_marginLeft="18dp"
-                    android:textStyle="bold"
-                    android:text="Alle">
+                    android:text="Alle"
+                    android:textSize="12dp"
+                    android:textStyle="bold">
 
                 </TextView>
 
                 <TextView
-                    android:id="@+id/sec2_with_Video"
+                    android:id="@+id/sec2_with_video"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12dp"
-                    android:textStyle="bold"
                     android:layout_marginLeft="56dp"
-                    android:text="Mit Video">
+                    android:text="Mit Video"
+                    android:textSize="12dp"
+                    android:textStyle="bold">
 
                 </TextView>
 
                 <TextView
-                    android:id="@+id/sec2_no_Video"
+                    android:id="@+id/sec2_no_video"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12dp"
-                    android:textStyle="bold"
                     android:layout_marginLeft="30dp"
-                    android:text="Ohne Video">
+                    android:text="Ohne Video"
+                    android:textSize="12dp"
+                    android:textStyle="bold">
 
                 </TextView>
-
 
 
             </LinearLayout>
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/results_Btn"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
+                app:cornerRadius="5dp"
+                android:backgroundTint="@color/black"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="Ergebnisse anzeigen" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cancel_Btn"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginBottom="16dp"
+                app:cornerRadius="5dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/tertiary"
+                android:textSize="18dp"
+                android:text="Abrrechen" />
 
 
         </LinearLayout>
