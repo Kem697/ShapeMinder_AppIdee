@@ -74,6 +74,7 @@
                     android:backgroundTint="@color/white"
                     android:layout_margin="8dp"
                     android:checked="true"
+                    android:src="@drawable/all_unchecked"
                     android:textSize="20dp">
 
 
@@ -118,7 +119,6 @@
                     android:text="Eigengewicht"
                     android:scaleType="centerCrop"
                     android:src="@drawable/bodyweight_unchecked"
-
                     android:textSize="20dp">
 
                 </ImageButton>
@@ -135,6 +135,7 @@
                 android:layout_marginRight="16dp">
 
                 <TextView
+                    android:id="@+id/sec1_all"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="12dp"
@@ -145,6 +146,7 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/sec1_short_dumbell"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Kurzhantel"
@@ -155,6 +157,7 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/sec1_long_dumbell"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="12dp"
@@ -165,6 +168,7 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/sec1_own_bodyweight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="12dp"
@@ -205,7 +209,9 @@
                     android:backgroundTint="@color/white"
                     android:layout_margin="8dp"
                     android:text="Alle"
+                    android:scaleType="centerCrop"
                     android:checked="true"
+                    android:src="@drawable/all_unchecked"
                     android:textSize="20dp">
 
                 </ImageButton>
@@ -216,7 +222,9 @@
                     android:layout_margin="8dp"
                     android:backgroundTint="@color/white"
                     android:layout_height="70dp"
-                    android:text="Kurzhantel"
+                    android:text="Nur Video"
+                    android:src="@drawable/video_unchecked"
+                    android:scaleType="centerCrop"
                     android:textSize="20dp">
 
                 </ImageButton>
@@ -227,7 +235,9 @@
                     android:layout_margin="8dp"
                     android:backgroundTint="@color/white"
                     android:layout_height="70dp"
-                    android:text="Langhantel"
+                    android:text="Ohne Video"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/no_video_unchecked"
                     android:textSize="20dp">
 
                 </ImageButton>
@@ -238,7 +248,7 @@
 
             <LinearLayout
                 android:id="@+id/section2_instructions_subtitles"
-                android:layout_width="wrap_content"
+                android:layout_width="240dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="16dp"
@@ -246,29 +256,34 @@
                 android:layout_marginRight="16dp">
 
                 <TextView
+                    android:id="@+id/sec2_all"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="12dp"
+                    android:layout_marginLeft="18dp"
                     android:textStyle="bold"
                     android:text="Alle">
 
                 </TextView>
 
                 <TextView
+                    android:id="@+id/sec2_with_Video"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="12dp"
                     android:textStyle="bold"
+                    android:layout_marginLeft="56dp"
                     android:text="Mit Video">
 
                 </TextView>
 
                 <TextView
+                    android:id="@+id/sec2_no_Video"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="12dp"
                     android:textStyle="bold"
-                    android:layout_gravity="end"
+                    android:layout_marginLeft="30dp"
                     android:text="Ohne Video">
 
                 </TextView>
