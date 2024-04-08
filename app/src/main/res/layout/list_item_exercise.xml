@@ -27,6 +27,7 @@
             android:backgroundTint="#00FFFFFF"
             android:src="@drawable/favorite_fill0_wght400_grad0_opsz24" />
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -67,6 +68,15 @@
                     android:text="TextView"
                     android:textColor="@color/black"
                     android:textSize="16dp" />
+
+                <ImageView
+                    android:id="@+id/containtsVideo"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/video_unchecked" />
 
 
             </LinearLayout>

@@ -32,6 +32,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shapeminder_appidee.R
@@ -108,6 +109,7 @@ class ItemAdapter(
             holder.binding.contentImage.setImageResource(content.imageRessource)
             holder.binding.contentTitle.setText(content.stringRessourceTitle)
             holder.binding.contentTextSnippet.setText(content.stringRessourceText)
+            holder.binding.containtsVideo.isInvisible = content.video == null
             holder.binding.materialCardView.setOnClickListener {
                 viewModel.navigateDetailView(content)
                 holder.binding.root.findNavController().navigate(R.id.exercisePreviewFragment)
@@ -159,19 +161,14 @@ class ItemAdapter(
                     )
                 }
             }
-        }
-
-
-
-
-         else if (holder is SmallContentItemViewHolder) {
+        } else if (holder is SmallContentItemViewHolder) {
             holder.binding.contentImage.setImageResource(content.imageRessource)
             holder.binding.contentTitle.setText(content.stringRessourceTitle)
             holder.binding.materialCardView.setOnClickListener {
-                if (content.isSaved && !content.isInExerciseList){
+                if (content.isSaved && !content.isInExerciseList) {
                     viewModel.navigateDetailView(content)
                     holder.binding.root.findNavController().navigate(R.id.exercisePreviewFragment)
-                } else{
+                } else {
                     viewModel.navigateDetailView(content)
                     holder.binding.root.findNavController().navigate(R.id.homeContentDetailView)
                 }

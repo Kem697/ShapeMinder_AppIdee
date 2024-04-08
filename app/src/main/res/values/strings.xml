@@ -40,6 +40,8 @@
     <string name="weLH_Incline_Benchpress">LH Schrägbankdrücken</string>
     <string name="weKH_Incline_Benchpress">KH Schrägbankdrücken</string>
     <string name="we_Dips">Dips</string>
+    <string name="we_Lunges">Ausfallschritte</string>
+
 
     <string name="weSZ_Push_ups">Liegestütze</string>
     <string name="weKH_Shoulderpress">KH Schulterdrücken</string>
@@ -54,6 +56,7 @@
     <string name="weBicepscurls">Bizepscurls</string>-->
 
     <string name="weKH_BicepscurlsInstruction">Diese Übung trainiert...</string>
+    <string name="we_LungesInstruction">Diese Übung trainiert...</string>
     <string name="weLH_BicepscurlsInstructions">1</string>
     <string name="weSZ_BicepscurlsInstructions">2</string>
     <string name="weKH_ShoulderpressInstructions">Damit machst du</string>
@@ -74,6 +77,8 @@
     <string name="weLH_RowYtVideo">MwIydAVCeHE</string>
     <string name="weCable_RowYtVideo">V3U-SZ_zw8g</string>
     <string name="weLH_BicepscurlsYtVideo">LTMO0mCZrIY</string>
+    <string name="we_LungesYtVideo">z4ZSs6btVUE</string>
+
 
 
 
