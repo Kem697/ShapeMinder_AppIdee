@@ -23,9 +23,9 @@ class AppRepository {
 
     fun loadContents(): List<Content>{
         return listOf(
-            Content(R.string.title1, R.string.text1, R.drawable.content1_img,false,false,"",false),
-            Content(R.string.title2, R.string.title2,R.drawable.content2_img,false,false,"",false),
-            Content(R.string.title3, R.string.title3, R.drawable.content3_img,false,false,"",false),
+            Content(R.string.title1, R.string.text1, R.drawable.content1_img,false,false,"",false,null),
+            Content(R.string.title2, R.string.title2,R.drawable.content2_img,false,false,"",false,null),
+            Content(R.string.title3, R.string.title3, R.drawable.content3_img,false,false,"",false,null),
         )
     }
 
@@ -35,11 +35,11 @@ class AppRepository {
 
     fun loadExercises(): List<Content>{
         return listOf(
-            Content(R.string.ecBenchpress, R.string.text1, R.drawable.content1_img,true,false,"",false),
-            Content(R.string.ecDeadlift, R.string.title2,R.drawable.content2_img,true,false,"",false),
-            Content(R.string.ecPullups, R.string.title3, R.drawable.content3_img,true,false,"",false),
-            Content(R.string.ecSquats, R.string.text1, R.drawable.content1_img,true,false,"",false),
-            Content(R.string.ecShoulderpress, R.string.title2,R.drawable.content1_img,true,false,"",false),
+            Content(R.string.ecBenchpress, R.string.text1, R.drawable.content1_img,true,false,"",false,null),
+            Content(R.string.ecDeadlift, R.string.title2,R.drawable.content2_img,true,false,"",false,null),
+            Content(R.string.ecPullups, R.string.title3, R.drawable.content3_img,true,false,"",false,null),
+            Content(R.string.ecSquats, R.string.text1, R.drawable.content1_img,true,false,"",false,null),
+            Content(R.string.ecShoulderpress, R.string.title2,R.drawable.content1_img,true,false,"",false,null),
 
         )
     }
@@ -47,12 +47,12 @@ class AppRepository {
 
     fun loadBodyparts(): List<Content>{
         return listOf(
-            Content(R.string.bpBauch, R.string.text1, R.drawable.bp5abs,true,false,"",false),
-            Content(R.string.bpArme, R.string.title2,R.drawable.bp1arms,true,false,"",false),
-            Content(R.string.bpSchulter, R.string.title3, R.drawable.bp3shoulders,true,false,"",false),
-            Content(R.string.bpRücken, R.string.text1, R.drawable.bp4back,true,false,"",false),
-            Content(R.string.bpBeine, R.string.title2,R.drawable.bp2legs,true,false,"",false),
-            Content(R.string.bpBrust, R.string.title2,R.drawable.bp6chest,true,false,"",false),
+            Content(R.string.bpBauch, R.string.text1, R.drawable.bp5abs,true,false,"",false,null),
+            Content(R.string.bpArme, R.string.title2,R.drawable.bp1arms,true,false,"",false,null),
+            Content(R.string.bpSchulter, R.string.title3, R.drawable.bp3shoulders,true,false,"",false,null),
+            Content(R.string.bpRücken, R.string.text1, R.drawable.bp4back,true,false,"",false,null),
+            Content(R.string.bpBeine, R.string.title2,R.drawable.bp2legs,true,false,"",false,null),
+            Content(R.string.bpBrust, R.string.title2,R.drawable.bp6chest,true,false,"",false,null),
 
             )
     }
@@ -60,20 +60,20 @@ class AppRepository {
 
     fun loadExercisesByBodypart(): List<Content>{
         return listOf(
-            Content(R.string.weKH_Bicepscurls,R.string.weKH_BicepscurlsInstruction, R.drawable.bp1arms,true,true,"Arme",false),
-            Content(R.string.weLH_Bicepscurls,R.string.weLH_Bicepscurls, R.drawable.bp1arms,true,true,"Arme",false),
-            Content(R.string.weSZ_Bicepscurls,R.string.weSZ_BicepscurlsInstructions, R.drawable.bp1arms,true,true,"Arme",false),
-            Content(R.string.weKH_Shoulderpress,R.string.weKH_ShoulderpressInstructions, R.drawable.bp1arms,true,true,"Schulter",false),
-            Content(R.string.we_Pull_ups,R.string.weKH_BicepscurlsInstruction, R.drawable.bp1arms,true,true,"Rücken",false),
+            Content(R.string.weKH_Bicepscurls,R.string.weKH_BicepscurlsInstruction, R.drawable.bp1arms,true,true,"Arme",false,R.string.weKH_BicepscurlsYtVideo),
+            Content(R.string.weLH_Bicepscurls,R.string.weLH_Bicepscurls, R.drawable.bp1arms,true,true,"Arme",false,R.string.weLH_BicepscurlsYtVideo),
+            Content(R.string.weSZ_Bicepscurls,R.string.weSZ_BicepscurlsInstructions, R.drawable.bp1arms,true,true,"Arme",false,R.string.weSZ_BizepscurlsYtVideo),
+            Content(R.string.weKH_Shoulderpress,R.string.weKH_ShoulderpressInstructions, R.drawable.bp1arms,true,true,"Schulter",false,null),
+            Content(R.string.we_Pull_ups,R.string.weKH_BicepscurlsInstruction, R.drawable.bp1arms,true,true,"Rücken",false,null),
 
-            Content(R.string.we_Crunches,R.string.we_CrunchesInstructions, R.drawable.bp1arms,true,true,"Bauch",false),
-            Content(R.string.weSquats,R.string.weSquatsInstructions, R.drawable.bp1arms,true,true,"Beine",false),
-            Content(R.string.weSZ_Push_ups,R.string.weSZ_BicepscurlsInstructions, R.drawable.bp1arms,true,true,"Brust",false),
-            Content(R.string.weKH_Benchpress,R.string.weKH_ShoulderpressInstructions, R.drawable.bp1arms,true,true,"Brust",false),
-            Content(R.string.weLH_Benchpress,R.string.weKH_ShoulderpressInstructions, R.drawable.bp1arms,true,true,"Brust",false),
-            Content(R.string.weLH_Incline_Benchpress,R.string.weKH_ShoulderpressInstructions, R.drawable.bp1arms,true,true,"Brust",false),
-            Content(R.string.weKH_Incline_Benchpress,R.string.weKH_ShoulderpressInstructions, R.drawable.bp1arms,true,true,"Brust",false),
-            Content(R.string.we_Dips,R.string.we_DipsInstructions, R.drawable.bp1arms,true,true,"Brust",false),
+            Content(R.string.we_Crunches,R.string.we_CrunchesInstructions, R.drawable.bp1arms,true,true,"Bauch",false,null),
+            Content(R.string.weSquats,R.string.weSquatsInstructions, R.drawable.bp1arms,true,true,"Beine",false,null),
+            Content(R.string.weSZ_Push_ups,R.string.weSZ_BicepscurlsInstructions, R.drawable.bp1arms,true,true,"Brust",false,null),
+            Content(R.string.weKH_Benchpress,R.string.weKH_ShoulderpressInstructions, R.drawable.bp1arms,true,true,"Brust",false,R.string.weKH_BenchpressYtVideo),
+            Content(R.string.weLH_Benchpress,R.string.weKH_ShoulderpressInstructions, R.drawable.bp1arms,true,true,"Brust",false,null),
+            Content(R.string.weLH_Incline_Benchpress,R.string.weKH_ShoulderpressInstructions, R.drawable.bp1arms,true,true,"Brust",false,null),
+            Content(R.string.weKH_Incline_Benchpress,R.string.weKH_ShoulderpressInstructions, R.drawable.bp1arms,true,true,"Brust",false,null),
+            Content(R.string.we_Dips,R.string.we_DipsInstructions, R.drawable.bp1arms,true,true,"Brust",false,null),
         )
     }
 

@@ -1,21 +1,22 @@
 package ui.bottomNav.myTrainingScreen.nav3exercises
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.MediaController
-import android.widget.VideoView
+import android.widget.Toast
 import androidx.core.view.isInvisible
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentExercisePreviewBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import model.Content
 import ui.viewModel.HomeViewModel
 
@@ -90,11 +91,9 @@ class ExercisePreviewFragment : Fragment() {
                 }
             }
             saveExercise(it)
-//            shareExercise()
+            playVideoOnYoutube(it)
+            shareExercise(it)
         }
-
-//        playVideo()
-
     }
 
 
@@ -125,66 +124,6 @@ class ExercisePreviewFragment : Fragment() {
             findNavController().navigateUp()
         }
     }
-
-
-    /*Kommentieren
-    DE: Die Playvideo Funktion funktioniert.
-    Ich habe sie jedoch auskommentiert, da ich Probleme beim
-    Pushen auf GitHub habe, wenn ich das Video in meinem Ressourcenmanager
-    hinterlegt habe. Dementsprechend habe ich mich entschieden das Video
-    aus meinem Ressourcenmanager vorerst zu entfernen. Dadurch
-    funktioniert die Funktion aber nicht, weil es ein Video zum
-    Laden erwartet.......*/
-
-/*
-    fun playVideo() {
-        var playBtn = binding.playBtn
-        val filename = R.raw.kh_bizespcurls
-        val filePlace = "android.resource://" + "com.example.shapeminder_appidee" + "/raw/" + filename
-        val videoView = binding.viedeoView
-
-
-        playBtn.setOnClickListener {
-            if (!videoView.isPlaying && !isVideoPaused) {
-                // Wenn das Video nicht abgespielt wird und nicht pausiert ist, starte es von vorne
-                binding.playBtn.setImageResource(R.drawable.pause_fill1_wght400_grad0_opsz24)
-                videoView.setVideoURI(Uri.parse(filePlace))
-                videoView.setMediaController(MediaController(requireContext()))
-                videoView.start()
-                var tag = "Video??"
-                Log.i(tag, "Video startet von vorne!!")
-            } else if (!videoView.isPlaying && isVideoPaused) {
-                // Wenn das Video nicht abgespielt wird und pausiert ist, setze die letzte Position und starte das Video
-                binding.playBtn.setImageResource(R.drawable.pause_fill1_wght400_grad0_opsz24)
-                videoView.seekTo(lastPosition)
-                videoView.start()
-                var tag = "Video??"
-                Log.i(tag, "Video läuft von letzter Position!!")
-                isVideoPaused = false
-            } else {
-                // Andernfalls pausiere das Video und speichere die aktuelle Position
-                binding.playBtn.setImageResource(R.drawable.play_arrow_fill1_wght400_grad0_opsz24)
-                videoView.pause()
-                lastPosition = videoView.currentPosition
-                var tag = "Video??"
-                Log.i(tag, "Video ist angehalten!")
-                isVideoPaused = true
-            }
-        }
-    }
-*/
-
-    /*
-    fun restartVideo() {
-//        var restartBtn =
-        val filename = R.raw.kh_bizespcurls
-        val filePlace =
-            "android.resource://" + "com.example.shapeminder_appidee" + "/raw/" + filename
-        val videoView = binding.viedeoView
-        videoView.stopPlayback()
-
-    }
-*/
 
     /*DE:
     * Ich habe in die Detailansicht eine Funktion implementiert, welche die Speicher-
@@ -223,10 +162,9 @@ class ExercisePreviewFragment : Fragment() {
     /*DE:
     * Muss überarbeitet werden..*/
 
-/*
-    fun shareExercise(){
+    fun shareExercise(videoExercise: Content){
         var sharBtn = binding.shareBtn
-        val url = "https://www.youtube.com/watch?v=2qOOGrcxuTE"
+        val url = "https://www.youtube.com/watch?v=${videoExercise.video}"
         sharBtn.setOnClickListener {
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "text/plain"
@@ -235,8 +173,58 @@ class ExercisePreviewFragment : Fragment() {
             startActivity(chooser)
         }
     }
-*/
 
 
+
+
+    /*DE:
+    * Ich habe eine Funktion programmiert, um eine Krafttrainingsübung
+    * abzuspielen, die auf Youtube hochgeladen ist. Sie bekommt als Parameter
+    * die Kräftigungsübung übergeben, um im Nachhinein auf die video Eigenschaft,
+    * welche einer Stringwert ist, zurückzugreifen. Die playVideoOnYoutube-Funktion ruft das
+    * YouTubePlayerView-Objekt über das binding auf und fügt ihm einen YouTubePlayerListener hinzu,
+    * um auf Ereignisse des YouTube-Players zu reagieren. In der OnReady-Methode des YoutubePlayerListener
+    * wird überprüft, ob das videoExercise ein gültiges enthält. Falls ja, kann ein Video
+    * von Youtube abgespielt werden. Falls nein, wird in der View automatisch eine Fehlermeldung
+    * angezeigt. Zudem wird ein Tag im Logcat aufgerufen.
+    * */
+
+    /*EN:
+    *  I have programmed a function to play a strength training exercise
+    *  that has been uploaded to YouTube. It gets as parameter
+    *  the strength training exercise in order to access the video property afterwards,
+    *  which is a string value. The playVideoOnYoutube function calls the
+    *  YouTubePlayerView object via the binding and adds a YouTubePlayerListener to it,
+    *  to respond to YouTube player events. In the OnReady method of the YouTubePlayerListener
+    *  checks whether the videoExercise contains a valid one. If it does, a video
+    *  from YouTube can be played. If not, an error message is automatically displayed in the view
+    *  is automatically displayed in the view. In addition, a tag is called in the logcat.
+    * */
+
+    fun playVideoOnYoutube(videoExercise:Content){
+        var ytPlayer = binding.videoViewYtPlayer
+        lifecycle.addObserver(ytPlayer)
+        ytPlayer.addYouTubePlayerListener(object : AbstractYouTubePlayerListener(){
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                super.onReady(youTubePlayer)
+                var videoId = videoExercise.video?.let { getString(it) }
+                if (videoId!=null){
+                    youTubePlayer.cueVideo(videoId!!,0F)
+                }
+                else{
+                    var tag = "Kein Video"
+                    Log.e(tag,"Video ist nicht vorhanden!: $videoId")
+                    Toast.makeText(binding.root.context, "Fehler beim Abruf des Videos von Youtube!", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+        })
+    }
 }
+
+
+
+
+
+
 

@@ -209,6 +209,11 @@ class HomeViewModel : ViewModel() {
     }
 
 
+//    fun filterExerciseByKH(exerciseName: String){
+//        val filter
+//    }
+
+
     /*DE:
      *Um die entsprechende TextView Id aus einer anderen Fragment Klasse herauszuholen,
      *  habe ich die Methode getContentTitle im ViewModel erstellt, um den Wert des contentTitles zu setzen.

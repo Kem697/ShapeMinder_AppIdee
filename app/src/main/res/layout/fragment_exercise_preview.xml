@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/toolbar_constraints"
             android:layout_width="match_parent"
@@ -135,27 +136,16 @@
             app:strokeColor="@color/white"
             app:strokeWidth="2dp">
 
-            <VideoView
-                android:id="@+id/viedeo_View"
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:id="@+id/videoView_YtPlayer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
                 android:src="@drawable/bp2legs">
 
-            </VideoView>
+            </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
 
         </com.google.android.material.card.MaterialCardView>
-
-        <ImageButton
-            android:id="@+id/playBtn"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_margin="16dp"
-            android:backgroundTint="@color/white"
-            android:scaleType="centerCrop"
-            android:src="@drawable/play_arrow_fill1_wght400_grad0_opsz24"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
 
 
         <ImageButton
@@ -163,12 +153,12 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="16dp"
-            android:layout_marginStart="45dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/white"
             android:scaleType="centerCrop"
             android:src="@drawable/share_fill1_wght400_grad0_opsz24"
-            app:layout_constraintStart_toEndOf="@+id/playBtn"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
 
 
