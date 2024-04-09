@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "238411082980",
+    "project_id": "shapeminder",
+    "storage_bucket": "shapeminder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:238411082980:android:282f1985ae0b1ebc9f90f1",
+        "android_client_info": {
+          "package_name": "com.example.shapeminder_appidee"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFt1snDzNdUzjJlHyEoqXF-Ds4Q3EKgEk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

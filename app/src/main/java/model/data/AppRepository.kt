@@ -64,6 +64,7 @@ class AppRepository {
             Content(R.string.weLH_Bicepscurls,R.string.weLH_Bicepscurls, R.drawable.bp1arms,true,true,"Arme",false,R.string.weLH_BicepscurlsYtVideo),
             Content(R.string.weSZ_Bicepscurls,R.string.weSZ_BicepscurlsInstructions, R.drawable.bp1arms,true,true,"Arme",false,R.string.weSZ_BizepscurlsYtVideo),
             Content(R.string.weKH_Shoulderpress,R.string.weKH_ShoulderpressInstructions, R.drawable.bp1arms,true,true,"Schulter",false,null),
+            Content(R.string.weKH_SideRaise,R.string.weKH_SideRaiseInstructions, R.drawable.bp1arms,true,true,"Schulter",false,R.string.weKH_SideRaiseYtVideo),
             Content(R.string.we_Pull_ups,R.string.weKH_BicepscurlsInstruction, R.drawable.bp1arms,true,true,"Rücken",false,null),
 
             Content(R.string.we_Crunches,R.string.we_CrunchesInstructions, R.drawable.bp1arms,true,true,"Bauch",false,null),

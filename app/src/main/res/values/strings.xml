@@ -45,6 +45,7 @@
 
     <string name="weSZ_Push_ups">Liegestütze</string>
     <string name="weKH_Shoulderpress">KH Schulterdrücken</string>
+    <string name="weKH_SideRaise">KH Seitheben</string>
     <string name="we_Crunches">Crunches</string>
     <string name="weSquats">Kniebeuge</string>
 
@@ -59,6 +60,7 @@
     <string name="we_LungesInstruction">Diese Übung trainiert...</string>
     <string name="weLH_BicepscurlsInstructions">1</string>
     <string name="weSZ_BicepscurlsInstructions">2</string>
+    <string name="weKH_SideRaiseInstructions">Mit dieser Übung...</string>
     <string name="weKH_ShoulderpressInstructions">Damit machst du</string>
     <string name="we_DipsInstructions">Das sind...</string>
     <string name="we_Pull_upsInstructions">12</string>
@@ -78,6 +80,7 @@
     <string name="weCable_RowYtVideo">V3U-SZ_zw8g</string>
     <string name="weLH_BicepscurlsYtVideo">LTMO0mCZrIY</string>
     <string name="we_LungesYtVideo">z4ZSs6btVUE</string>
+    <string name="weKH_SideRaiseYtVideo">u4mIfqKcWWk</string>
 
 
 

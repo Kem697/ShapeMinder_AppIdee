@@ -10,6 +10,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentSettingsBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 
 class MySettingsScreen : Fragment() {
 
@@ -27,6 +29,7 @@ class MySettingsScreen : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         logout()
+        personalSettings()
 
     }
 
@@ -38,9 +41,10 @@ class MySettingsScreen : Fragment() {
     }
 
 
-
-
-
-
-
+    fun personalSettings(){
+        Firebase.auth.currentUser?.let { user ->
+            binding.userName.text = user.displayName
+            binding.userEmail.text = user.email
+        }
+    }
 }
