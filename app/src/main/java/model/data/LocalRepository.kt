@@ -70,7 +70,7 @@ class LocalRepository {
 
             Content(R.string.we_Crunches,R.string.we_CrunchesInstructions, R.drawable.bp1arms,true,true,"Bauch",false,null),
             Content(R.string.we_RisingLegs,R.string.we_RisingLegsInstructions, R.drawable.bp1arms,true,true,"Bauch",false,R.string.we_Rising_LegsYtVideo),
-            Content(R.string.weSquats,R.string.weSquatsInstructions, R.drawable.bp1arms,true,true,"Beine",false,null),
+            Content(R.string.weLH_Squats,R.string.weSquatsInstructions, R.drawable.bp1arms,true,true,"Beine",false,null),
             Content(R.string.we_Lunges,R.string.we_LungesInstruction, R.drawable.bp1arms,true,true,"Beine",false,R.string.we_LungesYtVideo),
             Content(R.string.weSZ_Push_ups,R.string.weSZ_BicepscurlsInstructions, R.drawable.bp1arms,true,true,"Brust",false,null),
             Content(R.string.weKH_Benchpress,R.string.weKH_ShoulderpressInstructions, R.drawable.bp1arms,true,true,"Brust",false,R.string.weKH_BenchpressYtVideo),

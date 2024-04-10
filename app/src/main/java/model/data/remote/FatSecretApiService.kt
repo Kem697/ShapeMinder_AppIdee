@@ -3,9 +3,12 @@ package model.data.remote
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import model.data.FoodResult
+import okhttp3.ResponseBody
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
+import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 import java.security.Signature
@@ -32,7 +35,7 @@ interface FatSecretApi{
         @Query("oauth_signature_method") signatureMethod: String,
         @Query("oauth_timestamp") timestamp: String,
         @Query("oauth_version") version: String
-    ): FoodResult
+    ): Call<ResponseBody>
 }
 
 object FoodApi{

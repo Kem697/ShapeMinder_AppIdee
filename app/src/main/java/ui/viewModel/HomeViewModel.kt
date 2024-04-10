@@ -202,6 +202,76 @@ class HomeViewModel : ViewModel() {
         }
     }
 
+
+
+    fun filterExercisesByBodyweight(bodypart: String, context: Context) {
+        viewModelScope.launch {
+            val filteredExercises = _exercisesByBodyparts.value?.filter {
+                !context.getString(it.stringRessourceTitle).contains("-")
+            }
+            if (filteredExercises != null) {
+                if (filteredExercises.isNotEmpty()) {
+                    _exercisesByBodyparts.value = filteredExercises
+                    var tag4 = "Filter in ViewModel??"
+                    Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
+                } else {
+                    resetFilter(bodypart)
+                }
+            }
+        }
+    }
+    fun filterExercisesByLongDumbell(bodypart: String, context: Context) {
+        viewModelScope.launch {
+            val filteredExercises = _exercisesByBodyparts.value?.filter {
+                context.getString(it.stringRessourceTitle).contains("LH") || context.getString(it.stringRessourceTitle).contains("SZ")
+            }
+            if (filteredExercises != null) {
+                if (filteredExercises.isNotEmpty()) {
+                    _exercisesByBodyparts.value = filteredExercises
+                    var tag4 = "Filter in ViewModel??"
+                    Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
+                } else {
+                    resetFilter(bodypart)
+                }
+            }
+        }
+    }
+
+
+    fun filterExercisesByVideo(bodypart: String) {
+        viewModelScope.launch {
+            val filteredExercises = _exercisesByBodyparts.value?.filter {it.video!= null
+            }
+            if (filteredExercises != null) {
+                if (filteredExercises.isNotEmpty()) {
+                    _exercisesByBodyparts.value = filteredExercises
+                    var tag4 = "Filter in ViewModel??"
+                    Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
+                } else {
+                    resetFilter(bodypart)
+                }
+            }
+        }
+    }
+
+
+    fun filterExercisesByNoVideo(bodypart: String) {
+        viewModelScope.launch {
+            val filteredExercises = _exercisesByBodyparts.value?.filter {it.video == null
+            }
+            if (filteredExercises != null) {
+                if (filteredExercises.isNotEmpty()) {
+                    _exercisesByBodyparts.value = filteredExercises
+                    var tag4 = "Filter in ViewModel??"
+                    Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
+                } else {
+                    resetFilter(bodypart)
+                }
+            }
+        }
+    }
+
+
     fun resetFilter(bodypart: String) {
         _exercisesByBodyparts.value = allExercisesByBodyparts.filter { it.bodyPart == bodypart }
     }

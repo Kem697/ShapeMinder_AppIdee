@@ -322,7 +322,7 @@ class ExerciseListFragment : Fragment() {
 
                 cancelBtn?.setOnClickListener {
 
-                    sec1AllBtn?.isSelected = true
+                    sec1AllBtn?.isSelected = false
                     sec1AllBtn?.setImageResource(R.drawable.all_checked)
 
                     var tag = "All1 Button"
@@ -333,7 +333,7 @@ class ExerciseListFragment : Fragment() {
                     bodyweightExBtn?.isSelected = false
 
 
-                    sec2AllBtn?.isSelected = true
+                    sec2AllBtn?.isSelected = false
                     sec2AllBtn?.setImageResource(R.drawable.all_checked)
 
 
@@ -342,7 +342,33 @@ class ExerciseListFragment : Fragment() {
 
                     onlyVideoExBtn?.isSelected = false
                     noVideoExBtn?.isSelected = false
-                    dialog.cancel()
+                    viewModel.resetFilter(viewModel.selectedContentTitle.value!!)
+                    dialog.dismiss()
+
+                }
+
+
+                /*Muss auch noch ausgebessert werden, da*/
+
+
+                resultsBtn?.setOnClickListener {
+                        if (lDumbellExBtn!= null && lDumbellExBtn.isSelected){
+                        viewModel.filterExercisesByLongDumbell(viewModel.selectedContentTitle.value!!,requireContext())
+                        dialog.dismiss()
+                        lDumbellExBtn.isSelected = false
+                    }   else if (bodyweightExBtn!= null && bodyweightExBtn.isSelected){
+                        viewModel.filterExercisesByBodyweight(viewModel.selectedContentTitle.value!!,requireContext())
+                        dialog.dismiss()
+                        bodyweightExBtn.isSelected = false
+                    }   else if (onlyVideoExBtn != null && onlyVideoExBtn.isSelected) {
+                        viewModel.filterExercisesByVideo(viewModel.selectedContentTitle.value!!)
+                        dialog.dismiss()
+                        onlyVideoExBtn.isSelected = false
+                    } else if (noVideoExBtn != null && noVideoExBtn.isSelected) {
+                        viewModel.filterExercisesByNoVideo(viewModel.selectedContentTitle.value!!)
+                        dialog.dismiss()
+                        noVideoExBtn.isSelected = false
+                    }
                 }
             }
         }
