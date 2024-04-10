@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isInvisible
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -22,6 +23,7 @@ import com.google.firebase.auth.auth
 class LogInScreen : Fragment() {
 
     private lateinit var binding: FragmentLogInScreenBinding
+//    private val firebaseViewModel: FirebaseViewModel by viewModels()
 
     private lateinit var auth: FirebaseAuth
 
@@ -45,6 +47,7 @@ class LogInScreen : Fragment() {
         navigationBar.isInvisible = true
         logIn()
         register()
+        developerSkip()
         }
 
     override fun onStop() {
@@ -95,6 +98,16 @@ class LogInScreen : Fragment() {
                 }
                 progressBar.visibility = View.GONE
             }
+    }
+
+
+//    Diese Methode muss in der App Fertigstellung gelöscht werden!
+
+    fun developerSkip(){
+        binding.skipBtn.setOnClickListener {
+            findNavController().navigate(R.id.homeScreen)
+
+        }
     }
 
 }

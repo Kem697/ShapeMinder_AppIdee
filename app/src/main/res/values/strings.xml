@@ -4,7 +4,6 @@
     <string name="nameInput">Vor - und Nachnamen eingeben...</string>
     <string name="passwordInput">Passwort eingeben...</string>
     <string name="passwordRepeatInput">Passwort wiederholen...</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
@@ -47,7 +46,9 @@
     <string name="weKH_Shoulderpress">KH Schulterdrücken</string>
     <string name="weKH_SideRaise">KH Seitheben</string>
     <string name="we_Crunches">Crunches</string>
+    <string name="we_RisingLegs">Beine anheben</string>
     <string name="weSquats">Kniebeuge</string>
+    <string name="weKH_SideRaiseLayOnBench">KH Seitheben auf Bank </string>
 
 
     <!--    <string name="weBicepscurls">Bizepscurls</string>
@@ -62,6 +63,7 @@
     <string name="weSZ_BicepscurlsInstructions">2</string>
     <string name="weKH_SideRaiseInstructions">Mit dieser Übung...</string>
     <string name="weKH_ShoulderpressInstructions">Damit machst du</string>
+    <string name="we_RisingLegsInstructions">Beine anheben</string>
     <string name="we_DipsInstructions">Das sind...</string>
     <string name="we_Pull_upsInstructions">12</string>
     <string name="we_CrunchesInstructions">Crunches</string>
@@ -69,20 +71,24 @@
     <string name="weLH_BenchpressInstructions">2</string>
     <string name="weSZ_Push_upsInstructions">3</string>
     <string name="weSquatsInstructions">Kniebeuge</string>
+    <string name="weKH_SideRaiseLayOnBenchInstruction">xxx</string>
 
 
     <string name="weKH_BicepscurlsYtVideo">o_-YiFQzoe8</string>
+    <string name="weKH_ShoulderpressYtVideo">iHq62rJcWU0</string>
     <string name="weKH_BenchpressYtVideo">7wd_QFZs2bE</string>
-     <string name="weKH_RowYtVideo">Y06S2pRPEa4</string>
+    <string name="weLH_BenchpressYtVideo">sydZOuGQdug</string>
+    <string name="weKH_InclineBenchpressYtVideo">IBhRT-42vg8</string>
+    <string name="weLH_InclineBenchpressYtVideo">ah-36O5gK6g</string>
+    <string name="weKH_RowYtVideo">Y06S2pRPEa4</string>
     <string name="weSZ_BizepscurlsYtVideo">c6uI-hkCWLk</string>
-     <string name="we_Rising_LegsYtVideo">zhC8_yXS-AU</string>
+    <string name="we_Rising_LegsYtVideo">zhC8_yXS-AU</string>
     <string name="weLH_RowYtVideo">MwIydAVCeHE</string>
     <string name="weCable_RowYtVideo">V3U-SZ_zw8g</string>
     <string name="weLH_BicepscurlsYtVideo">LTMO0mCZrIY</string>
     <string name="we_LungesYtVideo">z4ZSs6btVUE</string>
     <string name="weKH_SideRaiseYtVideo">u4mIfqKcWWk</string>
-
-
+    <string name="weKH_SideRaiseLayOnBenchYtVideo">2oMQvDAu0m8</string>
 
 
     <string name="gc_fruits_and_vegetable">Obst und Gemüse</string>
@@ -91,8 +97,6 @@
     <string name="gc_milk_and_eg">Molkerei und Eier</string>
     <string name="gc_meat_and_fish">Fleisch und Fisch</string>
     <string name="gc_sweets">Süssigkeiten</string>
-
-
 
 
 </resources>

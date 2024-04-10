@@ -61,35 +61,52 @@ class GridAdapterMyNutrition(
             "Getreide" -> {
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedCategory = "Getreide"
+
+                    viewModel.getContentTitle(selectedCategory)
+                    /*Hier muss das viewModel aufgerufen werden, welche die Daten von
+                    * Lebensmittel aus der API anfrage nach Kategorien filtert.*/
+//                    viewModel.filterExercisesByBodypart(selectedBodypart)
+                    viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }
             }
 
             "Obst und Gemüse" -> {
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedCategory = "Obst und Gemüse"
+                    viewModel.getContentTitle(selectedCategory)
+                    viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }
             }
 
             "Käse, Molkerei und Eier" -> {
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedCategory = "Käse, Molkerei und Eier"
+                    viewModel.getContentTitle(selectedCategory)
+                    viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }
             }
 
             "Öle und Fette" -> {
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedCategory = "Öle und Fette"
+                    viewModel.getContentTitle(selectedCategory)
+                    viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }
             }
 
             "Fleisch und Fisch" -> {
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedCategory = "Fleisch und Fisch"
+                    viewModel.getContentTitle(selectedCategory)
+                    viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }
             }
+
             "Süssigkeiten" -> {
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedCategory = "Süssigkeiten"
+                    viewModel.getContentTitle(selectedCategory)
+                    viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }
             }
         }

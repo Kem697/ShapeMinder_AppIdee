@@ -1,5 +1,6 @@
 package ui
 
+import FirebaseViewModel
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,16 +8,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentRegisterScreenBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import ui.viewModel.HomeViewModel
 
 
 class RegisterScreen : Fragment() {
     private lateinit var binding: FragmentRegisterScreenBinding
+
+    private val firebaseViewModel: FirebaseViewModel by viewModels()
 
     private lateinit var auth: FirebaseAuth
 
@@ -43,13 +49,11 @@ class RegisterScreen : Fragment() {
     }
 
 
-
     fun navigateBack(){
         binding.backBtn.setOnClickListener {
             findNavController().navigateUp()
         }
     }
-
 
     fun register(){
         binding.submitButton.setOnClickListener {
@@ -68,21 +72,24 @@ class RegisterScreen : Fragment() {
                         progressbar.visibility = View.GONE
                         if (task.isSuccessful) {
                             findNavController().navigate(R.id.homeScreen)
-                            Log.w(tag, "createUserWithEmail:Account created", task.exception)
+                            Log.w(tag, "Nutzerkonto angelegt??", task.exception)
                             Toast.makeText(
                                 binding.root.context,
-                                "Authentication successful.",
+                                "Nutzerkonto wurde erfolgreich angelegt!",
                                 Toast.LENGTH_SHORT,
                             ).show()
                         } else {
-                            Log.w(tag, "createUserWithEmail:failure", task.exception)
+                            Log.w(tag, "Nutzerkonto angelegt??", task.exception)
                             Toast.makeText(
                                 binding.root.context,
-                                "Authentication failed.",
+                                "Nutzerkonto konnte nicht angelegt werden!",
                                 Toast.LENGTH_SHORT,
                             ).show()
                         }
                     }
+
+
+
             } else {
                 Toast.makeText(binding.root.context, "Bitte mach eine Eingabe !", Toast.LENGTH_SHORT)
                     .show()
@@ -90,21 +97,12 @@ class RegisterScreen : Fragment() {
             }
 
         }
-
-
-
     }
-
 
     fun clearInput(){
         binding.inputEmail.text.clear()
         binding.inputPassword.text.clear()
     }
-
-
-
-
-
 
 
 }

@@ -42,9 +42,9 @@ class MySettingsScreen : Fragment() {
 
 
     fun personalSettings(){
-        Firebase.auth.currentUser?.let { user ->
-            binding.userName.text = user.displayName
-            binding.userEmail.text = user.email
-        }
+            Firebase.auth.currentUser?.let { user ->
+                binding.userName.text = user.displayName
+                binding.userEmail.text = user.email
+            }
     }
 }

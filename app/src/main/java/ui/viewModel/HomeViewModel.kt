@@ -2,19 +2,17 @@ package ui.viewModel
 
 import android.content.Context
 import android.util.Log
-import androidx.core.content.ContextCompat.getString
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.shapeminder_appidee.R
-import model.data.AppRepository
+import model.data.LocalRepository
 import kotlinx.coroutines.launch
 import model.Content
 import model.Food
 
 class HomeViewModel : ViewModel() {
-    private val repository = AppRepository()
+    private val repository = LocalRepository()
     private val allContent = repository.content
     private val allExercises = repository.exercises
     private val allBodyparts = repository.bodyParts
@@ -307,31 +305,37 @@ class HomeViewModel : ViewModel() {
         _savedExercises.value = updatedExercises
     }
 
-
-
-
-
-//    fun filterSavedExercisesByTitle(userInput: String, bodypart: String, context: Context) {
-//        viewModelScope.launch {
-//            val filteredExercises = _savedExercises.value?.filter {
-//                val xmlValue = context.getString(it.stringRessourceTitle)
-//                xmlValue.contains(userInput, ignoreCase = true)
-//            }
-//            if (filteredExercises != null) {
-//                if (filteredExercises.isNotEmpty()) {
-//                    _savedExercises.value = filteredExercises.toMutableList()
-//                    var tag4 = "Filter in ViewModel??"
-//                    Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
-//                } else {
-//                    resetFilter(bodypart)
-//                }
-//            }
-//        }
-//    }
-
-
-
 }
+
+
+
+
+/*
+
+    fun filterSavedExercisesByTitle(userInput: String, bodypart: String, context: Context) {
+        viewModelScope.launch {
+            val filteredExercises = _savedExercises.value?.filter {
+                val xmlValue = context.getString(it.stringRessourceTitle)
+                xmlValue.contains(userInput, ignoreCase = true)
+            }
+            if (filteredExercises != null) {
+                if (filteredExercises.isNotEmpty()) {
+                    _savedExercises.value = filteredExercises.toMutableList()
+                    var tag4 = "Filter in ViewModel??"
+                    Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
+                } else {
+                    resetFilter(bodypart)
+                }
+            }
+        }
+    }
+
+
+*/
+
+
+
+
 
 
 

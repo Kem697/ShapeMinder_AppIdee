@@ -109,7 +109,11 @@
         android:id="@+id/foodFinderNav1Fragment"
         android:name="ui.bottomNav.myNutritionScreen.nav1foodFinder.FoodFinderNav1Fragment"
         android:label="fragment_food_finder_nav1"
-        tools:layout="@layout/fragment_food_finder_nav1" />
+        tools:layout="@layout/fragment_food_finder_nav1" >
+        <action
+            android:id="@+id/action_foodFinderNav1Fragment_to_foodListFragment"
+            app:destination="@id/foodListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/groceryListNav3Fragment"
         android:name="ui.bottomNav.myNutritionScreen.nav3groceryList.GroceryListNav3Fragment"
@@ -129,4 +133,8 @@
             android:id="@+id/action_myNutrionScreen3_to_groceryListNav3Fragment"
             app:destination="@id/groceryListNav3Fragment" />
     </fragment>
+    <fragment
+        android:id="@+id/foodListFragment"
+        android:name="ui.bottomNav.myNutritionScreen.nav1foodFinder.FoodListFragment"
+        android:label="FoodListFragment" />
 </navigation>

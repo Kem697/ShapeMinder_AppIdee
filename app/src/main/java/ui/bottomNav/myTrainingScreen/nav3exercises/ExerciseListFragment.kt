@@ -198,6 +198,8 @@ class ExerciseListFragment : Fragment() {
                 resetFilterBtn?.setOnClickListener {
                     sec1AllBtn?.setImageResource(R.drawable.all_checked)
                     sec1AllBtn?.isSelected = true
+                    var tag = "All1 Button"
+                    Log.i(tag, "Der Button wurde AN gewählt?: ${sec1AllBtn?.isSelected}")
 
                     sDumbellExBtn?.setImageResource(R.drawable.short_dumbell_unchecked)
                     sDumbellExBtn?.isSelected = false
@@ -209,6 +211,8 @@ class ExerciseListFragment : Fragment() {
 
                     sec2AllBtn?.setImageResource(R.drawable.all_checked)
                     sec2AllBtn?.isSelected = true
+                    var tag2 = "All2 Button"
+                    Log.i(tag2, "Der Button wurde AN gewählt?: ${sec2AllBtn?.isSelected}")
 
                     onlyVideoExBtn?.setImageResource(R.drawable.video_unchecked)
                     onlyVideoExBtn?.isSelected = false
@@ -225,28 +229,28 @@ class ExerciseListFragment : Fragment() {
                     bodyweightExBtn?.setImageResource(R.drawable.bodyweight_unchecked)
                     sec1AllBtn.isSelected = true
                     var tag = "All1 Button"
-                    Log.i(tag,"Der Button wurde AN gewählt?: ${sec1AllBtn.isSelected}")
+                    Log.i(tag, "Der Button wurde AN gewählt?: ${sec1AllBtn.isSelected}")
 
                 }
 
                 sDumbellExBtn?.setImageResource(if (sDumbellExBtn.isSelected) R.drawable.short_dumbell_checked else R.drawable.short_dumbell_unchecked)
                 sDumbellExBtn?.setOnClickListener {
-             /*       if (sDumbellExBtn.isSelected){
-                        sDumbellExBtn.setImageResource(R.drawable.short_dumbell_unchecked)
-                        sec1AllBtn?.setImageResource(R.drawable.all_unchecked)
-                        lDumbellExBtn?.setImageResource(R.drawable.long_dumbell_unchecked)
-                        bodyweightExBtn?.setImageResource(R.drawable.bodyweight_unchecked)
-                        sDumbellExBtn.isSelected = false
-                        var tag = "Kurzhantel Button"
-                        Log.i(tag,"Der Button wurde AB gewählt?: ${sDumbellExBtn.isSelected}")
-                    }*/
-                        sDumbellExBtn.setImageResource(R.drawable.short_dumbell_checked)
-                        sec1AllBtn?.setImageResource(R.drawable.all_unchecked)
-                        lDumbellExBtn?.setImageResource(R.drawable.long_dumbell_unchecked)
-                        bodyweightExBtn?.setImageResource(R.drawable.bodyweight_unchecked)
-                        sDumbellExBtn.isSelected = true
-                        var tag = "Kurzhantel Button"
-                        Log.i(tag,"Der Button wurde AN gewählt?: ${sDumbellExBtn.isSelected}")
+                    /*       if (sDumbellExBtn.isSelected){
+                               sDumbellExBtn.setImageResource(R.drawable.short_dumbell_unchecked)
+                               sec1AllBtn?.setImageResource(R.drawable.all_unchecked)
+                               lDumbellExBtn?.setImageResource(R.drawable.long_dumbell_unchecked)
+                               bodyweightExBtn?.setImageResource(R.drawable.bodyweight_unchecked)
+                               sDumbellExBtn.isSelected = false
+                               var tag = "Kurzhantel Button"
+                               Log.i(tag,"Der Button wurde AB gewählt?: ${sDumbellExBtn.isSelected}")
+                           }*/
+                    sDumbellExBtn.setImageResource(R.drawable.short_dumbell_checked)
+                    sec1AllBtn?.setImageResource(R.drawable.all_unchecked)
+                    lDumbellExBtn?.setImageResource(R.drawable.long_dumbell_unchecked)
+                    bodyweightExBtn?.setImageResource(R.drawable.bodyweight_unchecked)
+                    sDumbellExBtn.isSelected = true
+                    var tag = "Kurzhantel Button"
+                    Log.i(tag, "Der Button wurde AN gewählt?: ${sDumbellExBtn.isSelected}")
                 }
 
                 lDumbellExBtn?.setImageResource(if (lDumbellExBtn.isSelected) R.drawable.long_dumbell_checked else R.drawable.long_dumbell_unchecked)
@@ -257,7 +261,7 @@ class ExerciseListFragment : Fragment() {
                     bodyweightExBtn?.setImageResource(R.drawable.bodyweight_unchecked)
                     lDumbellExBtn?.isSelected = true
                     var tag = "Langhantel Button"
-                    Log.i(tag,"Der Button wurde AN gewählt?: ${lDumbellExBtn.isSelected}")
+                    Log.i(tag, "Der Button wurde AN gewählt?: ${lDumbellExBtn.isSelected}")
                 }
 
                 bodyweightExBtn?.setImageResource(if (bodyweightExBtn.isSelected) R.drawable.bodyweight_checked else R.drawable.bodyweight_unchecked)
@@ -268,7 +272,7 @@ class ExerciseListFragment : Fragment() {
                     lDumbellExBtn?.setImageResource(R.drawable.long_dumbell_unchecked)
                     bodyweightExBtn?.isSelected = true
                     var tag = "Bodyweight Button"
-                    Log.i(tag,"Der Button wurde AN gewählt?: ${bodyweightExBtn.isSelected}")
+                    Log.i(tag, "Der Button wurde AN gewählt?: ${bodyweightExBtn.isSelected}")
                 }
 
 
@@ -279,7 +283,7 @@ class ExerciseListFragment : Fragment() {
                     noVideoExBtn?.setImageResource(R.drawable.no_video_unchecked)
                     sec2AllBtn.isSelected = true
                     var tag = "All2 Button"
-                    Log.i(tag,"Der Button wurde AN gewählt?: ${sec2AllBtn.isSelected}")
+                    Log.i(tag, "Der Button wurde AN gewählt?: ${sec2AllBtn.isSelected}")
 
                 }
 
@@ -291,7 +295,7 @@ class ExerciseListFragment : Fragment() {
                     noVideoExBtn?.setImageResource(R.drawable.no_video_unchecked)
                     onlyVideoExBtn.isSelected = true
                     var tag = "Video Button"
-                    Log.i(tag,"Der Button wurde AN gewählt?: ${onlyVideoExBtn.isSelected}")
+                    Log.i(tag, "Der Button wurde AN gewählt?: ${onlyVideoExBtn.isSelected}")
                 }
 
 
@@ -302,7 +306,7 @@ class ExerciseListFragment : Fragment() {
                     onlyVideoExBtn?.setImageResource(R.drawable.video_unchecked)
                     noVideoExBtn.isSelected = true
                     var tag = "Kein Video Button"
-                    Log.i(tag,"Der Button wurde AN gewählt?: ${noVideoExBtn.isSelected}")
+                    Log.i(tag, "Der Button wurde AN gewählt?: ${noVideoExBtn.isSelected}")
 //                    when(noVideoExBtn.isSelected){
 //                        true->{
 //                            dialog.findViewById<TextView>(R.id.sec2_no_video)?.textSize =16f
@@ -314,17 +318,31 @@ class ExerciseListFragment : Fragment() {
                 }
 
 
+//              Muss ausgebessert werden, da standardmäßig die beiden All button nicht das gewünchte haben.
 
                 cancelBtn?.setOnClickListener {
-                    dialog.cancel()
-                    sec1AllBtn?.isSelected = false
+
+                    sec1AllBtn?.isSelected = true
+                    sec1AllBtn?.setImageResource(R.drawable.all_checked)
+
+                    var tag = "All1 Button"
+                    Log.i(tag, "Der Button wurde AN gewählt?: ${sec1AllBtn?.isSelected}")
+
                     sDumbellExBtn?.isSelected = false
                     lDumbellExBtn?.isSelected = false
                     bodyweightExBtn?.isSelected = false
 
-                    sec2AllBtn?.isSelected = false
+
+                    sec2AllBtn?.isSelected = true
+                    sec2AllBtn?.setImageResource(R.drawable.all_checked)
+
+
+                    var tag2 = "All2 Button"
+                    Log.i(tag2, "Der Button wurde AN gewählt?: ${sec2AllBtn?.isSelected}")
+
                     onlyVideoExBtn?.isSelected = false
                     noVideoExBtn?.isSelected = false
+                    dialog.cancel()
                 }
             }
         }
@@ -408,7 +426,7 @@ class ExerciseListFragment : Fragment() {
             * body part is updated */
 
             binding.title.setText(exercise.first().bodyPart)
-            binding.subTitle.setText("Anzahl von Übungen: ${exercise.size}")
+            binding.subTitle.text = "Anzahl von Übungen: ${exercise.size}"
 
 
             /*DE:

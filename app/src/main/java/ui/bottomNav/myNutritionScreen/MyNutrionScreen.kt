@@ -8,11 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.core.view.isInvisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.FragmentManager
 import androidx.viewpager.widget.ViewPager
 import com.example.shapeminder_appidee.MainActivity
 import com.example.shapeminder_appidee.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.search.SearchBar
 import com.google.android.material.tabs.TabLayout
 import ui.bottomNav.myNutritionScreen.nav1foodFinder.FoodFinderNav1Fragment
@@ -91,6 +93,8 @@ class MyNutrionScreen : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        var navigationBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        navigationBar.isInvisible = false
         setDefaultHint()
     }
 
