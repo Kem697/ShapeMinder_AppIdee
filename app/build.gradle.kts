@@ -2,9 +2,11 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
+    id ("kotlin-kapt")
 }
 
-val apiKey: String = com.android.build.gradle.internal.cxx.configure.gradleLocalProperties(rootDir).getProperty("apiKey")
+val clientId: String = com.android.build.gradle.internal.cxx.configure.gradleLocalProperties(rootDir).getProperty("clientId")
+val clientSecret: String = com.android.build.gradle.internal.cxx.configure.gradleLocalProperties(rootDir).getProperty("clientSecret")
 
 android {
     namespace = "com.example.shapeminder_appidee"
@@ -27,7 +29,8 @@ android {
 
     buildTypes {
         release {
-            buildConfigField("String","apiKey",apiKey)
+            buildConfigField("String","clientId",clientId)
+            buildConfigField("String","clientSecret",clientSecret)
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -35,7 +38,8 @@ android {
             )
         }
         debug {
-            buildConfigField("String","apiKey",apiKey)
+            buildConfigField("String","clientId",clientId)
+            buildConfigField("String","clientSecret",clientSecret)
         }
     }
     compileOptions {
@@ -77,6 +81,7 @@ dependencies {
 
     //Room
     implementation("androidx.room:room-runtime:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
 
     //Firebase

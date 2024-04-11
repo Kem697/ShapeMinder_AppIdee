@@ -1,20 +1,22 @@
 package ui.viewModel
 
+import android.app.Application
 import android.content.Context
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.merge
-import model.data.LocalRepository
+import model.data.local.LocalRepository
 import kotlinx.coroutines.launch
 import model.Content
 import model.Food
+import model.data.local.getDatabase
 import model.data.remote.FoodApi
+import model.data.remote.FoodTokenApi
 import model.data.remote.RemoteRepository
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val repository = LocalRepository()
     private val allContent = repository.content
     private val allExercises = repository.exercises
@@ -22,7 +24,8 @@ class HomeViewModel : ViewModel() {
     private var allExercisesByBodyparts = repository.exercisesByBodyparts
     private var groceryCategories = repository.groceryCategories
 
-    private val remoteRepository = RemoteRepository(FoodApi)
+    private var tokenDatabase = getDatabase(application)
+    private val remoteRepository = RemoteRepository(FoodApi,FoodTokenApi,tokenDatabase)
 
     var index = 0
 
@@ -122,6 +125,18 @@ class HomeViewModel : ViewModel() {
 * The method is then called in my GridAdapter */
 
 
+    init {
+        viewModelScope.launch {
+            remoteRepository.isTokenExpired()
+        }
+    }
+
+
+    fun getTokenFromDatabase(){
+        viewModelScope.launch {
+            remoteRepository.getToken()
+        }
+    }
 
 
 

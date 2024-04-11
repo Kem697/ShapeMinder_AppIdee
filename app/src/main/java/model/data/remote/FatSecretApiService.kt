@@ -29,30 +29,40 @@ private val moshi = Moshi.Builder()
 
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi))
+    .baseUrl(BASE_URL)
     .build()
+
+
 
 
 interface FatSecretApi{
     @POST("rest/server.api")
-    fun exampleFoodDetails(
+    suspend fun exampleFoodDetails(
         @Header("Authorization") authToken: String,
         @Header("Content-Type") contentType:String = "application/json",
         /*method muss mit: "food_categories.get.v2" initialisiert werden.*/
+        @Query("method") method: String = "food.get.v2",
 
 
-//        @Query("method") method: String = "food_categories.get.v2",
-//        @Query("food_id") foodId: Int,
-//        /*format muss mit: "json" initialisiert werden.*/
-//        @Query("format") format: String ="json",
+        @Query("food_id") foodId: Int,
+//        @Query("food_name") foodName:String,
+        /*format muss mit: "json" initialisiert werden.*/
+        @Query("format") format: String ="json",
 
-        /*region sollte "DE" für Deutschland sein.*/
-        /*@Query("region") region: String,
-        @Query("language") language: String,
-        @Query("calories") calories: DecimalFormat,
-        @Query("protein") protein: DecimalFormat,
-        @Query("fat") fat: DecimalFormat,
-        @Query("carbohydrate") carbohydrate: DecimalFormat*/
     ): FoodResult
+
+
+//    suspend fun getFoodCategories(){
+//        /*region sollte "DE" für Deutschland sein.*/
+////        @Query("method") method: String = "food_categories.get.v2",
+//        /*@Query("region") region: String,
+//        @Query("language") language: String,
+//        @Query("calories") calories: DecimalFormat,
+//        @Query("protein") protein: DecimalFormat,
+//        @Query("fat") fat: DecimalFormat,
+//        @Query("carbohydrate") carbohydrate: DecimalFormat*/
+//    } : FoodResult
+
 }
 
 object FoodApi{

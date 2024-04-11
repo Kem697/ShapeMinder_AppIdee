@@ -1,4 +1,4 @@
-package model.data
+package model.data.local
 
 import com.example.shapeminder_appidee.R
 import model.Content
