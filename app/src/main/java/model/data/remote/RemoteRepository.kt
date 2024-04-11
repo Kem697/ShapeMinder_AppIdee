@@ -20,7 +20,6 @@ class RemoteRepository (
     private val accessToken: LiveData<AccessToken> = tokenDatabase.fatSecretTokenDao.getToken()
 
 
-
     suspend fun isTokenExpired(){
         var dateFormater = DateTimeFormatter.ISO_DATE_TIME
         var localDate = LocalDateTime.now()
