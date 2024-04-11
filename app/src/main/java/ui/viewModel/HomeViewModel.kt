@@ -6,10 +6,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.merge
 import model.data.LocalRepository
 import kotlinx.coroutines.launch
 import model.Content
 import model.Food
+import model.data.remote.FoodApi
+import model.data.remote.RemoteRepository
 
 class HomeViewModel : ViewModel() {
     private val repository = LocalRepository()
@@ -18,6 +21,8 @@ class HomeViewModel : ViewModel() {
     private val allBodyparts = repository.bodyParts
     private var allExercisesByBodyparts = repository.exercisesByBodyparts
     private var groceryCategories = repository.groceryCategories
+
+    private val remoteRepository = RemoteRepository(FoodApi)
 
     var index = 0
 
@@ -115,6 +120,16 @@ class HomeViewModel : ViewModel() {
 *This method is used to check my data set afterwards with
 * to check a property and filter it according to the passed argument.
 * The method is then called in my GridAdapter */
+
+
+
+
+
+    fun apiCall(){
+        viewModelScope.launch {
+            remoteRepository.foodExampleDetail()
+        }
+    }
 
 
     fun filterExercisesByBodypart(bodypart: String) {

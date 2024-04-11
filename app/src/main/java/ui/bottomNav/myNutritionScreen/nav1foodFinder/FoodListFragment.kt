@@ -36,6 +36,7 @@ class FoodListFragment : Fragment() {
             binding.screenTitle.setText(it.first().grocery)
             binding.listOfFood.adapter = FoodItemAdapter(it,viewModel)
         }
+        viewModel.apiCall()
         navigateBack()
     }
 

@@ -182,6 +182,9 @@ class ExerciseListFragment : Fragment() {
                 var tag = "Button gefunden?"
                 Log.i(tag, "Button wurde nicht gefunden: $resetFilterBtn")
 
+                var radioGroup1 = dialog.findViewById<RadioGroup>(R.id.section1_equipment_filter)
+                var radioGroup2 = dialog.findViewById<RadioGroup>(R.id.section2_instruction_filter)
+
                 var sec1AllBtn = dialog.findViewById<ImageButton>(R.id.sec1_all_Btn)
                 var sDumbellExBtn = dialog.findViewById<ImageButton>(R.id.sec1_short_dumbell_Btn)
                 var lDumbellExBtn = dialog.findViewById<ImageButton>(R.id.sec1_long_dumbell_Btn)
@@ -193,6 +196,8 @@ class ExerciseListFragment : Fragment() {
 
                 var resultsBtn = dialog.findViewById<MaterialButton>(R.id.results_Btn)
                 var cancelBtn = dialog.findViewById<MaterialButton>(R.id.cancel_Btn)
+
+                var selectedBtn: ImageButton?
 
 
                 resetFilterBtn?.setOnClickListener {
@@ -228,8 +233,9 @@ class ExerciseListFragment : Fragment() {
                     lDumbellExBtn?.setImageResource(R.drawable.long_dumbell_unchecked)
                     bodyweightExBtn?.setImageResource(R.drawable.bodyweight_unchecked)
                     sec1AllBtn.isSelected = true
+                    selectedBtn = sec1AllBtn
                     var tag = "All1 Button"
-                    Log.i(tag, "Der Button wurde AN gewählt?: ${sec1AllBtn.isSelected}")
+                    Log.i(tag, "Der Button wurde AN gewählt?: ${sec1AllBtn.isSelected} ${selectedBtn?.isSelected}")
 
                 }
 
@@ -249,8 +255,9 @@ class ExerciseListFragment : Fragment() {
                     lDumbellExBtn?.setImageResource(R.drawable.long_dumbell_unchecked)
                     bodyweightExBtn?.setImageResource(R.drawable.bodyweight_unchecked)
                     sDumbellExBtn.isSelected = true
+                    selectedBtn = sDumbellExBtn
                     var tag = "Kurzhantel Button"
-                    Log.i(tag, "Der Button wurde AN gewählt?: ${sDumbellExBtn.isSelected}")
+                    Log.i(tag, "Der Button wurde AN gewählt?: ${sDumbellExBtn.isSelected} ${selectedBtn?.isSelected}")
                 }
 
                 lDumbellExBtn?.setImageResource(if (lDumbellExBtn.isSelected) R.drawable.long_dumbell_checked else R.drawable.long_dumbell_unchecked)
@@ -260,8 +267,9 @@ class ExerciseListFragment : Fragment() {
                     sDumbellExBtn?.setImageResource(R.drawable.short_dumbell_unchecked)
                     bodyweightExBtn?.setImageResource(R.drawable.bodyweight_unchecked)
                     lDumbellExBtn?.isSelected = true
+                    selectedBtn = lDumbellExBtn
                     var tag = "Langhantel Button"
-                    Log.i(tag, "Der Button wurde AN gewählt?: ${lDumbellExBtn.isSelected}")
+                    Log.i(tag, "Der Button wurde AN gewählt?: ${lDumbellExBtn.isSelected} ${selectedBtn?.isSelected}")
                 }
 
                 bodyweightExBtn?.setImageResource(if (bodyweightExBtn.isSelected) R.drawable.bodyweight_checked else R.drawable.bodyweight_unchecked)
@@ -271,8 +279,9 @@ class ExerciseListFragment : Fragment() {
                     sDumbellExBtn?.setImageResource(R.drawable.short_dumbell_unchecked)
                     lDumbellExBtn?.setImageResource(R.drawable.long_dumbell_unchecked)
                     bodyweightExBtn?.isSelected = true
+                    selectedBtn = bodyweightExBtn
                     var tag = "Bodyweight Button"
-                    Log.i(tag, "Der Button wurde AN gewählt?: ${bodyweightExBtn.isSelected}")
+                    Log.i(tag, "Der Button wurde AN gewählt?: ${bodyweightExBtn.isSelected} ${selectedBtn?.isSelected}")
                 }
 
 
@@ -307,14 +316,6 @@ class ExerciseListFragment : Fragment() {
                     noVideoExBtn.isSelected = true
                     var tag = "Kein Video Button"
                     Log.i(tag, "Der Button wurde AN gewählt?: ${noVideoExBtn.isSelected}")
-//                    when(noVideoExBtn.isSelected){
-//                        true->{
-//                            dialog.findViewById<TextView>(R.id.sec2_no_video)?.textSize =16f
-//                        }
-//                        false->{
-//                            dialog.findViewById<TextView>(R.id.sec2_no_video)?.textSize =12f
-//                        }
-//                    }
                 }
 
 
@@ -352,6 +353,7 @@ class ExerciseListFragment : Fragment() {
 
 
                 resultsBtn?.setOnClickListener {
+
                         if (lDumbellExBtn!= null && lDumbellExBtn.isSelected){
                         viewModel.filterExercisesByLongDumbell(viewModel.selectedContentTitle.value!!,requireContext())
                         dialog.dismiss()

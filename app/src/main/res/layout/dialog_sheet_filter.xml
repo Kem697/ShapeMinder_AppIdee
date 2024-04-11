@@ -58,11 +58,12 @@
                 android:textStyle="bold" />
 
 
-            <LinearLayout
+            <RadioGroup
                 android:id="@+id/section1_equipment_filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:orientation="horizontal"
                 android:layout_margin="4dp">
 
                 <ImageButton
@@ -122,7 +123,7 @@
                 </ImageButton>
 
 
-            </LinearLayout>
+            </RadioGroup>
 
             <LinearLayout
                 android:id="@+id/section1_equipment_subtitles"
@@ -192,11 +193,12 @@
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
-            <LinearLayout
+            <RadioGroup
                 android:id="@+id/section2_instruction_filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:orientation="horizontal"
                 android:layout_margin="8dp">
 
                 <ImageButton
@@ -240,7 +242,7 @@
                 </ImageButton>
 
 
-            </LinearLayout>
+            </RadioGroup>
 
 
             <LinearLayout
