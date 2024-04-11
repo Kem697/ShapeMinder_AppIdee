@@ -4,7 +4,7 @@ package model.data.remote
 import com.example.shapeminder_appidee.BuildConfig
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import model.data.AccessToken
+import model.data.remote.api_model.token.AccessToken
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Field

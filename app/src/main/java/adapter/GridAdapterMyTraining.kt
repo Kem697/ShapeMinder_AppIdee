@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
 import com.example.shapeminder_appidee.R
-import model.Content
+import model.data.local.model.Content
 import ui.viewModel.HomeViewModel
 
 /*

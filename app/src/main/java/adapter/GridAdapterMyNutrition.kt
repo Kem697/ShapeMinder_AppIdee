@@ -10,12 +10,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
 import com.example.shapeminder_appidee.R
-import model.Food
+import model.data.local.model.FoodFinderCategory
 import ui.viewModel.HomeViewModel
 
 
 class GridAdapterMyNutrition(
-    private val dataset: List<Food>,
+    private val dataset: List<FoodFinderCategory>,
     private val viewModel: HomeViewModel,
     private val context: Context,
 ) : BaseAdapter() {

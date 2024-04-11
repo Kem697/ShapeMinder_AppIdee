@@ -4,8 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import model.Content
-import model.data.AccessToken
+import model.data.remote.api_model.token.AccessToken
 
 @Database(entities = [AccessToken::class], version = 1)
 abstract class FatSecretDatabase : RoomDatabase(){

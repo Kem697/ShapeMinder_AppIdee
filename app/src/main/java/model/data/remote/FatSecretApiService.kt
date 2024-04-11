@@ -1,25 +1,14 @@
 package model.data.remote
 
-import com.squareup.moshi.Json
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import model.data.FoodResponse
-import model.data.FoodResult
-import okhttp3.ResponseBody
-import org.intellij.lang.annotations.Language
+import model.data.remote.api_model.FoodResult
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.create
-import retrofit2.Call
-import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Query
-import java.security.Signature
-import java.security.Timestamp
-import java.text.DecimalFormat
+
 
 const val BASE_URL = "https://platform.fatsecret.com/"
 

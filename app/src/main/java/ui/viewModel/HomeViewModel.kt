@@ -9,8 +9,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import model.data.local.LocalRepository
 import kotlinx.coroutines.launch
-import model.Content
-import model.Food
+import model.data.local.model.Content
+import model.data.local.model.FoodFinderCategory
 import model.data.local.getDatabase
 import model.data.remote.FoodApi
 import model.data.remote.FoodTokenApi
@@ -78,7 +78,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
 
     private var _foodCategories = MutableLiveData(groceryCategories)
-    val foodCategories: LiveData<List<Food>>
+    val foodCategories: LiveData<List<FoodFinderCategory>>
         get() = _foodCategories
 
 

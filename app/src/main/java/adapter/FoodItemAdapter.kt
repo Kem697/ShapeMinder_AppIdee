@@ -3,13 +3,12 @@ package adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shapeminder_appidee.databinding.FragmentFoodListBinding
 import com.example.shapeminder_appidee.databinding.ListItemFoodBinding
-import model.Food
+import model.data.local.model.FoodFinderCategory
 import ui.viewModel.HomeViewModel
 
 class FoodItemAdapter(
-    private val dataset: List<Food>,
+    private val dataset: List<FoodFinderCategory>,
     private val viewModel: HomeViewModel
 ) : RecyclerView.Adapter<FoodItemAdapter.FoodItemViewHolder>() {
 

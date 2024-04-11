@@ -1,4 +1,4 @@
-package model.data
+package model.data.remote.api_model
 
 data class FoodResponse(
     var food_id : Int,

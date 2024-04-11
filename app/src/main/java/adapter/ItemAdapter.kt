@@ -39,7 +39,7 @@ import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.ListItemBinding
 import com.example.shapeminder_appidee.databinding.ListItemExerciseBinding
 import com.example.shapeminder_appidee.databinding.ListItemMyTrainingBinding
-import model.Content
+import model.data.local.model.Content
 import ui.viewModel.HomeViewModel
 
 

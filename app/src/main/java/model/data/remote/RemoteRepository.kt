@@ -2,7 +2,7 @@ package model.data.remote
 
 import android.util.Log
 import androidx.lifecycle.LiveData
-import model.data.AccessToken
+import model.data.remote.api_model.token.AccessToken
 import model.data.local.FatSecretDatabase
 import java.lang.Exception
 import java.time.Duration
