@@ -14,7 +14,7 @@ interface FatSecretDataDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(token: AccessToken)
 
-    @Query("SELECT * from accesstoken WHERE id = 0")
-    fun getToken(): LiveData<AccessToken>
+    @Query("SELECT * from accesstoken")
+    suspend fun getAll(): List<AccessToken>
 
 }

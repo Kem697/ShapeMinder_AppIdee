@@ -23,7 +23,7 @@ class FoodListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentFoodListBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -33,7 +33,7 @@ class FoodListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         /*Diese Beobachteten Daten sind nur Platzhalter und müssen mit den Daten aus dem API Request ausgetauscht werden!!*/
         viewModel.foodCategories.observe(viewLifecycleOwner){
-            binding.screenTitle.setText(it.first().grocery)
+            binding.screenTitle.text = it.first().grocery
             binding.listOfFood.adapter = FoodItemAdapter(it,viewModel)
         }
         viewModel.apiCall()

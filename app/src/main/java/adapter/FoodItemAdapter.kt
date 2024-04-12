@@ -27,7 +27,7 @@ class FoodItemAdapter(
     override fun onBindViewHolder(holder: FoodItemViewHolder, position: Int) {
         val food = dataset[position]
         holder.binding.foodName.setText(food.stringRessourceTitle)
-        holder.binding.foodCategory.setText(food.grocery)
+        holder.binding.foodCategory.text = food.grocery
         holder.binding.foodImage.setImageResource(food.imageRessource)
     }
 }

@@ -15,6 +15,7 @@ import model.data.local.getDatabase
 import model.data.remote.FoodApi
 import model.data.remote.FoodTokenApi
 import model.data.remote.RemoteRepository
+import model.data.remote.api_model.token.AccessToken
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val repository = LocalRepository()
@@ -125,16 +126,24 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 * The method is then called in my GridAdapter */
 
 
+    private var accessToken : AccessToken? = null
+
     init {
-        viewModelScope.launch {
-            remoteRepository.isTokenExpired()
-        }
+        getTokenFromDatabase()
     }
+
+
 
 
     fun getTokenFromDatabase(){
         viewModelScope.launch {
-            remoteRepository.getToken()
+            var tokenInBuffer = remoteRepository.getTokenFromDatabase()
+            if (tokenInBuffer.isNullOrEmpty()){
+                remoteRepository.isTokenExpired(null)
+            } else {
+                remoteRepository.isTokenExpired(tokenInBuffer[0])
+                accessToken = remoteRepository.getTokenFromDatabase()[0]
+            }
         }
     }
 
@@ -142,7 +151,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     fun apiCall(){
         viewModelScope.launch {
-            remoteRepository.foodExampleDetail()
+            remoteRepository.foodExampleDetail(accessToken!!.accessToken)
         }
     }
 

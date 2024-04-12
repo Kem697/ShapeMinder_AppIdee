@@ -208,7 +208,7 @@ class ExercisePreviewFragment : Fragment() {
                 super.onReady(youTubePlayer)
                 var videoId = videoExercise.video?.let { getString(it) }
                 if (videoId!=null){
-                    youTubePlayer.cueVideo(videoId!!,0F)
+                    youTubePlayer.cueVideo(videoId,0F)
                 }
                 else{
                     var tag = "Kein Video"
