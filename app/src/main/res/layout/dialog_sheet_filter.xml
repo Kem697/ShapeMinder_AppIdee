@@ -58,7 +58,7 @@
                 android:textStyle="bold" />
 
 
-            <RadioGroup
+            <LinearLayout
                 android:id="@+id/section1_equipment_filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -123,7 +123,7 @@
                 </ImageButton>
 
 
-            </RadioGroup>
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/section1_equipment_subtitles"

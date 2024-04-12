@@ -12,7 +12,6 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
 import androidx.core.widget.addTextChangedListener
@@ -182,8 +181,40 @@ class ExerciseListFragment : Fragment() {
                 var tag = "Button gefunden?"
                 Log.i(tag, "Button wurde nicht gefunden: $resetFilterBtn")
 
-                var radioGroup1 = dialog.findViewById<RadioGroup>(R.id.section1_equipment_filter)
-                var radioGroup2 = dialog.findViewById<RadioGroup>(R.id.section2_instruction_filter)
+                var selectedBtn: ImageButton?
+
+                fun resetButtons(dialog: BottomSheetDialog) {
+                    val allButtons = listOf<ImageButton?>(
+                        dialog.findViewById(R.id.sec1_all_Btn),
+                        dialog.findViewById(R.id.sec1_short_dumbell_Btn),
+                        dialog.findViewById(R.id.sec1_long_dumbell_Btn),
+                        dialog.findViewById(R.id.sec1_own_bodyweight_Btn),
+                        dialog.findViewById(R.id.sec2_all_Btn),
+                        dialog.findViewById(R.id.sec2_with_video_Btn),
+                        dialog.findViewById(R.id.sec2_no_video_Btn)
+                    )
+
+                    val uncheckedImages = listOf<Int>(
+                        R.drawable.all_checked,
+                        R.drawable.short_dumbell_unchecked,
+                        R.drawable.long_dumbell_unchecked,
+                        R.drawable.bodyweight_unchecked,
+                        R.drawable.all_checked,
+                        R.drawable.video_unchecked,
+                        R.drawable.no_video_unchecked,
+                    )
+
+                    allButtons.forEachIndexed { index, button ->
+                        button?.setImageResource(uncheckedImages[index])  // setze das gewünschte Bild
+                        button?.isSelected = false
+
+
+                        /*allButtons.first()?.isSelected = true
+                        allButtons[4]*/
+                    }
+
+                }
+
 
                 var sec1AllBtn = dialog.findViewById<ImageButton>(R.id.sec1_all_Btn)
                 var sDumbellExBtn = dialog.findViewById<ImageButton>(R.id.sec1_short_dumbell_Btn)
@@ -197,33 +228,13 @@ class ExerciseListFragment : Fragment() {
                 var resultsBtn = dialog.findViewById<MaterialButton>(R.id.results_Btn)
                 var cancelBtn = dialog.findViewById<MaterialButton>(R.id.cancel_Btn)
 
-                var selectedBtn: ImageButton?
 
 
                 resetFilterBtn?.setOnClickListener {
-                    sec1AllBtn?.setImageResource(R.drawable.all_checked)
+                    resetButtons(dialog)
+                    viewModel.resetFilter(viewModel.selectedContentTitle.value!!)
                     sec1AllBtn?.isSelected = true
-                    var tag = "All1 Button"
-                    Log.i(tag, "Der Button wurde AN gewählt?: ${sec1AllBtn?.isSelected}")
-
-                    sDumbellExBtn?.setImageResource(R.drawable.short_dumbell_unchecked)
-                    sDumbellExBtn?.isSelected = false
-                    lDumbellExBtn?.setImageResource(R.drawable.long_dumbell_unchecked)
-                    lDumbellExBtn?.isSelected = false
-
-                    bodyweightExBtn?.setImageResource(R.drawable.bodyweight_unchecked)
-                    bodyweightExBtn?.isSelected = false
-
-                    sec2AllBtn?.setImageResource(R.drawable.all_checked)
                     sec2AllBtn?.isSelected = true
-                    var tag2 = "All2 Button"
-                    Log.i(tag2, "Der Button wurde AN gewählt?: ${sec2AllBtn?.isSelected}")
-
-                    onlyVideoExBtn?.setImageResource(R.drawable.video_unchecked)
-                    onlyVideoExBtn?.isSelected = false
-
-                    noVideoExBtn?.setImageResource(R.drawable.no_video_unchecked)
-                    noVideoExBtn?.isSelected = false
                 }
 
                 sec1AllBtn?.setImageResource(if (!sec1AllBtn.isSelected) R.drawable.all_checked else R.drawable.all_unchecked)
@@ -233,15 +244,16 @@ class ExerciseListFragment : Fragment() {
                     lDumbellExBtn?.setImageResource(R.drawable.long_dumbell_unchecked)
                     bodyweightExBtn?.setImageResource(R.drawable.bodyweight_unchecked)
                     sec1AllBtn.isSelected = true
-                    selectedBtn = sec1AllBtn
+                    viewModel.resetFilter(viewModel.selectedContentTitle.value!!)
+//                    selectedBtn = sec1AllBtn
                     var tag = "All1 Button"
-                    Log.i(tag, "Der Button wurde AN gewählt?: ${sec1AllBtn.isSelected} ${selectedBtn?.isSelected}")
+                    Log.i(tag, "Der Button wurde AN gewählt?: ${sec1AllBtn.isSelected}")
 
                 }
 
                 sDumbellExBtn?.setImageResource(if (sDumbellExBtn.isSelected) R.drawable.short_dumbell_checked else R.drawable.short_dumbell_unchecked)
                 sDumbellExBtn?.setOnClickListener {
-                    /*       if (sDumbellExBtn.isSelected){
+                           if (sDumbellExBtn.isSelected){
                                sDumbellExBtn.setImageResource(R.drawable.short_dumbell_unchecked)
                                sec1AllBtn?.setImageResource(R.drawable.all_unchecked)
                                lDumbellExBtn?.setImageResource(R.drawable.long_dumbell_unchecked)
@@ -249,15 +261,15 @@ class ExerciseListFragment : Fragment() {
                                sDumbellExBtn.isSelected = false
                                var tag = "Kurzhantel Button"
                                Log.i(tag,"Der Button wurde AB gewählt?: ${sDumbellExBtn.isSelected}")
-                           }*/
+                           }
                     sDumbellExBtn.setImageResource(R.drawable.short_dumbell_checked)
                     sec1AllBtn?.setImageResource(R.drawable.all_unchecked)
                     lDumbellExBtn?.setImageResource(R.drawable.long_dumbell_unchecked)
                     bodyweightExBtn?.setImageResource(R.drawable.bodyweight_unchecked)
                     sDumbellExBtn.isSelected = true
-                    selectedBtn = sDumbellExBtn
+//                    selectedBtn = sDumbellExBtn
                     var tag = "Kurzhantel Button"
-                    Log.i(tag, "Der Button wurde AN gewählt?: ${sDumbellExBtn.isSelected} ${selectedBtn?.isSelected}")
+                    Log.i(tag, "Der Button wurde AN gewählt?: ${sDumbellExBtn.isSelected}")
                 }
 
                 lDumbellExBtn?.setImageResource(if (lDumbellExBtn.isSelected) R.drawable.long_dumbell_checked else R.drawable.long_dumbell_unchecked)
@@ -266,7 +278,7 @@ class ExerciseListFragment : Fragment() {
                     sec1AllBtn?.setImageResource(R.drawable.all_unchecked)
                     sDumbellExBtn?.setImageResource(R.drawable.short_dumbell_unchecked)
                     bodyweightExBtn?.setImageResource(R.drawable.bodyweight_unchecked)
-                    lDumbellExBtn?.isSelected = true
+//                    lDumbellExBtn?.isSelected = true
                     selectedBtn = lDumbellExBtn
                     var tag = "Langhantel Button"
                     Log.i(tag, "Der Button wurde AN gewählt?: ${lDumbellExBtn.isSelected} ${selectedBtn?.isSelected}")
@@ -279,11 +291,10 @@ class ExerciseListFragment : Fragment() {
                     sDumbellExBtn?.setImageResource(R.drawable.short_dumbell_unchecked)
                     lDumbellExBtn?.setImageResource(R.drawable.long_dumbell_unchecked)
                     bodyweightExBtn?.isSelected = true
-                    selectedBtn = bodyweightExBtn
+//                    selectedBtn = bodyweightExBtn
                     var tag = "Bodyweight Button"
-                    Log.i(tag, "Der Button wurde AN gewählt?: ${bodyweightExBtn.isSelected} ${selectedBtn?.isSelected}")
+                    Log.i(tag, "Der Button wurde AN gewählt?: ${bodyweightExBtn.isSelected} ")
                 }
-
 
                 sec2AllBtn?.setImageResource(if (!sec2AllBtn.isSelected) R.drawable.all_checked else R.drawable.all_unchecked)
                 sec2AllBtn?.setOnClickListener {
@@ -291,6 +302,7 @@ class ExerciseListFragment : Fragment() {
                     onlyVideoExBtn?.setImageResource(R.drawable.video_unchecked)
                     noVideoExBtn?.setImageResource(R.drawable.no_video_unchecked)
                     sec2AllBtn.isSelected = true
+                    viewModel.resetFilter(viewModel.selectedContentTitle.value!!)
                     var tag = "All2 Button"
                     Log.i(tag, "Der Button wurde AN gewählt?: ${sec2AllBtn.isSelected}")
 
@@ -322,61 +334,43 @@ class ExerciseListFragment : Fragment() {
 //              Muss ausgebessert werden, da standardmäßig die beiden All button nicht das gewünchte haben.
 
                 cancelBtn?.setOnClickListener {
-
-                    sec1AllBtn?.isSelected = false
-                    sec1AllBtn?.setImageResource(R.drawable.all_checked)
-
-                    var tag = "All1 Button"
-                    Log.i(tag, "Der Button wurde AN gewählt?: ${sec1AllBtn?.isSelected}")
-
-                    sDumbellExBtn?.isSelected = false
-                    lDumbellExBtn?.isSelected = false
-                    bodyweightExBtn?.isSelected = false
-
-
-                    sec2AllBtn?.isSelected = false
-                    sec2AllBtn?.setImageResource(R.drawable.all_checked)
-
-
-                    var tag2 = "All2 Button"
-                    Log.i(tag2, "Der Button wurde AN gewählt?: ${sec2AllBtn?.isSelected}")
-
-                    onlyVideoExBtn?.isSelected = false
-                    noVideoExBtn?.isSelected = false
                     viewModel.resetFilter(viewModel.selectedContentTitle.value!!)
+                    resetButtons(dialog)
                     dialog.dismiss()
-
                 }
 
 
-                /*Muss auch noch ausgebessert werden, da*/
-
+//Muss auch noch ausgebessert werden, da
 
                 resultsBtn?.setOnClickListener {
-
                         if (lDumbellExBtn!= null && lDumbellExBtn.isSelected){
-                        viewModel.filterExercisesByLongDumbell(viewModel.selectedContentTitle.value!!,requireContext())
-                        dialog.dismiss()
+                        viewModel.filterExercisesByLongDumbbell(viewModel.selectedContentTitle.value!!,requireContext())
                         lDumbellExBtn.isSelected = false
-                    }   else if (bodyweightExBtn!= null && bodyweightExBtn.isSelected){
+                    }   else if (sDumbellExBtn!= null && sDumbellExBtn.isSelected){
+                        viewModel.filterExercisesByShortDumbbell(viewModel.selectedContentTitle.value!!,requireContext())
+                        sDumbellExBtn.isSelected = false
+                    }  else if (bodyweightExBtn!= null && bodyweightExBtn.isSelected){
                         viewModel.filterExercisesByBodyweight(viewModel.selectedContentTitle.value!!,requireContext())
-                        dialog.dismiss()
                         bodyweightExBtn.isSelected = false
                     }   else if (onlyVideoExBtn != null && onlyVideoExBtn.isSelected) {
                         viewModel.filterExercisesByVideo(viewModel.selectedContentTitle.value!!)
-                        dialog.dismiss()
                         onlyVideoExBtn.isSelected = false
                     } else if (noVideoExBtn != null && noVideoExBtn.isSelected) {
                         viewModel.filterExercisesByNoVideo(viewModel.selectedContentTitle.value!!)
-                        dialog.dismiss()
                         noVideoExBtn.isSelected = false
                     }
+                    dialog.dismiss()
+                    if (!dialog.isShowing){
+                        resetButtons(dialog)
+                    }
                 }
-            }
         }
-
-
     }
+}
+
+
+
+
 
     fun sortRadioGroup() {
         var dialog = BottomSheetDialog(activity as MainActivity, R.style.transparent)
@@ -506,5 +500,106 @@ class ExerciseListFragment : Fragment() {
         }
     }
 
-
 }
+
+
+
+
+/*
+    fun setFilter() {
+        val dialog = BottomSheetDialog(activity as MainActivity, R.style.transparent).apply {
+            setContentView(R.layout.dialog_sheet_filter)
+            setCancelable(true)
+            setCanceledOnTouchOutside(true)
+        }
+
+        binding.setFilterBtn.setOnClickListener {
+            if (!dialog.isShowing) {
+                dialog.show()
+
+                val resetFilterBtn = dialog.findViewById<Button>(R.id.reset_Btn)
+                resetFilterBtn?.setOnClickListener {
+                    // Setze Bildressourcen für alle Buttons zurück
+                    resetButtons()
+                }
+
+                val allButtons = listOf<ImageButton?>(
+                    dialog.findViewById(R.id.sec1_all_Btn),
+                    dialog.findViewById(R.id.sec1_short_dumbell_Btn),
+                    dialog.findViewById(R.id.sec1_long_dumbell_Btn),
+                    dialog.findViewById(R.id.sec1_own_bodyweight_Btn),
+                    dialog.findViewById(R.id.sec2_all_Btn),
+                    dialog.findViewById(R.id.sec2_with_video_Btn),
+                    dialog.findViewById(R.id.sec2_no_video_Btn)
+                )
+
+                val checkedImages = listOf<Int>(
+                    R.drawable.all_checked,
+                    R.drawable.short_dumbell_checked,
+                    R.drawable.long_dumbell_checked,
+                    R.drawable.bodyweight_checked,
+                    R.drawable.all_checked,
+                    R.drawable.video_checked,
+                    R.drawable.no_video_checked,
+                )
+
+                allButtons.forEach { button ->
+                    button?.setOnClickListener {
+                        resetButtons()
+                        button.setImageResource(checkedImages.get(allButtons.indexOf(button))) // setze das gewünschte Bild
+                        button.isSelected = true
+                    }
+                }
+
+                val resultsBtn = dialog.findViewById<MaterialButton>(R.id.results_Btn)
+                resultsBtn?.setOnClickListener {
+                    allButtons.forEach { button ->
+                        if (button != null && button.isSelected) {
+                            when (button.id) {
+                                R.id.sec1_all_Btn -> viewModel.resetFilter(viewModel.selectedContentTitle.value!!)
+                                R.id.sec1_short_dumbell_Btn -> viewModel.filterExercisesByShortDumbbell(viewModel.selectedContentTitle.value!!, requireContext())
+                                R.id.sec1_long_dumbell_Btn -> viewModel.filterExercisesByLongDumbbell(viewModel.selectedContentTitle.value!!, requireContext())
+                                R.id.sec1_own_bodyweight_Btn -> viewModel.filterExercisesByBodyweight(viewModel.selectedContentTitle.value!!, requireContext())
+                                R.id.sec2_all_Btn -> { */
+/* handle sec2_all_Btn click *//*
+ }
+                                R.id.sec2_with_video_Btn -> { viewModel.filterExercisesByVideo(viewModel.selectedContentTitle.value!!)}
+                                R.id.sec2_no_video_Btn -> {viewModel.filterExercisesByNoVideo(viewModel.selectedContentTitle.value!!) }
+                            }
+
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+*/
+/*
+    private fun resetButtons() {
+        val dialog = BottomSheetDialog(activity as MainActivity, R.style.transparent)
+        val allButtons = listOf<ImageButton?>(
+            dialog.findViewById(R.id.sec1_all_Btn),
+            dialog.findViewById(R.id.sec1_short_dumbell_Btn),
+            dialog.findViewById(R.id.sec1_long_dumbell_Btn),
+            dialog.findViewById(R.id.sec1_own_bodyweight_Btn),
+            dialog.findViewById(R.id.sec2_all_Btn),
+            dialog.findViewById(R.id.sec2_with_video_Btn),
+            dialog.findViewById(R.id.sec2_no_video_Btn)
+        )
+
+        val uncheckedImages = listOf<Int>(
+            R.drawable.all_unchecked,
+            R.drawable.short_dumbell_unchecked,
+            R.drawable.long_dumbell_unchecked,
+            R.drawable.bodyweight_unchecked,
+            R.drawable.all_unchecked,
+            R.drawable.video_unchecked,
+            R.drawable.no_video_unchecked,
+        )
+
+        allButtons.forEach { button ->
+            button?.setImageResource(uncheckedImages.get(allButtons.indexOf(button)))  // setze das gewünschte Bild
+            button?.isSelected = false
+        }
+    }*/

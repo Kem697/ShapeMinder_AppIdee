@@ -21,19 +21,30 @@ class RemoteRepository (
 
 
     suspend fun isTokenExpired(){
-        var dateFormater = DateTimeFormatter.ISO_DATE_TIME
-        var localDate = LocalDateTime.now()
-        var tokenTime = accessToken.value?.time
-        var currentTokenTime = LocalDateTime.parse(tokenTime?:"2024-01-01T00:00:00",dateFormater)
-        if (Duration.between(currentTokenTime,localDate).toHours()>=24){
-            insertToken()
+        try {
+            var dateFormater = DateTimeFormatter.ISO_DATE_TIME
+            var localDate = LocalDateTime.now()
+            var tokenTime = accessToken.value?.time
+            println(accessToken.value?.time)
+            var currentTokenTime = LocalDateTime.parse(tokenTime,dateFormater)
+            var timeRequirement = Duration.between(currentTokenTime,localDate).toHours()
+            println(timeRequirement)
+            if (timeRequirement>=24){
+                insertToken()
+            } else {
+                var tag = "Aktueller Token??"
+                Log.i(tag,"Token-Status: ${accessToken.value}")
+            }
+        } catch (e:Exception){
+            var tag = "Token abgelaufen??"
+            Log.i(tag,"Fehler beim Überprüfen des Token-Status: $e")
         }
+
     }
 
 
 
     suspend fun insertToken(){
-
         try {
             var result = foodTokenApi.retrofitService.generateToken()
             var newToken = AccessToken(0,result.accessToken,LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME))
@@ -42,7 +53,7 @@ class RemoteRepository (
             Log.i(tag,"Token wurde generiert!: ${accessToken.value?.accessToken}")
         } catch (e: Exception){
             var tag = "Fehler Tokenerstellung??"
-            Log.i(tag,"Token konnte nicht erstell werden: ! $e")
+            Log.i(tag,"Token konnte nicht erstellt werden: ! $e")
         }
     }
 
@@ -69,7 +80,5 @@ suspend fun foodExampleDetail(){
         Log.i(tag,"Fehler bei der API Anfrage!: $e")
     }
 }
-
-
 
 }
