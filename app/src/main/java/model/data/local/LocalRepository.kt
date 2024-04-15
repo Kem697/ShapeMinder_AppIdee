@@ -83,6 +83,7 @@ class LocalRepository {
     }
 
 
+
     fun loadGroceryCategories(): List<FoodFinderCategory>{
         return listOf(
             FoodFinderCategory(R.string.gc_grain_and_corn,R.drawable.foodcat1_noodles_img,"Getreide",true),
