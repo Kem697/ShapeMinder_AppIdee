@@ -251,6 +251,7 @@ class ExerciseListFragment : Fragment() {
         }
     }
 }
+
     fun userSelection(dialog: BottomSheetDialog, allButtons: List<ImageButton?>, uncheckedImages: List<Int>, checkedImages: List<Int>,resultsBtn: MaterialButton?)  {
         allButtons.forEachIndexed { index, selectedButton ->
             selectedButton?.setImageResource(uncheckedImages[index]) // Setze zunächst alle Buttons auf die ungewählten Bilder
@@ -261,6 +262,7 @@ class ExerciseListFragment : Fragment() {
                 }
                 selectedButton.setImageResource(checkedImages[index]) // Setze das Bild des ausgewählten Buttons
                 selectedButton.isSelected = true
+
                 lastSelectedButtonIndex = index
                 var selectedBtnName = resources.getResourceEntryName(selectedButton.id)
                 var tag = "Button Wahl??"

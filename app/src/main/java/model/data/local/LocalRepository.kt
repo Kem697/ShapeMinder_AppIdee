@@ -67,6 +67,7 @@ class LocalRepository {
             Content(R.string.weKH_SideRaise,R.string.weKH_SideRaiseInstructions, R.drawable.bp1arms,true,true,"Schulter",false,R.string.weKH_SideRaiseYtVideo),
             Content(R.string.weKH_SideRaiseLayOnBench,R.string.weKH_SideRaiseLayOnBenchInstruction, R.drawable.bp1arms,true,true,"Schulter",false,R.string.weKH_SideRaiseLayOnBenchYtVideo),
             Content(R.string.we_Pull_ups,R.string.weKH_BicepscurlsInstruction, R.drawable.bp1arms,true,true,"Rücken",false,null),
+//            Content(R.string.we,R.string.weKH_BicepscurlsInstruction, R.drawable.bp1arms,true,true,"Rücken",false,R.string.weCable_RowYtVideo),
 
             Content(R.string.we_Crunches,R.string.we_CrunchesInstructions, R.drawable.bp1arms,true,true,"Bauch",false,null),
             Content(R.string.we_RisingLegs,R.string.we_RisingLegsInstructions, R.drawable.bp1arms,true,true,"Bauch",false,R.string.we_Rising_LegsYtVideo),

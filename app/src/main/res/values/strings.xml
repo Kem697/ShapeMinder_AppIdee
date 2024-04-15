@@ -1,5 +1,6 @@
-<resources>
-    <string name="app_name">ShapeMinder_AppIdee</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="app_name" translatable="false">ShapeMinder</string>
     <string name="eMailInput">E-Mail Adresse eingeben...</string>
     <string name="nameInput">Vor - und Nachnamen eingeben...</string>
     <string name="passwordInput">Passwort eingeben...</string>
@@ -7,6 +8,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
+    <!--contentTitles-->
     <string name="title1">Erholung</string>
     <string name="title2">Training</string>
     <string name="title3">Ernährung</string>
@@ -16,11 +18,11 @@
     <string name="text3">Ernährung ist ..</string>
 
 
-    <string name="ecBenchpress">Bankdrücken</string>
-    <string name="ecShoulderpress">Schulterdrücken</string>
     <string name="ecPullups">Klimmzüge</string>
     <string name="ecDeadlift">Kreuzheben</string>
     <string name="ecSquats">Kniebeuge</string>
+
+    <!--bodyparts-->
 
     <string name="bpArme">Arme</string>
     <string name="bpBeine">Beine</string>
@@ -29,6 +31,8 @@
     <string name="bpBauch">Bauch</string>
     <string name="bpBrust">Brust</string>
 
+
+    <!--exerciseName-->
 
     <string name="weKH_Bicepscurls">KH-Bizepscurls</string>
     <string name="weLH_Bicepscurls">LH-Bizepscurls</string>
@@ -40,8 +44,6 @@
     <string name="weKH_Incline_Benchpress">KH-Schrägbankdrücken</string>
     <string name="we_Dips">Dips</string>
     <string name="we_Lunges">Ausfallschritte</string>
-
-
     <string name="weSZ_Push_ups">Liegestütze</string>
     <string name="weKH_Shoulderpress">KH-Schulterdrücken</string>
     <string name="weKH_SideRaise">KH-Seitheben</string>
@@ -49,13 +51,11 @@
     <string name="we_RisingLegs">Beine anheben</string>
     <string name="weLH_Squats">LH-Kniebeuge</string>
     <string name="weKH_SideRaiseLayOnBench">KH-Seitheben auf Bank </string>
+    <string name="weCable_Row">Kabelrudern</string>
 
 
-    <!--    <string name="weBicepscurls">Bizepscurls</string>
-    <string name="weBicepscurls">Bizepscurls</string>
-    <string name="weBicepscurls">Bizepscurls</string>
-    <string name="weBicepscurls">Bizepscurls</string>
-    <string name="weBicepscurls">Bizepscurls</string>-->
+
+    <!--exerciseText-->
 
     <string name="weKH_BicepscurlsInstruction">Diese Übung trainiert...</string>
     <string name="we_LungesInstruction">Diese Übung trainiert...</string>
@@ -74,21 +74,23 @@
     <string name="weKH_SideRaiseLayOnBenchInstruction">xxx</string>
 
 
-    <string name="weKH_BicepscurlsYtVideo">o_-YiFQzoe8</string>
-    <string name="weKH_ShoulderpressYtVideo">iHq62rJcWU0</string>
-    <string name="weKH_BenchpressYtVideo">7wd_QFZs2bE</string>
-    <string name="weLH_BenchpressYtVideo">sydZOuGQdug</string>
-    <string name="weKH_InclineBenchpressYtVideo">IBhRT-42vg8</string>
-    <string name="weLH_InclineBenchpressYtVideo">ah-36O5gK6g</string>
-    <string name="weKH_RowYtVideo">Y06S2pRPEa4</string>
-    <string name="weSZ_BizepscurlsYtVideo">c6uI-hkCWLk</string>
-    <string name="we_Rising_LegsYtVideo">zhC8_yXS-AU</string>
-    <string name="weLH_RowYtVideo">MwIydAVCeHE</string>
-    <string name="weCable_RowYtVideo">V3U-SZ_zw8g</string>
-    <string name="weLH_BicepscurlsYtVideo">LTMO0mCZrIY</string>
-    <string name="we_LungesYtVideo">z4ZSs6btVUE</string>
-    <string name="weKH_SideRaiseYtVideo">u4mIfqKcWWk</string>
-    <string name="weKH_SideRaiseLayOnBenchYtVideo">2oMQvDAu0m8</string>
+    <!--exerciseVideos-->
+
+    <string name="weKH_BicepscurlsYtVideo" translatable="false">o_-YiFQzoe8</string>
+    <string name="weKH_ShoulderpressYtVideo" translatable="false">iHq62rJcWU0</string>
+    <string name="weKH_BenchpressYtVideo" translatable="false">7wd_QFZs2bE</string>
+    <string name="weLH_BenchpressYtVideo" translatable="false">sydZOuGQdug</string>
+    <string name="weKH_InclineBenchpressYtVideo" translatable="false">IBhRT-42vg8</string>
+    <string name="weLH_InclineBenchpressYtVideo" translatable="false">ah-36O5gK6g</string>
+    <string name="weKH_RowYtVideo" translatable="false">Y06S2pRPEa4</string>
+    <string name="weSZ_BizepscurlsYtVideo" translatable="false">c6uI-hkCWLk</string>
+    <string name="we_Rising_LegsYtVideo" translatable="false">zhC8_yXS-AU</string>
+    <string name="weLH_RowYtVideo" translatable="false">MwIydAVCeHE</string>
+    <string name="weCable_RowYtVideo" translatable="false">V3U-SZ_zw8g</string>
+    <string name="weLH_BicepscurlsYtVideo" translatable="false">LTMO0mCZrIY</string>
+    <string name="we_LungesYtVideo" translatable="false">z4ZSs6btVUE</string>
+    <string name="weKH_SideRaiseYtVideo" translatable="false">u4mIfqKcWWk</string>
+    <string name="weKH_SideRaiseLayOnBenchYtVideo" translatable="false">2oMQvDAu0m8</string>
 
 
     <string name="gc_fruits_and_vegetable">Obst und Gemüse</string>
@@ -97,6 +99,8 @@
     <string name="gc_milk_and_eg">Molkerei und Eier</string>
     <string name="gc_meat_and_fish">Fleisch und Fisch</string>
     <string name="gc_sweets">Süssigkeiten</string>
+    <string name="ecBenchpress">Bankdrücken</string>
+    <string name="ecShoulderpress">Schulterdrücken</string>
 
 
 </resources>
