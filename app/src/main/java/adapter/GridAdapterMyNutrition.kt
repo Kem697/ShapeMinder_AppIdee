@@ -78,9 +78,9 @@ class GridAdapterMyNutrition(
                 }
             }
 
-            "Käse, Molkerei und Eier" -> {
+            "Molkerei und Eier" -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedCategory = "Käse, Molkerei und Eier"
+                    val selectedCategory = "Molkerei und Eier"
                     viewModel.getContentTitle(selectedCategory)
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }

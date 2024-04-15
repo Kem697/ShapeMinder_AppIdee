@@ -53,7 +53,6 @@ class ExerciseListFragment : Fragment() {
         searchInput()
         navigateBack()
         setFilter()
-        resetFilter()
 
     }
 
@@ -175,14 +174,6 @@ class ExerciseListFragment : Fragment() {
         }
     }
 
-    fun resetFilter(){
-        var resetBtn = binding.resetFilterBtn
-        resetBtn.setOnClickListener {
-            viewModel.resetFilter(viewModel.selectedContentTitle.value!!)
-            resetBtn.isInvisible = true
-        }
-    }
-
     fun setFilter() {
         var dialog = BottomSheetDialog(activity as MainActivity, R.style.transparent)
         dialog.setContentView(R.layout.dialog_sheet_filter)
@@ -227,6 +218,20 @@ class ExerciseListFragment : Fragment() {
 
                 userSelection(dialog,allImageButtons,uncheckedImages,checkedImages,dialogResultsBtn)
 
+                var resetBtn = requireActivity().findViewById<MaterialButton>(R.id.resetFilterBtn)
+                resetBtn.setOnClickListener {
+                    if (lastSelectedButtonIndex != -1){
+                        viewModel.resetFilter(viewModel.selectedContentTitle.value!!)
+                        allImageButtons.forEach { imageButton ->
+                            imageButton?.setImageResource(uncheckedImages[allImageButtons.indexOf(imageButton)])
+                            imageButton?.isSelected = false
+                            var tag = "Button Wahl2??"
+                            Log.i(tag,"Status der Button?: ${allImageButtons[lastSelectedButtonIndex]?.isSelected}")
+                        }
+                    }
+                    resetBtn.isInvisible = true
+                }
+
                 dialogResetBtn?.setOnClickListener {
                     if (lastSelectedButtonIndex != -1){
                         viewModel.resetFilter(viewModel.selectedContentTitle.value!!)
@@ -268,7 +273,7 @@ class ExerciseListFragment : Fragment() {
                 when (selectedBtnName){
                     "sec1_short_dumbell_Btn"->{
                         resultsBtn?.setOnClickListener {
-//                            viewModel.setFilterIndex(FilterModel(0))
+                            if (selectedButton.isSelected)
                             viewModel.filterExercisesByShortDumbbell(viewModel.selectedContentTitle.value!!,requireContext())
                             binding.resetFilterBtn.isInvisible = false
                             dialog.dismiss()
@@ -277,7 +282,7 @@ class ExerciseListFragment : Fragment() {
 
                     "sec1_long_dumbell_Btn"->{
                         resultsBtn?.setOnClickListener {
-//                            viewModel.setFilterIndex(FilterModel(1))
+                            if (selectedButton.isSelected)
                             viewModel.filterExercisesByLongDumbbell(viewModel.selectedContentTitle.value!!,requireContext())
                             binding.resetFilterBtn.isInvisible = false
                             dialog.dismiss()
@@ -286,7 +291,7 @@ class ExerciseListFragment : Fragment() {
 
                     "sec1_own_bodyweight_Btn"->{
                         resultsBtn?.setOnClickListener {
-//                            viewModel.setFilterIndex(FilterModel(2))
+                            if (selectedButton.isSelected)
                             viewModel.filterExercisesByBodyweight(viewModel.selectedContentTitle.value!!,requireContext())
                             binding.resetFilterBtn.isInvisible = false
                             dialog.dismiss()
@@ -295,7 +300,7 @@ class ExerciseListFragment : Fragment() {
 
                     "sec2_with_video_Btn"->{
                         resultsBtn?.setOnClickListener {
-//                            viewModel.setFilterIndex(FilterModel(instruction = 0))
+                            if (selectedButton.isSelected)
                             viewModel.filterExercisesByVideo(viewModel.selectedContentTitle.value!!)
                             binding.resetFilterBtn.isInvisible = false
                             dialog.dismiss()
@@ -303,7 +308,7 @@ class ExerciseListFragment : Fragment() {
                     }
                     "sec2_no_video_Btn"->{
                         resultsBtn?.setOnClickListener {
-//                            viewModel.setFilterIndex(FilterModel(instruction = 1))
+                            if (selectedButton.isSelected)
                             viewModel.filterExercisesByNoVideo(viewModel.selectedContentTitle.value!!)
                             binding.resetFilterBtn.isInvisible = false
                             dialog.dismiss()
