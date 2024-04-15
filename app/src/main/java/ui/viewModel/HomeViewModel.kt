@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 import model.data.local.model.Content
 import model.data.local.model.FoodFinderCategory
 import model.data.local.getDatabase
+import model.data.local.model.FilterModel
 import model.data.remote.FoodApi
 import model.data.remote.FoodTokenApi
 import model.data.remote.RemoteRepository
@@ -33,6 +34,12 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private var _contents = MutableLiveData(allContent)
     val contents: LiveData<List<Content>>
         get() = _contents
+
+    private var _filterIndex = MutableLiveData<FilterModel>()
+
+    val filterIndex: LiveData<FilterModel>
+
+        get() = _filterIndex
 
 
     private var _bodyparts = MutableLiveData(allBodyparts)
@@ -182,11 +189,11 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     fun sortExercisesByAlphabet(bodypart: String, sort: Boolean) {
         viewModelScope.launch {
-            val filteredExercises = allExercisesByBodyparts.filter { it.bodyPart == bodypart }
+            val filteredExercises = exercisesByBodyparts.value?.filter { it.bodyPart == bodypart }
             val sortedExercises = if (sort) {
-                filteredExercises.sortedByDescending { it.stringRessourceText }
+                filteredExercises?.sortedByDescending { it.stringRessourceText }
             } else {
-                filteredExercises.sortedBy { it.stringRessourceText }
+                filteredExercises?.sortedBy { it.stringRessourceText }
             }
             _exercisesByBodyparts.value = sortedExercises
         }
@@ -432,7 +439,15 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         _savedExercises.value = updatedExercises
     }
 
+
+    fun setFilterIndex(filterIndex: FilterModel){
+        _filterIndex.value = filterIndex
+    }
+
 }
+
+
+
 
 
 

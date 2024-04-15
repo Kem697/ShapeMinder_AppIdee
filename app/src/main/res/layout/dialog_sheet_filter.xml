@@ -66,24 +66,12 @@
                 android:orientation="horizontal"
                 android:layout_margin="4dp">
 
-                <ImageButton
-                    android:id="@+id/sec1_all_Btn"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_margin="8dp"
-                    android:backgroundTint="@color/white"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/all_checked"
-                    android:text="Alle"
-                    android:textSize="20dp">
 
-
-                </ImageButton>
 
                 <ImageButton
                     android:id="@+id/sec1_short_dumbell_Btn"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
                     android:layout_margin="8dp"
                     android:backgroundTint="@color/white"
                     android:scaleType="centerCrop"
@@ -96,8 +84,8 @@
 
                 <ImageButton
                     android:id="@+id/sec1_long_dumbell_Btn"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
                     android:layout_margin="8dp"
                     android:backgroundTint="@color/white"
                     android:scaleType="centerCrop"
@@ -110,8 +98,8 @@
 
                 <ImageButton
                     android:id="@+id/sec1_own_bodyweight_Btn"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
                     android:layout_margin="8dp"
                     android:backgroundTint="@color/white"
                     android:scaleType="centerCrop"
@@ -126,30 +114,21 @@
 
             <LinearLayout
                 android:id="@+id/section1_equipment_subtitles"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp">
+                android:orientation="horizontal"
+                android:layout_margin="4dp"
+                >
 
-                <TextView
-                    android:id="@+id/sec1_all"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="48dp"
-                    android:text="Alle"
-                    android:textSize="12dp"
-                    android:textStyle="bold">
 
-                </TextView>
 
                 <TextView
                     android:id="@+id/sec1_short_dumbell"
-                    android:layout_width="wrap_content"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="36dp"
                     android:text="Kurzhantel"
-                    android:textSize="12dp"
+                    android:textSize="13dp"
                     android:textStyle="bold">
 
                 </TextView>
@@ -158,9 +137,10 @@
                     android:id="@+id/sec1_long_dumbell"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginLeft="25dp"
                     android:text="Langhantel"
-                    android:textSize="12dp"
+                    android:textSize="13dp"
+                    android:layout_marginRight="10dp"
                     android:textStyle="bold">
 
                 </TextView>
@@ -170,9 +150,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginLeft="4dp"
                     android:text="Eigengewicht"
-                    android:textSize="12dp"
+                    android:textSize="13dp"
                     android:textStyle="bold">
 
                 </TextView>
@@ -200,24 +180,12 @@
                 android:orientation="horizontal"
                 android:layout_margin="8dp">
 
-                <ImageButton
-                    android:id="@+id/sec2_all_Btn"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_margin="8dp"
-                    android:backgroundTint="@color/white"
-                    android:checked="true"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/all_checked"
-                    android:text="Alle"
-                    android:textSize="20dp">
 
-                </ImageButton>
 
                 <ImageButton
                     android:id="@+id/sec2_with_video_Btn"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
                     android:layout_margin="8dp"
                     android:backgroundTint="@color/white"
                     android:scaleType="centerCrop"
@@ -229,8 +197,8 @@
 
                 <ImageButton
                     android:id="@+id/sec2_no_video_Btn"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
                     android:layout_margin="8dp"
                     android:backgroundTint="@color/white"
                     android:scaleType="centerCrop"
@@ -246,7 +214,7 @@
 
             <LinearLayout
                 android:id="@+id/section2_instructions_subtitles"
-                android:layout_width="240dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="16dp"
@@ -254,21 +222,9 @@
                 android:layout_marginBottom="16dp">
 
                 <TextView
-                    android:id="@+id/sec2_all"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="18dp"
-                    android:text="Alle"
-                    android:textSize="12dp"
-                    android:textStyle="bold">
-
-                </TextView>
-
-                <TextView
                     android:id="@+id/sec2_with_video"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="56dp"
                     android:text="Mit Video"
                     android:textSize="12dp"
                     android:textStyle="bold">
