@@ -24,7 +24,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
 import model.data.local.model.Content
-import model.data.local.model.FilterModel
 import ui.viewModel.HomeViewModel
 
 class ExerciseListFragment : Fragment() {
@@ -54,10 +53,8 @@ class ExerciseListFragment : Fragment() {
         searchInput()
         navigateBack()
         setFilter()
-        viewModel.filterIndex.observe(viewLifecycleOwner){
-            resetFilter()
-            setFilter()
-        }
+        resetFilter()
+
     }
 
     /*DE:
@@ -196,9 +193,9 @@ class ExerciseListFragment : Fragment() {
             if (!dialog.isShowing) {
                 dialog.show()
 
-                var resetFilterBtn = dialog.findViewById<Button>(R.id.reset_Btn)
-                var resultsBtn = dialog.findViewById<MaterialButton>(R.id.results_Btn)
-                var cancelBtn = dialog.findViewById<MaterialButton>(R.id.cancel_Btn)
+                var dialogResetBtn = dialog.findViewById<Button>(R.id.reset_Btn)
+                var dialogResultsBtn = dialog.findViewById<MaterialButton>(R.id.results_Btn)
+                var dialogCancelBtn = dialog.findViewById<MaterialButton>(R.id.cancel_Btn)
 
                 val allImageButtons = listOf<ImageButton?>(
                     dialog.findViewById(R.id.sec1_short_dumbell_Btn),
@@ -209,7 +206,7 @@ class ExerciseListFragment : Fragment() {
                 )
 
                 var tag = "Button gefunden?"
-                Log.i(tag, "Button wurde nicht gefunden: $resetFilterBtn")
+                Log.i(tag, "Button wurde nicht gefunden: $dialogResetBtn")
 
                 val uncheckedImages = listOf<Int>(
                     R.drawable.short_dumbell_unchecked,
@@ -227,25 +224,24 @@ class ExerciseListFragment : Fragment() {
                     R.drawable.no_video_checked,
                 )
 
-                if (lastSelectedButtonIndex != -1) {
-                    var lastButton = allImageButtons[lastSelectedButtonIndex]
-                        lastButton?.isSelected = true
-                        lastButton?.setImageResource(checkedImages[lastSelectedButtonIndex])
-                    var tag = "Button Wahl??"
-                    Log.i(tag,"Last Button wurde ausgewählt: ${allImageButtons[lastSelectedButtonIndex]?.isSelected} ${resources.getResourceEntryName(lastButton!!.id)}")
-                }
 
+                userSelection(dialog,allImageButtons,uncheckedImages,checkedImages,dialogResultsBtn)
 
-                userSelection(dialog,allImageButtons,uncheckedImages,checkedImages,resultsBtn)
-
-                resetFilterBtn?.setOnClickListener {
-                    viewModel.setFilterIndex(FilterModel())
-                    viewModel.resetFilter(viewModel.selectedContentTitle.value!!)
+                dialogResetBtn?.setOnClickListener {
+                    if (lastSelectedButtonIndex != -1){
+                        viewModel.resetFilter(viewModel.selectedContentTitle.value!!)
+                        allImageButtons.forEach { imageButton ->
+                            imageButton?.setImageResource(uncheckedImages[allImageButtons.indexOf(imageButton)])
+                            imageButton?.isSelected = false
+                            var tag = "Button Wahl??"
+                            Log.i(tag,"Status der Button?: ${allImageButtons[lastSelectedButtonIndex]?.isSelected}")
+                        }
+                    }
                     binding.resetFilterBtn.isInvisible = true
                     dialog.dismiss()
                 }
 
-                cancelBtn?.setOnClickListener {
+                dialogCancelBtn?.setOnClickListener {
                     dialog.dismiss()
                 }
         }
@@ -254,7 +250,9 @@ class ExerciseListFragment : Fragment() {
 
     fun userSelection(dialog: BottomSheetDialog, allButtons: List<ImageButton?>, uncheckedImages: List<Int>, checkedImages: List<Int>,resultsBtn: MaterialButton?)  {
         allButtons.forEachIndexed { index, selectedButton ->
-            selectedButton?.setImageResource(uncheckedImages[index]) // Setze zunächst alle Buttons auf die ungewählten Bilder
+            if (!selectedButton!!.isSelected) {
+                selectedButton?.setImageResource(uncheckedImages[index])
+            } // Setze zunächst alle Buttons auf die ungewählten Bilder
             selectedButton?.setOnClickListener {
                 allButtons.forEachIndexed { innerIndex, button -> // Setze alle Buttons auf ungewählt
                     button?.setImageResource(uncheckedImages[innerIndex])
@@ -270,7 +268,7 @@ class ExerciseListFragment : Fragment() {
                 when (selectedBtnName){
                     "sec1_short_dumbell_Btn"->{
                         resultsBtn?.setOnClickListener {
-                            viewModel.setFilterIndex(FilterModel(0))
+//                            viewModel.setFilterIndex(FilterModel(0))
                             viewModel.filterExercisesByShortDumbbell(viewModel.selectedContentTitle.value!!,requireContext())
                             binding.resetFilterBtn.isInvisible = false
                             dialog.dismiss()
@@ -279,7 +277,7 @@ class ExerciseListFragment : Fragment() {
 
                     "sec1_long_dumbell_Btn"->{
                         resultsBtn?.setOnClickListener {
-                            viewModel.setFilterIndex(FilterModel(1))
+//                            viewModel.setFilterIndex(FilterModel(1))
                             viewModel.filterExercisesByLongDumbbell(viewModel.selectedContentTitle.value!!,requireContext())
                             binding.resetFilterBtn.isInvisible = false
                             dialog.dismiss()
@@ -288,7 +286,7 @@ class ExerciseListFragment : Fragment() {
 
                     "sec1_own_bodyweight_Btn"->{
                         resultsBtn?.setOnClickListener {
-                            viewModel.setFilterIndex(FilterModel(2))
+//                            viewModel.setFilterIndex(FilterModel(2))
                             viewModel.filterExercisesByBodyweight(viewModel.selectedContentTitle.value!!,requireContext())
                             binding.resetFilterBtn.isInvisible = false
                             dialog.dismiss()
@@ -297,7 +295,7 @@ class ExerciseListFragment : Fragment() {
 
                     "sec2_with_video_Btn"->{
                         resultsBtn?.setOnClickListener {
-                            viewModel.setFilterIndex(FilterModel(instruction = 0))
+//                            viewModel.setFilterIndex(FilterModel(instruction = 0))
                             viewModel.filterExercisesByVideo(viewModel.selectedContentTitle.value!!)
                             binding.resetFilterBtn.isInvisible = false
                             dialog.dismiss()
@@ -305,13 +303,12 @@ class ExerciseListFragment : Fragment() {
                     }
                     "sec2_no_video_Btn"->{
                         resultsBtn?.setOnClickListener {
-                            viewModel.setFilterIndex(FilterModel(instruction = 1))
+//                            viewModel.setFilterIndex(FilterModel(instruction = 1))
                             viewModel.filterExercisesByNoVideo(viewModel.selectedContentTitle.value!!)
                             binding.resetFilterBtn.isInvisible = false
                             dialog.dismiss()
                         }
                     }
-
                     else -> {
                         resultsBtn?.setOnClickListener {
                             viewModel.resetFilter(viewModel.selectedContentTitle.value!!)
@@ -450,6 +447,9 @@ class ExerciseListFragment : Fragment() {
             findNavController().navigateUp()
         }
     }
+
+
+
 
 
 }
