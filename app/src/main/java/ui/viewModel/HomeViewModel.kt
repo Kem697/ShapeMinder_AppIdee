@@ -438,6 +438,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
+
     /*EN:
  *This code is used to update the save status of an exercise
  *and to manage the list of saved exercises accordingly.
