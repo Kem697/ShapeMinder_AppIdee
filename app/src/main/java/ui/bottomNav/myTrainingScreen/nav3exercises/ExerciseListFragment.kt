@@ -341,6 +341,7 @@ class ExerciseListFragment : Fragment() {
         }
     }
 
+
     fun sortRadioGroup() {
         var dialog = BottomSheetDialog(activity as MainActivity, R.style.transparent)
         dialog.setContentView(R.layout.dialog_sheet_sort)
