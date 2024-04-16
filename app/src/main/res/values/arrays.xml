@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="exerciseSets">1,2,3,4,5,6</array>
+    <array name="exerciseReps">4,6,8,10,12,14,16,18,20</array>
+
+</resources>

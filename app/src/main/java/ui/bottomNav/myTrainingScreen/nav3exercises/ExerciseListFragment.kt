@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
 import androidx.core.widget.addTextChangedListener
@@ -174,6 +175,8 @@ class ExerciseListFragment : Fragment() {
         }
     }
 
+
+    /*Doku kommentare einbinden!!*/
     fun setFilter() {
         var dialog = BottomSheetDialog(activity as MainActivity, R.style.transparent)
         dialog.setContentView(R.layout.dialog_sheet_filter)
@@ -265,7 +268,6 @@ class ExerciseListFragment : Fragment() {
                 }
                 selectedButton.setImageResource(checkedImages[index]) // Setze das Bild des ausgewählten Buttons
                 selectedButton.isSelected = true
-
                 lastSelectedButtonIndex = index
                 var selectedBtnName = resources.getResourceEntryName(selectedButton.id)
                 var tag = "Button Wahl??"
@@ -273,51 +275,65 @@ class ExerciseListFragment : Fragment() {
                 when (selectedBtnName){
                     "sec1_short_dumbell_Btn"->{
                         resultsBtn?.setOnClickListener {
-                            if (selectedButton.isSelected)
-                            viewModel.filterExercisesByShortDumbbell(viewModel.selectedContentTitle.value!!,requireContext())
-                            binding.resetFilterBtn.isInvisible = false
-                            dialog.dismiss()
+                            if (selectedButton.isSelected){
+                                viewModel.filterExercisesByShortDumbbell(viewModel.selectedContentTitle.value!!,requireContext())
+                                binding.resetFilterBtn.isInvisible = false
+                                dialog.dismiss()
+                            } else{
+                                Toast.makeText(requireContext(), "Keine Auswahl getroffen!", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
 
                     "sec1_long_dumbell_Btn"->{
                         resultsBtn?.setOnClickListener {
-                            if (selectedButton.isSelected)
-                            viewModel.filterExercisesByLongDumbbell(viewModel.selectedContentTitle.value!!,requireContext())
-                            binding.resetFilterBtn.isInvisible = false
-                            dialog.dismiss()
+                            if (selectedButton.isSelected){
+                                viewModel.filterExercisesByLongDumbbell(viewModel.selectedContentTitle.value!!,requireContext())
+                                binding.resetFilterBtn.isInvisible = false
+                                dialog.dismiss()
+                            } else {
+                                Toast.makeText(requireContext(), "Keine Auswahl getroffen!", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
 
                     "sec1_own_bodyweight_Btn"->{
                         resultsBtn?.setOnClickListener {
-                            if (selectedButton.isSelected)
-                            viewModel.filterExercisesByBodyweight(viewModel.selectedContentTitle.value!!,requireContext())
-                            binding.resetFilterBtn.isInvisible = false
-                            dialog.dismiss()
+                            if (selectedButton.isSelected){
+                                viewModel.filterExercisesByBodyweight(viewModel.selectedContentTitle.value!!,requireContext())
+                                binding.resetFilterBtn.isInvisible = false
+                                dialog.dismiss()
+                            }else {
+                                Toast.makeText(requireContext(), "Keine Auswahl getroffen!", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
 
                     "sec2_with_video_Btn"->{
                         resultsBtn?.setOnClickListener {
-                            if (selectedButton.isSelected)
-                            viewModel.filterExercisesByVideo(viewModel.selectedContentTitle.value!!)
-                            binding.resetFilterBtn.isInvisible = false
-                            dialog.dismiss()
+                            if (selectedButton.isSelected){
+                                viewModel.filterExercisesByVideo(viewModel.selectedContentTitle.value!!)
+                                binding.resetFilterBtn.isInvisible = false
+                                dialog.dismiss()
+                            }else {
+                                Toast.makeText(requireContext(), "Keine Auswahl getroffen!", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
                     "sec2_no_video_Btn"->{
                         resultsBtn?.setOnClickListener {
-                            if (selectedButton.isSelected)
-                            viewModel.filterExercisesByNoVideo(viewModel.selectedContentTitle.value!!)
-                            binding.resetFilterBtn.isInvisible = false
-                            dialog.dismiss()
+                            if (selectedButton.isSelected){
+                                viewModel.filterExercisesByNoVideo(viewModel.selectedContentTitle.value!!)
+                                binding.resetFilterBtn.isInvisible = false
+                                dialog.dismiss()
+                            }else {
+                                Toast.makeText(requireContext(), "Keine Auswahl getroffen!", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
                     else -> {
                         resultsBtn?.setOnClickListener {
                             viewModel.resetFilter(viewModel.selectedContentTitle.value!!)
-                            dialog.dismiss()
                         }
                     }
                 }

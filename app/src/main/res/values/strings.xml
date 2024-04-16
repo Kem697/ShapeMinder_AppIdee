@@ -54,7 +54,6 @@
     <string name="weCable_Row">Kabelrudern</string>
 
 
-
     <!--exerciseText-->
 
     <string name="weKH_BicepscurlsInstruction">Diese Übung trainiert...</string>
@@ -101,6 +100,13 @@
     <string name="gc_sweets">Süssigkeiten</string>
     <string name="ecBenchpress">Bankdrücken</string>
     <string name="ecShoulderpress">Schulterdrücken</string>
+    <string name="addExercise">Neue Übung</string>
+    <string name="setWorkoutName">Name des Workout...</string>
+    <string name="save">Speichern</string>
+    <string name="allExercisesList">Übungsliste</string>
+    <string name="searchExercises">Nach Übungen suchen</string>
+    <string name="exerciseListTitle">Füge deine Übungen hinzu</string>
+    <string name="amountOfExercises">Anzahl der Übungen:</string>
 
 
 </resources>

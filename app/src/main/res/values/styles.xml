@@ -87,5 +87,17 @@
 
 
 
+    <style name="setExerciseValues" parent="Widget.Material3.CardView.Outlined">
+        <item name="android:layout_width">260dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="cardBackgroundColor">#FDECCE</item>
+        <item name="strokeColor">#D1CDCD</item>
+        <item name="android:fontFamily">"@font/roboto"</item>
+        <item name="strokeWidth">4dp</item>
+        <item name="android:paddingLeft">12dp</item>
+    </style>
+
+
+
 
 </resources>

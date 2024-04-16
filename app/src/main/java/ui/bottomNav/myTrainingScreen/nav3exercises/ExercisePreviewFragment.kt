@@ -92,6 +92,7 @@ class ExercisePreviewFragment : Fragment() {
             saveExercise(it)
             playVideoOnYoutube(it)
             shareExercise(it)
+            addExerciseToTraining(it)
         }
     }
 
@@ -218,6 +219,15 @@ class ExercisePreviewFragment : Fragment() {
                 }
             }
         })
+    }
+
+
+
+    fun addExerciseToTraining(exercise:Content){
+        binding.addTrainingBtn.setOnClickListener {
+            viewModel.addToNewWorkout(exercise)
+            findNavController().navigate(R.id.newTrainingsSessionFragment)
+        }
     }
 }
 

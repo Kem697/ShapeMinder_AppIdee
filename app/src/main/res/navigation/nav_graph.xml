@@ -99,7 +99,11 @@
         android:id="@+id/exercisePreviewFragment"
         android:name="ui.bottomNav.myTrainingScreen.nav3exercises.ExercisePreviewFragment"
         android:label="fragment_exercise_preview"
-        tools:layout="@layout/fragment_exercise_preview" />
+        tools:layout="@layout/fragment_exercise_preview" >
+        <action
+            android:id="@+id/action_exercisePreviewFragment_to_newTrainingsSessionFragment"
+            app:destination="@id/newTrainingsSessionFragment" />
+    </fragment>
     <fragment
         android:id="@+id/diaryNav2Fragment"
         android:name="ui.bottomNav.myNutritionScreen.nav2diary.DiaryNav2Fragment"
@@ -137,4 +141,16 @@
         android:id="@+id/foodListFragment"
         android:name="ui.bottomNav.myNutritionScreen.nav1foodFinder.FoodListFragment"
         android:label="FoodListFragment" />
+    <fragment
+        android:id="@+id/newTrainingsSessionFragment"
+        android:name="ui.bottomNav.myTrainingScreen.nav1myTraining.NewTrainingsSessionFragment"
+        android:label="NewTrainingsSessionFragment" >
+        <action
+            android:id="@+id/action_newTrainingsSessionFragment_to_allExerciseListFragment"
+            app:destination="@id/allExerciseListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allExerciseListFragment"
+        android:name="ui.bottomNav.myTrainingScreen.nav3exercises.AllExerciseListFragment"
+        android:label="AllExerciseListFragment" />
 </navigation>

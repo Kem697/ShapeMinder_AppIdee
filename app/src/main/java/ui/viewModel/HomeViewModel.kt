@@ -31,6 +31,11 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     var index = 0
 
+
+    private var _listOfAllExercises = MutableLiveData(allExercisesByBodyparts)
+    val listOfAllExercises: LiveData<List<Content>>
+        get() = _listOfAllExercises
+
     private var _contents = MutableLiveData(allContent)
     val contents: LiveData<List<Content>>
         get() = _contents
@@ -99,6 +104,14 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private var _savedExercises = MutableLiveData<MutableList<Content>>()
     val savedExercises: LiveData<MutableList<Content>>
         get() = _savedExercises
+
+
+
+
+    private var _addToSessionExercises = MutableLiveData<List<Content>>()
+    val addToSessionExercises : LiveData<List<Content>>
+
+        get() = _addToSessionExercises
 
 
     /*DE:
@@ -197,6 +210,43 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             }
             _exercisesByBodyparts.value = sortedExercises
         }
+    }
+
+
+    fun sortAllExercisesByAlphabet(sort: Boolean) {
+        viewModelScope.launch {
+            val filteredExercises = listOfAllExercises.value
+            val sortedExercises = if (sort) {
+                filteredExercises?.sortedByDescending { it.stringRessourceText }
+            } else {
+                filteredExercises?.sortedBy { it.stringRessourceText }
+            }
+            _listOfAllExercises.value = sortedExercises
+        }
+    }
+
+
+    fun filterAllExercisesByTitle(userInput: String, bodypart: String, context: Context) {
+        viewModelScope.launch {
+            val filteredExercises = _listOfAllExercises.value?.filter {
+                val xmlValue = context.getString(it.stringRessourceTitle)
+                xmlValue.contains(userInput, ignoreCase = true)
+            }
+            if (filteredExercises != null) {
+                if (filteredExercises.isNotEmpty()) {
+                    _listOfAllExercises.value = filteredExercises
+                    var tag4 = "Filter in ViewModel??"
+                    Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
+                } else {
+                    resetFilter()
+                }
+            }
+        }
+    }
+
+
+    fun resetFilter() {
+        _listOfAllExercises.value = allExercisesByBodyparts
     }
 
     /*DE:
@@ -370,6 +420,11 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     fun navigateDetailView(content: Content) {
         _selectedContent.value = content
+    }
+
+    fun addToNewWorkout(content:Content){
+        content.addedToSession = true
+        _addToSessionExercises.value = listOf(content)
     }
 
     fun setOriginalList(exercises: List<Content>, bodypart: String) {
