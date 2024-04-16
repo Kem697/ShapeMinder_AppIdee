@@ -431,6 +431,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         _addToSessionExercises.value = mutableListOf(content)
     }
 
+
     fun setOriginalList(exercises: List<Content>, bodypart: String) {
         exercises.filter { it.bodyPart == bodypart }
         _exercisesByBodyparts.value = exercises
