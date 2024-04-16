@@ -23,6 +23,7 @@ import com.example.shapeminder_appidee.databinding.FragmentAllExerciseListBindin
 import com.example.shapeminder_appidee.databinding.FragmentExerciseListBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
+import model.data.local.model.Content
 import ui.viewModel.HomeViewModel
 
 class AllExerciseListFragment : Fragment() {
@@ -47,6 +48,7 @@ class AllExerciseListFragment : Fragment() {
         sortRadioGroup()
         setFilter()
         searchInput()
+        addExerciseSelectionSession()
     }
 
 
@@ -128,7 +130,6 @@ class AllExerciseListFragment : Fragment() {
     }
 
 
-
     fun searchInput() {
         var searchBar = binding.myTSearchBarTextInput
         val context = requireContext()
@@ -156,7 +157,6 @@ class AllExerciseListFragment : Fragment() {
             binding.myTSearchBar.clearText()
         }
     }
-
 
     fun setFilter() {
         var dialog = BottomSheetDialog(activity as MainActivity, R.style.transparent)
@@ -283,6 +283,13 @@ class AllExerciseListFragment : Fragment() {
         }
     }
 
+
+    fun addExerciseSelectionSession(){
+        var addToWorkoutBtn = binding.addExerciseToSessionBtn
+        addToWorkoutBtn.setOnClickListener {
+            findNavController().navigate(R.id.newTrainingsSessionFragment)
+        }
+    }
 
 
 

@@ -108,8 +108,12 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
 
 
-    private var _addToSessionExercises = MutableLiveData<List<Content>>()
-    val addToSessionExercises : LiveData<List<Content>>
+
+
+
+
+    private var _addToSessionExercises = MutableLiveData<MutableList<Content>>()
+    val addToSessionExercises : LiveData<MutableList<Content>>
 
         get() = _addToSessionExercises
 
@@ -424,7 +428,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     fun addToNewWorkout(content:Content){
         content.addedToSession = true
-        _addToSessionExercises.value = listOf(content)
+        _addToSessionExercises.value = mutableListOf(content)
     }
 
     fun setOriginalList(exercises: List<Content>, bodypart: String) {
@@ -492,6 +496,27 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         }
 
         _savedExercises.value = updatedExercises
+    }
+
+
+
+    fun savedInWorkoutSession(addedExercise: Boolean, exercise: Content) {
+        val updatedExercises = addToSessionExercises.value ?: mutableListOf()
+
+        if (addedExercise) {
+            updatedExercises.add(exercise)
+            var tag = "Fehler"
+            Log.e(
+                tag,
+                "Übung wirdd gespeichert!!:${exercise} Zustand: ${addedExercise}. Die Liste enthält: ${updatedExercises.size}"
+            )
+        } else {
+            updatedExercises.remove(exercise)
+            var tag = "Fehler"
+            Log.e(tag, "Übung wird entfernt!!:${exercise} Zustand: ${addedExercise} ${updatedExercises}")
+        }
+
+        _addToSessionExercises.value = updatedExercises
     }
 
 
