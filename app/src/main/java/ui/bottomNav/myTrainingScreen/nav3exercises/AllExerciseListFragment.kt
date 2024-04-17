@@ -54,6 +54,7 @@ class AllExerciseListFragment : Fragment() {
     }
 
 
+
     override fun onStop() {
         super.onStop()
         setDefaultHint()
