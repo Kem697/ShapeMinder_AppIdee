@@ -313,6 +313,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
+
     /*Morgen weitermachen...*/
 
     fun filterAllExercisesByTwoSelections(context: Context, imageButton: ImageButton,textButton: Button){
