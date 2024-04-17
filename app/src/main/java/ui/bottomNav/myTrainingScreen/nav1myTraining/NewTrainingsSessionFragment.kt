@@ -24,7 +24,7 @@ class NewTrainingsSessionFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentNewTrainingsSessionBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -58,7 +58,7 @@ class NewTrainingsSessionFragment : Fragment() {
 
     fun setUpAdapter(){
         viewModel.addToSessionExercises.observe(viewLifecycleOwner){
-            binding.rvNewSessionExercises.adapter = NewSessionExercisesAdapter(it,viewModel)
+            binding.rvNewSessionExercises.adapter = NewSessionExercisesAdapter(it,viewModel,requireContext())
         }
     }
 

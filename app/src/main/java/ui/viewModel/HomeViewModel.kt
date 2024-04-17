@@ -217,6 +217,14 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
+    fun filterAllExercisesByBodypart(bodypart: String) {
+        viewModelScope.launch {
+            val filteredExercises = allExercisesByBodyparts.filter { it.bodyPart == bodypart }
+            _listOfAllExercises.value = filteredExercises
+        }
+    }
+
+
     fun sortAllExercisesByAlphabet(sort: Boolean) {
         viewModelScope.launch {
             val filteredExercises = listOfAllExercises.value
@@ -230,11 +238,64 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
-    fun filterAllExercisesByTitle(userInput: String, bodypart: String, context: Context) {
+    fun filterAllExercisesByTitle(userInput: String, context: Context) {
         viewModelScope.launch {
             val filteredExercises = _listOfAllExercises.value?.filter {
                 val xmlValue = context.getString(it.stringRessourceTitle)
                 xmlValue.contains(userInput, ignoreCase = true)
+            }
+            if (filteredExercises != null) {
+                if (filteredExercises.isNotEmpty()) {
+                    _listOfAllExercises.value = filteredExercises
+                    var tag4 = "Filter in ViewModel??"
+                    Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
+                } else {
+                    resetFilter()
+                }
+            }
+        }
+    }
+
+
+    fun filterAllExercisesByBodyweight(context: Context) {
+        viewModelScope.launch {
+            val filteredExercises = _listOfAllExercises.value?.filter {
+                !context.getString(it.stringRessourceTitle).contains("-")
+            }
+            if (filteredExercises != null) {
+                if (filteredExercises.isNotEmpty()) {
+                    _listOfAllExercises.value = filteredExercises
+                    var tag4 = "Filter in ViewModel??"
+                    Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
+                } else {
+                    resetFilter()
+                }
+            }
+        }
+    }
+
+    fun filterAllExercisesByLongDumbbell(context: Context) {
+        viewModelScope.launch {
+            val filteredExercises = _listOfAllExercises.value?.filter {
+                context.getString(it.stringRessourceTitle).contains("LH") || context.getString(it.stringRessourceTitle).contains("SZ")
+            }
+            if (filteredExercises != null) {
+                if (filteredExercises.isNotEmpty()) {
+                    _listOfAllExercises.value = filteredExercises
+                    var tag4 = "Filter in ViewModel??"
+                    Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
+                } else {
+                    resetFilter()
+                }
+            }
+        }
+    }
+
+
+    fun filterAllExercisesByShortDumbbell(context: Context) {
+        viewModelScope.launch {
+            val filteredExercises = _listOfAllExercises.value?.filter {
+                context.getString(it.stringRessourceTitle).contains("KH")
             }
             if (filteredExercises != null) {
                 if (filteredExercises.isNotEmpty()) {
@@ -395,10 +456,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
-//    fun filterExerciseByKH(exerciseName: String){
-//        val filter
-//    }
-
 
     /*DE:
      *Um die entsprechende TextView Id aus einer anderen Fragment Klasse herauszuholen,
@@ -440,24 +497,24 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
 
     /*EN:
- *This code is used to update the save status of an exercise
- *and to manage the list of saved exercises accordingly.
- *The function expects two parameters that indicate whether the exercises should be saved
- *or not. With `val updatedExercises = _savedExercises.value?: mutableListOf()`:
- *the list of updated exercises is retrieved from the LiveData object `_savedExercises`.
- *If this LiveData object has not yet been initialized, an empty list is created.
- *In the `if (saved) { ... } else { ... }` statements are checked,
- *whether the exercise should be saved (`saved` is true) or not (false).
- *Depending on this, the exercise is either added to the list or removed from the list.
- *In the block for the case that the exercise is to be saved (`saved == true`),
- *the exercise `exercise` is added to the list of updated exercises (`updatedExercises.add(exercise)`).
- *In the block for the case that the exercise should not be saved (`saved == false`),
- *The exercise `exercise` is removed from the list of updated exercises (`updatedExercises.remove(exercise)`).
- * With `_savedExercises.value = updatedExercises`: the list of updated exercises is finally added back to the LiveData object.
- * exercises is reassigned to the LiveData object `_savedExercises` so that all observers can be informed of the changes.
- * To summarize, this function is used,
- * to update the save status of an exercise and manage the list of saved exercises,
- * creating corresponding log entries to track the process.
+    *This code is used to update the save status of an exercise
+    *and to manage the list of saved exercises accordingly.
+    *The function expects two parameters that indicate whether the exercises should be saved
+    *or not. With `val updatedExercises = _savedExercises.value?: mutableListOf()`:
+    *the list of updated exercises is retrieved from the LiveData object `_savedExercises`.
+    *If this LiveData object has not yet been initialized, an empty list is created.
+    *In the `if (saved) { ... } else { ... }` statements are checked,
+    *whether the exercise should be saved (`saved` is true) or not (false).
+    *Depending on this, the exercise is either added to the list or removed from the list.
+    *In the block for the case that the exercise is to be saved (`saved == true`),
+    *the exercise `exercise` is added to the list of updated exercises (`updatedExercises.add(exercise)`).
+    *In the block for the case that the exercise should not be saved (`saved == false`),
+    *The exercise `exercise` is removed from the list of updated exercises (`updatedExercises.remove(exercise)`).
+    * With `_savedExercises.value = updatedExercises`: the list of updated exercises is finally added back to the LiveData object.
+    * exercises is reassigned to the LiveData object `_savedExercises` so that all observers can be informed of the changes.
+    * To summarize, this function is used,
+    * to update the save status of an exercise and manage the list of saved exercises,
+    * creating corresponding log entries to track the process.
 */
 
 
@@ -507,15 +564,18 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
         if (addedExercise) {
             updatedExercises.add(exercise)
-            var tag = "Fehler"
+            var tag = "Radiocheck??"
             Log.e(
                 tag,
                 "Übung wirdd gespeichert!!:${exercise} Zustand: ${addedExercise}. Die Liste enthält: ${updatedExercises.size}"
             )
         } else {
             updatedExercises.remove(exercise)
-            var tag = "Fehler"
-            Log.e(tag, "Übung wird entfernt!!:${exercise} Zustand: ${addedExercise} ${updatedExercises}")
+            var tag = "Radiocheck??"
+            Log.e(
+                tag,
+                "Übung wird entfernt!!:${exercise} Zustand: ${addedExercise}. Die Liste enthält: ${updatedExercises.size}"
+            )
         }
 
         _addToSessionExercises.value = updatedExercises
@@ -530,32 +590,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
 
 
-
-
-
-
-/*
-
-    fun filterSavedExercisesByTitle(userInput: String, bodypart: String, context: Context) {
-        viewModelScope.launch {
-            val filteredExercises = _savedExercises.value?.filter {
-                val xmlValue = context.getString(it.stringRessourceTitle)
-                xmlValue.contains(userInput, ignoreCase = true)
-            }
-            if (filteredExercises != null) {
-                if (filteredExercises.isNotEmpty()) {
-                    _savedExercises.value = filteredExercises.toMutableList()
-                    var tag4 = "Filter in ViewModel??"
-                    Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
-                } else {
-                    resetFilter(bodypart)
-                }
-            }
-        }
-    }
-
-
-*/
 
 
 

@@ -1,7 +1,11 @@
 package adapter
 
+import android.content.Context
+import android.content.res.ColorStateList
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shapeminder_appidee.R
@@ -11,7 +15,8 @@ import ui.viewModel.HomeViewModel
 
 class NewSessionExercisesAdapter (
     private val dataset: List<Content>,
-    private val viewModel: HomeViewModel
+    private val viewModel: HomeViewModel,
+    private val context: Context
 ): RecyclerView.Adapter<NewSessionExercisesAdapter.ExerciseItemViewHolder>(){
 
     inner class ExerciseItemViewHolder (val binding: ListItemNewSessionExerciseBinding): RecyclerView.ViewHolder(binding.root)
@@ -30,14 +35,11 @@ class NewSessionExercisesAdapter (
     override fun onBindViewHolder(holder: NewSessionExercisesAdapter.ExerciseItemViewHolder, position: Int) {
         val exercise = dataset[position]
         var checkBox = holder.binding.saveExerciseCheckbox
+        checkBox.buttonTintList = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.tertiary))
         holder.binding.exerciseName.setText(exercise.stringRessourceTitle)
         holder.binding.exerciseBodyPart.setText(exercise.bodyPart)
         holder.binding.exerciseImage.setImageResource(exercise.imageRessource)
-        if (exercise.addedToSession == true){
-            holder.binding.saveExerciseCheckbox.isChecked = true
-        } else{
-            holder.binding.saveExerciseCheckbox.isChecked = false
-        }
+        holder.binding.saveExerciseCheckbox.isChecked = exercise.addedToSession == true
         holder.binding.materialCardView.setOnClickListener {
             viewModel.navigateDetailView(exercise)
             holder.binding.root.findNavController().navigate(R.id.exercisePreviewFragment)
@@ -47,12 +49,16 @@ class NewSessionExercisesAdapter (
         checkBox.setOnClickListener{
             if (exercise.addedToSession == true){
                 viewModel.savedInWorkoutSession(!exercise.addedToSession!!,exercise)
-                holder.binding.saveExerciseCheckbox.isChecked = true
+                holder.binding.saveExerciseCheckbox.isChecked = false
                 exercise.addedToSession = false
+                var tag = "Radiocheck??"
+                Log.i(tag, "Übung Nicht in der Liste!: ${exercise.addedToSession} ${holder.binding.saveExerciseCheckbox.isChecked}")
             } else{
                 viewModel.savedInWorkoutSession(!exercise.addedToSession!!,exercise)
                 holder.binding.saveExerciseCheckbox.isChecked = true
                 exercise.addedToSession = true
+                var tag = "Radiocheck??"
+                Log.i(tag, "Übung ist in der Liste!: ${exercise.addedToSession} ${holder.binding.saveExerciseCheckbox.isChecked}")
             }
         }
     }

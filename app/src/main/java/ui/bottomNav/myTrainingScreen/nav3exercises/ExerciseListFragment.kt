@@ -259,9 +259,9 @@ class ExerciseListFragment : Fragment() {
     fun userSelection(dialog: BottomSheetDialog, allButtons: List<ImageButton?>, uncheckedImages: List<Int>, checkedImages: List<Int>,resultsBtn: MaterialButton?)  {
         allButtons.forEachIndexed { index, selectedButton ->
             if (!selectedButton!!.isSelected) {
-                selectedButton?.setImageResource(uncheckedImages[index])
+                selectedButton.setImageResource(uncheckedImages[index])
             } // Setze zunächst alle Buttons auf die ungewählten Bilder
-            selectedButton?.setOnClickListener {
+            selectedButton.setOnClickListener {
                 allButtons.forEachIndexed { innerIndex, button -> // Setze alle Buttons auf ungewählt
                     button?.setImageResource(uncheckedImages[innerIndex])
                     button?.isSelected = false
@@ -320,6 +320,7 @@ class ExerciseListFragment : Fragment() {
                             }
                         }
                     }
+
                     "sec2_no_video_Btn"->{
                         resultsBtn?.setOnClickListener {
                             if (selectedButton.isSelected){
@@ -331,6 +332,7 @@ class ExerciseListFragment : Fragment() {
                             }
                         }
                     }
+
                     else -> {
                         resultsBtn?.setOnClickListener {
                             viewModel.resetFilter(viewModel.selectedContentTitle.value!!)

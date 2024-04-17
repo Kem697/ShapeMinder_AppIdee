@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="20dp"
+    android:paddingBottom="0dp"
     android:background ="@color/tertiary"
     >
 
@@ -55,15 +55,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <ImageButton
-                    android:id="@+id/backBtn"
-                    android:layout_width="60dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="16dp"
-                    android:backgroundTint="#00FFFFFF"
-                    android:src="@drawable/arrow_back_fill0_wght400_grad0_opsz24" />
-
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
@@ -103,11 +94,16 @@
             app:layout_constraintTop_toBottomOf="@+id/sortByNameBtn"
             app:strokeColor="@color/white">
 
+
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/listOfAllExercises"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/list_item_new_session_exercise" />
 
@@ -119,7 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="Sortiere"
+            android:text="@string/sortBtnTitle"
             app:icon="@drawable/swap_vert_fill0_wght400_grad0_opsz24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/myT_searchBar" />
@@ -130,7 +126,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="Filter"
+            android:text="@string/filterBtnTitle"
             app:icon="@drawable/tune_fill0_wght400_grad0_opsz24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -153,30 +149,62 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/addExerciseToSessionBtn"
-            android:layout_width="300dp"
-            android:layout_height="70dp"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
             android:layout_margin="16dp"
             android:backgroundTint="@color/black"
             android:fontFamily="@font/montserrat"
-            android:textSize="18dp"
-            android:text="Dem Workout hinzufügen"
+            android:text="@string/addToWorkout"
+            android:textSize="16dp"
+            android:textStyle="bold"
             app:icon="@drawable/add_fill0_wght400_grad0_opsz24"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardContentView" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancelSessionBtn"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/cancelSession"
+            android:textColor="@color/tertiary"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:icon="@drawable/cancel_fill1_wght400_grad0_opsz24"
+            app:iconTint="@color/tertiary"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialCardContentView" />
 
         <TextView
             android:id="@+id/amountOfExercise"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_margin="18dp"
+            android:fontFamily="@font/montserrat"
             android:text="@string/amountOfExercises"
             android:textColor="@color/black"
-            android:fontFamily="@font/montserrat"
-            android:textStyle="bold"
             android:textSize="18dp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/materialCardContentView"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/myT_searchBar" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/resetFilterBtn"
+            style="@style/customSecondaryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/resetFilterOptionsBtnTitle"
+            android:visibility="invisible"
+            app:icon="@drawable/all_unchecked"
+            app:layout_constraintBottom_toTopOf="@+id/myT_searchBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/setFilterBtn" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

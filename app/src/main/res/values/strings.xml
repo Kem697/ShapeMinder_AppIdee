@@ -71,6 +71,8 @@
     <string name="weSZ_Push_upsInstructions">3</string>
     <string name="weSquatsInstructions">Kniebeuge</string>
     <string name="weKH_SideRaiseLayOnBenchInstruction">xxx</string>
+    <string name="weCable_RowInstructions">122Kabelrudern</string>
+
 
 
     <!--exerciseVideos-->
@@ -107,6 +109,12 @@
     <string name="searchExercises">Nach Übungen suchen</string>
     <string name="exerciseListTitle">Füge deine Übungen hinzu</string>
     <string name="amountOfExercises">Anzahl der Übungen:</string>
+    <string name="addToWorkout">Workout hinzufügen</string>
+    <string name="cancelSession">Vorgang abbrechen</string>
+    <string name="resetFilterOptionsBtnTitle">Alle Übungen</string>
+    <string name="filterBtnTitle">Filter</string>
+    <string name="sortBtnTitle">Sortiere</string>
+    <string name="resetChosesBtn">Aufheben</string>
 
 
 </resources>
