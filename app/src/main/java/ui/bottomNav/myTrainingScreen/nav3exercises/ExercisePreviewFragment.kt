@@ -234,7 +234,6 @@ class ExercisePreviewFragment : Fragment() {
     }
 
 
-
     fun addExerciseToTraining(exercise:Content){
         binding.addTrainingBtn.setOnClickListener {
             viewModel.addToNewWorkout(exercise)
