@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentExercisePreviewBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import model.data.local.model.Content
@@ -55,38 +56,37 @@ class ExercisePreviewFragment : Fragment() {
                 "Arme" -> {
                     binding.subTitle.text = "Arm Übung"
                     binding.bodyPartView.setImageResource(R.drawable.bp1arms)
+                    binding.descriptionText.setText(it.stringRessourceText)
                 }
 
                 "Bauch" -> {
                     binding.subTitle.text = "Bauch Übung"
                     binding.bodyPartView.setImageResource(R.drawable.bp5abs)
-
+                    binding.descriptionText.setText(it.stringRessourceText)
                 }
 
                 "Schulter" -> {
                     binding.subTitle.text = "Schulter Übung"
                     binding.bodyPartView.setImageResource(R.drawable.bp3shoulders)
-
-
+                    binding.descriptionText.setText(it.stringRessourceText)
                 }
 
                 "Rücken" -> {
                     binding.subTitle.text = "Rücken übung"
                     binding.bodyPartView.setImageResource(R.drawable.bp4back)
-
-
+                    binding.descriptionText.setText(it.stringRessourceText)
                 }
 
                 "Beine" -> {
                     binding.subTitle.text = "Bein übung"
                     binding.bodyPartView.setImageResource(R.drawable.bp2legs)
-
-
+                    binding.descriptionText.setText(it.stringRessourceText)
                 }
 
                 "Brust" -> {
                     binding.subTitle.text = "Brust Übung"
                     binding.bodyPartView.setImageResource(R.drawable.bp6chest)
+                    binding.descriptionText.setText(it.stringRessourceText)
                 }
             }
             saveExercise(it)
@@ -162,17 +162,21 @@ class ExercisePreviewFragment : Fragment() {
     /*DE:
     * Muss überarbeitet werden..*/
 
-    fun shareExercise(videoExercise: Content){
-        var sharBtn = binding.shareBtn
-        val url = "https://www.youtube.com/watch?v=${videoExercise.video}"
-        sharBtn.setOnClickListener {
-            val intent = Intent(Intent.ACTION_SEND)
-            intent.type = "text/plain"
-            intent.putExtra("Hey, schau dir diese Übung für dein Workout an",url)
-            val chooser = Intent.createChooser(intent, "Teile den Inhalt mit:")
-            startActivity(chooser)
+    fun shareExercise(videoExercise: Content) {
+        var shareBtn = binding.shareBtn
+        val url = videoExercise.video?.let { "https://www.youtube.com/watch?v=$it" }
+        shareBtn.setOnClickListener {
+            if (videoExercise.video!=null){
+                val intent = Intent(Intent.ACTION_SEND)
+                intent.type = "text/plain"
+                intent.putExtra(Intent.EXTRA_TEXT, "Hey, schau dir diese Übung für dein Workout an: $url")
+                val chooser = Intent.createChooser(intent, "Teile den Inhalt mit:")
+                startActivity(chooser)
+            } else
+                Toast.makeText(requireContext(), "Kein Video zum Teilen vorhanden!", Toast.LENGTH_SHORT).show()
         }
     }
+
 
 
 
@@ -214,9 +218,17 @@ class ExercisePreviewFragment : Fragment() {
                 else{
                     var tag = "Kein Video"
                     Log.e(tag,"Video ist nicht vorhanden!: $videoId")
-                    Toast.makeText(binding.root.context, "Fehler beim Abruf des Videos von Youtube!", Toast.LENGTH_SHORT)
-                        .show()
+
                 }
+            }
+
+            override fun onError(youTubePlayer: YouTubePlayer, error: PlayerConstants.PlayerError) {
+                super.onError(youTubePlayer, error)
+                Toast.makeText(
+                    binding.root.context,
+                    "Fehler beim Abruf des Videos von Youtube!",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         })
     }

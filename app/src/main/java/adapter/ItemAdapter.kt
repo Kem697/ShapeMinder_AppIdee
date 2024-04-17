@@ -28,11 +28,11 @@ Nachtrag: Der Adapter wurde mit einem zweiten ViewHolder implementiert.
 */
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shapeminder_appidee.R
@@ -45,7 +45,8 @@ import ui.viewModel.HomeViewModel
 
 class ItemAdapter(
     private val dataset: List<Content>,
-    private val viewModel: HomeViewModel
+    private val viewModel: HomeViewModel,
+    private var context: Context
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     val contentCard = 1
@@ -106,9 +107,29 @@ class ItemAdapter(
                 holder.binding.root.findNavController().navigate(R.id.homeContentDetailView)
             }
         } else if (holder is ExerciseListItemViewHolder) {
+
+            /*De:
+            * Damit bei der Übungsbeschreibung nur die ersten drei Wörter angezeigt werden,
+            * holle ich mir erst den abgespeicherten String aus meinen string.xml Ressourcen.
+            * Dann bestimme ich, was ein Wort aus dem String ausmacht (hier ist es ein Leerzeichen).
+            * Dann sage ich, dass die ersten drei Wörter genommen  und mit einem Leerzeichen
+            * seperiert werden sollen.*/
+            /*En:
+            * So that only the first three words are displayed in the exercise description,
+            * first retrieve the saved string from my string.xml resources.
+            * Then I determine what a word is from the string (here it is a space).
+            * Then I say that the first three words should be taken and separated by a space.
+            * be separated by a space
+            * */
+
+            var getContentDescription = context.getString(content.stringRessourceText)
+            val words = getContentDescription.split(" ")
+            val truncatedDescription = words.take(3).joinToString(" ")
+
+
             holder.binding.contentImage.setImageResource(content.imageRessource)
             holder.binding.contentTitle.setText(content.stringRessourceTitle)
-            holder.binding.contentTextSnippet.setText(content.stringRessourceText)
+            holder.binding.contentTextSnippet.setText("${truncatedDescription}...")
             holder.binding.containtsVideo.isInvisible = content.video == null
             holder.binding.materialCardView.setOnClickListener {
                 viewModel.navigateDetailView(content)
@@ -116,7 +137,7 @@ class ItemAdapter(
             }
 
 
-            /*DE.
+            /*DE:
             *Der Code setzt das Bild der saveBtn je nach Zustand des Inhalts.
             *Wenn der Inhalt nicht gespeichert ist, erscheint die Schaltfläche als schwarz umrandetes Herz, andernfalls
             *erscheint sie rot ausgefüllt. Klickt der Benutzer dann auf die Schaltfläche, führt das Programm den else{}

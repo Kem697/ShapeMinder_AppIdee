@@ -61,7 +61,7 @@ class MyHomeScreen : Fragment() {
             var navigationBar =
                 requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
             navigationBar.isInvisible = false
-            binding.recyclerView.adapter = ItemAdapter(it, viewModel)
+            binding.recyclerView.adapter = ItemAdapter(it, viewModel,requireContext())
 
         }
     }

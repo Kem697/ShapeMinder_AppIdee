@@ -150,7 +150,7 @@ class ExerciseListFragment : Fragment() {
         val context = requireContext()
         searchBar.addTextChangedListener { editable ->
             var userInput = editable.toString()
-            var bodyPart = binding.title.text.toString()
+            var bodyPart = binding.exerciseTitle.text.toString()
             if (userInput.isNotBlank()) {
                 binding.myTSearchBar.setText(userInput)
                 var tag = "Filter???"
@@ -403,7 +403,7 @@ class ExerciseListFragment : Fragment() {
     fun setUpAdapter() {
         viewModel.exercisesByBodyparts.observe(viewLifecycleOwner) { exercise ->
             orginalExercises = exercise
-            binding.listOfExercises.adapter = ItemAdapter(exercise, viewModel)
+            binding.listOfExercises.adapter = ItemAdapter(exercise, viewModel,requireContext())
 
             /*DE:
             *Mit diesen Befehlen initialisiere meine ViewElemente mit
@@ -419,7 +419,7 @@ class ExerciseListFragment : Fragment() {
             * the number of exercises per body part are updated according to the
             * body part is updated */
 
-            binding.title.text = exercise.first().bodyPart
+            binding.exerciseTitle.text = exercise.first().bodyPart
             binding.subTitle.text = "Anzahl von Übungen: ${exercise.size}"
 
 

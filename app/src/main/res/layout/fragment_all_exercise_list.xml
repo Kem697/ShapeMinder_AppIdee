@@ -21,7 +21,7 @@
             android:hint="@string/searchExercises"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title">
+            app:layout_constraintTop_toBottomOf="@+id/exerciseTitle">
 
 
             <EditText
@@ -51,9 +51,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:orientation="horizontal"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
+
+                <ImageButton
+                    android:id="@+id/backBtn"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:visibility="invisible"
+                    android:backgroundTint="#00FFFFFF"
+                    android:src="@drawable/arrow_back_fill0_wght400_grad0_opsz24" />
+
 
                 <TextView
                     android:id="@+id/textView"
@@ -67,12 +79,11 @@
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_gravity="center"
+                    android:layout_width="80dp"
                     android:layout_height="40dp"
-                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginRight="16dp"
                     android:src="@drawable/applogo" />
 
 
@@ -130,12 +141,12 @@
             app:icon="@drawable/tune_fill0_wght400_grad0_opsz24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/title"
+            app:layout_constraintStart_toEndOf="@+id/exerciseTitle"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_constraints" />
 
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/exerciseTitle"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"

@@ -42,12 +42,12 @@ class TrainingNav1 : Fragment() {
         var tag = "Lade Mein Training"
         Log.e(tag,"On ViewCreated || Screen wird geladen!!")
         viewModel.exercises.observe(viewLifecycleOwner){
-            binding.rvRecents.adapter = ItemAdapter(it,viewModel)
-            binding.rvYourSessions.adapter = ItemAdapter(it,viewModel)
+            binding.rvRecents.adapter = ItemAdapter(it,viewModel,requireContext())
+            binding.rvYourSessions.adapter = ItemAdapter(it,viewModel,requireContext())
         }
         viewModel.savedExercises.observe(viewLifecycleOwner){
            var rigedExercise= it.onEach { it.isInExerciseList = false }
-            binding.rvFavouriteExercises.adapter = ItemAdapter(rigedExercise,viewModel)
+            binding.rvFavouriteExercises.adapter = ItemAdapter(rigedExercise,viewModel,requireContext())
 
         }
 

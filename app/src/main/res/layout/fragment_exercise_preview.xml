@@ -51,10 +51,10 @@
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="80dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginLeft="60dp"
                     android:layout_marginRight="16dp"
                     android:layout_weight="1"
                     android:src="@drawable/applogo" />
@@ -105,7 +105,7 @@
                         android:id="@+id/title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="TextView"
+                        android:text="@string/exerciseName"
                         android:textSize="20dp"
                         android:textStyle="bold" />
 
@@ -115,7 +115,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:layout_marginTop="30dp"
-                        android:text="TextView"
+                        android:text="@string/bodypartSubtitle"
                         android:textSize="16dp" />
 
 
@@ -185,7 +185,7 @@
             android:fontFamily="@font/montserrat"
             app:icon="@drawable/add_fill0_wght400_grad0_opsz24"
             android:backgroundTint="@color/black"
-            android:text="Training"
+            android:text="@string/addToTrainingBtnText"
             app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
 
 
@@ -207,7 +207,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:padding="8dp"
-                android:text="Übungsausführung"
+                android:text="@string/descriptionHeader"
+                android:textStyle="bold"
                 android:fontFamily="@font/montserrat"
                 android:textSize="20dp"/>
         </com.google.android.material.card.MaterialCardView>
@@ -231,13 +232,13 @@
                 android:id="@+id/descriptionText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="start"
                 android:layout_margin="16dp"
                 android:fontFamily="@font/montserrat"
                 android:padding="8dp"
-                android:text="Übungsausführung"
-                android:textAlignment="center"
-                android:textSize="16dp" />
+                android:text=""
+                android:textAlignment="viewStart"
+                android:textSize="18dp" />
         </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

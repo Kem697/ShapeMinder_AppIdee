@@ -22,7 +22,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title">
+            app:layout_constraintTop_toBottomOf="@+id/exerciseTitle">
 
             <ImageView
                 android:id="@+id/contentImage2"
@@ -196,7 +196,7 @@
             app:layout_constraintTop_toBottomOf="@+id/materialCardJustForYou" />
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/exerciseTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
