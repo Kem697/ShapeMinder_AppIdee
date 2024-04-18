@@ -205,11 +205,11 @@ class AllExerciseListFragment : Fragment() {
                     dialog.findViewById(R.id.sec0_backBtn),
                     dialog.findViewById(R.id.sec0_shoulderBtn),
                 )
-                lastSelectedImageButton = allImageButtons[0]
+         /*       lastSelectedImageButton = allImageButtons[0]
                 lastSelectedTextButton = textButtons[0]
                 lastSelectedImageButton!!.isSelected = false
                 lastSelectedTextButton!!.isSelected = false
-
+*/
 
                 /*     var tag = "Button gefunden?"
                      Log.i(tag, "Button wurde nicht gefunden: $dialogResetBtn")
@@ -245,21 +245,12 @@ class AllExerciseListFragment : Fragment() {
 
 
                 dialogResultsBtn?.setOnClickListener {
-                    var tag1 = "SelectedButtons"
-                    Log.e(tag1,"$lastSelectedTextButton $lastSelectedImageButton")
                     if (lastSelectedTextButton!!.isSelected && lastSelectedImageButton!!.isSelected){
                         viewModel.filterAllExercisesByTwoSelections(requireContext(),
                             lastSelectedImageButton!!, lastSelectedTextButton!!
                         )
-                        binding.resetFilterBtn.isInvisible = false
-                        dialog.dismiss()
-
-
-                        var tag = "Doppelfilter??"
-                        Log.i(tag,"Doppelfilter wird aufgerufen! ${lastSelectedTextButton?.id}  ${lastSelectedImageButton?.id}")
-
                     } else if (lastSelectedTextButton!!.isSelected && !lastSelectedImageButton!!.isSelected){
-                        val textButtonName = context?.resources!!.getResourceEntryName(lastSelectedTextButton!!.id)
+                        val textButtonName = resources.getResourceEntryName(lastSelectedTextButton!!.id)
                         val bodyPart = when (textButtonName) {
                             "sec0_armsBtn" -> requireContext().resources.getString(R.string.bpArme)
                             "sec0_absBtn" -> requireContext().resources.getString(R.string.bpBauch)
@@ -270,33 +261,23 @@ class AllExerciseListFragment : Fragment() {
                             else -> ""
                         }
                         viewModel.filterAllExercisesByBodypart(bodyPart)
-                        binding.resetFilterBtn.isInvisible = false
-                        dialog.dismiss()
                     } else if (lastSelectedImageButton!!.isSelected && !lastSelectedTextButton!!.isSelected){
-                        var imageBtnName =resources!!.getResourceEntryName(lastSelectedImageButton!!.id)
+                        val imageBtnName = resources.getResourceEntryName(lastSelectedImageButton!!.id)
                         when (imageBtnName) {
                             "sec1_short_dumbell_Btn" -> {
-                                binding.resetFilterBtn.isInvisible = false
                                 viewModel.filterAllExercisesByShortDumbbell(requireContext())
                             }
-
                             "sec1_long_dumbell_Btn" -> {
-                                binding.resetFilterBtn.isInvisible = false
                                 viewModel.filterAllExercisesByLongDumbbell(requireContext())
                             }
                             "sec1_own_bodyweight_Btn" ->{
-                                binding.resetFilterBtn.isInvisible = false
                                 viewModel.filterAllExercisesByBodyweight(requireContext())
                             }
                         }
-
-                        dialog.dismiss()
                     }
-                    Log.e("test", textButtons.toString())
-
-
+                    binding.resetFilterBtn.isInvisible = false
+                    dialog.dismiss()
                 }
-
 
 
 
@@ -351,10 +332,10 @@ class AllExerciseListFragment : Fragment() {
                         }
 
                     }
-                    lastSelectedImageButton = allImageButtons[0]
-                    lastSelectedTextButton = textButtons[0]
-                    lastSelectedImageButton!!.isSelected = false
-                    lastSelectedTextButton!!.isSelected = false
+                    lastSelectedImageButton = null
+                    lastSelectedTextButton = null
+                 /*   lastSelectedImageButton!!.isSelected = false
+                    lastSelectedTextButton!!.isSelected = false*/
                     resetBtn.isInvisible = true
                 }
 
@@ -408,10 +389,10 @@ class AllExerciseListFragment : Fragment() {
 
                         }
                     }
-                    lastSelectedImageButton = allImageButtons[0]
-                    lastSelectedTextButton = textButtons[0]
-                    lastSelectedImageButton!!.isSelected = false
-                    lastSelectedTextButton!!.isSelected = false
+                    lastSelectedImageButton = null
+                    lastSelectedTextButton = null
+                  /*  lastSelectedImageButton!!.isSelected = false
+                    lastSelectedTextButton!!.isSelected = false*/
                     binding.resetFilterBtn.isInvisible = true
                 }
 
@@ -438,9 +419,9 @@ class AllExerciseListFragment : Fragment() {
                 }
                 selectedButton.setImageResource(checkedImages[index]) // Setze das Bild des ausgewählten Buttons
                 selectedButton.isSelected = true
+                var selectedBtnName = resources.getResourceEntryName(selectedButton.id)
                 lastSelectedImageButton = selectedButton
                 lastSelectedImageButtonIndex = index
-                var selectedBtnName = resources.getResourceEntryName(selectedButton.id)
                 var tag = "Button Wahl??"
                 Log.i(
                     tag,
@@ -457,27 +438,27 @@ class AllExerciseListFragment : Fragment() {
         setCheckedBackground: Int,
         setUnCheckedBackground: Int,
     ) {
-        allTextButtons.forEachIndexed { index, button ->
-            if (!button!!.isSelected) {
-                button.setBackgroundColor(setUnCheckedBackground)
-                button.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+        allTextButtons.forEachIndexed { index, selectedButton ->
+            if (!selectedButton!!.isSelected) {
+                selectedButton.setBackgroundColor(setUnCheckedBackground)
+                selectedButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
             } // Setze zunächst alle Buttons auf die ungewählten Bilder
-            button.setOnClickListener {
+            selectedButton.setOnClickListener {
                 allTextButtons.forEachIndexed { innerIndex, button -> // Setze alle Buttons auf ungewählt
                     button?.setBackgroundColor(setUnCheckedBackground)
                     button?.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
                     button?.isSelected = false
                 }
-                button.setBackgroundColor(setCheckedBackground) // Setze das Bild des ausgewählten Buttons
-                button.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
-                button.isSelected = true
-                lastSelectedTextButton = button
+                selectedButton.setBackgroundColor(setCheckedBackground) // Setze das Bild des ausgewählten Buttons
+                selectedButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+                selectedButton.isSelected = true
+                lastSelectedTextButton = selectedButton
                 lastSelectedTextButtonIndex = index
-                var selectedBtnName = resources.getResourceEntryName(button.id)
+                var selectedBtnName = resources.getResourceEntryName(selectedButton.id)
                 var tag = "Button Wahl??"
                 Log.i(
                     tag,
-                    "Button wurde ausgewählt: ${button.isSelected} $selectedBtnName $lastSelectedImageButtonIndex"
+                    "Button wurde ausgewählt: ${selectedButton.isSelected} $selectedBtnName $lastSelectedImageButtonIndex"
                 )
 
             }
