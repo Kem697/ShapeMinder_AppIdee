@@ -190,6 +190,7 @@ class AllExerciseListFragment : Fragment() {
                 var resetBtn = binding.resetFilterBtn
 
 
+
                 val allImageButtons = listOf<ImageButton?>(
                     dialog.findViewById(R.id.sec1_short_dumbell_Btn),
                     dialog.findViewById(R.id.sec1_long_dumbell_Btn),
@@ -203,12 +204,16 @@ class AllExerciseListFragment : Fragment() {
                     dialog.findViewById(R.id.sec0_chestBtn),
                     dialog.findViewById(R.id.sec0_backBtn),
                     dialog.findViewById(R.id.sec0_shoulderBtn),
+                )
+                lastSelectedImageButton = allImageButtons[0]
+                lastSelectedTextButton = textButtons[0]
+                lastSelectedImageButton!!.isSelected = false
+                lastSelectedTextButton!!.isSelected = false
 
-                    )
 
-           /*     var tag = "Button gefunden?"
-                Log.i(tag, "Button wurde nicht gefunden: $dialogResetBtn")
-*/
+                /*     var tag = "Button gefunden?"
+                     Log.i(tag, "Button wurde nicht gefunden: $dialogResetBtn")
+     */
                 val uncheckedImages = listOf<Int>(
                     R.drawable.short_dumbell_unchecked,
                     R.drawable.long_dumbell_unchecked,
@@ -225,70 +230,75 @@ class AllExerciseListFragment : Fragment() {
                     R.drawable.bodyweight_checked,
                 )
 
-/*
-                dialogResultsBtn?.setOnClickListener {
-                    if (selectionSec1 && selectionSec2){
-                        viewModel.filterAllExercisesByTwoSelections(requireContext(),
-                            lastSelectedImageButton!!, lastSelectedTextButton!!
-                        )
-                        var tag1 = "SelectedButtons"
-                        Log.e(tag1,"$lastSelectedTextButton $lastSelectedImageButton")
-                        dialog.dismiss()
-
-                        var tag = "Doppelfilter??"
-                        Log.i(tag,"Doppelfilter wird aufgerufen! ${lastSelectedTextButton?.id}  ${lastSelectedImageButton?.id}")
-
-//                        lastSelectedTextButton!!.isSelected && !lastSelectedImageButton!!.isSelected
-
-                    } else if (lastSelectedTextButton!!.isSelected && !lastSelectedImageButton!!.isSelected){
-                        viewModel.filterAllExercisesByBodypart(resources!!.getResourceEntryName(lastSelectedTextButton!!.id))
-                        dialog.dismiss()
-
-//                        else if (lastSelectedImageButton!!.isSelected && !lastSelectedTextButton!!.isSelected)
-                    } else if (lastSelectedImageButton!!.isSelected && !lastSelectedTextButton!!.isSelected) {
-                        var imageBtnName =resources!!.getResourceEntryName(lastSelectedImageButton!!.id)
-                        when (imageBtnName) {
-                            "sec1_short_dumbell_Btn" -> {
-                                viewModel.filterAllExercisesByShortDumbbell(requireContext())
-                            }
-
-                            "sec1_long_dumbell_Btn" -> {
-                                viewModel.filterAllExercisesByLongDumbbell(requireContext())
-                            }
-                            "sec1_own_bodyweight_Btn" ->{
-                                viewModel.filterAllExercisesByBodyweight(requireContext())
-                            }
-                        }
-                        dialog.dismiss()
-                    }
-
-                }
-*/
-
-
                 userSelectionBodyParts(
-                    dialog,
                     textButtons,
                     setCheckedBackground,
                     setUnCheckedBackground,
-                    dialogResultsBtn
                 )
 
 
                 userSelection(
-                    dialog,
                     allImageButtons,
                     uncheckedImages,
                     checkedImages,
-                    dialogResultsBtn
                 )
 
-            /*    var tag = "Button Wahl??"
-                Log.i(
-                    tag,
-                    "LastTextButton ${resources.getResourceEntryName(lastSelectedTextButton?.id?:0)} $lastSelectedTextButtonIndex || LastImageButton ${resources.getResourceEntryName(lastSelectedImageButton?.id?:0)} $lastSelectedImageButtonIndex"
-                )
-*/
+
+                dialogResultsBtn?.setOnClickListener {
+                    var tag1 = "SelectedButtons"
+                    Log.e(tag1,"$lastSelectedTextButton $lastSelectedImageButton")
+                    if (lastSelectedTextButton!!.isSelected && lastSelectedImageButton!!.isSelected){
+                        viewModel.filterAllExercisesByTwoSelections(requireContext(),
+                            lastSelectedImageButton!!, lastSelectedTextButton!!
+                        )
+                        binding.resetFilterBtn.isInvisible = false
+                        dialog.dismiss()
+
+
+                        var tag = "Doppelfilter??"
+                        Log.i(tag,"Doppelfilter wird aufgerufen! ${lastSelectedTextButton?.id}  ${lastSelectedImageButton?.id}")
+
+                    } else if (lastSelectedTextButton!!.isSelected && !lastSelectedImageButton!!.isSelected){
+                        val textButtonName = context?.resources!!.getResourceEntryName(lastSelectedTextButton!!.id)
+                        val bodyPart = when (textButtonName) {
+                            "sec0_armsBtn" -> requireContext().resources.getString(R.string.bpArme)
+                            "sec0_absBtn" -> requireContext().resources.getString(R.string.bpBauch)
+                            "sec0_legsBtn" -> requireContext().resources.getString(R.string.bpBeine)
+                            "sec0_chestBtn" -> requireContext().resources.getString(R.string.bpBrust)
+                            "sec0_backBtn" -> requireContext().resources.getString(R.string.bpRücken)
+                            "sec0_shoulderBtn" -> requireContext().resources.getString(R.string.bpSchulter)
+                            else -> ""
+                        }
+                        viewModel.filterAllExercisesByBodypart(bodyPart)
+                        binding.resetFilterBtn.isInvisible = false
+                        dialog.dismiss()
+                    } else if (lastSelectedImageButton!!.isSelected && !lastSelectedTextButton!!.isSelected){
+                        var imageBtnName =resources!!.getResourceEntryName(lastSelectedImageButton!!.id)
+                        when (imageBtnName) {
+                            "sec1_short_dumbell_Btn" -> {
+                                binding.resetFilterBtn.isInvisible = false
+                                viewModel.filterAllExercisesByShortDumbbell(requireContext())
+                            }
+
+                            "sec1_long_dumbell_Btn" -> {
+                                binding.resetFilterBtn.isInvisible = false
+                                viewModel.filterAllExercisesByLongDumbbell(requireContext())
+                            }
+                            "sec1_own_bodyweight_Btn" ->{
+                                binding.resetFilterBtn.isInvisible = false
+                                viewModel.filterAllExercisesByBodyweight(requireContext())
+                            }
+                        }
+
+                        dialog.dismiss()
+                    }
+                    Log.e("test", textButtons.toString())
+
+
+                }
+
+
+
 
                 resetBtn.setOnClickListener {
                     if (lastSelectedImageButtonIndex != -1 ||lastSelectedTextButtonIndex != -1) {
@@ -341,8 +351,10 @@ class AllExerciseListFragment : Fragment() {
                         }
 
                     }
-                    lastSelectedImageButton = null
-                    lastSelectedTextButton = null
+                    lastSelectedImageButton = allImageButtons[0]
+                    lastSelectedTextButton = textButtons[0]
+                    lastSelectedImageButton!!.isSelected = false
+                    lastSelectedTextButton!!.isSelected = false
                     resetBtn.isInvisible = true
                 }
 
@@ -396,8 +408,10 @@ class AllExerciseListFragment : Fragment() {
 
                         }
                     }
-                    lastSelectedImageButton = null
-                    lastSelectedTextButton = null
+                    lastSelectedImageButton = allImageButtons[0]
+                    lastSelectedTextButton = textButtons[0]
+                    lastSelectedImageButton!!.isSelected = false
+                    lastSelectedTextButton!!.isSelected = false
                     binding.resetFilterBtn.isInvisible = true
                 }
 
@@ -409,11 +423,9 @@ class AllExerciseListFragment : Fragment() {
     }
 
     fun userSelection(
-        dialog: BottomSheetDialog,
         allButtons: List<ImageButton?>,
         uncheckedImages: List<Int>,
         checkedImages: List<Int>,
-        resultsBtn: MaterialButton?
     ) {
         allButtons.forEachIndexed { index, selectedButton ->
             if (!selectedButton!!.isSelected) {
@@ -434,210 +446,40 @@ class AllExerciseListFragment : Fragment() {
                     tag,
                     "Button wurde ausgewählt: ${selectedButton.isSelected} $selectedBtnName $lastSelectedImageButtonIndex"
                 )
-                when (selectedBtnName) {
-                    "sec1_short_dumbell_Btn" -> {
-                        resultsBtn?.setOnClickListener {
-                            if (selectedButton.isSelected) {
-                                viewModel.filterAllExercisesByShortDumbbell(requireContext())
-                                binding.resetFilterBtn.isInvisible = false
-                                dialog.dismiss()
-                            } else {
-                                Toast.makeText(
-                                    requireContext(),
-                                    "Keine Auswahl getroffen!",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                        }
-                    }
 
-                    "sec1_long_dumbell_Btn" -> {
-                        resultsBtn?.setOnClickListener {
-                            if (selectedButton.isSelected) {
-                                viewModel.filterAllExercisesByLongDumbbell(requireContext())
-                                binding.resetFilterBtn.isInvisible = false
-                                dialog.dismiss()
-                            } else {
-                                Toast.makeText(
-                                    requireContext(),
-                                    "Keine Auswahl getroffen!",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                        }
-                    }
-
-                    "sec1_own_bodyweight_Btn" -> {
-                        resultsBtn?.setOnClickListener {
-                            if (selectedButton.isSelected) {
-                                viewModel.filterAllExercisesByBodyweight(requireContext())
-                                binding.resetFilterBtn.isInvisible = false
-                                dialog.dismiss()
-                            } else {
-                                Toast.makeText(
-                                    requireContext(),
-                                    "Keine Auswahl getroffen!",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                        }
-                    }
-
-
-                    else -> {
-                        resultsBtn?.setOnClickListener {
-                            Toast.makeText(
-                                requireContext(),
-                                "Keine Auswahl getroffen!",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
-                }
             }
         }
     }
 
 
     fun userSelectionBodyParts(
-        dialog: BottomSheetDialog,
         allTextButtons: List<Button?>,
         setCheckedBackground: Int,
         setUnCheckedBackground: Int,
-        resultsBtn: MaterialButton?
     ) {
-        allTextButtons.forEachIndexed { index, selectedButton ->
-            if (!selectedButton!!.isSelected) {
-                selectedButton.setBackgroundColor(setUnCheckedBackground)
-                selectedButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+        allTextButtons.forEachIndexed { index, button ->
+            if (!button!!.isSelected) {
+                button.setBackgroundColor(setUnCheckedBackground)
+                button.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
             } // Setze zunächst alle Buttons auf die ungewählten Bilder
-            selectedButton.setOnClickListener {
+            button.setOnClickListener {
                 allTextButtons.forEachIndexed { innerIndex, button -> // Setze alle Buttons auf ungewählt
                     button?.setBackgroundColor(setUnCheckedBackground)
                     button?.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
                     button?.isSelected = false
                 }
-                selectedButton.setBackgroundColor(setCheckedBackground) // Setze das Bild des ausgewählten Buttons
-                selectedButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
-                selectedButton.isSelected = true
-                lastSelectedTextButton = selectedButton
+                button.setBackgroundColor(setCheckedBackground) // Setze das Bild des ausgewählten Buttons
+                button.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+                button.isSelected = true
+                lastSelectedTextButton = button
                 lastSelectedTextButtonIndex = index
-                var selectedBtnName = resources.getResourceEntryName(selectedButton.id)
+                var selectedBtnName = resources.getResourceEntryName(button.id)
                 var tag = "Button Wahl??"
                 Log.i(
                     tag,
-                    "Button wurde ausgewählt: ${selectedButton.isSelected} $selectedBtnName ||| LastTextButton ${resources.getResourceEntryName(lastSelectedTextButton?.id?:0)} $lastSelectedTextButtonIndex"
+                    "Button wurde ausgewählt: ${button.isSelected} $selectedBtnName $lastSelectedImageButtonIndex"
                 )
-                when (selectedBtnName) {
-                    "sec0_armsBtn" -> {
-                        resultsBtn?.setOnClickListener {
-                            if (selectedButton.isSelected) {
-                                viewModel.filterAllExercisesByBodypart(getString(R.string.bpArme))
-                                binding.resetFilterBtn.isInvisible = false
-                                dialog.dismiss()
-                            } else {
-                                Toast.makeText(
-                                    requireContext(),
-                                    "Keine Auswahl getroffen!",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                        }
-                    }
 
-                    "sec0_absBtn" -> {
-                        resultsBtn?.setOnClickListener {
-                            if (selectedButton.isSelected) {
-                                viewModel.filterAllExercisesByBodypart(getString(R.string.bpBauch))
-                                binding.resetFilterBtn.isInvisible = false
-                                dialog.dismiss()
-                            } else {
-                                Toast.makeText(
-                                    requireContext(),
-                                    "Keine Auswahl getroffen!",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                        }
-                    }
-
-                    "sec0_legsBtn" -> {
-                        resultsBtn?.setOnClickListener {
-                            if (selectedButton.isSelected) {
-                                viewModel.filterAllExercisesByBodypart(getString(R.string.bpBeine))
-                                binding.resetFilterBtn.isInvisible = false
-                                dialog.dismiss()
-                            } else {
-                                Toast.makeText(
-                                    requireContext(),
-                                    "Keine Auswahl getroffen!",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                        }
-                    }
-
-                    "sec0_chestBtn" -> {
-                        resultsBtn?.setOnClickListener {
-                            if (selectedButton.isSelected) {
-                                viewModel.filterAllExercisesByBodypart(getString(R.string.bpBrust))
-                                binding.resetFilterBtn.isInvisible = false
-                                dialog.dismiss()
-                            } else {
-                                Toast.makeText(
-                                    requireContext(),
-                                    "Keine Auswahl getroffen!",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                        }
-                    }
-
-
-                    "sec0_backBtn" -> {
-                        resultsBtn?.setOnClickListener {
-                            if (selectedButton.isSelected) {
-                                viewModel.filterAllExercisesByBodypart(getString(R.string.bpRücken))
-                                binding.resetFilterBtn.isInvisible = false
-                                dialog.dismiss()
-                            } else {
-                                Toast.makeText(
-                                    requireContext(),
-                                    "Keine Auswahl getroffen!",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                        }
-                    }
-
-
-                    "sec0_shoulderBtn" -> {
-                        resultsBtn?.setOnClickListener {
-                            if (selectedButton.isSelected) {
-                                viewModel.filterAllExercisesByBodypart(getString(R.string.bpSchulter))
-                                binding.resetFilterBtn.isInvisible = false
-                                dialog.dismiss()
-                            } else {
-                                Toast.makeText(
-                                    requireContext(),
-                                    "Keine Auswahl getroffen!",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                        }
-                    }
-
-
-                    else -> {
-                        resultsBtn?.setOnClickListener {
-                            Toast.makeText(
-                                requireContext(),
-                                "Keine Auswahl getroffen!",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
-                }
             }
         }
     }
@@ -667,6 +509,7 @@ class AllExerciseListFragment : Fragment() {
             }
         }
     }
+
 
     fun cancelProcess(){
         var cancelBtn = binding.cancelSessionBtn
