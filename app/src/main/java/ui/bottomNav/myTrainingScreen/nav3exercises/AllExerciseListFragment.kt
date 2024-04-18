@@ -243,7 +243,6 @@ class AllExerciseListFragment : Fragment() {
                 )
 
 
-
                 dialogResultsBtn?.setOnClickListener {
                     if (lastSelectedTextButton!!.isSelected && lastSelectedImageButton!!.isSelected){
                         viewModel.filterAllExercisesByTwoSelections(requireContext(),
