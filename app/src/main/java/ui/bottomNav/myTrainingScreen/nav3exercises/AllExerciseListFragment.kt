@@ -511,6 +511,7 @@ class AllExerciseListFragment : Fragment() {
     }
 
 
+
     fun cancelProcess(){
         var cancelBtn = binding.cancelSessionBtn
         cancelBtn.setOnClickListener {
