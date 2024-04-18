@@ -280,7 +280,6 @@ class AllExerciseListFragment : Fragment() {
                 }
 
 
-
                 resetBtn.setOnClickListener {
                     if (lastSelectedImageButtonIndex != -1 ||lastSelectedTextButtonIndex != -1) {
                         viewModel.resetFilter()
