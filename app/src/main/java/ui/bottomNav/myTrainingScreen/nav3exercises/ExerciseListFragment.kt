@@ -246,7 +246,6 @@ class ExerciseListFragment : Fragment() {
                         }
                     }
                     binding.resetFilterBtn.isInvisible = true
-                    dialog.dismiss()
                 }
 
                 dialogCancelBtn?.setOnClickListener {

@@ -225,6 +225,47 @@ class AllExerciseListFragment : Fragment() {
                     R.drawable.bodyweight_checked,
                 )
 
+/*
+                dialogResultsBtn?.setOnClickListener {
+                    if (selectionSec1 && selectionSec2){
+                        viewModel.filterAllExercisesByTwoSelections(requireContext(),
+                            lastSelectedImageButton!!, lastSelectedTextButton!!
+                        )
+                        var tag1 = "SelectedButtons"
+                        Log.e(tag1,"$lastSelectedTextButton $lastSelectedImageButton")
+                        dialog.dismiss()
+
+                        var tag = "Doppelfilter??"
+                        Log.i(tag,"Doppelfilter wird aufgerufen! ${lastSelectedTextButton?.id}  ${lastSelectedImageButton?.id}")
+
+//                        lastSelectedTextButton!!.isSelected && !lastSelectedImageButton!!.isSelected
+
+                    } else if (lastSelectedTextButton!!.isSelected && !lastSelectedImageButton!!.isSelected){
+                        viewModel.filterAllExercisesByBodypart(resources!!.getResourceEntryName(lastSelectedTextButton!!.id))
+                        dialog.dismiss()
+
+//                        else if (lastSelectedImageButton!!.isSelected && !lastSelectedTextButton!!.isSelected)
+                    } else if (lastSelectedImageButton!!.isSelected && !lastSelectedTextButton!!.isSelected) {
+                        var imageBtnName =resources!!.getResourceEntryName(lastSelectedImageButton!!.id)
+                        when (imageBtnName) {
+                            "sec1_short_dumbell_Btn" -> {
+                                viewModel.filterAllExercisesByShortDumbbell(requireContext())
+                            }
+
+                            "sec1_long_dumbell_Btn" -> {
+                                viewModel.filterAllExercisesByLongDumbbell(requireContext())
+                            }
+                            "sec1_own_bodyweight_Btn" ->{
+                                viewModel.filterAllExercisesByBodyweight(requireContext())
+                            }
+                        }
+                        dialog.dismiss()
+                    }
+
+                }
+*/
+
+
                 userSelectionBodyParts(
                     dialog,
                     textButtons,
@@ -242,45 +283,12 @@ class AllExerciseListFragment : Fragment() {
                     dialogResultsBtn
                 )
 
-
-                dialogResultsBtn?.setOnClickListener {
-                    if (lastSelectedTextButton!!.isSelected && lastSelectedImageButton!!.isSelected){
-                        viewModel.filterAllExercisesByTwoSelections(requireContext(),
-                            lastSelectedImageButton!!, lastSelectedTextButton!!
-                        )
-                        var tag1 = "SelectedButtons"
-                        Log.e(tag1,"$lastSelectedTextButton $lastSelectedImageButton")
-                        dialog.dismiss()
-
-                        var tag = "Doppelfilter??"
-                        Log.i(tag,"Doppelfilter wird aufgerufen! ${lastSelectedTextButton?.id}  ${lastSelectedImageButton?.id}")
-
-                    } else if (lastSelectedTextButton!!.isSelected && lastSelectedImageButton == null){
-                        viewModel.filterAllExercisesByBodypart(resources!!.getResourceEntryName(lastSelectedTextButton!!.id))
-                        dialog.dismiss()
-                    } else if (lastSelectedImageButton!!.isSelected && lastSelectedTextButton == null){
-                        var imageBtnName =resources!!.getResourceEntryName(lastSelectedImageButton!!.id)
-                        when (imageBtnName) {
-                            "sec1_short_dumbell_Btn" -> {
-                                viewModel.filterAllExercisesByShortDumbbell(requireContext())
-                            }
-
-                            "sec1_long_dumbell_Btn" -> {
-                                viewModel.filterAllExercisesByLongDumbbell(requireContext())
-                            }
-                            "sec1_own_bodyweight_Btn" ->{
-                                viewModel.filterAllExercisesByBodyweight(requireContext())
-                            }
-                        }
-                        dialog.dismiss()
-                    }
-
-
-
-                }
-
-
-
+            /*    var tag = "Button Wahl??"
+                Log.i(
+                    tag,
+                    "LastTextButton ${resources.getResourceEntryName(lastSelectedTextButton?.id?:0)} $lastSelectedTextButtonIndex || LastImageButton ${resources.getResourceEntryName(lastSelectedImageButton?.id?:0)} $lastSelectedImageButtonIndex"
+                )
+*/
 
                 resetBtn.setOnClickListener {
                     if (lastSelectedImageButtonIndex != -1 ||lastSelectedTextButtonIndex != -1) {
@@ -432,6 +440,7 @@ class AllExerciseListFragment : Fragment() {
                             if (selectedButton.isSelected) {
                                 viewModel.filterAllExercisesByShortDumbbell(requireContext())
                                 binding.resetFilterBtn.isInvisible = false
+                                dialog.dismiss()
                             } else {
                                 Toast.makeText(
                                     requireContext(),
@@ -447,6 +456,7 @@ class AllExerciseListFragment : Fragment() {
                             if (selectedButton.isSelected) {
                                 viewModel.filterAllExercisesByLongDumbbell(requireContext())
                                 binding.resetFilterBtn.isInvisible = false
+                                dialog.dismiss()
                             } else {
                                 Toast.makeText(
                                     requireContext(),
@@ -462,6 +472,7 @@ class AllExerciseListFragment : Fragment() {
                             if (selectedButton.isSelected) {
                                 viewModel.filterAllExercisesByBodyweight(requireContext())
                                 binding.resetFilterBtn.isInvisible = false
+                                dialog.dismiss()
                             } else {
                                 Toast.makeText(
                                     requireContext(),
@@ -515,7 +526,7 @@ class AllExerciseListFragment : Fragment() {
                 var tag = "Button Wahl??"
                 Log.i(
                     tag,
-                    "Button wurde ausgewählt: ${selectedButton.isSelected} $selectedBtnName $lastSelectedImageButtonIndex"
+                    "Button wurde ausgewählt: ${selectedButton.isSelected} $selectedBtnName ||| LastTextButton ${resources.getResourceEntryName(lastSelectedTextButton?.id?:0)} $lastSelectedTextButtonIndex"
                 )
                 when (selectedBtnName) {
                     "sec0_armsBtn" -> {
@@ -523,6 +534,7 @@ class AllExerciseListFragment : Fragment() {
                             if (selectedButton.isSelected) {
                                 viewModel.filterAllExercisesByBodypart(getString(R.string.bpArme))
                                 binding.resetFilterBtn.isInvisible = false
+                                dialog.dismiss()
                             } else {
                                 Toast.makeText(
                                     requireContext(),
@@ -538,6 +550,7 @@ class AllExerciseListFragment : Fragment() {
                             if (selectedButton.isSelected) {
                                 viewModel.filterAllExercisesByBodypart(getString(R.string.bpBauch))
                                 binding.resetFilterBtn.isInvisible = false
+                                dialog.dismiss()
                             } else {
                                 Toast.makeText(
                                     requireContext(),
@@ -553,6 +566,7 @@ class AllExerciseListFragment : Fragment() {
                             if (selectedButton.isSelected) {
                                 viewModel.filterAllExercisesByBodypart(getString(R.string.bpBeine))
                                 binding.resetFilterBtn.isInvisible = false
+                                dialog.dismiss()
                             } else {
                                 Toast.makeText(
                                     requireContext(),
@@ -568,6 +582,7 @@ class AllExerciseListFragment : Fragment() {
                             if (selectedButton.isSelected) {
                                 viewModel.filterAllExercisesByBodypart(getString(R.string.bpBrust))
                                 binding.resetFilterBtn.isInvisible = false
+                                dialog.dismiss()
                             } else {
                                 Toast.makeText(
                                     requireContext(),
@@ -584,6 +599,7 @@ class AllExerciseListFragment : Fragment() {
                             if (selectedButton.isSelected) {
                                 viewModel.filterAllExercisesByBodypart(getString(R.string.bpRücken))
                                 binding.resetFilterBtn.isInvisible = false
+                                dialog.dismiss()
                             } else {
                                 Toast.makeText(
                                     requireContext(),
@@ -600,6 +616,7 @@ class AllExerciseListFragment : Fragment() {
                             if (selectedButton.isSelected) {
                                 viewModel.filterAllExercisesByBodypart(getString(R.string.bpSchulter))
                                 binding.resetFilterBtn.isInvisible = false
+                                dialog.dismiss()
                             } else {
                                 Toast.makeText(
                                     requireContext(),
@@ -650,7 +667,6 @@ class AllExerciseListFragment : Fragment() {
             }
         }
     }
-
 
     fun cancelProcess(){
         var cancelBtn = binding.cancelSessionBtn
