@@ -34,6 +34,10 @@ class AllExerciseListFragment : Fragment() {
     private var lastSelectedImageButtonIndex: Int = -1
     private var lastSelectedTextButtonIndex: Int = -1
 
+    private var lastSelectedImageButton: ImageButton? = null
+    private var lastSelectedTextButton: Button? = null
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,7 +62,8 @@ class AllExerciseListFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         setDefaultHint()
-        var navigationBar =
+        viewModel.resetFilter()
+        val navigationBar =
             requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
         navigationBar.isInvisible = false
         var tag = "Fragment Wechsel"
@@ -201,9 +206,9 @@ class AllExerciseListFragment : Fragment() {
 
                     )
 
-                var tag = "Button gefunden?"
+           /*     var tag = "Button gefunden?"
                 Log.i(tag, "Button wurde nicht gefunden: $dialogResetBtn")
-
+*/
                 val uncheckedImages = listOf<Int>(
                     R.drawable.short_dumbell_unchecked,
                     R.drawable.long_dumbell_unchecked,
@@ -219,7 +224,6 @@ class AllExerciseListFragment : Fragment() {
                     R.drawable.long_dumbell_checked,
                     R.drawable.bodyweight_checked,
                 )
-
 
                 userSelectionBodyParts(
                     dialog,
@@ -238,10 +242,50 @@ class AllExerciseListFragment : Fragment() {
                     dialogResultsBtn
                 )
 
+
+                dialogResultsBtn?.setOnClickListener {
+                    if (lastSelectedTextButton!!.isSelected && lastSelectedImageButton!!.isSelected){
+                        viewModel.filterAllExercisesByTwoSelections(requireContext(),
+                            lastSelectedImageButton!!, lastSelectedTextButton!!
+                        )
+                        var tag1 = "SelectedButtons"
+                        Log.e(tag1,"$lastSelectedTextButton $lastSelectedImageButton")
+                        dialog.dismiss()
+
+                        var tag = "Doppelfilter??"
+                        Log.i(tag,"Doppelfilter wird aufgerufen! ${lastSelectedTextButton?.id}  ${lastSelectedImageButton?.id}")
+
+                    } else if (lastSelectedTextButton!!.isSelected && lastSelectedImageButton == null){
+                        viewModel.filterAllExercisesByBodypart(resources!!.getResourceEntryName(lastSelectedTextButton!!.id))
+                        dialog.dismiss()
+                    } else if (lastSelectedImageButton!!.isSelected && lastSelectedTextButton == null){
+                        var imageBtnName =resources!!.getResourceEntryName(lastSelectedImageButton!!.id)
+                        when (imageBtnName) {
+                            "sec1_short_dumbell_Btn" -> {
+                                viewModel.filterAllExercisesByShortDumbbell(requireContext())
+                            }
+
+                            "sec1_long_dumbell_Btn" -> {
+                                viewModel.filterAllExercisesByLongDumbbell(requireContext())
+                            }
+                            "sec1_own_bodyweight_Btn" ->{
+                                viewModel.filterAllExercisesByBodyweight(requireContext())
+                            }
+                        }
+                        dialog.dismiss()
+                    }
+
+
+
+                }
+
+
+
+
                 resetBtn.setOnClickListener {
                     if (lastSelectedImageButtonIndex != -1 ||lastSelectedTextButtonIndex != -1) {
                         viewModel.resetFilter()
-                        if (allImageButtons.any { it?.isSelected==true }){
+                        if (allImageButtons.any { it?.isSelected==true }&& (textButtons.all { it?.isSelected != true })){
                             allImageButtons.forEach { imageButton ->
                                 imageButton?.setImageResource(
                                     uncheckedImages[allImageButtons.indexOf(
@@ -255,7 +299,7 @@ class AllExerciseListFragment : Fragment() {
                                     "Status der Button?: ${allImageButtons[lastSelectedImageButtonIndex]?.isSelected}"
                                 )
                             }
-                        } else if (textButtons.any { it?.isSelected == true }){
+                        } else if (textButtons.any { it?.isSelected == true }&& allImageButtons.all { it?.isSelected !=true }){
                             textButtons.forEach { button ->
                                 button?.setBackgroundColor(setUnCheckedBackground)
                                 button?.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
@@ -267,15 +311,37 @@ class AllExerciseListFragment : Fragment() {
                                 )
                             }
                         }
+                        else if (allImageButtons.any { it?.isSelected==true } && (textButtons.any { it?.isSelected == true }) ){
+                            textButtons.forEach { button ->
+                                button?.setBackgroundColor(setUnCheckedBackground)
+                                button?.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+                                button?.isSelected = false
+                            }
+                            allImageButtons.forEach { imageButton ->
+                                imageButton?.setImageResource(
+                                    uncheckedImages[allImageButtons.indexOf(
+                                        imageButton
+                                    )]
+                                )
+                                imageButton?.isSelected = false
+                                var tag = "Button Wahl2??"
+                                Log.i(
+                                    tag,
+                                    "Status der beiden Button?:${textButtons[lastSelectedTextButtonIndex]?.isSelected} ${allImageButtons[lastSelectedImageButtonIndex]?.isSelected}"
+                                )
+                            }
+                        }
 
                     }
+                    lastSelectedImageButton = null
+                    lastSelectedTextButton = null
                     resetBtn.isInvisible = true
                 }
 
                 dialogResetBtn?.setOnClickListener {
                     if (lastSelectedImageButtonIndex != -1 || lastSelectedTextButtonIndex != -1) {
                         viewModel.resetFilter()
-                        if (allImageButtons.any { it?.isSelected==true }){
+                        if (allImageButtons.any { it?.isSelected==true }&& (textButtons.all { it?.isSelected != true })){
                             allImageButtons.forEach { imageButton ->
                                 imageButton?.setImageResource(
                                     uncheckedImages[allImageButtons.indexOf(
@@ -289,7 +355,7 @@ class AllExerciseListFragment : Fragment() {
                                     "Status der Button?: ${allImageButtons[lastSelectedImageButtonIndex]?.isSelected}"
                                 )
                             }
-                        } else if (textButtons.any { it?.isSelected == true }){
+                        } else if (textButtons.any { it?.isSelected == true } && allImageButtons.all { it?.isSelected !=true }){
                             textButtons.forEach { button ->
                                 button?.setBackgroundColor(setUnCheckedBackground)
                                 button?.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
@@ -300,10 +366,31 @@ class AllExerciseListFragment : Fragment() {
                                     "Status der Button?: ${textButtons[lastSelectedTextButtonIndex]?.isSelected}"
                                 )
                             }
+                        } else if (allImageButtons.any { it?.isSelected==true } && (textButtons.any { it?.isSelected == true }) ){
+                            textButtons.forEach { button ->
+                                button?.setBackgroundColor(setUnCheckedBackground)
+                                button?.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+                                button?.isSelected = false
+                            }
+                            allImageButtons.forEach { imageButton ->
+                                imageButton?.setImageResource(
+                                    uncheckedImages[allImageButtons.indexOf(
+                                        imageButton
+                                    )]
+                                )
+                                imageButton?.isSelected = false
+                                var tag = "Button Wahl2??"
+                                Log.i(
+                                    tag,
+                                    "Status der beiden Button?:${textButtons[lastSelectedTextButtonIndex]?.isSelected} ${allImageButtons[lastSelectedImageButtonIndex]?.isSelected}"
+                                )
+                            }
+
                         }
                     }
+                    lastSelectedImageButton = null
+                    lastSelectedTextButton = null
                     binding.resetFilterBtn.isInvisible = true
-                    dialog.dismiss()
                 }
 
                 dialogCancelBtn?.setOnClickListener {
@@ -331,6 +418,7 @@ class AllExerciseListFragment : Fragment() {
                 }
                 selectedButton.setImageResource(checkedImages[index]) // Setze das Bild des ausgewählten Buttons
                 selectedButton.isSelected = true
+                lastSelectedImageButton = selectedButton
                 lastSelectedImageButtonIndex = index
                 var selectedBtnName = resources.getResourceEntryName(selectedButton.id)
                 var tag = "Button Wahl??"
@@ -344,7 +432,6 @@ class AllExerciseListFragment : Fragment() {
                             if (selectedButton.isSelected) {
                                 viewModel.filterAllExercisesByShortDumbbell(requireContext())
                                 binding.resetFilterBtn.isInvisible = false
-                                dialog.dismiss()
                             } else {
                                 Toast.makeText(
                                     requireContext(),
@@ -360,7 +447,6 @@ class AllExerciseListFragment : Fragment() {
                             if (selectedButton.isSelected) {
                                 viewModel.filterAllExercisesByLongDumbbell(requireContext())
                                 binding.resetFilterBtn.isInvisible = false
-                                dialog.dismiss()
                             } else {
                                 Toast.makeText(
                                     requireContext(),
@@ -376,7 +462,6 @@ class AllExerciseListFragment : Fragment() {
                             if (selectedButton.isSelected) {
                                 viewModel.filterAllExercisesByBodyweight(requireContext())
                                 binding.resetFilterBtn.isInvisible = false
-                                dialog.dismiss()
                             } else {
                                 Toast.makeText(
                                     requireContext(),
@@ -424,6 +509,7 @@ class AllExerciseListFragment : Fragment() {
                 selectedButton.setBackgroundColor(setCheckedBackground) // Setze das Bild des ausgewählten Buttons
                 selectedButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
                 selectedButton.isSelected = true
+                lastSelectedTextButton = selectedButton
                 lastSelectedTextButtonIndex = index
                 var selectedBtnName = resources.getResourceEntryName(selectedButton.id)
                 var tag = "Button Wahl??"
@@ -437,7 +523,6 @@ class AllExerciseListFragment : Fragment() {
                             if (selectedButton.isSelected) {
                                 viewModel.filterAllExercisesByBodypart(getString(R.string.bpArme))
                                 binding.resetFilterBtn.isInvisible = false
-                                dialog.dismiss()
                             } else {
                                 Toast.makeText(
                                     requireContext(),
@@ -453,7 +538,6 @@ class AllExerciseListFragment : Fragment() {
                             if (selectedButton.isSelected) {
                                 viewModel.filterAllExercisesByBodypart(getString(R.string.bpBauch))
                                 binding.resetFilterBtn.isInvisible = false
-                                dialog.dismiss()
                             } else {
                                 Toast.makeText(
                                     requireContext(),
@@ -469,7 +553,6 @@ class AllExerciseListFragment : Fragment() {
                             if (selectedButton.isSelected) {
                                 viewModel.filterAllExercisesByBodypart(getString(R.string.bpBeine))
                                 binding.resetFilterBtn.isInvisible = false
-                                dialog.dismiss()
                             } else {
                                 Toast.makeText(
                                     requireContext(),
@@ -485,7 +568,6 @@ class AllExerciseListFragment : Fragment() {
                             if (selectedButton.isSelected) {
                                 viewModel.filterAllExercisesByBodypart(getString(R.string.bpBrust))
                                 binding.resetFilterBtn.isInvisible = false
-                                dialog.dismiss()
                             } else {
                                 Toast.makeText(
                                     requireContext(),
@@ -502,7 +584,6 @@ class AllExerciseListFragment : Fragment() {
                             if (selectedButton.isSelected) {
                                 viewModel.filterAllExercisesByBodypart(getString(R.string.bpRücken))
                                 binding.resetFilterBtn.isInvisible = false
-                                dialog.dismiss()
                             } else {
                                 Toast.makeText(
                                     requireContext(),
@@ -519,7 +600,6 @@ class AllExerciseListFragment : Fragment() {
                             if (selectedButton.isSelected) {
                                 viewModel.filterAllExercisesByBodypart(getString(R.string.bpSchulter))
                                 binding.resetFilterBtn.isInvisible = false
-                                dialog.dismiss()
                             } else {
                                 Toast.makeText(
                                     requireContext(),

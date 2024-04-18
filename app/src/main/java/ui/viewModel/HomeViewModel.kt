@@ -30,7 +30,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private var groceryCategories = repository.groceryCategories
 
     private var tokenDatabase = getDatabase(application)
-    private val remoteRepository = RemoteRepository(FoodApi,FoodTokenApi,tokenDatabase)
+    private val remoteRepository = RemoteRepository(FoodApi, FoodTokenApi, tokenDatabase)
 
     var index = 0
 
@@ -46,7 +46,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private var _filterIndex = MutableLiveData<FilterModel>()
 
     val filterIndex: LiveData<FilterModel>
-
         get() = _filterIndex
 
 
@@ -109,15 +108,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         get() = _savedExercises
 
 
-
-
-
-
-
-
     private var _addToSessionExercises = MutableLiveData<MutableList<Content>>()
-    val addToSessionExercises : LiveData<MutableList<Content>>
-
+    val addToSessionExercises: LiveData<MutableList<Content>>
         get() = _addToSessionExercises
 
 
@@ -153,19 +145,17 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 * The method is then called in my GridAdapter */
 
 
-    private var accessToken : AccessToken? = null
+    private var accessToken: AccessToken? = null
 
     init {
         getTokenFromDatabase()
     }
 
 
-
-
-    fun getTokenFromDatabase(){
+    fun getTokenFromDatabase() {
         viewModelScope.launch {
             var tokenInBuffer = remoteRepository.getTokenFromDatabase()
-            if (tokenInBuffer.isNullOrEmpty()){
+            if (tokenInBuffer.isNullOrEmpty()) {
                 remoteRepository.isTokenExpired(null)
             } else {
                 remoteRepository.isTokenExpired(tokenInBuffer[0])
@@ -175,8 +165,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
-
-    fun apiCall(){
+    fun apiCall() {
         viewModelScope.launch {
             remoteRepository.foodExampleDetail(accessToken!!.accessToken)
         }
@@ -280,7 +269,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     fun filterAllExercisesByLongDumbbell(context: Context) {
         viewModelScope.launch {
             val filteredExercises = _listOfAllExercises.value?.filter {
-                context.getString(it.stringRessourceTitle).contains("LH") || context.getString(it.stringRessourceTitle).contains("SZ")
+                context.getString(it.stringRessourceTitle)
+                    .contains("LH") || context.getString(it.stringRessourceTitle).contains("SZ")
             }
             if (filteredExercises != null) {
                 if (filteredExercises.isNotEmpty()) {
@@ -313,92 +303,158 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
-
     /*Morgen weitermachen...*/
 
-    fun filterAllExercisesByTwoSelections(context: Context, imageButton: ImageButton,textButton: Button){
-        var textButtonName = context.resources.getResourceEntryName(textButton.id)
-        when(textButtonName){
-            "sec0_armsBtn"->{
-                _listOfAllExercises.value?.filter { it.bodyPart == context.resources.getString(R.string.bpArme) }
-                if (imageButton.id == R.id.sec1_short_dumbell_Btn ){
-                    filterAllExercisesByShortDumbbell(context)
-                } else if (imageButton.id == R.id.sec1_long_dumbell_Btn ){
-                    filterAllExercisesByBodypart(context.resources.getString(R.string.bpArme))
-                } else if (imageButton.id == R.id.sec1_own_bodyweight_Btn ){
-                    filterAllExercisesByBodypart(context.resources.getString(R.string.bpArme))
-                } else {
-                    filterAllExercisesByBodypart(context.resources.getString(R.string.bpArme))
+    /*
+        fun filterAllExercisesByTwoSelections(context: Context, imageButton: ImageButton,textButton: Button){
+            var textButtonName = context.resources.getResourceEntryName(textButton.id)
+            when(textButtonName){
+                "sec0_armsBtn"->{
+                    _listOfAllExercises.value?.filter { it.bodyPart == context.resources.getString(R.string.bpArme) }
+                    if (imageButton.id == R.id.sec1_short_dumbell_Btn ){
+                        filterAllExercisesByShortDumbbell(context)
+                    } else if (imageButton.id == R.id.sec1_long_dumbell_Btn ){
+                        filterAllExercisesByBodypart(context.resources.getString(R.string.bpArme))
+                    } else if (imageButton.id == R.id.sec1_own_bodyweight_Btn ){
+                        filterAllExercisesByBodypart(context.resources.getString(R.string.bpArme))
+                    } else {
+                        filterAllExercisesByBodypart(context.resources.getString(R.string.bpArme))
+                    }
+                }
+                "sec0_absBtn"->{
+                    _listOfAllExercises.value?.filter { it.bodyPart == context.resources.getString(R.string.bpBauch) }
+                    if (imageButton.id == R.id.sec1_short_dumbell_Btn ){
+                        filterAllExercisesByBodypart(context.resources.getString(R.string.bpBauch))
+                    } else if (imageButton.id == R.id.sec1_long_dumbell_Btn ){
+                        filterAllExercisesByBodypart(context.resources.getString(R.string.bpBauch))
+                    } else if (imageButton.id == R.id.sec1_own_bodyweight_Btn ){
+                        filterAllExercisesByBodypart(context.resources.getString(R.string.bpBauch))
+                    } else {
+                        filterAllExercisesByBodypart(context.resources.getString(R.string.bpBauch))
+                    }
+                }
+
+                "sec0_legsBtn"->{
+                    _listOfAllExercises.value?.filter { it.bodyPart == context.resources.getString(R.string.bpBeine) }
+                    if (imageButton.id == R.id.sec1_short_dumbell_Btn ){
+                        filterAllExercisesByBodypart(context.resources.getString(R.string.bpBeine))
+                    } else if (imageButton.id == R.id.sec1_long_dumbell_Btn ){
+                        filterAllExercisesByBodypart(context.resources.getString(R.string.bpBeine))
+                    } else if (imageButton.id == R.id.sec1_own_bodyweight_Btn ){
+                        filterAllExercisesByBodypart(context.resources.getString(R.string.bpBeine))
+                    } else {
+                        filterAllExercisesByBodypart(context.resources.getString(R.string.bpBeine))
+                    }
+                }
+
+
+                "sec0_chestBtn"->{
+                    _listOfAllExercises.value?.filter { it.bodyPart == context.resources.getString(R.string.bpBrust) }
+                    if (imageButton.id == R.id.sec1_short_dumbell_Btn ){
+                        filterAllExercisesByBodypart(context.resources.getString(R.string.bpBrust))
+                    } else if (imageButton.id == R.id.sec1_long_dumbell_Btn ){
+                        filterAllExercisesByBodypart(context.resources.getString(R.string.bpBrust))
+                    } else if (imageButton.id == R.id.sec1_own_bodyweight_Btn ){
+                        filterAllExercisesByBodypart(context.resources.getString(R.string.bpBrust))
+                    } else {
+                        filterAllExercisesByBodypart(context.resources.getString(R.string.bpBrust))
+                    }
+                }
+
+
+                "sec0_backBtn"->{
+                    _listOfAllExercises.value?.filter { it.bodyPart == context.resources.getString(R.string.bpRücken) }
+                    if (imageButton.id == R.id.sec1_short_dumbell_Btn ){
+                        filterAllExercisesByBodypart(context.resources.getString(R.string.bpRücken))
+                    } else if (imageButton.id == R.id.sec1_long_dumbell_Btn ){
+                        filterAllExercisesByBodypart(context.resources.getString(R.string.bpRücken))
+                    } else if (imageButton.id == R.id.sec1_own_bodyweight_Btn ){
+                        filterAllExercisesByBodypart(context.resources.getString(R.string.bpRücken))
+                    } else {
+                        filterAllExercisesByBodypart(context.resources.getString(R.string.bpRücken))
+                    }
+                }
+
+                "sec0_shoulderBtn"->{
+                    _listOfAllExercises.value?.filter { it.bodyPart == context.resources.getString(R.string.bpSchulter) }
+                    if (imageButton.id == R.id.sec1_short_dumbell_Btn ){
+                        filterAllExercisesByBodypart(context.resources.getString(R.string.bpSchulter))
+                    } else if (imageButton.id == R.id.sec1_long_dumbell_Btn ){
+                        filterAllExercisesByBodypart(context.resources.getString(R.string.bpSchulter))
+                    } else if (imageButton.id == R.id.sec1_own_bodyweight_Btn ){
+                        filterAllExercisesByBodypart(context.resources.getString(R.string.bpSchulter))
+                    } else {
+                        filterAllExercisesByBodypart(context.resources.getString(R.string.bpSchulter))
+                    }
                 }
             }
-            "sec0_absBtn"->{
-                _listOfAllExercises.value?.filter { it.bodyPart == context.resources.getString(R.string.bpBauch) }
-                if (imageButton.id == R.id.sec1_short_dumbell_Btn ){
-                    filterAllExercisesByBodypart(context.resources.getString(R.string.bpBauch))
-                } else if (imageButton.id == R.id.sec1_long_dumbell_Btn ){
-                    filterAllExercisesByBodypart(context.resources.getString(R.string.bpBauch))
-                } else if (imageButton.id == R.id.sec1_own_bodyweight_Btn ){
-                    filterAllExercisesByBodypart(context.resources.getString(R.string.bpBauch))
-                } else {
-                    filterAllExercisesByBodypart(context.resources.getString(R.string.bpBauch))
-                }
+
+        }
+    */
+
+
+    /*
+        fun filterAllExercisesByTwoSelections(context: Context, imageButton: ImageButton, textButton: Button, resultBtn: Button) {
+            val textButtonName = context.resources.getResourceEntryName(textButton.id)
+            val bodyPart = when (textButtonName) {
+                "sec0_armsBtn" -> context.resources.getString(R.string.bpArme)
+                "sec0_absBtn" -> context.resources.getString(R.string.bpBauch)
+                "sec0_legsBtn" -> context.resources.getString(R.string.bpBeine)
+                "sec0_chestBtn" -> context.resources.getString(R.string.bpBrust)
+                "sec0_backBtn" -> context.resources.getString(R.string.bpRücken)
+                "sec0_shoulderBtn" -> context.resources.getString(R.string.bpSchulter)
+                else -> return // Wenn keine Übereinstimmung gefunden wurde, die Funktion verlassen
             }
 
-            "sec0_legsBtn"->{
-                _listOfAllExercises.value?.filter { it.bodyPart == context.resources.getString(R.string.bpBeine) }
-                if (imageButton.id == R.id.sec1_short_dumbell_Btn ){
-                    filterAllExercisesByBodypart(context.resources.getString(R.string.bpBeine))
-                } else if (imageButton.id == R.id.sec1_long_dumbell_Btn ){
-                    filterAllExercisesByBodypart(context.resources.getString(R.string.bpBeine))
-                } else if (imageButton.id == R.id.sec1_own_bodyweight_Btn ){
-                    filterAllExercisesByBodypart(context.resources.getString(R.string.bpBeine))
-                } else {
-                    filterAllExercisesByBodypart(context.resources.getString(R.string.bpBeine))
-                }
-            }
+            val exerciseList = _listOfAllExercises.value?.filter { it.bodyPart == bodyPart }
 
-
-            "sec0_chestBtn"->{
-                _listOfAllExercises.value?.filter { it.bodyPart == context.resources.getString(R.string.bpBrust) }
-                if (imageButton.id == R.id.sec1_short_dumbell_Btn ){
-                    filterAllExercisesByBodypart(context.resources.getString(R.string.bpBrust))
-                } else if (imageButton.id == R.id.sec1_long_dumbell_Btn ){
-                    filterAllExercisesByBodypart(context.resources.getString(R.string.bpBrust))
-                } else if (imageButton.id == R.id.sec1_own_bodyweight_Btn ){
-                    filterAllExercisesByBodypart(context.resources.getString(R.string.bpBrust))
-                } else {
-                    filterAllExercisesByBodypart(context.resources.getString(R.string.bpBrust))
-                }
-            }
-
-
-            "sec0_backBtn"->{
-                _listOfAllExercises.value?.filter { it.bodyPart == context.resources.getString(R.string.bpRücken) }
-                if (imageButton.id == R.id.sec1_short_dumbell_Btn ){
-                    filterAllExercisesByBodypart(context.resources.getString(R.string.bpRücken))
-                } else if (imageButton.id == R.id.sec1_long_dumbell_Btn ){
-                    filterAllExercisesByBodypart(context.resources.getString(R.string.bpRücken))
-                } else if (imageButton.id == R.id.sec1_own_bodyweight_Btn ){
-                    filterAllExercisesByBodypart(context.resources.getString(R.string.bpRücken))
-                } else {
-                    filterAllExercisesByBodypart(context.resources.getString(R.string.bpRücken))
-                }
-            }
-
-            "sec0_shoulderBtn"->{
-                _listOfAllExercises.value?.filter { it.bodyPart == context.resources.getString(R.string.bpSchulter) }
-                if (imageButton.id == R.id.sec1_short_dumbell_Btn ){
-                    filterAllExercisesByBodypart(context.resources.getString(R.string.bpSchulter))
-                } else if (imageButton.id == R.id.sec1_long_dumbell_Btn ){
-                    filterAllExercisesByBodypart(context.resources.getString(R.string.bpSchulter))
-                } else if (imageButton.id == R.id.sec1_own_bodyweight_Btn ){
-                    filterAllExercisesByBodypart(context.resources.getString(R.string.bpSchulter))
-                } else {
-                    filterAllExercisesByBodypart(context.resources.getString(R.string.bpSchulter))
+            when (imageButton.id) {
+                R.id.sec1_short_dumbell_Btn,
+                R.id.sec1_long_dumbell_Btn,
+                R.id.sec1_own_bodyweight_Btn -> resultBtn.setOnClickListener{
+                    filterAllExercisesByBodypart(bodyPart)
                 }
             }
         }
+    */
 
+
+    fun filterAllExercisesByTwoSelections(
+        context: Context,
+        imageButton: ImageButton,
+        textButton: Button,
+    ) {
+        val textButtonName = context.resources.getResourceEntryName(textButton.id)
+        val bodyPart = when (textButtonName) {
+            "sec0_armsBtn" -> context.resources.getString(R.string.bpArme)
+            "sec0_absBtn" -> context.resources.getString(R.string.bpBauch)
+            "sec0_legsBtn" -> context.resources.getString(R.string.bpBeine)
+            "sec0_chestBtn" -> context.resources.getString(R.string.bpBrust)
+            "sec0_backBtn" -> context.resources.getString(R.string.bpRücken)
+            "sec0_shoulderBtn" -> context.resources.getString(R.string.bpSchulter)
+            else -> return // Wenn keine Übereinstimmung gefunden wurde, die Funktion verlassen
+        }
+
+        // Filtern der Übungen basierend auf den ausgewählten Kriterien
+        val filteredExercises = _listOfAllExercises.value?.filter { exercise ->
+            exercise.bodyPart == bodyPart &&
+                    when (imageButton.id) {
+                        R.id.sec1_short_dumbell_Btn -> context.getString(exercise.stringRessourceTitle)
+                            .contains("KH")
+
+                        R.id.sec1_long_dumbell_Btn -> context.getString(exercise.stringRessourceTitle)
+                            .contains("LH") || context.getString(exercise.stringRessourceTitle)
+                            .contains("SZ")
+
+                        R.id.sec1_own_bodyweight_Btn -> !context.getString(exercise.stringRessourceTitle)
+                            .contains("-")
+
+                        else -> true // Wenn kein Bildschaltfläche ausgewählt wurde, wird die Übung nicht gefiltert
+                    }
+        }
+
+
+        _listOfAllExercises.value = filteredExercises
     }
 
 
@@ -456,7 +512,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
-
     fun filterExercisesByBodyweight(bodypart: String, context: Context) {
         viewModelScope.launch {
             val filteredExercises = _exercisesByBodyparts.value?.filter {
@@ -473,10 +528,12 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
     }
+
     fun filterExercisesByLongDumbbell(bodypart: String, context: Context) {
         viewModelScope.launch {
             val filteredExercises = _exercisesByBodyparts.value?.filter {
-                context.getString(it.stringRessourceTitle).contains("LH") || context.getString(it.stringRessourceTitle).contains("SZ")
+                context.getString(it.stringRessourceTitle)
+                    .contains("LH") || context.getString(it.stringRessourceTitle).contains("SZ")
             }
             if (filteredExercises != null) {
                 if (filteredExercises.isNotEmpty()) {
@@ -511,7 +568,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     fun filterExercisesByVideo(bodypart: String) {
         viewModelScope.launch {
-            val filteredExercises = _exercisesByBodyparts.value?.filter {it.video!= null
+            val filteredExercises = _exercisesByBodyparts.value?.filter {
+                it.video != null
             }
             if (filteredExercises != null) {
                 if (filteredExercises.isNotEmpty()) {
@@ -528,7 +586,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     fun filterExercisesByNoVideo(bodypart: String) {
         viewModelScope.launch {
-            val filteredExercises = _exercisesByBodyparts.value?.filter {it.video == null
+            val filteredExercises = _exercisesByBodyparts.value?.filter {
+                it.video == null
             }
             if (filteredExercises != null) {
                 if (filteredExercises.isNotEmpty()) {
@@ -546,7 +605,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     fun resetFilter(bodypart: String) {
         _exercisesByBodyparts.value = allExercisesByBodyparts.filter { it.bodyPart == bodypart }
     }
-
 
 
     /*DE:
@@ -575,7 +633,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         _selectedContent.value = content
     }
 
-    fun addToNewWorkout(content:Content){
+    fun addToNewWorkout(content: Content) {
         content.addedToSession = true
         _addToSessionExercises.value = mutableListOf(content)
     }
@@ -585,7 +643,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         exercises.filter { it.bodyPart == bodypart }
         _exercisesByBodyparts.value = exercises
     }
-
 
 
     /*EN:
@@ -650,7 +707,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
-
     fun savedInWorkoutSession(addedExercise: Boolean, exercise: Content) {
         val updatedExercises = addToSessionExercises.value ?: mutableListOf()
 
@@ -674,7 +730,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
-    fun setFilterIndex(filterIndex: FilterModel){
+    fun setFilterIndex(filterIndex: FilterModel) {
         _filterIndex.value = filterIndex
     }
 
