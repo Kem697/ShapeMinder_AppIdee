@@ -73,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="Setze Zeitraum"
+            android:text="Trainingszeitraum"
             app:icon="@drawable/add_fill0_wght400_grad0_opsz24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialCardPreviewHeader">

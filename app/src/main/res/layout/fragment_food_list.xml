@@ -126,17 +126,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/foodList_searchBar" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/setFilterBtn"
-            style="@style/customSecondaryButton"
-            app:icon="@drawable/tune_fill0_wght400_grad0_opsz24"
-            android:layout_marginTop="12dp"
-            android:layout_marginRight="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Filter"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/foodList_searchBar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -27,8 +27,26 @@
         Nach dem Training benötigt dein Körper Nährstoffe wie Protein und Kohlenhydrate, um sich zu regenerieren und Energie wiederherzustellen.
         Eine ausgewogene Ernährung hilft auch dabei, Entzündungen zu reduzieren und den Heilungsprozess zu beschleunigen.
     </string>
-    <string name="text2">Training ist...</string>
-    <string name="text3">Ernährung ist ..</string>
+
+    <string name="text2">Krafttraining ist eine Form des Trainings, die darauf abzielt, die Muskelkraft, Ausdauer
+        und Masse zu verbessern. Es nutzt Widerstand, sei es durch Gewichte, Körpergewicht oder andere Geräte, um
+        die Muskeln zu belasten und zu stimulieren. Die Vorteile des Krafttrainings sind vielfältig: Es hilft,
+        Muskelmasse aufzubauen, den Stoffwechsel zu steigern, die Körperhaltung zu verbessern und das Verletzungsrisiko
+        zu verringern. Krafttraining kann sowohl für Fitness-Enthusiasten als auch für Sportler von großem Nutzen sein,
+        da es die Leistung in verschiedenen Bereichen wie Schnelligkeit, Sprungkraft und Ausdauer steigern kann. Ein
+        gut geplantes Krafttrainingsprogramm, das individuell an die Ziele und Bedürfnisse angepasst ist, ist entscheidend
+        für effektive Ergebnisse und eine sichere Durchführung der Übungen.
+    </string>
+
+    <string name="text3">
+        Eine ausgewogene Ernährung ist entscheidend für den Erfolg im Kraftsport. Kraftsportler
+        sollten auf eine ausreichende Proteinzufuhr achten, um Muskelwachstum und -reparatur zu unterstützen.
+        Kohlenhydrate liefern Energie für das Training, während gesunde Fette die Hormonproduktion und Entzündungskontrolle
+        fördern. Obst, Gemüse, Vollkornprodukte und mageres Protein sind reich an Vitaminen und Mineralstoffen, die
+        Gesundheit und Leistungsfähigkeit unterstützen. Ausreichende Flüssigkeitszufuhr ist ebenfalls wichtig für die Hydration
+        und Leistungsfähigkeit während des Trainings. Eine ausgewogene Ernährung hilft Kraftsportlern, ihre Ziele zu erreichen
+        und langfristig gesunde Fortschritte zu erzielen.
+    </string>
 
 
     <string name="ecPullups">Klimmzüge</string>
@@ -204,6 +222,10 @@ Achte auf eine gerade Rückenhaltung und kontrollierte Bewegungen.
     <string name="addToTrainingBtnText">Training</string>
     <string name="bodypartSubtitle">TextView</string>
     <string name="exerciseName">TextView</string>
+    <string name="nutritionFacts">Nährwerte</string>
+    <string name="foodCat">LebensmittelKateg</string>
+    <string name="foodName">Name des Lebensmitte</string>
+    <string name="saveForGrocery">Für Einkauf merken</string>
 
 
 </resources>

@@ -153,4 +153,8 @@
         android:id="@+id/allExerciseListFragment"
         android:name="ui.bottomNav.myTrainingScreen.nav3exercises.AllExerciseListFragment"
         android:label="AllExerciseListFragment" />
+    <fragment
+        android:id="@+id/editTrainingSessionFragment"
+        android:name="ui.bottomNav.myTrainingScreen.nav1myTraining.EditTrainingSessionFragment"
+        android:label="EditTrainingSessionFragment" />
 </navigation>

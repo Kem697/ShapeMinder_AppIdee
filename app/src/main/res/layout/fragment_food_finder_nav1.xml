@@ -42,7 +42,7 @@
             app:layout_constraintTop_toBottomOf="@+id/screenTitle">
 
             <GridView
-                android:id="@+id/bodypartsGrid"
+                android:id="@+id/fooCategoryGrid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="6dp"

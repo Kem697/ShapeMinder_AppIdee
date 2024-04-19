@@ -1,6 +1,7 @@
 package ui.bottomNav.myTrainingScreen.nav1myTraining
 
 import adapter.ItemAdapter
+import adapter.TrainingSessionsAdapter
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -41,15 +42,9 @@ class TrainingNav1 : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         var tag = "Lade Mein Training"
         Log.e(tag,"On ViewCreated || Screen wird geladen!!")
-        viewModel.exercises.observe(viewLifecycleOwner){
-            binding.rvRecents.adapter = ItemAdapter(it,viewModel,requireContext())
-            binding.rvYourSessions.adapter = ItemAdapter(it,viewModel,requireContext())
-        }
-        viewModel.savedExercises.observe(viewLifecycleOwner){
-           var rigedExercise= it.onEach { it.isInExerciseList = false }
-            binding.rvFavouriteExercises.adapter = ItemAdapter(rigedExercise,viewModel,requireContext())
+        setUpAdapters()
 
-        }
+
 
 
     }
@@ -96,6 +91,25 @@ class TrainingNav1 : Fragment() {
         }
     }
 
+
+    fun setUpAdapters(){
+        viewModel.exercises.observe(viewLifecycleOwner){
+            binding.rvRecents.adapter = ItemAdapter(it,viewModel,requireContext())
+        }
+        viewModel.savedExercises.observe(viewLifecycleOwner){
+            var rigedExercise= it.onEach { it.isInExerciseList = false }
+            binding.rvFavouriteExercises.adapter = ItemAdapter(rigedExercise,viewModel,requireContext())
+        }
+
+
+        /*App die App stürzt ab, wenn diese
+        * Daten beobachtet werden. Wahrscheinlich weil die Datenbank
+        * leer ist*/
+
+//        viewModel.savedTrainingsSessions.observe(viewLifecycleOwner){
+//            binding.rvYourSessions.adapter = TrainingSessionsAdapter(it,viewModel,requireContext())
+//        }
+    }
 
 
 

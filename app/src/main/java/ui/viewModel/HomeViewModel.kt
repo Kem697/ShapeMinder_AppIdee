@@ -39,6 +39,10 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     var index = 0
 
 
+    private var _savedTrainingSessions = trainingSessions
+
+    val savedTrainingsSessions : LiveData<List<TrainingsSession>>
+        get() = _savedTrainingSessions
 
 
     private var _listOfAllExercises = MutableLiveData(allExercisesByBodyparts)

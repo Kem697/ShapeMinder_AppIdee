@@ -32,7 +32,7 @@ class FoodFinderNav1Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.foodCategories.observe(viewLifecycleOwner){
-            binding.bodypartsGrid.adapter = GridAdapterMyNutrition(it,viewModel,requireContext())
+            binding.fooCategoryGrid.adapter = GridAdapterMyNutrition(it,viewModel,requireContext())
         }
     }
 

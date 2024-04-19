@@ -39,8 +39,8 @@ class LocalRepository (private val trainingDatabase: TrainingSessionsDatabase) {
     fun loadContents(): List<Content>{
         return listOf(
             Content(R.string.title1, R.string.text1, R.drawable.content1_img,false,false,"",false,null,null),
-            Content(R.string.title2, R.string.title2,R.drawable.content2_img,false,false,"",false,null,null),
-            Content(R.string.title3, R.string.title3, R.drawable.content3_img,false,false,"",false,null,null),
+            Content(R.string.title2, R.string.text2,R.drawable.content2_img,false,false,"",false,null,null),
+            Content(R.string.title3, R.string.text3, R.drawable.content3_img,false,false,"",false,null,null),
         )
     }
 
