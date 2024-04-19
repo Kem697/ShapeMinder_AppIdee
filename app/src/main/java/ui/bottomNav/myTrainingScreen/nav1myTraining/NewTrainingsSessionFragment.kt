@@ -4,11 +4,13 @@ import adapter.NewSessionExercisesAdapter
 import android.app.DatePickerDialog
 import android.icu.util.Calendar
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.core.view.isInvisible
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -16,7 +18,12 @@ import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentNewTrainingsSessionBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.datepicker.MaterialDatePicker
+import model.data.local.model.Content
+import model.data.local.model.TrainingsSession
 import ui.viewModel.HomeViewModel
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 
 class NewTrainingsSessionFragment : Fragment() {
@@ -39,6 +46,8 @@ class NewTrainingsSessionFragment : Fragment() {
         navigateBack()
         setUpAdapter()
         addMoreExercise()
+        showDateRangePicker()
+
     }
 
 
@@ -47,7 +56,15 @@ class NewTrainingsSessionFragment : Fragment() {
         var navigationBar =
             requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
         navigationBar.isInvisible = true
+    }
 
+    override fun onStop() {
+        super.onStop()
+        val navigationBar =
+            requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        navigationBar.isInvisible = false
+        var tag = "Fragment Wechsel"
+        Log.i(tag, "Stopp wird aufgerufen?")
     }
 
 
@@ -64,6 +81,7 @@ class NewTrainingsSessionFragment : Fragment() {
     fun setUpAdapter(){
         viewModel.addToSessionExercises.observe(viewLifecycleOwner){
             binding.rvNewSessionExercises.adapter = NewSessionExercisesAdapter(it,viewModel,requireContext())
+            saveTrainingSession(it)
         }
     }
 
@@ -73,35 +91,48 @@ class NewTrainingsSessionFragment : Fragment() {
         }
     }
 
+    fun saveTrainingSession(addedToSessionExercises: MutableList<Content>){
+        var saveBtn = binding.saveWorkoutBtn
+//        var sessionName = binding.editSessionName.toString()
+        saveBtn.setOnClickListener {
+            if (addedToSessionExercises.size>0){
+                Toast.makeText(requireContext(), "Dein Trainingsplan wurde gespeichert!.", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.myTrainingScreen)
+            } else {
+                Toast.makeText(requireContext(), "Bitte wähle deine Übungen!.", Toast.LENGTH_SHORT).show()
+            }
+        }
 
-/*
-    fun showDatePickerDialog() {
-        val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
-
-        val datePickerDialog = DatePickerDialog(
-            requireContext(),
-            { _, selectedYear, selectedMonth, selectedDay ->
-                // Hier können Sie mit dem ausgewählten Datum arbeiten
-                // z.B. Anzeigen des Datums in einem TextView oder Speichern in einer Variablen
-                val selectedDate = "$selectedDay/${selectedMonth + 1}/$selectedYear"
-                // Beispiel: textView.text = selectedDate
-            },
-            year,
-            month,
-            day
-        )
-
-        // Optional: Setzen Sie die maximalen und minimalen Datumsgrenzen für den Datepicker
-        // Beispiel: datePickerDialog.datePicker.maxDate = System.currentTimeMillis() - 1000
-        // Beispiel: datePickerDialog.datePicker.minDate = System.currentTimeMillis()
-
-        datePickerDialog.show()
     }
-*/
 
+
+    fun showDateRangePicker() {
+        var datePickerBtn = binding.setDurationBtn
+        datePickerBtn.setOnClickListener {
+            val datePicker = MaterialDatePicker.Builder.dateRangePicker()
+                .setTitleText("Select dates")
+                .build()
+
+            datePicker.addOnPositiveButtonClickListener { selection ->
+                val startDate = selection.first
+                val endDate = selection.second
+
+                // Hier kannst du mit den ausgewählten Daten arbeiten
+                // Zum Beispiel: Anzeigen des Zeitraums in einem TextView oder Speichern in Variablen
+                val startDateString = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(startDate)
+                val endDateString = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(endDate)
+                // Beispiel: textView.text = "Selected range: $startDateString - $endDateString"
+
+                var dateView = binding.dateViewCard
+                dateView.isInvisible = false
+                var dateText  = binding.dateView
+                dateText.setText("$startDateString - $endDateString")
+
+            }
+
+            datePicker.show(requireActivity().supportFragmentManager, "datePicker")
+        }
+    }
 
 
 }

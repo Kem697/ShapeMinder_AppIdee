@@ -65,7 +65,7 @@
             android:id="@+id/materialCardContentView"
             style="@style/content_CardDecription"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginRight="16dp"
@@ -74,16 +74,18 @@
             app:layout_constraintTop_toBottomOf="@+id/contentTitle">
 
             <TextView
-                android:id="@+id/contentText"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center|top"
-                android:layout_margin="8dp"
-                android:fontFamily="@font/roboto"
-                android:text="TextView"
-                android:textAlignment="center"
-                android:textColor="@color/black"
+                android:layout_gravity="start"
+                android:fontFamily="@font/lato"
+                android:padding="8dp"
+                android:text=""
+                android:textAlignment="viewStart"
                 android:textSize="18dp"
+                android:id="@+id/contentText"
+                android:layout_margin="8dp"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/contentTitle" />

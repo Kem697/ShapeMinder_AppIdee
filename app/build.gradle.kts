@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
     id ("kotlin-kapt")
+    kotlin("plugin.serialization").version("1.9.23")
 }
 
 val clientId: String = com.android.build.gradle.internal.cxx.configure.gradleLocalProperties(rootDir).getProperty("clientId")
@@ -90,6 +91,9 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore-ktx:24.11.0")
     implementation("com.google.firebase:firebase-auth:22.3.1")
     implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
+
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 
 }
 

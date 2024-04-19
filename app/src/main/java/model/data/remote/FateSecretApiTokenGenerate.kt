@@ -43,8 +43,6 @@ interface FatSecretApiToken {
         @Field("scope") scope: String = "basic",
     ): AccessToken
 
-//content-type     application/x-www-form-urlencoded
-//
 }
 
 object FoodTokenApi {

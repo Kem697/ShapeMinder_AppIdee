@@ -15,19 +15,23 @@ import kotlinx.coroutines.launch
 import model.data.local.model.Content
 import model.data.local.model.FoodFinderCategory
 import model.data.local.getDatabase
+import model.data.local.getTrainingDatabase
 import model.data.local.model.FilterModel
+import model.data.local.model.TrainingsSession
 import model.data.remote.FoodApi
 import model.data.remote.FoodTokenApi
 import model.data.remote.RemoteRepository
 import model.data.remote.api_model.token.AccessToken
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
-    private val repository = LocalRepository()
+    private var trainingDatabase = getTrainingDatabase(application)
+    private val repository = LocalRepository(trainingDatabase)
     private val allContent = repository.content
     private val allExercises = repository.exercises
     private val allBodyparts = repository.bodyParts
     private var allExercisesByBodyparts = repository.exercisesByBodyparts
     private var groceryCategories = repository.groceryCategories
+    private var trainingSessions = repository.trainingSessionList
 
     private var tokenDatabase = getDatabase(application)
     private val remoteRepository = RemoteRepository(FoodApi, FoodTokenApi, tokenDatabase)
@@ -149,6 +153,12 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         getTokenFromDatabase()
+    }
+
+    fun inserNewTrainingssession(newTrainingsSession: TrainingsSession){
+        viewModelScope.launch {
+            repository.insertNewTrainingSession(newTrainingsSession)
+        }
     }
 
 

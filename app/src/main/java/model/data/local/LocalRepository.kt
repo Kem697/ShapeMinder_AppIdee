@@ -1,8 +1,11 @@
 package model.data.local
-
+import android.util.Log
+import androidx.lifecycle.LiveData
 import com.example.shapeminder_appidee.R
 import model.data.local.model.Content
 import model.data.local.model.FoodFinderCategory
+import model.data.local.model.TrainingsSession
+import java.util.Locale
 
     /*DE:
 *Meinem Repository habe ich eine neue Liste von Content hinzugefügt und
@@ -11,7 +14,19 @@ import model.data.local.model.FoodFinderCategory
     /*EN:
 * This is my repository which contains the hardcoded content of my app.*/
 
-class LocalRepository {
+
+class LocalRepository (private val trainingDatabase: TrainingSessionsDatabase) {
+
+    val trainingSessionList: LiveData<List<TrainingsSession>> = trainingDatabase.trainingsSessionDao.getAll()
+
+    suspend fun insertNewTrainingSession(newTrainingsSession: TrainingsSession){
+        try {
+            trainingDatabase.trainingsSessionDao.insertSession(newTrainingsSession)
+        } catch (e: Exception){
+            var tag = "Lokaler Repo??"
+            Log.e(tag,"Fehler beim Einsetzen der neuen Trainingseinheit in die Datenbank!!")
+        }
+    }
 
     var content = loadContents()
     var exercises = loadExercises()
@@ -96,8 +111,10 @@ class LocalRepository {
     }
 
 
-
-
-
+  /*  fun loadTrainingSessions(): List<TrainingsSession> {
+        return listOf(
+            TrainingsSession()
+        )
+    }*/
 
 }

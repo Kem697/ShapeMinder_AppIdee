@@ -81,21 +81,23 @@
         </Button>
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dateViewCard"
             style="@style/customUserInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardPreviewHeader">
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView2">
 
             <TextView
                 android:id="@+id/dateView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:text="01/01/2024"
                 android:fontFamily="@font/lato"
-                android:textSize="16dp">
+                android:text="01/01/2024"
+                android:textSize="14dp">
 
             </TextView>
 
@@ -166,21 +168,19 @@
             style="@style/content_CardDecription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_margin="16dp"
             android:backgroundTint="#D5FEF5E7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView2"
+            app:layout_constraintTop_toBottomOf="@+id/dateViewCard"
             app:strokeColor="@color/white">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_newSessionExercises"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_margin="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toTopOf="@+id/addExerciseBtn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

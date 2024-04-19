@@ -70,13 +70,14 @@ class AllExerciseListFragment : Fragment() {
         Log.i(tag, "Stopp wird aufgerufen?")
     }
 
-
     override fun onResume() {
         super.onResume()
         var navigationBar =
             requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
         navigationBar.isInvisible = true
     }
+
+
 
 
     fun setUpAdapter() {
@@ -86,10 +87,6 @@ class AllExerciseListFragment : Fragment() {
             binding.amountOfExercise.setText("Anzahl der Übungen: ${it.size}")
         }
     }
-
-
-
-
     fun sortRadioGroup() {
         var dialog = BottomSheetDialog(activity as MainActivity, R.style.transparent)
         dialog.setContentView(R.layout.dialog_sheet_sort)
@@ -144,8 +141,6 @@ class AllExerciseListFragment : Fragment() {
                 }
         }
     }
-
-
     fun searchInput() {
         var searchBar = binding.myTSearchBarTextInput
         val context = requireContext()
@@ -164,7 +159,6 @@ class AllExerciseListFragment : Fragment() {
             }
         }
     }
-
     fun setDefaultHint() {
         binding.myTSearchBar.hint = "Nach Übungen suchen"
         if (binding.myTSearchBarTextInput.text.isNotBlank()) {
@@ -173,7 +167,6 @@ class AllExerciseListFragment : Fragment() {
             binding.myTSearchBar.clearText()
         }
     }
-
     fun setFilter() {
         var dialog = BottomSheetDialog(activity as MainActivity, R.style.transparent)
         dialog.setContentView(R.layout.dialog_sheet_new_session_filter)
@@ -205,80 +198,69 @@ class AllExerciseListFragment : Fragment() {
                     dialog.findViewById(R.id.sec0_backBtn),
                     dialog.findViewById(R.id.sec0_shoulderBtn),
                 )
+
+
          /*       lastSelectedImageButton = allImageButtons[0]
                 lastSelectedTextButton = textButtons[0]
                 lastSelectedImageButton!!.isSelected = false
                 lastSelectedTextButton!!.isSelected = false
 */
 
-                /*     var tag = "Button gefunden?"
-                     Log.i(tag, "Button wurde nicht gefunden: $dialogResetBtn")
-     */
-                val uncheckedImages = listOf<Int>(
-                    R.drawable.short_dumbell_unchecked,
-                    R.drawable.long_dumbell_unchecked,
-                    R.drawable.bodyweight_unchecked,
-                )
+                val uncheckedImages = listOf(R.drawable.short_dumbell_unchecked, R.drawable.long_dumbell_unchecked,R.drawable.bodyweight_unchecked,)
 
                 var setCheckedBackground = ContextCompat.getColor(requireContext(), R.color.tertiary)
                 var setUnCheckedBackground = ContextCompat.getColor(requireContext(), R.color.white)
 
+                val checkedImages = listOf(R.drawable.short_dumbell_checked, R.drawable.long_dumbell_checked,R.drawable.bodyweight_checked)
 
-                val checkedImages = listOf<Int>(
-                    R.drawable.short_dumbell_checked,
-                    R.drawable.long_dumbell_checked,
-                    R.drawable.bodyweight_checked,
-                )
+                userSelectionBodyParts(textButtons, setCheckedBackground, setUnCheckedBackground,)
 
-                userSelectionBodyParts(
-                    textButtons,
-                    setCheckedBackground,
-                    setUnCheckedBackground,
-                )
-
-
-                userSelection(
-                    allImageButtons,
-                    uncheckedImages,
-                    checkedImages,
-                )
-
+                userSelection(allImageButtons, uncheckedImages, checkedImages,)
 
                 dialogResultsBtn?.setOnClickListener {
-                    if (lastSelectedTextButton!!.isSelected && lastSelectedImageButton!!.isSelected){
-                        viewModel.filterAllExercisesByTwoSelections(requireContext(),
-                            lastSelectedImageButton!!, lastSelectedTextButton!!
-                        )
-                    } else if (lastSelectedTextButton!!.isSelected && !lastSelectedImageButton!!.isSelected){
-                        val textButtonName = resources.getResourceEntryName(lastSelectedTextButton!!.id)
-                        val bodyPart = when (textButtonName) {
-                            "sec0_armsBtn" -> requireContext().resources.getString(R.string.bpArme)
-                            "sec0_absBtn" -> requireContext().resources.getString(R.string.bpBauch)
-                            "sec0_legsBtn" -> requireContext().resources.getString(R.string.bpBeine)
-                            "sec0_chestBtn" -> requireContext().resources.getString(R.string.bpBrust)
-                            "sec0_backBtn" -> requireContext().resources.getString(R.string.bpRücken)
-                            "sec0_shoulderBtn" -> requireContext().resources.getString(R.string.bpSchulter)
-                            else -> ""
+                    try {
+                        val muscleGroupFilter = lastSelectedTextButton?.isSelected == true
+                        val equipmentGroupFilter = lastSelectedImageButton?.isSelected == true
+                        if (muscleGroupFilter && equipmentGroupFilter){
+                            viewModel.filterAllExercisesByTwoSelections(requireContext(),
+                                lastSelectedImageButton!!, lastSelectedTextButton!!
+                            )
+                        } else if (muscleGroupFilter && !equipmentGroupFilter){
+                            val textButtonName = resources.getResourceEntryName(lastSelectedTextButton!!.id)
+                            val bodyPart = when (textButtonName) {
+                                "sec0_armsBtn" -> requireContext().resources.getString(R.string.bpArme)
+                                "sec0_absBtn" -> requireContext().resources.getString(R.string.bpBauch)
+                                "sec0_legsBtn" -> requireContext().resources.getString(R.string.bpBeine)
+                                "sec0_chestBtn" -> requireContext().resources.getString(R.string.bpBrust)
+                                "sec0_backBtn" -> requireContext().resources.getString(R.string.bpRücken)
+                                "sec0_shoulderBtn" -> requireContext().resources.getString(R.string.bpSchulter)
+                                else -> ""
+                            }
+                            viewModel.filterAllExercisesByBodypart(bodyPart)
+                        } else if (equipmentGroupFilter && !muscleGroupFilter){
+                            val imageBtnName = requireContext().resources.getResourceEntryName(lastSelectedImageButton!!.id)
+                            when (imageBtnName) {
+                                "sec1_short_dumbell_Btn" -> {
+                                    viewModel.filterAllExercisesByShortDumbbell(requireContext())
+                                }
+                                "sec1_long_dumbell_Btn" -> {
+                                    viewModel.filterAllExercisesByLongDumbbell(requireContext())
+                                }
+                                "sec1_own_bodyweight_Btn" ->{
+                                    viewModel.filterAllExercisesByBodyweight(requireContext())
+                                }
+                            }
                         }
-                        viewModel.filterAllExercisesByBodypart(bodyPart)
-                    } else if (lastSelectedImageButton!!.isSelected && !lastSelectedTextButton!!.isSelected){
-                        val imageBtnName = resources.getResourceEntryName(lastSelectedImageButton!!.id)
-                        when (imageBtnName) {
-                            "sec1_short_dumbell_Btn" -> {
-                                viewModel.filterAllExercisesByShortDumbbell(requireContext())
-                            }
-                            "sec1_long_dumbell_Btn" -> {
-                                viewModel.filterAllExercisesByLongDumbbell(requireContext())
-                            }
-                            "sec1_own_bodyweight_Btn" ->{
-                                viewModel.filterAllExercisesByBodyweight(requireContext())
-                            }
-                        }
+                        binding.resetFilterBtn.isInvisible = false
+                        dialog.dismiss()
+                    } catch (e: Exception){
+                        Toast.makeText(
+                            binding.root.context,
+                            "Unerwarteter Fehler!",
+                            Toast.LENGTH_SHORT,
+                        ).show()
                     }
-                    binding.resetFilterBtn.isInvisible = false
-                    dialog.dismiss()
                 }
-
 
                 resetBtn.setOnClickListener {
                     if (lastSelectedImageButtonIndex != -1 ||lastSelectedTextButtonIndex != -1) {
@@ -291,22 +273,12 @@ class AllExerciseListFragment : Fragment() {
                                     )]
                                 )
                                 imageButton?.isSelected = false
-                                var tag = "Button Wahl2??"
-                                Log.i(
-                                    tag,
-                                    "Status der Button?: ${allImageButtons[lastSelectedImageButtonIndex]?.isSelected}"
-                                )
                             }
                         } else if (textButtons.any { it?.isSelected == true }&& allImageButtons.all { it?.isSelected !=true }){
                             textButtons.forEach { button ->
                                 button?.setBackgroundColor(setUnCheckedBackground)
                                 button?.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
                                 button?.isSelected = false
-                                var tag = "Button Wahl2??"
-                                Log.i(
-                                    tag,
-                                    "Status der Button?: ${textButtons[lastSelectedTextButtonIndex]?.isSelected}"
-                                )
                             }
                         }
                         else if (allImageButtons.any { it?.isSelected==true } && (textButtons.any { it?.isSelected == true }) ){
@@ -322,11 +294,6 @@ class AllExerciseListFragment : Fragment() {
                                     )]
                                 )
                                 imageButton?.isSelected = false
-                                var tag = "Button Wahl2??"
-                                Log.i(
-                                    tag,
-                                    "Status der beiden Button?:${textButtons[lastSelectedTextButtonIndex]?.isSelected} ${allImageButtons[lastSelectedImageButtonIndex]?.isSelected}"
-                                )
                             }
                         }
 
@@ -349,22 +316,12 @@ class AllExerciseListFragment : Fragment() {
                                     )]
                                 )
                                 imageButton?.isSelected = false
-                                var tag = "Button Wahl??"
-                                Log.i(
-                                    tag,
-                                    "Status der Button?: ${allImageButtons[lastSelectedImageButtonIndex]?.isSelected}"
-                                )
                             }
                         } else if (textButtons.any { it?.isSelected == true } && allImageButtons.all { it?.isSelected !=true }){
                             textButtons.forEach { button ->
                                 button?.setBackgroundColor(setUnCheckedBackground)
                                 button?.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
                                 button?.isSelected = false
-                                var tag = "Button Wahl2??"
-                                Log.i(
-                                    tag,
-                                    "Status der Button?: ${textButtons[lastSelectedTextButtonIndex]?.isSelected}"
-                                )
                             }
                         } else if (allImageButtons.any { it?.isSelected==true } && (textButtons.any { it?.isSelected == true }) ){
                             textButtons.forEach { button ->
@@ -379,11 +336,6 @@ class AllExerciseListFragment : Fragment() {
                                     )]
                                 )
                                 imageButton?.isSelected = false
-                                var tag = "Button Wahl2??"
-                                Log.i(
-                                    tag,
-                                    "Status der beiden Button?:${textButtons[lastSelectedTextButtonIndex]?.isSelected} ${allImageButtons[lastSelectedImageButtonIndex]?.isSelected}"
-                                )
                             }
 
                         }
@@ -392,7 +344,7 @@ class AllExerciseListFragment : Fragment() {
                     lastSelectedTextButton = null
                   /*  lastSelectedImageButton!!.isSelected = false
                     lastSelectedTextButton!!.isSelected = false*/
-                    binding.resetFilterBtn.isInvisible = true
+                    resetBtn.isInvisible = true
                 }
 
                 dialogCancelBtn?.setOnClickListener {
@@ -402,41 +354,7 @@ class AllExerciseListFragment : Fragment() {
         }
     }
 
-    fun userSelection(
-        allButtons: List<ImageButton?>,
-        uncheckedImages: List<Int>,
-        checkedImages: List<Int>,
-    ) {
-        allButtons.forEachIndexed { index, selectedButton ->
-            if (!selectedButton!!.isSelected) {
-                selectedButton.setImageResource(uncheckedImages[index])
-            } // Setze zunächst alle Buttons auf die ungewählten Bilder
-            selectedButton.setOnClickListener {
-                allButtons.forEachIndexed { innerIndex, button -> // Setze alle Buttons auf ungewählt
-                    button?.setImageResource(uncheckedImages[innerIndex])
-                    button?.isSelected = false
-                }
-                selectedButton.setImageResource(checkedImages[index]) // Setze das Bild des ausgewählten Buttons
-                selectedButton.isSelected = true
-                var selectedBtnName = resources.getResourceEntryName(selectedButton.id)
-                lastSelectedImageButton = selectedButton
-                lastSelectedImageButtonIndex = index
-                var tag = "Button Wahl??"
-                Log.i(
-                    tag,
-                    "Button wurde ausgewählt: ${selectedButton.isSelected} $selectedBtnName $lastSelectedImageButtonIndex"
-                )
-
-            }
-        }
-    }
-
-
-    fun userSelectionBodyParts(
-        allTextButtons: List<Button?>,
-        setCheckedBackground: Int,
-        setUnCheckedBackground: Int,
-    ) {
+    fun userSelectionBodyParts(allTextButtons: List<Button?>,setCheckedBackground: Int,setUnCheckedBackground: Int) {
         allTextButtons.forEachIndexed { index, selectedButton ->
             if (!selectedButton!!.isSelected) {
                 selectedButton.setBackgroundColor(setUnCheckedBackground)
@@ -453,13 +371,25 @@ class AllExerciseListFragment : Fragment() {
                 selectedButton.isSelected = true
                 lastSelectedTextButton = selectedButton
                 lastSelectedTextButtonIndex = index
-                var selectedBtnName = resources.getResourceEntryName(selectedButton.id)
-                var tag = "Button Wahl??"
-                Log.i(
-                    tag,
-                    "Button wurde ausgewählt: ${selectedButton.isSelected} $selectedBtnName $lastSelectedImageButtonIndex"
-                )
-
+                println("Textbutton: ${lastSelectedTextButton?.isSelected} || ${context?.resources!!.getResourceEntryName(lastSelectedTextButton!!.id)}")
+            }
+        }
+    }
+    fun userSelection(allButtons: List<ImageButton?>,uncheckedImages: List<Int>,checkedImages: List<Int>) {
+        allButtons.forEachIndexed { index, selectedButton ->
+            if (!selectedButton!!.isSelected) {
+                selectedButton.setImageResource(uncheckedImages[index])
+            } // Setze zunächst alle Buttons auf die ungewählten Bilder
+            selectedButton.setOnClickListener {
+                allButtons.forEachIndexed { innerIndex, button -> // Setze alle Buttons auf ungewählt
+                    button?.setImageResource(uncheckedImages[innerIndex])
+                    button?.isSelected = false
+                }
+                selectedButton.setImageResource(checkedImages[index]) // Setze das Bild des ausgewählten Buttons
+                selectedButton.isSelected = true
+                lastSelectedImageButton = selectedButton
+                lastSelectedImageButtonIndex = index
+                println("Imagebutton: ${lastSelectedImageButton?.isSelected} || ${context?.resources!!.getResourceEntryName(lastSelectedImageButton!!.id)}")
             }
         }
     }
@@ -489,8 +419,6 @@ class AllExerciseListFragment : Fragment() {
             }
         }
     }
-
-
 
     fun cancelProcess(){
         var cancelBtn = binding.cancelSessionBtn
