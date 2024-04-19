@@ -39,6 +39,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     var index = 0
 
 
+
+
     private var _listOfAllExercises = MutableLiveData(allExercisesByBodyparts)
     val listOfAllExercises: LiveData<List<Content>>
         get() = _listOfAllExercises
@@ -153,6 +155,14 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         getTokenFromDatabase()
+        getAllSessions()
+    }
+
+
+    fun getAllSessions(){
+        viewModelScope.launch {
+            repository.trainingSessionList
+        }
     }
 
     fun inserNewTrainingssession(newTrainingsSession: TrainingsSession){

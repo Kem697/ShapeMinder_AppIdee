@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.core.view.isInvisible
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.R
@@ -30,7 +31,6 @@ class NewTrainingsSessionFragment : Fragment() {
 
     private lateinit var binding: FragmentNewTrainingsSessionBinding
     val viewModel: HomeViewModel by activityViewModels()
-
 
 
     override fun onCreateView(
@@ -67,74 +67,94 @@ class NewTrainingsSessionFragment : Fragment() {
         Log.i(tag, "Stopp wird aufgerufen?")
     }
 
-
-
-
-
     fun navigateBack() {
         binding.backBtn.setOnClickListener {
             findNavController().navigateUp()
         }
     }
 
-
-    fun setUpAdapter(){
-        viewModel.addToSessionExercises.observe(viewLifecycleOwner){
-            binding.rvNewSessionExercises.adapter = NewSessionExercisesAdapter(it,viewModel,requireContext())
+    fun setUpAdapter() {
+        viewModel.addToSessionExercises.observe(viewLifecycleOwner) {
+            binding.rvNewSessionExercises.adapter =
+                NewSessionExercisesAdapter(it, viewModel, requireContext())
             saveTrainingSession(it)
         }
     }
 
-    fun addMoreExercise(){
+    fun addMoreExercise() {
         binding.addExerciseBtn.setOnClickListener {
             findNavController().navigate(R.id.allExerciseListFragment)
         }
     }
 
-    fun saveTrainingSession(addedToSessionExercises: MutableList<Content>){
+    fun saveTrainingSession(addedToSessionExercises: MutableList<Content>) {
         var saveBtn = binding.saveWorkoutBtn
-//        var sessionName = binding.editSessionName.toString()
-        saveBtn.setOnClickListener {
-            if (addedToSessionExercises.size>0){
-                Toast.makeText(requireContext(), "Dein Trainingsplan wurde gespeichert!.", Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.myTrainingScreen)
+        var editSessionName = binding.editSessionName
+        var sessionName = ""
+        editSessionName.addTextChangedListener { editable ->
+            var userInput = editable.toString()
+            if (userInput.isNotBlank()) {
+                sessionName = userInput
             } else {
-                Toast.makeText(requireContext(), "Bitte wähle deine Übungen!.", Toast.LENGTH_SHORT).show()
+                editSessionName.text.clear()
             }
         }
 
+
+        saveBtn.setOnClickListener {
+            if (sessionName.isNotBlank()) {
+                if (addedToSessionExercises.size > 0) {
+                    var newSession = TrainingsSession(sessionName = sessionName, sessionDate = binding.dateView.text.toString(),trainingsSession = addedToSessionExercises)
+                    viewModel.inserNewTrainingssession(newSession)
+                    Toast.makeText(
+                        requireContext(),
+                        "Dein Trainingsplan wurde gespeichert!.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    findNavController().navigate(R.id.myTrainingScreen)
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Bitte wähle deine Übungen!.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            } else {
+                Toast.makeText(requireContext(), "Bitte bennene dein Workout!", Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+        }
     }
-
-
     fun showDateRangePicker() {
-        var datePickerBtn = binding.setDurationBtn
-        datePickerBtn.setOnClickListener {
-            val datePicker = MaterialDatePicker.Builder.dateRangePicker()
-                .setTitleText("Select dates")
-                .build()
+            var datePickerBtn = binding.setDurationBtn
+            datePickerBtn.setOnClickListener {
+                val datePicker = MaterialDatePicker.Builder.dateRangePicker()
+                    .setTitleText("Select dates")
+                    .build()
 
-            datePicker.addOnPositiveButtonClickListener { selection ->
-                val startDate = selection.first
-                val endDate = selection.second
+                datePicker.addOnPositiveButtonClickListener { selection ->
+                    val startDate = selection.first
+                    val endDate = selection.second
 
-                // Hier kannst du mit den ausgewählten Daten arbeiten
-                // Zum Beispiel: Anzeigen des Zeitraums in einem TextView oder Speichern in Variablen
-                val startDateString = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(startDate)
-                val endDateString = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(endDate)
-                // Beispiel: textView.text = "Selected range: $startDateString - $endDateString"
+                    // Hier kannst du mit den ausgewählten Daten arbeiten
+                    // Zum Beispiel: Anzeigen des Zeitraums in einem TextView oder Speichern in Variablen
+                    val startDateString =
+                        SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(startDate)
+                    val endDateString =
+                        SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(endDate)
+                    // Beispiel: textView.text = "Selected range: $startDateString - $endDateString"
 
-                var dateView = binding.dateViewCard
-                dateView.isInvisible = false
-                var dateText  = binding.dateView
-                dateText.setText("$startDateString - $endDateString")
+                    var dateView = binding.dateViewCard
+                    dateView.isInvisible = false
+                    var dateText = binding.dateView
+                    dateText.setText("$startDateString - $endDateString")
 
+                }
+
+                datePicker.show(requireActivity().supportFragmentManager, "datePicker")
             }
-
-            datePicker.show(requireActivity().supportFragmentManager, "datePicker")
         }
-    }
-
-
 }
 
 

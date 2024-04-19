@@ -11,5 +11,7 @@ data class TrainingsSession(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
 
+    var sessionName : String = "",
+    var sessionDate : String = "",
     var trainingsSession: List<Content>
 )

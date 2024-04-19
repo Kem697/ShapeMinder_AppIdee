@@ -51,6 +51,7 @@ class TrainingNav1 : Fragment() {
 
         }
 
+
     }
 
     override fun onResume() {
