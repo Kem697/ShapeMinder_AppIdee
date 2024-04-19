@@ -122,7 +122,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
                         style="@style/customUserInput"
-                        app:strokeWidth="2"
+                        app:strokeWidth="2dp"
                         android:layout_marginRight="8dp"
                         android:layout_weight="1">
 
