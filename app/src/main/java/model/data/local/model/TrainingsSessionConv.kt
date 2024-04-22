@@ -7,13 +7,14 @@ import kotlinx.serialization.json.Json.Default.decodeFromString
 
 class TrainingsSessionConv {
     @TypeConverter
-    fun toList(contents: String): List<Content> {
-        return decodeFromString<List<Content>>(contents)
+    fun toList(contents: String): MutableList<Content> {
+        return decodeFromString<MutableList<Content>>(contents)
     }
 
 
     @TypeConverter
-    fun toContents(trainingsSessions : List<Content>): String {
+    fun fromList(trainingsSessions : MutableList<Content>): String {
         return Json.encodeToString(trainingsSessions)
     }
+
 }

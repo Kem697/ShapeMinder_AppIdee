@@ -4,15 +4,18 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import model.data.local.model.TrainingsSession
+import model.data.local.model.TrainingsSessionConv
 
 @Database(entities = [TrainingsSession::class], version = 1)
+@TypeConverters(TrainingsSessionConv::class)
 abstract class TrainingSessionsDatabase : RoomDatabase(){
 
     abstract val trainingsSessionDao: TrainingSessionsDataDao
 
 }
-
+@Volatile
 private lateinit var INSTANCE: TrainingSessionsDatabase
 
 

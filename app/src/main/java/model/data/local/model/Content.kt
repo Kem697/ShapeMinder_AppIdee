@@ -1,5 +1,9 @@
 package model.data.local.model
 
+import kotlinx.serialization.Serializable
+
+
+@Serializable
 data class Content(
     val stringRessourceTitle: Int,
     val stringRessourceText: Int,

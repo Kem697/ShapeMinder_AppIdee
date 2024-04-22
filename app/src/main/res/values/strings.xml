@@ -257,6 +257,8 @@ Achte auf eine gerade Rückenhaltung und kontrollierte Bewegungen.
     <string name="bpSubTitleRücken" tools:ignore="ExtraTranslation">Rücken Übung</string>
     <string name="bpSubTitleBauch" tools:ignore="ExtraTranslation">Bauch Übung</string>
     <string name="bpSubTitleBrust" tools:ignore="ExtraTranslation">Brust Übung</string>
+    <string name="deleteSessionBtnText">Training Löschen</string>
+    <string name="addNewTrainingsessionText">Neues Training</string>
 
 
 </resources>

@@ -19,12 +19,14 @@ class LocalRepository (private val trainingDatabase: TrainingSessionsDatabase) {
 
     val trainingSessionList: LiveData<List<TrainingsSession>> = trainingDatabase.trainingsSessionDao.getAll()
 
+
+
     suspend fun insertNewTrainingSession(newTrainingsSession: TrainingsSession){
         try {
             trainingDatabase.trainingsSessionDao.insertSession(newTrainingsSession)
         } catch (e: Exception){
             var tag = "Lokaler Repo??"
-            Log.e(tag,"Fehler beim Einsetzen der neuen Trainingseinheit in die Datenbank!!")
+            Log.e(tag,"Fehler beim Einsetzen der neuen Trainingseinheit in die Datenbank!! $e")
         }
     }
 
@@ -33,6 +35,8 @@ class LocalRepository (private val trainingDatabase: TrainingSessionsDatabase) {
     var bodyParts = loadBodyparts()
     var exercisesByBodyparts = loadExercisesByBodypart()
     var groceryCategories = loadGroceryCategories()
+
+
 
 
 

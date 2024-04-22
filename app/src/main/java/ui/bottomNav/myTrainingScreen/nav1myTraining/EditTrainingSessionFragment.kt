@@ -45,4 +45,9 @@ class EditTrainingSessionFragment : Fragment() {
         Log.i(tag, "Stopp wird aufgerufen?")
     }
 
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
+
 }

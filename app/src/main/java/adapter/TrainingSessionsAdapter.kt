@@ -1,12 +1,12 @@
 package adapter
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shapeminder_appidee.R
-import com.example.shapeminder_appidee.databinding.ListItemBinding
 import com.example.shapeminder_appidee.databinding.ListItemMySessionBinding
-import com.example.shapeminder_appidee.databinding.ListItemNewSessionExerciseBinding
 import model.data.local.model.TrainingsSession
 import ui.viewModel.HomeViewModel
 class TrainingSessionsAdapter (
@@ -30,12 +30,29 @@ class TrainingSessionsAdapter (
     }
 
     override fun onBindViewHolder(holder: TrainingsSessionItemViewHolder, position: Int) {
-        var item = dataset[position]
-        holder.binding.sessionDate.text = item.sessionDate
-        holder.binding.sessionTitle.text = item.sessionName
-        holder.binding.contentImage.setImageResource(R.drawable.content2_img)
+        val item = dataset[position]
+        if (position == 0) {
+            // Behandlung des ersten Elements
+            holder.binding.sessionDate.visibility = View.GONE // Verstecke das Datum
+            holder.binding.sessionTitle.text = context.getString(R.string.addNewTrainingsessionText)
+            holder.binding.contentImage.setBackgroundColor(context.getColor(R.color.black))
+            holder.binding.contentImage.setImageResource(R.drawable.add_fill0_wght400_grad0_opsz24)
+            holder.binding.materialCardView.setOnClickListener {
+                holder.binding.root.findNavController().navigate(R.id.newTrainingsSessionFragment)
+            }
+
+        } else {
+            holder.binding.sessionDate.visibility = View.VISIBLE // Zeige das Datum
+            holder.binding.sessionDate.text = item.sessionDate
+            holder.binding.sessionTitle.text = item.sessionName
+            holder.binding.contentImage.setImageResource(R.drawable.content2_img)
+            holder.binding.materialCardView.setOnClickListener {
+                holder.binding.root.findNavController().navigate(R.id.editTrainingSessionFragment)
+            }
+        }
     }
 }
+
 
 
 

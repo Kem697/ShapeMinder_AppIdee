@@ -41,7 +41,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     private var _savedTrainingSessions = trainingSessions
 
-        get() = _savedTrainingSessions
     val savedTrainingsSessions : LiveData<List<TrainingsSession>>
         get() = _savedTrainingSessions
 
@@ -161,8 +160,17 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     init {
         getTokenFromDatabase()
 //        getAllSessions()
+        setUpDefaultTrainingsessions()
+
+
+
     }
 
+    fun setUpDefaultTrainingsessions(){
+        viewModelScope.launch {
+            repository.insertNewTrainingSession(TrainingsSession(0, trainingsSession = mutableListOf()))
+        }
+    }
 
     fun getAllSessions(){
         viewModelScope.launch {
