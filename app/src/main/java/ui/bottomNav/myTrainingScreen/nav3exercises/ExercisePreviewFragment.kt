@@ -54,37 +54,37 @@ class ExercisePreviewFragment : Fragment() {
             binding.title.setText(it.stringRessourceTitle)
             when (it.bodyPart) {
                 getString(R.string.bpArme) -> {
-                    binding.subTitle.text = "Arm Übung"
+                    binding.subTitle.text = getString(R.string.bpArmeSubTitle)
                     binding.bodyPartView.setImageResource(R.drawable.bp1arms)
                     binding.descriptionText.setText(it.stringRessourceText)
                 }
 
                 getString(R.string.bpBauch) -> {
-                    binding.subTitle.text = "Bauch Übung"
+                    binding.subTitle.text = getString(R.string.bpBauchSubTitle)
                     binding.bodyPartView.setImageResource(R.drawable.bp5abs)
                     binding.descriptionText.setText(it.stringRessourceText)
                 }
 
                 getString(R.string.bpSchulter) -> {
-                    binding.subTitle.text = "Schulter Übung"
+                    binding.subTitle.text = getString(R.string.bpSchulterSubTitle)
                     binding.bodyPartView.setImageResource(R.drawable.bp3shoulders)
                     binding.descriptionText.setText(it.stringRessourceText)
                 }
 
                 getString(R.string.bpRücken) -> {
-                    binding.subTitle.text = "Rücken übung"
+                    binding.subTitle.text = getString(R.string.bpRückenSubTitle)
                     binding.bodyPartView.setImageResource(R.drawable.bp4back)
                     binding.descriptionText.setText(it.stringRessourceText)
                 }
 
                 getString(R.string.bpBeine) -> {
-                    binding.subTitle.text = "Bein übung"
+                    binding.subTitle.text = getString(R.string.bpBeineSubTitle)
                     binding.bodyPartView.setImageResource(R.drawable.bp2legs)
                     binding.descriptionText.setText(it.stringRessourceText)
                 }
 
                 getString(R.string.bpBrust) -> {
-                    binding.subTitle.text = "Brust Übung"
+                    binding.subTitle.text = getString(R.string.bpBrustSubTitle)
                     binding.bodyPartView.setImageResource(R.drawable.bp6chest)
                     binding.descriptionText.setText(it.stringRessourceText)
                 }

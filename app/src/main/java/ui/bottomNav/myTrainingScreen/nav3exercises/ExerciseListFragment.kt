@@ -403,6 +403,7 @@ class ExerciseListFragment : Fragment() {
         viewModel.exercisesByBodyparts.observe(viewLifecycleOwner) { exercise ->
             orginalExercises = exercise
             binding.listOfExercises.adapter = ItemAdapter(exercise, viewModel,requireContext())
+            binding.screenTitle.setText(viewModel.selectedContentTitle.value)
 
             /*DE:
             *Mit diesen Befehlen initialisiere meine ViewElemente mit

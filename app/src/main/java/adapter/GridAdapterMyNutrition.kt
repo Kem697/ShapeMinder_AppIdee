@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import com.example.shapeminder_appidee.R
 import model.data.local.model.FoodFinderCategory
@@ -58,9 +59,9 @@ class GridAdapterMyNutrition(
 
 
         when (viewHolder.textViewTitle.text) {
-            "Getreide" -> {
+            ContextCompat.getString(context, R.string.gc_grain_and_corn) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedCategory = "Getreide"
+                    val selectedCategory = ContextCompat.getString(context, R.string.gc_grain_and_corn)
 
                     viewModel.getContentTitle(selectedCategory)
                     /*Hier muss das viewModel aufgerufen werden, welche die Daten von
@@ -70,41 +71,41 @@ class GridAdapterMyNutrition(
                 }
             }
 
-            "Obst und Gemüse" -> {
+            ContextCompat.getString(context, R.string.gc_fruits_and_vegetable) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedCategory = "Obst und Gemüse"
+                    val selectedCategory = ContextCompat.getString(context, R.string.gc_fruits_and_vegetable)
                     viewModel.getContentTitle(selectedCategory)
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }
             }
 
-            "Molkerei und Eier" -> {
+            ContextCompat.getString(context, R.string.gc_milk_and_eg) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedCategory = "Molkerei und Eier"
+                    val selectedCategory = ContextCompat.getString(context, R.string.gc_milk_and_eg)
                     viewModel.getContentTitle(selectedCategory)
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }
             }
 
-            "Öle und Fette" -> {
+            ContextCompat.getString(context, R.string.gc_oil_and_fats) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedCategory = "Öle und Fette"
+                    val selectedCategory = ContextCompat.getString(context, R.string.gc_oil_and_fats)
                     viewModel.getContentTitle(selectedCategory)
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }
             }
 
-            "Fleisch und Fisch" -> {
+            ContextCompat.getString(context, R.string.gc_meat_and_fish) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedCategory = "Fleisch und Fisch"
+                    val selectedCategory = ContextCompat.getString(context, R.string.gc_meat_and_fish)
                     viewModel.getContentTitle(selectedCategory)
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }
             }
 
-            "Süssigkeiten" -> {
+            ContextCompat.getString(context, R.string.gc_sweets) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedCategory = "Süssigkeiten"
+                    val selectedCategory = ContextCompat.getString(context, R.string.gc_sweets)
                     viewModel.getContentTitle(selectedCategory)
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }

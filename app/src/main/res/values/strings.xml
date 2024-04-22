@@ -62,6 +62,13 @@
     <string name="bpBauch">Bauch</string>
     <string name="bpBrust">Brust</string>
 
+    <string name="bpArmeSubTitle">Arme Übung</string>
+    <string name="bpBeineSubTitle">Beine Übung</string>
+    <string name="bpSchulterSubTitle">Schulter Übung</string>
+    <string name="bpRückenSubTitle">Rücken Übung</string>
+    <string name="bpBauchSubTitle">Bauch Übung</string>
+    <string name="bpBrustSubTitle">Brust Übung</string>
+
     <!--exerciseName-->
 
     <string name="weKH_Bicepscurls">KH-Bizepscurls</string>

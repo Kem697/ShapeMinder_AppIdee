@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.getString
 import androidx.navigation.findNavController
 import com.example.shapeminder_appidee.R
 import model.data.local.model.Content
@@ -152,54 +153,54 @@ class GridAdapterMyTraining(
 
 
         when (viewHolder.textViewTitle.text) {
-            "Arme" -> {
+           getString(context,R.string.bpArme) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedBodypart = "Arme"
+                    val selectedBodypart = getString(context,R.string.bpArme)
                     viewModel.getContentTitle(selectedBodypart)
                     viewModel.filterExercisesByBodypart(selectedBodypart)
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
                 }
             }
 
-            "Bauch" -> {
+            getString(context,R.string.bpBauch) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedBodypart = "Bauch"
+                    val selectedBodypart = getString(context,R.string.bpBauch)
                     viewModel.getContentTitle(selectedBodypart)
                     viewModel.filterExercisesByBodypart(selectedBodypart)
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
                 }
             }
 
-            "Schulter" -> {
+            getString(context,R.string.bpSchulter) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedBodypart = "Schulter"
+                    val selectedBodypart = getString(context,R.string.bpSchulter)
                     viewModel.getContentTitle(selectedBodypart)
                     viewModel.filterExercisesByBodypart(selectedBodypart)
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
                 }
             }
 
-            "Rücken" -> {
+            getString(context,R.string.bpRücken) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedBodypart = "Rücken"
+                    val selectedBodypart = getString(context,R.string.bpRücken)
                     viewModel.getContentTitle(selectedBodypart)
                     viewModel.filterExercisesByBodypart(selectedBodypart)
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
                 }
             }
 
-            "Beine" -> {
+            getString(context,R.string.bpBeine) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedBodypart = "Beine"
+                    val selectedBodypart = getString(context,R.string.bpBeine)
                     viewModel.getContentTitle(selectedBodypart)
                     viewModel.filterExercisesByBodypart(selectedBodypart)
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
                 }
             }
 
-            "Brust" -> {
+            getString(context,R.string.bpBrust)-> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedBodypart = "Brust"
+                    val selectedBodypart = getString(context,R.string.bpBrust)
                     viewModel.getContentTitle(selectedBodypart)
                     viewModel.filterExercisesByBodypart(selectedBodypart)
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
@@ -211,6 +212,5 @@ class GridAdapterMyTraining(
         return itemView!!
     }
 
-//    test
 
 }
