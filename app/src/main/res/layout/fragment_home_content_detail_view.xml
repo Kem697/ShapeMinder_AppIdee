@@ -52,7 +52,7 @@
             android:layout_gravity="center|bottom"
             android:layout_marginTop="32dp"
             android:fontFamily="@font/roboto"
-            android:text="TextView"
+            android:text=""
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="28dp"

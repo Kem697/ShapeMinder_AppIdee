@@ -9,7 +9,7 @@
     <com.google.android.material.search.SearchBar
         android:id="@+id/myT_searchBar"
         style="@style/searchview_Card"
-        android:hint="Suche"
+        android:hint="@string/searchBarHint"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="22dp"
-                android:text="Mein Training"
+                android:text="@string/myNutritionScreenHeader"
                 android:textColor="#FFFFFF"
                 android:textSize="28dp" />
 

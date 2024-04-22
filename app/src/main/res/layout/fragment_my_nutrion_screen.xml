@@ -9,7 +9,7 @@
     <com.google.android.material.search.SearchBar
         android:id="@+id/myN_searchBar"
         style="@style/searchview_Card"
-        android:hint="Suche"
+        android:hint="@string/searchBarHint"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,19 +46,19 @@
             android:id="@+id/foodFinder"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:text="Food Finder" />
+            android:text="@string/myNutrionNav1Header" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/diary"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:text="Tagebuch" />
+            android:text="@string/myNutritionNav2Header" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/groceryList"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:text="Einkaufsliste" />
+            android:text="@string/myNutritionNav3Header" />
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="22dp"
-                android:text="Meine Ernährung"
+                android:text="@string/myNutritionScreenHeader"
                 android:textColor="#FFFFFF"
                 android:textSize="28dp" />
 

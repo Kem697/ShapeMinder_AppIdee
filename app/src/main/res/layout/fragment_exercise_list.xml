@@ -15,7 +15,7 @@
     <com.google.android.material.search.SearchBar
         android:id="@+id/myT_searchBar"
         style="@style/searchview_Card"
-        android:hint="Suche"
+        android:hint="@string/searchBarHint"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="22dp"
-                android:text="Mein Training"
+                android:text="@string/myTrainingScreenHeader"
                 android:textColor="#FFFFFF"
                 android:textSize="28dp" />
 
@@ -123,7 +123,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
                     android:textStyle="bold"
-                    android:text="TextView" />
+                    android:text="" />
 
                 <TextView
                     android:id="@+id/subTitle"
@@ -131,7 +131,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:textSize="18dp"
-                    android:text="TextView" />
+                    android:text="" />
 
 
             </LinearLayout>
@@ -181,7 +181,7 @@
         android:layout_marginLeft="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sortiere"
+        android:text="@string/sortBtnTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialCardExerciseHeader" />
 
@@ -193,7 +193,7 @@
         android:layout_marginRight="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Filter"
+        android:text="@string/filterBtnTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialCardExerciseHeader" />
 
@@ -203,7 +203,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="Alle"
+            android:text="@string/allBtnTitle"
             android:visibility="invisible"
             android:layout_marginRight="16dp"
             android:layout_marginLeft="16dp"

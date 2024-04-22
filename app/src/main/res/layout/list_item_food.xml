@@ -81,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
-                    android:text="Nährwerte pro 100g"
+                    android:text="@string/nutrionFactsText"
                     android:textColor="@color/black"
                     android:textSize="16dp"
                     android:textStyle="bold" />
@@ -92,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:layout_marginTop="4dp"
-                    android:text="Kalorien"
+                    android:text="@string/calText"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:textSize="14dp" />
@@ -102,7 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
-                    android:text="Fette"
+                    android:text="@string/fatsText"
                     android:layout_marginTop="4dp"
                     android:textColor="@color/black"
                     android:textSize="14dp" />
@@ -112,7 +112,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
-                    android:text="Proteine"
+                    android:text="@string/proteinText"
                     android:layout_marginTop="4dp"
                     android:textColor="@color/black"
                     android:textSize="14dp" />
@@ -122,7 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
-                    android:text="Kohlenhydrate"
+                    android:text="@string/carbsText"
                     android:layout_marginTop="4dp"
                     android:textColor="@color/black"
                     android:textSize="14dp" />

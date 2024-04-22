@@ -20,7 +20,7 @@
             android:layout_gravity="center|bottom"
             android:layout_marginLeft="16dp"
             android:fontFamily="@font/roboto"
-            android:text="Lebensmittel nach Kategorien"
+            android:text="@string/foodFinderNavHeader"
             android:layout_marginTop="8dp"
             android:textAlignment="center"
             android:textColor="@color/white"

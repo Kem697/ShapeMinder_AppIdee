@@ -47,7 +47,7 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="22dp"
                     android:layout_weight="1"
-                    android:text="Neues Workout"
+                    android:text="@string/newWorkScreenHeader"
                     android:textColor="#FFFFFF"
                     android:textSize="22dp" />
 
@@ -75,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="Trainingszeitraum"
+            android:text="@string/setDateBtnText"
             app:icon="@drawable/add_fill0_wght400_grad0_opsz24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialCardPreviewHeader">
@@ -98,7 +98,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:fontFamily="@font/lato"
-                android:text="01/01/2024"
+                android:text="@string/dateText"
                 android:textSize="14dp">
 
             </TextView>

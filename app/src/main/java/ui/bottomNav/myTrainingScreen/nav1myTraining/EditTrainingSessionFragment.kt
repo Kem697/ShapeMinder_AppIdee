@@ -52,6 +52,7 @@ class EditTrainingSessionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpAdapter()
+        navigateBack()
     }
 
 
@@ -84,6 +85,12 @@ class EditTrainingSessionFragment : Fragment() {
             Toast.makeText(requireContext(), "Training wurde gelöscht!", Toast.LENGTH_SHORT)
                 .show()
             findNavController().navigate(R.id.myTrainingScreen)
+        }
+    }
+
+    fun navigateBack() {
+        binding.backBtn.setOnClickListener {
+            findNavController().navigateUp()
         }
     }
 
