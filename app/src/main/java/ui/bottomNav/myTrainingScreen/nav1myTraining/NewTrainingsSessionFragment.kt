@@ -126,7 +126,7 @@ class NewTrainingsSessionFragment : Fragment() {
             var datePickerBtn = binding.setDurationBtn
             datePickerBtn.setOnClickListener {
                 val datePicker = MaterialDatePicker.Builder.dateRangePicker()
-                    .setTitleText("Select dates")
+                    .setTitleText(getString(R.string.selectDateText))
                     .build()
 
                 datePicker.addOnPositiveButtonClickListener { selection ->
