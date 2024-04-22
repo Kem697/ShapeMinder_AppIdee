@@ -62,7 +62,6 @@
     <string name="bpBauch">Bauch</string>
     <string name="bpBrust">Brust</string>
 
-
     <!--exerciseName-->
 
     <string name="weKH_Bicepscurls">KH-Bizepscurls</string>
@@ -238,6 +237,19 @@ Achte auf eine gerade Rückenhaltung und kontrollierte Bewegungen.
     <string name="resultBtnTitle">Ergebnisse anzeigen</string>
     <string name="cancelBtnTitle">Abrrechen</string>
     <string name="musclegroupTitle">Muskelgruppe</string>
+    <string name="registerScreenText">Willkommen! Bitte mache deine Angaben.</string>
+    <string name="registerBtnText">Registrieren</string>
+    <string name="logInScreenText">Bitte nenne deine Anmeldedaten:</string>
+    <string name="logInBtnText">Anmelden</string>
+
+
+
+    <string name="bpSubTitleArme" tools:ignore="ExtraTranslation">Arm Übung</string>
+    <string name="bpSubTitleBeine" tools:ignore="ExtraTranslation">Bein Übung</string>
+    <string name="bpSubTitleSchulter" tools:ignore="ExtraTranslation">Schulter Übung</string>
+    <string name="bpSubTitleRücken" tools:ignore="ExtraTranslation">Rücken Übung</string>
+    <string name="bpSubTitleBauch" tools:ignore="ExtraTranslation">Bauch Übung</string>
+    <string name="bpSubTitleBrust" tools:ignore="ExtraTranslation">Brust Übung</string>
 
 
 </resources>

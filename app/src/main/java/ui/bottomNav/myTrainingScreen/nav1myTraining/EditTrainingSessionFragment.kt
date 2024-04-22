@@ -25,7 +25,7 @@ class EditTrainingSessionFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentEditTrainingSessionBinding.inflate(layoutInflater)
         return binding.root
     }

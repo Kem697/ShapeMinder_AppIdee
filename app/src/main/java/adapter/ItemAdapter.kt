@@ -128,7 +128,7 @@ class ItemAdapter(
 
             holder.binding.contentImage.setImageResource(content.imageRessource)
             holder.binding.contentTitle.setText(content.stringRessourceTitle)
-            holder.binding.contentTextSnippet.setText("${truncatedDescription}...")
+            holder.binding.contentTextSnippet.text = "${truncatedDescription}..."
             holder.binding.containtsVideo.isInvisible = content.video == null
             holder.binding.materialCardView.setOnClickListener {
                 viewModel.navigateDetailView(content)

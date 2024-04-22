@@ -1,15 +1,12 @@
 package ui.bottomNav.myTrainingScreen.nav1myTraining
 
 import adapter.NewSessionExercisesAdapter
-import android.app.DatePickerDialog
-import android.icu.util.Calendar
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
 import androidx.core.view.isInvisible
 import androidx.core.widget.addTextChangedListener
@@ -18,7 +15,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentNewTrainingsSessionBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.button.MaterialButton
 import com.google.android.material.datepicker.MaterialDatePicker
 import model.data.local.model.Content
 import model.data.local.model.TrainingsSession
@@ -105,7 +101,7 @@ class NewTrainingsSessionFragment : Fragment() {
             if (sessionName.isNotBlank()) {
                 if (addedToSessionExercises.size > 0) {
                     var newSession = TrainingsSession(sessionName = sessionName, sessionDate = binding.dateView.text.toString(),trainingsSession = addedToSessionExercises)
-                    viewModel.inserNewTrainingssession(newSession)
+                    viewModel.insertNewTrainingssession(newSession)
                     Toast.makeText(
                         requireContext(),
                         "Dein Trainingsplan wurde gespeichert!.",
@@ -148,7 +144,7 @@ class NewTrainingsSessionFragment : Fragment() {
                     var dateView = binding.dateViewCard
                     dateView.isInvisible = false
                     var dateText = binding.dateView
-                    dateText.setText("$startDateString - $endDateString")
+                    dateText.text = "$startDateString - $endDateString"
 
                 }
 

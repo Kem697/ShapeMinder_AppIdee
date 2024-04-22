@@ -53,37 +53,37 @@ class ExercisePreviewFragment : Fragment() {
         viewModel.selectedContent.observe(viewLifecycleOwner) {
             binding.title.setText(it.stringRessourceTitle)
             when (it.bodyPart) {
-                "Arme" -> {
+                getString(R.string.bpArme) -> {
                     binding.subTitle.text = "Arm Übung"
                     binding.bodyPartView.setImageResource(R.drawable.bp1arms)
                     binding.descriptionText.setText(it.stringRessourceText)
                 }
 
-                "Bauch" -> {
+                getString(R.string.bpBauch) -> {
                     binding.subTitle.text = "Bauch Übung"
                     binding.bodyPartView.setImageResource(R.drawable.bp5abs)
                     binding.descriptionText.setText(it.stringRessourceText)
                 }
 
-                "Schulter" -> {
+                getString(R.string.bpSchulter) -> {
                     binding.subTitle.text = "Schulter Übung"
                     binding.bodyPartView.setImageResource(R.drawable.bp3shoulders)
                     binding.descriptionText.setText(it.stringRessourceText)
                 }
 
-                "Rücken" -> {
+                getString(R.string.bpRücken) -> {
                     binding.subTitle.text = "Rücken übung"
                     binding.bodyPartView.setImageResource(R.drawable.bp4back)
                     binding.descriptionText.setText(it.stringRessourceText)
                 }
 
-                "Beine" -> {
+                getString(R.string.bpBeine) -> {
                     binding.subTitle.text = "Bein übung"
                     binding.bodyPartView.setImageResource(R.drawable.bp2legs)
                     binding.descriptionText.setText(it.stringRessourceText)
                 }
 
-                "Brust" -> {
+                getString(R.string.bpBrust) -> {
                     binding.subTitle.text = "Brust Übung"
                     binding.bodyPartView.setImageResource(R.drawable.bp6chest)
                     binding.descriptionText.setText(it.stringRessourceText)
@@ -164,12 +164,13 @@ class ExercisePreviewFragment : Fragment() {
 
     fun shareExercise(videoExercise: Content) {
         var shareBtn = binding.shareBtn
-        val url = videoExercise.video?.let { "https://www.youtube.com/watch?v=$it" }
+        val url = videoExercise.video?.let { "https://www.youtube.com/watch?v=${getString(it)}" }
         shareBtn.setOnClickListener {
             if (videoExercise.video!=null){
                 val intent = Intent(Intent.ACTION_SEND)
                 intent.type = "text/plain"
-                intent.putExtra(Intent.EXTRA_TEXT, "Hey, schau dir diese Übung für dein Workout an: $url")
+                intent.putExtra(Intent.EXTRA_TITLE,"Hier für dein Workout: || ${getString(videoExercise.stringRessourceTitle)} ||")
+                intent.putExtra(Intent.EXTRA_TEXT, "$url")
                 val chooser = Intent.createChooser(intent, "Teile den Inhalt mit:")
                 startActivity(chooser)
             } else

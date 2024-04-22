@@ -31,8 +31,8 @@ class TrainingSessionsAdapter (
 
     override fun onBindViewHolder(holder: TrainingsSessionItemViewHolder, position: Int) {
         var item = dataset[position]
-        holder.binding.sessionDate.setText(item.sessionDate)
-        holder.binding.sessionTitle.setText(item.sessionName)
+        holder.binding.sessionDate.text = item.sessionDate
+        holder.binding.sessionTitle.text = item.sessionName
         holder.binding.contentImage.setImageResource(R.drawable.content2_img)
     }
 }

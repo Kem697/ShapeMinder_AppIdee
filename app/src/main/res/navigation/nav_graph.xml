@@ -140,7 +140,11 @@
     <fragment
         android:id="@+id/foodListFragment"
         android:name="ui.bottomNav.myNutritionScreen.nav1foodFinder.FoodListFragment"
-        android:label="FoodListFragment" />
+        android:label="FoodListFragment" >
+        <action
+            android:id="@+id/action_foodListFragment_to_foodDetailViewFragment"
+            app:destination="@id/foodDetailViewFragment" />
+    </fragment>
     <fragment
         android:id="@+id/newTrainingsSessionFragment"
         android:name="ui.bottomNav.myTrainingScreen.nav1myTraining.NewTrainingsSessionFragment"
@@ -157,4 +161,8 @@
         android:id="@+id/editTrainingSessionFragment"
         android:name="ui.bottomNav.myTrainingScreen.nav1myTraining.EditTrainingSessionFragment"
         android:label="EditTrainingSessionFragment" />
+    <fragment
+        android:id="@+id/foodDetailViewFragment"
+        android:name="ui.bottomNav.myNutritionScreen.nav1foodFinder.FoodDetailViewFragment"
+        android:label="FoodDetailViewFragment" />
 </navigation>

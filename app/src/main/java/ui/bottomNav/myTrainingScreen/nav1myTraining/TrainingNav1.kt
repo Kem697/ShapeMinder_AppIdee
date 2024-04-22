@@ -106,9 +106,9 @@ class TrainingNav1 : Fragment() {
         * Daten beobachtet werden. Wahrscheinlich weil die Datenbank
         * leer ist*/
 
-//        viewModel.savedTrainingsSessions.observe(viewLifecycleOwner){
-//            binding.rvYourSessions.adapter = TrainingSessionsAdapter(it,viewModel,requireContext())
-//        }
+      /*  viewModel.savedTrainingsSessions.observe(viewLifecycleOwner){
+            binding.rvYourSessions.adapter = TrainingSessionsAdapter(it,viewModel,requireContext())
+        }*/
     }
 
 

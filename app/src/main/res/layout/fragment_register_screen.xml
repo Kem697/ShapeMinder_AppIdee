@@ -13,16 +13,15 @@
     <TextView
         android:id="@+id/logInText"
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginRight="32dp"
-        android:text="Willkommen! Bitte mach deine Angaben."
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:fontFamily="@font/montserrat"
+        android:padding="32dp"
+        android:text="@string/registerScreenText"
         android:textColor="@color/white"
         android:textIsSelectable="false"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appLogo" />
 
@@ -43,10 +42,10 @@
         style="@style/customButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginTop="16dp"
-        android:text="Registrieren"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/registerBtnText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -131,13 +130,13 @@
             android:id="@+id/inputPassword"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="12dp"
-            android:fontFamily="@font/roboto"
-            android:textSize="16dp"
             android:background="@null"
-            android:hint="@string/passwordInput"
             android:ems="10"
-            android:inputType="textPassword" />
+            android:fontFamily="@font/roboto"
+            android:hint="@string/passwordInput"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            android:textSize="16dp" />
 
     </com.google.android.material.card.MaterialCardView>
 

@@ -84,7 +84,7 @@ class AllExerciseListFragment : Fragment() {
         viewModel.listOfAllExercises.observe(viewLifecycleOwner) {
             binding.listOfAllExercises.adapter =
                 NewSessionExercisesAdapter(it, viewModel, requireContext())
-            binding.amountOfExercise.setText("Anzahl der Übungen: ${it.size}")
+            binding.amountOfExercise.text = "Anzahl der Übungen: ${it.size}"
         }
     }
     fun sortRadioGroup() {
