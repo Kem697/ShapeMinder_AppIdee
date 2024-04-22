@@ -182,17 +182,24 @@ class ItemAdapter(
                 }
             }
         } else if (holder is SmallContentItemViewHolder) {
-            holder.binding.contentImage.setImageResource(content.imageRessource)
-            holder.binding.contentTitle.setText(content.stringRessourceTitle)
-            holder.binding.materialCardView.setOnClickListener {
-                if (content.isSaved && !content.isInExerciseList) {
-                    viewModel.navigateDetailView(content)
-                    holder.binding.root.findNavController().navigate(R.id.exercisePreviewFragment)
-                } else {
-                    viewModel.navigateDetailView(content)
-                    holder.binding.root.findNavController().navigate(R.id.homeContentDetailView)
-                }
+            /*if (position == 0 && content.isInExerciseList){
+                holder.binding.contentTitle.text = context.getString(R.string.searchExerciseForFav)
+                holder.binding.contentImage.setBackgroundColor(context.getColor(R.color.black))
+                holder.binding.contentImage.setImageResource(R.drawable.add_fill0_wght400_grad0_opsz24)
             }
+            else {*/
+                holder.binding.contentImage.setImageResource(content.imageRessource)
+                holder.binding.contentTitle.setText(content.stringRessourceTitle)
+                holder.binding.materialCardView.setOnClickListener {
+                    if (content.isSaved && !content.isInExerciseList) {
+                        viewModel.navigateDetailView(content)
+                        holder.binding.root.findNavController().navigate(R.id.exercisePreviewFragment)
+                    } else {
+                        viewModel.navigateDetailView(content)
+                        holder.binding.root.findNavController().navigate(R.id.homeContentDetailView)
+                    }
+                }
+//            }
         }
 
 

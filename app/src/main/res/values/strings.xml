@@ -259,6 +259,10 @@ Achte auf eine gerade Rückenhaltung und kontrollierte Bewegungen.
     <string name="bpSubTitleBrust" tools:ignore="ExtraTranslation">Brust Übung</string>
     <string name="deleteSessionBtnText">Training Löschen</string>
     <string name="addNewTrainingsessionText">Neues Training</string>
+    <string name="searchExerciseForFav">Suche Übung</string>
+
+    <string name="sessionName">Zeitraum</string>
+    <string name="editWorkoutTitle">Training bearbeiten</string>
 
 
 </resources>

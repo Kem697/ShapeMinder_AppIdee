@@ -45,9 +45,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="22dp"
-                    android:text="Workout Name"
+                    android:text="@string/editWorkoutTitle"
                     android:textColor="#FFFFFF"
-                    android:textSize="22dp" />
+                    android:textSize="18dp" />
 
                 <Button
                     android:id="@+id/saveWorkoutBtn"
@@ -68,27 +68,53 @@
 
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardPreviewHeader"
+            android:id="@+id/materialCardSessionName"
             style="@style/customUserInput"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_constraints">
 
             <TextView
-                android:id="@+id/editSessionName"
+                android:id="@+id/sessionName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="16dp"
-                android:text="Zeitraum"
-                android:textAlignment="center"
-                android:textSize="18dp"
                 android:background="@null"
-                android:inputType="text" />
+                android:fontFamily="@font/montserrat"
+                android:inputType="text"
+                android:text="@string/sessionName"
+                android:textAlignment="center"
+                android:textSize="16dp" />
 
         </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardSessionDate"
+            style="@style/customUserInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardSessionName">
+
+            <TextView
+                android:id="@+id/sessionDate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:background="@null"
+                android:fontFamily="@font/lato"
+                android:inputType="text"
+                android:text=""
+                android:textAlignment="center"
+                android:textSize="14dp" />
+
+        </com.google.android.material.card.MaterialCardView>
+
 
 
 
@@ -130,7 +156,7 @@
             android:backgroundTint="#D5FEF5E7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardPreviewHeader"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardSessionDate"
             app:strokeColor="@color/white">
 
             <androidx.recyclerview.widget.RecyclerView

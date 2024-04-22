@@ -30,6 +30,27 @@ class LocalRepository (private val trainingDatabase: TrainingSessionsDatabase) {
         }
     }
 
+
+
+    suspend fun updateTrainingsession(currentSession: TrainingsSession){
+        try {
+            trainingDatabase.trainingsSessionDao.updateSession(currentSession)
+        }catch (e: Exception){
+            var tag = "Lokaler Repo??"
+            Log.e(tag,"Fehler beim Aktualisieren der Trainingseinheit in der Datenbank!! $e")
+        }
+    }
+
+
+    suspend fun deleteTrainingsession(currentSession: TrainingsSession){
+        try {
+            trainingDatabase.trainingsSessionDao.deleteSession(currentSession)
+        }catch (e: Exception){
+            var tag = "Lokaler Repo??"
+            Log.e(tag,"Fehler beim Löschen der Trainingseinheit aus der Datenbank!! $e")
+        }
+    }
+
     var content = loadContents()
     var exercises = loadExercises()
     var bodyParts = loadBodyparts()

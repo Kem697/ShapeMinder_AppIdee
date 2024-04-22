@@ -113,6 +113,15 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         get() = _exercisesByBodyparts
 
 
+    private var _selectedTraininingssession =  MutableLiveData<TrainingsSession>()
+
+    val selectedTraininingssession: MutableLiveData<TrainingsSession>
+
+        get() = _selectedTraininingssession
+
+
+
+
     private var _savedExercises = MutableLiveData<MutableList<Content>>()
     val savedExercises: LiveData<MutableList<Content>>
         get() = _savedExercises
@@ -161,14 +170,23 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         getTokenFromDatabase()
 //        getAllSessions()
         setUpDefaultTrainingsessions()
-
-
-
     }
 
     fun setUpDefaultTrainingsessions(){
         viewModelScope.launch {
-            repository.insertNewTrainingSession(TrainingsSession(0, trainingsSession = mutableListOf()))
+            repository.insertNewTrainingSession(TrainingsSession(1, trainingsSession = mutableListOf()))
+        }
+    }
+
+    fun deleteTrainingsession(currentSession: TrainingsSession){
+        viewModelScope.launch{
+            repository.deleteTrainingsession(currentSession)
+        }
+    }
+
+    fun updateTrainingsession(currentSession: TrainingsSession){
+        viewModelScope.launch {
+            repository.updateTrainingsession(currentSession)
         }
     }
 
@@ -546,6 +564,10 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         _selectedContentTitle.value = bodypart
     }
 
+    fun getCurrentTrainingsession(currentSession: TrainingsSession){
+        _selectedTraininingssession.value = currentSession
+    }
+
 
     fun navigateDetailView(content: Content) {
         _selectedContent.value = content
@@ -651,6 +673,31 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     fun setFilterIndex(filterIndex: FilterModel) {
         _filterIndex.value = filterIndex
     }
+
+
+
+    fun deleteWorkoutInEditSession(addedExercise: Boolean, exercise: Content) {
+        val updatedSession = selectedTraininingssession.value?.trainingsSession?: mutableListOf()
+
+        if (addedExercise) {
+            updatedSession.add(exercise)
+            var tag = "Radiocheck??"
+            Log.e(
+                tag,
+                "Übung wirdd gespeichert!!:${exercise} Zustand: ${addedExercise}. Die Liste enthält: ${updatedSession.size}"
+            )
+        } else {
+            updatedSession.remove(exercise)
+            var tag = "Radiocheck??"
+            Log.e(
+                tag,
+                "Übung wird entfernt!!:${exercise} Zustand: ${addedExercise}. Die Liste enthält: ${updatedSession.size}"
+            )
+        }
+
+        _selectedTraininingssession.value?.trainingsSession = updatedSession
+    }
+
 
 }
 

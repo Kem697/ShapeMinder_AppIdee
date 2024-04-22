@@ -10,7 +10,7 @@ import androidx.room.TypeConverters
 //@TypeConverters(TrainingsSessionConv::class)
 data class TrainingsSession(
     @PrimaryKey(autoGenerate = true)
-    val id: Long = 1,
+    val id: Long = 0,
 
     var sessionName : String = "",
     var sessionDate : String = "",
