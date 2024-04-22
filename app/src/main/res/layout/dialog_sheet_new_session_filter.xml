@@ -26,7 +26,7 @@
                 android:backgroundTint="#00000000"
                 android:textColor="@color/black"
                 android:textSize="20dp"
-                android:text="Zurücksetzen" />
+                android:text="@string/resetBtnTitle" />
 
 
             <LinearLayout
@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start|center"
                     android:layout_margin="16dp"
-                    android:text="Filter nach"
+                    android:text="@string/dialogSheetTitle"
                     android:textSize="30dp"
                     android:textStyle="bold" />
 
@@ -51,7 +51,7 @@
                     android:layout_gravity="start|center"
                     android:layout_margin="16dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="Muskelgruppe"
+                    android:text="@string/musclegroupTitle"
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
@@ -171,7 +171,7 @@
                     android:layout_gravity="start|center"
                     android:layout_margin="16dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="Geräte"
+                    android:text="@string/equipmentTitle"
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
@@ -242,7 +242,7 @@
                         android:id="@+id/sec1_short_dumbell"
                         android:layout_width="75dp"
                         android:layout_height="wrap_content"
-                        android:text="Kurzhantel"
+                        android:text="@string/shDumbellBtnTitle"
                         android:textSize="13dp"
                         android:textStyle="bold">
 
@@ -254,7 +254,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="25dp"
                         android:layout_marginRight="10dp"
-                        android:text="Langhantel"
+                        android:text="@string/lhDumbellBtnTitle"
                         android:textSize="13dp"
                         android:textStyle="bold">
 
@@ -266,7 +266,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
                         android:layout_marginLeft="4dp"
-                        android:text="Eigengewicht"
+                        android:text="@string/ownBodyBtnTitle"
                         android:textSize="13dp"
                         android:textStyle="bold">
 
@@ -285,7 +285,7 @@
                     android:layout_marginRight="32dp"
                     android:layout_marginBottom="16dp"
                     android:backgroundTint="@color/black"
-                    android:text="Ergebnisse anzeigen"
+                    android:text="@string/resultBtnTitle"
                     android:textSize="18dp"
                     app:cornerRadius="5dp" />
 
@@ -297,7 +297,7 @@
                     android:layout_marginRight="32dp"
                     android:layout_marginBottom="16dp"
                     android:backgroundTint="@color/white"
-                    android:text="Abrrechen"
+                    android:text="@string/cancelBtnTitle"
                     android:textColor="@color/tertiary"
                     android:textSize="18dp"
                     app:cornerRadius="5dp" />

@@ -226,6 +226,18 @@ Achte auf eine gerade Rückenhaltung und kontrollierte Bewegungen.
     <string name="foodCat">LebensmittelKateg</string>
     <string name="foodName">Name des Lebensmitte</string>
     <string name="saveForGrocery">Für Einkauf merken</string>
+    <string name="resetBtnTitle">Zurücksetzen</string>
+    <string name="dialogSheetTitle">Filter nach</string>
+    <string name="equipmentTitle">Geräte</string>
+    <string name="shDumbellBtnTitle">Kurzhantel</string>
+    <string name="lhDumbellBtnTitle">Langhantel</string>
+    <string name="ownBodyBtnTitle">Eigengewicht</string>
+    <string name="instructionTitle">Beschreibung</string>
+    <string name="videoBtnTitle">Nur Video</string>
+    <string name="noVideoBtnTitle">Ohne Video</string>
+    <string name="resultBtnTitle">Ergebnisse anzeigen</string>
+    <string name="cancelBtnTitle">Abrrechen</string>
+    <string name="musclegroupTitle">Muskelgruppe</string>
 
 
 </resources>

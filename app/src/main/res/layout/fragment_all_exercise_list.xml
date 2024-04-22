@@ -97,7 +97,7 @@
             android:id="@+id/materialCardContentView"
             style="@style/content_CardDecription"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="330dp"
             android:layout_margin="16dp"
             android:backgroundTint="#D5FEF5E7"
             app:layout_constraintEnd_toEndOf="parent"
@@ -160,7 +160,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/addExerciseToSessionBtn"
-            android:layout_width="180dp"
+            android:layout_width="170dp"
             android:layout_height="60dp"
             android:layout_margin="16dp"
             android:backgroundTint="@color/black"
@@ -174,7 +174,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/cancelSessionBtn"
-            android:layout_width="180dp"
+            android:layout_width="170dp"
             android:layout_height="60dp"
             android:layout_margin="16dp"
             android:backgroundTint="@color/white"

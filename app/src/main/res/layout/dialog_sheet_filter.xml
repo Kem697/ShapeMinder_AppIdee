@@ -28,7 +28,7 @@
             android:backgroundTint="#00000000"
             android:textColor="@color/black"
             android:textSize="20dp"
-            android:text="Zurücksetzen" />
+            android:text="@string/resetBtnTitle" />
 
 
         <LinearLayout
@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center"
                 android:layout_margin="16dp"
-                android:text="Filter nach"
+                android:text="@string/dialogSheetTitle"
                 android:textSize="30dp"
                 android:textStyle="bold" />
 
@@ -54,7 +54,7 @@
                 android:layout_gravity="start|center"
                 android:layout_margin="16dp"
                 android:fontFamily="@font/montserrat"
-                android:text="Geräte"
+                android:text="@string/equipmentTitle"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
@@ -77,7 +77,7 @@
                     android:backgroundTint="@color/white"
                     android:scaleType="centerCrop"
                     android:src="@drawable/short_dumbell_unchecked"
-                    android:text="Kurzhantel"
+                    android:text="@string/shDumbellBtnTitle"
                     android:textSize="20dp">
 
                 </ImageButton>
@@ -91,7 +91,7 @@
                     android:backgroundTint="@color/white"
                     android:scaleType="centerCrop"
                     android:src="@drawable/long_dumbell_unchecked"
-                    android:text="Langhantel"
+                    android:text="@string/lhDumbellBtnTitle"
                     android:textSize="20dp">
 
                 </ImageButton>
@@ -105,7 +105,7 @@
                     android:backgroundTint="@color/white"
                     android:scaleType="centerCrop"
                     android:src="@drawable/bodyweight_unchecked"
-                    android:text="Eigengewicht"
+                    android:text="@string/ownBodyBtnTitle"
                     android:textSize="20dp">
 
                 </ImageButton>
@@ -128,7 +128,7 @@
                     android:id="@+id/sec1_short_dumbell"
                     android:layout_width="75dp"
                     android:layout_height="wrap_content"
-                    android:text="Kurzhantel"
+                    android:text="@string/shDumbellBtnTitle"
                     android:textSize="13dp"
                     android:textStyle="bold">
 
@@ -139,7 +139,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
-                    android:text="Langhantel"
+                    android:text="@string/lhDumbellBtnTitle"
                     android:textSize="13dp"
                     android:layout_marginRight="10dp"
                     android:textStyle="bold">
@@ -152,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_marginLeft="4dp"
-                    android:text="Eigengewicht"
+                    android:text="@string/ownBodyBtnTitle"
                     android:textSize="13dp"
                     android:textStyle="bold">
 
@@ -169,7 +169,7 @@
                 android:layout_gravity="start|center"
                 android:layout_margin="16dp"
                 android:fontFamily="@font/montserrat"
-                android:text="Beschreibung"
+                android:text="@string/instructionTitle"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
@@ -191,7 +191,7 @@
                     android:backgroundTint="@color/white"
                     android:scaleType="centerCrop"
                     android:src="@drawable/video_unchecked"
-                    android:text="Nur Video"
+                    android:text="@string/videoBtnTitle"
                     android:textSize="20dp">
 
                 </ImageButton>
@@ -204,7 +204,7 @@
                     android:backgroundTint="@color/white"
                     android:scaleType="centerCrop"
                     android:src="@drawable/no_video_unchecked"
-                    android:text="Ohne Video"
+                    android:text="@string/noVideoBtnTitle"
                     android:textSize="20dp">
 
                 </ImageButton>
@@ -226,7 +226,7 @@
                     android:id="@+id/sec2_with_video"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Mit Video"
+                    android:text="@string/videoBtnTitle"
                     android:textSize="12dp"
                     android:textStyle="bold">
 
@@ -237,7 +237,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
-                    android:text="Ohne Video"
+                    android:text="@string/noVideoBtnTitle"
                     android:textSize="12dp"
                     android:textStyle="bold">
 
@@ -257,7 +257,7 @@
                 android:backgroundTint="@color/black"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
-                android:text="Ergebnisse anzeigen" />
+                android:text="@string/resultBtnTitle" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/cancel_Btn"
@@ -270,7 +270,7 @@
                 android:backgroundTint="@color/white"
                 android:textColor="@color/tertiary"
                 android:textSize="18dp"
-                android:text="Abrrechen" />
+                android:text="@string/cancelBtnTitle" />
 
 
         </LinearLayout>
