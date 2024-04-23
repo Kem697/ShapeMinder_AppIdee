@@ -33,10 +33,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
             android:layout_marginBottom="15dp"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/montserrat"
             android:text="TextView"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="16dp" />
     </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

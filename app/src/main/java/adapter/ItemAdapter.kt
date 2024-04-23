@@ -30,8 +30,11 @@ Nachtrag: Der Adapter wurde mit einem zweiten ViewHolder implementiert.
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.view.isInvisible
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -67,9 +70,7 @@ class ItemAdapter(
         val item = dataset[position]
         return if (item.isExercise && !item.isInExerciseList) {
             smallContentCard
-        } /*else if (savedExercise && item.isExercise &&!item.isInExerciseList) {
-            smallContentCard
-        }*/ else if (item.isExercise && item.isInExerciseList) {
+        }  else if (item.isExercise && item.isInExerciseList) {
             exerciseListCards
         } else {
             contentCard
@@ -182,12 +183,15 @@ class ItemAdapter(
                 }
             }
         } else if (holder is SmallContentItemViewHolder) {
-            /*if (position == 0 && content.isInExerciseList){
+            if (position == 0){
                 holder.binding.contentTitle.text = context.getString(R.string.searchExerciseForFav)
+                holder.binding.contentTitle.gravity = Gravity.TOP
                 holder.binding.contentImage.setBackgroundColor(context.getColor(R.color.black))
                 holder.binding.contentImage.setImageResource(R.drawable.add_fill0_wght400_grad0_opsz24)
+                holder.binding.contentImage.setColorFilter(context.getColor(R.color.white))
+                holder.binding.contentImage.scaleType = ImageView.ScaleType.CENTER
             }
-            else {*/
+            else {
                 holder.binding.contentImage.setImageResource(content.imageRessource)
                 holder.binding.contentTitle.setText(content.stringRessourceTitle)
                 holder.binding.materialCardView.setOnClickListener {
@@ -199,9 +203,8 @@ class ItemAdapter(
                         holder.binding.root.findNavController().navigate(R.id.homeContentDetailView)
                     }
                 }
-//            }
+            }
         }
-
 
     }
 

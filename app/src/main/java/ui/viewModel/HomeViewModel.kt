@@ -122,7 +122,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
 
 
-    private var _savedExercises = MutableLiveData<MutableList<Content>>()
+    private var _savedExercises = MutableLiveData<MutableList<Content>>(mutableListOf(Content(0,0,0,true,false,"",false,null,null)
+    ))
     val savedExercises: LiveData<MutableList<Content>>
         get() = _savedExercises
 

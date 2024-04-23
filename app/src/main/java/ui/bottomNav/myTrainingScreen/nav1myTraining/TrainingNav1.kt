@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.core.view.isInvisible
 import androidx.fragment.app.activityViewModels
 import com.example.shapeminder_appidee.databinding.FragmentTrainingNav1Binding
+import model.data.local.model.Content
 import ui.viewModel.HomeViewModel
 
 
@@ -93,11 +94,10 @@ class TrainingNav1 : Fragment() {
 
 
     fun setUpAdapters(){
-        viewModel.exercises.observe(viewLifecycleOwner){
-            binding.rvRecents.adapter = ItemAdapter(it,viewModel,requireContext())
-        }
         viewModel.savedExercises.observe(viewLifecycleOwner){
+//            var defaultView = Content(0,0,0,true,false,"",false,null,null)
             var rigedExercise= it.onEach { it.isInExerciseList = false }
+//            rigedExercise.add(0,defaultView)
             binding.rvFavouriteExercises.adapter = ItemAdapter(rigedExercise,viewModel,requireContext())
         }
 
