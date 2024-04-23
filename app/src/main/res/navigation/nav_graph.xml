@@ -160,7 +160,11 @@
     <fragment
         android:id="@+id/editTrainingSessionFragment"
         android:name="ui.bottomNav.myTrainingScreen.nav1myTraining.EditTrainingSessionFragment"
-        android:label="EditTrainingSessionFragment" />
+        android:label="EditTrainingSessionFragment" >
+        <action
+            android:id="@+id/action_editTrainingSessionFragment_to_allExerciseListFragment"
+            app:destination="@id/allExerciseListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/foodDetailViewFragment"
         android:name="ui.bottomNav.myNutritionScreen.nav1foodFinder.FoodDetailViewFragment"

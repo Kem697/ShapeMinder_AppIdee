@@ -190,6 +190,9 @@ class ItemAdapter(
                 holder.binding.contentImage.setImageResource(R.drawable.add_fill0_wght400_grad0_opsz24)
                 holder.binding.contentImage.setColorFilter(context.getColor(R.color.white))
                 holder.binding.contentImage.scaleType = ImageView.ScaleType.CENTER
+                holder.binding.materialCardView.setOnClickListener {
+                    holder.binding.root.findNavController().navigate(R.id.allExerciseListFragment)
+                }
             }
             else {
                 holder.binding.contentImage.setImageResource(content.imageRessource)

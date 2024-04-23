@@ -24,6 +24,7 @@ import com.example.shapeminder_appidee.databinding.FragmentAllExerciseListBindin
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
+import model.data.local.model.Content
 import ui.viewModel.HomeViewModel
 import java.lang.Exception
 
@@ -420,14 +421,13 @@ class AllExerciseListFragment : Fragment() {
         }
     }
 
+
     fun cancelProcess(){
         var cancelBtn = binding.cancelSessionBtn
         cancelBtn.setOnClickListener {
+            viewModel.listOfAllExercises.value?.forEach { it.addedToSession = false }
+            viewModel.addToSessionExercises.value?.removeAll { it.addedToSession ==false }
             findNavController().navigate(R.id.myTrainingScreen)
-            viewModel.addToSessionExercises.value?.forEach {
-                it.addedToSession = false
-            }
-
         }
     }
 

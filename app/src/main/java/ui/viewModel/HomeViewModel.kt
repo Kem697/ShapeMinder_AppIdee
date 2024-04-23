@@ -46,7 +46,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
 
     private var _listOfAllExercises = MutableLiveData(allExercisesByBodyparts)
-    val listOfAllExercises: LiveData<List<Content>>
+    val listOfAllExercises: MutableLiveData<List<Content>>
         get() = _listOfAllExercises
 
     private var _contents = MutableLiveData(allContent)
@@ -668,6 +668,14 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         }
 
         _addToSessionExercises.value = updatedExercises
+    }
+
+    fun resetSavedInWorkoutSession(addedToSessionExercises: MutableList<Content>){
+        addedToSessionExercises.forEach { it.addedToSession = false }
+        addedToSessionExercises.removeAll { it.addedToSession == false }
+        var tag = "Liste zurücksetzen"
+        Log.i(tag,"Liste wird zurückgesetzt ! ${addToSessionExercises.value}")
+
     }
 
 

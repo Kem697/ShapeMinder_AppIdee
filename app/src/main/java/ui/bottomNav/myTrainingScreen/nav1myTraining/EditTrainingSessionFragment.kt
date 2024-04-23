@@ -63,6 +63,7 @@ class EditTrainingSessionFragment : Fragment() {
             binding.rvEditCurrentWorkout.adapter = EditTrainingAdapter(it.trainingsSession, viewModel, requireContext())
             saveSessionChanges(it)
             deleteSession(it)
+            addWorkout(it)
         }
     }
 
@@ -91,6 +92,15 @@ class EditTrainingSessionFragment : Fragment() {
     fun navigateBack() {
         binding.backBtn.setOnClickListener {
             findNavController().navigateUp()
+        }
+    }
+
+
+    fun addWorkout(currentSession: TrainingsSession){
+        var addExerciseBtn = binding.addExerciseBtn
+        addExerciseBtn.setOnClickListener {
+            var action = EditTrainingSessionFragmentDirections.actionEditTrainingSessionFragmentToAllExerciseListFragment()
+            findNavController().navigate(action)
         }
     }
 

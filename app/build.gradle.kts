@@ -4,6 +4,7 @@ plugins {
     id("com.google.gms.google-services")
     id ("kotlin-kapt")
     kotlin("plugin.serialization").version("1.9.23")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 val clientId: String = com.android.build.gradle.internal.cxx.configure.gradleLocalProperties(rootDir).getProperty("clientId")
@@ -94,6 +95,7 @@ dependencies {
 
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+
 
 }
 

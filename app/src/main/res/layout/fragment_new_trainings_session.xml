@@ -165,6 +165,27 @@
             app:layout_constraintTop_toBottomOf="@+id/materialCardContentView" />
 
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancelSessionBtn"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/cancelSession"
+            android:textColor="@color/tertiary"
+            android:textSize="16dp"
+            app:icon="@drawable/cancel_fill1_wght400_grad0_opsz24"
+            app:iconTint="@color/tertiary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addExerciseBtn" />
+
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCardContentView"
             style="@style/content_CardDecription"

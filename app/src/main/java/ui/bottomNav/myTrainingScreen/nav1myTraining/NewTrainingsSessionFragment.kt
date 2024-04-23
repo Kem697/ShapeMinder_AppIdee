@@ -74,6 +74,7 @@ class NewTrainingsSessionFragment : Fragment() {
             binding.rvNewSessionExercises.adapter =
                 NewSessionExercisesAdapter(it, viewModel, requireContext())
             saveTrainingSession(it)
+            cancelProcess(it)
         }
     }
 
@@ -151,6 +152,16 @@ class NewTrainingsSessionFragment : Fragment() {
                 datePicker.show(requireActivity().supportFragmentManager, "datePicker")
             }
         }
+
+
+
+    fun cancelProcess(addedToSessionExercises: MutableList<Content>){
+        var cancelBtn = binding.cancelSessionBtn
+        cancelBtn.setOnClickListener {
+            viewModel.resetSavedInWorkoutSession(addedToSessionExercises)
+            findNavController().navigate(R.id.myTrainingScreen)
+        }
+    }
 }
 
 
