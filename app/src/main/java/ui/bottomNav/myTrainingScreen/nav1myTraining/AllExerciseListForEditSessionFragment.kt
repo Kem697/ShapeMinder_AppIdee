@@ -8,10 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentAllExerciseListForEditSessionBinding
 import com.example.shapeminder_appidee.databinding.FragmentEditTrainingSessionBinding
+import model.data.local.model.Content
+import model.data.local.model.TrainingsSession
 import ui.viewModel.HomeViewModel
 
 
@@ -40,12 +43,22 @@ class AllExerciseListForEditSessionFragment : Fragment() {
 
 
 
-    /*Weiterarbeiten*/
+    /*Weiterarbeiten
+    *
+    * Für Media LiveData brauche ich :
+    * LiveData -> Liste von allen Übungen
+    * LiveData->Liste der gespeicherten Übungen in der Session
+    *
+    * Daraus ein Zusammenschluss bilden, wo jede Übung
+    *
+    * */
+
+
     fun setUpAdapter() {
-        viewModel.selectedTraininingssession.observe(viewLifecycleOwner) {
+        viewModel.listOfAllExercises.observe(viewLifecycleOwner) {
             binding.listOfAllExercises.adapter =
-                CurrentSessionExerciseAdapter(it.trainingsSession.filter { it.addedToSession == true }, viewModel, requireContext())
-            binding.amountOfExercise.text = "Anzahl der Übungen: ${it.trainingsSession.size}"
+                CurrentSessionExerciseAdapter(it, viewModel, requireContext())
+            binding.amountOfExercise.text = "Anzahl der Übungen: ${it.size}"
         }
     }
 
@@ -64,6 +77,12 @@ class AllExerciseListForEditSessionFragment : Fragment() {
             viewModel.addToSessionExercises.value?.removeAll { it.addedToSession ==false }*/
             findNavController().navigate(R.id.myTrainingScreen)
         }
+    }
+
+
+
+    fun mergedList(allExercises: List<Content>, currentSessionEx: TrainingsSession )/*: MutableList<Content>*/ {
+        allExercises.filter { it.addedToSession == true }
     }
 
 

@@ -176,13 +176,13 @@
 
         <TextView
             android:id="@+id/amountOfExercise"
-            android:layout_width="100dp"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:layout_margin="18dp"
             android:fontFamily="@font/montserrat"
             android:text="@string/amountOfExercises"
             android:textColor="@color/black"
-            android:textSize="16dp"
+            android:textSize="14dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/materialCardContentView"
             app:layout_constraintStart_toStartOf="parent"

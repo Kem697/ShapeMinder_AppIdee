@@ -160,16 +160,15 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     * Die Methode wird anschließend in meinem GridAdapter aufgerufen.*/
 
     /*EN:
-*This method is used to check my data set afterwards with
-* to check a property and filter it according to the passed argument.
-* The method is then called in my GridAdapter */
+    *This method is used to check my data set afterwards with
+    * to check a property and filter it according to the passed argument.
+    * The method is then called in my GridAdapter */
 
 
     private var accessToken: AccessToken? = null
 
     init {
         getTokenFromDatabase()
-//        getAllSessions()
         setUpDefaultTrainingsessions()
     }
 
@@ -679,12 +678,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
-    fun setFilterIndex(filterIndex: FilterModel) {
-        _filterIndex.value = filterIndex
-    }
-
-
-
     fun deleteWorkoutInEditSession(addedExercise: Boolean, exercise: Content) {
         val updatedSession = selectedTraininingssession.value?.trainingsSession?: mutableListOf()
 
@@ -706,7 +699,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
         _selectedTraininingssession.value?.trainingsSession = updatedSession
     }
-
 
 }
 

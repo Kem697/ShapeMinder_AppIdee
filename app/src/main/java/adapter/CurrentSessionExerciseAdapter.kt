@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shapeminder_appidee.R
+import com.example.shapeminder_appidee.databinding.ListItemCurrentSessionExerciseBinding
 import com.example.shapeminder_appidee.databinding.ListItemNewSessionExerciseBinding
 import model.data.local.model.Content
 import ui.viewModel.HomeViewModel
@@ -21,11 +22,11 @@ class CurrentSessionExerciseAdapter (
     private val context: Context
 ): RecyclerView.Adapter<CurrentSessionExerciseAdapter.ExerciseItemViewHolder>(){
 
-    inner class ExerciseItemViewHolder (val binding: ListItemNewSessionExerciseBinding): RecyclerView.ViewHolder(binding.root)
+    inner class ExerciseItemViewHolder (val binding: ListItemCurrentSessionExerciseBinding): RecyclerView.ViewHolder(binding.root)
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerciseItemViewHolder {
-        val binding = ListItemNewSessionExerciseBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = ListItemCurrentSessionExerciseBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ExerciseItemViewHolder(binding)
     }
 
@@ -45,16 +46,16 @@ class CurrentSessionExerciseAdapter (
 
         checkBox.setOnClickListener{
             if (exercise.addedToSession == true){
-                viewModel.savedInWorkoutSession(!exercise.addedToSession!!,exercise)
+                viewModel.deleteWorkoutInEditSession(!exercise.addedToSession!!,exercise)
                 holder.binding.saveExerciseCheckbox.isChecked = false
                 exercise.addedToSession = false
-                var tag = "Radiocheck??"
+                var tag = "CheckBox??"
                 Log.i(tag, "Übung Nicht in der Liste!: ${exercise.addedToSession} ${holder.binding.saveExerciseCheckbox.isChecked}")
             } else{
                 viewModel.savedInWorkoutSession(!exercise.addedToSession!!,exercise)
                 holder.binding.saveExerciseCheckbox.isChecked = true
                 exercise.addedToSession = true
-                var tag = "Radiocheck??"
+                var tag = "CheckBox??"
                 Log.i(tag, "Übung ist in der Liste!: ${exercise.addedToSession} ${holder.binding.saveExerciseCheckbox.isChecked}")
             }
         }
