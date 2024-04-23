@@ -1,4 +1,4 @@
-package ui.bottomNav.myTrainingScreen.nav3exercises
+package ui.bottomNav.myTrainingScreen.nav2exercises
 
 import adapter.ItemAdapter
 import android.content.res.ColorStateList

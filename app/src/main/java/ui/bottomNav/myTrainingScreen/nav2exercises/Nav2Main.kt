@@ -1,4 +1,4 @@
-package ui.bottomNav.myTrainingScreen.nav3exercises
+package ui.bottomNav.myTrainingScreen.nav2exercises
 
 import GridAdapterMyTraining
 import android.os.Bundle
@@ -11,7 +11,7 @@ import com.example.shapeminder_appidee.databinding.FragmentExercisesNav3Binding
 import ui.viewModel.HomeViewModel
 
 
-class ExercisesNav3 : Fragment() {
+class Nav2Main : Fragment() {
 
     private lateinit var binding: FragmentExercisesNav3Binding
     val viewModel: HomeViewModel by activityViewModels()

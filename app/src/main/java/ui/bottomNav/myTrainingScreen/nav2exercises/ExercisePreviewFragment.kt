@@ -1,4 +1,4 @@
-package ui.bottomNav.myTrainingScreen.nav3exercises
+package ui.bottomNav.myTrainingScreen.nav2exercises
 
 import android.content.Intent
 import android.os.Bundle

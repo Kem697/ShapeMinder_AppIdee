@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/exercisesNav3"
-        android:name="ui.bottomNav.myTrainingScreen.nav3exercises.ExercisesNav3"
+        android:name="ui.bottomNav.myTrainingScreen.nav2exercises.Nav2Main"
         android:label="fragment_exercises_nav3"
         tools:layout="@layout/fragment_exercises_nav3" >
         <action
@@ -67,7 +67,7 @@
     </fragment>
     <fragment
         android:id="@+id/trainingNav1"
-        android:name="ui.bottomNav.myTrainingScreen.nav1myTraining.TrainingNav1"
+        android:name="ui.bottomNav.myTrainingScreen.nav1myTraining.Nav1Main"
         android:label="fragment_training_nav1"
         tools:layout="@layout/fragment_training_nav1" />
     <fragment
@@ -81,7 +81,7 @@
         android:label="Settings" />
     <fragment
         android:id="@+id/exerciseListFragment"
-        android:name="ui.bottomNav.myTrainingScreen.nav3exercises.ExerciseListFragment"
+        android:name="ui.bottomNav.myTrainingScreen.nav2exercises.ExerciseListFragment"
         android:label="ExerciseListFragment" >
         <action
             android:id="@+id/action_exerciseListFragment_to_exercisePreviewFragment"
@@ -97,7 +97,7 @@
     </fragment>
     <fragment
         android:id="@+id/exercisePreviewFragment"
-        android:name="ui.bottomNav.myTrainingScreen.nav3exercises.ExercisePreviewFragment"
+        android:name="ui.bottomNav.myTrainingScreen.nav2exercises.ExercisePreviewFragment"
         android:label="fragment_exercise_preview"
         tools:layout="@layout/fragment_exercise_preview" >
         <action
@@ -155,14 +155,18 @@
     </fragment>
     <fragment
         android:id="@+id/allExerciseListFragment"
-        android:name="ui.bottomNav.myTrainingScreen.nav3exercises.AllExerciseListFragment"
+        android:name="ui.bottomNav.myTrainingScreen.nav2exercises.AllExerciseListFragment"
         android:label="AllExerciseListFragment" />
     <fragment
         android:id="@+id/editTrainingSessionFragment"
         android:name="ui.bottomNav.myTrainingScreen.nav1myTraining.EditTrainingSessionFragment"
         android:label="EditTrainingSessionFragment" >
+        <argument
+            android:name="test"
+            app:argType="boolean"
+            android:defaultValue="true" />
         <action
-            android:id="@+id/action_editTrainingSessionFragment_to_allExerciseListFragment"
+            android:id="@+id/action_editTrainingSessionFragment_to_allExerciseListFragment2"
             app:destination="@id/allExerciseListFragment" />
     </fragment>
     <fragment

@@ -1,4 +1,4 @@
-package ui.bottomNav.myTrainingScreen.nav3exercises
+package ui.bottomNav.myTrainingScreen.nav2exercises
 
 import adapter.NewSessionExercisesAdapter
 import android.content.res.ColorStateList
@@ -24,13 +24,15 @@ import com.example.shapeminder_appidee.databinding.FragmentAllExerciseListBindin
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
-import model.data.local.model.Content
 import ui.viewModel.HomeViewModel
 import java.lang.Exception
 
 class AllExerciseListFragment : Fragment() {
     private lateinit var binding: FragmentAllExerciseListBinding
+
     val viewModel: HomeViewModel by activityViewModels()
+
+
 
     private var lastSelectedImageButtonIndex: Int = -1
     private var lastSelectedTextButtonIndex: Int = -1
@@ -55,6 +57,7 @@ class AllExerciseListFragment : Fragment() {
         setFilter()
         searchInput()
         addExerciseSelectionSession()
+        navigateBack()
         cancelProcess()
     }
 
@@ -428,6 +431,13 @@ class AllExerciseListFragment : Fragment() {
             viewModel.listOfAllExercises.value?.forEach { it.addedToSession = false }
             viewModel.addToSessionExercises.value?.removeAll { it.addedToSession ==false }
             findNavController().navigate(R.id.myTrainingScreen)
+        }
+    }
+
+
+    fun navigateBack() {
+        binding.backBtn.setOnClickListener {
+            findNavController().navigateUp()
         }
     }
 

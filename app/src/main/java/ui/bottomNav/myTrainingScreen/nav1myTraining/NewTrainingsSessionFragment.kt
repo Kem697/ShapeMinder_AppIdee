@@ -29,6 +29,7 @@ class NewTrainingsSessionFragment : Fragment() {
     val viewModel: HomeViewModel by activityViewModels()
 
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,6 +55,7 @@ class NewTrainingsSessionFragment : Fragment() {
         navigationBar.isInvisible = true
     }
 
+
     override fun onStop() {
         super.onStop()
         val navigationBar =
@@ -62,6 +64,8 @@ class NewTrainingsSessionFragment : Fragment() {
         var tag = "Fragment Wechsel"
         Log.i(tag, "Stopp wird aufgerufen?")
     }
+
+
 
     fun navigateBack() {
         binding.backBtn.setOnClickListener {

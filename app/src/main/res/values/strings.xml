@@ -250,7 +250,6 @@ Achte auf eine gerade Rückenhaltung und kontrollierte Bewegungen.
     <string name="logInBtnText">Anmelden</string>
 
 
-
     <string name="bpSubTitleArme" tools:ignore="ExtraTranslation">Arm Übung</string>
     <string name="bpSubTitleBeine" tools:ignore="ExtraTranslation">Bein Übung</string>
     <string name="bpSubTitleSchulter" tools:ignore="ExtraTranslation">Schulter Übung</string>
@@ -302,9 +301,7 @@ Achte auf eine gerade Rückenhaltung und kontrollierte Bewegungen.
     <string name="carbsText">Kohlenhydrate</string>
 
 
-
     <string name="selectDateText">Wähle Datum</string>
-
 
 
 </resources>

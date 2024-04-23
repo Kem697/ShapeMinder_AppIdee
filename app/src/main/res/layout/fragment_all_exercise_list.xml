@@ -62,7 +62,6 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_marginLeft="16dp"
-                    android:visibility="invisible"
                     android:backgroundTint="#00FFFFFF"
                     android:src="@drawable/arrow_back_fill0_wght400_grad0_opsz24" />
 
