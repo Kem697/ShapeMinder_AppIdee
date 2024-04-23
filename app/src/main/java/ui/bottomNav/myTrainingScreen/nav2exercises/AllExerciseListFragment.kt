@@ -164,7 +164,7 @@ class AllExerciseListFragment : Fragment() {
         }
     }
     fun setDefaultHint() {
-        binding.myTSearchBar.hint = "Nach Übungen suchen"
+        binding.myTSearchBar.hint = getString(R.string.allExercisesSearchbarHint)
         if (binding.myTSearchBarTextInput.text.isNotBlank()) {
             binding.myTSearchBarTextInput.text.clear()
             binding.myTSearchBarTextInput.text.clearSpans()

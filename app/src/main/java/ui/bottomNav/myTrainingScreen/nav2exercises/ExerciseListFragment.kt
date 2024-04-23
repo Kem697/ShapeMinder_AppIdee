@@ -167,7 +167,7 @@ class ExerciseListFragment : Fragment() {
     }
 
     fun setDefaultHint() {
-        binding.myTSearchBar.hint = "Suche"
+        binding.myTSearchBar.hint = getString(R.string.searchBarHint)
         if (binding.myTSearchBarTextInput.text.isNotBlank()) {
             binding.myTSearchBarTextInput.text.clear()
             binding.myTSearchBarTextInput.text.clearSpans()

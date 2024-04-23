@@ -99,7 +99,7 @@ class EditTrainingSessionFragment : Fragment() {
     fun addWorkout(currentSession: TrainingsSession){
         var addExerciseBtn = binding.addExerciseBtn
         addExerciseBtn.setOnClickListener {
-            var action = EditTrainingSessionFragmentDirections.actionEditTrainingSessionFragmentToAllExerciseListFragment2()
+            var action = EditTrainingSessionFragmentDirections.actionEditTrainingSessionFragmentToAllExerciseListForEditSessionFragment()
             findNavController().navigate(action)
         }
     }

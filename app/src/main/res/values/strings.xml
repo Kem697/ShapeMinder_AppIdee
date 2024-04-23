@@ -302,6 +302,9 @@ Achte auf eine gerade Rückenhaltung und kontrollierte Bewegungen.
 
 
     <string name="selectDateText">Wähle Datum</string>
+    <string name="myTtab2Title">Übungen</string>
+    <string name="myTtab1Title">Mein Training</string>
+    <string name="allExercisesSearchbarHint">Nach Übungen suchen</string>
 
 
 </resources>

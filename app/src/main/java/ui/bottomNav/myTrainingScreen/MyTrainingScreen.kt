@@ -18,8 +18,8 @@ import com.example.shapeminder_appidee.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.search.SearchBar
 import com.google.android.material.tabs.TabLayout
-import ui.bottomNav.myTrainingScreen.nav1myTraining.Nav1Main
-import ui.bottomNav.myTrainingScreen.nav2exercises.Nav2Main
+import ui.bottomNav.myTrainingScreen.nav1myTraining.Tab1MyTraining
+import ui.bottomNav.myTrainingScreen.nav2exercises.Tab2Exercises
 import ui.viewModel.HomeViewModel
 
 
@@ -70,8 +70,8 @@ class MyTrainingScreen : Fragment() {
         val tabNavAdapter = MyTrainingTabNavAdapter(fragmentManager)
 
         // Fügen Sie Ihre Fragmente zum Adapter hinzu (Beispielhaft)
-        tabNavAdapter.addFragment(Nav1Main(), "Mein Training")
-        tabNavAdapter.addFragment(Nav2Main(), "Übungen")
+        tabNavAdapter.addFragment(Tab1MyTraining(), getString(R.string.myTtab1Title))
+        tabNavAdapter.addFragment(Tab2Exercises(), getString(R.string.myTtab2Title))
 
         // Setzen Sie den Adapter zum ViewPager
         viewPager.adapter = tabNavAdapter
@@ -115,7 +115,7 @@ class MyTrainingScreen : Fragment() {
         var mainActivity = activity as MainActivity
         var searchBar = mainActivity.findViewById<SearchBar>(R.id.myT_searchBar)
         var searchBarTextInput = mainActivity.findViewById<EditText>(R.id.myT_searchBar_textInput)
-        searchBar.hint = "Suche"
+        searchBar.hint = getString(R.string.searchBarHint)
         if (searchBarTextInput.text.isNotBlank()){
             searchBarTextInput.text.clear()
             searchBar.setText("")

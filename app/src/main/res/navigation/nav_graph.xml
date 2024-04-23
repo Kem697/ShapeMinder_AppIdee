@@ -7,7 +7,7 @@
     app:startDestination="@id/logInScreen">
     <fragment
         android:id="@+id/logInScreen"
-        android:name="ui.LogInScreen"
+        android:name="ui.logInFlow.LogInScreen"
         android:label="LogInScreen" >
         <action
             android:id="@+id/action_logInScreen_to_homeScreen"
@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/exercisesNav3"
-        android:name="ui.bottomNav.myTrainingScreen.nav2exercises.Nav2Main"
+        android:name="ui.bottomNav.myTrainingScreen.nav2exercises.Tab2Exercises"
         android:label="fragment_exercises_nav3"
         tools:layout="@layout/fragment_exercises_nav3" >
         <action
@@ -67,7 +67,7 @@
     </fragment>
     <fragment
         android:id="@+id/trainingNav1"
-        android:name="ui.bottomNav.myTrainingScreen.nav1myTraining.Nav1Main"
+        android:name="ui.bottomNav.myTrainingScreen.nav1myTraining.Tab1MyTraining"
         android:label="fragment_training_nav1"
         tools:layout="@layout/fragment_training_nav1" />
     <fragment
@@ -89,7 +89,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerScreen"
-        android:name="ui.RegisterScreen"
+        android:name="ui.logInFlow.RegisterScreen"
         android:label="RegisterScreen" >
         <action
             android:id="@+id/action_registerScreen_to_homeScreen"
@@ -166,11 +166,15 @@
             app:argType="boolean"
             android:defaultValue="true" />
         <action
-            android:id="@+id/action_editTrainingSessionFragment_to_allExerciseListFragment2"
-            app:destination="@id/allExerciseListFragment" />
+            android:id="@+id/action_editTrainingSessionFragment_to_allExerciseListForEditSessionFragment"
+            app:destination="@id/allExerciseListForEditSessionFragment" />
     </fragment>
     <fragment
         android:id="@+id/foodDetailViewFragment"
         android:name="ui.bottomNav.myNutritionScreen.nav1foodFinder.FoodDetailViewFragment"
         android:label="FoodDetailViewFragment" />
+    <fragment
+        android:id="@+id/allExerciseListForEditSessionFragment"
+        android:name="ui.bottomNav.myTrainingScreen.nav1myTraining.AllExerciseListForEditSessionFragment"
+        android:label="AllExerciseListForEditSessionFragment" />
 </navigation>

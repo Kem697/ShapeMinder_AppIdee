@@ -11,7 +11,7 @@ import com.example.shapeminder_appidee.databinding.FragmentExercisesNav3Binding
 import ui.viewModel.HomeViewModel
 
 
-class Nav2Main : Fragment() {
+class Tab2Exercises : Fragment() {
 
     private lateinit var binding: FragmentExercisesNav3Binding
     val viewModel: HomeViewModel by activityViewModels()

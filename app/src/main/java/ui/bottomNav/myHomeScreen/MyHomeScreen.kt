@@ -132,7 +132,7 @@ class MyHomeScreen : Fragment() {
     }
 
     fun setDefaultHint(){
-        binding.searchBar.hint = "Suche"
+        binding.searchBar.hint = getString(R.string.searchBarHint)
         if (binding.searchBarTextInput.text.isNotBlank()){
             binding.searchBarTextInput.text.clear()
             binding.searchBar.setText("")

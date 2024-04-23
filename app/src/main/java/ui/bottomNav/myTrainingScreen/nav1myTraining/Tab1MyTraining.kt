@@ -13,7 +13,7 @@ import com.example.shapeminder_appidee.databinding.FragmentTrainingNav1Binding
 import ui.viewModel.HomeViewModel
 
 
-class Nav1Main : Fragment() {
+class Tab1MyTraining : Fragment() {
 
     private lateinit var binding: FragmentTrainingNav1Binding
     val viewModel: HomeViewModel by activityViewModels()
@@ -106,6 +106,8 @@ class Nav1Main : Fragment() {
             binding.rvYourSessions.adapter = TrainingSessionsAdapter(it,viewModel,requireContext())
         }
     }
+
+
 
 
 
