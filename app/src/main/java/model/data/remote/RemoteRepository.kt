@@ -103,14 +103,14 @@ suspend fun foodExampleDetail(accessToken:String){
 
 
 
-    private var _foodRequestByCatId = MutableLiveData<FoodCategoriesData>()
+    private var _foodRequestByCatId = MutableLiveData<FoodCategories>()
 
-    val foodRequestByCatId: LiveData<FoodCategoriesData>
+    val foodRequestByCatId: LiveData<FoodCategories>
         get() = _foodRequestByCatId
     suspend fun getFoodCategoriesById(accessToken:String,region:String){
         try {
             val result = fatSecretApi.retrofitService.getFoodCategoriesById(authToken = "Bearer $accessToken","food_categories.get.v2",region)
-            _foodRequestByCatId.postValue(result.food_categories)
+            _foodRequestByCatId.postValue(result)
         } catch (e:Exception){
             var tag ="API??"
             Log.i(tag,"Fehler bei der API Anfrage!: $e")

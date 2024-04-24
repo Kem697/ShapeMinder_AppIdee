@@ -1,8 +1,5 @@
 package model.data.remote.api_model
 
-
-
-
 data class Food(
     val food_id: String,
     val food_name: String,

@@ -31,8 +31,14 @@ class FoodFinderNav1Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupAdapter()
+
+    }
+
+
+    fun setupAdapter(){
         viewModel.foodRequestCatById.observe(viewLifecycleOwner){
-            binding.fooCategoryGrid.adapter = GridAdapterMyNutrition(it.food_category,viewModel,requireContext())
+            binding.fooCategoryGrid.adapter = GridAdapterMyNutrition(it.food_categories.food_category,viewModel,requireContext())
         }
     }
 

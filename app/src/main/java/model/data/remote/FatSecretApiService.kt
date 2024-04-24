@@ -59,11 +59,10 @@ interface FatSecretApi{
 
 
 @POST("rest/server.api")
-@FormUrlEncoded
 suspend fun getFoodCategoriesById(
     @Header("Authorization") authToken: String,
-    @Field("method") method: String,
-    @Field("region") region: String,
+    @Query("method") method: String,
+    @Query("region") region: String,
     @Query("format") format: String ="json"): FoodCategories
 
 }
