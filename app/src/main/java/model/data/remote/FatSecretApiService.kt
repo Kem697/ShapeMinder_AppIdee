@@ -2,9 +2,12 @@ package model.data.remote
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import model.data.remote.api_model.FoodCategories
 import model.data.remote.api_model.FoodResult
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Query
@@ -41,18 +44,31 @@ interface FatSecretApi{
     ): FoodResult
 
 
-//    suspend fun getFoodCategories(){
-//        /*region sollte "DE" für Deutschland sein.*/
-////        @Query("method") method: String = "food_categories.get.v2",
-//        /*@Query("region") region: String,
-//        @Query("language") language: String,
-//        @Query("calories") calories: DecimalFormat,
-//        @Query("protein") protein: DecimalFormat,
-//        @Query("fat") fat: DecimalFormat,
-//        @Query("carbohydrate") carbohydrate: DecimalFormat*/
-//    } : FoodResult
+
+  /*  @POST("rest/server.api")
+    suspend fun getFoodCategories(
+        @Query("method") method: String,
+        @Query("region") region: String,
+        @Query("calories") calories: String,
+        @Query("protein") protein: String,
+        @Query("fat") fat: String,
+        @Query("carbohydrate") carbohydrate: String): Food
 
 }
+*/
+
+
+@POST("rest/server.api")
+@FormUrlEncoded
+suspend fun getFoodCategoriesById(
+    @Header("Authorization") authToken: String,
+    @Field("method") method: String,
+    @Field("region") region: String,
+    @Query("format") format: String ="json"): FoodCategories
+
+}
+
+
 
 object FoodApi{
     val retrofitService: FatSecretApi by lazy { retrofit.create(FatSecretApi::class.java) }

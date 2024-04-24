@@ -15,7 +15,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.MainActivity
 import com.example.shapeminder_appidee.R
-import com.example.shapeminder_appidee.databinding.FragmentFoodFinderNav1Binding
 import com.example.shapeminder_appidee.databinding.FragmentFoodListBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -101,7 +100,7 @@ class FoodListFragment : Fragment() {
 
 
     fun setUpAdapter(){
-        viewModel.foodCategories.observe(viewLifecycleOwner){
+        viewModel.foodRequest.observe(viewLifecycleOwner){
             binding.screenTitle.text = viewModel.selectedContentTitle.value
             binding.listOfFood.adapter = FoodItemAdapter(it,viewModel)
         }

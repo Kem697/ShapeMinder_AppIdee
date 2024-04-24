@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shapeminder_appidee.databinding.ListItemFoodBinding
 import model.data.local.model.FoodFinderCategory
+import model.data.remote.api_model.Food
 import ui.viewModel.HomeViewModel
 
 class FoodItemAdapter(
-    private val dataset: List<FoodFinderCategory>,
+    private val dataset: List<Food>,
     private val viewModel: HomeViewModel
 ) : RecyclerView.Adapter<FoodItemAdapter.FoodItemViewHolder>() {
 
@@ -26,9 +27,8 @@ class FoodItemAdapter(
 
     override fun onBindViewHolder(holder: FoodItemViewHolder, position: Int) {
         val food = dataset[position]
-        holder.binding.foodName.setText(food.stringRessourceTitle)
-        holder.binding.foodCategory.text = food.grocery
-        holder.binding.foodImage.setImageResource(food.imageRessource)
+        holder.binding.foodName.setText(food.food_name)
+        holder.binding.foodCategory.setText(food.food_type)
     }
 }
 

@@ -1,12 +1,17 @@
 package model.data.remote
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import model.data.remote.api_model.token.AccessToken
 import model.data.local.FatSecretDatabase
-import java.lang.Exception
+import model.data.remote.api_model.Food
+import model.data.remote.api_model.FoodCategories
+import model.data.remote.api_model.FoodCategoriesData
 import java.time.Duration
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import kotlin.Exception
 
 class RemoteRepository (
     private val fatSecretApi: FoodApi,
@@ -76,5 +81,40 @@ suspend fun foodExampleDetail(accessToken:String){
         Log.i(tag,"Fehler bei der API Anfrage!: $e")
     }
 }
+
+
+
+    private var _foodRequest = MutableLiveData<List<Food>>()
+
+    val foodRequest: LiveData<List<Food>>
+        get() = _foodRequest
+
+/*    suspend fun getFoodCategories(calories: String,protein: String,fat: String,carbohydrates: String){
+        try {
+            val result= fatSecretApi.retrofitService.getFoodCategories("food_categories.get.v2","DE",calories,protein,fat,carbohydrates)
+            _foodRequest.postValue(listOf(result))
+            var tag = "Result??"
+            Log.i(tag,"Anfrage?: $result")
+        } catch (e:Exception){
+            var tag ="API Anfrage??"
+            Log.i(tag,"Fehler bei der API Anfrage!: $e")
+        }
+    }*/
+
+
+
+    private var _foodRequestByCatId = MutableLiveData<FoodCategoriesData>()
+
+    val foodRequestByCatId: LiveData<FoodCategoriesData>
+        get() = _foodRequestByCatId
+    suspend fun getFoodCategoriesById(accessToken:String,region:String){
+        try {
+            val result = fatSecretApi.retrofitService.getFoodCategoriesById(authToken = "Bearer $accessToken","food_categories.get.v2",region)
+            _foodRequestByCatId.postValue(result.food_categories)
+        } catch (e:Exception){
+            var tag ="API??"
+            Log.i(tag,"Fehler bei der API Anfrage!: $e")
+        }
+    }
 
 }

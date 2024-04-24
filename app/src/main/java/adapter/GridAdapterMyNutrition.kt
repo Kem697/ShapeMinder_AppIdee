@@ -11,12 +11,12 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import com.example.shapeminder_appidee.R
-import model.data.local.model.FoodFinderCategory
+import model.data.remote.api_model.FoodCat
 import ui.viewModel.HomeViewModel
 
 
 class GridAdapterMyNutrition(
-    private val dataset: List<FoodFinderCategory>,
+    private val dataset: List<FoodCat>,
     private val viewModel: HomeViewModel,
     private val context: Context,
 ) : BaseAdapter() {
@@ -53,8 +53,8 @@ class GridAdapterMyNutrition(
         }
 
         val item = dataset[position]
-        viewHolder.textViewTitle.setText(item.stringRessourceTitle)
-        viewHolder.imageViewIcon.setImageResource(item.imageRessource)
+        viewHolder.textViewTitle.setText(item.food_category_name)
+        viewHolder.imageViewIcon.setImageResource(R.drawable.content3_img)
 
 
 
@@ -67,6 +67,7 @@ class GridAdapterMyNutrition(
                     /*Hier muss das viewModel aufgerufen werden, welche die Daten von
                     * Lebensmittel aus der API anfrage nach Kategorien filtert.*/
 //                    viewModel.filterExercisesByBodypart(selectedBodypart)
+//                    viewModel.getFoodByCategories("","","","")
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }
             }

@@ -221,6 +221,7 @@ class ExerciseListFragment : Fragment() {
 
                 userSelection(dialog,allImageButtons,uncheckedImages,checkedImages,dialogResultsBtn)
 
+
                 var resetBtn = requireActivity().findViewById<MaterialButton>(R.id.resetFilterBtn)
                 resetBtn.setOnClickListener {
                     if (lastSelectedButtonIndex != -1){

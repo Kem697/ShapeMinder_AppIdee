@@ -2,6 +2,7 @@ package ui.viewModel
 
 import android.app.Application
 import android.content.Context
+import android.icu.text.DecimalFormat
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
@@ -35,6 +36,10 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     private var tokenDatabase = getDatabase(application)
     private val remoteRepository = RemoteRepository(FoodApi, FoodTokenApi, tokenDatabase)
+
+    val foodRequest = remoteRepository.foodRequest
+
+    val foodRequestCatById = remoteRepository.foodRequestByCatId
 
     var index = 0
 
@@ -170,6 +175,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     init {
         getTokenFromDatabase()
         setUpDefaultTrainingsessions()
+        getFoodCategorieById("DE")
     }
 
     fun setUpDefaultTrainingsessions(){
@@ -190,15 +196,36 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+/*
     fun getAllSessions(){
         viewModelScope.launch {
             repository.trainingSessionList
         }
     }
+*/
 
     fun insertNewTrainingssession(newTrainingsSession: TrainingsSession){
         viewModelScope.launch {
             repository.insertNewTrainingSession(newTrainingsSession)
+        }
+    }
+
+
+/*
+    fun getFoodByCategories(calories: String, protein: String, fat: String, carbohydrates: String){
+        viewModelScope.launch {
+            remoteRepository.getFoodCategories(calories,protein,fat,carbohydrates)
+        }
+    }
+*/
+
+
+    fun getFoodCategorieById(region:String){
+
+
+        viewModelScope.launch {
+            var getTokenFromDatabase = remoteRepository.getTokenFromDatabase()
+            remoteRepository.getFoodCategoriesById(getTokenFromDatabase[0].accessToken,region)
         }
     }
 
@@ -208,6 +235,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             var tokenInBuffer = remoteRepository.getTokenFromDatabase()
             if (tokenInBuffer.isNullOrEmpty()) {
                 remoteRepository.isTokenExpired(null)
+                /*Zusätzlich angegeben */
+                accessToken = tokenInBuffer[0]
             } else {
                 remoteRepository.isTokenExpired(tokenInBuffer[0])
                 accessToken = remoteRepository.getTokenFromDatabase()[0]

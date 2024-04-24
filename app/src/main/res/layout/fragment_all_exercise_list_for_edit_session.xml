@@ -21,7 +21,7 @@
             android:hint="@string/searchExercises"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_constraints">
+            app:layout_constraintTop_toBottomOf="@+id/resetFilterBtn">
 
 
             <EditText
@@ -139,8 +139,23 @@
             android:layout_margin="16dp"
             android:text="@string/filterBtnTitle"
             app:icon="@drawable/tune_fill0_wght400_grad0_opsz24"
-            app:layout_constraintEnd_toStartOf="@+id/sortByNameBtn"
-            app:layout_constraintTop_toBottomOf="@+id/myT_searchBar" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_constraints" />
+
+
+
+        <TextView
+            android:id="@+id/exerciseTitle"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/exerciseListTitle"
+            android:textColor="@color/black"
+            android:textSize="26dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_constraints" />
+
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/addExerciseToSessionBtn"
@@ -182,13 +197,12 @@
             android:fontFamily="@font/montserrat"
             android:text="@string/amountOfExercises"
             android:textColor="@color/black"
-            android:textSize="14dp"
-            android:textStyle="bold"
+            android:textSize="16dp"
             app:layout_constraintBottom_toTopOf="@+id/materialCardContentView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/myT_searchBar" />
 
- <!--       <com.google.android.material.button.MaterialButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/resetFilterBtn"
             style="@style/customSecondaryButton"
             android:layout_width="wrap_content"
@@ -198,7 +212,7 @@
             android:visibility="invisible"
             app:icon="@drawable/all_unchecked"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:layout_editor_absoluteY="200dp" />-->
+            app:layout_constraintTop_toBottomOf="@+id/setFilterBtn" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
