@@ -1,12 +1,15 @@
 package model.data.remote
 
+import android.content.Context
+import android.util.Base64
+import com.example.shapeminder_appidee.BuildConfig.clientId
+import com.example.shapeminder_appidee.BuildConfig.clientSecret
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import model.data.remote.api_model.FoodCategories
+import model.data.remote.api_model.listOfFoodCat.FoodCategories
 import model.data.remote.api_model.FoodResult
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.Header
 import retrofit2.http.POST
@@ -26,22 +29,14 @@ private val retrofit = Retrofit.Builder()
 
 
 
-
 interface FatSecretApi{
     @POST("rest/server.api")
     suspend fun exampleFoodDetails(
         @Header("Authorization") authToken: String,
         @Header("Content-Type") contentType:String = "application/json",
-        /*method muss mit: "food_categories.get.v2" initialisiert werden.*/
         @Query("method") method: String = "food.get.v2",
-
-
         @Query("food_id") foodId: Int,
-//        @Query("food_name") foodName:String,
-        /*format muss mit: "json" initialisiert werden.*/
-        @Query("format") format: String ="json",
-
-    ): FoodResult
+        @Query("format") format: String ="json"): FoodResult
 
 
 
@@ -59,10 +54,11 @@ interface FatSecretApi{
 
 
 @POST("rest/server.api")
-suspend fun getFoodCategoriesById(
+suspend fun getAllFoodCategories(
     @Header("Authorization") authToken: String,
-    @Query("method") method: String,
-    @Query("region") region: String,
+    @Header("Content-Type") contentType: String = "application/json",
+    @Query("method") method: String = "food_categories.get.v2",
+//    @Query("region") region: String,
     @Query("format") format: String ="json"): FoodCategories
 
 }

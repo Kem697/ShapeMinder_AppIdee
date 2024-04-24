@@ -2,7 +2,6 @@ package ui.viewModel
 
 import android.app.Application
 import android.content.Context
-import android.icu.text.DecimalFormat
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
@@ -14,10 +13,9 @@ import com.example.shapeminder_appidee.R
 import model.data.local.LocalRepository
 import kotlinx.coroutines.launch
 import model.data.local.model.Content
-import model.data.local.model.FoodFinderCategory
+import model.data.local.model.myNutrion.FoodFinderCategory
 import model.data.local.getDatabase
 import model.data.local.getTrainingDatabase
-import model.data.local.model.FilterModel
 import model.data.local.model.TrainingsSession
 import model.data.remote.FoodApi
 import model.data.remote.FoodTokenApi
@@ -34,12 +32,13 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private var groceryCategories = repository.groceryCategories
     private var trainingSessions = repository.trainingSessionList
 
+
     private var tokenDatabase = getDatabase(application)
     private val remoteRepository = RemoteRepository(FoodApi, FoodTokenApi, tokenDatabase)
 
     val foodRequest = remoteRepository.foodRequest
 
-    val foodRequestCatById = remoteRepository.foodRequestByCatId
+    val requestAllFoodCats = remoteRepository.requestAllFoodCategories
 
     var index = 0
 
@@ -58,10 +57,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     val contents: LiveData<List<Content>>
         get() = _contents
 
-    private var _filterIndex = MutableLiveData<FilterModel>()
 
-    val filterIndex: LiveData<FilterModel>
-        get() = _filterIndex
 
 
     private var _bodyparts = MutableLiveData(allBodyparts)
@@ -175,8 +171,11 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     init {
         getTokenFromDatabase()
         setUpDefaultTrainingsessions()
-        getFoodCategorieById("DE")
+        getAllFoodCategories("DE")
     }
+
+    /*EN:
+    * These functions are related to issues in the training session database. */
 
     fun setUpDefaultTrainingsessions(){
         viewModelScope.launch {
@@ -196,13 +195,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-/*
-    fun getAllSessions(){
-        viewModelScope.launch {
-            repository.trainingSessionList
-        }
-    }
-*/
 
     fun insertNewTrainingssession(newTrainingsSession: TrainingsSession){
         viewModelScope.launch {
@@ -211,24 +203,22 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
-/*
-    fun getFoodByCategories(calories: String, protein: String, fat: String, carbohydrates: String){
+    /*EN:
+    * These functions are related to issues through the api call. */
+
+
+    fun apiCall() {
         viewModelScope.launch {
-            remoteRepository.getFoodCategories(calories,protein,fat,carbohydrates)
+            remoteRepository.foodExampleDetail(accessToken!!.accessToken)
         }
     }
-*/
 
-
-    fun getFoodCategorieById(region:String){
-
-
+    fun getAllFoodCategories(region:String){
         viewModelScope.launch {
             var getTokenFromDatabase = remoteRepository.getTokenFromDatabase()
-            remoteRepository.getFoodCategoriesById(getTokenFromDatabase[0].accessToken,region)
+            remoteRepository.getAllFoodCategories(getTokenFromDatabase[0].accessToken,region)
         }
     }
-
 
     fun getTokenFromDatabase() {
         viewModelScope.launch {
@@ -243,14 +233,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
     }
-
-
-    fun apiCall() {
-        viewModelScope.launch {
-            remoteRepository.foodExampleDetail(accessToken!!.accessToken)
-        }
-    }
-
 
     fun filterExercisesByBodypart(bodypart: String) {
         viewModelScope.launch {
@@ -288,14 +270,12 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-
     fun filterAllExercisesByBodypart(bodypart: String) {
         viewModelScope.launch {
             val filteredExercises = allExercisesByBodyparts.filter { it.bodyPart == bodypart }
             _listOfAllExercises.value = filteredExercises
         }
     }
-
 
     fun sortAllExercisesByAlphabet(sort: Boolean) {
         viewModelScope.launch {
@@ -309,7 +289,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-
     fun filterAllExercisesByTitle(userInput: String, context: Context) {
         viewModelScope.launch {
             val filteredExercises = _listOfAllExercises.value?.filter {
@@ -322,12 +301,11 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     var tag4 = "Filter in ViewModel??"
                     Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
                 } else {
-                    resetFilter()
+                    retrieveExercisesByBodyparts()
                 }
             }
         }
     }
-
 
     fun filterAllExercisesByBodyweight(context: Context) {
         viewModelScope.launch {
@@ -340,7 +318,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     var tag4 = "Filter in ViewModel??"
                     Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
                 } else {
-                    resetFilter()
+                    retrieveExercisesByBodyparts()
                 }
             }
         }
@@ -358,12 +336,11 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     var tag4 = "Filter in ViewModel??"
                     Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
                 } else {
-                    resetFilter()
+                    retrieveExercisesByBodyparts()
                 }
             }
         }
     }
-
 
     fun filterAllExercisesByShortDumbbell(context: Context) {
         viewModelScope.launch {
@@ -376,7 +353,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     var tag4 = "Filter in ViewModel??"
                     Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
                 } else {
-                    resetFilter()
+                    retrieveExercisesByBodyparts()
                 }
             }
         }
@@ -422,7 +399,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
-    fun resetFilter() {
+    fun retrieveExercisesByBodyparts() {
         _listOfAllExercises.value = allExercisesByBodyparts
     }
 
@@ -469,7 +446,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     var tag4 = "Filter in ViewModel??"
                     Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
                 } else {
-                    resetFilter(bodypart)
+                    retrieveExercisesByBodyparts(bodypart)
                 }
             }
         }
@@ -487,7 +464,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     var tag4 = "Filter in ViewModel??"
                     Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
                 } else {
-                    resetFilter(bodypart)
+                    retrieveExercisesByBodyparts(bodypart)
                 }
             }
         }
@@ -505,7 +482,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     var tag4 = "Filter in ViewModel??"
                     Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
                 } else {
-                    resetFilter(bodypart)
+                    retrieveExercisesByBodyparts(bodypart)
                 }
             }
         }
@@ -523,7 +500,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     var tag4 = "Filter in ViewModel??"
                     Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
                 } else {
-                    resetFilter(bodypart)
+                    retrieveExercisesByBodyparts(bodypart)
                 }
             }
         }
@@ -541,7 +518,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     var tag4 = "Filter in ViewModel??"
                     Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
                 } else {
-                    resetFilter(bodypart)
+                    retrieveExercisesByBodyparts(bodypart)
                 }
             }
         }
@@ -559,14 +536,14 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     var tag4 = "Filter in ViewModel??"
                     Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
                 } else {
-                    resetFilter(bodypart)
+                    retrieveExercisesByBodyparts(bodypart)
                 }
             }
         }
     }
 
 
-    fun resetFilter(bodypart: String) {
+    fun retrieveExercisesByBodyparts(bodypart: String) {
         _exercisesByBodyparts.value = allExercisesByBodyparts.filter { it.bodyPart == bodypart }
     }
 
@@ -597,7 +574,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         _selectedTraininingssession.value = currentSession
     }
 
-
     fun navigateDetailView(content: Content) {
         _selectedContent.value = content
     }
@@ -606,7 +582,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         content.addedToSession = true
         _addToSessionExercises.value = mutableListOf(content)
     }
-
 
     fun setOriginalList(exercises: List<Content>, bodypart: String) {
         exercises.filter { it.bodyPart == bodypart }
@@ -675,7 +650,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         _savedExercises.value = updatedExercises
     }
 
-
     fun savedInWorkoutSession(addedExercise: Boolean, exercise: Content) {
         val updatedExercises = addToSessionExercises.value ?: mutableListOf()
 
@@ -705,7 +679,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         Log.i(tag,"Liste wird zurückgesetzt ! ${addToSessionExercises.value}")
 
     }
-
 
     fun deleteWorkoutInEditSession(addedExercise: Boolean, exercise: Content) {
         val updatedSession = selectedTraininingssession.value?.trainingsSession?: mutableListOf()

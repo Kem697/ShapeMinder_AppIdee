@@ -3,11 +3,10 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import com.example.shapeminder_appidee.R
 import model.data.local.model.Content
-import model.data.local.model.FoodFinderCategory
+import model.data.local.model.myNutrion.FoodFinderCategory
 import model.data.local.model.TrainingsSession
-import java.util.Locale
 
-    /*DE:
+/*DE:
 *Meinem Repository habe ich eine neue Liste von Content hinzugefügt und
 * als Membereigenschaft gespeichert.*/
 

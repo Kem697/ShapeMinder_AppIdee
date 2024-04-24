@@ -91,7 +91,7 @@ class ExerciseListFragment : Fragment() {
 
 
         var bodyPart = viewModel.selectedContentTitle.value
-        viewModel.resetFilter(bodyPart!!)
+        viewModel.retrieveExercisesByBodyparts(bodyPart!!)
         var tag = "Pause"
         Log.e(tag, "Ist der Screen pausiert?")
     }
@@ -159,7 +159,7 @@ class ExerciseListFragment : Fragment() {
             } else {
                 searchBar.text.clear()
                 binding.myTSearchBar.clearText()
-                viewModel.resetFilter(bodyPart)
+                viewModel.retrieveExercisesByBodyparts(bodyPart)
                 viewModel.setOriginalList(orginalExercises, bodyPart)
                 binding.resetFilterBtn.isInvisible = true
             }
@@ -225,7 +225,7 @@ class ExerciseListFragment : Fragment() {
                 var resetBtn = requireActivity().findViewById<MaterialButton>(R.id.resetFilterBtn)
                 resetBtn.setOnClickListener {
                     if (lastSelectedButtonIndex != -1){
-                        viewModel.resetFilter(viewModel.selectedContentTitle.value!!)
+                        viewModel.retrieveExercisesByBodyparts(viewModel.selectedContentTitle.value!!)
                         allImageButtons.forEach { imageButton ->
                             imageButton?.setImageResource(uncheckedImages[allImageButtons.indexOf(imageButton)])
                             imageButton?.isSelected = false
@@ -238,7 +238,7 @@ class ExerciseListFragment : Fragment() {
 
                 dialogResetBtn?.setOnClickListener {
                     if (lastSelectedButtonIndex != -1){
-                        viewModel.resetFilter(viewModel.selectedContentTitle.value!!)
+                        viewModel.retrieveExercisesByBodyparts(viewModel.selectedContentTitle.value!!)
                         allImageButtons.forEach { imageButton ->
                             imageButton?.setImageResource(uncheckedImages[allImageButtons.indexOf(imageButton)])
                             imageButton?.isSelected = false
@@ -335,7 +335,7 @@ class ExerciseListFragment : Fragment() {
 
                     else -> {
                         resultsBtn?.setOnClickListener {
-                            viewModel.resetFilter(viewModel.selectedContentTitle.value!!)
+                            viewModel.retrieveExercisesByBodyparts(viewModel.selectedContentTitle.value!!)
                         }
                     }
                 }

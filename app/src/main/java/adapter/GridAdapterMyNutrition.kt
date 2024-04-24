@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import com.example.shapeminder_appidee.R
-import model.data.remote.api_model.FoodCat
+import model.data.remote.api_model.listOfFoodCat.FoodCat
 import ui.viewModel.HomeViewModel
 
 

@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shapeminder_appidee.databinding.ListItemFoodBinding
-import model.data.local.model.FoodFinderCategory
 import model.data.remote.api_model.Food
 import ui.viewModel.HomeViewModel
 

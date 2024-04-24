@@ -305,6 +305,7 @@ Achte auf eine gerade Rückenhaltung und kontrollierte Bewegungen.
     <string name="myTtab2Title">Übungen</string>
     <string name="myTtab1Title">Mein Training</string>
     <string name="allExercisesSearchbarHint">Nach Übungen suchen</string>
+    <string name="apiRequestRegionDE">DE</string>
 
 
 </resources>

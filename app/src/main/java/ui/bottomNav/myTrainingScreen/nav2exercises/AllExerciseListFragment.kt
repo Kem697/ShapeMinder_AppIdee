@@ -66,7 +66,7 @@ class AllExerciseListFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         setDefaultHint()
-        viewModel.resetFilter()
+        viewModel.retrieveExercisesByBodyparts()
         val navigationBar =
             requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
         navigationBar.isInvisible = false
@@ -158,7 +158,7 @@ class AllExerciseListFragment : Fragment() {
             } else {
                 searchBar.text.clear()
                 binding.myTSearchBar.clearText()
-                viewModel.resetFilter()
+                viewModel.retrieveExercisesByBodyparts()
                 binding.resetFilterBtn.isInvisible = true
             }
         }
@@ -268,7 +268,7 @@ class AllExerciseListFragment : Fragment() {
 
                 resetBtn.setOnClickListener {
                     if (lastSelectedImageButtonIndex != -1 ||lastSelectedTextButtonIndex != -1) {
-                        viewModel.resetFilter()
+                        viewModel.retrieveExercisesByBodyparts()
                         if (allImageButtons.any { it?.isSelected==true }&& (textButtons.all { it?.isSelected != true })){
                             allImageButtons.forEach { imageButton ->
                                 imageButton?.setImageResource(
@@ -311,7 +311,7 @@ class AllExerciseListFragment : Fragment() {
 
                 dialogResetBtn?.setOnClickListener {
                     if (lastSelectedImageButtonIndex != -1 || lastSelectedTextButtonIndex != -1) {
-                        viewModel.resetFilter()
+                        viewModel.retrieveExercisesByBodyparts()
                         if (allImageButtons.any { it?.isSelected==true }&& (textButtons.all { it?.isSelected != true })){
                             allImageButtons.forEach { imageButton ->
                                 imageButton?.setImageResource(

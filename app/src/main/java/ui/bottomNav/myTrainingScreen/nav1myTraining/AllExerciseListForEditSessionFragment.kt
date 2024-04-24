@@ -1,7 +1,6 @@
 package ui.bottomNav.myTrainingScreen.nav1myTraining
 
 import adapter.CurrentSessionExerciseAdapter
-import adapter.NewSessionExercisesAdapter
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.util.Log
@@ -18,17 +17,13 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.MainActivity
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentAllExerciseListForEditSessionBinding
-import com.example.shapeminder_appidee.databinding.FragmentEditTrainingSessionBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
-import model.data.local.model.Content
-import model.data.local.model.TrainingsSession
 import ui.viewModel.HomeViewModel
 import java.lang.Exception
 
@@ -71,7 +66,7 @@ class AllExerciseListForEditSessionFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         setDefaultHint()
-        viewModel.resetFilter()
+        viewModel.retrieveExercisesByBodyparts()
         val navigationBar =
             requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
         navigationBar.isInvisible = false
@@ -176,7 +171,7 @@ class AllExerciseListForEditSessionFragment : Fragment() {
             } else {
                 searchBar.text.clear()
                 binding.myTSearchBar.clearText()
-                viewModel.resetFilter()
+                viewModel.retrieveExercisesByBodyparts()
                 binding.resetFilterBtn.isInvisible = true
             }
         }
@@ -286,7 +281,7 @@ class AllExerciseListForEditSessionFragment : Fragment() {
 
                 resetBtn.setOnClickListener {
                     if (lastSelectedImageButtonIndex != -1 ||lastSelectedTextButtonIndex != -1) {
-                        viewModel.resetFilter()
+                        viewModel.retrieveExercisesByBodyparts()
                         if (allImageButtons.any { it?.isSelected==true }&& (textButtons.all { it?.isSelected != true })){
                             allImageButtons.forEach { imageButton ->
                                 imageButton?.setImageResource(
@@ -329,7 +324,7 @@ class AllExerciseListForEditSessionFragment : Fragment() {
 
                 dialogResetBtn?.setOnClickListener {
                     if (lastSelectedImageButtonIndex != -1 || lastSelectedTextButtonIndex != -1) {
-                        viewModel.resetFilter()
+                        viewModel.retrieveExercisesByBodyparts()
                         if (allImageButtons.any { it?.isSelected==true }&& (textButtons.all { it?.isSelected != true })){
                             allImageButtons.forEach { imageButton ->
                                 imageButton?.setImageResource(

@@ -6,8 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import model.data.remote.api_model.token.AccessToken
 import model.data.local.FatSecretDatabase
 import model.data.remote.api_model.Food
-import model.data.remote.api_model.FoodCategories
-import model.data.remote.api_model.FoodCategoriesData
+import model.data.remote.api_model.listOfFoodCat.FoodCategories
 import java.time.Duration
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -103,14 +102,15 @@ suspend fun foodExampleDetail(accessToken:String){
 
 
 
-    private var _foodRequestByCatId = MutableLiveData<FoodCategories>()
+    private var _requestAllFoodCategories = MutableLiveData<FoodCategories>()
 
-    val foodRequestByCatId: LiveData<FoodCategories>
-        get() = _foodRequestByCatId
-    suspend fun getFoodCategoriesById(accessToken:String,region:String){
+    val requestAllFoodCategories: LiveData<FoodCategories>
+        get() = _requestAllFoodCategories
+    suspend fun getAllFoodCategories(accessToken:String, region:String){
         try {
-            val result = fatSecretApi.retrofitService.getFoodCategoriesById(authToken = "Bearer $accessToken","food_categories.get.v2",region)
-            _foodRequestByCatId.postValue(result)
+            val result = fatSecretApi.retrofitService.getAllFoodCategories(authToken = "Bearer $accessToken")
+            _requestAllFoodCategories.value = result
+            println("Api Call?? :$result")
         } catch (e:Exception){
             var tag ="API??"
             Log.i(tag,"Fehler bei der API Anfrage!: $e")
