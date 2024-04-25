@@ -171,7 +171,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     init {
         getTokenFromDatabase()
         setUpDefaultTrainingsessions()
-        getAllFoodCategories("DE")
+//        getAllFoodCategories("DE")
     }
 
     /*EN:
@@ -226,7 +226,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             if (tokenInBuffer.isNullOrEmpty()) {
                 remoteRepository.isTokenExpired(null)
                 /*Zusätzlich angegeben */
-                accessToken = tokenInBuffer[0]
+//                accessToken = tokenInBuffer[0]
             } else {
                 remoteRepository.isTokenExpired(tokenInBuffer[0])
                 accessToken = remoteRepository.getTokenFromDatabase()[0]

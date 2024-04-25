@@ -1,16 +1,12 @@
 package model.data.remote
 
-import android.content.Context
-import android.util.Base64
-import com.example.shapeminder_appidee.BuildConfig.clientId
-import com.example.shapeminder_appidee.BuildConfig.clientSecret
+
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import model.data.remote.api_model.listOfFoodCat.FoodCategories
 import model.data.remote.api_model.FoodResult
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.http.FormUrlEncoded
 import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Query
