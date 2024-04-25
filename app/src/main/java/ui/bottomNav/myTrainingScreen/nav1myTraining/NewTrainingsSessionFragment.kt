@@ -1,6 +1,8 @@
 package ui.bottomNav.myTrainingScreen.nav1myTraining
 
 import adapter.NewSessionExercisesAdapter
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -29,12 +31,18 @@ class NewTrainingsSessionFragment : Fragment() {
     val viewModel: HomeViewModel by activityViewModels()
 
 
+    private var savedSessionName = ""
+    private var savedSessionDate = ""
+
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentNewTrainingsSessionBinding.inflate(layoutInflater)
+        loadData()
         return binding.root
     }
 
@@ -48,12 +56,15 @@ class NewTrainingsSessionFragment : Fragment() {
     }
 
 
+
     override fun onResume() {
         super.onResume()
         var navigationBar =
             requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
         navigationBar.isInvisible = true
     }
+
+
 
 
     override fun onStop() {
@@ -64,6 +75,7 @@ class NewTrainingsSessionFragment : Fragment() {
         var tag = "Fragment Wechsel"
         Log.i(tag, "Stopp wird aufgerufen?")
     }
+
 
 
 
@@ -84,6 +96,7 @@ class NewTrainingsSessionFragment : Fragment() {
 
     fun addMoreExercise() {
         binding.addExerciseBtn.setOnClickListener {
+            saveData()
             findNavController().navigate(R.id.allExerciseListFragment)
         }
     }
@@ -96,6 +109,7 @@ class NewTrainingsSessionFragment : Fragment() {
             var userInput = editable.toString()
             if (userInput.isNotBlank()) {
                 sessionName = userInput
+                sessionName = savedSessionName
             } else {
                 editSessionName.text.clear()
             }
@@ -127,6 +141,8 @@ class NewTrainingsSessionFragment : Fragment() {
 
         }
     }
+
+
     fun showDateRangePicker() {
             var datePickerBtn = binding.setDurationBtn
             datePickerBtn.setOnClickListener {
@@ -150,7 +166,7 @@ class NewTrainingsSessionFragment : Fragment() {
                     dateView.isInvisible = false
                     var dateText = binding.dateView
                     dateText.text = "$startDateString - $endDateString"
-
+                    savedSessionDate ="$startDateString - $endDateString"
                 }
 
                 datePicker.show(requireActivity().supportFragmentManager, "datePicker")
@@ -164,7 +180,63 @@ class NewTrainingsSessionFragment : Fragment() {
         cancelBtn.setOnClickListener {
             viewModel.resetSavedInWorkoutSession(addedToSessionExercises)
             findNavController().navigate(R.id.myTrainingScreen)
+            deleteData()
         }
+    }
+
+
+
+    /*DE:
+    * Diese drei Funktionen dienen dazu die Daten Nutzereingaben des Datums und
+    * des Trainingseinheitsnamen während Fragmentwechsel zu speichern, und auch
+    * bei Bedarf zu löschen*/
+
+    /*EN:
+    * This three functions serve to save, load and delete the user input data during
+    * the fragment navigation. Dependent on the needs of the user the different function
+    * will be invoked. For example by clicking the cancel btn the saved data will be
+    * erased to get the default state of the view.*/
+    fun saveData(){
+        val insertedText = binding.editSessionName.text.toString()
+        binding.editSessionName.setText(insertedText)
+
+        val insertedDate = binding.dateView.text.toString()
+        binding.dateView.setText(insertedDate)
+
+        val sharedPreferences: SharedPreferences = requireContext().getSharedPreferences("sharedPrefs",Context.MODE_PRIVATE)
+        val edit = sharedPreferences.edit()
+        edit.apply{
+            putString("SessionName",insertedText)
+            putString("SessionDate",insertedDate)
+        }.apply()
+
+        Toast.makeText(requireContext(),"Daten gespeichert!",Toast.LENGTH_SHORT).show()
+    }
+
+    fun loadData(){
+        val sharedPreferences: SharedPreferences = requireContext().getSharedPreferences("sharedPrefs",Context.MODE_PRIVATE)
+        val savedName = sharedPreferences.getString("SessionName",null)
+        val saveDate = sharedPreferences.getString("SessionDate",null)
+
+        binding.editSessionName.setText(savedName)
+        binding.dateView.setText(saveDate)
+        if (saveDate != null) {
+            if (saveDate.isNotBlank())
+                binding.dateViewCard.isInvisible = false
+        }
+    }
+
+    fun deleteData(){
+        val sharedPreferences: SharedPreferences = requireContext().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.apply {
+            remove("SessionName")
+            remove("SessionDate")
+        }.apply()
+
+        binding.editSessionName.setText("")
+        binding.dateView.setText("")
+        binding.dateViewCard.isInvisible = true
     }
 }
 

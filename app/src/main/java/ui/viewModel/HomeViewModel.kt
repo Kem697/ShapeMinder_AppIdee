@@ -702,6 +702,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         _selectedTraininingssession.value?.trainingsSession = updatedSession
     }
 
+
 }
 
 
