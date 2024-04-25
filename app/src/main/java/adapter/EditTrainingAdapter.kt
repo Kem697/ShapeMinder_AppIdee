@@ -34,6 +34,7 @@ class EditTrainingAdapter (
         holder.binding.exerciseBodyPart.setText(item.bodyPart)
         holder.binding.exerciseImage.setImageResource(item.imageRessource)
 
+
         holder.binding.deleteExercise.setOnClickListener{
             if (item.addedToSession == true){
                 viewModel.deleteWorkoutInEditSession(!item.addedToSession!!,item)

@@ -18,7 +18,9 @@ import model.data.local.getDatabase
 import model.data.local.getTrainingDatabase
 import model.data.local.model.TrainingsSession
 import model.data.remote.FoodApi
+import model.data.remote.FoodFactApi
 import model.data.remote.FoodTokenApi
+import model.data.remote.OpenFoodFactsApi
 import model.data.remote.RemoteRepository
 import model.data.remote.api_model.token.AccessToken
 
@@ -33,8 +35,13 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private var trainingSessions = repository.trainingSessionList
 
 
+
+
     private var tokenDatabase = getDatabase(application)
-    private val remoteRepository = RemoteRepository(FoodApi, FoodTokenApi, tokenDatabase)
+    private val remoteRepository = RemoteRepository(FoodApi, FoodTokenApi,OpenFoodFactsApi, tokenDatabase)
+
+    val searchFood = remoteRepository.getFood
+
 
     val foodRequest = remoteRepository.foodRequest
 
@@ -169,6 +176,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private var accessToken: AccessToken? = null
 
     init {
+        searchFood()
         getTokenFromDatabase()
         setUpDefaultTrainingsessions()
 //        getAllFoodCategories("DE")
@@ -205,6 +213,14 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     /*EN:
     * These functions are related to issues through the api call. */
+
+
+
+    fun searchFood(){
+        viewModelScope.launch {
+            remoteRepository.searchFood()
+        }
+    }
 
 
     fun apiCall() {

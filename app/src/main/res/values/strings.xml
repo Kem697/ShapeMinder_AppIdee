@@ -306,6 +306,7 @@ Achte auf eine gerade Rückenhaltung und kontrollierte Bewegungen.
     <string name="myTtab1Title">Mein Training</string>
     <string name="allExercisesSearchbarHint">Nach Übungen suchen</string>
     <string name="apiRequestRegionDE">DE</string>
+    <string name="recommendFriendsText">Hey, schaue dir diese App an:</string>
 
 
 </resources>

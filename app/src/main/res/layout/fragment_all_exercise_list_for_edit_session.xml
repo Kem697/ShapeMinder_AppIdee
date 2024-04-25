@@ -153,6 +153,7 @@
             android:text="@string/exerciseListTitle"
             android:textColor="@color/black"
             android:textSize="26dp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_constraints" />
 
@@ -198,6 +199,7 @@
             android:text="@string/amountOfExercises"
             android:textColor="@color/black"
             android:textSize="16dp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/materialCardContentView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/myT_searchBar" />

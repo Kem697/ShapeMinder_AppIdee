@@ -37,9 +37,8 @@ class FoodFinderNav1Fragment : Fragment() {
 
 
     fun setupAdapter(){
-        viewModel.requestAllFoodCats.observe(viewLifecycleOwner){
-            var response = it.food_categories?.food_category?: listOf()
-            binding.fooCategoryGrid.adapter = GridAdapterMyNutrition(response,viewModel,requireContext())
+        viewModel.searchFood.observe(viewLifecycleOwner){
+            binding.fooCategoryGrid.adapter = GridAdapterMyNutrition(listOf(it),viewModel,requireContext())
         }
     }
 

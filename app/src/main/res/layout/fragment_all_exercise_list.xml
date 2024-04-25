@@ -197,7 +197,7 @@
             android:fontFamily="@font/montserrat"
             android:text="@string/amountOfExercises"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="16dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/materialCardContentView"
             app:layout_constraintStart_toStartOf="parent"

@@ -7,6 +7,7 @@ import model.data.remote.api_model.token.AccessToken
 import model.data.local.FatSecretDatabase
 import model.data.remote.api_model.Food
 import model.data.remote.api_model.listOfFoodCat.FoodCategories
+import model.data.remote.api_model.openFoodFacts.Product
 import java.time.Duration
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -15,6 +16,7 @@ import kotlin.Exception
 class RemoteRepository (
     private val fatSecretApi: FoodApi,
     private val foodTokenApi: FoodTokenApi,
+    private val openFoodApi: OpenFoodFactsApi,
     private val tokenDatabase: FatSecretDatabase)
 {
 
@@ -41,8 +43,6 @@ class RemoteRepository (
         }
     }
 
-
-
     suspend fun insertToken(){
         try {
             var result = foodTokenApi.retrofitService.generateToken()
@@ -56,7 +56,6 @@ class RemoteRepository (
         }
     }
 
-
     suspend fun getTokenFromDatabase (): List<AccessToken>{
         try {
             return tokenDatabase.fatSecretTokenDao.getAll()
@@ -66,7 +65,6 @@ class RemoteRepository (
             return listOf()
         }
     }
-
 
 
 suspend fun foodExampleDetail(accessToken:String){
@@ -116,5 +114,28 @@ suspend fun foodExampleDetail(accessToken:String){
             Log.i(tag,"Fehler bei der API Anfrage!: $e")
         }
     }
+
+
+    /*OpenFoodFact Api*/
+
+
+    private var _getFood = MutableLiveData<Product>()
+
+    val getFood : LiveData<Product>
+
+        get() = _getFood
+
+
+    suspend fun searchFood(){
+        try {
+            val result = openFoodApi.retrofitService.searchFood()
+            _getFood.value = result
+            println("Api Call?? :$result")
+        } catch (e:Exception){
+            var tag ="API??"
+            Log.i(tag,"Fehler bei der API Anfrage!: $e")
+        }
+    }
+
 
 }

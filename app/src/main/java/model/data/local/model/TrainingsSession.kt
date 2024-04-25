@@ -7,7 +7,6 @@ import androidx.room.TypeConverters
 
 
 @Entity
-//@TypeConverters(TrainingsSessionConv::class)
 data class TrainingsSession(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,

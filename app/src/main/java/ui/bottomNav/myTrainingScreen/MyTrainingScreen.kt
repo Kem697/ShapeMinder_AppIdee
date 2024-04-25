@@ -43,7 +43,7 @@ class MyTrainingScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        searchInput()
+//        searchInput()
 
         /*
         *Mithilfe eines Youtube Videos und ChatGpt habe ich
@@ -95,10 +95,11 @@ class MyTrainingScreen : Fragment() {
 
     override fun onStop() {
         super.onStop()
-        setDefaultHint()
+//        setDefaultHint()
     }
 
 
+/*
     fun searchInput() {
         var mainActivity = activity as MainActivity
         var searchBarTextInput = mainActivity.findViewById<EditText>(R.id.myT_searchBar_textInput)
@@ -111,6 +112,8 @@ class MyTrainingScreen : Fragment() {
         }
 
     }
+*/
+/*
     fun setDefaultHint(){
         var mainActivity = activity as MainActivity
         var searchBar = mainActivity.findViewById<SearchBar>(R.id.myT_searchBar)
@@ -122,6 +125,7 @@ class MyTrainingScreen : Fragment() {
         }
 
     }
+*/
 
 }
 

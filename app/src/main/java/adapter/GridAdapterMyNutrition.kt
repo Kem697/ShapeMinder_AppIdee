@@ -12,11 +12,12 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import com.example.shapeminder_appidee.R
 import model.data.remote.api_model.listOfFoodCat.FoodCat
+import model.data.remote.api_model.openFoodFacts.Product
 import ui.viewModel.HomeViewModel
 
 
 class GridAdapterMyNutrition(
-    private val dataset: List<FoodCat>,
+    private val dataset: List<Product>,
     private val viewModel: HomeViewModel,
     private val context: Context,
 ) : BaseAdapter() {
@@ -53,7 +54,7 @@ class GridAdapterMyNutrition(
         }
 
         val item = dataset[position]
-        viewHolder.textViewTitle.setText(item.food_category_name)
+        viewHolder.textViewTitle.setText(item.productName)
         viewHolder.imageViewIcon.setImageResource(R.drawable.content3_img)
 
 

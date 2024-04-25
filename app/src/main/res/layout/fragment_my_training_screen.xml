@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background ="@color/tertiary"
@@ -36,23 +37,17 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
-        app:tabTextColor="@color/white"
-        app:tabSelectedTextColor="@color/tertiary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myT_searchBar" >
+        app:layout_constraintTop_toBottomOf="@+id/myT_searchBar"
+        app:tabSelectedTextColor="@color/tertiary"
+        app:tabTextColor="@color/white">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/myWorkouts"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:text="Mein Training" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/myProgression"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:text="Fortschritt" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/exercises"

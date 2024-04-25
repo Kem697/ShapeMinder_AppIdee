@@ -209,8 +209,6 @@ class NewTrainingsSessionFragment : Fragment() {
             putString("SessionName",insertedText)
             putString("SessionDate",insertedDate)
         }.apply()
-
-        Toast.makeText(requireContext(),"Daten gespeichert!",Toast.LENGTH_SHORT).show()
     }
 
     fun loadData(){
