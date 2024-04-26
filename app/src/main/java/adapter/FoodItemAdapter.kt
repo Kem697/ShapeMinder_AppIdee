@@ -33,32 +33,29 @@ class FoodItemAdapter(
 
     override fun onBindViewHolder(holder: FoodItemViewHolder, position: Int) {
         val food = dataset[position]
+        when(food.url){
+            "" ->{
+                holder.binding.foodImage.setImageResource(R.drawable.noimage)
+            }
+            else->{
+                holder.binding.foodImage.load(food.url)
+            }
+        }
+
         if (food.productNameDe.isNullOrEmpty()){
-            holder.binding.foodName.setText(context.getString(R.string.unknownFoodName))
             holder.binding.calories.setText(food!!.nutriments!!.calories.toString() + " kcal")
             holder.binding.fats.setText("${context.getString(R.string.fatsText)} " + food!!.nutriments!!.fat.toString()+ " g")
-            holder.binding.proteins.setText("${context.getString(R.string.proteinText)} " + food!!.nutriments!!.fat.toString()+ " g")
-            holder.binding.carbs.setText("${context.getString(R.string.carbsText)} " + food!!.nutriments!!.fat.toString()+ " g")
+            holder.binding.proteins.setText("${context.getString(R.string.proteinText)} " + food!!.nutriments!!.proteins.toString()+ " g")
+            holder.binding.carbs.setText("${context.getString(R.string.carbsText)} " + food!!.nutriments!!.carbohydrates.toString()+ " g")
             holder.binding.foodCategory.setText(food!!.categories.toString())
-            if (food.url != null){
-                holder.binding.foodImage.load(food.url)
-            } else{
-                holder.binding.foodImage.setImageResource(R.drawable.foodcat6_sweets)
-            }
         } else{
             holder.binding.foodName.setText(food!!.productNameDe)
             holder.binding.calories.setText(food!!.nutriments!!.calories.toString() + " kcal")
             holder.binding.fats.setText("${context.getString(R.string.fatsText)} " + food!!.nutriments!!.fat.toString()+ " g")
-            holder.binding.proteins.setText("${context.getString(R.string.proteinText)} " + food!!.nutriments!!.fat.toString()+ " g")
-            holder.binding.carbs.setText("${context.getString(R.string.carbsText)} " + food!!.nutriments!!.fat.toString()+ " g")
+            holder.binding.proteins.setText("${context.getString(R.string.proteinText)} " + food!!.nutriments!!.proteins.toString()+ " g")
+            holder.binding.carbs.setText("${context.getString(R.string.carbsText)} " + food!!.nutriments!!.carbohydrates.toString()+ " g")
             holder.binding.foodCategory.setText(food!!.categories.toString())
-            if (food.url != null){
-                holder.binding.foodImage.load(food.url)
-            } else{
-                holder.binding.foodImage.setImageResource(R.drawable.foodcat6_sweets)
-            }
         }
-
 
         holder.binding.materialCardView.setOnClickListener {
             viewModel.selectedFood(food)
