@@ -761,7 +761,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     food.productNameDe == userInput
                 }
                 if (filteredFood.isNotEmpty()) {
-                    searchFood.postValue(filteredFood)
+                    searchFood.value = filteredFood
                     Log.e("Filter", "Filtered food list: $filteredFood")
                 } else {
                     retrieveNaturalFoodList(foodList) // Setze den Filter zurück

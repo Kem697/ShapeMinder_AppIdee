@@ -142,7 +142,7 @@
             android:backgroundTint="#00FFFFFF"
             android:scaleType="centerCrop"
             android:layout_margin="2dp"
-            android:src="@drawable/favorite_fill0_wght400_grad0_opsz24" />
+            android:src="@drawable/bookmark_fill0_wght400_grad0_opsz24" />
 
     </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
