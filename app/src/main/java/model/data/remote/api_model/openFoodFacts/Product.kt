@@ -6,8 +6,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Product(
-    @Json(name = "product_name")
-    val productName: String?,
+    @Json(name = "product_name_de")
+    val productNameDe: String?,
 
     val nutriments: Nutriments?,
 

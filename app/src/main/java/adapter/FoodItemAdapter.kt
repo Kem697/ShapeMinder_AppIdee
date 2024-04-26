@@ -33,25 +33,32 @@ class FoodItemAdapter(
 
     override fun onBindViewHolder(holder: FoodItemViewHolder, position: Int) {
         val food = dataset[position]
-//        val foodImageUrl = "https://images.openfoodfacts.net/images/"
-        holder.binding.foodName.setText(food!!.productName)
-        holder.binding.calories.setText(food!!.nutriments!!.calories.toString() + " kcal")
-        holder.binding.fats.setText(food!!.nutriments!!.fat.toString()+ " g")
-        holder.binding.proteins.setText(food!!.nutriments!!.proteins.toString()+ " g")
-        holder.binding.carbs.setText(food!!.nutriments!!.carbohydrates.toString()+ " g")
-        if (food.url != null){
-            holder.binding.foodImage.load(food.url)
+        if (food.productNameDe.isNullOrEmpty()){
+            holder.binding.foodName.setText(context.getString(R.string.unknownFoodName))
+            holder.binding.calories.setText(food!!.nutriments!!.calories.toString() + " kcal")
+            holder.binding.fats.setText(food!!.nutriments!!.fat.toString()+ " g")
+            holder.binding.proteins.setText(food!!.nutriments!!.proteins.toString()+ " g")
+            holder.binding.carbs.setText(food!!.nutriments!!.carbohydrates.toString()+ " g")
+            if (food.url != null){
+                holder.binding.foodImage.load(food.url)
+            } else{
+                holder.binding.foodImage.setImageResource(R.drawable.foodcat6_sweets)
+            }
         } else{
-            holder.binding.foodImage.setImageResource(R.drawable.foodcat6_sweets)
+            holder.binding.foodName.setText(food!!.productNameDe)
+            holder.binding.calories.setText(food!!.nutriments!!.calories.toString() + " kcal")
+            holder.binding.fats.setText(food!!.nutriments!!.fat.toString()+ " g")
+            holder.binding.proteins.setText(food!!.nutriments!!.proteins.toString()+ " g")
+            holder.binding.carbs.setText(food!!.nutriments!!.carbohydrates.toString()+ " g")
+            if (food.url != null){
+                holder.binding.foodImage.load(food.url)
+            } else{
+                holder.binding.foodImage.setImageResource(R.drawable.foodcat6_sweets)
+            }
         }
-        var tag = "Image"
-        Log.i(tag, "${food.url}")
-//        holder.binding.foodCategory.setText(food.nutriments?.fat?:"0".toInt())
 
 
         holder.binding.materialCardView.setOnClickListener {
-            val selectedCategory = ContextCompat.getString(context, R.string.gc_grain_and_corn)
-            viewModel.getContentTitle(selectedCategory)
             holder.binding.root.findNavController().navigate(R.id.foodDetailViewFragment)
         }
     }
