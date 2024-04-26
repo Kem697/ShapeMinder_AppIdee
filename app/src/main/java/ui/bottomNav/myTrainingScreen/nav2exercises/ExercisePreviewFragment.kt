@@ -17,7 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import model.data.local.model.Content
+import model.data.local.model.myTraining.Content
 import ui.viewModel.HomeViewModel
 
 
@@ -206,7 +206,7 @@ class ExercisePreviewFragment : Fragment() {
     *  is automatically displayed in the view. In addition, a tag is called in the logcat.
     * */
 
-    fun playVideoOnYoutube(videoExercise:Content){
+    fun playVideoOnYoutube(videoExercise: Content){
         var ytPlayer = binding.videoViewYtPlayer
         lifecycle.addObserver(ytPlayer)
         ytPlayer.addYouTubePlayerListener(object : AbstractYouTubePlayerListener(){
@@ -235,7 +235,7 @@ class ExercisePreviewFragment : Fragment() {
     }
 
 
-    fun addExerciseToTraining(exercise:Content){
+    fun addExerciseToTraining(exercise: Content){
         binding.addTrainingBtn.setOnClickListener {
             viewModel.addToNewWorkout(exercise)
             findNavController().navigate(R.id.newTrainingsSessionFragment)

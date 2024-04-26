@@ -2,9 +2,9 @@ package model.data.local
 import android.util.Log
 import androidx.lifecycle.LiveData
 import com.example.shapeminder_appidee.R
-import model.data.local.model.Content
+import model.data.local.model.myTraining.Content
 import model.data.local.model.myNutrion.FoodFinderCategory
-import model.data.local.model.TrainingsSession
+import model.data.local.model.myTraining.TrainingsSession
 
 /*DE:
 *Meinem Repository habe ich eine neue Liste von Content hinzugefügt und

@@ -12,18 +12,13 @@ import androidx.lifecycle.viewModelScope
 import com.example.shapeminder_appidee.R
 import model.data.local.LocalRepository
 import kotlinx.coroutines.launch
-import model.data.local.model.Content
+import model.data.local.model.myTraining.Content
 import model.data.local.model.myNutrion.FoodFinderCategory
-import model.data.local.getDatabase
 import model.data.local.getTrainingDatabase
-import model.data.local.model.TrainingsSession
-import model.data.remote.FoodApi
-import model.data.remote.FoodFactApi
-import model.data.remote.FoodTokenApi
+import model.data.local.model.myTraining.TrainingsSession
 import model.data.remote.OpenFoodFactsApi
 import model.data.remote.RemoteRepository
 import model.data.remote.api_model.openFoodFacts.Product
-import model.data.remote.api_model.token.AccessToken
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private var trainingDatabase = getTrainingDatabase(application)
@@ -38,8 +33,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
 
 
-    private var tokenDatabase = getDatabase(application)
-    private val remoteRepository = RemoteRepository(FoodApi, FoodTokenApi,OpenFoodFactsApi, tokenDatabase)
+    private val remoteRepository = RemoteRepository(OpenFoodFactsApi)
 
     val searchFood = remoteRepository.getFood
 
@@ -56,12 +50,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
         get() = _selectedFood
 
-
-/*
-    val foodRequest = remoteRepository.foodRequest
-
-    val requestAllFoodCats = remoteRepository.requestAllFoodCategories
-*/
 
     var index = 0
 
@@ -146,7 +134,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
 
 
-    private var _savedExercises = MutableLiveData<MutableList<Content>>(mutableListOf(Content(0,0,0,true,false,"",false,null,null)
+    private var _savedExercises = MutableLiveData<MutableList<Content>>(mutableListOf(
+        Content(0,0,0,true,false,"",false,null,null)
     ))
     val savedExercises: LiveData<MutableList<Content>>
         get() = _savedExercises
@@ -189,12 +178,9 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     * The method is then called in my GridAdapter */
 
 
-    private var accessToken: AccessToken? = null
 
     init {
-        getTokenFromDatabase()
         setUpDefaultTrainingsessions()
-//        getAllFoodCategories("DE")
     }
 
     /*EN:
@@ -229,40 +215,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     /*EN:
     * These functions are related to issues through the api call. */
 
-
-
-
-
-
-/*
-    fun apiCall() {
-        viewModelScope.launch {
-            remoteRepository.foodExampleDetail(accessToken!!.accessToken)
-        }
-    }
-*/
-/*
-    fun getAllFoodCategories(region:String){
-        viewModelScope.launch {
-            var getTokenFromDatabase = remoteRepository.getTokenFromDatabase()
-            remoteRepository.getAllFoodCategories(getTokenFromDatabase[0].accessToken,region)
-        }
-    }
-*/
-
-    fun getTokenFromDatabase() {
-        viewModelScope.launch {
-            var tokenInBuffer = remoteRepository.getTokenFromDatabase()
-            if (tokenInBuffer.isNullOrEmpty()) {
-                remoteRepository.isTokenExpired(null)
-                /*Zusätzlich angegeben */
-//                accessToken = tokenInBuffer[0]
-            } else {
-                remoteRepository.isTokenExpired(tokenInBuffer[0])
-                accessToken = remoteRepository.getTokenFromDatabase()[0]
-            }
-        }
-    }
 
 
     /*Open Food Fact Api*/

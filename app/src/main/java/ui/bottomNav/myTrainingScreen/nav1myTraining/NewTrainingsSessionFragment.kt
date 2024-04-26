@@ -18,8 +18,8 @@ import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentNewTrainingsSessionBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.datepicker.MaterialDatePicker
-import model.data.local.model.Content
-import model.data.local.model.TrainingsSession
+import model.data.local.model.myTraining.Content
+import model.data.local.model.myTraining.TrainingsSession
 import ui.viewModel.HomeViewModel
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -109,15 +109,17 @@ class NewTrainingsSessionFragment : Fragment() {
 
 
         saveBtn.setOnClickListener {
-            if (sessionName.isNotBlank()) {
+            if (sessionName.isNotBlank()|| editSessionName.text.isNotBlank()) {
                 if (addedToSessionExercises.size > 0) {
-                    var newSession = TrainingsSession(sessionName = sessionName, sessionDate = binding.dateView.text.toString(),trainingsSession = addedToSessionExercises)
+                    var newSession = TrainingsSession(sessionName = editSessionName.text.toString(), sessionDate = binding.dateView.text.toString(),trainingsSession = addedToSessionExercises)
                     viewModel.insertNewTrainingssession(newSession)
                     Toast.makeText(
                         requireContext(),
                         "Dein Trainingsplan wurde gespeichert!.",
                         Toast.LENGTH_SHORT
                     ).show()
+                    viewModel.resetSavedInWorkoutSession(addedToSessionExercises)
+                    deleteData()
                     findNavController().navigate(R.id.myTrainingScreen)
                 } else {
                     Toast.makeText(
@@ -226,6 +228,7 @@ class NewTrainingsSessionFragment : Fragment() {
         }.apply()
 
 
+        binding.editSessionName.setText("")
         binding.dateViewCard.isInvisible = true
     }
 }

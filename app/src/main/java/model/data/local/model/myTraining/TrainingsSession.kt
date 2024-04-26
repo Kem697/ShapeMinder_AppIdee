@@ -1,9 +1,7 @@
-package model.data.local.model
+package model.data.local.model.myTraining
 
-import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
 
 
 @Entity

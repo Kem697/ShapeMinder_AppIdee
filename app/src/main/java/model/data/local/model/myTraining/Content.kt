@@ -1,4 +1,4 @@
-package model.data.local.model
+package model.data.local.model.myTraining
 
 import kotlinx.serialization.Serializable
 

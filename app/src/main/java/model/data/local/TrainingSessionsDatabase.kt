@@ -5,8 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import model.data.local.model.TrainingsSession
-import model.data.local.model.TrainingsSessionConv
+import model.data.local.model.myTraining.TrainingsSession
+import model.data.local.model.myTraining.TrainingsSessionConv
 
 @Database(entities = [TrainingsSession::class], version = 1)
 @TypeConverters(TrainingsSessionConv::class)

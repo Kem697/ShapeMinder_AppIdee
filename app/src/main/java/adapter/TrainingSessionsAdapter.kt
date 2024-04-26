@@ -1,14 +1,13 @@
 package adapter
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.ListItemMySessionBinding
-import model.data.local.model.TrainingsSession
+import model.data.local.model.myTraining.TrainingsSession
 import ui.viewModel.HomeViewModel
 class TrainingSessionsAdapter (
     private val dataset: List<TrainingsSession>,

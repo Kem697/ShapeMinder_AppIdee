@@ -6,8 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shapeminder_appidee.databinding.ListItemEditSessionBinding
-import com.example.shapeminder_appidee.databinding.ListItemMySessionBinding
-import model.data.local.model.Content
+import model.data.local.model.myTraining.Content
 import ui.viewModel.HomeViewModel
 
 

@@ -34,7 +34,6 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.view.isInvisible
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -42,7 +41,7 @@ import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.ListItemBinding
 import com.example.shapeminder_appidee.databinding.ListItemExerciseBinding
 import com.example.shapeminder_appidee.databinding.ListItemMyTrainingBinding
-import model.data.local.model.Content
+import model.data.local.model.myTraining.Content
 import ui.viewModel.HomeViewModel
 
 

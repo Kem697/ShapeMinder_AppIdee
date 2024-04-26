@@ -12,9 +12,6 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import com.example.shapeminder_appidee.R
 import model.data.local.model.myNutrion.FoodFinderCategory
-import model.data.remote.api_model.listOfFoodCat.FoodCat
-import model.data.remote.api_model.listOfFoodCat.FoodCategories
-import model.data.remote.api_model.openFoodFacts.Product
 import ui.viewModel.HomeViewModel
 
 

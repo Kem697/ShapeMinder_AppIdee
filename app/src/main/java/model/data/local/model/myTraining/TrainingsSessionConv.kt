@@ -1,4 +1,4 @@
-package model.data.local.model
+package model.data.local.model.myTraining
 
 import androidx.room.TypeConverter
 import kotlinx.serialization.encodeToString

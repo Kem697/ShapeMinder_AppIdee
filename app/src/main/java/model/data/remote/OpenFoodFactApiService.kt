@@ -5,18 +5,13 @@ package model.data.remote
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import model.data.remote.api_model.FoodResponse
-import model.data.remote.api_model.listOfFoodCat.FoodCategories
-import model.data.remote.api_model.openFoodFacts.Product
+
 import model.data.remote.api_model.openFoodFacts.ProductResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.http.Field
 import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 

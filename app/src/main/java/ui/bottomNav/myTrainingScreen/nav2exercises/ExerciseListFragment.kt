@@ -24,7 +24,7 @@ import com.example.shapeminder_appidee.databinding.FragmentExerciseListBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
-import model.data.local.model.Content
+import model.data.local.model.myTraining.Content
 import ui.viewModel.HomeViewModel
 
 class ExerciseListFragment : Fragment() {

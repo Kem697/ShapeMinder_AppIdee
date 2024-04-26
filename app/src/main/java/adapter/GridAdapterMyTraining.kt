@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat.getString
 import androidx.navigation.findNavController
 import com.example.shapeminder_appidee.R
-import model.data.local.model.Content
+import model.data.local.model.myTraining.Content
 import ui.viewModel.HomeViewModel
 
 /*

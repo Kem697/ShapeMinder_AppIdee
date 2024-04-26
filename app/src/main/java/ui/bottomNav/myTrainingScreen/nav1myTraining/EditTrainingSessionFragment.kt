@@ -14,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentEditTrainingSessionBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import model.data.local.model.TrainingsSession
+import model.data.local.model.myTraining.TrainingsSession
 import ui.viewModel.HomeViewModel
 
 
