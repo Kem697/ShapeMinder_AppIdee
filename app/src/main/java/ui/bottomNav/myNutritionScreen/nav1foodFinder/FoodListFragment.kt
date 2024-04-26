@@ -56,7 +56,7 @@ class FoodListFragment : Fragment() {
 
     override fun onStop() {
         super.onStop()
-        setDefaultHint()
+//        setDefaultHint()
     }
 
 
@@ -111,12 +111,11 @@ class FoodListFragment : Fragment() {
         viewModel.searchFood.observe(viewLifecycleOwner){ product->
             binding.screenTitle.text = viewModel.selectedContentTitle.value
             binding.listOfFood.adapter = FoodItemAdapter(product,viewModel,requireContext())
-//            searchInput(product)
         }
     }
 
 
-    fun searchInput(productList: List<Product>) {
+   /* fun searchInput(productList: List<Product>) {
         var searchBar = binding.foodListSearchBarTextInput
         val context = requireContext()
         searchBar.addTextChangedListener { editable ->
@@ -141,5 +140,5 @@ class FoodListFragment : Fragment() {
             binding.foodListSearchBarTextInput.text.clearSpans()
             binding.foodListSearchBar.clearText()
         }
-    }
+    }*/
 }
