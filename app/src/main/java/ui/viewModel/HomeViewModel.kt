@@ -22,6 +22,7 @@ import model.data.remote.FoodFactApi
 import model.data.remote.FoodTokenApi
 import model.data.remote.OpenFoodFactsApi
 import model.data.remote.RemoteRepository
+import model.data.remote.api_model.openFoodFacts.Product
 import model.data.remote.api_model.token.AccessToken
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
@@ -41,6 +42,19 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val remoteRepository = RemoteRepository(FoodApi, FoodTokenApi,OpenFoodFactsApi, tokenDatabase)
 
     val searchFood = remoteRepository.getFood
+
+
+    /*DE:
+    * Diese LiveData setzt das ausgewählte Produkt.*/
+
+    /*EN:
+    * This LiveData set the selected product for
+    * the sharing of data to the detail View.*/
+
+    private var _selectedFood = MutableLiveData<Product>()
+    val selectedFood : LiveData<Product>
+
+        get() = _selectedFood
 
 
 /*
@@ -178,7 +192,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private var accessToken: AccessToken? = null
 
     init {
-        searchFood()
         getTokenFromDatabase()
         setUpDefaultTrainingsessions()
 //        getAllFoodCategories("DE")
@@ -253,9 +266,9 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
 
     /*Open Food Fact Api*/
-    fun searchFood(){
+    fun searchFood(foodCatEn: String,countryTagEn:String){
         viewModelScope.launch {
-            remoteRepository.searchFood()
+            remoteRepository.searchFood(foodCatEn,countryTagEn)
         }
     }
 
@@ -591,6 +604,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
      *
     */
 
+
+
     fun getContentTitle(bodypart: String) {
         _selectedContentTitle.value = bodypart
     }
@@ -726,6 +741,36 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
         _selectedTraininingssession.value?.trainingsSession = updatedSession
     }
+
+
+
+    fun selectedFood(selectedFood: Product){
+        _selectedFood.value = selectedFood
+    }
+
+
+    fun retrieveNaturalFoodList(nonFilteredList: List<Product>) {
+        searchFood.value = nonFilteredList
+    }
+
+    fun filterFoodInCategorieByTitle(userInput: String) {
+        viewModelScope.launch {
+            val nonFilteredList = searchFood.value
+            nonFilteredList?.let { foodList ->
+                val filteredFood = foodList.filter { food ->
+                    food.productNameDe == userInput
+                }
+                if (filteredFood.isNotEmpty()) {
+                    searchFood.postValue(filteredFood)
+                    Log.e("Filter", "Filtered food list: $filteredFood")
+                } else {
+                    retrieveNaturalFoodList(foodList) // Setze den Filter zurück
+                }
+            }
+        }
+    }
+
+
 
 
 }

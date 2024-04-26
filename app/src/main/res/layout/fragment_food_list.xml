@@ -24,10 +24,10 @@
 
 
             <EditText
+                android:id="@+id/foodList_searchBar_textInput"
                 app:backgroundTint="@color/white"
                 android:background="@android:color/transparent"
                 android:textColor="@color/white"
-                android:id="@+id/myT_searchBar_textInput"
                 android:layout_width="match_parent"
                 android:paddingLeft="64dp"
                 android:layout_height="match_parent"

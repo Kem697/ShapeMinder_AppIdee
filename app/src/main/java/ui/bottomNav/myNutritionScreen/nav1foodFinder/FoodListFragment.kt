@@ -3,6 +3,7 @@ package ui.bottomNav.myNutritionScreen.nav1foodFinder
 import adapter.FoodItemAdapter
 import android.content.res.ColorStateList
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.MainActivity
@@ -18,6 +20,7 @@ import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentFoodListBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import model.data.remote.api_model.openFoodFacts.Product
 import ui.viewModel.HomeViewModel
 
 class FoodListFragment : Fragment() {
@@ -48,6 +51,12 @@ class FoodListFragment : Fragment() {
         var navigationBar =
             requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
         navigationBar.isInvisible = true
+    }
+
+
+    override fun onStop() {
+        super.onStop()
+        setDefaultHint()
     }
 
 
@@ -102,6 +111,35 @@ class FoodListFragment : Fragment() {
         viewModel.searchFood.observe(viewLifecycleOwner){ product->
             binding.screenTitle.text = viewModel.selectedContentTitle.value
             binding.listOfFood.adapter = FoodItemAdapter(product,viewModel,requireContext())
+//            searchInput(product)
+        }
+    }
+
+
+    fun searchInput(productList: List<Product>) {
+        var searchBar = binding.foodListSearchBarTextInput
+        val context = requireContext()
+        searchBar.addTextChangedListener { editable ->
+            var userInput = editable.toString()
+            if (userInput.isNotBlank()) {
+                binding.foodListSearchBar.setText(userInput)
+                var tag = "Filter???"
+                Log.i(tag, "Werden die Inhalte hier gefiltert. :${userInput}")
+                viewModel.filterFoodInCategorieByTitle(userInput)
+            } else {
+                searchBar.text.clear()
+                binding.foodListSearchBar.clearText()
+                viewModel.retrieveNaturalFoodList(productList)
+//                binding.resetFilterBtn.isInvisible = true
+            }
+        }
+    }
+    fun setDefaultHint() {
+        binding.foodListSearchBar.hint = getString(R.string.searchBarHint)
+        if (binding.foodListSearchBarTextInput.text.isNotBlank()) {
+            binding.foodListSearchBarTextInput.text.clear()
+            binding.foodListSearchBarTextInput.text.clearSpans()
+            binding.foodListSearchBar.clearText()
         }
     }
 }

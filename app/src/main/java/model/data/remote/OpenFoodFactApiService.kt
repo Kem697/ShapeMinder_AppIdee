@@ -16,6 +16,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Field
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 
@@ -45,7 +46,7 @@ private val retrofit = Retrofit.Builder()
 
 
 
-interface FoodFactApi{
+/*interface FoodFactApi{
     @GET("/api/v2/search")
     suspend fun searchFood(
         @Query("categories_tags_en") foodCat: String = "chocolates",
@@ -53,7 +54,17 @@ interface FoodFactApi{
     ) : ProductResponse
 
 
+}*/
+
+interface FoodFactApi {
+    @GET("/api/v2/search")
+    suspend fun searchFood(
+        @Query("categories_tags_en") foodCatEn: String,
+        @Query("countries_tags_en") countryTagEn: String
+    ): ProductResponse
 }
+
+
 
 
 

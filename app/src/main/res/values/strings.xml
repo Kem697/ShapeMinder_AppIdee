@@ -203,12 +203,7 @@ Achte auf eine gerade Rückenhaltung und kontrollierte Bewegungen.
     <string name="weKH_SideRaiseLayOnBenchYtVideo" translatable="false">2oMQvDAu0m8</string>
 
 
-    <string name="gc_fruits_and_vegetable">Obst und Gemüse</string>
-    <string name="gc_grain_and_corn">Getreide</string>
-    <string name="gc_oil_and_fats">Öle und Fette</string>
-    <string name="gc_milk_and_eg">Molkerei und Eier</string>
-    <string name="gc_meat_and_fish">Fleisch und Fisch</string>
-    <string name="gc_sweets">Süssigkeiten</string>
+
     <string name="ecBenchpress">Bankdrücken</string>
     <string name="ecShoulderpress">Schulterdrücken</string>
     <string name="addExercise">Neue Übung</string>
@@ -309,7 +304,19 @@ Achte auf eine gerade Rückenhaltung und kontrollierte Bewegungen.
     <string name="recommendFriendsText">Hey, schaue dir diese App an:</string>
 
 
-    <string name="unknownFoodName">Unbekannter Name</string>
+
+    <!--Search for Food String Ressources-->
+
+    <string name="gc_fruits_and_vegetable">Obst und Gemüse</string>
+    <string name="gc_grain_and_corn">Getreide</string>
+    <string name="gc_oil_and_fats">Öle und Fette</string>
+    <string name="gc_milk_and_eg">Molkerei und Eier</string>
+    <string name="gc_meat_and_fish">Fleisch und Fisch</string>
+    <string name="gc_sweets">Süssigkeiten</string>
+
+
+    <string name="unknownFoodName">K.A.</string>
+
 
 
 

@@ -36,9 +36,10 @@ class FoodItemAdapter(
         if (food.productNameDe.isNullOrEmpty()){
             holder.binding.foodName.setText(context.getString(R.string.unknownFoodName))
             holder.binding.calories.setText(food!!.nutriments!!.calories.toString() + " kcal")
-            holder.binding.fats.setText(food!!.nutriments!!.fat.toString()+ " g")
-            holder.binding.proteins.setText(food!!.nutriments!!.proteins.toString()+ " g")
-            holder.binding.carbs.setText(food!!.nutriments!!.carbohydrates.toString()+ " g")
+            holder.binding.fats.setText("${context.getString(R.string.fatsText)} " + food!!.nutriments!!.fat.toString()+ " g")
+            holder.binding.proteins.setText("${context.getString(R.string.proteinText)} " + food!!.nutriments!!.fat.toString()+ " g")
+            holder.binding.carbs.setText("${context.getString(R.string.carbsText)} " + food!!.nutriments!!.fat.toString()+ " g")
+            holder.binding.foodCategory.setText(food!!.categories.toString())
             if (food.url != null){
                 holder.binding.foodImage.load(food.url)
             } else{
@@ -47,9 +48,10 @@ class FoodItemAdapter(
         } else{
             holder.binding.foodName.setText(food!!.productNameDe)
             holder.binding.calories.setText(food!!.nutriments!!.calories.toString() + " kcal")
-            holder.binding.fats.setText(food!!.nutriments!!.fat.toString()+ " g")
-            holder.binding.proteins.setText(food!!.nutriments!!.proteins.toString()+ " g")
-            holder.binding.carbs.setText(food!!.nutriments!!.carbohydrates.toString()+ " g")
+            holder.binding.fats.setText("${context.getString(R.string.fatsText)} " + food!!.nutriments!!.fat.toString()+ " g")
+            holder.binding.proteins.setText("${context.getString(R.string.proteinText)} " + food!!.nutriments!!.fat.toString()+ " g")
+            holder.binding.carbs.setText("${context.getString(R.string.carbsText)} " + food!!.nutriments!!.fat.toString()+ " g")
+            holder.binding.foodCategory.setText(food!!.categories.toString())
             if (food.url != null){
                 holder.binding.foodImage.load(food.url)
             } else{
@@ -59,6 +61,7 @@ class FoodItemAdapter(
 
 
         holder.binding.materialCardView.setOnClickListener {
+            viewModel.selectedFood(food)
             holder.binding.root.findNavController().navigate(R.id.foodDetailViewFragment)
         }
     }

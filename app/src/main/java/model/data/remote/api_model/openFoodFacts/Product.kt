@@ -9,10 +9,13 @@ data class Product(
     @Json(name = "product_name_de")
     val productNameDe: String?,
 
+    @Json(name = "categories_tags")
+    val categories: List<String>,
+
     val nutriments: Nutriments?,
 
     @Json(name="image_small_url")
-    val url : String,
+    val url : String ="",
 
     @Json(name ="image_urls")
     val imageUrls: ImageUrls?

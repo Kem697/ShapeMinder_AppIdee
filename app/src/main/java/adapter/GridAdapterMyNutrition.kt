@@ -71,6 +71,7 @@ class GridAdapterMyNutrition(
                     * Lebensmittel aus der API anfrage nach Kategorien filtert.*/
 //                    viewModel.filterExercisesByBodypart(selectedBodypart)
 //                    viewModel.getFoodByCategories("","","","")
+                    viewModel.searchFood("pastas","germany")
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }
             }
@@ -79,6 +80,7 @@ class GridAdapterMyNutrition(
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedCategory = ContextCompat.getString(context, R.string.gc_fruits_and_vegetable)
                     viewModel.getContentTitle(selectedCategory)
+                    viewModel.searchFood("fruits","germany")
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }
             }
@@ -87,6 +89,7 @@ class GridAdapterMyNutrition(
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedCategory = ContextCompat.getString(context, R.string.gc_milk_and_eg)
                     viewModel.getContentTitle(selectedCategory)
+                    viewModel.searchFood("milks","germany")
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }
             }
@@ -95,6 +98,7 @@ class GridAdapterMyNutrition(
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedCategory = ContextCompat.getString(context, R.string.gc_oil_and_fats)
                     viewModel.getContentTitle(selectedCategory)
+                    viewModel.searchFood("olive oils","germany")
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }
             }
@@ -103,6 +107,7 @@ class GridAdapterMyNutrition(
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedCategory = ContextCompat.getString(context, R.string.gc_meat_and_fish)
                     viewModel.getContentTitle(selectedCategory)
+                    viewModel.searchFood("meats and their products","germany")
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }
             }
@@ -111,12 +116,11 @@ class GridAdapterMyNutrition(
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedCategory = ContextCompat.getString(context, R.string.gc_sweets)
                     viewModel.getContentTitle(selectedCategory)
+                    viewModel.searchFood("sweet snacks","germany")
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }
             }
         }
-
-
 
 
 

@@ -8,12 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isInvisible
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import coil.load
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentFoodDetailViewBinding
+import ui.viewModel.HomeViewModel
 
 class FoodDetailViewFragment : Fragment() {
     private lateinit var binding : FragmentFoodDetailViewBinding
+    val viewModel: HomeViewModel by activityViewModels()
+
 
 
     override fun onCreateView(
@@ -26,6 +31,7 @@ class FoodDetailViewFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setUpView()
         navigateBack()
     }
 
@@ -107,5 +113,28 @@ class FoodDetailViewFragment : Fragment() {
         }
     }
 */
+
+
+
+    fun setUpView(){
+        viewModel.selectedFood.observe(viewLifecycleOwner){
+            if (it.productNameDe.isNullOrEmpty()){
+                binding.foodName.setText(requireContext().getString(R.string.unknownFoodName))
+                binding.categorie.setText(it.categories.first())
+                binding.carbsAmount.setText("${it.nutriments?.carbohydrates.toString()}" + " g")
+                binding.fatsAmount.setText("${it.nutriments?.fat.toString()}" + " g")
+                binding.proteinAmount.setText("${it.nutriments?.proteins.toString()}" + " g")
+                binding.foodImage.load(it.url)
+            } else {
+                binding.foodName.setText(it.productNameDe)
+                binding.categorie.setText(it.categories.first())
+                binding.carbsAmount.setText("${it.nutriments?.carbohydrates.toString()}" + " g")
+                binding.fatsAmount.setText("${it.nutriments?.fat.toString()}" + " g")
+                binding.proteinAmount.setText("${it.nutriments?.proteins.toString()}" + " g")
+                binding.foodImage.load(it.url)
+
+            }
+        }
+    }
 
 }
