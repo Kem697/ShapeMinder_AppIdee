@@ -8,6 +8,7 @@ import model.data.local.FatSecretDatabase
 import model.data.remote.api_model.Food
 import model.data.remote.api_model.listOfFoodCat.FoodCategories
 import model.data.remote.api_model.openFoodFacts.Product
+import model.data.remote.api_model.openFoodFacts.ProductResponse
 import java.time.Duration
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -33,12 +34,8 @@ class RemoteRepository (
                 if (timeRequirement>=24){
                     insertToken()
                 } else {
-                    var tag = "Aktueller Token??"
-                    Log.i(tag,"Token-Status: ${tokenInBuffer.accessToken}")
                 }
             } catch (e:Exception){
-                var tag = "Token abgelaufen??"
-                Log.i(tag,"Fehler beim Überprüfen des Token-Status: $e")
             }
         }
     }
@@ -48,11 +45,7 @@ class RemoteRepository (
             var result = foodTokenApi.retrofitService.generateToken()
             var newToken = AccessToken(0,result.accessToken,LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME))
             tokenDatabase.fatSecretTokenDao.insert(newToken)
-            var tag = "Token Neu??"
-            Log.i(tag,"Token wurde generiert!: ${newToken.accessToken}")
         } catch (e: Exception){
-            var tag = "Fehler Tokenerstellung??"
-            Log.i(tag,"Token konnte nicht erstellt werden: ! $e")
         }
     }
 
@@ -60,32 +53,25 @@ class RemoteRepository (
         try {
             return tokenDatabase.fatSecretTokenDao.getAll()
         } catch (e:Exception){
-            var tag = "Request Token??"
-            Log.i(tag,"Fehler bei der Token erstellung")
             return listOf()
         }
     }
 
 
-suspend fun foodExampleDetail(accessToken:String){
+/*
+    suspend fun foodExampleDetail(accessToken:String){
     try {
         var result = fatSecretApi.retrofitService.exampleFoodDetails(authToken = "Bearer $accessToken", foodId = 33691)
-        var tag ="API Test??"
-
-        Log.i(tag,"Erfolgreicher: $result")
     } catch (e:Exception){
-        var tag ="API Anfrage??"
-        Log.i(tag,"Fehler bei der API Anfrage!: $e")
+
     }
 }
-
-
-
+*/
+/*
     private var _foodRequest = MutableLiveData<List<Food>>()
 
     val foodRequest: LiveData<List<Food>>
-        get() = _foodRequest
-
+        get() = _foodRequest*/
 /*    suspend fun getFoodCategories(calories: String,protein: String,fat: String,carbohydrates: String){
         try {
             val result= fatSecretApi.retrofitService.getFoodCategories("food_categories.get.v2","DE",calories,protein,fat,carbohydrates)
@@ -97,9 +83,7 @@ suspend fun foodExampleDetail(accessToken:String){
             Log.i(tag,"Fehler bei der API Anfrage!: $e")
         }
     }*/
-
-
-
+/*
     private var _requestAllFoodCategories = MutableLiveData<FoodCategories>()
 
     val requestAllFoodCategories: LiveData<FoodCategories>
@@ -108,20 +92,18 @@ suspend fun foodExampleDetail(accessToken:String){
         try {
             val result = fatSecretApi.retrofitService.getAllFoodCategories(authToken = "Bearer $accessToken")
             _requestAllFoodCategories.value = result
-            println("Api Call?? :$result")
         } catch (e:Exception){
-            var tag ="API??"
-            Log.i(tag,"Fehler bei der API Anfrage!: $e")
         }
     }
+*/
 
 
     /*OpenFoodFact Api*/
 
 
-    private var _getFood = MutableLiveData<Product>()
+    private var _getFood = MutableLiveData<List<Product>>()
 
-    val getFood : LiveData<Product>
+    val getFood : LiveData<List<Product>>
 
         get() = _getFood
 
@@ -129,11 +111,11 @@ suspend fun foodExampleDetail(accessToken:String){
     suspend fun searchFood(){
         try {
             val result = openFoodApi.retrofitService.searchFood()
-            _getFood.value = result
-            println("Api Call?? :$result")
+            _getFood.postValue(result.products)
+            println("Search Food Call?? :$result")
         } catch (e:Exception){
             var tag ="API??"
-            Log.i(tag,"Fehler bei der API Anfrage!: $e")
+            Log.i(tag,"SerchFood: Fehler bei der API Anfrage!: $e")
         }
     }
 

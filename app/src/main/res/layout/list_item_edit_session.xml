@@ -133,6 +133,7 @@
                         android:fontFamily="@font/roboto"
                         android:text="1"
                         android:background="@null"
+                        android:inputType="number"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="16dp" />
@@ -154,6 +155,7 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/roboto"
                         android:text="10"
+                        android:inputType="number"
                         android:textAlignment="center"
                         android:background="@null"
                         android:layout_weight="1"
@@ -176,6 +178,7 @@
                             android:layout_height="match_parent"
                             android:fontFamily="@font/roboto"
                             android:text="90kg"
+                            android:inputType="number"
                             android:background="@null"
                             android:textAlignment="center"
                             android:textColor="@color/black"

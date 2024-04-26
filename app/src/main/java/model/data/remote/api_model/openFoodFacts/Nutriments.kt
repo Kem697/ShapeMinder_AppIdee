@@ -5,12 +5,14 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Nutriments(
-val energy: Int,
-val fat: Int,
+val energy: Double,
+val fat: Double,
+
 @Json(name ="saturated-fat")
-val saturatedFat: Int,
-val carbohydrates: Int,
-val sugars: Int,
-val proteins: Int,
-val salt: Int
+val saturatedFat: Double,
+
+val carbohydrates: Double,
+val sugars: Double,
+val proteins: Double,
+val salt: Double
 )

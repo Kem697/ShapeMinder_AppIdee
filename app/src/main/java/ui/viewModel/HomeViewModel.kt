@@ -43,9 +43,11 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     val searchFood = remoteRepository.getFood
 
 
+/*
     val foodRequest = remoteRepository.foodRequest
 
     val requestAllFoodCats = remoteRepository.requestAllFoodCategories
+*/
 
     var index = 0
 
@@ -216,25 +218,24 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
 
 
-    fun searchFood(){
-        viewModelScope.launch {
-            remoteRepository.searchFood()
-        }
-    }
 
 
+
+/*
     fun apiCall() {
         viewModelScope.launch {
             remoteRepository.foodExampleDetail(accessToken!!.accessToken)
         }
     }
-
+*/
+/*
     fun getAllFoodCategories(region:String){
         viewModelScope.launch {
             var getTokenFromDatabase = remoteRepository.getTokenFromDatabase()
             remoteRepository.getAllFoodCategories(getTokenFromDatabase[0].accessToken,region)
         }
     }
+*/
 
     fun getTokenFromDatabase() {
         viewModelScope.launch {
@@ -247,6 +248,14 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                 remoteRepository.isTokenExpired(tokenInBuffer[0])
                 accessToken = remoteRepository.getTokenFromDatabase()[0]
             }
+        }
+    }
+
+
+    /*Open Food Fact Api*/
+    fun searchFood(){
+        viewModelScope.launch {
+            remoteRepository.searchFood()
         }
     }
 

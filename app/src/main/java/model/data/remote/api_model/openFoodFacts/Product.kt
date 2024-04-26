@@ -7,10 +7,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Product(
     @Json(name = "product_name")
-    val productName: String,
-    val nutriments: Nutriments,
+    val productName: String?,
+
+    val nutriments: Nutriments?,
+
     @Json(name ="image_urls")
-    val imageUrls: ImageUrls
+    val imageUrls: ImageUrls?
 )
 
 

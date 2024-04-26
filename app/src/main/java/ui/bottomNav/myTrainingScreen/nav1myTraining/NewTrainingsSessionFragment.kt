@@ -30,13 +30,6 @@ class NewTrainingsSessionFragment : Fragment() {
     private lateinit var binding: FragmentNewTrainingsSessionBinding
     val viewModel: HomeViewModel by activityViewModels()
 
-
-    private var savedSessionName = ""
-    private var savedSessionDate = ""
-
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -109,7 +102,6 @@ class NewTrainingsSessionFragment : Fragment() {
             var userInput = editable.toString()
             if (userInput.isNotBlank()) {
                 sessionName = userInput
-                sessionName = savedSessionName
             } else {
                 editSessionName.text.clear()
             }
@@ -166,7 +158,6 @@ class NewTrainingsSessionFragment : Fragment() {
                     dateView.isInvisible = false
                     var dateText = binding.dateView
                     dateText.text = "$startDateString - $endDateString"
-                    savedSessionDate ="$startDateString - $endDateString"
                 }
 
                 datePicker.show(requireActivity().supportFragmentManager, "datePicker")
@@ -178,9 +169,11 @@ class NewTrainingsSessionFragment : Fragment() {
     fun cancelProcess(addedToSessionExercises: MutableList<Content>){
         var cancelBtn = binding.cancelSessionBtn
         cancelBtn.setOnClickListener {
+            var tag = "CancelBtn"
+            Log.i(tag, "Button click")
             viewModel.resetSavedInWorkoutSession(addedToSessionExercises)
-            findNavController().navigate(R.id.myTrainingScreen)
             deleteData()
+            findNavController().navigate(R.id.myTrainingScreen)
         }
     }
 
@@ -232,8 +225,7 @@ class NewTrainingsSessionFragment : Fragment() {
             remove("SessionDate")
         }.apply()
 
-        binding.editSessionName.setText("")
-        binding.dateView.setText("")
+
         binding.dateViewCard.isInvisible = true
     }
 }

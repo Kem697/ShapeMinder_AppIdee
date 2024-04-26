@@ -38,7 +38,6 @@ class FoodListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         /*Diese Beobachteten Daten sind nur Platzhalter und müssen mit den Daten aus dem API Request ausgetauscht werden!!*/
         setUpAdapter()
-        viewModel.apiCall()
         navigateBack()
         sortRadioGroup()
     }
@@ -100,9 +99,9 @@ class FoodListFragment : Fragment() {
 
 
     fun setUpAdapter(){
-        viewModel.foodRequest.observe(viewLifecycleOwner){
+        viewModel.searchFood.observe(viewLifecycleOwner){ product->
             binding.screenTitle.text = viewModel.selectedContentTitle.value
-            binding.listOfFood.adapter = FoodItemAdapter(it,viewModel)
+            binding.listOfFood.adapter = FoodItemAdapter(product,viewModel,requireContext())
         }
     }
 }
