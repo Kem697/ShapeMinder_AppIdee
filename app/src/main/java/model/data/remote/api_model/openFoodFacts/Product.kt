@@ -11,8 +11,13 @@ data class Product(
 
     val nutriments: Nutriments?,
 
+    @Json(name="image_small_url")
+    val url : String,
+
     @Json(name ="image_urls")
     val imageUrls: ImageUrls?
+
+
 )
 
 

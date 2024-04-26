@@ -6,6 +6,8 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Nutriments(
 val energy: Double,
+@Json(name = "energy-kcal")
+val calories: Double,
 val fat: Double,
 
 @Json(name ="saturated-fat")
