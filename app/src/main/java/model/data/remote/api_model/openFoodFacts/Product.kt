@@ -18,7 +18,10 @@ data class Product(
     val url : String ="",
 
     @Json(name ="image_urls")
-    val imageUrls: ImageUrls?
+    val imageUrls: ImageUrls?,
+
+
+    var isSaved: Boolean = false
 
 
 )

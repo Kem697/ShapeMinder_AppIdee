@@ -45,6 +45,12 @@ class NutrionViewModel(application: Application) : AndroidViewModel(application)
         get() = _searchFood
 
 
+    private var _savedFoods = MutableLiveData<MutableList<Product>>()
+    val savedFoods: MutableLiveData<MutableList<Product>>
+
+        get() = _savedFoods
+
+
     var category : String = ""
     var country : String = ""
 
@@ -108,5 +114,25 @@ class NutrionViewModel(application: Application) : AndroidViewModel(application)
             }
             _searchFood.value = sortedExercises
         }
+    }
+
+
+    fun isSaved(saved: Boolean, food: Product) {
+        val savedFood = _savedFoods.value ?: mutableListOf()
+
+        if (saved) {
+            savedFood.add(food)
+            var tag = "Fehler"
+            Log.e(
+                tag,
+                "Lebensmittel wird gespeichert!!:${food} Zustand: ${saved}. Die Liste enthält: ${savedFood.size}"
+            )
+        } else {
+            savedFood.remove(food)
+            var tag = "Fehler"
+            Log.e(tag, "Lebensmittel wird entfernt!!:${food} Zustand: ${saved} ${savedFood}")
+        }
+
+        _savedFoods.value = savedFood
     }
 }

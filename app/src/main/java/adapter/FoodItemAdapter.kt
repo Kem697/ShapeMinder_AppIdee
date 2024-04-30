@@ -1,6 +1,7 @@
 package adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
@@ -44,7 +45,6 @@ class FoodItemAdapter(
             }
         }
 
-
         if (food.productNameDe.isNullOrEmpty()){
             holder.binding.foodName.setText(context.getString(R.string.unknownFoodName))
             holder.binding.calories.setText(food!!.nutriments!!.calories.toString() + " kcal")
@@ -64,6 +64,31 @@ class FoodItemAdapter(
         holder.binding.materialCardView.setOnClickListener {
             nutrionViewModel.selectedFood(food)
             holder.binding.root.findNavController().navigate(R.id.foodDetailViewFragment)
+        }
+
+
+        var saveBtn = holder.binding.saveFoodBtn
+        saveBtn.setImageResource(if (food.isSaved) R.drawable.bookmark_fill1_wght400_grad0_opsz24 else R.drawable.bookmark_fill0_wght400_grad0_opsz24)
+        saveBtn.setOnClickListener {
+            if (food.isSaved) {
+                nutrionViewModel.isSaved(!food.isSaved, food)
+                saveBtn.setImageResource(R.drawable.bookmark_fill0_wght400_grad0_opsz24)
+                food.isSaved = false
+                var tag = "Fehler"
+                Log.e(
+                    tag,
+                    "Ungespeichertes Element:${position} ${food.isSaved} ${nutrionViewModel.savedFoods.value}"
+                )
+            } else {
+                nutrionViewModel.isSaved(!food.isSaved, food)
+                saveBtn.setImageResource(R.drawable.bookmark_fill1_wght400_grad0_opsz24)
+                food.isSaved = true
+                var tag = "Fehler"
+                Log.e(
+                    tag,
+                    "Gespeichertes Element:${position} ${food.isSaved} ${nutrionViewModel.savedFoods.value}"
+                )
+            }
         }
     }
 }

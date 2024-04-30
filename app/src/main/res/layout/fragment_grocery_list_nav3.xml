@@ -1,13 +1,40 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context="ui.bottomNav.myNutritionScreen.nav2diary.DiaryNav2Fragment">
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="ui.bottomNav.myNutritionScreen.nav3groceryList.GroceryListNav3Fragment">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardContentView"
+        style="@style/content_CardDecription"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Einkaufsliste" />
+        android:layout_height="750dp"
+        android:layout_margin="16dp"
+        android:backgroundTint="#D5FEF5E7"
 
-</FrameLayout>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/white">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listOfSavedFoods"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/list_item_food" />
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
