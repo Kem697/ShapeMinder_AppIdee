@@ -317,6 +317,8 @@ Achte auf eine gerade Rückenhaltung und kontrollierte Bewegungen.
 
     <string name="unknownFoodName">(K.A.)</string>
 
+    <string name="failedStoreFinderText">"Fehler beim Öffnen von Google Maps!"</string>
+
 
 
 

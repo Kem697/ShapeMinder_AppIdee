@@ -21,6 +21,9 @@ data class Product(
     val imageUrls: ImageUrls?,
 
 
+    @Json(name ="stores_tags")
+    val store: List<String>? = listOf(),
+
     var isSaved: Boolean = false
 
 
