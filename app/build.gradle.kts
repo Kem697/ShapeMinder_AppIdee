@@ -102,6 +102,13 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
 
+
+    // Barcode scanning libary ZXing for decoding.
+
+    implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
+
+
+
 }
 
 

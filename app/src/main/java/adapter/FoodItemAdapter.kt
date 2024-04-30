@@ -36,6 +36,7 @@ class FoodItemAdapter(
         var foodName = food.productNameDe?: "${context.getString(R.string.unknownFoodName)}"
         val words = foodName.split(" ","-")
         val truncatedFoodName = words.take(1).joinToString(" ")
+
         when(food.url){
             "" ->{
                 holder.binding.foodImage.setImageResource(R.drawable.noimage)

@@ -5,6 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import com.example.shapeminder_appidee.R
 import model.data.local.model.myNutrion.FoodFinderCategory
 import model.data.remote.api_model.openFoodFacts.Product
+import model.data.remote.api_model.openFoodFacts.ProductResponse
+import retrofit2.http.GET
+import retrofit2.http.Path
 import kotlin.Exception
 
 class RemoteRepository (
@@ -31,6 +34,18 @@ class RemoteRepository (
             Log.i(tag,"SerchFood: Fehler bei der API Anfrage!: $e")
         }
     }
+
+    suspend fun searchFoodByBarcode(barcode: String){
+        try {
+            val result = openFoodApi.retrofitService.searchFoodByBarcode(barcode)
+            _getFood.postValue(result.products)
+            println("Search Food Call?? :$result")
+        } catch (e:Exception){
+            var tag ="API??"
+            Log.i(tag,"SerchFood: Fehler bei der API Anfrage!: $e")
+        }
+    }
+
 
 
 

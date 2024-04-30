@@ -68,6 +68,12 @@ class NutrionViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
+    fun searchFoodByBarcode(barcode: String) {
+        viewModelScope.launch {
+            remoteRepository.searchFoodByBarcode(barcode)
+        }
+    }
+
     fun selectedFood(selectedFood: Product) {
         _selectedFood.value = selectedFood
     }

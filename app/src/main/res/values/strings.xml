@@ -323,6 +323,10 @@ Achte auf eine gerade Rückenhaltung und kontrollierte Bewegungen.
     <string name="failedStoreFinderText">"Fehler beim Öffnen von Google Maps!"</string>
 
 
+    <string name="scanFoodText">Scanne Lebensmittel Barcode</string>
+
+
+
 
 
 </resources>

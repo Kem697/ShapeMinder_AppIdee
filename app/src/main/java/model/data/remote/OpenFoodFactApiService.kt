@@ -12,6 +12,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 
@@ -56,6 +57,13 @@ interface FoodFactApi {
     suspend fun searchFood(
         @Query("categories_tags_en") foodCatEn: String,
         @Query("countries_tags_en") countryTagEn: String
+    ): ProductResponse
+
+
+
+    @GET("/api/v2/search{barcode}")
+    suspend fun searchFoodByBarcode(
+        @Path("barcode") barcode: String,
     ): ProductResponse
 }
 
