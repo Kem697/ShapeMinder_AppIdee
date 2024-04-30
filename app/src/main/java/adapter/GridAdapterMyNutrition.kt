@@ -12,12 +12,14 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import com.example.shapeminder_appidee.R
 import model.data.local.model.myNutrion.FoodFinderCategory
+import ui.bottomNav.myNutritionScreen.nav1foodFinder.FoodFinderNav1FragmentDirections
 import ui.viewModel.HomeViewModel
+import ui.viewModel.NutrionViewModel
 
 
 class GridAdapterMyNutrition(
     private val dataset: List<FoodFinderCategory>,
-    private val viewModel: HomeViewModel,
+    private val nutrionViewModel: NutrionViewModel,
     private val context: Context,
 ) : BaseAdapter() {
 
@@ -62,13 +64,9 @@ class GridAdapterMyNutrition(
             ContextCompat.getString(context, R.string.gc_grain_and_corn) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedCategory = ContextCompat.getString(context, R.string.gc_grain_and_corn)
-
-                    viewModel.getContentTitle(selectedCategory)
-                    /*Hier muss das viewModel aufgerufen werden, welche die Daten von
-                    * Lebensmittel aus der API anfrage nach Kategorien filtert.*/
-//                    viewModel.filterExercisesByBodypart(selectedBodypart)
-//                    viewModel.getFoodByCategories("","","","")
-                    viewModel.searchFood("pastas","germany")
+                    nutrionViewModel.getFoodTitle(selectedCategory)
+                    nutrionViewModel.setCountyAndCategory("pastas", "germany")
+                    nutrionViewModel.searchFood()
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }
             }
@@ -76,8 +74,9 @@ class GridAdapterMyNutrition(
             ContextCompat.getString(context, R.string.gc_fruits_and_vegetable) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedCategory = ContextCompat.getString(context, R.string.gc_fruits_and_vegetable)
-                    viewModel.getContentTitle(selectedCategory)
-                    viewModel.searchFood("fruits","germany")
+                    nutrionViewModel.getFoodTitle(selectedCategory)
+                    nutrionViewModel.setCountyAndCategory("fruits","germany")
+                    nutrionViewModel.searchFood()
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }
             }
@@ -85,8 +84,9 @@ class GridAdapterMyNutrition(
             ContextCompat.getString(context, R.string.gc_milk_and_eg) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedCategory = ContextCompat.getString(context, R.string.gc_milk_and_eg)
-                    viewModel.getContentTitle(selectedCategory)
-                    viewModel.searchFood("milks","germany")
+                    nutrionViewModel.getFoodTitle(selectedCategory)
+                    nutrionViewModel.setCountyAndCategory("milks","germany")
+                    nutrionViewModel.searchFood()
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }
             }
@@ -94,8 +94,9 @@ class GridAdapterMyNutrition(
             ContextCompat.getString(context, R.string.gc_oil_and_fats) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedCategory = ContextCompat.getString(context, R.string.gc_oil_and_fats)
-                    viewModel.getContentTitle(selectedCategory)
-                    viewModel.searchFood("olive oils","germany")
+                    nutrionViewModel.getFoodTitle(selectedCategory)
+                    nutrionViewModel.setCountyAndCategory("olive oils","germany")
+                    nutrionViewModel.searchFood()
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }
             }
@@ -103,8 +104,9 @@ class GridAdapterMyNutrition(
             ContextCompat.getString(context, R.string.gc_meat_and_fish) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedCategory = ContextCompat.getString(context, R.string.gc_meat_and_fish)
-                    viewModel.getContentTitle(selectedCategory)
-                    viewModel.searchFood("meats and their products","germany")
+                    nutrionViewModel.getFoodTitle(selectedCategory)
+                    nutrionViewModel.setCountyAndCategory("meats and their products","germany")
+                    nutrionViewModel.searchFood()
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }
             }
@@ -112,8 +114,9 @@ class GridAdapterMyNutrition(
             ContextCompat.getString(context, R.string.gc_sweets) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedCategory = ContextCompat.getString(context, R.string.gc_sweets)
-                    viewModel.getContentTitle(selectedCategory)
-                    viewModel.searchFood("sweet snacks","germany")
+                    nutrionViewModel.getFoodTitle(selectedCategory)
+                    nutrionViewModel.setCountyAndCategory("sweet snacks","germany")
+                    nutrionViewModel.searchFood()
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
                 }
             }

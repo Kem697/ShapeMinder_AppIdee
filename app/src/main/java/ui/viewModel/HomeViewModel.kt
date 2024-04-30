@@ -27,15 +27,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val allExercises = repository.exercises
     private val allBodyparts = repository.bodyParts
     private var allExercisesByBodyparts = repository.exercisesByBodyparts
-    private var groceryCategories = repository.groceryCategories
     private var trainingSessions = repository.trainingSessionList
 
-
-
-
-    private val remoteRepository = RemoteRepository(OpenFoodFactsApi)
-
-    val searchFood = remoteRepository.getFood
 
 
     /*DE:
@@ -45,18 +38,12 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     * This LiveData set the selected product for
     * the sharing of data to the detail View.*/
 
-    private var _selectedFood = MutableLiveData<Product>()
-    val selectedFood : LiveData<Product>
-
-        get() = _selectedFood
-
-
     var index = 0
 
 
     private var _savedTrainingSessions = trainingSessions
 
-    val savedTrainingsSessions : LiveData<List<TrainingsSession>>
+    val savedTrainingsSessions: LiveData<List<TrainingsSession>>
         get() = _savedTrainingSessions
 
 
@@ -67,8 +54,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private var _contents = MutableLiveData(allContent)
     val contents: LiveData<List<Content>>
         get() = _contents
-
-
 
 
     private var _bodyparts = MutableLiveData(allBodyparts)
@@ -114,29 +99,23 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         get() = _selectedExercisesByBodypart
 
 
-    private var _foodCategories = MutableLiveData(groceryCategories)
-    val foodCategories: LiveData<List<FoodFinderCategory>>
-        get() = _foodCategories
-
-
     private var _exercisesByBodyparts = MutableLiveData(allExercisesByBodyparts)
 
     val exercisesByBodyparts: LiveData<List<Content>>
         get() = _exercisesByBodyparts
 
 
-    private var _selectedTraininingssession =  MutableLiveData<TrainingsSession>()
+    private var _selectedTraininingssession = MutableLiveData<TrainingsSession>()
 
     val selectedTraininingssession: MutableLiveData<TrainingsSession>
-
         get() = _selectedTraininingssession
 
 
-
-
-    private var _savedExercises = MutableLiveData<MutableList<Content>>(mutableListOf(
-        Content(0,0,0,true,false,"",false,null,null)
-    ))
+    private var _savedExercises = MutableLiveData<MutableList<Content>>(
+        mutableListOf(
+            Content(0, 0, 0, true, false, "", false, null, null)
+        )
+    )
     val savedExercises: LiveData<MutableList<Content>>
         get() = _savedExercises
 
@@ -186,43 +165,37 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     /*EN:
     * These functions are related to issues in the training session database. */
 
-    fun setUpDefaultTrainingsessions(){
+    fun setUpDefaultTrainingsessions() {
         viewModelScope.launch {
-            repository.insertNewTrainingSession(TrainingsSession(1, trainingsSession = mutableListOf()))
+            repository.insertNewTrainingSession(
+                TrainingsSession(
+                    1,
+                    trainingsSession = mutableListOf()
+                )
+            )
         }
     }
 
-    fun deleteTrainingsession(currentSession: TrainingsSession){
-        viewModelScope.launch{
+    fun deleteTrainingsession(currentSession: TrainingsSession) {
+        viewModelScope.launch {
             repository.deleteTrainingsession(currentSession)
         }
     }
 
-    fun updateTrainingsession(currentSession: TrainingsSession){
+    fun updateTrainingsession(currentSession: TrainingsSession) {
         viewModelScope.launch {
             repository.updateTrainingsession(currentSession)
         }
     }
 
 
-    fun insertNewTrainingssession(newTrainingsSession: TrainingsSession){
+    fun insertNewTrainingssession(newTrainingsSession: TrainingsSession) {
         viewModelScope.launch {
             repository.insertNewTrainingSession(newTrainingsSession)
         }
     }
 
 
-    /*EN:
-    * These functions are related to issues through the api call. */
-
-
-
-    /*Open Food Fact Api*/
-    fun searchFood(foodCatEn: String,countryTagEn:String){
-        viewModelScope.launch {
-            remoteRepository.searchFood(foodCatEn,countryTagEn)
-        }
-    }
 
     fun filterExercisesByBodypart(bodypart: String) {
         viewModelScope.launch {
@@ -557,12 +530,11 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     */
 
 
-
     fun getContentTitle(bodypart: String) {
         _selectedContentTitle.value = bodypart
     }
 
-    fun getCurrentTrainingsession(currentSession: TrainingsSession){
+    fun getCurrentTrainingsession(currentSession: TrainingsSession) {
         _selectedTraininingssession.value = currentSession
     }
 
@@ -664,16 +636,16 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         _addToSessionExercises.value = updatedExercises
     }
 
-    fun resetSavedInWorkoutSession(addedToSessionExercises: MutableList<Content>){
+    fun resetSavedInWorkoutSession(addedToSessionExercises: MutableList<Content>) {
         addedToSessionExercises.forEach { it.addedToSession = false }
         addedToSessionExercises.removeAll { it.addedToSession == false }
         var tag = "Liste zurücksetzen"
-        Log.i(tag,"Liste wird zurückgesetzt ! ${addToSessionExercises.value}")
+        Log.i(tag, "Liste wird zurückgesetzt ! ${addToSessionExercises.value}")
 
     }
 
     fun deleteWorkoutInEditSession(addedExercise: Boolean, exercise: Content) {
-        val updatedSession = selectedTraininingssession.value?.trainingsSession?: mutableListOf()
+        val updatedSession = selectedTraininingssession.value?.trainingsSession ?: mutableListOf()
 
         if (addedExercise) {
             updatedSession.add(exercise)
@@ -693,37 +665,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
         _selectedTraininingssession.value?.trainingsSession = updatedSession
     }
-
-
-
-    fun selectedFood(selectedFood: Product){
-        _selectedFood.value = selectedFood
-    }
-
-
-    fun retrieveNaturalFoodList(nonFilteredList: List<Product>) {
-        searchFood.value = nonFilteredList
-    }
-
-    fun filterFoodInCategorieByTitle(userInput: String) {
-        viewModelScope.launch {
-            val nonFilteredList = searchFood.value
-            nonFilteredList?.let { foodList ->
-                val filteredFood = foodList.filter { food ->
-                    food.productNameDe == userInput
-                }
-                if (filteredFood.isNotEmpty()) {
-                    searchFood.value = filteredFood
-                    Log.e("Filter", "Filtered food list: $filteredFood")
-                } else {
-                    retrieveNaturalFoodList(foodList) // Setze den Filter zurück
-                }
-            }
-        }
-    }
-
-
-
 
 }
 

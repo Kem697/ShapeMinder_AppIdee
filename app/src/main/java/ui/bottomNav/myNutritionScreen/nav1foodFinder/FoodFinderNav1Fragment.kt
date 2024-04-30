@@ -19,13 +19,14 @@ import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentFoodFinderNav1Binding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import ui.viewModel.HomeViewModel
+import ui.viewModel.NutrionViewModel
 
 
 class FoodFinderNav1Fragment : Fragment() {
 
 
     private lateinit var binding: FragmentFoodFinderNav1Binding
-    val viewModel: HomeViewModel by activityViewModels()
+    val nutritionViewModel : NutrionViewModel by activityViewModels()
 
 
 
@@ -46,8 +47,8 @@ class FoodFinderNav1Fragment : Fragment() {
 
 
     fun setupAdapter(){
-        viewModel.foodCategories.observe(viewLifecycleOwner){
-            binding.fooCategoryGrid.adapter = GridAdapterMyNutrition(it,viewModel,requireContext())
+        nutritionViewModel.foodCategories.observe(viewLifecycleOwner){
+            binding.fooCategoryGrid.adapter = GridAdapterMyNutrition(it,nutritionViewModel,requireContext())
         }
     }
 

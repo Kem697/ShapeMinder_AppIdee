@@ -22,11 +22,17 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import model.data.remote.api_model.openFoodFacts.Product
 import ui.viewModel.HomeViewModel
+import ui.viewModel.NutrionViewModel
 
 class FoodListFragment : Fragment() {
 
     private lateinit var binding: FragmentFoodListBinding
-    val viewModel: HomeViewModel by activityViewModels()
+    val nutrionViewModel: NutrionViewModel by activityViewModels()
+
+
+
+    private lateinit var orginalFoodRequest : List<Product>
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,10 +45,11 @@ class FoodListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        /*Diese Beobachteten Daten sind nur Platzhalter und müssen mit den Daten aus dem API Request ausgetauscht werden!!*/
         setUpAdapter()
-        navigateBack()
         sortRadioGroup()
+        searchInput()
+        navigateBack()
+
     }
 
 
@@ -56,7 +63,7 @@ class FoodListFragment : Fragment() {
 
     override fun onStop() {
         super.onStop()
-//        setDefaultHint()
+        setDefaultHint()
     }
 
 
@@ -93,12 +100,12 @@ class FoodListFragment : Fragment() {
                     when (checkedId) {
                         R.id.a_z_ascending -> {
                             isSortedDescending = false
-//   Hier Funktion zum Sortieren der Lebensmittel aufrufen (Beispiel:viewModel.sortAllExercisesByAlphabet(isSortedDescending))
+                            nutrionViewModel.sortFoodsByAlphabet(isSortedDescending)
                         }
 
                         R.id.z_a_descending -> {
                             isSortedDescending = true
-//   Hier Funktion zum Sortieren der Lebensmittel aufrufen (Beispiel:viewModel.sortAllExercisesByAlphabet(isSortedDescending))
+                            nutrionViewModel.sortFoodsByAlphabet(isSortedDescending)
                         }
                     }
                     dialog.dismiss()
@@ -108,27 +115,29 @@ class FoodListFragment : Fragment() {
 
 
     fun setUpAdapter(){
-        viewModel.searchFood.observe(viewLifecycleOwner){ product->
-            binding.screenTitle.text = viewModel.selectedContentTitle.value
-            binding.listOfFood.adapter = FoodItemAdapter(product,viewModel,requireContext())
+        nutrionViewModel.searchFood.observe(viewLifecycleOwner){ product->
+            binding.screenTitle.text = nutrionViewModel.selectedContentTitle.value
+            binding.listOfFood.adapter = FoodItemAdapter(product,nutrionViewModel,requireContext())
+            orginalFoodRequest = product
+            Log.i("Orginale Liste", "${orginalFoodRequest.size}")
         }
     }
 
 
-   /* fun searchInput(productList: List<Product>) {
+    fun searchInput() {
         var searchBar = binding.foodListSearchBarTextInput
-        val context = requireContext()
         searchBar.addTextChangedListener { editable ->
             var userInput = editable.toString()
             if (userInput.isNotBlank()) {
                 binding.foodListSearchBar.setText(userInput)
                 var tag = "Filter???"
                 Log.i(tag, "Werden die Inhalte hier gefiltert. :${userInput}")
-                viewModel.filterFoodInCategorieByTitle(userInput)
+                nutrionViewModel.filterFoodInCategorieByTitle(userInput,orginalFoodRequest)
             } else {
                 searchBar.text.clear()
                 binding.foodListSearchBar.clearText()
-                viewModel.retrieveNaturalFoodList(productList)
+                nutrionViewModel.searchFood()
+
 //                binding.resetFilterBtn.isInvisible = true
             }
         }
@@ -140,5 +149,5 @@ class FoodListFragment : Fragment() {
             binding.foodListSearchBarTextInput.text.clearSpans()
             binding.foodListSearchBar.clearText()
         }
-    }*/
+    }
 }

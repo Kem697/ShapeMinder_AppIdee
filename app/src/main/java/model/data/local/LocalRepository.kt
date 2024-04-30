@@ -54,9 +54,6 @@ class LocalRepository (private val trainingDatabase: TrainingSessionsDatabase) {
     var exercises = loadExercises()
     var bodyParts = loadBodyparts()
     var exercisesByBodyparts = loadExercisesByBodypart()
-    var groceryCategories = loadGroceryCategories()
-
-
 
 
 
@@ -120,25 +117,5 @@ class LocalRepository (private val trainingDatabase: TrainingSessionsDatabase) {
             Content(R.string.we_Dips,R.string.we_DipsInstructions, R.drawable.bp1arms,true,true,"Brust",false,null,false),
         )
     }
-
-
-
-    fun loadGroceryCategories(): List<FoodFinderCategory>{
-        return listOf(
-            FoodFinderCategory(R.string.gc_grain_and_corn,R.drawable.foodcat1_noodles_img,"Getreide",true),
-            FoodFinderCategory(R.string.gc_fruits_and_vegetable,R.drawable.foodcat4_fruits_and_vegetables,"Obst und Gemüse",true),
-            FoodFinderCategory(R.string.gc_milk_and_eg,R.drawable.foodcat5_milk_and_eggs,"Molkerei und Eier",true),
-            FoodFinderCategory(R.string.gc_oil_and_fats,R.drawable.foodcat2_oil_img,"Öle und Fette",true),
-            FoodFinderCategory(R.string.gc_meat_and_fish,R.drawable.foodcat3_meat_img,"Fleisch und Fisch",true),
-            FoodFinderCategory(R.string.gc_sweets,R.drawable.foodcat6_sweets,"Süssigkeiten",true)
-        )
-    }
-
-
-  /*  fun loadTrainingSessions(): List<TrainingsSession> {
-        return listOf(
-            TrainingsSession()
-        )
-    }*/
 
 }

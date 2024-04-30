@@ -315,7 +315,7 @@ Achte auf eine gerade Rückenhaltung und kontrollierte Bewegungen.
     <string name="gc_sweets">Süssigkeiten</string>
 
 
-    <string name="unknownFoodName">K.A.</string>
+    <string name="unknownFoodName">(K.A.)</string>
 
 
 

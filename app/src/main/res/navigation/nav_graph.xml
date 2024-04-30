@@ -117,6 +117,12 @@
         <action
             android:id="@+id/action_foodFinderNav1Fragment_to_foodListFragment"
             app:destination="@id/foodListFragment" />
+        <argument
+            android:name="country"
+            app:argType="string" />
+        <argument
+            android:name="category"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/groceryListNav3Fragment"
@@ -144,6 +150,12 @@
         <action
             android:id="@+id/action_foodListFragment_to_foodDetailViewFragment"
             app:destination="@id/foodDetailViewFragment" />
+        <argument
+            android:name="category"
+            app:argType="string" />
+        <argument
+            android:name="country"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/newTrainingsSessionFragment"
