@@ -223,7 +223,9 @@ Achte auf eine gerade Rückenhaltung und kontrollierte Bewegungen.
     <string name="addToTrainingBtnText">Training</string>
     <string name="bodypartSubtitle">TextView</string>
     <string name="exerciseName">TextView</string>
-    <string name="nutritionFacts">Nährwerte</string>
+    <string name="nutritionFacts">Nährwerte pro 100g</string>
+    <string name="calFacts">N</string>
+
     <string name="foodCat">LebensmittelKateg</string>
     <string name="foodName">Name des Lebensmitte</string>
     <string name="saveForGrocery">Für Einkauf merken</string>
@@ -263,6 +265,7 @@ Achte auf eine gerade Rückenhaltung und kontrollierte Bewegungen.
     <string name="previewScreenTitle">Vorschau</string>
     <string name="exerciseNavHeaderText">Übungen nach Körperpartien</string>
     <string name="foodFinderNavHeader">Lebensmittel nach Kategorien</string>
+    <string name="groceryListHeader">Einkaufsliste</string>
     <string name="foodCategoryHeader">Kategorie</string>
     <string name="homeScreenHeader">Hallo Nutzer</string>
     <string name="todayText">Heute</string>

@@ -37,6 +37,7 @@ class EditTrainingAdapter (
         holder.binding.deleteExercise.setOnClickListener{
             if (item.addedToSession == true){
                 viewModel.deleteWorkoutInEditSession(!item.addedToSession!!,item)
+//                viewModel.deleteExerciseFromDb(item)
                 item.addedToSession = false
                 notifyItemRemoved(position)
                 var tag = "Delete Btn check??"

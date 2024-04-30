@@ -143,32 +143,6 @@
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.google.android.material.search.SearchBar
-            android:id="@+id/searchBar"
-            style="@style/searchview_Card"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="16dp"
-            android:hint="@string/searchBarHint"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_constraints" >
-
-
-            <EditText
-                android:id="@+id/searchBar_textInput"
-                android:layout_width="match_parent"
-                android:paddingLeft="64dp"
-                android:layout_height="match_parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
-
-        </com.google.android.material.search.SearchBar>
-
-
-
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -201,12 +175,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="16dp"
             android:text="@string/todayText"
             android:textColor="@color/white"
             android:textSize="22dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchBar" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_constraints" />
 
 
 

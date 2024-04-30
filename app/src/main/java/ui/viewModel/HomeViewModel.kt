@@ -13,12 +13,8 @@ import com.example.shapeminder_appidee.R
 import model.data.local.LocalRepository
 import kotlinx.coroutines.launch
 import model.data.local.model.myTraining.Content
-import model.data.local.model.myNutrion.FoodFinderCategory
 import model.data.local.getTrainingDatabase
 import model.data.local.model.myTraining.TrainingsSession
-import model.data.remote.OpenFoodFactsApi
-import model.data.remote.RemoteRepository
-import model.data.remote.api_model.openFoodFacts.Product
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private var trainingDatabase = getTrainingDatabase(application)
@@ -181,6 +177,12 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             repository.deleteTrainingsession(currentSession)
         }
     }
+
+/*    fun deleteExerciseFromDb(exercise: Content){
+        viewModelScope.launch {
+            repository.deleteExerciseFromDb(exercise)
+        }
+    }*/
 
     fun updateTrainingsession(currentSession: TrainingsSession) {
         viewModelScope.launch {

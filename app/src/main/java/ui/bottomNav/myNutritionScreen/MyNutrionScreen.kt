@@ -38,7 +38,7 @@ class MyNutrionScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        searchInput()
+//        searchInput()
 
         /*DE:
         *Mithilfe eines Youtube Videos und ChatGpt habe ich
@@ -95,11 +95,11 @@ class MyNutrionScreen : Fragment() {
         super.onResume()
         var navigationBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
         navigationBar.isInvisible = false
-        setDefaultHint()
+//        setDefaultHint()
     }
 
 
-    fun searchInput() {
+/*    fun searchInput() {
         var mainActivity = activity as MainActivity
         var searchBarTextInput = mainActivity.findViewById<EditText>(R.id.myN_searchBar_textInput)
         searchBarTextInput.addTextChangedListener {
@@ -108,9 +108,9 @@ class MyNutrionScreen : Fragment() {
                 var searchBar = mainActivity.findViewById<SearchBar>(R.id.myN_searchBar)
                 searchBar.setText(userInput)
             }
-        }
+        }*/
 
-    }
+ /*   }
     fun setDefaultHint(){
         var mainActivity = activity as MainActivity
         var searchBar = mainActivity.findViewById<SearchBar>(R.id.myN_searchBar)
@@ -121,7 +121,7 @@ class MyNutrionScreen : Fragment() {
             searchBar.setText("")
         }
 
-    }
+    }*/
 
 
 

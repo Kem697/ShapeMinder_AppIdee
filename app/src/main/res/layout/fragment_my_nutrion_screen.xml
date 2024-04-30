@@ -1,46 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background ="@color/tertiary"
     >
 
-    <com.google.android.material.search.SearchBar
-        android:id="@+id/myN_searchBar"
-        style="@style/searchview_Card"
-        android:hint="@string/searchBarHint"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_constraints">
-
-
-        <EditText
-            android:id="@+id/myN_searchBar_textInput"
-            app:backgroundTint="@color/white"
-            android:background="@android:color/transparent"
-            android:textColor="@color/white"
-            android:layout_width="match_parent"
-            android:paddingLeft="64dp"
-            android:layout_height="match_parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-    </com.google.android.material.search.SearchBar>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/myNutrition_nav"
         style="@style/tab_navigation"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        app:tabTextColor="@color/white"
-        app:tabSelectedTextColor="@color/tertiary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myN_searchBar" >
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_constraints"
+        app:tabSelectedTextColor="@color/tertiary"
+        app:tabTextColor="@color/white">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/foodFinder"

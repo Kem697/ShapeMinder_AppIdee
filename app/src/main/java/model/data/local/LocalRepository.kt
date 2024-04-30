@@ -3,7 +3,6 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import com.example.shapeminder_appidee.R
 import model.data.local.model.myTraining.Content
-import model.data.local.model.myNutrion.FoodFinderCategory
 import model.data.local.model.myTraining.TrainingsSession
 
 /*DE:
@@ -17,6 +16,13 @@ import model.data.local.model.myTraining.TrainingsSession
 class LocalRepository (private val trainingDatabase: TrainingSessionsDatabase) {
 
     val trainingSessionList: LiveData<List<TrainingsSession>> = trainingDatabase.trainingsSessionDao.getAll()
+
+    var content = loadContents()
+    var exercises = loadExercises()
+    var bodyParts = loadBodyparts()
+    var exercisesByBodyparts = loadExercisesByBodypart()
+
+
 
 
 
@@ -50,10 +56,17 @@ class LocalRepository (private val trainingDatabase: TrainingSessionsDatabase) {
         }
     }
 
-    var content = loadContents()
-    var exercises = loadExercises()
-    var bodyParts = loadBodyparts()
-    var exercisesByBodyparts = loadExercisesByBodypart()
+/*
+    suspend fun deleteExerciseFromDb(exercise: Content){
+        try {
+            trainingDatabase.trainingsSessionDao.deleteExerciseFromDb(exercise)
+        }catch (e: Exception){
+            var tag = "Lokaler Repo??"
+            Log.e(tag,"Fehler beim Löschen der Trainingseinheit aus der Datenbank!! $e")
+        }
+    }
+*/
+
 
 
 
