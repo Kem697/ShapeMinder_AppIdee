@@ -15,7 +15,8 @@
     <string name="title2">Training</string>
     <string name="title3">Ernährung</string>
 
-    <string name="text1">"         Erholung ist entscheidend für erfolgreiches Fitnesstraining. Sie ermöglicht es den Muskeln,         sich nach dem Training zu regenerieren und stärker zu werden. Qualitätsschlaf, richtige Ernährung und aktive Erholung sind wichtig.         Ein ausgewogener Trainingsplan mit Phasen der Belastung und Erholung sowie Stressmanagement unterstützen langfristige Fortschritte.         Hier sind einige wichtige Punkte, die du bei der Erholung im Fitness-Training beachten solltest:         Muskelregeneration: Während des Trainings entstehen kleine Risse in den Muskelfasern, die sie strapazieren.         Die Erholungsphase ermöglicht es den Muskeln, sich zu reparieren und stärker zu werden. Diese Regenerationszeit ist entscheidend         für den Muskelaufbau und die Vermeidung von Überlastungsschäden.         Schlaf: Qualitätsschlaf ist für die Erholung von größter Bedeutung. Während des Schlafs setzt der Körper Wachstumshormone frei,         die den Muskelaufbau und die Reparatur unterstützen. Es wird empfohlen, 7-9 Stunden Schlaf pro Nacht zu bekommen, um optimale Ergebnisse zu erzielen.         Ernährung: Die richtige Ernährung spielt eine entscheidende Rolle bei der Erholung.         Nach dem Training benötigt dein Körper Nährstoffe wie Protein und Kohlenhydrate, um sich zu regenerieren und Energie wiederherzustellen.         Eine ausgewogene Ernährung hilft auch dabei, Entzündungen zu reduzieren und den Heilungsprozess zu beschleunigen.     "</string>
+    <string name="text1">
+        "Erholung ist entscheidend für erfolgreiches Fitnesstraining. Sie ermöglicht es den Muskeln, sich nach dem Training zu regenerieren und stärker zu werden. Qualitätsschlaf, richtige Ernährung und aktive Erholung sind wichtig. Ein ausgewogener Trainingsplan mit Phasen der Belastung und Erholung sowie Stressmanagement unterstützen langfristige Fortschritte. Hier sind einige wichtige Punkte, die du bei der Erholung im Fitness-Training beachten solltest: Muskelregeneration: Während des Trainings entstehen kleine Risse in den Muskelfasern, die sie strapazieren. Die Erholungsphase ermöglicht es den Muskeln, sich zu reparieren und stärker zu werden. Diese Regenerationszeit ist entscheidend für den Muskelaufbau und die Vermeidung von Überlastungsschäden. Schlaf: Qualitätsschlaf ist für die Erholung von größter Bedeutung. Während des Schlafs setzt der Körper Wachstumshormone frei, die den Muskelaufbau und die Reparatur unterstützen. Es wird empfohlen, 7-9 Stunden Schlaf pro Nacht zu bekommen, um optimale Ergebnisse zu erzielen. Ernährung: Die richtige Ernährung spielt eine entscheidende Rolle bei der Erholung. Nach dem Training benötigt dein Körper Nährstoffe wie Protein und Kohlenhydrate, um sich zu regenerieren und Energie wiederherzustellen. Eine ausgewogene Ernährung hilft auch dabei, Entzündungen zu reduzieren und den Heilungsprozess zu beschleunigen."</string>
 
     <string name="text2">Krafttraining ist eine Form des Trainings, die darauf abzielt, die Muskelkraft, Ausdauer
         und Masse zu verbessern. Es nutzt Widerstand, sei es durch Gewichte, Körpergewicht oder andere Geräte, um
@@ -249,6 +250,7 @@
     <string name="startBottomNav">Start</string>
     <string name="myNutritionBottomNav">Meine Ernährung</string>
     <string name="myAccountBottomNav">Mein Konto</string>
+    <string name="developerBtnText">Überspringen</string>
 
 
 </resources>

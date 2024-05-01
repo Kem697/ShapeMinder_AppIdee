@@ -10,9 +10,7 @@
     <string name="title3">Nutrition</string>
 
     <string name="text1">
-        "Recovery is crucial for successful fitness training. It allows the muscles to regenerate after training and become stronger. Quality sleep, proper nutrition and active recovery are important. A balanced training plan with periods of exertion and recovery and stress management will support long-term progress. Here are some important points to keep in mind when recovering from fitness training: Muscle recovery: during training, small tears occur in the muscle fibers, which strain them. The recovery phase allows the muscles to repair themselves and become stronger. This recovery time is crucial for building muscle and avoiding overuse injuries.
-         Sleep: Quality sleep is of the utmost importance for recovery. During sleep, the body releases growth hormones that support muscle building and repair. It is recommended to get 7-9 hours of sleep per night for optimal results.
-         Nutrition: Proper nutrition plays a crucial role in recovery. After exercise, your body needs nutrients such as protein and carbohydrates to recover and restore energy. A balanced diet also helps to reduce inflammation and speed up the healing process."
+        "Recovery is crucial for successful fitness training. It allows the muscles to regenerate after training and become stronger. Quality sleep, proper nutrition and active recovery are important. A balanced training plan with periods of exertion and recovery and stress management will support long-term progress. Here are some important points to keep in mind when recovering from fitness training: Muscle recovery: during training, small tears occur in the muscle fibers, which strain them. The recovery phase allows the muscles to repair themselves and become stronger. This recovery time is crucial for building muscle and avoiding overuse injuries. Sleep: Quality sleep is of the utmost importance for recovery. During sleep, the body releases growth hormones that support muscle building and repair. It is recommended to get 7-9 hours of sleep per night for optimal results. Nutrition: Proper nutrition plays a crucial role in recovery. After exercise, your body needs nutrients such as protein and carbohydrates to recover and restore energy. A balanced diet also helps to reduce inflammation and speed up the healing process."
     </string>
 
     <string name="text2">
@@ -20,10 +18,7 @@
     </string>
 
     <string name="text3">
-        "A balanced diet is crucial for success in weight training. Strength athletes should ensure adequate protein intake
-        to support muscle growth and repair. Carbohydrates provide energy for training, while healthy fats promote hormone production and inflammation control.
-        Fruits, vegetables, whole grains and lean protein are rich in vitamins and minerals that support health and performance.
-        Adequate fluid intake is also important for hydration and performance during exercise. A balanced diet helps strength athletes achieve their goals and make healthy progress in the long term."
+        "A balanced diet is crucial for success in weight training. Strength athletes should ensure adequate protein intake to support muscle growth and repair. Carbohydrates provide energy for training, while healthy fats promote hormone production and inflammation control. Fruits, vegetables, whole grains and lean protein are rich in vitamins and minerals that support health and performance. Adequate fluid intake is also important for hydration and performance during exercise. A balanced diet helps strength athletes achieve their goals and make healthy progress in the long term."
     </string>
 
     <string name="ecPullups">Pull ups</string>
@@ -140,7 +135,7 @@
     <string name="myNutritionNav3Header">Shopping List</string>
     <string name="myNutritionScreenHeader">My nutrition</string>
     <string name="newWorkScreenHeader">New workout</string>
-    <string name="setDateBtnText">Period</string>
+    <string name="setDateBtnText">Set date</string>
     <string name="opt_my_profileText">My profile settings</string>
     <string name="opt_my_healthText">"My health "</string>
     <string name="opt3_my_favText">My favourites</string>
@@ -184,4 +179,6 @@
     <string name="startBottomNav">Start</string>
     <string name="myNutritionBottomNav">My Nutrition</string>
     <string name="myAccountBottomNav">My Account</string>
+    <string name="developerBtnText">Skip</string>
+
 </resources>
