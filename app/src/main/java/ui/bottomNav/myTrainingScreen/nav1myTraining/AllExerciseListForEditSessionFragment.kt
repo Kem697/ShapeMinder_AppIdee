@@ -217,12 +217,6 @@ class AllExerciseListForEditSessionFragment : Fragment() {
                 )
 
 
-                /*       lastSelectedImageButton = allImageButtons[0]
-                       lastSelectedTextButton = textButtons[0]
-                       lastSelectedImageButton!!.isSelected = false
-                       lastSelectedTextButton!!.isSelected = false
-       */
-
                 val uncheckedImages = listOf(R.drawable.short_dumbell_unchecked, R.drawable.long_dumbell_unchecked,R.drawable.bodyweight_unchecked,)
 
                 var setCheckedBackground = ContextCompat.getColor(requireContext(), R.color.tertiary)
@@ -273,7 +267,7 @@ class AllExerciseListForEditSessionFragment : Fragment() {
                     } catch (e: Exception){
                         Toast.makeText(
                             binding.root.context,
-                            "Unerwarteter Fehler!",
+                            context?.getString(R.string.toastUnknownFailure),
                             Toast.LENGTH_SHORT,
                         ).show()
                     }
@@ -423,14 +417,14 @@ class AllExerciseListForEditSessionFragment : Fragment() {
                 } else {
                     Toast.makeText(
                         requireContext(),
-                        "Bitte wähle mindestens eine Übung!",
+                        context?.getString(R.string.toastSelectExerciseHint),
                         Toast.LENGTH_SHORT
                     ).show()
                 }
             } catch (e: Exception) {
                 Toast.makeText(
                     requireContext(),
-                    "Bitte wähle mindestens eine Übung!",
+                    context?.getString(R.string.toastSelectExerciseHint),
                     Toast.LENGTH_SHORT
                 ).show()
             }

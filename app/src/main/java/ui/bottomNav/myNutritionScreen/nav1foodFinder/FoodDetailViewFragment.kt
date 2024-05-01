@@ -68,7 +68,6 @@ class FoodDetailViewFragment : Fragment() {
                 binding.carbsAmount.setText("${it.nutriments?.carbohydrates.toString()}" + " g")
                 binding.fatsAmount.setText("${it.nutriments?.fat.toString()}" + " g")
                 binding.proteinAmount.setText("${it.nutriments?.proteins.toString()}" + " g")
-//                binding.foodImage.load(it.url)
             } else {
                 binding.foodName.setText(it.productNameDe)
                 binding.categorie.setText(it.categories.first())
@@ -76,7 +75,6 @@ class FoodDetailViewFragment : Fragment() {
                 binding.carbsAmount.setText("${it.nutriments?.carbohydrates.toString()}" + " g")
                 binding.fatsAmount.setText("${it.nutriments?.fat.toString()}" + " g")
                 binding.proteinAmount.setText("${it.nutriments?.proteins.toString()}" + " g")
-//                binding.foodImage.load(it.url)
 
             }
 

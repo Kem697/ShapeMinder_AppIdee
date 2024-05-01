@@ -280,7 +280,7 @@ class ExerciseListFragment : Fragment() {
                                 binding.resetFilterBtn.isInvisible = false
                                 dialog.dismiss()
                             } else{
-                                Toast.makeText(requireContext(), "Keine Auswahl getroffen!", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(requireContext(), context?.getString(R.string.toastNoSelectionHint), Toast.LENGTH_SHORT).show()
                             }
                         }
                     }
@@ -292,7 +292,7 @@ class ExerciseListFragment : Fragment() {
                                 binding.resetFilterBtn.isInvisible = false
                                 dialog.dismiss()
                             } else {
-                                Toast.makeText(requireContext(), "Keine Auswahl getroffen!", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(requireContext(), context?.getString(R.string.toastNoSelectionHint), Toast.LENGTH_SHORT).show()
                             }
                         }
                     }
@@ -304,7 +304,7 @@ class ExerciseListFragment : Fragment() {
                                 binding.resetFilterBtn.isInvisible = false
                                 dialog.dismiss()
                             }else {
-                                Toast.makeText(requireContext(), "Keine Auswahl getroffen!", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(requireContext(), context?.getString(R.string.toastNoSelectionHint), Toast.LENGTH_SHORT).show()
                             }
                         }
                     }
@@ -316,7 +316,7 @@ class ExerciseListFragment : Fragment() {
                                 binding.resetFilterBtn.isInvisible = false
                                 dialog.dismiss()
                             }else {
-                                Toast.makeText(requireContext(), "Keine Auswahl getroffen!", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(requireContext(), context?.getString(R.string.toastNoSelectionHint), Toast.LENGTH_SHORT).show()
                             }
                         }
                     }
@@ -328,7 +328,7 @@ class ExerciseListFragment : Fragment() {
                                 binding.resetFilterBtn.isInvisible = false
                                 dialog.dismiss()
                             }else {
-                                Toast.makeText(requireContext(), "Keine Auswahl getroffen!", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(requireContext(), context?.getString(R.string.toastNoSelectionHint), Toast.LENGTH_SHORT).show()
                             }
                         }
                     }

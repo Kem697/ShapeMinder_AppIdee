@@ -64,7 +64,7 @@ class LogInScreen : Fragment() {
             if (emailInput.isNotBlank() && passwordInput.isNotBlank()) {
                 signInUser(emailInput,passwordInput)
             } else {
-                Toast.makeText(binding.root.context, "Bitte mach eine Eingabe !", Toast.LENGTH_SHORT)
+                Toast.makeText(binding.root.context, context?.getString(R.string.toastUserInputHint), Toast.LENGTH_SHORT)
                     .show()
                 progressBar.visibility = View.GONE
             }
@@ -88,7 +88,7 @@ class LogInScreen : Fragment() {
                     findNavController().navigate(R.id.homeScreen)
                 } else {
                     // If sign in fails, display a message to the user.
-                    Toast.makeText(requireContext(), "Anmeldung fehlgeschlagen. Bitte überprüfe deine Eingaben.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), context?.getString(R.string.toastFailedLogIn), Toast.LENGTH_SHORT).show()
                 }
                 progressBar.visibility = View.GONE
             }

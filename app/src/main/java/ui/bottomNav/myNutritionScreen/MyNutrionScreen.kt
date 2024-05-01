@@ -95,37 +95,7 @@ class MyNutrionScreen : Fragment() {
         super.onResume()
         var navigationBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
         navigationBar.isInvisible = false
-//        setDefaultHint()
     }
-
-
-/*    fun searchInput() {
-        var mainActivity = activity as MainActivity
-        var searchBarTextInput = mainActivity.findViewById<EditText>(R.id.myN_searchBar_textInput)
-        searchBarTextInput.addTextChangedListener {
-            var userInput = searchBarTextInput.text
-            if (userInput.isNotBlank()) {
-                var searchBar = mainActivity.findViewById<SearchBar>(R.id.myN_searchBar)
-                searchBar.setText(userInput)
-            }
-        }*/
-
- /*   }
-    fun setDefaultHint(){
-        var mainActivity = activity as MainActivity
-        var searchBar = mainActivity.findViewById<SearchBar>(R.id.myN_searchBar)
-        var searchBarTextInput = mainActivity.findViewById<EditText>(R.id.myN_searchBar_textInput)
-        searchBar.hint = "Suche"
-        if (searchBarTextInput.text.isNotBlank()){
-            searchBarTextInput.text.clear()
-            searchBar.setText("")
-        }
-
-    }*/
-
-
-
-
 
 
 }

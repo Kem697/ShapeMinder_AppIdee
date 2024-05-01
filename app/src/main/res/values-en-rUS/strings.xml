@@ -181,4 +181,33 @@
     <string name="myAccountBottomNav">My Account</string>
     <string name="developerBtnText">Skip</string>
 
+    <!--Toast text-->
+
+    <string name="toastFailedAccountCreation">User account could not be created!</string>
+    <string name="toastSuccesfulAccountCreation">User account has been successfully created!</string>
+    <string name="toastFailedLogIn">Login failed. Please check your entries.</string>
+    <string name="toastUserInputHint">Please make an entry!</string>
+    <string name="toastLoadVideoFailure">Error when retrieving the video from Youtube!</string>
+    <string name="toastShareVideoFailure">No video to share available!</string>
+    <string name="toastNoSelectionHint">No selection made!</string>
+    <string name="toastUnknownFailure">Unexpected error!</string>
+    <string name="toastSelectExerciseHint">Please choose at least one exercise!</string>
+    <string name="toastSelectExerciseHint2">Please choose your exercises!</string>
+    <string name="toastNameWorkoutHint">Please name your workout!</string>
+    <string name="toastSessionSavedHint">Your training plan has been saved!</string>
+    <string name="toastSessionUpdatedHint">Changes have been saved!</string>
+    <string name="toastSessionDeletedHint">Workout has been deleted!</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </resources>

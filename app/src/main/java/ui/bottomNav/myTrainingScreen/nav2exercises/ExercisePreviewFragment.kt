@@ -174,7 +174,7 @@ class ExercisePreviewFragment : Fragment() {
                 val chooser = Intent.createChooser(intent, "Teile den Inhalt mit:")
                 startActivity(chooser)
             } else
-                Toast.makeText(requireContext(), "Kein Video zum Teilen vorhanden!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), context?.getString(R.string.toastShareVideoFailure), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -227,7 +227,7 @@ class ExercisePreviewFragment : Fragment() {
                 super.onError(youTubePlayer, error)
                 Toast.makeText(
                     binding.root.context,
-                    "Fehler beim Abruf des Videos von Youtube!",
+                    context?.getString(R.string.toastLoadVideoFailure),
                     Toast.LENGTH_SHORT
                 ).show()
             }

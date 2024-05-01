@@ -71,14 +71,14 @@ class RegisterScreen : Fragment() {
                             Log.w(tag, "Nutzerkonto angelegt??", task.exception)
                             Toast.makeText(
                                 binding.root.context,
-                                "Nutzerkonto wurde erfolgreich angelegt!",
+                                context?.getString(R.string.toastSuccesfulAccountCreation),
                                 Toast.LENGTH_SHORT,
                             ).show()
                         } else {
                             Log.w(tag, "Nutzerkonto angelegt??", task.exception)
                             Toast.makeText(
                                 binding.root.context,
-                                "Nutzerkonto konnte nicht angelegt werden!",
+                                context?.getString(R.string.toastFailedAccountCreation),
                                 Toast.LENGTH_SHORT,
                             ).show()
                         }
@@ -87,7 +87,7 @@ class RegisterScreen : Fragment() {
 
 
             } else {
-                Toast.makeText(binding.root.context, "Bitte mach eine Eingabe !", Toast.LENGTH_SHORT)
+                Toast.makeText(binding.root.context, context?.getString(R.string.toastUserInputHint), Toast.LENGTH_SHORT)
                     .show()
                 return@setOnClickListener
             }

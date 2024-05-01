@@ -115,7 +115,7 @@ class NewTrainingsSessionFragment : Fragment() {
                     viewModel.insertNewTrainingssession(newSession)
                     Toast.makeText(
                         requireContext(),
-                        "Dein Trainingsplan wurde gespeichert!.",
+                        context?.getString(R.string.toastSessionSavedHint),
                         Toast.LENGTH_SHORT
                     ).show()
                     viewModel.resetSavedInWorkoutSession(addedToSessionExercises)
@@ -124,12 +124,12 @@ class NewTrainingsSessionFragment : Fragment() {
                 } else {
                     Toast.makeText(
                         requireContext(),
-                        "Bitte wähle deine Übungen!.",
+                        context?.getString(R.string.toastSelectExerciseHint2),
                         Toast.LENGTH_SHORT
                     ).show()
                 }
             } else {
-                Toast.makeText(requireContext(), "Bitte bennene dein Workout!", Toast.LENGTH_SHORT)
+                Toast.makeText(requireContext(), context?.getString(R.string.toastNameWorkoutHint), Toast.LENGTH_SHORT)
                     .show()
             }
 

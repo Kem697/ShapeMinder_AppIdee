@@ -253,4 +253,22 @@
     <string name="developerBtnText">Überspringen</string>
 
 
+    <!--Toast text-->
+    <string name="toastFailedAccountCreation">Nutzerkonto konnte nicht angelegt werden!</string>
+    <string name="toastSuccesfulAccountCreation">Nutzerkonto wurde erfolgreich angelegt!</string>
+    <string name="toastFailedLogIn">Anmeldung fehlgeschlagen. Bitte überprüfe deine Eingaben.</string>
+    <string name="toastUserInputHint">Bitte mach eine Eingabe!</string>
+    <string name="toastLoadVideoFailure">Fehler beim Abruf des Videos von Youtube!</string>
+    <string name="toastShareVideoFailure">Kein Video zum Teilen vorhanden!</string>
+    <string name="toastNoSelectionHint">Keine Auswahl getroffen!</string>
+    <string name="toastUnknownFailure">Unerwarteter Fehler!</string>
+    <string name="toastSelectExerciseHint">Bitte wähle mindestens eine Übung!</string>
+    <string name="toastSelectExerciseHint2">Bitte wähle deine Übungen!</string>
+    <string name="toastNameWorkoutHint">Bitte bennene dein Workout!</string>
+    <string name="toastSessionSavedHint">Dein Trainingsplan wurde gespeichert!</string>
+    <string name="toastSessionUpdatedHint">Änderungen wurden gespeichert!</string>
+    <string name="toastSessionDeletedHint">"Training wurde gelöscht!"</string>
+
+
+
 </resources>

@@ -72,7 +72,7 @@ class EditTrainingSessionFragment : Fragment() {
         var saveBtn = binding.saveWorkoutBtn
         saveBtn.setOnClickListener {
             viewModel.updateTrainingsession(currentSession)
-            Toast.makeText(requireContext(), "Änderungen wurden gespeichert!", Toast.LENGTH_SHORT)
+            Toast.makeText(requireContext(), context?.getString(R.string.toastSessionUpdatedHint), Toast.LENGTH_SHORT)
                 .show()
             findNavController().navigate(R.id.myTrainingScreen)
         }
@@ -83,7 +83,7 @@ class EditTrainingSessionFragment : Fragment() {
         var deletBtn = binding.deleteWorkoutBtn
         deletBtn.setOnClickListener {
             viewModel.deleteTrainingsession(currentSession)
-            Toast.makeText(requireContext(), "Training wurde gelöscht!", Toast.LENGTH_SHORT)
+            Toast.makeText(requireContext(), context?.getString(R.string.toastSessionDeletedHint), Toast.LENGTH_SHORT)
                 .show()
             findNavController().navigate(R.id.myTrainingScreen)
         }

@@ -92,41 +92,6 @@ class MyTrainingScreen : Fragment() {
         Log.e(tag,"Ist der Screen pausiert?")
     }
 
-
-    override fun onStop() {
-        super.onStop()
-//        setDefaultHint()
-    }
-
-
-/*
-    fun searchInput() {
-        var mainActivity = activity as MainActivity
-        var searchBarTextInput = mainActivity.findViewById<EditText>(R.id.myT_searchBar_textInput)
-        searchBarTextInput.addTextChangedListener {
-            var userInput = searchBarTextInput.text
-            if (userInput.isNotBlank()) {
-                var searchBar = mainActivity.findViewById<SearchBar>(R.id.myT_searchBar)
-                searchBar.setText(userInput)
-            }
-        }
-
-    }
-*/
-/*
-    fun setDefaultHint(){
-        var mainActivity = activity as MainActivity
-        var searchBar = mainActivity.findViewById<SearchBar>(R.id.myT_searchBar)
-        var searchBarTextInput = mainActivity.findViewById<EditText>(R.id.myT_searchBar_textInput)
-        searchBar.hint = getString(R.string.searchBarHint)
-        if (searchBarTextInput.text.isNotBlank()){
-            searchBarTextInput.text.clear()
-            searchBar.setText("")
-        }
-
-    }
-*/
-
 }
 
 
