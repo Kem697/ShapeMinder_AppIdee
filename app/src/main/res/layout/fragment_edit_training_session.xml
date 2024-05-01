@@ -84,7 +84,7 @@
                 android:background="@null"
                 android:fontFamily="@font/montserrat"
                 android:inputType="text"
-                android:text="@string/sessionName"
+                android:text="@string/setDatBtnText"
                 android:textAlignment="center"
                 android:textSize="16dp" />
 

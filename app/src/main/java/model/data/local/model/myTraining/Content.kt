@@ -10,7 +10,7 @@ data class Content(
     val imageRessource: Int,
     val isExercise: Boolean,
     var isInExerciseList: Boolean,
-    val bodyPart: String,
+    val bodyPart: Int,
     var isSaved: Boolean,
     val video: Int?,
     var addedToSession: Boolean?

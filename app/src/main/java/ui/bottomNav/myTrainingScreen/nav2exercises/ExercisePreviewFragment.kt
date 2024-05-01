@@ -52,7 +52,7 @@ class ExercisePreviewFragment : Fragment() {
         navigateBack()
         viewModel.selectedContent.observe(viewLifecycleOwner) {
             binding.title.setText(it.stringRessourceTitle)
-            when (it.bodyPart) {
+            when (getString(it.bodyPart)) {
                 getString(R.string.bpArme) -> {
                     binding.subTitle.text = getString(R.string.bpArmeSubTitle)
                     binding.bodyPartView.setImageResource(R.drawable.bp1arms)

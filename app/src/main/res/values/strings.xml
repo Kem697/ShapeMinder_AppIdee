@@ -143,7 +143,6 @@
     <string name="bodypartSubtitle">TextView</string>
     <string name="exerciseName">TextView</string>
     <string name="nutritionFacts">Nährwerte pro 100g</string>
-    <string name="calFacts">N</string>
 
     <string name="foodCat">LebensmittelKateg</string>
     <string name="foodName">Name des Lebensmitte</string>
@@ -176,7 +175,7 @@
     <string name="addNewTrainingsessionText">Neues Training</string>
     <string name="searchExerciseForFav">Suche Übung</string>
 
-    <string name="sessionName">Zeitraum</string>
+    <string name="setDatBtnText">Zeitraum</string>
     <string name="editWorkoutTitle">Training bearbeiten</string>
     <string name="myTrainingScreenHeader">Mein Training</string>
     <string name="searchBarHint">Suche</string>
@@ -196,7 +195,7 @@
     <string name="myNutritionScreenHeader">Meine Ernährung</string>
     <string name="newWorkScreenHeader">Neues Workout</string>
     <string name="setDateBtnText">Trainingszeitraum</string>
-    <string name="dateText">01/01/2024</string>
+    <string name="dateText" translatable="false">01/01/2024</string>
     <string name="opt_my_profileText">Meine Profildaten</string>
     <string name="opt_my_healthText">Mein Gesundheitsstatus</string>
     <string name="opt3_my_favText">Meine Favoriten</string>

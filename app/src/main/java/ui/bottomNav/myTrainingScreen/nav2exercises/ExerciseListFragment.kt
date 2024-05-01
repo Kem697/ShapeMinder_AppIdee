@@ -91,7 +91,7 @@ class ExerciseListFragment : Fragment() {
 
 
         var bodyPart = viewModel.selectedContentTitle.value
-        viewModel.retrieveExercisesByBodyparts(bodyPart!!)
+        viewModel.retrieveExercisesByBodyparts(bodyPart!!,requireContext())
         var tag = "Pause"
         Log.e(tag, "Ist der Screen pausiert?")
     }
@@ -159,8 +159,8 @@ class ExerciseListFragment : Fragment() {
             } else {
                 searchBar.text.clear()
                 binding.myTSearchBar.clearText()
-                viewModel.retrieveExercisesByBodyparts(bodyPart)
-                viewModel.setOriginalList(orginalExercises, bodyPart)
+                viewModel.retrieveExercisesByBodyparts(bodyPart,requireContext())
+                viewModel.setOriginalList(orginalExercises, bodyPart,context)
                 binding.resetFilterBtn.isInvisible = true
             }
         }
@@ -225,7 +225,7 @@ class ExerciseListFragment : Fragment() {
                 var resetBtn = requireActivity().findViewById<MaterialButton>(R.id.resetFilterBtn)
                 resetBtn.setOnClickListener {
                     if (lastSelectedButtonIndex != -1){
-                        viewModel.retrieveExercisesByBodyparts(viewModel.selectedContentTitle.value!!)
+                        viewModel.retrieveExercisesByBodyparts(viewModel.selectedContentTitle.value!!,requireContext())
                         allImageButtons.forEach { imageButton ->
                             imageButton?.setImageResource(uncheckedImages[allImageButtons.indexOf(imageButton)])
                             imageButton?.isSelected = false
@@ -238,7 +238,7 @@ class ExerciseListFragment : Fragment() {
 
                 dialogResetBtn?.setOnClickListener {
                     if (lastSelectedButtonIndex != -1){
-                        viewModel.retrieveExercisesByBodyparts(viewModel.selectedContentTitle.value!!)
+                        viewModel.retrieveExercisesByBodyparts(viewModel.selectedContentTitle.value!!,requireContext())
                         allImageButtons.forEach { imageButton ->
                             imageButton?.setImageResource(uncheckedImages[allImageButtons.indexOf(imageButton)])
                             imageButton?.isSelected = false
@@ -312,7 +312,7 @@ class ExerciseListFragment : Fragment() {
                     "sec2_with_video_Btn"->{
                         resultsBtn?.setOnClickListener {
                             if (selectedButton.isSelected){
-                                viewModel.filterExercisesByVideo(viewModel.selectedContentTitle.value!!)
+                                viewModel.filterExercisesByVideo(viewModel.selectedContentTitle.value!!,requireContext())
                                 binding.resetFilterBtn.isInvisible = false
                                 dialog.dismiss()
                             }else {
@@ -324,7 +324,7 @@ class ExerciseListFragment : Fragment() {
                     "sec2_no_video_Btn"->{
                         resultsBtn?.setOnClickListener {
                             if (selectedButton.isSelected){
-                                viewModel.filterExercisesByNoVideo(viewModel.selectedContentTitle.value!!)
+                                viewModel.filterExercisesByNoVideo(viewModel.selectedContentTitle.value!!,requireContext())
                                 binding.resetFilterBtn.isInvisible = false
                                 dialog.dismiss()
                             }else {
@@ -335,7 +335,7 @@ class ExerciseListFragment : Fragment() {
 
                     else -> {
                         resultsBtn?.setOnClickListener {
-                            viewModel.retrieveExercisesByBodyparts(viewModel.selectedContentTitle.value!!)
+                            viewModel.retrieveExercisesByBodyparts(viewModel.selectedContentTitle.value!!,requireContext())
                         }
                     }
                 }
@@ -385,12 +385,12 @@ class ExerciseListFragment : Fragment() {
                     when (checkedId) {
                         R.id.a_z_ascending -> {
                             isSortedDescending = false
-                            viewModel.sortExercisesByAlphabet(selectedBodypart, isSortedDescending)
+                            viewModel.sortExercisesByAlphabet(selectedBodypart, isSortedDescending,requireContext())
                         }
 
                         R.id.z_a_descending -> {
                             isSortedDescending = true
-                            viewModel.sortExercisesByAlphabet(selectedBodypart, isSortedDescending)
+                            viewModel.sortExercisesByAlphabet(selectedBodypart, isSortedDescending,requireContext())
                         }
                     }
                     //DE: Schließen Sie den Dialog, nachdem eine Auswahl getroffen wurde
@@ -420,7 +420,7 @@ class ExerciseListFragment : Fragment() {
             * the number of exercises per body part are updated according to the
             * body part is updated */
 
-            binding.exerciseTitle.text = exercise.first().bodyPart
+            binding.exerciseTitle.text = getString(exercise.first().bodyPart)
             binding.subTitle.text = "${context?.getString(R.string.amountOfExercises)}: ${exercise.size}"
 
 
@@ -435,28 +435,28 @@ class ExerciseListFragment : Fragment() {
             * matches that of the body part. The branch is still error-prone */
 
 
-            when (exercise.first().bodyPart) {
-                "Arme" -> {
+            when (getString(exercise.first().bodyPart)) {
+                getString(R.string.bpArme) -> {
                     binding.bodyPartView.setImageResource(R.drawable.bp1arms)
                 }
 
-                "Bauch" -> {
+                getString(R.string.bpBauch) -> {
                     binding.bodyPartView.setImageResource(R.drawable.bp5abs)
                 }
 
-                "Schulter" -> {
+                getString(R.string.bpSchulter) -> {
                     binding.bodyPartView.setImageResource(R.drawable.bp3shoulders)
                 }
 
-                "Rücken" -> {
+                getString(R.string.bpRücken) -> {
                     binding.bodyPartView.setImageResource(R.drawable.bp4back)
                 }
 
-                "Beine" -> {
+                getString(R.string.bpBeine) -> {
                     binding.bodyPartView.setImageResource(R.drawable.bp2legs)
                 }
 
-                "Brust" -> {
+                getString(R.string.bpBrust) -> {
                     binding.bodyPartView.setImageResource(R.drawable.bp6chest)
                 }
 

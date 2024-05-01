@@ -88,7 +88,7 @@ class AllExerciseListFragment : Fragment() {
         viewModel.listOfAllExercises.observe(viewLifecycleOwner) {
             binding.listOfAllExercises.adapter =
                 NewSessionExercisesAdapter(it, viewModel, requireContext())
-            binding.amountOfExercise.text = "Anzahl der Übungen: ${it.size}"
+            binding.amountOfExercise.text = "${context?.getString(R.string.amountOfExercises)}: ${it.size}"
         }
     }
     fun sortRadioGroup() {
@@ -240,7 +240,7 @@ class AllExerciseListFragment : Fragment() {
                                 "sec0_shoulderBtn" -> requireContext().resources.getString(R.string.bpSchulter)
                                 else -> ""
                             }
-                            viewModel.filterAllExercisesByBodypart(bodyPart)
+                            viewModel.filterAllExercisesByBodypart(bodyPart,requireContext())
                         } else if (equipmentGroupFilter && !muscleGroupFilter){
                             val imageBtnName = requireContext().resources.getResourceEntryName(lastSelectedImageButton!!.id)
                             when (imageBtnName) {

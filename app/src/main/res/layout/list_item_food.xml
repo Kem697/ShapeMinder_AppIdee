@@ -90,7 +90,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="6dp"
                     android:text="@string/calText"
                     android:textColor="@color/black"
                     android:textStyle="bold"
@@ -102,7 +102,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:text="@string/fatsText"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="4dp"
                     android:textColor="@color/black"
                     android:textSize="14dp" />
 

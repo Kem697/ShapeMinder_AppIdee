@@ -109,7 +109,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     private var _savedExercises = MutableLiveData<MutableList<Content>>(
         mutableListOf(
-            Content(0, 0, 0, true, false, "", false, null, null)
+            Content(0, 0, 0, true, false, 0, false, null, null)
         )
     )
     val savedExercises: LiveData<MutableList<Content>>
@@ -199,9 +199,9 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
 
 
-    fun filterExercisesByBodypart(bodypart: String) {
+    fun filterExercisesByBodypart(bodypart: String, context: Context) {
         viewModelScope.launch {
-            val filteredExercises = allExercisesByBodyparts.filter { it.bodyPart == bodypart }
+            val filteredExercises = allExercisesByBodyparts.filter { context.getString(it.bodyPart) == bodypart }
             _exercisesByBodyparts.value = filteredExercises
         }
     }
@@ -223,9 +223,9 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     * name, e.g. arms. */
 
 
-    fun sortExercisesByAlphabet(bodypart: String, sort: Boolean) {
+    fun sortExercisesByAlphabet(bodypart: String, sort: Boolean, context: Context) {
         viewModelScope.launch {
-            val filteredExercises = exercisesByBodyparts.value?.filter { it.bodyPart == bodypart }
+            val filteredExercises = exercisesByBodyparts.value?.filter { context.getString(it.bodyPart) == bodypart }
             val sortedExercises = if (sort) {
                 filteredExercises?.sortedByDescending { it.stringRessourceText }
             } else {
@@ -235,9 +235,9 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun filterAllExercisesByBodypart(bodypart: String) {
+    fun filterAllExercisesByBodypart(bodypart: String,context: Context) {
         viewModelScope.launch {
-            val filteredExercises = allExercisesByBodyparts.filter { it.bodyPart == bodypart }
+            val filteredExercises = allExercisesByBodyparts.filter { context.getString(it.bodyPart) == bodypart }
             _listOfAllExercises.value = filteredExercises
         }
     }
@@ -343,7 +343,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
         // Filtern der Übungen basierend auf den ausgewählten Kriterien
         val filteredExercises = _listOfAllExercises.value?.filter { exercise ->
-            exercise.bodyPart == bodyPart &&
+            context.getString(exercise.bodyPart) == bodyPart &&
                     when (imageButton.id) {
                         R.id.sec1_short_dumbell_Btn -> context.getString(exercise.stringRessourceTitle)
                             .contains("KH")
@@ -411,7 +411,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     var tag4 = "Filter in ViewModel??"
                     Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
                 } else {
-                    retrieveExercisesByBodyparts(bodypart)
+                    retrieveExercisesByBodyparts(bodypart,context)
                 }
             }
         }
@@ -429,7 +429,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     var tag4 = "Filter in ViewModel??"
                     Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
                 } else {
-                    retrieveExercisesByBodyparts(bodypart)
+                    retrieveExercisesByBodyparts(bodypart,context)
                 }
             }
         }
@@ -447,7 +447,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     var tag4 = "Filter in ViewModel??"
                     Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
                 } else {
-                    retrieveExercisesByBodyparts(bodypart)
+                    retrieveExercisesByBodyparts(bodypart,context)
                 }
             }
         }
@@ -465,14 +465,14 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     var tag4 = "Filter in ViewModel??"
                     Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
                 } else {
-                    retrieveExercisesByBodyparts(bodypart)
+                    retrieveExercisesByBodyparts(bodypart,context)
                 }
             }
         }
     }
 
 
-    fun filterExercisesByVideo(bodypart: String) {
+    fun filterExercisesByVideo(bodypart: String,context: Context) {
         viewModelScope.launch {
             val filteredExercises = _exercisesByBodyparts.value?.filter {
                 it.video != null
@@ -483,14 +483,14 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     var tag4 = "Filter in ViewModel??"
                     Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
                 } else {
-                    retrieveExercisesByBodyparts(bodypart)
+                    retrieveExercisesByBodyparts(bodypart,context)
                 }
             }
         }
     }
 
 
-    fun filterExercisesByNoVideo(bodypart: String) {
+    fun filterExercisesByNoVideo(bodypart: String,context: Context) {
         viewModelScope.launch {
             val filteredExercises = _exercisesByBodyparts.value?.filter {
                 it.video == null
@@ -501,15 +501,15 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     var tag4 = "Filter in ViewModel??"
                     Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
                 } else {
-                    retrieveExercisesByBodyparts(bodypart)
+                    retrieveExercisesByBodyparts(bodypart,context)
                 }
             }
         }
     }
 
 
-    fun retrieveExercisesByBodyparts(bodypart: String) {
-        _exercisesByBodyparts.value = allExercisesByBodyparts.filter { it.bodyPart == bodypart }
+    fun retrieveExercisesByBodyparts(bodypart: String, context: Context) {
+        _exercisesByBodyparts.value = allExercisesByBodyparts.filter { context.getString(it.bodyPart) == bodypart }
     }
 
 
@@ -549,8 +549,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         _addToSessionExercises.value = mutableListOf(content)
     }
 
-    fun setOriginalList(exercises: List<Content>, bodypart: String) {
-        exercises.filter { it.bodyPart == bodypart }
+    fun setOriginalList(exercises: List<Content>, bodypart: String,context: Context) {
+        exercises.filter { context.getString(it.bodyPart) == bodypart }
         _exercisesByBodyparts.value = exercises
     }
 

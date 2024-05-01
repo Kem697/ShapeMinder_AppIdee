@@ -253,7 +253,7 @@ class AllExerciseListForEditSessionFragment : Fragment() {
                                 "sec0_shoulderBtn" -> requireContext().resources.getString(R.string.bpSchulter)
                                 else -> ""
                             }
-                            viewModel.filterAllExercisesByBodypart(bodyPart)
+                            viewModel.filterAllExercisesByBodypart(bodyPart,requireContext())
                         } else if (equipmentGroupFilter && !muscleGroupFilter){
                             val imageBtnName = requireContext().resources.getResourceEntryName(lastSelectedImageButton!!.id)
                             when (imageBtnName) {

@@ -36,7 +36,7 @@ class NewSessionExercisesAdapter (
         var checkBox = holder.binding.saveExerciseCheckbox
         checkBox.buttonTintList = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.tertiary))
         holder.binding.exerciseName.setText(exercise.stringRessourceTitle)
-        holder.binding.exerciseBodyPart.text = exercise.bodyPart
+        holder.binding.exerciseBodyPart.text = context.getString(exercise.bodyPart)
         holder.binding.exerciseImage.setImageResource(exercise.imageRessource)
         holder.binding.saveExerciseCheckbox.isChecked = exercise.addedToSession == true
         holder.binding.materialCardView.setOnClickListener {
