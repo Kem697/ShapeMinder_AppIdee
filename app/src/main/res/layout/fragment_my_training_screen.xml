@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="22dp"
-                android:text="@string/myNutritionScreenHeader"
+                android:text="@string/myTrainingScreenHeader"
                 android:textColor="#FFFFFF"
                 android:textSize="28dp" />
 

@@ -1,4 +1,5 @@
 package model.data.local
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import com.example.shapeminder_appidee.R
@@ -14,6 +15,8 @@ import model.data.local.model.myTraining.TrainingsSession
 
 
 class LocalRepository (private val trainingDatabase: TrainingSessionsDatabase) {
+
+
 
     val trainingSessionList: LiveData<List<TrainingsSession>> = trainingDatabase.trainingsSessionDao.getAll()
 

@@ -421,7 +421,7 @@ class ExerciseListFragment : Fragment() {
             * body part is updated */
 
             binding.exerciseTitle.text = exercise.first().bodyPart
-            binding.subTitle.text = "Anzahl von Übungen: ${exercise.size}"
+            binding.subTitle.text = "${context?.getString(R.string.amountOfExercises)}: ${exercise.size}"
 
 
             /*DE:

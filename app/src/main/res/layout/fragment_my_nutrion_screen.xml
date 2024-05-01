@@ -83,7 +83,7 @@
                 android:layout_marginLeft="22dp"
                 android:text="@string/myNutritionScreenHeader"
                 android:textColor="#FFFFFF"
-                android:textSize="28dp" />
+                android:textSize="26dp" />
 
             <ImageView
                 android:id="@+id/appLogo"

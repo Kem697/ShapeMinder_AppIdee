@@ -76,9 +76,9 @@ class MyNutrionScreen : Fragment() {
         val tabNavAdapter = MyNutritionTabNavAdapter(fragmentManager)
 
         // Fügen Sie Ihre Fragmente zum Adapter hinzu (Beispielhaft)
-        tabNavAdapter.addFragment(FoodFinderNav1Fragment(), "Food Finder")
-        tabNavAdapter.addFragment(DiaryNav2Fragment(), "Tagebuch")
-        tabNavAdapter.addFragment(GroceryListNav3Fragment(), "Einkaufsliste")
+        tabNavAdapter.addFragment(FoodFinderNav1Fragment(), getString(R.string.myNutrionTab1Title))
+        tabNavAdapter.addFragment(DiaryNav2Fragment(), getString(R.string.myNutrionTab2Title))
+        tabNavAdapter.addFragment(GroceryListNav3Fragment(), getString(R.string.myNutrionTab3Title))
 
         // Setzen Sie den Adapter zum ViewPager
         viewPager.adapter = tabNavAdapter

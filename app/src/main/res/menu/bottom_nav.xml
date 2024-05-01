@@ -5,25 +5,25 @@
         android:id="@+id/myTrainingScreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Mein Training"
+        android:title="@string/myTraininBottomNav"
 
         android:icon="@drawable/exercise_icon"/>
     <item
         android:id="@+id/homeScreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Start"
+        android:title="@string/startBottomNav"
         android:icon="@drawable/home_icon"/>
     <item
         android:id="@+id/myNutrionScreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Meine Ernährung"
+        android:title="@string/myNutritionBottomNav"
         android:icon="@drawable/my_nutrion_icon"/>
     <item
         android:id="@+id/mySettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Mein Konto"
+        android:title="@string/myAccountBottomNav"
         android:icon="@drawable/manage_account"/>
 </menu>

@@ -1,6 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <string name="app_name" translatable="false">ShapeMinder</string>
+
+
     <string name="eMailInput">E-Mail Adresse eingeben...</string>
     <string name="nameInput">Vor - und Nachnamen eingeben...</string>
     <string name="passwordInput">Passwort eingeben...</string>
@@ -13,20 +15,7 @@
     <string name="title2">Training</string>
     <string name="title3">Ernährung</string>
 
-    <string name="text1">
-        Erholung ist entscheidend für erfolgreiches Fitnesstraining. Sie ermöglicht es den Muskeln,
-        sich nach dem Training zu regenerieren und stärker zu werden. Qualitätsschlaf, richtige Ernährung und aktive Erholung sind wichtig.
-        Ein ausgewogener Trainingsplan mit Phasen der Belastung und Erholung sowie Stressmanagement unterstützen langfristige Fortschritte.
-        Hier sind einige wichtige Punkte, die du bei der Erholung im Fitness-Training beachten solltest:
-        Muskelregeneration: Während des Trainings entstehen kleine Risse in den Muskelfasern, die sie strapazieren.
-        Die Erholungsphase ermöglicht es den Muskeln, sich zu reparieren und stärker zu werden. Diese Regenerationszeit ist entscheidend
-        für den Muskelaufbau und die Vermeidung von Überlastungsschäden.
-        Schlaf: Qualitätsschlaf ist für die Erholung von größter Bedeutung. Während des Schlafs setzt der Körper Wachstumshormone frei,
-        die den Muskelaufbau und die Reparatur unterstützen. Es wird empfohlen, 7-9 Stunden Schlaf pro Nacht zu bekommen, um optimale Ergebnisse zu erzielen.
-        Ernährung: Die richtige Ernährung spielt eine entscheidende Rolle bei der Erholung.
-        Nach dem Training benötigt dein Körper Nährstoffe wie Protein und Kohlenhydrate, um sich zu regenerieren und Energie wiederherzustellen.
-        Eine ausgewogene Ernährung hilft auch dabei, Entzündungen zu reduzieren und den Heilungsprozess zu beschleunigen.
-    </string>
+    <string name="text1">"         Erholung ist entscheidend für erfolgreiches Fitnesstraining. Sie ermöglicht es den Muskeln,         sich nach dem Training zu regenerieren und stärker zu werden. Qualitätsschlaf, richtige Ernährung und aktive Erholung sind wichtig.         Ein ausgewogener Trainingsplan mit Phasen der Belastung und Erholung sowie Stressmanagement unterstützen langfristige Fortschritte.         Hier sind einige wichtige Punkte, die du bei der Erholung im Fitness-Training beachten solltest:         Muskelregeneration: Während des Trainings entstehen kleine Risse in den Muskelfasern, die sie strapazieren.         Die Erholungsphase ermöglicht es den Muskeln, sich zu reparieren und stärker zu werden. Diese Regenerationszeit ist entscheidend         für den Muskelaufbau und die Vermeidung von Überlastungsschäden.         Schlaf: Qualitätsschlaf ist für die Erholung von größter Bedeutung. Während des Schlafs setzt der Körper Wachstumshormone frei,         die den Muskelaufbau und die Reparatur unterstützen. Es wird empfohlen, 7-9 Stunden Schlaf pro Nacht zu bekommen, um optimale Ergebnisse zu erzielen.         Ernährung: Die richtige Ernährung spielt eine entscheidende Rolle bei der Erholung.         Nach dem Training benötigt dein Körper Nährstoffe wie Protein und Kohlenhydrate, um sich zu regenerieren und Energie wiederherzustellen.         Eine ausgewogene Ernährung hilft auch dabei, Entzündungen zu reduzieren und den Heilungsprozess zu beschleunigen.     "</string>
 
     <string name="text2">Krafttraining ist eine Form des Trainings, die darauf abzielt, die Muskelkraft, Ausdauer
         und Masse zu verbessern. Es nutzt Widerstand, sei es durch Gewichte, Körpergewicht oder andere Geräte, um
@@ -93,95 +82,25 @@
 
     <!--exerciseText-->
 
-    <string name="weKH_BicepscurlsInstruction">
-Stehe aufrecht mit einer Kurzhantel in jeder Hand, die Handflächen zeigen nach vorne.
-Beuge deine Ellbogen, um die Hanteln zur Schulter zu bringen, indem du deine Bizepsmuskeln aktivierst.
-Senke die Hanteln langsam und kontrolliert wieder ab, um die Muskeln zu dehnen.</string>
-    <string name="we_LungesInstruction">
-Stehe aufrecht und mache einen großen Schritt nach vorne.
-Beuge beide Knie, bis beide Beine jeweils einen 90-Grad-Winkel bilden.
-Drücke dich mit dem vorderen Bein wieder nach oben und wiederhole auf der anderen Seite.
-    </string>
-    <string name="weLH_BicepscurlsInstructions">
-Stehe aufrecht mit einer Langhantel in den Händen, die Hände in einer Schulterbreite halten, die Handflächen zeigen nach vorne.
-Beuge deine Ellbogen, um die Langhantel zur Schulter zu bringen, indem du deine Bizepsmuskeln aktivierst.
-Senke die Langhantel langsam und kontrolliert wieder ab, um die Muskeln zu dehnen.
-    </string>
-    <string name="weSZ_BicepscurlsInstructions">
-Stehe aufrecht mit einer SZ-Hantel (SZ-Stange) in den Händen, die Hände in einer Schulterbreite halten, die Handflächen zeigen nach vorne.
-Beuge deine Ellbogen, um die SZ-Hantel zur Schulter zu bringen, indem du deine Bizepsmuskeln aktivierst.
-Senke die SZ-Hantel langsam und kontrolliert wieder ab, um die Muskeln zu dehnen.
-    </string>
-    <string name="weKH_SideRaiseInstructions">
-Stehe aufrecht mit einer Kurzhantel in jeder Hand. Die Unterarme sind immer unter dem Ellenbogen.
-Hebe die Hanteln seitlich hoch, bis die Arme parallel zum Boden sind, indem du deine Schultermuskeln aktivierst.
-Senke die Hanteln langsam und kontrolliert ab, um die Muskeln zu dehnen.
-    </string>
-    <string name="weKH_ShoulderpressInstructions">
-Stehe aufrecht mit einer Kurzhantel in jeder Hand, die Arme gebeugt und die Hände auf Schulterhöhe.
-Drücke die Hanteln nach oben über den Kopf, indem du deine Schultermuskeln aktivierst.
-Senke die Hanteln langsam und kontrolliert ab, um die Muskeln zu dehnen.
-    </string>
-    <string name="we_RisingLegsInstructions">
-Greife eine Stange mit einem breiten Griff, die Handflächen zeigen von dir weg. Strecke die Beine gerade nach oben.
-Hebe die Beine langsam an, indem du deine Bauchmuskeln aktivierst, und senke sie dann langsam und kontrolliert wieder ab.
-        Achte beim Senken der Beine darauf, dass du sie nicht schwingst und höchstens parallel zu dein Rücken geführt werden.
-    </string>
-    <string name="we_DipsInstructions">
-Greife zwei parallele Stangen und hebe deinen Körper, indem du deine Arme beugst, bis deine Arme fast gerade sind.
-Senke deinen Körper langsam und kontrolliert ab, um die Muskeln zu dehnen.
-    </string>
-    <string name="we_Pull_upsInstructions">
-Greife eine Stange mit einem breiten Griff, die Handflächen zeigen von dir weg.
-Ziehe deinen Körper nach oben, indem du deine Arme beugst, bis dein Kinn über die Stange kommt.
-Senke deinen Körper langsam und kontrolliert ab, um die Muskeln zu dehnen.
-    </string>
-    <string name="we_CrunchesInstructions">
-Liege flach auf dem Rücken mit den Knien gebeugt und den Füßen flach auf dem Boden.
-Hebe deine Schultern vom Boden, indem du deine Bauchmuskeln aktivierst, und senke sie dann langsam und kontrolliert wieder ab.
-    </string>
-    <string name="weKH_BenchpressInstructions">
-Liege auf einer Bank mit einer Kurzhantel in jeder Hand, die Arme ausgestreckt über den Schultern.
-Senke die Hanteln langsam und kontrolliert nach unten, bis die Ellenbogen einen 90-Grad-Winkel bilden.
-Drücke die Hanteln nach oben, indem du deine Brustmuskeln aktivierst, bis die Arme wieder ausgestreckt sind.
-    </string>
-    <string name="weLH_BenchpressInstructions">
-Liege auf einer Bank mit einer Langhantel über der Brust, die Arme ausgestreckt und die Hände in einer breiten Griffweite.
-Senke die Langhantel langsam und kontrolliert nach unten, bis die Ellenbogen einen 90-Grad-Winkel bilden.
-Drücke die Langhantel nach oben, indem du deine Brustmuskeln aktivierst, bis die Arme wieder ausgestreckt sind.
-    </string>
-    <string name="weLH_InclineBenchpressInstructions">
-Liege auf einer schrägen Bank mit einer Langhantel über der Brust, die Arme ausgestreckt und die Hände in einer breiten Griffweite.
-Senke die Langhantel langsam und kontrolliert nach unten, bis die Ellenbogen einen 90-Grad-Winkel bilden.
-Drücke die Langhantel nach oben, indem du deine Brustmuskeln aktivierst, bis die Arme wieder ausgestreckt sind.
-    </string>
+    <string name="weKH_BicepscurlsInstruction">" Stehe aufrecht mit einer Kurzhantel in jeder Hand, die Handflächen zeigen nach vorne. Beuge deine Ellbogen, um die Hanteln zur Schulter zu bringen, indem du deine Bizepsmuskeln aktivierst. Senke die Hanteln langsam und kontrolliert wieder ab, um die Muskeln zu dehnen."</string>
+    <string name="we_LungesInstruction">" Stehe aufrecht und mache einen großen Schritt nach vorne. Beuge beide Knie, bis beide Beine jeweils einen 90-Grad-Winkel bilden. Drücke dich mit dem vorderen Bein wieder nach oben und wiederhole auf der anderen Seite.     "</string>
+    <string name="weLH_BicepscurlsInstructions">" Stehe aufrecht mit einer Langhantel in den Händen, die Hände in einer Schulterbreite halten, die Handflächen zeigen nach vorne. Beuge deine Ellbogen, um die Langhantel zur Schulter zu bringen, indem du deine Bizepsmuskeln aktivierst. Senke die Langhantel langsam und kontrolliert wieder ab, um die Muskeln zu dehnen.     "</string>
+    <string name="weSZ_BicepscurlsInstructions">" Stehe aufrecht mit einer SZ-Hantel (SZ-Stange) in den Händen, die Hände in einer Schulterbreite halten, die Handflächen zeigen nach vorne. Beuge deine Ellbogen, um die SZ-Hantel zur Schulter zu bringen, indem du deine Bizepsmuskeln aktivierst. Senke die SZ-Hantel langsam und kontrolliert wieder ab, um die Muskeln zu dehnen.     "</string>
+    <string name="weKH_SideRaiseInstructions">" Stehe aufrecht mit einer Kurzhantel in jeder Hand. Die Unterarme sind immer unter dem Ellenbogen. Hebe die Hanteln seitlich hoch, bis die Arme parallel zum Boden sind, indem du deine Schultermuskeln aktivierst. Senke die Hanteln langsam und kontrolliert ab, um die Muskeln zu dehnen.     "</string>
+    <string name="weKH_ShoulderpressInstructions">" Stehe aufrecht mit einer Kurzhantel in jeder Hand, die Arme gebeugt und die Hände auf Schulterhöhe. Drücke die Hanteln nach oben über den Kopf, indem du deine Schultermuskeln aktivierst. Senke die Hanteln langsam und kontrolliert ab, um die Muskeln zu dehnen.     "</string>
+    <string name="we_RisingLegsInstructions">" Greife eine Stange mit einem breiten Griff, die Handflächen zeigen von dir weg. Strecke die Beine gerade nach oben. Hebe die Beine langsam an, indem du deine Bauchmuskeln aktivierst, und senke sie dann langsam und kontrolliert wieder ab.         Achte beim Senken der Beine darauf, dass du sie nicht schwingst und höchstens parallel zu dein Rücken geführt werden.     "</string>
+    <string name="we_DipsInstructions">" Greife zwei parallele Stangen und hebe deinen Körper, indem du deine Arme beugst, bis deine Arme fast gerade sind. Senke deinen Körper langsam und kontrolliert ab, um die Muskeln zu dehnen.     "</string>
+    <string name="we_Pull_upsInstructions">" Greife eine Stange mit einem breiten Griff, die Handflächen zeigen von dir weg. Ziehe deinen Körper nach oben, indem du deine Arme beugst, bis dein Kinn über die Stange kommt. Senke deinen Körper langsam und kontrolliert ab, um die Muskeln zu dehnen.     "</string>
+    <string name="we_CrunchesInstructions">" Liege flach auf dem Rücken mit den Knien gebeugt und den Füßen flach auf dem Boden. Hebe deine Schultern vom Boden, indem du deine Bauchmuskeln aktivierst, und senke sie dann langsam und kontrolliert wieder ab.     "</string>
+    <string name="weKH_BenchpressInstructions">" Liege auf einer Bank mit einer Kurzhantel in jeder Hand, die Arme ausgestreckt über den Schultern. Senke die Hanteln langsam und kontrolliert nach unten, bis die Ellenbogen einen 90-Grad-Winkel bilden. Drücke die Hanteln nach oben, indem du deine Brustmuskeln aktivierst, bis die Arme wieder ausgestreckt sind.     "</string>
+    <string name="weLH_BenchpressInstructions">" Liege auf einer Bank mit einer Langhantel über der Brust, die Arme ausgestreckt und die Hände in einer breiten Griffweite. Senke die Langhantel langsam und kontrolliert nach unten, bis die Ellenbogen einen 90-Grad-Winkel bilden. Drücke die Langhantel nach oben, indem du deine Brustmuskeln aktivierst, bis die Arme wieder ausgestreckt sind.     "</string>
+    <string name="weLH_InclineBenchpressInstructions">" Liege auf einer schrägen Bank mit einer Langhantel über der Brust, die Arme ausgestreckt und die Hände in einer breiten Griffweite. Senke die Langhantel langsam und kontrolliert nach unten, bis die Ellenbogen einen 90-Grad-Winkel bilden. Drücke die Langhantel nach oben, indem du deine Brustmuskeln aktivierst, bis die Arme wieder ausgestreckt sind.     "</string>
 
-    <string name="weKH_InclineBenchpressInstructions">
-Liege auf einer schrägen Bank mit einer Kurzhantel in jeder Hand, die Arme ausgestreckt über den Schultern.
-Senke die Hanteln langsam und kontrolliert nach unten, bis die Ellenbogen einen 90-Grad-Winkel bilden.
-Drücke die Hanteln nach oben, indem du deine Brustmuskeln aktivierst, bis die Arme wieder ausgestreckt sind.
-    </string>
-    <string name="wePush_upsInstructions">
-Liege flach auf dem Bauch mit den Händen etwas weiter als schulterbreit auseinander.
-Drücke deinen Körper nach oben, indem du deine Arme streckst und deine Brustmuskeln aktivierst.
-Senke deinen Körper langsam und kontrolliert ab, um die Muskeln zu dehnen.
-    </string>
-    <string name="weSquatsInstructions">
-Stehe aufrecht mit einer Langhantel auf den Schultern, die Füße etwas weiter als schulterbreit auseinander.
-Beuge die Knie, um den Körper abzusenken, bis die Oberschenkel parallel zum Boden sind.
-    </string>
-    <string name="weKH_SideRaiseLayOnBenchInstruction">
-Lege dich mit dem Bauch auf eine Bank und halte in jeder Hand eine Kurzhantel.
-Hebe die Hanteln seitlich hoch, bis deine beiden Arminneseiten parallel zum Boden sind, indem du deine hinter Schultermuskeln aktivierst.
-Senke die Hanteln langsam und kontrolliert ab, um die Muskeln zu dehnen.
-    </string>
-    <string name="weCable_RowInstructions">
-Positioniere dich vor dem Kabelzuggerät mit deinem Griff.
-Ziehe den Griff zur Bauchgegend, indem du die Schulterblätter zusammenziehst.
-Halte die Spannung kurz und senke den Griff kontrolliert zurück.
-Atme aus, wenn du ziehst, und ein, wenn du senkst.
-Achte auf eine gerade Rückenhaltung und kontrollierte Bewegungen.
-    </string>
+    <string name="weKH_InclineBenchpressInstructions">" Liege auf einer schrägen Bank mit einer Kurzhantel in jeder Hand, die Arme ausgestreckt über den Schultern. Senke die Hanteln langsam und kontrolliert nach unten, bis die Ellenbogen einen 90-Grad-Winkel bilden. Drücke die Hanteln nach oben, indem du deine Brustmuskeln aktivierst, bis die Arme wieder ausgestreckt sind.     "</string>
+    <string name="wePush_upsInstructions">" Liege flach auf dem Bauch mit den Händen etwas weiter als schulterbreit auseinander. Drücke deinen Körper nach oben, indem du deine Arme streckst und deine Brustmuskeln aktivierst. Senke deinen Körper langsam und kontrolliert ab, um die Muskeln zu dehnen.     "</string>
+    <string name="weSquatsInstructions">" Stehe aufrecht mit einer Langhantel auf den Schultern, die Füße etwas weiter als schulterbreit auseinander. Beuge die Knie, um den Körper abzusenken, bis die Oberschenkel parallel zum Boden sind.     "</string>
+    <string name="weKH_SideRaiseLayOnBenchInstruction">" Lege dich mit dem Bauch auf eine Bank und halte in jeder Hand eine Kurzhantel. Hebe die Hanteln seitlich hoch, bis deine beiden Arminneseiten parallel zum Boden sind, indem du deine hinter Schultermuskeln aktivierst. Senke die Hanteln langsam und kontrolliert ab, um die Muskeln zu dehnen.     "</string>
+    <string name="weCable_RowInstructions">" Positioniere dich vor dem Kabelzuggerät mit deinem Griff. Ziehe den Griff zur Bauchgegend, indem du die Schulterblätter zusammenziehst. Halte die Spannung kurz und senke den Griff kontrolliert zurück. Atme aus, wenn du ziehst, und ein, wenn du senkst. Achte auf eine gerade Rückenhaltung und kontrollierte Bewegungen.     "</string>
 
 
     <!--exerciseVideos-->
@@ -324,9 +243,13 @@ Achte auf eine gerade Rückenhaltung und kontrollierte Bewegungen.
 
 
     <string name="scanFoodText">Scanne Lebensmittel Barcode</string>
-
-
-
+    <string name="myNutrionTab1Title">Food Finder</string>
+    <string name="myNutrionTab2Title">Tagebuch</string>
+    <string name="myNutrionTab3Title">Einkaufsliste</string>
+    <string name="myTraininBottomNav">Mein Training</string>
+    <string name="startBottomNav">Start</string>
+    <string name="myNutritionBottomNav">Meine Ernährung</string>
+    <string name="myAccountBottomNav">Mein Konto</string>
 
 
 </resources>

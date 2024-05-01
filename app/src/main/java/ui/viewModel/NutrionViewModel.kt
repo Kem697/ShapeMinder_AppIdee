@@ -21,8 +21,6 @@ class NutrionViewModel(application: Application) : AndroidViewModel(application)
 
 
 
-
-
     private var _foodCategories = MutableLiveData(groceryCategories)
     val foodCategories: LiveData<List<FoodFinderCategory>>
         get() = _foodCategories

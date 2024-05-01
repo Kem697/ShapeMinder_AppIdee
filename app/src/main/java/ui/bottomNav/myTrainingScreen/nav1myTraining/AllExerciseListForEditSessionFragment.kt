@@ -99,7 +99,7 @@ class AllExerciseListForEditSessionFragment : Fragment() {
         viewModel.listOfAllExercises.observe(viewLifecycleOwner) {
             binding.listOfAllExercises.adapter =
                 CurrentSessionExerciseAdapter(it, viewModel, requireContext())
-            binding.amountOfExercise.text = "Anzahl der Übungen: ${it.size}"
+            binding.amountOfExercise.text = "${context?.getString(R.string.amountOfExercises)}: ${it.size}"
         }
     }
 
