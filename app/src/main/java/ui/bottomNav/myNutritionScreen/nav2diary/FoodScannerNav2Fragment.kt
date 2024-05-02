@@ -3,12 +3,14 @@ package ui.bottomNav.myNutritionScreen.nav2diary
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.BarcodeScan
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentFoodscannerNav2Binding
@@ -23,7 +25,8 @@ class FoodScannerNav2Fragment : Fragment() {
     private lateinit var barlauncher : ActivityResultLauncher<ScanOptions>
 
 
-    /*Barcode konnte gescannt werden. Jedoch ist Bildschirm schwarz. Überarbeitung notwendig!*/
+    /*Barcode konnte gescannt werden. Jedoch ist Bildschirm schwarz. Überarbeitung notwendig! Sobald
+    * einmal die Kamera einen Code rescannt hat, bleibt sie schwarz*/
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,21 +49,21 @@ class FoodScannerNav2Fragment : Fragment() {
         }
     }
 
-
-
-
     fun setUp(){
         barlauncher = registerForActivityResult(ScanContract()) { result ->
             if (result.contents != null) {
                 val builder = AlertDialog.Builder(this.context)
                 builder.setTitle(context?.getString(R.string.barcodeResult))
+                nutritionViewModel.searchFoodByBarcode(result.contents)
                 builder.setMessage(result.contents)
                 builder.setPositiveButton("OK") { dialogInterface, _ ->
                     dialogInterface.dismiss()
                 }.show()
             }
+            releaseCameraSource()
         }
     }
+    
 
 
 
@@ -71,6 +74,15 @@ class FoodScannerNav2Fragment : Fragment() {
         options.setOrientationLocked(true)
         options.setCaptureActivity(BarcodeScan::class.java)
         barlauncher.launch(options)
+    }
+
+
+    fun releaseCameraSource(){
+        if (::barlauncher.isInitialized && barlauncher != null){
+            var tag ="Fe"
+            Log.i(tag,"GGG")
+            barlauncher.unregister()
+        }
     }
 
 }
