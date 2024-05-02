@@ -170,9 +170,11 @@
     <string name="unknownFoodName">(unknown)</string>
     <string name="failedStoreFinderText">Error opening Google Maps!</string>
     <string name="scanFoodText">Scan food barcode</string>
+    <string name="barcodeScannerTitle">Barcode Scanner</string>
+
 
     <string name="myNutrionTab1Title">Food Finder</string>
-    <string name="myNutrionTab2Title">Diary</string>
+    <string name="myNutrionTab2Title">Food Scanner</string>
     <string name="myNutrionTab3Title">Shopping List</string>
 
     <string name="myTraininBottomNav">My Training</string>
@@ -197,15 +199,10 @@
     <string name="toastSessionSavedHint">Your training plan has been saved!</string>
     <string name="toastSessionUpdatedHint">Changes have been saved!</string>
     <string name="toastSessionDeletedHint">Workout has been deleted!</string>
-
-
-
-
-
-
-
-
-
+    <string name="toastCameraPermissionRefusedHint">Camera permission not granted!</string>
+    <string name="toastScanStopHint">Barcode scanner has been stopped!</string>
+    <string name="noBarcodeDetectedText">No barcode detected!</string>
+    <string name="barcodeResult">Result</string>
 
 
 

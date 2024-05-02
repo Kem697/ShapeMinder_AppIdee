@@ -109,6 +109,12 @@ dependencies {
 
 
 
+    // Barcode
+
+    implementation ("com.google.android.gms:play-services-vision:20.1.3")
+
+
+
 }
 
 

@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.shapeminder_appidee.R
-import com.example.shapeminder_appidee.databinding.FragmentDiaryNav2Binding
+import com.example.shapeminder_appidee.databinding.FragmentFoodscannerNav2Binding
 import com.example.shapeminder_appidee.databinding.FragmentGroceryListNav3Binding
 import ui.viewModel.NutrionViewModel
 

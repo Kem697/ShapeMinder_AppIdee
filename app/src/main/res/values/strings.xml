@@ -123,7 +123,6 @@
     <string name="weKH_SideRaiseLayOnBenchYtVideo" translatable="false">2oMQvDAu0m8</string>
 
 
-
     <string name="ecBenchpress">Bankdrücken</string>
     <string name="ecShoulderpress">Schulterdrücken</string>
     <string name="addExercise">Neue Übung</string>
@@ -226,7 +225,6 @@
     <string name="recommendFriendsText">Hey, schaue dir diese App an:</string>
 
 
-
     <!--Search for Food String Ressources-->
 
     <string name="gc_fruits_and_vegetable">Obst und Gemüse</string>
@@ -244,7 +242,7 @@
 
     <string name="scanFoodText">Scanne Lebensmittel Barcode</string>
     <string name="myNutrionTab1Title">Food Finder</string>
-    <string name="myNutrionTab2Title">Tagebuch</string>
+    <string name="myNutrionTab2Title">Food Scanner</string>
     <string name="myNutrionTab3Title">Einkaufsliste</string>
     <string name="myTraininBottomNav">Mein Training</string>
     <string name="startBottomNav">Start</string>
@@ -268,7 +266,11 @@
     <string name="toastSessionSavedHint">Dein Trainingsplan wurde gespeichert!</string>
     <string name="toastSessionUpdatedHint">Änderungen wurden gespeichert!</string>
     <string name="toastSessionDeletedHint">"Training wurde gelöscht!"</string>
-
+    <string name="toastCameraPermissionRefusedHint">Nutzung der Kamera wurde abgelehnt!</string>
+    <string name="toastScanStopHint">Barcode Scanner wurde angehalten!</string>
+    <string name="barcodeScannerTitle">Barcode Scanner</string>
+    <string name="noBarcodeDetectedText">Kein Barcode gefunden!</string>
+    <string name="barcodeResult">Ergebnis</string>
 
 
 </resources>
