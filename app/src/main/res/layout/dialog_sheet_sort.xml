@@ -27,7 +27,7 @@
                 android:layout_margin="16dp"
                 android:layout_gravity="center"
                 android:textStyle="bold"
-                android:text="Sortiere nach"
+                android:text="@string/sortByText"
                 android:textSize="30dp" />
 
             <RadioGroup
@@ -43,7 +43,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="32dp"
-                    android:text="Alphabet aufsteigend (a-z)"
+                    android:text="@string/alphabetAscendingText"
                     android:checked="true"
                     android:textSize="20dp">
 
@@ -53,7 +53,7 @@
                     android:id="@+id/z_a_descending"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Alphabet absteigend (z-a)"
+                    android:text="@string/alphabetDescendingText"
                     android:textSize="20dp">
 
                 </RadioButton>
