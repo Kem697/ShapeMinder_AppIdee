@@ -195,5 +195,6 @@
     <string name="intentShareText">İçeriği paylaşın:</string>
     <string name="intentRecommendText">Antrenmanınız için buradayım:</string>
     <string name="apiCountrySearchTag">turkey</string>
+    <string name="apiRequestRegionDE">TR</string>
 
 </resources>

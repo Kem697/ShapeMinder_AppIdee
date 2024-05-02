@@ -97,7 +97,7 @@
                         android:id="@+id/foodName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/foodName"
+                        android:text=""
                         android:textSize="20dp"
                         android:textStyle="bold" />
 
@@ -107,7 +107,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:layout_marginTop="8dp"
-                        android:text="@string/foodCat"
+                        android:text=""
                         android:textSize="16dp" />
 
 

@@ -199,6 +199,7 @@
     <string name="noBarcodeDetectedText">No barcode detected!</string>
     <string name="barcodeResult">Result</string>
     <string name="sortByText">Sort by</string>
+    <string name="apiRequestRegion">US</string>
     <string name="alphabetAscendingText">Alphabet ascending (a-z)</string>
     <string name="alphabetDescendingText">Alphabet descending (a-z)</string>
 
