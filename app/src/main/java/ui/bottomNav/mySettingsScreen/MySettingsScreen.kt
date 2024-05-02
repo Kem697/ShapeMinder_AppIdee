@@ -61,7 +61,7 @@ class MySettingsScreen : Fragment() {
                 getString(R.string.recommendFriendsText)
             )
             sendIntent.putExtra(Intent.EXTRA_TEXT,"Url")
-            val chooser = Intent.createChooser(sendIntent,"Teile den Inhalt mit:")
+            val chooser = Intent.createChooser(sendIntent, getString(R.string.intentShareText))
             requireActivity().startActivity(chooser)
 
         }

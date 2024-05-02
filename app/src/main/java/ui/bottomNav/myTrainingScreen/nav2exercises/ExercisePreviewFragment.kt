@@ -169,9 +169,9 @@ class ExercisePreviewFragment : Fragment() {
             if (videoExercise.video!=null){
                 val intent = Intent(Intent.ACTION_SEND)
                 intent.type = "text/plain"
-                intent.putExtra(Intent.EXTRA_TITLE,"Hier für dein Workout: || ${getString(videoExercise.stringRessourceTitle)} ||")
+                intent.putExtra(Intent.EXTRA_TITLE,"${getString(R.string.intentRecommendText)} || ${getString(videoExercise.stringRessourceTitle)} ||")
                 intent.putExtra(Intent.EXTRA_TEXT, "$url")
-                val chooser = Intent.createChooser(intent, "Teile den Inhalt mit:")
+                val chooser = Intent.createChooser(intent, context?.getString(R.string.intentShareText))
                 startActivity(chooser)
             } else
                 Toast.makeText(requireContext(), context?.getString(R.string.toastShareVideoFailure), Toast.LENGTH_SHORT).show()

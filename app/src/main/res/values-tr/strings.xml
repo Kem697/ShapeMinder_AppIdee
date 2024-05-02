@@ -167,7 +167,7 @@
     <string name="myTraininBottomNav">Benim Antrenman</string>
     <string name="startBottomNav">Başlangıç</string>
     <string name="myNutritionBottomNav">Benim Beslenme</string>
-    <string name="myAccountBottomNav">Hesabım</string>
+    <string name="myAccountBottomNav">Benim Yerim</string>
     <string name="developerBtnText">Atla</string>
     <string name="toastFailedAccountCreation">Kullanıcı hesabı oluşturulamadı!</string>
     <string name="toastSuccesfulAccountCreation">Kullanıcı hesabı başarıyla oluşturuldu!</string>
@@ -190,5 +190,10 @@
     <string name="barcodeResult">Sonuç</string>
     <string name="apiRequestRegion">TR</string>
     <string name="alphabetAscendingText">Alfabe artan (a-z)</string>
-    <string name="alphabetDescendingText">Alfabe absteigend (z-a)</string>
+    <string name="alphabetDescendingText">Alfabe azalan (z-a)</string>
+
+    <string name="intentShareText">İçeriği paylaşın:</string>
+    <string name="intentRecommendText">Antrenmanınız için buradayım:</string>
+    <string name="apiCountrySearchTag">turkey</string>
+
 </resources>

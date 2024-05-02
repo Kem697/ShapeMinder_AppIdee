@@ -274,5 +274,9 @@
     <string name="alphabetAscendingText">Alphabet aufsteigend (a-z)</string>
     <string name="alphabetDescendingText">Alphabet absteigend (z-a)</string>
 
+    <string name="intentShareText">Teile den Inhalt mit:</string>
+    <string name="intentRecommendText">Hier für dein Workout:</string>
+    <string name="apiCountrySearchTag">germany</string>
+
 
 </resources>
