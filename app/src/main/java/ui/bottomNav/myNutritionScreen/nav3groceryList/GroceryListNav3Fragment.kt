@@ -6,10 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isInvisible
 import androidx.fragment.app.activityViewModels
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentFoodscannerNav2Binding
 import com.example.shapeminder_appidee.databinding.FragmentGroceryListNav3Binding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import ui.viewModel.NutrionViewModel
 
 class GroceryListNav3Fragment : Fragment() {
@@ -28,6 +30,8 @@ class GroceryListNav3Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setUpAdapter()
     }
+
+
 
     fun setUpAdapter(){
         nutrionViewModel.savedFoods.observe(viewLifecycleOwner){savedFoods->

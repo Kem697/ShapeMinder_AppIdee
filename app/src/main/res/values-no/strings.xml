@@ -189,7 +189,7 @@
     <string name="barcodeResult">Resultat</string>
     <string name="apiRequestRegion">NO</string>
     <string name="alphabetAscendingText">Alfabetet stigende (a-z)</string>
-    <string name="alphabetDescendingText">Alfabetet synkende (a-z)</string>
+    <string name="alphabetDescendingText">Alfabetet synkende (z-a)</string>
     <string name="intentShareText">Del innholdet:</string>
     <string name="intentRecommendText">Her for treningsøkten din:</string>
     <string name="apiCountrySearchTag">norway</string>

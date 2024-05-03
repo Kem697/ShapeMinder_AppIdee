@@ -17,6 +17,7 @@ import coil.load
 import com.example.shapeminder_appidee.MainActivity
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentFoodDetailViewBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import model.data.local.model.myTraining.Content
 import model.data.remote.api_model.openFoodFacts.Product
@@ -40,6 +41,21 @@ class FoodDetailViewFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setUpView()
         navigateBack()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        var navigationBar =
+            requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        navigationBar.isInvisible = true
+    }
+
+
+    override fun onStop() {
+        super.onStop()
+        var navigationBar =
+            requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        navigationBar.isInvisible = false
     }
 
 

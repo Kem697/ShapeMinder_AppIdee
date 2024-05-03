@@ -201,7 +201,7 @@
     <string name="sortByText">Sort by</string>
     <string name="apiRequestRegion">US</string>
     <string name="alphabetAscendingText">Alphabet ascending (a-z)</string>
-    <string name="alphabetDescendingText">Alphabet descending (a-z)</string>
+    <string name="alphabetDescendingText">Alphabet descending (z-a)</string>
 
     <string name="intentShareText">Share the content:</string>
     <string name="intentRecommendText">Here for your workout:</string>
