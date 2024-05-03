@@ -49,6 +49,7 @@ class FoodScannerNav2Fragment : Fragment() {
     }
 
 
+
     fun invokeBarcodeScanner() {
         var barcodScanBtn = binding.barcodeScanBtn
         barcodScanBtn.setOnClickListener {
@@ -56,24 +57,30 @@ class FoodScannerNav2Fragment : Fragment() {
         }
     }
 
-/*
+
+
+
+    /*EN:
+    * Write Comment*/
     fun setUp(){
         barlauncher = registerForActivityResult(ScanContract()) { result ->
             if (result.contents != null) {
                 nutritionViewModel.searchFoodByBarcode(result.contents)
-                Log.i("Barcode","Searchfood")
-                AlertDialog.Builder(context).apply {
-                    setTitle(getString(R.string.barcodeResult))
-                    setMessage(result.contents)
-                    setPositiveButton("OK") { dialog, _ ->
-                        dialog.dismiss()
+                nutritionViewModel.scannedFood.observe(viewLifecycleOwner){
+                    Log.i("Barcode","Searchfood:: ${it.url}")
+                    AlertDialog.Builder(context).apply {
+                        setTitle(getString(R.string.barcodeResult))
+                        setMessage(it.productNameDe)
+                        setPositiveButton("OK") { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        show()
                     }
-                    show()
                 }
+
             }
         }
     }
-*/
 
 
 
@@ -96,27 +103,4 @@ class FoodScannerNav2Fragment : Fragment() {
             Log.i("FoodScannerNav2Fragment", "Camera source released")
         }
     }
-
-
-
-    fun setUp(){
-        barlauncher = registerForActivityResult(ScanContract()) { result ->
-            if (result.contents != null) {
-                nutritionViewModel.searchFoodByBarcode(result.contents)
-                Log.i("Barcode","Searchfood:: ${nutritionViewModel.scannedFood.value?.productNameDe}")
-                    AlertDialog.Builder(context).apply {
-                        setTitle(getString(R.string.barcodeResult))
-                        setMessage(result.contents)
-
-                        setPositiveButton("OK") { dialog, _ ->
-                            dialog.dismiss()
-                        }
-                        show()
-                    }
-            }
-        }
-    }
-
-
-
 }

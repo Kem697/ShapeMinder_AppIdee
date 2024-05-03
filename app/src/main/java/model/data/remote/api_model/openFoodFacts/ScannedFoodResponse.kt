@@ -1,5 +1,12 @@
 package model.data.remote.api_model.openFoodFacts
 
+import com.squareup.moshi.Json
+
+
+
 data class ScannedFoodResponse(
-    val code: String = "",
+    @Json(name = "code")
+    val barcode: String = "",
+
+    val product: Product
 )

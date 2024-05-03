@@ -48,7 +48,7 @@ class RemoteRepository (
     suspend fun searchFoodByBarcode(barcode: String){
         try {
             val result = openFoodApi.retrofitService.searchFoodByBarcode(barcode)
-            _scannedFood.postValue(result.products.firstOrNull())
+            _scannedFood.postValue(result.product)
         } catch (e:Exception){
             var tag ="Barcode Scan??"
             Log.i(tag,"Fehler bei der API Anfrage!: $e")

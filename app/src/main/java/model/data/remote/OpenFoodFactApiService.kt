@@ -50,7 +50,7 @@ interface FoodFactApi {
     @GET("/api/v2/product/{barcode}")
     suspend fun searchFoodByBarcode(
         @Path("barcode") barcode: String,
-    ): ProductResponse
+    ): ScannedFoodResponse
 }
 
 
