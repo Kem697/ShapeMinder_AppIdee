@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/tertiary"
+    android:paddingBottom="100dp"
     tools:context="ui.bottomNav.myTrainingScreen.nav2exercises.ExercisePreviewFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -156,7 +157,7 @@
 
 
         <ImageButton
-            android:id="@+id/saveExerciseBtn"
+            android:id="@+id/saveFoodBtn"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="end|bottom"
@@ -179,7 +180,7 @@
             android:backgroundTint="@color/white"
             android:scaleType="centerCrop"
             android:src="@drawable/local_mall_fill0_wght400_grad0_opsz24"
-            app:layout_constraintStart_toEndOf="@+id/saveExerciseBtn"
+            app:layout_constraintStart_toEndOf="@+id/saveFoodBtn"
             app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
 
         <com.google.android.material.card.MaterialCardView

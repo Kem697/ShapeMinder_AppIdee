@@ -71,12 +71,17 @@ class FoodScannerNav2Fragment : Fragment() {
                     AlertDialog.Builder(context).apply {
                         setTitle(getString(R.string.barcodeResult))
                         setMessage(food.productNameDe)
+
+                        setNegativeButton("Abbrechen"){dialog,_->
+                            dialog.dismiss()
+                        }
+
                         setPositiveButton("Speichern") { dialog, _ ->
                             nutritionViewModel.isSaved(!food.isSaved,food)
                             food.isSaved = true
                             dialog.dismiss()
-//                            findNavController().navigate(R.id.groceryList)
                         }
+
                         show()
                     }
                 }

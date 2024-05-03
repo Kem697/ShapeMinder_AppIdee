@@ -104,14 +104,8 @@ dependencies {
 
 
     // Barcode scanning libary ZXing for decoding.
-
     implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
 
-
-
-    // Barcode
-
-    implementation ("com.google.android.gms:play-services-vision:20.1.3")
 
 
 

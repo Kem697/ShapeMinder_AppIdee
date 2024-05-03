@@ -18,6 +18,7 @@ import com.example.shapeminder_appidee.MainActivity
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentFoodDetailViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import model.data.local.model.myTraining.Content
 import model.data.remote.api_model.openFoodFacts.Product
 import ui.viewModel.HomeViewModel
 import ui.viewModel.NutrionViewModel
@@ -77,10 +78,28 @@ class FoodDetailViewFragment : Fragment() {
                 binding.proteinAmount.setText("${it.nutriments?.proteins.toString()}" + " g")
 
             }
-
+            saveFood(it)
             storeFinder(it)
         }
     }
+
+
+    fun saveFood(food: Product){
+        var saveBtn = binding.saveFoodBtn
+        saveBtn.setImageResource(if (food.isSaved) R.drawable.bookmark_fill1_wght400_grad0_opsz24 else R.drawable.bookmark_fill0_wght400_grad0_opsz24)
+        saveBtn.setOnClickListener {
+            if (food.isSaved) {
+                nutrionViewModel.isSaved(!food.isSaved, food)
+                binding.saveFoodBtn.setImageResource(R.drawable.bookmark_fill0_wght400_grad0_opsz24)
+                food.isSaved = false
+            } else {
+                nutrionViewModel.isSaved(!food.isSaved, food)
+                binding.saveFoodBtn.setImageResource(R.drawable.bookmark_fill1_wght400_grad0_opsz24)
+                food.isSaved = true
+            }
+        }
+    }
+
 
 
 
