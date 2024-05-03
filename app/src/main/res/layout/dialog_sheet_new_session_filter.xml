@@ -62,7 +62,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_margin="4dp"
                     android:orientation="vertical">
 
                     <!-- Erste Reihe -->
@@ -82,7 +81,7 @@
                             android:backgroundTint="@color/white"
                             android:scaleType="centerCrop"
                             android:src="@drawable/short_dumbell_unchecked"
-                            android:text="Arme"
+                            android:text="@string/bpArme"
                             android:textColor="@color/black"
                             android:textSize="16dp" />
 
@@ -95,7 +94,7 @@
                             android:backgroundTint="@color/white"
                             android:scaleType="centerCrop"
                             android:src="@drawable/long_dumbell_unchecked"
-                            android:text="Bauch"
+                            android:text="@string/bpBauch"
                             android:textColor="@color/black"
                             android:textSize="16dp" />
 
@@ -108,7 +107,7 @@
                             android:backgroundTint="@color/white"
                             android:scaleType="centerCrop"
                             android:src="@drawable/bodyweight_unchecked"
-                            android:text="Beine"
+                            android:text="@string/bpBeine"
                             android:textColor="@color/black"
                             android:textSize="16dp" />
                     </LinearLayout>
@@ -131,7 +130,7 @@
                             android:backgroundTint="@color/white"
                             android:scaleType="centerCrop"
                             android:src="@drawable/short_dumbell_unchecked"
-                            android:text="Brust"
+                            android:text="@string/bpBrust"
                             android:textColor="@color/black"
                             android:textSize="16dp" />
 
@@ -144,7 +143,7 @@
                             android:backgroundTint="@color/white"
                             android:scaleType="centerCrop"
                             android:src="@drawable/long_dumbell_unchecked"
-                            android:text="Rücken"
+                            android:text="@string/bpRücken"
                             android:textColor="@color/black"
                             android:textSize="16dp" />
 
@@ -157,7 +156,7 @@
                             android:backgroundTint="@color/white"
                             android:scaleType="centerCrop"
                             android:src="@drawable/bodyweight_unchecked"
-                            android:text="Schulter"
+                            android:text="@string/bpSchulter"
                             android:textColor="@color/black"
                             android:textSize="16dp" />
                     </LinearLayout>
@@ -241,7 +240,7 @@
 
                     <TextView
                         android:id="@+id/sec1_short_dumbell"
-                        android:layout_width="75dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/shDumbellBtnTitle"
                         android:textSize="13dp"
