@@ -104,6 +104,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private var _selectedTraininingssession = MutableLiveData<TrainingsSession>()
 
     val selectedTraininingssession: MutableLiveData<TrainingsSession>
+
         get() = _selectedTraininingssession
 
 

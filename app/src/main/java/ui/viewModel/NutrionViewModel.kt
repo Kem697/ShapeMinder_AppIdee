@@ -11,6 +11,7 @@ import model.data.local.model.myNutrion.FoodFinderCategory
 import model.data.remote.OpenFoodFactsApi
 import model.data.remote.RemoteRepository
 import model.data.remote.api_model.openFoodFacts.Product
+import model.data.remote.api_model.openFoodFacts.ScannedFoodResponse
 
 class NutrionViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -49,6 +50,14 @@ class NutrionViewModel(application: Application) : AndroidViewModel(application)
         get() = _savedFoods
 
 
+    private val _scannedFood = remoteRepository.scannedFood
+
+    val scannedFood : MutableLiveData<Product>
+
+        get() =  _scannedFood
+
+
+
     var category : String = ""
     var country : String = ""
 
@@ -58,6 +67,8 @@ class NutrionViewModel(application: Application) : AndroidViewModel(application)
     * These functions are related to issues through the api call. */
 
     /*Open Food Fact Api*/
+
+
 
 
     fun searchFood() {

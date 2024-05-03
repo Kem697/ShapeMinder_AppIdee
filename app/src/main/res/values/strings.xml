@@ -278,6 +278,7 @@
     <string name="intentRecommendText">Hier für dein Workout:</string>
     <string name="apiCountrySearchTag">germany</string>
     <string name="apiRequestRegion">DE</string>
+    <string name="cameraPromptHint">Lautstärke hoch, um Lampe einzuschalten</string>
 
 
 </resources>

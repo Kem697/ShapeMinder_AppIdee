@@ -33,14 +33,21 @@ class FoodScannerNav2Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentFoodscannerNav2Binding.inflate(layoutInflater)
+        setUp()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUp()
         invokeBarcodeScanner()
     }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        releaseCameraSource()
+    }
+
 
     fun invokeBarcodeScanner() {
         var barcodScanBtn = binding.barcodeScanBtn
@@ -49,40 +56,67 @@ class FoodScannerNav2Fragment : Fragment() {
         }
     }
 
+/*
     fun setUp(){
         barlauncher = registerForActivityResult(ScanContract()) { result ->
             if (result.contents != null) {
-                val builder = AlertDialog.Builder(this.context)
-                builder.setTitle(context?.getString(R.string.barcodeResult))
                 nutritionViewModel.searchFoodByBarcode(result.contents)
-                builder.setMessage(result.contents)
-                builder.setPositiveButton("OK") { dialogInterface, _ ->
-                    dialogInterface.dismiss()
-                }.show()
+                Log.i("Barcode","Searchfood")
+                AlertDialog.Builder(context).apply {
+                    setTitle(getString(R.string.barcodeResult))
+                    setMessage(result.contents)
+                    setPositiveButton("OK") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    show()
+                }
             }
-            releaseCameraSource()
         }
     }
-    
+*/
+
+
 
 
 
     private fun scanCode() {
-        val options = ScanOptions()
-        options.setPrompt("Volume up to flash on")
-        options.setBeepEnabled(true)
-        options.setOrientationLocked(true)
-        options.setCaptureActivity(BarcodeScan::class.java)
+        val options = ScanOptions().apply {
+            setPrompt(getString(R.string.cameraPromptHint))
+            setBeepEnabled(true)
+            setOrientationLocked(true)
+            setCaptureActivity(BarcodeScan::class.java)
+        }
         barlauncher.launch(options)
     }
 
 
     fun releaseCameraSource(){
-        if (::barlauncher.isInitialized && barlauncher != null){
-            var tag ="Fe"
-            Log.i(tag,"GGG")
+        if (::barlauncher.isInitialized){
             barlauncher.unregister()
+            Log.i("FoodScannerNav2Fragment", "Camera source released")
         }
     }
+
+
+
+    fun setUp(){
+        barlauncher = registerForActivityResult(ScanContract()) { result ->
+            if (result.contents != null) {
+                nutritionViewModel.searchFoodByBarcode(result.contents)
+                Log.i("Barcode","Searchfood:: ${nutritionViewModel.scannedFood.value?.productNameDe}")
+                    AlertDialog.Builder(context).apply {
+                        setTitle(getString(R.string.barcodeResult))
+                        setMessage(result.contents)
+
+                        setPositiveButton("OK") { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        show()
+                    }
+            }
+        }
+    }
+
+
 
 }

@@ -5,8 +5,8 @@ package model.data.remote
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-
 import model.data.remote.api_model.openFoodFacts.ProductResponse
+import model.data.remote.api_model.openFoodFacts.ScannedFoodResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -47,7 +47,7 @@ interface FoodFactApi {
 
 
 
-    @GET("/api/v2/search{barcode}")
+    @GET("/api/v2/product/{barcode}")
     suspend fun searchFoodByBarcode(
         @Path("barcode") barcode: String,
     ): ProductResponse

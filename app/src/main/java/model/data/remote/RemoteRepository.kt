@@ -35,10 +35,20 @@ class RemoteRepository (
         }
     }
 
+
+
+    private var _scannedFood = MutableLiveData<Product>()
+
+    val scannedFood : MutableLiveData<Product>
+
+        get() = _scannedFood
+
+
+
     suspend fun searchFoodByBarcode(barcode: String){
         try {
             val result = openFoodApi.retrofitService.searchFoodByBarcode(barcode)
-            _getFood.postValue(result.products)
+            _scannedFood.postValue(result.products.firstOrNull())
         } catch (e:Exception){
             var tag ="Barcode Scan??"
             Log.i(tag,"Fehler bei der API Anfrage!: $e")

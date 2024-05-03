@@ -18,7 +18,7 @@
     <string name="bpArme">Kollar</string>
     <string name="bpBeine">Bacaklar</string>
     <string name="bpSchulter">Omuz</string>
-    <string name="bpRücken">Geri</string>
+    <string name="bpRücken">Sırt</string>
     <string name="bpBauch">Karın</string>
     <string name="bpBrust">Göğüs</string>
     <string name="bpArmeSubTitle">Kol egzersizi</string>
@@ -196,5 +196,6 @@
     <string name="intentRecommendText">Antrenmanınız için buradayım:</string>
     <string name="apiCountrySearchTag">turkey</string>
     <string name="apiRequestRegionDE">TR</string>
+    <string name="cameraPromptHint">Lamba açmak için sesi yükseltin</string>
 
 </resources>

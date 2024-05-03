@@ -206,6 +206,7 @@
     <string name="intentShareText">Share the content:</string>
     <string name="intentRecommendText">Here for your workout:</string>
     <string name="apiCountrySearchTag">united-states</string>
+    <string name="cameraPromptHint">Volume up to flash on</string>
 
 
 </resources>
