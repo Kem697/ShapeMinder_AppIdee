@@ -31,7 +31,6 @@ fun getTrainingDatabase(context: Context) : TrainingSessionsDatabase {
                 "database_training"
             ).build()
         }
-
         return INSTANCE
     }
 }
