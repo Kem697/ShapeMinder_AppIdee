@@ -66,13 +66,16 @@ class FoodScannerNav2Fragment : Fragment() {
         barlauncher = registerForActivityResult(ScanContract()) { result ->
             if (result.contents != null) {
                 nutritionViewModel.searchFoodByBarcode(result.contents)
-                nutritionViewModel.scannedFood.observe(viewLifecycleOwner){
-                    Log.i("Barcode","Searchfood:: ${it.url}")
+                nutritionViewModel.scannedFood.observe(viewLifecycleOwner){food->
+                    Log.i("Barcode","Searchfood:: ${food.url}")
                     AlertDialog.Builder(context).apply {
                         setTitle(getString(R.string.barcodeResult))
-                        setMessage(it.productNameDe)
-                        setPositiveButton("OK") { dialog, _ ->
+                        setMessage(food.productNameDe)
+                        setPositiveButton("Speichern") { dialog, _ ->
+                            nutritionViewModel.isSaved(!food.isSaved,food)
+                            food.isSaved = true
                             dialog.dismiss()
+//                            findNavController().navigate(R.id.groceryList)
                         }
                         show()
                     }
