@@ -45,7 +45,7 @@ class NewTrainingsSessionFragment : Fragment() {
         setUpAdapter()
         addMoreExercise()
         showDateRangePicker()
-
+        cancelProcess(mutableListOf())
     }
 
 
@@ -165,7 +165,6 @@ class NewTrainingsSessionFragment : Fragment() {
                 datePicker.show(requireActivity().supportFragmentManager, "datePicker")
             }
         }
-
 
 
     fun cancelProcess(addedToSessionExercises: MutableList<Content>){

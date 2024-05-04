@@ -75,7 +75,7 @@
     <string name="allExercisesList">Exercise list</string>
     <string name="searchExercises">Search for exercises</string>
     <string name="exerciseListTitle">Add your exercises</string>
-    <string name="amountOfExercises">Number of exercises:</string>
+    <string name="amountOfExercises">Number of exercises</string>
     <string name="addToWorkout">Add workout</string>
     <string name="cancelSession">Cancel process</string>
     <string name="resetFilterOptionsBtnTitle">All exercises</string>

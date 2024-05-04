@@ -405,6 +405,37 @@ class AllExerciseListForEditSessionFragment : Fragment() {
         }
     }
 
+    fun navigateBack() {
+        binding.backBtn.setOnClickListener {
+            findNavController().navigateUp()
+        }
+    }
+
+    fun cancelProcess(){
+        var cancelBtn = binding.cancelSessionBtn
+        cancelBtn.setOnClickListener {
+          /*  viewModel.listOfAllExercises.value?.forEach { it.addedToSession = false }
+            viewModel.addToSessionExercises.value?.removeAll { it.addedToSession ==false }*/
+            findNavController().navigate(R.id.myTrainingScreen)
+        }
+    }
+
+
+
+   /* fun mergedList(allExercises: List<Content>, currentSessionEx: TrainingsSession ): MutableList<Content> {
+        viewModel.selectedTraininingssession.value.trainingsSession -> Die Übungen der ausgewählten Trainingssession
+        viewModel.listOfAllExercises.value -> Alle Übungen
+
+        Ziel->
+        Die Daten müssen so transformiert werden, dass die Übungen aus der Trainingssession in der Liste
+        alle Übungen markiert werden.
+        Außerdem müssen neu markierte Übungen zurück in die Trainingssession gespeichert werden
+
+
+        val transformedData = Transformations.map (LiveData1, LiveData2)
+    }
+*/
+
     fun addExerciseSelectionSession() {
         var addToWorkoutBtn = binding.addExerciseToSessionBtn
         addToWorkoutBtn.setOnClickListener {
@@ -431,35 +462,6 @@ class AllExerciseListForEditSessionFragment : Fragment() {
         }
     }
 
-
-
-
-
-    fun navigateBack() {
-        binding.backBtn.setOnClickListener {
-            findNavController().navigateUp()
-        }
-    }
-
-
-    fun cancelProcess(){
-        var cancelBtn = binding.cancelSessionBtn
-        cancelBtn.setOnClickListener {
-          /*  viewModel.listOfAllExercises.value?.forEach { it.addedToSession = false }
-            viewModel.addToSessionExercises.value?.removeAll { it.addedToSession ==false }*/
-            findNavController().navigate(R.id.myTrainingScreen)
-        }
-    }
-
-
-
-/*
-    fun mergedList(allExercises: List<Content>, currentSessionEx: TrainingsSession )*/
-/*: MutableList<Content>*//*
- {
-        allExercises.filter { it.addedToSession == true }
-    }
-*/
 
 
 }

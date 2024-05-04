@@ -3,11 +3,13 @@ package ui.viewModel
 import android.app.Application
 import android.content.Context
 import android.util.Log
+import android.view.animation.Transformation
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.example.shapeminder_appidee.R
 import model.data.local.LocalRepository
@@ -46,6 +48,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private var _listOfAllExercises = MutableLiveData(allExercisesByBodyparts)
     val listOfAllExercises: MutableLiveData<List<Content>>
         get() = _listOfAllExercises
+
 
     private var _contents = MutableLiveData(allContent)
     val contents: LiveData<List<Content>>

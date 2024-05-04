@@ -70,7 +70,7 @@
     <string name="allExercisesList">Liste over øvelser</string>
     <string name="searchExercises">Søk etter øvelser</string>
     <string name="exerciseListTitle">Legg til øvelsene dine</string>
-    <string name="amountOfExercises">Antall øvelser:</string>
+    <string name="amountOfExercises">Antall øvelser</string>
     <string name="addToWorkout">Legg til treningsøkt</string>
     <string name="cancelSession">Avbryt prosessen</string>
     <string name="resetFilterOptionsBtnTitle">Alle øvelser</string>

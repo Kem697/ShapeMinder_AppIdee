@@ -131,7 +131,7 @@
     <string name="allExercisesList">Übungsliste</string>
     <string name="searchExercises">Nach Übungen suchen</string>
     <string name="exerciseListTitle">Füge deine Übungen hinzu</string>
-    <string name="amountOfExercises">Anzahl der Übungen:</string>
+    <string name="amountOfExercises">Anzahl der Übungen</string>
     <string name="addToWorkout">Workout hinzufügen</string>
     <string name="cancelSession">Vorgang abbrechen</string>
     <string name="resetFilterOptionsBtnTitle">Alle Übungen</string>
