@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentRegisterScreenBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import model.Profile
@@ -60,6 +61,7 @@ class RegisterScreen : Fragment() {
         }
     }
 
+/*
     fun register(){
         binding.submitButton.setOnClickListener {
             var progressbar = binding.registerProgressbar
@@ -107,6 +109,66 @@ class RegisterScreen : Fragment() {
 
         }
     }
+*/
+
+    fun register(){
+        binding.submitButton.setOnClickListener {
+            var progressbar = binding.registerProgressbar
+            var nameInput = binding.inputName.text.toString()
+            var emailInput = binding.inputEmail.text.toString()
+            var passwordInput = binding.inputPassword.text.toString()
+            var passwordRepeatInput = binding.inputPasswordRepeat.text.toString()
+            if (emailInput.isNotBlank() && passwordInput.isNotBlank()
+                && nameInput.isNotBlank() && passwordRepeatInput.isNotBlank()
+                && passwordInput == passwordRepeatInput) {
+                progressbar.visibility = View.VISIBLE
+                auth.createUserWithEmailAndPassword(emailInput, passwordInput)
+                    .addOnCompleteListener { task ->
+                        var tag = "Registrierung?"
+                        progressbar.visibility = View.GONE
+                        if (task.isSuccessful) {
+                            val user = auth.currentUser
+                            /*Hier werden die Profildaten anhand der Usereingaben gesetzt.*/
+                            val profileUpdates = UserProfileChangeRequest.Builder()
+                                .setDisplayName(nameInput)
+                                .build()
+                            user?.updateProfile(profileUpdates)
+                                ?.addOnCompleteListener { profileTask ->
+                                    if (profileTask.isSuccessful) {
+                                        auth.currentUser?.sendEmailVerification()
+                                        profileRef = fireStore.collection("profiles").document(auth.currentUser!!.uid)
+                                        profileRef.set(Profile(nameInput))
+                                        auth.signOut()
+                                        findNavController().navigate(R.id.logInScreen)
+                                        Log.d(tag, "Nutzerkonto angelegt")
+                                        Toast.makeText(
+                                            binding.root.context,
+                                            context?.getString(R.string.toastSuccesfulAccountCreation),
+                                            Toast.LENGTH_SHORT,
+                                        ).show()
+                                    } else {
+                                        Log.w(tag, "Fehler beim Aktualisieren des Anzeigenamens", profileTask.exception)
+                                    }
+                                }
+                        } else {
+                            Log.w(tag, "Nutzerkonto konnte nicht angelegt werden", task.exception)
+                            Toast.makeText(
+                                binding.root.context,
+                                context?.getString(R.string.toastFailedAccountCreation),
+                                Toast.LENGTH_SHORT,
+                            ).show()
+                        }
+                    }
+
+            } else {
+                Toast.makeText(binding.root.context, context?.getString(R.string.toastUserInputHint), Toast.LENGTH_SHORT)
+                    .show()
+                return@setOnClickListener
+            }
+
+        }
+    }
+
 
     fun clearInput(){
         binding.inputEmail.text.clear()

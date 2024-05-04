@@ -8,16 +8,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.core.view.isInvisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
 import androidx.viewpager.widget.ViewPager
+import coil.load
 import com.example.shapeminder_appidee.MainActivity
 import com.example.shapeminder_appidee.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.search.SearchBar
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.auth.FirebaseAuth
 import ui.bottomNav.myTrainingScreen.nav1myTraining.Tab1MyTraining
 import ui.bottomNav.myTrainingScreen.nav2exercises.Tab2Exercises
 import ui.viewModel.HomeViewModel
@@ -34,6 +37,8 @@ class MyTrainingScreen : Fragment() {
 
 
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,7 +48,6 @@ class MyTrainingScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        searchInput()
 
         /*
         *Mithilfe eines Youtube Videos und ChatGpt habe ich
@@ -58,6 +62,9 @@ class MyTrainingScreen : Fragment() {
 
 
         var main = activity as MainActivity
+
+
+
 
         tabLayout = main.findViewById(R.id.myTraining_nav)
         viewPager = main.findViewById(R.id.myTraining_viewPager)

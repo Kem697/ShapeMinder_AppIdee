@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import coil.load
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentSettingsBinding
 import com.google.firebase.Firebase
@@ -51,6 +52,7 @@ class MySettingsScreen : Fragment() {
     fun logout(){
         binding.optionCard8.setOnClickListener {
             Log.d(TAG,"Logout: + ${auth.currentUser?.email}")
+            Log.d(TAG,"Logout: + ${auth.currentUser?.displayName}")
             auth.signOut()
             Log.d(TAG,"Logout: + ${auth.currentUser?.email}")
             findNavController().navigate(R.id.logInScreen)
@@ -62,6 +64,14 @@ class MySettingsScreen : Fragment() {
             Firebase.auth.currentUser?.let { user ->
                 binding.userName.text = user.displayName
                 binding.userEmail.text = user.email
+                /*Hiermit soll das Profilbild hochgeladen werden.
+                * Bei einem Account wird das Bild angezeigt, bei einem anderen nicht.
+                * Vielleicht liegt es am Bildformat?*/
+                if (user.photoUrl!=null){
+                    binding.profileImg.load(user.photoUrl)
+                } else{
+//                    binding.profileImg.setImageResource(R.drawable.account_icon)
+                }
             }
     }
 

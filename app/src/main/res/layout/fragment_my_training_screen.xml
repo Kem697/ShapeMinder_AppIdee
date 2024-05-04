@@ -60,9 +60,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageButton
-                android:id="@+id/settingsBtn"
+            <ImageView
+                android:id="@+id/userPhotoToolbar"
                 android:layout_width="60dp"
+                android:layout_margin="8dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginLeft="16dp"
