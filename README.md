@@ -12,9 +12,7 @@ ShapeMinder is a fitness app which is still in development. This app purposes to
 
 2. **Exercise Library:** Access a vast library of exercises with detailed instructions and videos to ensure proper form and technique.
 
-3. **Track Progress:** Monitor your progress effortlessly with intuitive tracking tools. Keep tabs on your workouts, measurements, and achievements.
-
-4. **Nutrition Tracking:** Maintain a balanced diet with our nutrition tracking feature. Log your meals, set nutritional goals, and stay accountable.
+3. **Nutrition Tracking:** Maintain a balanced diet with our nutrition tracking feature. Log your meals, set nutritional goals, and stay accountable.
 
 ...
 The project is still in progress and the scope of the functions will be extend. I hope we could make you fancy to test the app in the future.
