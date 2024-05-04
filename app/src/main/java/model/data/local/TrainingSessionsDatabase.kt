@@ -1,5 +1,6 @@
 package model.data.local
 
+
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
@@ -34,4 +35,3 @@ fun getTrainingDatabase(context: Context) : TrainingSessionsDatabase {
         return INSTANCE
     }
 }
-

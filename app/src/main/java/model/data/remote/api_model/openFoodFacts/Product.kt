@@ -1,11 +1,14 @@
 package model.data.remote.api_model.openFoodFacts
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import kotlinx.serialization.Serializable
 
 
 @Serializable
 data class Product(
+
     @Json(name = "product_name_de")
     val productNameDe: String?,
 

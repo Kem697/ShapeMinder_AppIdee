@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+//import model.data.local.getProductDatabase
 import model.data.local.model.myNutrion.FoodFinderCategory
 import model.data.remote.OpenFoodFactsApi
 import model.data.remote.RemoteRepository
@@ -15,10 +16,13 @@ import model.data.remote.api_model.openFoodFacts.ScannedFoodResponse
 
 class NutrionViewModel(application: Application) : AndroidViewModel(application) {
 
+//    private val productDatabase = getProductDatabase(application)
 
-    private val remoteRepository = RemoteRepository(OpenFoodFactsApi)
+    private val remoteRepository = RemoteRepository(OpenFoodFactsApi,/*productDatabase*/)
 
     private var groceryCategories = remoteRepository.groceryCategories
+
+//    val productsInDatabase = remoteRepository.savedFoodList
 
 
 
@@ -63,20 +67,18 @@ class NutrionViewModel(application: Application) : AndroidViewModel(application)
 
 
 
+
+
     /*EN:
     * These functions are related to issues through the api call. */
 
     /*Open Food Fact Api*/
-
-
-
 
     fun searchFood() {
         viewModelScope.launch {
             remoteRepository.searchFood(category,country)
         }
     }
-
     fun searchFoodByBarcode(barcode: String) {
         viewModelScope.launch {
             remoteRepository.searchFoodByBarcode(barcode)
@@ -95,7 +97,6 @@ class NutrionViewModel(application: Application) : AndroidViewModel(application)
     fun getFoodTitle(bodypart: String) {
         _selectedContentTitle.value = bodypart
     }
-
 
     fun retrieveNaturalFoodList(nonFilteredList: List<Product>) {
         _searchFood.value = nonFilteredList
@@ -118,7 +119,6 @@ class NutrionViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
-
     fun sortFoodsByAlphabet(sort: Boolean) {
         viewModelScope.launch {
             val filteredExercises = _searchFood.value
@@ -130,7 +130,6 @@ class NutrionViewModel(application: Application) : AndroidViewModel(application)
             _searchFood.value = sortedExercises
         }
     }
-
 
     fun isSaved(saved: Boolean, food: Product) {
         val savedFood = _savedFoods.value ?: mutableListOf()
@@ -150,4 +149,25 @@ class NutrionViewModel(application: Application) : AndroidViewModel(application)
 
         _savedFoods.value = savedFood
     }
+
+
+    /*EN:
+    * These methods are related to alterations in the productDatabase*/
+
+//    init {
+//        setUpProductDatabase()
+//    }
+
+
+/*    fun setUpProductDatabase (){
+        viewModelScope.launch {
+            remoteRepository.insertProduct(Product(1,null, listOf(),null,"",null,null,true))
+        }
+    }
+
+    fun insertProduct (product: Product){
+        viewModelScope.launch {
+            remoteRepository.insertProduct(product)
+        }
+    }*/
 }

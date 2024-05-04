@@ -1,8 +1,10 @@
 package model.data.remote
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.shapeminder_appidee.R
+//import model.data.local.ProductDatabase
 import model.data.local.model.myNutrion.FoodFinderCategory
 import model.data.remote.api_model.openFoodFacts.Product
 import model.data.remote.api_model.openFoodFacts.ProductResponse
@@ -11,10 +13,12 @@ import retrofit2.http.Path
 import kotlin.Exception
 
 class RemoteRepository (
-    private val openFoodApi: OpenFoodFactsApi,)
+    private val openFoodApi: OpenFoodFactsApi)
+//    private val productDatabase: ProductDatabase)
 {
-
     var groceryCategories = loadGroceryCategories()
+
+//    val savedFoodList : LiveData<List<Product>> = productDatabase.productDao.getAllProduct()
 
 
     private var _getFood = MutableLiveData<List<Product>>()
@@ -78,6 +82,16 @@ class RemoteRepository (
             FoodFinderCategory(R.string.gc_sweets, R.drawable.foodcat6_sweets,"Süssigkeiten",true)
         )
     }
+
+
+/*    suspend fun insertProduct (product: Product){
+        try {
+            productDatabase.productDao.insertProduct(product)
+        } catch (e:Exception){
+            var tag = "Eintrag in Produktdatenbank"
+            Log.i(tag,"Fehler bei der Speicherung des Produtkts in die DB: $e")
+        }
+    }*/
 
 
 }

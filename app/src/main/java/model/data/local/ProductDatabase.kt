@@ -1,3 +1,4 @@
+/*
 package model.data.local
 
 import androidx.room.Dao
@@ -27,6 +28,8 @@ interface TrainingSessionsDataDao {
     @Delete
     suspend fun deleteSession(trainingsSession: TrainingsSession)
 
-    /*    @Delete
-        suspend fun deleteExerciseFromDb(exercise: Content)*/
-}
+    */
+/*    @Delete
+        suspend fun deleteExerciseFromDb(exercise: Content)*//*
+
+}*/
