@@ -121,7 +121,7 @@
     <string name="foodFinderNavHeader">Food by categories</string>
     <string name="groceryListHeader">Shopping List</string>
     <string name="foodCategoryHeader">Categories</string>
-    <string name="homeScreenHeader">Hello User</string>
+    <string name="homeScreenHeader">Hello</string>
     <string name="todayText">Today</string>
     <string name="justForYouText">Just for you</string>
     <string name="didYouKnowText">Did you know?</string>
@@ -207,6 +207,7 @@
     <string name="intentRecommendText">Here for your workout:</string>
     <string name="apiCountrySearchTag">united-states</string>
     <string name="cameraPromptHint">Volume up to flash on</string>
+    <string name="your_web_client_id">238411082980-h1lhj2vj9gru8lka98k7487md1t7hag9.apps.googleusercontent.com</string>
 
 
 </resources>

@@ -185,7 +185,7 @@
     <string name="foodFinderNavHeader">Lebensmittel nach Kategorien</string>
     <string name="groceryListHeader">Einkaufsliste</string>
     <string name="foodCategoryHeader">Kategorie</string>
-    <string name="homeScreenHeader">Hallo Nutzer</string>
+    <string name="homeScreenHeader">Hallo</string>
     <string name="todayText">Heute</string>
     <string name="justForYouText">Nur für dich</string>
     <string name="didYouKnowText">Wusstes du schon?</string>
@@ -280,6 +280,7 @@
     <string name="apiCountrySearchTag">germany</string>
     <string name="apiRequestRegion">DE</string>
     <string name="cameraPromptHint">Lautstärke hoch, um Lampe einzuschalten</string>
+    <string name="your_web_client_id">238411082980-h1lhj2vj9gru8lka98k7487md1t7hag9.apps.googleusercontent.com</string>
 
 
 </resources>

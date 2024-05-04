@@ -12,6 +12,7 @@ import androidx.fragment.app.activityViewModels
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentHomeScreenBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import ui.viewModel.HomeViewModel
 
 
@@ -20,12 +21,16 @@ class MyHomeScreen : Fragment() {
     private lateinit var binding: FragmentHomeScreenBinding
     private val viewModel: HomeViewModel by activityViewModels()
 
+    private lateinit var auth: FirebaseAuth
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeScreenBinding.inflate(layoutInflater)
+        auth = FirebaseAuth.getInstance()
         return binding.root
     }
 
@@ -56,6 +61,7 @@ class MyHomeScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.textView.setText("${requireContext().getString(R.string.homeScreenHeader)} ${auth.currentUser?.displayName?:" "}")
         viewModel.contents.observe(viewLifecycleOwner) {
             var navigationBar =
                 requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)

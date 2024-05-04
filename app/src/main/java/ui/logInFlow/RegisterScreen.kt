@@ -13,12 +13,21 @@ import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentRegisterScreenBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
+import model.Profile
 
 
 class RegisterScreen : Fragment() {
     private lateinit var binding: FragmentRegisterScreenBinding
 
     private val firebaseViewModel: FirebaseViewModel by viewModels()
+
+    private val fireStore = FirebaseFirestore.getInstance()
+
+    lateinit var profileRef: DocumentReference
+
+
 
     private lateinit var auth: FirebaseAuth
 
@@ -67,7 +76,13 @@ class RegisterScreen : Fragment() {
                         var tag = "Registrierung?"
                         progressbar.visibility = View.GONE
                         if (task.isSuccessful) {
-                            findNavController().navigate(R.id.homeScreen)
+                            auth.currentUser?.sendEmailVerification()
+                            profileRef = fireStore.collection("profiles").document(auth.currentUser!!.uid)
+                            // Ein neues, leeres Profil wird für jeden User erstellt der zum ersten mal einen Account für die App anlegt
+                            profileRef.set(Profile(nameInput))
+                            // Danach führen wir logout Funktion aus, da beim Erstellen eines Users dieser sofort eingeloggt wird
+                            auth.signOut()
+                            findNavController().navigate(R.id.logInScreen)
                             Log.w(tag, "Nutzerkonto angelegt??", task.exception)
                             Toast.makeText(
                                 binding.root.context,
@@ -83,8 +98,6 @@ class RegisterScreen : Fragment() {
                             ).show()
                         }
                     }
-
-
 
             } else {
                 Toast.makeText(binding.root.context, context?.getString(R.string.toastUserInputHint), Toast.LENGTH_SHORT)

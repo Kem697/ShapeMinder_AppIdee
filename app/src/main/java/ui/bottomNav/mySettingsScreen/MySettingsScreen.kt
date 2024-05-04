@@ -2,6 +2,7 @@ package ui.bottomNav.mySettingsScreen
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,12 +11,23 @@ import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentSettingsBinding
 import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import ui.logInFlow.LogInScreen
 
 
 class MySettingsScreen : Fragment() {
 
+
+    private companion object {
+        private const val TAG = "LogIn Screen"
+    }
+
+
+
     private lateinit var binding: FragmentSettingsBinding
+    private lateinit var auth: FirebaseAuth
+
 
 
     override fun onCreateView(
@@ -23,6 +35,7 @@ class MySettingsScreen : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSettingsBinding.inflate(layoutInflater)
+        auth = FirebaseAuth.getInstance()
         return binding.root
     }
 
@@ -37,6 +50,9 @@ class MySettingsScreen : Fragment() {
 
     fun logout(){
         binding.optionCard8.setOnClickListener {
+            Log.d(TAG,"Logout: + ${auth.currentUser?.email}")
+            auth.signOut()
+            Log.d(TAG,"Logout: + ${auth.currentUser?.email}")
             findNavController().navigate(R.id.logInScreen)
         }
     }

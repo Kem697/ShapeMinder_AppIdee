@@ -12,7 +12,20 @@
           "package_name": "com.example.shapeminder_appidee"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "238411082980-5i0b1raja8thrrnlmcea7nah08h0gi99.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.shapeminder_appidee",
+            "certificate_hash": "17fe98bd10e4828cbefc62fd0899bcade7c53e04"
+          }
+        },
+        {
+          "client_id": "238411082980-h1lhj2vj9gru8lka98k7487md1t7hag9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCFt1snDzNdUzjJlHyEoqXF-Ds4Q3EKgEk"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "238411082980-h1lhj2vj9gru8lka98k7487md1t7hag9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

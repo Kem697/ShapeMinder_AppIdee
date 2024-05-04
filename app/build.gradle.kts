@@ -92,19 +92,34 @@ dependencies {
     implementation("com.google.firebase:firebase-storage-ktx:20.3.0")
     implementation("com.google.firebase:firebase-firestore-ktx:24.11.0")
     implementation("com.google.firebase:firebase-auth:22.3.1")
-    implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
+    implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
+
+    implementation("com.google.android.gms:play-services-auth:21.1.1")
 
 
+
+
+    //Serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 
 
-    //    Loggin
+    //Loggin
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
 
 
-    // Barcode scanning libary ZXing for decoding.
+    //Barcode scanning libary ZXing for decoding.
     implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
+
+
+    //Google Maps API
+    implementation ("com.google.maps.android:android-maps-utils:3.8.0")
+
+
+
+    implementation ("androidx.credentials:credentials:<latest version>")
+    implementation ("androidx.credentials:credentials-play-services-auth:<latest version>")
+    implementation ("com.google.android.libraries.identity.googleid:googleid:<latest version>")
 
 
 

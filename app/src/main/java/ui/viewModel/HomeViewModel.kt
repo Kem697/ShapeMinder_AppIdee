@@ -9,7 +9,6 @@ import android.widget.ImageButton
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.example.shapeminder_appidee.R
 import model.data.local.LocalRepository

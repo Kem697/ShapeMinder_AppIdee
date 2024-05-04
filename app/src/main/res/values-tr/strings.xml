@@ -118,7 +118,7 @@
     <string name="foodFinderNavHeader">Kategorilere göre gıda</string>
     <string name="groceryListHeader">Alışveriş Listesi</string>
     <string name="foodCategoryHeader">Kategoriler</string>
-    <string name="homeScreenHeader">Merhaba Kullanıcı</string>
+    <string name="homeScreenHeader">Merhaba</string>
     <string name="todayText">Bugün</string>
     <string name="justForYouText">Sadece senin için</string>
     <string name="didYouKnowText">Biliyor muydunuz?</string>
@@ -197,5 +197,6 @@
     <string name="apiCountrySearchTag">turkey</string>
     <string name="apiRequestRegionDE">TR</string>
     <string name="cameraPromptHint">Lamba açmak için sesi yükseltin</string>
+    <string name="your_web_client_id">238411082980-h1lhj2vj9gru8lka98k7487md1t7hag9.apps.googleusercontent.com</string>
 
 </resources>
