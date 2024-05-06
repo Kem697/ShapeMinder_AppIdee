@@ -115,7 +115,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginTop="16dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/list_item_new_session_exercise" />
+                tools:listitem="@layout/list_item_current_session_exercise" />
 
         </com.google.android.material.card.MaterialCardView>
 

@@ -40,8 +40,10 @@ class AllExerciseListForEditSessionFragment : Fragment() {
     private var lastSelectedTextButton: Button? = null
 
 
-
-
+    override fun onStart() {
+        super.onStart()
+        viewModel.excludeExercises(viewModel.selectedTraininingssession.value!!)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,6 +61,7 @@ class AllExerciseListForEditSessionFragment : Fragment() {
         searchInput()
         navigateBack()
         cancelProcess()
+        addExerciseSelectionSession()
     }
 
 
@@ -66,7 +69,8 @@ class AllExerciseListForEditSessionFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         setDefaultHint()
-        viewModel.retrieveExercisesByBodyparts()
+//        viewModel.excludeExercises(viewModel.selectedTraininingssession.value!!,requireContext())
+        viewModel.retrieveRemainExercisesByBodyparts()
         val navigationBar =
             requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
         navigationBar.isInvisible = false
@@ -96,7 +100,7 @@ class AllExerciseListForEditSessionFragment : Fragment() {
 
 
     fun setUpAdapter() {
-        viewModel.listOfAllExercises.observe(viewLifecycleOwner) {
+        viewModel.remainExercisesForAddInSession.observe(viewLifecycleOwner) {
             binding.listOfAllExercises.adapter =
                 CurrentSessionExerciseAdapter(it, viewModel, requireContext())
             binding.amountOfExercise.text = "${context?.getString(R.string.amountOfExercises)}: ${it.size}"
@@ -144,12 +148,12 @@ class AllExerciseListForEditSessionFragment : Fragment() {
                     when (checkedId) {
                         R.id.a_z_ascending -> {
                             isSortedDescending = false
-                            viewModel.sortAllExercisesByAlphabet(isSortedDescending)
+                            viewModel.sortRemainExercisesByAlphabet(isSortedDescending)
                         }
 
                         R.id.z_a_descending -> {
                             isSortedDescending = true
-                            viewModel.sortAllExercisesByAlphabet(isSortedDescending)
+                            viewModel.sortRemainExercisesByAlphabet(isSortedDescending)
                         }
                     }
                     //DE: Schließen Sie den Dialog, nachdem eine Auswahl getroffen wurde
@@ -167,11 +171,11 @@ class AllExerciseListForEditSessionFragment : Fragment() {
                 binding.myTSearchBar.setText(userInput)
                 var tag = "Filter???"
                 Log.i(tag, "Werden die Inhalte hier gefiltert. :${userInput}")
-                viewModel.filterAllExercisesByTitle(userInput, context)
+                viewModel.filterRemainExercisesByTitle(userInput, context)
             } else {
                 searchBar.text.clear()
                 binding.myTSearchBar.clearText()
-                viewModel.retrieveExercisesByBodyparts()
+                viewModel.retrieveRemainExercisesByBodyparts()
                 binding.resetFilterBtn.isInvisible = true
             }
         }
@@ -233,7 +237,7 @@ class AllExerciseListForEditSessionFragment : Fragment() {
                         val muscleGroupFilter = lastSelectedTextButton?.isSelected == true
                         val equipmentGroupFilter = lastSelectedImageButton?.isSelected == true
                         if (muscleGroupFilter && equipmentGroupFilter){
-                            viewModel.filterAllExercisesByTwoSelections(requireContext(),
+                            viewModel.filterRemainExercisesByTwoSelections(requireContext(),
                                 lastSelectedImageButton!!, lastSelectedTextButton!!
                             )
                         } else if (muscleGroupFilter && !equipmentGroupFilter){
@@ -252,13 +256,13 @@ class AllExerciseListForEditSessionFragment : Fragment() {
                             val imageBtnName = requireContext().resources.getResourceEntryName(lastSelectedImageButton!!.id)
                             when (imageBtnName) {
                                 "sec1_short_dumbell_Btn" -> {
-                                    viewModel.filterAllExercisesByShortDumbbell(requireContext())
+                                    viewModel.filterRemainExercisesByShortDumbbell(requireContext())
                                 }
                                 "sec1_long_dumbell_Btn" -> {
-                                    viewModel.filterAllExercisesByLongDumbbell(requireContext())
+                                    viewModel.filterRemainExercisesByLongDumbbell(requireContext())
                                 }
                                 "sec1_own_bodyweight_Btn" ->{
-                                    viewModel.filterAllExercisesByBodyweight(requireContext())
+                                    viewModel.filterRemainExercisesByBodyweight(requireContext())
                                 }
                             }
                         }
@@ -275,7 +279,7 @@ class AllExerciseListForEditSessionFragment : Fragment() {
 
                 resetBtn.setOnClickListener {
                     if (lastSelectedImageButtonIndex != -1 ||lastSelectedTextButtonIndex != -1) {
-                        viewModel.retrieveExercisesByBodyparts()
+                        viewModel.retrieveRemainExercisesByBodyparts()
                         if (allImageButtons.any { it?.isSelected==true }&& (textButtons.all { it?.isSelected != true })){
                             allImageButtons.forEach { imageButton ->
                                 imageButton?.setImageResource(
@@ -318,7 +322,7 @@ class AllExerciseListForEditSessionFragment : Fragment() {
 
                 dialogResetBtn?.setOnClickListener {
                     if (lastSelectedImageButtonIndex != -1 || lastSelectedTextButtonIndex != -1) {
-                        viewModel.retrieveExercisesByBodyparts()
+                        viewModel.retrieveRemainExercisesByBodyparts()
                         if (allImageButtons.any { it?.isSelected==true }&& (textButtons.all { it?.isSelected != true })){
                             allImageButtons.forEach { imageButton ->
                                 imageButton?.setImageResource(
@@ -414,8 +418,8 @@ class AllExerciseListForEditSessionFragment : Fragment() {
     fun cancelProcess(){
         var cancelBtn = binding.cancelSessionBtn
         cancelBtn.setOnClickListener {
-          /*  viewModel.listOfAllExercises.value?.forEach { it.addedToSession = false }
-            viewModel.addToSessionExercises.value?.removeAll { it.addedToSession ==false }*/
+            viewModel.remainExercisesForAddInSession.value?.forEach { it.addedToSession = false }
+            viewModel.addToSessionExercises.value?.removeAll { it.addedToSession == true }
             findNavController().navigate(R.id.myTrainingScreen)
         }
     }
@@ -439,12 +443,12 @@ class AllExerciseListForEditSessionFragment : Fragment() {
     fun addExerciseSelectionSession() {
         var addToWorkoutBtn = binding.addExerciseToSessionBtn
         addToWorkoutBtn.setOnClickListener {
-            var addedToSessionExercises = viewModel.addToSessionExercises.value ?: mutableListOf()
+            var addedToSessionExercises = viewModel.selectedTraininingssession.value?.trainingsSession ?: mutableListOf()
             var tag = "Radiocheck??"
             Log.i(tag, "Länge der Liste: ${addedToSessionExercises.size}")
             try {
                 if (addedToSessionExercises.isNotEmpty()) {
-                    findNavController().navigate(R.id.newTrainingsSessionFragment)
+                    findNavController().navigate(R.id.editTrainingSessionFragment)
                 } else {
                     Toast.makeText(
                         requireContext(),

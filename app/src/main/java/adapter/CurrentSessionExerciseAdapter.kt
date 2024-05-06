@@ -51,7 +51,7 @@ class CurrentSessionExerciseAdapter (
                 var tag = "CheckBox??"
                 Log.i(tag, "Übung Nicht in der Liste!: ${exercise.addedToSession} ${holder.binding.saveExerciseCheckbox.isChecked}")
             } else{
-                viewModel.savedInWorkoutSession(!exercise.addedToSession!!,exercise)
+                viewModel.deleteWorkoutInEditSession(!exercise.addedToSession!!,exercise)
                 holder.binding.saveExerciseCheckbox.isChecked = true
                 exercise.addedToSession = true
                 var tag = "CheckBox??"

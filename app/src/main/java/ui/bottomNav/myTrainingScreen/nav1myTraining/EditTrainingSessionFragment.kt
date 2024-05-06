@@ -58,8 +58,13 @@ class EditTrainingSessionFragment : Fragment() {
 
     fun setUpAdapter() {
         viewModel.selectedTraininingssession.observe(viewLifecycleOwner) {
+            if (it.sessionDate.isNullOrBlank()){
+                binding.materialCardSessionDate.isInvisible = true
+            } else{
+                binding.materialCardSessionDate.isInvisible = false
+                binding.sessionDate.setText(it.sessionDate)
+            }
             binding.sessionName.setText(it.sessionName)
-            binding.sessionDate.setText(it.sessionDate)
             binding.rvEditCurrentWorkout.adapter = EditTrainingAdapter(it.trainingsSession, viewModel, requireContext())
             saveSessionChanges(it)
             deleteSession(it)
@@ -100,6 +105,7 @@ class EditTrainingSessionFragment : Fragment() {
         var addExerciseBtn = binding.addExerciseBtn
         addExerciseBtn.setOnClickListener {
             var action = EditTrainingSessionFragmentDirections.actionEditTrainingSessionFragmentToAllExerciseListForEditSessionFragment()
+            viewModel.excludeExercises(currentSession)
             findNavController().navigate(action)
         }
     }
