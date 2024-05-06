@@ -180,7 +180,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         println("$tag ${sessionExercises.size}")
 
 
-
         println("$tag ${allExercises.size}")
 
         // Den Wert von remainExercisesForAddInSession aktualisieren
@@ -318,7 +317,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     fun filterRemainExercisesByBodypart(bodypart: String,context: Context) {
         viewModelScope.launch {
-            val filteredExercises = repository.loadBodyparts().filter { context.getString(it.bodyPart) == bodypart }
+            val filteredExercises = repository.loadExercisesByBodypart().filter { context.getString(it.bodyPart) == bodypart }
             _remainExercisesForAddInSession.value = filteredExercises
         }
     }
@@ -839,6 +838,17 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
         _selectedTraininingssession.value?.trainingsSession = updatedSession
     }
+
+
+
+  /*  fun isSaved(saved: Boolean, input: String,context: Context) {
+        for (exercise in _selectedTraininingssession.value?.trainingsSession!!){
+            if (context.getString(exercise.stringRessourceTitle) == input){
+                exercise.addedToSession = saved
+            }
+        }
+    }
+*/
 
 }
 

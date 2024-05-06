@@ -22,7 +22,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|top"
-            android:layout_margin="8dp"
             android:src="@drawable/delete_fill1_wght400_grad0_opsz24"
             android:backgroundTint="#00FFFFFF"
             android:checked="false"
@@ -36,7 +35,7 @@
 
             <ImageView
                 android:id="@+id/exerciseImage"
-                android:layout_width="120dp"
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:scaleType="fitXY"
@@ -47,7 +46,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_weight="1"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="4dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -73,7 +72,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="3dp"
                     android:layout_height="wrap_content">
 
 
@@ -84,7 +83,7 @@
                     android:fontFamily="@font/lato"
                     android:layout_weight="1"
                     android:text="@string/setsText"
-                    android:textAlignment="viewStart"
+                    android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="14dp" />
 
@@ -94,7 +93,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato"
                     android:text="@string/repText"
-                    android:textAlignment="viewStart"
+                    android:textAlignment="center"
                     android:layout_weight="1"
                     android:textColor="@color/black"
                     android:textSize="14dp" />
@@ -105,7 +104,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato"
                     android:text="@string/weightText"
-                    android:textAlignment="viewStart"
+                    android:textAlignment="center"
                     android:layout_weight="1"
                     android:textColor="@color/black"
                     android:textSize="14dp" />

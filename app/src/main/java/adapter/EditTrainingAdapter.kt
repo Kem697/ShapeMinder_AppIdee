@@ -28,20 +28,29 @@ class EditTrainingAdapter (
     }
 
     override fun onBindViewHolder(holder: EditSessionItemViewHolder, position: Int) {
-        val item = dataset[position]
-        holder.binding.exerciseName.setText(item.stringRessourceTitle)
-        holder.binding.exerciseBodyPart.setText(item.bodyPart)
-        holder.binding.exerciseImage.setImageResource(item.imageRessource)
+        val exercise = dataset[position]
+        var tag = "Delete Btn check??"
+        Log.i(tag, "Übung wurde gelöscht: ${exercise.addedToSession} ${dataset.indexOf(exercise)} $position")
+        holder.binding.exerciseName.setText(exercise.stringRessourceTitle)
+        holder.binding.exerciseBodyPart.setText(exercise.bodyPart)
+        holder.binding.exerciseImage.setImageResource(exercise.imageRessource)
 
 
         holder.binding.deleteExercise.setOnClickListener{
-            if (item.addedToSession == true){
-                viewModel.deleteWorkoutInEditSession(!item.addedToSession!!,item)
+            if (exercise.addedToSession == true){
+                viewModel.deleteWorkoutInEditSession(!exercise.addedToSession!!,exercise)
 //                viewModel.deleteExerciseFromDb(item)
-                item.addedToSession = false
-                notifyItemRemoved(position)
+                exercise.addedToSession = false
+                var indicies = dataset.indices
+                val getPosition = dataset.indexOf(exercise)
+                var tag2 = "Delete Btn check??"
+                Log.i(tag2, "Indexwerte aller Übungen: $indicies || Übungsposition: $getPosition|| Adapterpostion: $position")
+                notifyItemRemoved(getPosition)
                 var tag = "Delete Btn check??"
-                Log.i(tag, "Übung wurde gelöscht: ${item.addedToSession}")
+                Log.i(tag, "Übung wurde gelöscht: ${exercise.addedToSession} ${dataset.indexOf(exercise)} $position")
+
+//                viewModel.isSaved(!exercise.addedToSession!!,context.getString(exercise.stringRessourceTitle),context)
+//                notifyItemChanged(position)
             }
         }
     }
