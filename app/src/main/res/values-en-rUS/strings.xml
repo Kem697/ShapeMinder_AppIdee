@@ -196,6 +196,9 @@
     <string name="toastSessionDeletedHint">Workout has been deleted!</string>
     <string name="toastCameraPermissionRefusedHint">Camera permission not granted!</string>
     <string name="toastScanStopHint">Barcode scanner has been stopped!</string>
+    <string name="toastResetPasswordLinkSentHint">Password reset e-mail has been sent to the registered e-mail!</string>
+
+
     <string name="noBarcodeDetectedText">No barcode detected!</string>
     <string name="barcodeResult">Result</string>
     <string name="sortByText">Sort by</string>
@@ -208,6 +211,9 @@
     <string name="apiCountrySearchTag">united-states</string>
     <string name="cameraPromptHint">Volume up to flash on</string>
     <string name="your_web_client_id">238411082980-h1lhj2vj9gru8lka98k7487md1t7hag9.apps.googleusercontent.com</string>
+    <string name="forgetPasswordHint">Forgot Password?</string>
+    <string name="forgotPasswordScreenHint">Please enter the e-mail address associated with the account to reset your password!</string>
+    <string name="resetPasswordBtnText">Reset password</string>
 
 
 </resources>

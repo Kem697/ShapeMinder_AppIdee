@@ -268,6 +268,8 @@
     <string name="toastSessionDeletedHint">"Training wurde gelöscht!"</string>
     <string name="toastCameraPermissionRefusedHint">Nutzung der Kamera wurde abgelehnt!</string>
     <string name="toastScanStopHint">Barcode Scanner wurde angehalten!</string>
+    <string name="toastResetPasswordLinkSentHint">E-Mail zum Zurücksetzen des Passwort wurde an die registrierte E-Mail gesendet!</string>
+
     <string name="barcodeScannerTitle">Barcode Scanner</string>
     <string name="noBarcodeDetectedText">Kein Barcode gefunden!</string>
     <string name="barcodeResult">Ergebnis</string>
@@ -281,6 +283,9 @@
     <string name="apiRequestRegion">DE</string>
     <string name="cameraPromptHint">Lautstärke hoch, um Lampe einzuschalten</string>
     <string name="your_web_client_id">238411082980-h1lhj2vj9gru8lka98k7487md1t7hag9.apps.googleusercontent.com</string>
+    <string name="forgetPasswordHint">Passwort vergessen?</string>
+    <string name="forgotPasswordScreenHint">Bitte nenne die mit dem Konto verknüpfte E-Mail Adresse, um dein Passwort zurückzusetzen!</string>
+    <string name="resetPasswordBtnText">Passwort zurücksetzen</string>
 
 
 </resources>

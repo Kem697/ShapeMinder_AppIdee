@@ -21,22 +21,17 @@ import com.example.shapeminder_appidee.databinding.FragmentFoodListBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import model.data.remote.api_model.openFoodFacts.Product
-import ui.viewModel.HomeViewModel
 import ui.viewModel.NutrionViewModel
 
 class FoodListFragment : Fragment() {
 
     private lateinit var binding: FragmentFoodListBinding
-    val nutrionViewModel: NutrionViewModel by activityViewModels()
-
+    val nutritionViewModel: NutrionViewModel by activityViewModels()
 
 
     private lateinit var orginalFoodRequest : List<Product>
 
 
-    override fun onStart() {
-        super.onStart()
-    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -104,12 +99,12 @@ class FoodListFragment : Fragment() {
                     when (checkedId) {
                         R.id.a_z_ascending -> {
                             isSortedDescending = false
-                            nutrionViewModel.sortFoodsByAlphabet(isSortedDescending)
+                            nutritionViewModel.sortFoodsByAlphabet(isSortedDescending)
                         }
 
                         R.id.z_a_descending -> {
                             isSortedDescending = true
-                            nutrionViewModel.sortFoodsByAlphabet(isSortedDescending)
+                            nutritionViewModel.sortFoodsByAlphabet(isSortedDescending)
                         }
                     }
                     dialog.dismiss()
@@ -119,9 +114,9 @@ class FoodListFragment : Fragment() {
 
 
     fun setUpAdapter(){
-        nutrionViewModel.searchFood.observe(viewLifecycleOwner){ product->
-            binding.screenTitle.text = nutrionViewModel.selectedContentTitle.value
-            binding.listOfFood.adapter = FoodItemAdapter(product,nutrionViewModel,requireContext())
+        nutritionViewModel.searchFood.observe(viewLifecycleOwner){ product->
+            binding.screenTitle.text = nutritionViewModel.selectedContentTitle.value
+            binding.listOfFood.adapter = FoodItemAdapter(product,nutritionViewModel,requireContext())
             orginalFoodRequest = product
             Log.i("Orginale Liste", "${orginalFoodRequest.size}")
             binding.progressBar.visibility = View.GONE
@@ -137,12 +132,12 @@ class FoodListFragment : Fragment() {
                 binding.foodListSearchBar.setText(userInput)
                 var tag = "Filter???"
                 Log.i(tag, "Werden die Inhalte hier gefiltert. :${userInput}")
-                nutrionViewModel.filterFoodInCategorieByTitle(userInput,orginalFoodRequest)
+                nutritionViewModel.filterFoodInCategorieByTitle(userInput,orginalFoodRequest)
             } else {
                 searchBar.text.clear()
                 binding.foodListSearchBar.clearText()
                 binding.progressBar.visibility = View.VISIBLE
-                nutrionViewModel.searchFood()
+                nutritionViewModel.searchFood()
 
 //                binding.resetFilterBtn.isInvisible = true
             }

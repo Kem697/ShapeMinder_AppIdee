@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_logInScreen_to_registerScreen"
             app:destination="@id/registerScreen" />
+        <action
+            android:id="@+id/action_logInScreen_to_forgotPasswordScreen"
+            app:destination="@id/forgotPasswordScreen" />
     </fragment>
     <fragment
         android:id="@+id/homeScreen"
@@ -189,4 +192,8 @@
         android:id="@+id/allExerciseListForEditSessionFragment"
         android:name="ui.bottomNav.myTrainingScreen.nav1myTraining.AllExerciseListForEditSessionFragment"
         android:label="AllExerciseListForEditSessionFragment" />
+    <fragment
+        android:id="@+id/forgotPasswordScreen"
+        android:name="ui.logInFlow.ForgotPasswordScreen"
+        android:label="ForgotPasswordScreen" />
 </navigation>

@@ -185,6 +185,10 @@
     <string name="toastSessionDeletedHint">Antrenman silindi!</string>
     <string name="toastCameraPermissionRefusedHint">Kamera izni verilmedi!</string>
     <string name="toastScanStopHint">Barkod tarayıcı durduruldu!</string>
+    <string name="toastResetPasswordLinkSentHint">Şifre sıfırlama e-postası kayıtlı e-postaya gönderildi!</string>
+
+
+
     <string name="barcodeScannerTitle">Barkod Okuyucu</string>
     <string name="noBarcodeDetectedText">Barkod algılanmadı!</string>
     <string name="barcodeResult">Sonuç</string>
@@ -198,5 +202,8 @@
     <string name="apiRequestRegionDE">TR</string>
     <string name="cameraPromptHint">Lamba açmak için sesi yükseltin</string>
     <string name="your_web_client_id">238411082980-h1lhj2vj9gru8lka98k7487md1t7hag9.apps.googleusercontent.com</string>
+    <string name="forgetPasswordHint">Şifrenizi mi unuttunuz??</string>
+    <string name="forgotPasswordScreenHint">Şifrenizi sıfırlamak için lütfen hesabınızla ilişkili e-posta adresini girin!</string>
+    <string name="resetPasswordBtnText">Şifreyi sıfırla</string>
 
 </resources>

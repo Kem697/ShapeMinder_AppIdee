@@ -52,6 +52,7 @@ class LogInScreen : Fragment() {
         var navigationBar =
             requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
         navigationBar.isInvisible = true
+        forgotPassword()
         logIn()
         register()
         developerSkip()
@@ -192,6 +193,14 @@ class LogInScreen : Fragment() {
                 }
                 progressBar.visibility = View.GONE
             }
+    }
+
+
+    fun forgotPassword(){
+        var forgotPasswordBtn = binding.forgotPasswordView
+        forgotPasswordBtn.setOnClickListener {
+            findNavController().navigate(R.id.forgotPasswordScreen)
+        }
     }
 
 
