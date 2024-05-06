@@ -39,7 +39,7 @@ private val retrofit = Retrofit.Builder()
 
 
 interface FoodFactApi {
-    @GET("/api/v2/search")
+    @GET("/api/v2/search?page_size=100")
     suspend fun searchFood(
         @Query("categories_tags_en") foodCatEn: String,
         @Query("countries_tags_en") countryTagEn: String

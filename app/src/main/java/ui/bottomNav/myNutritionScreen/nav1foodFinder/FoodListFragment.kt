@@ -34,6 +34,9 @@ class FoodListFragment : Fragment() {
     private lateinit var orginalFoodRequest : List<Product>
 
 
+    override fun onStart() {
+        super.onStart()
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,6 +58,7 @@ class FoodListFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        binding.progressBar.visibility = View.VISIBLE
         var navigationBar =
             requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
         navigationBar.isInvisible = true
@@ -120,6 +124,7 @@ class FoodListFragment : Fragment() {
             binding.listOfFood.adapter = FoodItemAdapter(product,nutrionViewModel,requireContext())
             orginalFoodRequest = product
             Log.i("Orginale Liste", "${orginalFoodRequest.size}")
+            binding.progressBar.visibility = View.GONE
         }
     }
 
