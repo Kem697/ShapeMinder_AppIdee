@@ -40,7 +40,11 @@ class EditTrainingAdapter (
             if (exercise.addedToSession == true){
                 viewModel.deleteWorkoutInEditSession(!exercise.addedToSession!!,exercise)
 //                viewModel.deleteExerciseFromDb(item)
-                exercise.addedToSession = false
+//                exercise.addedToSession = false
+
+//                viewModel.isSaved(!exercise.addedToSession!!,context.getString(exercise.stringRessourceTitle),context)
+//                notifyItemRemoved(position)
+
                 var indicies = dataset.indices
                 val getPosition = dataset.indexOf(exercise)
                 var tag2 = "Delete Btn check??"

@@ -167,7 +167,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         val sessionExercises = trainingsSession.trainingsSession
 
         val matchingExercises = allExercises.filter { exercise ->
-            sessionExercises.any { it.stringRessourceText == exercise.stringRessourceText }
+            sessionExercises.any { it.stringRessourceTitle == exercise.stringRessourceTitle }
         }.toMutableList()
 
 
@@ -841,14 +841,13 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
 
 
-  /*  fun isSaved(saved: Boolean, input: String,context: Context) {
+    fun isSaved(saved: Boolean, input: String,context: Context) {
         for (exercise in _selectedTraininingssession.value?.trainingsSession!!){
             if (context.getString(exercise.stringRessourceTitle) == input){
                 exercise.addedToSession = saved
             }
         }
     }
-*/
 
 }
 
