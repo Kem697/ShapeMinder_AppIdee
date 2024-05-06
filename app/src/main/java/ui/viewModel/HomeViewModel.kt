@@ -839,16 +839,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         _selectedTraininingssession.value?.trainingsSession = updatedSession
     }
 
-
-
-    fun isSaved(saved: Boolean, input: String,context: Context) {
-        for (exercise in _selectedTraininingssession.value?.trainingsSession!!){
-            if (context.getString(exercise.stringRessourceTitle) == input){
-                exercise.addedToSession = saved
-            }
-        }
-    }
-
 }
 
 

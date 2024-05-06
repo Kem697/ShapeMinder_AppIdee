@@ -39,22 +39,10 @@ class EditTrainingAdapter (
         holder.binding.deleteExercise.setOnClickListener{
             if (exercise.addedToSession == true){
                 viewModel.deleteWorkoutInEditSession(!exercise.addedToSession!!,exercise)
-//                viewModel.deleteExerciseFromDb(item)
-//                exercise.addedToSession = false
-
-//                viewModel.isSaved(!exercise.addedToSession!!,context.getString(exercise.stringRessourceTitle),context)
-//                notifyItemRemoved(position)
-
-                var indicies = dataset.indices
-                val getPosition = dataset.indexOf(exercise)
-                var tag2 = "Delete Btn check??"
-                Log.i(tag2, "Indexwerte aller Übungen: $indicies || Übungsposition: $getPosition|| Adapterpostion: $position")
+                val getPosition = holder.adapterPosition
                 notifyItemRemoved(getPosition)
                 var tag = "Delete Btn check??"
                 Log.i(tag, "Übung wurde gelöscht: ${exercise.addedToSession} ${dataset.indexOf(exercise)} $position")
-
-//                viewModel.isSaved(!exercise.addedToSession!!,context.getString(exercise.stringRessourceTitle),context)
-//                notifyItemChanged(position)
             }
         }
     }
