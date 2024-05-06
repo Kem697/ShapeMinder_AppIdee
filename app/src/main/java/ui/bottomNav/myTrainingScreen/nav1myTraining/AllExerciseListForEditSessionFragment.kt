@@ -33,11 +33,11 @@ class AllExerciseListForEditSessionFragment : Fragment() {
     val viewModel: HomeViewModel by activityViewModels()
 
 
-    private var lastSelectedImageButtonIndex: Int = -1
-    private var lastSelectedTextButtonIndex: Int = -1
+    private var lastSelectedImageBtnIndex: Int = -1
+    private var lastSelectedTextBtnIndex: Int = -1
 
-    private var lastSelectedImageButton: ImageButton? = null
-    private var lastSelectedTextButton: Button? = null
+    private var lastSelectedImageBtn: ImageButton? = null
+    private var lastSelectedTextBtn: Button? = null
 
 
     override fun onStart() {
@@ -234,14 +234,14 @@ class AllExerciseListForEditSessionFragment : Fragment() {
 
                 dialogResultsBtn?.setOnClickListener {
                     try {
-                        val muscleGroupFilter = lastSelectedTextButton?.isSelected == true
-                        val equipmentGroupFilter = lastSelectedImageButton?.isSelected == true
+                        val muscleGroupFilter = lastSelectedTextBtn?.isSelected == true
+                        val equipmentGroupFilter = lastSelectedImageBtn?.isSelected == true
                         if (muscleGroupFilter && equipmentGroupFilter){
                             viewModel.filterRemainExercisesByTwoSelections(requireContext(),
-                                lastSelectedImageButton!!, lastSelectedTextButton!!
+                                lastSelectedImageBtn!!, lastSelectedTextBtn!!
                             )
                         } else if (muscleGroupFilter && !equipmentGroupFilter){
-                            val textButtonName = resources.getResourceEntryName(lastSelectedTextButton!!.id)
+                            val textButtonName = resources.getResourceEntryName(lastSelectedTextBtn!!.id)
                             val bodyPart = when (textButtonName) {
                                 "sec0_armsBtn" -> requireContext().resources.getString(R.string.bpArme)
                                 "sec0_absBtn" -> requireContext().resources.getString(R.string.bpBauch)
@@ -251,9 +251,9 @@ class AllExerciseListForEditSessionFragment : Fragment() {
                                 "sec0_shoulderBtn" -> requireContext().resources.getString(R.string.bpSchulter)
                                 else -> ""
                             }
-                            viewModel.filterAllExercisesByBodypart(bodyPart,requireContext())
+                            viewModel.filterRemainExercisesByBodypart(bodyPart,requireContext())
                         } else if (equipmentGroupFilter && !muscleGroupFilter){
-                            val imageBtnName = requireContext().resources.getResourceEntryName(lastSelectedImageButton!!.id)
+                            val imageBtnName = requireContext().resources.getResourceEntryName(lastSelectedImageBtn!!.id)
                             when (imageBtnName) {
                                 "sec1_short_dumbell_Btn" -> {
                                     viewModel.filterRemainExercisesByShortDumbbell(requireContext())
@@ -278,7 +278,7 @@ class AllExerciseListForEditSessionFragment : Fragment() {
                 }
 
                 resetBtn.setOnClickListener {
-                    if (lastSelectedImageButtonIndex != -1 ||lastSelectedTextButtonIndex != -1) {
+                    if (lastSelectedImageBtnIndex != -1 ||lastSelectedTextBtnIndex != -1) {
                         viewModel.retrieveRemainExercisesByBodyparts()
                         if (allImageButtons.any { it?.isSelected==true }&& (textButtons.all { it?.isSelected != true })){
                             allImageButtons.forEach { imageButton ->
@@ -313,15 +313,15 @@ class AllExerciseListForEditSessionFragment : Fragment() {
                         }
 
                     }
-                    lastSelectedImageButton = null
-                    lastSelectedTextButton = null
+                    lastSelectedImageBtn = null
+                    lastSelectedTextBtn = null
                     /*   lastSelectedImageButton!!.isSelected = false
                        lastSelectedTextButton!!.isSelected = false*/
                     resetBtn.isInvisible = true
                 }
 
                 dialogResetBtn?.setOnClickListener {
-                    if (lastSelectedImageButtonIndex != -1 || lastSelectedTextButtonIndex != -1) {
+                    if (lastSelectedImageBtnIndex != -1 || lastSelectedTextBtnIndex != -1) {
                         viewModel.retrieveRemainExercisesByBodyparts()
                         if (allImageButtons.any { it?.isSelected==true }&& (textButtons.all { it?.isSelected != true })){
                             allImageButtons.forEach { imageButton ->
@@ -355,8 +355,8 @@ class AllExerciseListForEditSessionFragment : Fragment() {
 
                         }
                     }
-                    lastSelectedImageButton = null
-                    lastSelectedTextButton = null
+                    lastSelectedImageBtn = null
+                    lastSelectedTextBtn = null
                     /*  lastSelectedImageButton!!.isSelected = false
                       lastSelectedTextButton!!.isSelected = false*/
                     resetBtn.isInvisible = true
@@ -384,9 +384,9 @@ class AllExerciseListForEditSessionFragment : Fragment() {
                 selectedButton.setBackgroundColor(setCheckedBackground) // Setze das Bild des ausgewählten Buttons
                 selectedButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
                 selectedButton.isSelected = true
-                lastSelectedTextButton = selectedButton
-                lastSelectedTextButtonIndex = index
-                println("Textbutton: ${lastSelectedTextButton?.isSelected} || ${context?.resources!!.getResourceEntryName(lastSelectedTextButton!!.id)}")
+                lastSelectedTextBtn = selectedButton
+                lastSelectedTextBtnIndex = index
+                println("Textbutton: ${lastSelectedTextBtn?.isSelected} || ${context?.resources!!.getResourceEntryName(lastSelectedTextBtn!!.id)}")
             }
         }
     }
@@ -402,9 +402,9 @@ class AllExerciseListForEditSessionFragment : Fragment() {
                 }
                 selectedButton.setImageResource(checkedImages[index]) // Setze das Bild des ausgewählten Buttons
                 selectedButton.isSelected = true
-                lastSelectedImageButton = selectedButton
-                lastSelectedImageButtonIndex = index
-                println("Imagebutton: ${lastSelectedImageButton?.isSelected} || ${context?.resources!!.getResourceEntryName(lastSelectedImageButton!!.id)}")
+                lastSelectedImageBtn = selectedButton
+                lastSelectedImageBtnIndex = index
+                println("Imagebutton: ${lastSelectedImageBtn?.isSelected} || ${context?.resources!!.getResourceEntryName(lastSelectedImageBtn!!.id)}")
             }
         }
     }

@@ -316,6 +316,13 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         _remainExercisesForAddInSession.value = excludeExercises(selectedTraininingssession.value!!)
     }
 
+    fun filterRemainExercisesByBodypart(bodypart: String,context: Context) {
+        viewModelScope.launch {
+            val filteredExercises = repository.loadBodyparts().filter { context.getString(it.bodyPart) == bodypart }
+            _remainExercisesForAddInSession.value = filteredExercises
+        }
+    }
+
 
 
 
