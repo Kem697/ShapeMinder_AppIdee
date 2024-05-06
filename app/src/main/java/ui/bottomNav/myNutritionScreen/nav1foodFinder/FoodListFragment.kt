@@ -141,6 +141,7 @@ class FoodListFragment : Fragment() {
             } else {
                 searchBar.text.clear()
                 binding.foodListSearchBar.clearText()
+                binding.progressBar.visibility = View.VISIBLE
                 nutrionViewModel.searchFood()
 
 //                binding.resetFilterBtn.isInvisible = true
