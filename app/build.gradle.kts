@@ -55,6 +55,9 @@ dependencies {
     val retrofitVersion = "2.9.0"
     val roomVersion = "2.6.0"
 
+    val kotlin_version = "231-1.9.22"
+
+
     //YoutubePlayer
     implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
 
@@ -118,6 +121,14 @@ dependencies {
     implementation ("androidx.credentials:credentials:<latest version>")
     implementation ("androidx.credentials:credentials-play-services-auth:<latest version>")
     implementation ("com.google.android.libraries.identity.googleid:googleid:<latest version>")
+
+
+//    implementation(platform("org.jetbrains.kotlin:kotlin-bom:$kotlin_version"))
+
+    implementation ("com.google.android.libraries.places:places:3.4.0")
+
+
+
 
 
 
