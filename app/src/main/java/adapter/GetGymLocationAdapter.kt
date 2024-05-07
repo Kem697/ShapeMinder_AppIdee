@@ -45,7 +45,7 @@ class GetGymLocationAdapter (
             holder.binding.gymOpening.setTextColor(ContextCompat.getColor(context, R.color.green))
             holder.binding.gymOpening.setText(context.getString(R.string.openText))
         }
-        var image = viewModel.getGymLocationPhotos(gym.photos.first().reference,gym.photos.first().attributions).toString()
+        var image = viewModel.getGymLocationPhotos(gym.photos.first().reference).toString()
         image.toString()
         var tag = "Image"
         Log.i(tag,"$image")
