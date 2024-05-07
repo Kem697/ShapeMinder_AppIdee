@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import coil.load
@@ -55,6 +56,8 @@ class MySettingsScreen : Fragment() {
             Log.d(TAG,"Logout: + ${auth.currentUser?.displayName}")
             auth.signOut()
             Log.d(TAG,"Logout: + ${auth.currentUser?.email}")
+            Toast.makeText(binding.root.context,requireContext().getString(R.string.toastLogOutHint), Toast.LENGTH_SHORT)
+                .show()
             findNavController().navigate(R.id.logInScreen)
         }
     }

@@ -185,6 +185,7 @@
     <string name="toastCameraPermissionRefusedHint">Kameratillatelse ikke gitt!</string>
     <string name="toastScanStopHint">Strekkodeskanneren har blitt stoppet!</string>
     <string name="toastResetPasswordLinkSentHint">E-post om tilbakestilling av passord er sendt til den registrerte e-postadressen!</string>
+    <string name="toastLogOutHint">Du har blitt logget ut!</string>
 
 
     <string name="barcodeScannerTitle">Strekkodeskanner</string>

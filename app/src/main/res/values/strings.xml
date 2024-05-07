@@ -269,6 +269,7 @@
     <string name="toastCameraPermissionRefusedHint">Nutzung der Kamera wurde abgelehnt!</string>
     <string name="toastScanStopHint">Barcode Scanner wurde angehalten!</string>
     <string name="toastResetPasswordLinkSentHint">E-Mail zum Zurücksetzen des Passwort wurde an die registrierte E-Mail gesendet!</string>
+    <string name="toastLogOutHint">Du wurdest erfolgreich abgemeldet!</string>
 
     <string name="barcodeScannerTitle">Barcode Scanner</string>
     <string name="noBarcodeDetectedText">Kein Barcode gefunden!</string>

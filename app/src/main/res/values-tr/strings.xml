@@ -186,6 +186,7 @@
     <string name="toastCameraPermissionRefusedHint">Kamera izni verilmedi!</string>
     <string name="toastScanStopHint">Barkod tarayıcı durduruldu!</string>
     <string name="toastResetPasswordLinkSentHint">Şifre sıfırlama e-postası kayıtlı e-postaya gönderildi!</string>
+    <string name="toastLogOutHint">Başarıyla çıkış yaptınız!</string>
 
 
 

@@ -2,6 +2,7 @@ package ui.logInFlow
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -50,6 +51,8 @@ class ForgotPasswordScreen : Fragment() {
             val userInput = editEmail.text.toString()
             userEmail = userInput
             if (!TextUtils.isEmpty(userInput)){
+                val tag = "Forgot PW"
+                Log.i(tag, "Email: $userEmail")
                 resetPassword()
             } else {
                 Toast.makeText(binding.root.context, context?.getString(R.string.toastUserInputHint), Toast.LENGTH_SHORT).show()
@@ -59,9 +62,9 @@ class ForgotPasswordScreen : Fragment() {
 
 
     fun resetPassword(){
-        var editEmail = binding.inputEmail
         var pogressbar = binding.forgotPasswordProgressbar
-        pogressbar.visibility = View.GONE
+        pogressbar.visibility = View.VISIBLE
+        binding.resetPasswordButton.visibility = Button.INVISIBLE
         auth.sendPasswordResetEmail(userEmail)
             .addOnSuccessListener {task->
                 Toast.makeText(binding.root.context, requireContext().getString(R.string.toastResetPasswordLinkSentHint), Toast.LENGTH_SHORT)
@@ -74,8 +77,8 @@ class ForgotPasswordScreen : Fragment() {
                     .show()
         }
             .addOnCompleteListener {task->
-                binding.resetPasswordButton.visibility = Button.INVISIBLE
-                pogressbar.visibility = View.VISIBLE
+                binding.resetPasswordButton.visibility = Button.VISIBLE
+                pogressbar.visibility = View.GONE
             }
     }
 

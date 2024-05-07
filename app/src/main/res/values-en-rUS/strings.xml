@@ -197,6 +197,7 @@
     <string name="toastCameraPermissionRefusedHint">Camera permission not granted!</string>
     <string name="toastScanStopHint">Barcode scanner has been stopped!</string>
     <string name="toastResetPasswordLinkSentHint">Password reset e-mail has been sent to the registered e-mail!</string>
+    <string name="toastLogOutHint">You have been successfully logged out!</string>
 
 
     <string name="noBarcodeDetectedText">No barcode detected!</string>
