@@ -119,7 +119,13 @@
     <string name="groceryListHeader">Alışveriş Listesi</string>
     <string name="foodCategoryHeader">Kategoriler</string>
     <string name="homeScreenHeader">Merhaba</string>
+
+
     <string name="todayText">Bugün</string>
+
+    <string name="gymLocationHeaderText">Yakınınızdaki spor salonları</string>
+
+
     <string name="justForYouText">Sadece senin için</string>
     <string name="didYouKnowText">Biliyor muydunuz?</string>
     <string name="myNutrionNav1Header">Food Finder</string>
@@ -206,5 +212,7 @@
     <string name="forgetPasswordHint">Şifrenizi mi unuttunuz??</string>
     <string name="forgotPasswordScreenHint">Şifrenizi sıfırlamak için lütfen hesabınızla ilişkili e-posta adresini girin!</string>
     <string name="resetPasswordBtnText">Şifreyi sıfırla</string>
+    <string name="closeText">kapalı</string>
+    <string name="openText">açık</string>
 
 </resources>

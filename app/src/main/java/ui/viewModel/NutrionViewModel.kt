@@ -10,17 +10,16 @@ import kotlinx.coroutines.launch
 //import model.data.local.getProductDatabase
 import model.data.local.model.myNutrion.FoodFinderCategory
 import model.data.remote.OpenFoodFactsApi
-import model.data.remote.RemoteRepository
+import model.data.remote.RemoteRepositoryFood
 import model.data.remote.api_model.openFoodFacts.Product
-import model.data.remote.api_model.openFoodFacts.ScannedFoodResponse
 
 class NutrionViewModel(application: Application) : AndroidViewModel(application) {
 
 //    private val productDatabase = getProductDatabase(application)
 
-    private val remoteRepository = RemoteRepository(OpenFoodFactsApi,/*productDatabase*/)
+    private val remoteRepositoryFood = RemoteRepositoryFood(OpenFoodFactsApi,/*productDatabase*/)
 
-    private var groceryCategories = remoteRepository.groceryCategories
+    private var groceryCategories = remoteRepositoryFood.groceryCategories
 
 //    val productsInDatabase = remoteRepository.savedFoodList
 
@@ -43,7 +42,7 @@ class NutrionViewModel(application: Application) : AndroidViewModel(application)
 
 
 
-    private val _searchFood = remoteRepository.getFood
+    private val _searchFood = remoteRepositoryFood.getFood
     val searchFood: MutableLiveData<List<Product>>
         get() = _searchFood
 
@@ -54,7 +53,7 @@ class NutrionViewModel(application: Application) : AndroidViewModel(application)
         get() = _savedFoods
 
 
-    private val _scannedFood = remoteRepository.scannedFood
+    private val _scannedFood = remoteRepositoryFood.scannedFood
 
     val scannedFood : MutableLiveData<Product>
 
@@ -76,12 +75,12 @@ class NutrionViewModel(application: Application) : AndroidViewModel(application)
 
     fun searchFood() {
         viewModelScope.launch {
-            remoteRepository.searchFood(category,country)
+            remoteRepositoryFood.searchFood(category,country)
         }
     }
     fun searchFoodByBarcode(barcode: String) {
         viewModelScope.launch {
-            remoteRepository.searchFoodByBarcode(barcode)
+            remoteRepositoryFood.searchFoodByBarcode(barcode)
         }
     }
 

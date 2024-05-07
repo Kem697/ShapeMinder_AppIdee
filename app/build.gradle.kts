@@ -7,8 +7,7 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
 }
 
-val clientId: String = com.android.build.gradle.internal.cxx.configure.gradleLocalProperties(rootDir).getProperty("clientId")
-val clientSecret: String = com.android.build.gradle.internal.cxx.configure.gradleLocalProperties(rootDir).getProperty("clientSecret")
+val apiKey: String = com.android.build.gradle.internal.cxx.configure.gradleLocalProperties(rootDir).getProperty("apiKey")
 
 android {
     namespace = "com.example.shapeminder_appidee"
@@ -31,8 +30,7 @@ android {
 
     buildTypes {
         release {
-            buildConfigField("String","clientId",clientId)
-            buildConfigField("String","clientSecret",clientSecret)
+            buildConfigField("String","apiKey",apiKey)
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -40,8 +38,7 @@ android {
             )
         }
         debug {
-            buildConfigField("String","clientId",clientId)
-            buildConfigField("String","clientSecret",clientSecret)
+            buildConfigField("String","apiKey",apiKey)
         }
     }
     compileOptions {

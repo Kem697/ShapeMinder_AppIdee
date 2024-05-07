@@ -1,5 +1,6 @@
 package ui.bottomNav.myHomeScreen
 
+import adapter.GetGymLocationAdapter
 import adapter.ItemAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,12 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isInvisible
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentHomeScreenBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import ui.viewModel.GymLocationsViewModel
 import ui.viewModel.HomeViewModel
 
 
@@ -20,6 +21,7 @@ class MyHomeScreen : Fragment() {
 
     private lateinit var binding: FragmentHomeScreenBinding
     private val viewModel: HomeViewModel by activityViewModels()
+    private val gymPlaceViewModel: GymLocationsViewModel by activityViewModels()
 
     private lateinit var auth: FirebaseAuth
 
@@ -62,6 +64,7 @@ class MyHomeScreen : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.textView.setText("${requireContext().getString(R.string.homeScreenHeader)} ${auth.currentUser?.displayName?:" "}")
+        setUpAdapter()
         viewModel.contents.observe(viewLifecycleOwner) {
             var navigationBar =
                 requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
@@ -71,10 +74,14 @@ class MyHomeScreen : Fragment() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-    }
 
+    fun setUpAdapter(){
+        gymPlaceViewModel.getGymLocations.observe(viewLifecycleOwner){
+            binding.gymLocationRecyclerView.adapter = GetGymLocationAdapter(it,gymPlaceViewModel,requireContext())
+            binding.progressBar.visibility = View.GONE
+        }
+
+    }
 
 }
 

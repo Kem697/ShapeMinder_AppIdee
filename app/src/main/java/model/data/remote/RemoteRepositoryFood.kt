@@ -1,18 +1,14 @@
 package model.data.remote
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.shapeminder_appidee.R
 //import model.data.local.ProductDatabase
 import model.data.local.model.myNutrion.FoodFinderCategory
 import model.data.remote.api_model.openFoodFacts.Product
-import model.data.remote.api_model.openFoodFacts.ProductResponse
-import retrofit2.http.GET
-import retrofit2.http.Path
 import kotlin.Exception
 
-class RemoteRepository (
+class RemoteRepositoryFood (
     private val openFoodApi: OpenFoodFactsApi)
 //    private val productDatabase: ProductDatabase)
 {

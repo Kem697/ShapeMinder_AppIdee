@@ -119,6 +119,10 @@
     <string name="foodCategoryHeader">Kategorier</string>
     <string name="homeScreenHeader">Hei</string>
     <string name="todayText">I dag</string>
+
+    <string name="gymLocationHeaderText">Treningssentre nær deg</string>
+
+
     <string name="justForYouText">Bare for deg</string>
     <string name="didYouKnowText">Visste du det?</string>
     <string name="myNutrionNav1Header">Food Finder</string>
@@ -203,4 +207,6 @@
     <string name="forgetPasswordHint">Har du glemt passordet ditt??</string>
     <string name="forgotPasswordScreenHint">Vennligst skriv inn e-postadressen som er knyttet til kontoen din for å tilbakestille passordet ditt!</string>
     <string name="resetPasswordBtnText">Tilbakestill passord</string>
+    <string name="closeText">stengt</string>
+    <string name="openText">åpen</string>
 </resources>

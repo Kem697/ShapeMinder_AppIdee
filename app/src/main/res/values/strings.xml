@@ -187,6 +187,10 @@
     <string name="foodCategoryHeader">Kategorie</string>
     <string name="homeScreenHeader">Hallo</string>
     <string name="todayText">Heute</string>
+
+    <string name="gymLocationHeaderText">Fitnessstudios in deiner Nähe</string>
+
+
     <string name="justForYouText">Nur für dich</string>
     <string name="didYouKnowText">Wusstes du schon?</string>
     <string name="myNutrionNav1Header">Food Finder</string>
@@ -287,6 +291,8 @@
     <string name="forgetPasswordHint">Passwort vergessen?</string>
     <string name="forgotPasswordScreenHint">Bitte nenne die mit dem Konto verknüpfte E-Mail Adresse, um dein Passwort zurückzusetzen!</string>
     <string name="resetPasswordBtnText">Passwort zurücksetzen</string>
+    <string name="closeText">geschlossen</string>
+    <string name="openText">offen</string>
 
 
 </resources>
