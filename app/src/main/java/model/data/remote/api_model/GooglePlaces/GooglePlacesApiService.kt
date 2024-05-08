@@ -51,13 +51,6 @@ interface PlacesApi {
 
 
 
-    @GET("/maps/api/place/photo")
-    suspend fun getGymPlacePhoto(
-//        @Query("maxWidth") maxWidth: Int = 300,
-        @Query("maxheight") maxHeight: Int = 500,
-        @Query("photo_reference") photoReference: String,
-        @Query("key") apiKey: String = "$key",
-    ): Any
 
 }
 

@@ -5,16 +5,12 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import model.data.remote.RemoteRepositoryGoogle
 import model.data.remote.api_model.GooglePlaces.GooglePlacesApi
-import model.data.remote.api_model.GooglePlaces.GymLocationApi
 
 class GymLocationsViewModel: ViewModel() {
 
-    private val googleRepository = RemoteRepositoryGoogle(GooglePlacesApi,GymLocationApi)
+    private val googleRepository = RemoteRepositoryGoogle(GooglePlacesApi)
 
     val getGymLocations = googleRepository.getGym
-
-
-    val getGymLocationPhotos = googleRepository.getGym
 
 
 
@@ -29,12 +25,4 @@ class GymLocationsViewModel: ViewModel() {
         }
     }
 
-
-    fun getGymLocationPhotos(photoReference:String) {
-//        var imageString = ""
-        viewModelScope.launch{
-             googleRepository.getGymLocationPhoto(photoReference)
-//            imageString = googleRepository.getGymLocationPhoto(photoReference)
-        }
-    }
 }
