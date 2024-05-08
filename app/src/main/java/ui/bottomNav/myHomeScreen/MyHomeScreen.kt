@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isInvisible
 import androidx.fragment.app.activityViewModels
+import coil.load
 import com.example.shapeminder_appidee.BuildConfig
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentHomeScreenBinding
@@ -67,6 +68,13 @@ class MyHomeScreen : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initializePlacesClient(requireContext())
+        auth = FirebaseAuth.getInstance()
+        val user = auth.currentUser
+        if (user != null) {
+            if (user.photoUrl != null) {
+                binding.userPhotoToolbar.load(user.photoUrl)
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

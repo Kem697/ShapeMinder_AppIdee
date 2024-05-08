@@ -84,44 +84,4 @@ class GetGymLocationAdapter (
     }
 
 
-//    private fun loadGymImage(place: Place, holder: GymViewHolder){
-//            val placesClient = Places.createClient(context)
-//
-//
-//        // Erhalte Metadaten für das Foto.
-//            val metadata = place.photos
-//            if (metadata == null || metadata.isEmpty()) {
-//                Log.w("GymLocAdapter", "Keine Fotometadaten.")
-//            }
-//            val photoMetadata = PhotoMetadata
-//                .builder(metadata[0].reference)
-//                .setHeight(300)
-//                .setWidth(500)
-//                .setAttributions(metadata[0].attributions.toString())
-//                .build()
-//
-//            // Erhalte den Attributions-Text.
-//            // Erstelle eine FetchResolvedPhotoUriRequest.
-//            val photoRequest = FetchResolvedPhotoUriRequest.builder(photoMetadata)
-//                .setMaxWidth(500) // Optional.
-//                .setMaxHeight(300) // Optional.
-//                .build()
-//
-//            // Ich fordere die Foto-URI an.
-//            placesClient.fetchResolvedPhotoUri(photoRequest).addOnSuccessListener { photoResponse ->
-//                val uri = photoResponse.uri
-//                // Hier setze ich die Uri in mein Imageview
-//                var string = "https://lh3.googleusercontent.com/places/ANXAkqGgdsBYLV1LvQqCqtW-aEbRKhjSLpzcuojMfewQjAADtZYG3iP71dIFrZs8sb4RQSgRoOw2sdElrh8eDdTZnTY9YjZ2rORlnDU=s1600-h500"
-//                holder.binding.gymImage.load(string)
-//
-//            }.addOnFailureListener { exception ->
-//                if (exception is ApiException) {
-//                    val apiException = exception as ApiException
-//                    Log.e("GymLocAdapter", "Ort nicht gefunden: " + exception.message)
-//                    val statusCode = apiException.statusCode
-//                    // TODO: Fehler mit dem angegebenen Statuscode behandeln.
-//                }
-//        }
-//    }
-
 }

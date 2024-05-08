@@ -60,35 +60,34 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/userPhotoToolbar"
-                android:layout_width="60dp"
-                android:layout_margin="8dp"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginLeft="16dp"
-                android:backgroundTint="#00FFFFFF"
-                android:src="@drawable/account_icon" />
+                android:layout_gravity="start">
+
+
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="22dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="50dp"
                 android:text="@string/myTrainingScreenHeader"
                 android:textColor="#FFFFFF"
-                android:textSize="28dp" />
+                android:textSize="26dp" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_gravity="center"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:src="@drawable/applogo" />
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/applogo" />
+
+            </RelativeLayout>
 
 
         </LinearLayout>
