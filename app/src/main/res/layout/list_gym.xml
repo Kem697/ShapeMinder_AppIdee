@@ -10,7 +10,7 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
         style="@style/small_content_Card"
-        android:layout_width="350dp"
+        android:layout_width="360dp"
         android:backgroundTint="@color/black"
         android:layout_height="350dp"
         app:layout_constraintBottom_toBottomOf="parent"
