@@ -39,6 +39,13 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
+
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCkZf1Yv5d4k1rI_0eH61GSZFY_LxgmowE" />
+
+
         <activity android:name=".BarcodeScan"
             android:screenOrientation="portrait"
             android:stateNotNeeded="true"

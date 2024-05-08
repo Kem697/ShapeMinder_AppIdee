@@ -10,6 +10,7 @@ plugins {
 val apiKey: String = com.android.build.gradle.internal.cxx.configure.gradleLocalProperties(rootDir).getProperty("apiKey")
 
 android {
+
     namespace = "com.example.shapeminder_appidee"
     compileSdk = 34
 
@@ -52,10 +53,11 @@ android {
 
 dependencies {
 
+    implementation("com.google.android.gms:play-services-fitness:21.1.0")
     val retrofitVersion = "2.9.0"
     val roomVersion = "2.6.0"
 
-    val kotlin_version = "231-1.9.22"
+    val kotlin_version = "1.9.23"
 
 
     //YoutubePlayer
@@ -123,9 +125,19 @@ dependencies {
     implementation ("com.google.android.libraries.identity.googleid:googleid:<latest version>")
 
 
-//    implementation(platform("org.jetbrains.kotlin:kotlin-bom:$kotlin_version"))
+    //Google Places SDK
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:$kotlin_version"))
+    implementation("com.google.android.libraries.places:places:3.4.0")
 
-    implementation ("com.google.android.libraries.places:places:3.4.0")
+
+
+
+
+
+    //Protobuf
+
+    implementation ("com.google.protobuf:protobuf-javalite:3.22.3")
+    implementation ("com.google.protobuf:protobuf-kotlin-lite:3.20.1")
 
 
 

@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Photo(
-    val height: Int,
+    val height: Int = 500,
     @Json(name="html_attributions")
 
     val attributions: List<String> = listOf(),
@@ -13,5 +13,5 @@ data class Photo(
     @Json(name = "photo_reference")
     val reference: String,
 
-    val width: Int
+    val width: Int = 300
 )

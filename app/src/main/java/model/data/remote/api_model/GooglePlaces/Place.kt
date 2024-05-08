@@ -1,17 +1,18 @@
 package model.data.remote.api_model.GooglePlaces
 
+import com.google.android.libraries.places.api.model.PhotoMetadata
 import com.squareup.moshi.Json
+import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 
 
-@Serializable
 
 data class Place(
     val name: String,
 
 
     @Json(name="formatted_address")
-    val adress: String,
+    val address: String,
 
     @Json(name = "rating")
     val averageRating: Double,
@@ -19,8 +20,14 @@ data class Place(
     @Json(name="user_ratings_total")
     val totalRatings: Int,
 
-    @Json(name="opening_hours")
-    val openend: OpeningHours,
+    val reference : String,
 
-    val photos: List<Photo> = listOf()
+    @Json(name="opening_hours")
+    val currentlyOpen: OpeningHours,
+
+    @Contextual
+    val photos: List<Photo> = listOf(),
+
+    @Json(name="place_id")
+    val id : String
 )

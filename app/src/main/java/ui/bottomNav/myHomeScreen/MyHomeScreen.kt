@@ -2,6 +2,7 @@ package ui.bottomNav.myHomeScreen
 
 import adapter.GetGymLocationAdapter
 import adapter.ItemAdapter
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,8 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isInvisible
 import androidx.fragment.app.activityViewModels
+import com.example.shapeminder_appidee.BuildConfig
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentHomeScreenBinding
+import com.google.android.libraries.places.api.Places
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import ui.viewModel.GymLocationsViewModel
@@ -61,6 +64,11 @@ class MyHomeScreen : Fragment() {
     * For navigation to the detailed views (see ItemAdapter) this helps
     * but for data transfer.*/
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        initializePlacesClient(requireContext())
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.textView.setText("${requireContext().getString(R.string.homeScreenHeader)} ${auth.currentUser?.displayName?:" "}")
@@ -81,6 +89,17 @@ class MyHomeScreen : Fragment() {
             binding.progressBar.visibility = View.GONE
         }
 
+    }
+
+
+
+    fun initializePlacesClient(context: Context) {
+        val key = BuildConfig.apiKey
+
+        // Stelle sicher, dass du den API-Schlüssel vorher in deinem Manifest hinzugefügt hast
+        if (!Places.isInitialized()) {
+            Places.initialize(context.applicationContext,key)
+        }
     }
 
 }
