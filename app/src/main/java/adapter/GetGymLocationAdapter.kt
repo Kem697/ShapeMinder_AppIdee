@@ -51,7 +51,6 @@ class GetGymLocationAdapter (
         holder.binding.gymRating.setText(gym.averageRating.toString())
         if (gym.photos.isNotEmpty()){
             var placeReference = gym.photos[0].reference
-//            var string = "https://maps.googleapis.com/maps/api/place/photo?maxheight=500&photo_reference=AUGGfZkN9F5nN0ft3p_brOTWBEep-MVE2faDmZ5bOoGa1yEz-N2nrU9UYLBDm2wa4lCBrAPg6YnrLgMUaJ9Q6vBaQjmgC41keWzf9Vma7b8nJ1YZCS1DDkwDe9ywdoO5pMs6lHSCNyo1P4U1C2X6tMh96d5T56IZ1bl7HYvnb_C5vMDXFU26&key=AIzaSyCkZf1Yv5d4k1rI_0eH61GSZFY_LxgmowE"
             holder.binding.gymImage.load("https://maps.googleapis.com/maps/api/place/photo?maxheight=500&photo_reference=${placeReference}&key=$key")
         } else{
             holder.binding.gymImage.setImageResource(R.drawable.content2_img)
