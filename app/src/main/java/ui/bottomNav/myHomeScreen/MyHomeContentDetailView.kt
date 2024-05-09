@@ -12,11 +12,14 @@ import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentHomeContentDetailViewBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import ui.viewModel.ContentViewModel
 import ui.viewModel.HomeViewModel
 
 class MyHomeContentDetailView : Fragment() {
 
     private lateinit var binding: FragmentHomeContentDetailViewBinding
+    private val contentViewModel: ContentViewModel by activityViewModels()
+
 
     private val viewModel: HomeViewModel by activityViewModels()
 
@@ -44,7 +47,7 @@ class MyHomeContentDetailView : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navigateBack()
-        viewModel.selectedContent.observe(viewLifecycleOwner){
+        contentViewModel.selectedContent.observe(viewLifecycleOwner){
             binding.contentImage.setImageResource(it.imageRessource)
             binding.contentTitle.setText(it.stringRessourceTitle)
             binding.contentText.setText(it.stringRessourceText)

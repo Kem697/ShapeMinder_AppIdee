@@ -14,7 +14,7 @@ import com.example.shapeminder_appidee.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
 import ui.bottomNav.myNutritionScreen.nav1foodFinder.FoodFinderNav1Fragment
-import ui.bottomNav.myNutritionScreen.nav2diary.FoodScannerNav2Fragment
+import ui.bottomNav.myNutritionScreen.nav2foodScanner.FoodScannerNav2Fragment
 import ui.bottomNav.myNutritionScreen.nav3groceryList.GroceryListNav3Fragment
 
 

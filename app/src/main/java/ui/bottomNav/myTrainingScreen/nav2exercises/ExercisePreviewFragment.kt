@@ -23,6 +23,7 @@ import ui.viewModel.HomeViewModel
 
 class ExercisePreviewFragment : Fragment() {
     private lateinit var binding: FragmentExercisePreviewBinding
+
     val viewModel: HomeViewModel by activityViewModels()
 
     private var lastPosition: Int = 0
@@ -50,7 +51,7 @@ class ExercisePreviewFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
         navigateBack()
-        viewModel.selectedContent.observe(viewLifecycleOwner) {
+        viewModel.selectedExercise.observe(viewLifecycleOwner) {
             binding.title.setText(it.stringRessourceTitle)
             when (getString(it.bodyPart)) {
                 getString(R.string.bpArme) -> {
@@ -146,11 +147,11 @@ class ExercisePreviewFragment : Fragment() {
         saveBtn.setImageResource(if (content.isSaved) R.drawable.favorite_fill1_wght400_grad0_opsz24 else R.drawable.favorite_fill0_wght400_grad0_opsz24)
         saveBtn.setOnClickListener {
             if (content.isSaved) {
-                viewModel.isSaved(!content.isSaved, content)
+                viewModel.isExerciseSaved(!content.isSaved, content)
                 binding.saveExerciseBtn.setImageResource(R.drawable.favorite_fill0_wght400_grad0_opsz24)
                 content.isSaved = false
             } else {
-                viewModel.isSaved(!content.isSaved, content)
+                viewModel.isExerciseSaved(!content.isSaved, content)
                 binding.saveExerciseBtn.setImageResource(R.drawable.favorite_fill1_wght400_grad0_opsz24)
                 content.isSaved = true
             }

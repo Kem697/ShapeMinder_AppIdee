@@ -59,19 +59,6 @@ class LocalRepository (private val trainingDatabase: TrainingSessionsDatabase) {
         }
     }
 
-/*
-    suspend fun deleteExerciseFromDb(exercise: Content){
-        try {
-            trainingDatabase.trainingsSessionDao.deleteExerciseFromDb(exercise)
-        }catch (e: Exception){
-            var tag = "Lokaler Repo??"
-            Log.e(tag,"Fehler beim Löschen der Trainingseinheit aus der Datenbank!! $e")
-        }
-    }
-*/
-
-
-
 
     fun loadContents(): List<Content>{
         return listOf(

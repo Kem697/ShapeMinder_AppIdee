@@ -25,11 +25,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
 import model.data.local.model.myTraining.Content
+import ui.viewModel.ContentViewModel
 import ui.viewModel.HomeViewModel
 
 class ExerciseListFragment : Fragment() {
     private lateinit var binding: FragmentExerciseListBinding
     val viewModel: HomeViewModel by activityViewModels()
+    private val contentViewModel: ContentViewModel by activityViewModels()
+
     private lateinit var orginalExercises: List<Content>
 
     private var lastSelectedButtonIndex: Int = -1
@@ -90,7 +93,7 @@ class ExerciseListFragment : Fragment() {
         * */
 
 
-        var bodyPart = viewModel.selectedContentTitle.value
+        var bodyPart = viewModel.selectedExerciseTitle.value
         viewModel.retrieveExercisesByBodyparts(bodyPart!!,requireContext())
         var tag = "Pause"
         Log.e(tag, "Ist der Screen pausiert?")
@@ -225,7 +228,7 @@ class ExerciseListFragment : Fragment() {
                 var resetBtn = requireActivity().findViewById<MaterialButton>(R.id.resetFilterBtn)
                 resetBtn.setOnClickListener {
                     if (lastSelectedButtonIndex != -1){
-                        viewModel.retrieveExercisesByBodyparts(viewModel.selectedContentTitle.value!!,requireContext())
+                        viewModel.retrieveExercisesByBodyparts(viewModel.selectedExerciseTitle.value!!,requireContext())
                         allImageButtons.forEach { imageButton ->
                             imageButton?.setImageResource(uncheckedImages[allImageButtons.indexOf(imageButton)])
                             imageButton?.isSelected = false
@@ -238,7 +241,7 @@ class ExerciseListFragment : Fragment() {
 
                 dialogResetBtn?.setOnClickListener {
                     if (lastSelectedButtonIndex != -1){
-                        viewModel.retrieveExercisesByBodyparts(viewModel.selectedContentTitle.value!!,requireContext())
+                        viewModel.retrieveExercisesByBodyparts(viewModel.selectedExerciseTitle.value!!,requireContext())
                         allImageButtons.forEach { imageButton ->
                             imageButton?.setImageResource(uncheckedImages[allImageButtons.indexOf(imageButton)])
                             imageButton?.isSelected = false
@@ -276,7 +279,7 @@ class ExerciseListFragment : Fragment() {
                     "sec1_short_dumbell_Btn"->{
                         resultsBtn?.setOnClickListener {
                             if (selectedButton.isSelected){
-                                viewModel.filterExercisesByShortDumbbell(viewModel.selectedContentTitle.value!!,requireContext())
+                                viewModel.filterExercisesByShortDumbbell(viewModel.selectedExerciseTitle.value!!,requireContext())
                                 binding.resetFilterBtn.isInvisible = false
                                 dialog.dismiss()
                             } else{
@@ -288,7 +291,7 @@ class ExerciseListFragment : Fragment() {
                     "sec1_long_dumbell_Btn"->{
                         resultsBtn?.setOnClickListener {
                             if (selectedButton.isSelected){
-                                viewModel.filterExercisesByLongDumbbell(viewModel.selectedContentTitle.value!!,requireContext())
+                                viewModel.filterExercisesByLongDumbbell(viewModel.selectedExerciseTitle.value!!,requireContext())
                                 binding.resetFilterBtn.isInvisible = false
                                 dialog.dismiss()
                             } else {
@@ -300,7 +303,7 @@ class ExerciseListFragment : Fragment() {
                     "sec1_own_bodyweight_Btn"->{
                         resultsBtn?.setOnClickListener {
                             if (selectedButton.isSelected){
-                                viewModel.filterExercisesByBodyweight(viewModel.selectedContentTitle.value!!,requireContext())
+                                viewModel.filterExercisesByBodyweight(viewModel.selectedExerciseTitle.value!!,requireContext())
                                 binding.resetFilterBtn.isInvisible = false
                                 dialog.dismiss()
                             }else {
@@ -312,7 +315,7 @@ class ExerciseListFragment : Fragment() {
                     "sec2_with_video_Btn"->{
                         resultsBtn?.setOnClickListener {
                             if (selectedButton.isSelected){
-                                viewModel.filterExercisesByVideo(viewModel.selectedContentTitle.value!!,requireContext())
+                                viewModel.filterExercisesByVideo(viewModel.selectedExerciseTitle.value!!,requireContext())
                                 binding.resetFilterBtn.isInvisible = false
                                 dialog.dismiss()
                             }else {
@@ -324,7 +327,7 @@ class ExerciseListFragment : Fragment() {
                     "sec2_no_video_Btn"->{
                         resultsBtn?.setOnClickListener {
                             if (selectedButton.isSelected){
-                                viewModel.filterExercisesByNoVideo(viewModel.selectedContentTitle.value!!,requireContext())
+                                viewModel.filterExercisesByNoVideo(viewModel.selectedExerciseTitle.value!!,requireContext())
                                 binding.resetFilterBtn.isInvisible = false
                                 dialog.dismiss()
                             }else {
@@ -335,7 +338,7 @@ class ExerciseListFragment : Fragment() {
 
                     else -> {
                         resultsBtn?.setOnClickListener {
-                            viewModel.retrieveExercisesByBodyparts(viewModel.selectedContentTitle.value!!,requireContext())
+                            viewModel.retrieveExercisesByBodyparts(viewModel.selectedExerciseTitle.value!!,requireContext())
                         }
                     }
                 }
@@ -379,7 +382,7 @@ class ExerciseListFragment : Fragment() {
                     // DE: Hier können Sie den Code für die Sortierung der Übungen implementieren
                     // EN: The following code sorts the exercises
                     val selectedBodypart =
-                        viewModel.selectedContentTitle.value ?: return@setOnCheckedChangeListener
+                        viewModel.selectedExerciseTitle.value ?: return@setOnCheckedChangeListener
                     // DE: Je nachdem, welcher RadioButton ausgewählt wurde, können Sie die Übungen sortieren
                     // EN: Dependent, which radio button the user selects, the exercises will sort.
                     when (checkedId) {
@@ -403,8 +406,8 @@ class ExerciseListFragment : Fragment() {
     fun setUpAdapter() {
         viewModel.exercisesByBodyparts.observe(viewLifecycleOwner) { exercise ->
             orginalExercises = exercise
-            binding.listOfExercises.adapter = ItemAdapter(exercise, viewModel,requireContext())
-            binding.screenTitle.setText(viewModel.selectedContentTitle.value)
+            binding.listOfExercises.adapter = ItemAdapter(exercise, viewModel,contentViewModel,requireContext())
+            binding.screenTitle.setText(viewModel.selectedExerciseTitle.value)
 
             /*DE:
             *Mit diesen Befehlen initialisiere meine ViewElemente mit

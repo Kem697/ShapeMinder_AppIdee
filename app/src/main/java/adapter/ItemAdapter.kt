@@ -42,12 +42,14 @@ import com.example.shapeminder_appidee.databinding.ListItemBinding
 import com.example.shapeminder_appidee.databinding.ListItemExerciseBinding
 import com.example.shapeminder_appidee.databinding.ListItemMyTrainingBinding
 import model.data.local.model.myTraining.Content
+import ui.viewModel.ContentViewModel
 import ui.viewModel.HomeViewModel
 
 
 class ItemAdapter(
     private val dataset: List<Content>,
     private val viewModel: HomeViewModel,
+    private val contentViewModel: ContentViewModel,
     private var context: Context
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -102,7 +104,7 @@ class ItemAdapter(
             holder.binding.contentImage.setImageResource(content.imageRessource)
             holder.binding.contentTitle.setText(content.stringRessourceTitle)
             holder.binding.materialCardView.setOnClickListener {
-                viewModel.navigateDetailView(content)
+                contentViewModel.navigateContentDetailView(content)
                 holder.binding.root.findNavController().navigate(R.id.homeContentDetailView)
             }
         } else if (holder is ExerciseListItemViewHolder) {
@@ -131,7 +133,7 @@ class ItemAdapter(
             holder.binding.contentTextSnippet.text = "${truncatedDescription}..."
             holder.binding.containtsVideo.isInvisible = content.video == null
             holder.binding.materialCardView.setOnClickListener {
-                viewModel.navigateDetailView(content)
+                viewModel.navigateSelectedExercises(content)
                 holder.binding.root.findNavController().navigate(R.id.exercisePreviewFragment)
             }
 
@@ -162,7 +164,7 @@ class ItemAdapter(
             saveBtn.setImageResource(if (content.isSaved) R.drawable.favorite_fill1_wght400_grad0_opsz24 else R.drawable.favorite_fill0_wght400_grad0_opsz24)
             saveBtn.setOnClickListener {
                 if (content.isSaved) {
-                    viewModel.isSaved(!content.isSaved, content)
+                    viewModel.isExerciseSaved(!content.isSaved, content)
                     holder.binding.saveExerciseBtn.setImageResource(R.drawable.favorite_fill0_wght400_grad0_opsz24)
                     content.isSaved = false
                     var tag = "Fehler"
@@ -171,7 +173,7 @@ class ItemAdapter(
                         "Ungespeichertes Element:${position} ${content.isSaved} ${viewModel.savedExercises.value}"
                     )
                 } else {
-                    viewModel.isSaved(!content.isSaved, content)
+                    viewModel.isExerciseSaved(!content.isSaved, content)
                     holder.binding.saveExerciseBtn.setImageResource(R.drawable.favorite_fill1_wght400_grad0_opsz24)
                     content.isSaved = true
                     var tag = "Fehler"
@@ -198,10 +200,10 @@ class ItemAdapter(
                 holder.binding.contentTitle.setText(content.stringRessourceTitle)
                 holder.binding.materialCardView.setOnClickListener {
                     if (content.isSaved && !content.isInExerciseList) {
-                        viewModel.navigateDetailView(content)
+                        viewModel.navigateSelectedExercises(content)
                         holder.binding.root.findNavController().navigate(R.id.exercisePreviewFragment)
                     } else {
-                        viewModel.navigateDetailView(content)
+                        contentViewModel.navigateContentDetailView(content)
                         holder.binding.root.findNavController().navigate(R.id.homeContentDetailView)
                     }
                 }

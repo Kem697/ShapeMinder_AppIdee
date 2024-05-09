@@ -156,7 +156,7 @@ class GridAdapterMyTraining(
            getString(context,R.string.bpArme) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedBodypart = getString(context,R.string.bpArme)
-                    viewModel.getContentTitle(selectedBodypart)
+                    viewModel.getBodypartCategoryTitle(selectedBodypart)
                     viewModel.filterExercisesByBodypart(selectedBodypart,context)
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
                 }
@@ -165,7 +165,7 @@ class GridAdapterMyTraining(
             getString(context,R.string.bpBauch) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedBodypart = getString(context,R.string.bpBauch)
-                    viewModel.getContentTitle(selectedBodypart)
+                    viewModel.getBodypartCategoryTitle(selectedBodypart)
                     viewModel.filterExercisesByBodypart(selectedBodypart,context)
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
                 }
@@ -174,7 +174,7 @@ class GridAdapterMyTraining(
             getString(context,R.string.bpSchulter) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedBodypart = getString(context,R.string.bpSchulter)
-                    viewModel.getContentTitle(selectedBodypart)
+                    viewModel.getBodypartCategoryTitle(selectedBodypart)
                     viewModel.filterExercisesByBodypart(selectedBodypart,context)
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
                 }
@@ -183,7 +183,7 @@ class GridAdapterMyTraining(
             getString(context,R.string.bpRücken) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedBodypart = getString(context,R.string.bpRücken)
-                    viewModel.getContentTitle(selectedBodypart)
+                    viewModel.getBodypartCategoryTitle(selectedBodypart)
                     viewModel.filterExercisesByBodypart(selectedBodypart,context)
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
                 }
@@ -192,7 +192,7 @@ class GridAdapterMyTraining(
             getString(context,R.string.bpBeine) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedBodypart = getString(context,R.string.bpBeine)
-                    viewModel.getContentTitle(selectedBodypart)
+                    viewModel.getBodypartCategoryTitle(selectedBodypart)
                     viewModel.filterExercisesByBodypart(selectedBodypart,context)
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
                 }
@@ -201,7 +201,7 @@ class GridAdapterMyTraining(
             getString(context,R.string.bpBrust)-> {
                 viewHolder.imageViewIcon.setOnClickListener {
                     val selectedBodypart = getString(context,R.string.bpBrust)
-                    viewModel.getContentTitle(selectedBodypart)
+                    viewModel.getBodypartCategoryTitle(selectedBodypart)
                     viewModel.filterExercisesByBodypart(selectedBodypart,context)
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)
                 }

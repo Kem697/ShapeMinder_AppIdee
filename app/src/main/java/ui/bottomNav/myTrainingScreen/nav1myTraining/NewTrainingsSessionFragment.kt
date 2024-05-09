@@ -21,6 +21,7 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import model.data.local.model.myTraining.Content
 import model.data.local.model.myTraining.TrainingsSession
 import ui.viewModel.HomeViewModel
+import ui.viewModel.TrainingsessionViewModel
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -28,6 +29,8 @@ import java.util.Locale
 class NewTrainingsSessionFragment : Fragment() {
 
     private lateinit var binding: FragmentNewTrainingsSessionBinding
+    val sessionViewModel: TrainingsessionViewModel by activityViewModels()
+
     val viewModel: HomeViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -112,7 +115,7 @@ class NewTrainingsSessionFragment : Fragment() {
             if (sessionName.isNotBlank()|| editSessionName.text.isNotBlank()) {
                 if (addedToSessionExercises.size > 0) {
                     var newSession = TrainingsSession(sessionName = editSessionName.text.toString(), sessionDate = binding.dateView.text.toString(),trainingsSession = addedToSessionExercises)
-                    viewModel.insertNewTrainingssession(newSession)
+                    sessionViewModel.insertNewTrainingssession(newSession)
                     Toast.makeText(
                         requireContext(),
                         context?.getString(R.string.toastSessionSavedHint),

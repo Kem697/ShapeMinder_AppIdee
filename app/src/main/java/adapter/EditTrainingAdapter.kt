@@ -8,11 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.shapeminder_appidee.databinding.ListItemEditSessionBinding
 import model.data.local.model.myTraining.Content
 import ui.viewModel.HomeViewModel
+import ui.viewModel.TrainingsessionViewModel
 
 
 class EditTrainingAdapter (
     private val dataset: List<Content>,
-    private val viewModel: HomeViewModel,
+    private val sessionViewModel: TrainingsessionViewModel,
     private var context: Context
 ): RecyclerView.Adapter<EditTrainingAdapter.EditSessionItemViewHolder>() {
     inner class EditSessionItemViewHolder(val binding: ListItemEditSessionBinding) :
@@ -38,7 +39,7 @@ class EditTrainingAdapter (
 
         holder.binding.deleteExercise.setOnClickListener{
             if (exercise.addedToSession == true){
-                viewModel.deleteWorkoutInEditSession(!exercise.addedToSession!!,exercise)
+                sessionViewModel.deleteWorkoutInEditSession(!exercise.addedToSession!!,exercise)
                 val getPosition = holder.adapterPosition
                 notifyItemRemoved(getPosition)
                 var tag = "Delete Btn check??"

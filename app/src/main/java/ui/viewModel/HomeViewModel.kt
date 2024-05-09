@@ -14,33 +14,12 @@ import model.data.local.LocalRepository
 import kotlinx.coroutines.launch
 import model.data.local.model.myTraining.Content
 import model.data.local.getTrainingDatabase
-import model.data.local.model.myTraining.TrainingsSession
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private var trainingDatabase = getTrainingDatabase(application)
     private val repository = LocalRepository(trainingDatabase)
-    private val allContent = repository.content
-    private val allExercises = repository.exercises
     private val allBodyparts = repository.bodyParts
     private var allExercisesByBodyparts = repository.exercisesByBodyparts
-    private var trainingSessions = repository.trainingSessionList
-
-
-
-    /*DE:
-    * Diese LiveData setzt das ausgewählte Produkt.*/
-
-    /*EN:
-    * This LiveData set the selected product for
-    * the sharing of data to the detail View.*/
-
-    var index = 0
-
-
-    private var _savedTrainingSessions = trainingSessions
-
-    val savedTrainingsSessions: LiveData<List<TrainingsSession>>
-        get() = _savedTrainingSessions
 
 
     private var _listOfAllExercises = MutableLiveData(allExercisesByBodyparts)
@@ -48,28 +27,12 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         get() = _listOfAllExercises
 
 
-    private var _contents = MutableLiveData(allContent)
-    val contents: LiveData<List<Content>>
-        get() = _contents
+
+    private var _listOfBodyparts = MutableLiveData(allBodyparts)
+    val listOfBodyparts: LiveData<List<Content>>
+        get() = _listOfBodyparts
 
 
-    private var _bodyparts = MutableLiveData(allBodyparts)
-    val bodyparts: LiveData<List<Content>>
-        get() = _bodyparts
-
-    /*DE:
-    *Ich habe hier eine neue LiveData erstellt, um die Liste
-    * von Krafttrainingsübungen durch meine UI beobachten zu lassen.*/
-
-    /*EN:
-    * I ve created a livedata, which poses my exercises. This step is important
-    * to allow my ui to observe the aimed data for the recyclerview initialization.
-    * */
-
-
-    private var _exercises = MutableLiveData(allExercises)
-    val exercises: LiveData<List<Content>>
-        get() = _exercises
 
     /*DE:
     * Diese LiveData habe ich erstellt, um im Nach-
@@ -81,19 +44,10 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     * I ve created this livedata to fetch a specific
     * ecercise of my dataset of exercises.*/
 
-    private var _selectedExercise = MutableLiveData(allExercises[index])
+    private var _selectedExercise = MutableLiveData<Content>()
     val selectedExercise: LiveData<Content>
         get() = _selectedExercise
 
-
-    private var _selectedContent = MutableLiveData(allContent[index])
-    val selectedContent: LiveData<Content>
-        get() = _selectedContent
-
-
-    private var _selectedExercisesByBodypart = MutableLiveData(allExercisesByBodyparts[index])
-    val selectedExercisesByBodypart: LiveData<Content>
-        get() = _selectedExercisesByBodypart
 
 
     private var _exercisesByBodyparts = MutableLiveData(allExercisesByBodyparts)
@@ -102,14 +56,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         get() = _exercisesByBodyparts
 
 
-    private var _selectedTraininingssession = MutableLiveData<TrainingsSession>()
 
-    val selectedTraininingssession: MutableLiveData<TrainingsSession>
-
-        get() = _selectedTraininingssession
-
-
-    private var _savedExercises = MutableLiveData<MutableList<Content>>(
+    private var _savedExercises = MutableLiveData(
         mutableListOf(
             Content(0, 0, 0, true, false, 0, false, null, null)
         )
@@ -141,232 +89,9 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     * */
 
 
-    private val _selectedContentTitle = MutableLiveData<String>()
-    val selectedContentTitle: LiveData<String>
-        get() = _selectedContentTitle
-
-    /*EN:
-    * These LiveData and Methods are related to the edit training function
-    * of my app.*/
-
-    /*DE:
-    * Diese Funktionen und Methoden beziehen sich auf die App Funktion
-    * zur Bearbeitung des Trainingsplans */
-
-    private val _remainExercisesForAddInSession = MutableLiveData<List<Content>>()
-
-    val remainExercisesForAddInSession: MutableLiveData<List<Content>>
-
-        get() = _remainExercisesForAddInSession
-
-
-    fun excludeExercises(trainingsSession: TrainingsSession) : MutableList<Content> {
-        val tag = "Apply"
-        val list = mutableListOf<Content>()
-        val allExercises = repository.loadExercisesByBodypart().toMutableList() ?: mutableListOf()
-        val sessionExercises = trainingsSession.trainingsSession
-
-        val matchingExercises = allExercises.filter { exercise ->
-            sessionExercises.any { it.stringRessourceTitle == exercise.stringRessourceTitle }
-        }.toMutableList()
-
-
-        println("$tag ${matchingExercises.size}")
-
-        allExercises.removeAll(matchingExercises)
-
-        list.addAll(allExercises)
-
-        println("$tag ${sessionExercises.size}")
-
-
-        println("$tag ${allExercises.size}")
-
-        // Den Wert von remainExercisesForAddInSession aktualisieren
-        _remainExercisesForAddInSession.value = list
-
-        println("$tag ${_remainExercisesForAddInSession.value!!.size}")
-        return list
-    }
-
-
-    fun sortRemainExercisesByAlphabet(sort: Boolean) {
-        viewModelScope.launch {
-            val filteredExercises = remainExercisesForAddInSession.value
-            val sortedExercises = if (sort) {
-                filteredExercises?.sortedByDescending { it.stringRessourceText }
-            } else {
-                filteredExercises?.sortedBy { it.stringRessourceText }
-            }
-            _remainExercisesForAddInSession.value = sortedExercises?: mutableListOf()
-        }
-    }
-
-    fun filterRemainExercisesByTitle(userInput: String, context: Context) {
-        viewModelScope.launch {
-            val filteredExercises = _remainExercisesForAddInSession.value?.filter {
-                val xmlValue = context.getString(it.stringRessourceTitle)
-                xmlValue.contains(userInput, ignoreCase = true)
-            }
-            if (filteredExercises != null) {
-                if (filteredExercises.isNotEmpty()) {
-                    _remainExercisesForAddInSession.value = filteredExercises?: mutableListOf()
-                    var tag4 = "Filter in ViewModel??"
-                    Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
-                } else {
-                    retrieveRemainExercisesByBodyparts()
-                }
-            }
-        }
-    }
-
-    fun filterRemainExercisesByBodyweight(context: Context) {
-        viewModelScope.launch {
-            val filteredExercises = _remainExercisesForAddInSession.value?.filter {
-                !context.getString(it.stringRessourceTitle).contains("-")
-            }
-            if (filteredExercises != null) {
-                if (filteredExercises.isNotEmpty()) {
-                    _remainExercisesForAddInSession.value = filteredExercises?: mutableListOf()
-                    var tag4 = "Filter in ViewModel??"
-                    Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
-                } else {
-                    retrieveRemainExercisesByBodyparts()
-                }
-            }
-        }
-    }
-
-    fun filterRemainExercisesByLongDumbbell(context: Context) {
-        viewModelScope.launch {
-            val filteredExercises = _remainExercisesForAddInSession.value?.filter {
-                context.getString(it.stringRessourceTitle)
-                    .contains("LH") || context.getString(it.stringRessourceTitle).contains("SZ")
-            }
-            if (filteredExercises != null) {
-                if (filteredExercises.isNotEmpty()) {
-                    _remainExercisesForAddInSession.value = filteredExercises?: mutableListOf()
-                    var tag4 = "Filter in ViewModel??"
-                    Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
-                } else {
-                    retrieveRemainExercisesByBodyparts()
-                }
-            }
-        }
-    }
-
-    fun filterRemainExercisesByShortDumbbell(context: Context) {
-        viewModelScope.launch {
-            val filteredExercises = _remainExercisesForAddInSession.value?.filter {
-                context.getString(it.stringRessourceTitle).contains("KH")
-            }
-            if (filteredExercises != null) {
-                if (filteredExercises.isNotEmpty()) {
-                    _remainExercisesForAddInSession.value = filteredExercises?: mutableListOf()
-                    var tag4 = "Filter in ViewModel??"
-                    Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
-                } else {
-                    retrieveRemainExercisesByBodyparts()
-                }
-            }
-        }
-    }
-
-    fun filterRemainExercisesByTwoSelections(
-        context: Context,
-        imageButton: ImageButton,
-        textButton: Button,
-    ) {
-        val textButtonName = context.resources.getResourceEntryName(textButton.id)
-        val bodyPart = when (textButtonName) {
-            "sec0_armsBtn" -> context.resources.getString(R.string.bpArme)
-            "sec0_absBtn" -> context.resources.getString(R.string.bpBauch)
-            "sec0_legsBtn" -> context.resources.getString(R.string.bpBeine)
-            "sec0_chestBtn" -> context.resources.getString(R.string.bpBrust)
-            "sec0_backBtn" -> context.resources.getString(R.string.bpRücken)
-            "sec0_shoulderBtn" -> context.resources.getString(R.string.bpSchulter)
-            else -> return // Wenn keine Übereinstimmung gefunden wurde, die Funktion verlassen
-        }
-
-        // Filtern der Übungen basierend auf den ausgewählten Kriterien
-        val filteredExercises = _remainExercisesForAddInSession.value?.filter { exercise ->
-            context.getString(exercise.bodyPart) == bodyPart &&
-                    when (imageButton.id) {
-                        R.id.sec1_short_dumbell_Btn -> context.getString(exercise.stringRessourceTitle)
-                            .contains("KH")
-
-                        R.id.sec1_long_dumbell_Btn -> context.getString(exercise.stringRessourceTitle)
-                            .contains("LH") || context.getString(exercise.stringRessourceTitle)
-                            .contains("SZ")
-
-                        R.id.sec1_own_bodyweight_Btn -> !context.getString(exercise.stringRessourceTitle)
-                            .contains("-")
-
-                        else -> true // Wenn kein Bildschaltfläche ausgewählt wurde, wird die Übung nicht gefiltert
-                    }
-        }
-
-
-        _remainExercisesForAddInSession.value = filteredExercises?: mutableListOf()
-    }
-
-
-    fun retrieveRemainExercisesByBodyparts() {
-        _remainExercisesForAddInSession.value = excludeExercises(selectedTraininingssession.value!!)
-    }
-
-    fun filterRemainExercisesByBodypart(bodypart: String,context: Context) {
-        viewModelScope.launch {
-            val filteredExercises = repository.loadExercisesByBodypart().filter { context.getString(it.bodyPart) == bodypart }
-            _remainExercisesForAddInSession.value = filteredExercises
-        }
-    }
-
-
-
-
-    init {
-        setUpDefaultTrainingsessions()
-    }
-
-    /*EN:
-    * These functions are related to issues in the training session database. */
-
-    fun setUpDefaultTrainingsessions() {
-        viewModelScope.launch {
-            repository.insertNewTrainingSession(
-                TrainingsSession(
-                    1,
-                    trainingsSession = mutableListOf()
-                )
-            )
-        }
-    }
-
-    fun deleteTrainingsession(currentSession: TrainingsSession) {
-        viewModelScope.launch {
-            repository.deleteTrainingsession(currentSession)
-        }
-    }
-
-/*    fun deleteExerciseFromDb(exercise: Content){
-        viewModelScope.launch {
-            repository.deleteExerciseFromDb(exercise)
-        }
-    }*/
-
-    fun updateTrainingsession(currentSession: TrainingsSession) {
-        viewModelScope.launch {
-            repository.updateTrainingsession(currentSession)
-        }
-    }
-
-
-    fun insertNewTrainingssession(newTrainingsSession: TrainingsSession) {
-        viewModelScope.launch {
-            repository.insertNewTrainingSession(newTrainingsSession)
-        }
-    }
+    private val _selectedExerciseTitle = MutableLiveData<String>()
+    val selectedExerciseTitle: LiveData<String>
+        get() = _selectedExerciseTitle
 
 
 
@@ -703,17 +428,10 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     */
 
 
-    fun getContentTitle(bodypart: String) {
-        _selectedContentTitle.value = bodypart
+    fun getBodypartCategoryTitle(bodypart: String) {
+        _selectedExerciseTitle.value = bodypart
     }
 
-    fun getCurrentTrainingsession(currentSession: TrainingsSession) {
-        _selectedTraininingssession.value = currentSession
-    }
-
-    fun navigateDetailView(content: Content) {
-        _selectedContent.value = content
-    }
 
     fun addToNewWorkout(content: Content) {
         content.addedToSession = true
@@ -768,7 +486,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     * um den Speicherstatus einer Übung zu aktualisieren und die Liste der gespeicherten Übungen zu verwalten,
     * wobei entsprechende Protokolleinträge erstellt werden, um den Vorgang zu verfolgen.*/
 
-    fun isSaved(saved: Boolean, exercise: Content) {
+    fun isExerciseSaved(saved: Boolean, exercise: Content) {
         val updatedExercises = _savedExercises.value ?: mutableListOf()
 
         if (saved) {
@@ -817,26 +535,10 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
-    fun deleteWorkoutInEditSession(addedExercise: Boolean, exercise: Content) {
-        val updatedSession = selectedTraininingssession.value?.trainingsSession ?: mutableListOf()
 
-        if (addedExercise) {
-            updatedSession.add(exercise)
-            var tag = "Radiocheck??"
-            Log.e(
-                tag,
-                "Übung wirdd gespeichert!!:${exercise} Zustand: ${addedExercise}. Die Liste enthält: ${updatedSession.size}"
-            )
-        } else {
-            updatedSession.remove(exercise)
-            var tag = "Radiocheck??"
-            Log.e(
-                tag,
-                "Übung wird entfernt!!:${exercise} Zustand: ${addedExercise}. Die Liste enthält: ${updatedSession.size}"
-            )
-        }
 
-        _selectedTraininingssession.value?.trainingsSession = updatedSession
+    fun navigateSelectedExercises(exercise: Content) {
+        _selectedExercise.value = exercise
     }
 
 }

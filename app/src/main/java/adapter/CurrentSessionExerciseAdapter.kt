@@ -14,10 +14,12 @@ import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.ListItemCurrentSessionExerciseBinding
 import model.data.local.model.myTraining.Content
 import ui.viewModel.HomeViewModel
+import ui.viewModel.TrainingsessionViewModel
 
 class CurrentSessionExerciseAdapter (
     private val dataset: List<Content>,
     private val viewModel: HomeViewModel,
+    private val sessionViewModel: TrainingsessionViewModel,
     private val context: Context
 ): RecyclerView.Adapter<CurrentSessionExerciseAdapter.ExerciseItemViewHolder>(){
 
@@ -38,20 +40,20 @@ class CurrentSessionExerciseAdapter (
         holder.binding.exerciseImage.setImageResource(exercise.imageRessource)
         holder.binding.saveExerciseCheckbox.isChecked = exercise.addedToSession == true
         holder.binding.materialCardView.setOnClickListener {
-            viewModel.navigateDetailView(exercise)
+            viewModel.navigateSelectedExercises(exercise)
             holder.binding.root.findNavController().navigate(R.id.exercisePreviewFragment)
         }
 
 
         checkBox.setOnClickListener{
             if (exercise.addedToSession == true){
-                viewModel.deleteWorkoutInEditSession(!exercise.addedToSession!!,exercise)
+               sessionViewModel.deleteWorkoutInEditSession(!exercise.addedToSession!!,exercise)
                 holder.binding.saveExerciseCheckbox.isChecked = false
                 exercise.addedToSession = false
                 var tag = "CheckBox??"
                 Log.i(tag, "Übung Nicht in der Liste!: ${exercise.addedToSession} ${holder.binding.saveExerciseCheckbox.isChecked}")
             } else{
-                viewModel.deleteWorkoutInEditSession(!exercise.addedToSession!!,exercise)
+                sessionViewModel.deleteWorkoutInEditSession(!exercise.addedToSession!!,exercise)
                 holder.binding.saveExerciseCheckbox.isChecked = true
                 exercise.addedToSession = true
                 var tag = "CheckBox??"

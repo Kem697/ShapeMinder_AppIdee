@@ -109,7 +109,7 @@
     </fragment>
     <fragment
         android:id="@+id/diaryNav2Fragment"
-        android:name="ui.bottomNav.myNutritionScreen.nav2diary.FoodScannerNav2Fragment"
+        android:name="ui.bottomNav.myNutritionScreen.nav2foodScanner.FoodScannerNav2Fragment"
         android:label="fragment_diary_nav2"
         tools:layout="@layout/fragment_foodscanner_nav2" />
     <fragment

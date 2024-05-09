@@ -25,12 +25,16 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
 import ui.viewModel.HomeViewModel
+import ui.viewModel.TrainingsessionViewModel
 import java.lang.Exception
 
 
 class AllExerciseListForEditSessionFragment : Fragment() {
     private lateinit var binding: FragmentAllExerciseListForEditSessionBinding
     val viewModel: HomeViewModel by activityViewModels()
+
+    val sessionViewModel: TrainingsessionViewModel by activityViewModels()
+
 
 
     private var lastSelectedImageBtnIndex: Int = -1
@@ -42,7 +46,7 @@ class AllExerciseListForEditSessionFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        viewModel.excludeExercises(viewModel.selectedTraininingssession.value!!)
+        sessionViewModel.excludeExercises(sessionViewModel.selectedTraininingssession.value!!)
     }
 
     override fun onCreateView(
@@ -69,8 +73,7 @@ class AllExerciseListForEditSessionFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         setDefaultHint()
-//        viewModel.excludeExercises(viewModel.selectedTraininingssession.value!!,requireContext())
-        viewModel.retrieveRemainExercisesByBodyparts()
+        sessionViewModel.retrieveRemainExercisesByBodyparts()
         val navigationBar =
             requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
         navigationBar.isInvisible = false
@@ -100,9 +103,9 @@ class AllExerciseListForEditSessionFragment : Fragment() {
 
 
     fun setUpAdapter() {
-        viewModel.remainExercisesForAddInSession.observe(viewLifecycleOwner) {
+        sessionViewModel.remainExercisesForAddInSession.observe(viewLifecycleOwner) {
             binding.listOfAllExercises.adapter =
-                CurrentSessionExerciseAdapter(it, viewModel, requireContext())
+                CurrentSessionExerciseAdapter(it, viewModel,sessionViewModel, requireContext())
             binding.amountOfExercise.text = "${context?.getString(R.string.amountOfExercises)}: ${it.size}"
         }
     }
@@ -148,12 +151,12 @@ class AllExerciseListForEditSessionFragment : Fragment() {
                     when (checkedId) {
                         R.id.a_z_ascending -> {
                             isSortedDescending = false
-                            viewModel.sortRemainExercisesByAlphabet(isSortedDescending)
+                            sessionViewModel.sortRemainExercisesByAlphabet(isSortedDescending)
                         }
 
                         R.id.z_a_descending -> {
                             isSortedDescending = true
-                            viewModel.sortRemainExercisesByAlphabet(isSortedDescending)
+                            sessionViewModel.sortRemainExercisesByAlphabet(isSortedDescending)
                         }
                     }
                     //DE: Schließen Sie den Dialog, nachdem eine Auswahl getroffen wurde
@@ -171,11 +174,11 @@ class AllExerciseListForEditSessionFragment : Fragment() {
                 binding.myTSearchBar.setText(userInput)
                 var tag = "Filter???"
                 Log.i(tag, "Werden die Inhalte hier gefiltert. :${userInput}")
-                viewModel.filterRemainExercisesByTitle(userInput, context)
+                sessionViewModel.filterRemainExercisesByTitle(userInput, context)
             } else {
                 searchBar.text.clear()
                 binding.myTSearchBar.clearText()
-                viewModel.retrieveRemainExercisesByBodyparts()
+                sessionViewModel.retrieveRemainExercisesByBodyparts()
                 binding.resetFilterBtn.isInvisible = true
             }
         }
@@ -237,7 +240,7 @@ class AllExerciseListForEditSessionFragment : Fragment() {
                         val muscleGroupFilter = lastSelectedTextBtn?.isSelected == true
                         val equipmentGroupFilter = lastSelectedImageBtn?.isSelected == true
                         if (muscleGroupFilter && equipmentGroupFilter){
-                            viewModel.filterRemainExercisesByTwoSelections(requireContext(),
+                            sessionViewModel.filterRemainExercisesByTwoSelections(requireContext(),
                                 lastSelectedImageBtn!!, lastSelectedTextBtn!!
                             )
                         } else if (muscleGroupFilter && !equipmentGroupFilter){
@@ -251,18 +254,18 @@ class AllExerciseListForEditSessionFragment : Fragment() {
                                 "sec0_shoulderBtn" -> requireContext().resources.getString(R.string.bpSchulter)
                                 else -> ""
                             }
-                            viewModel.filterRemainExercisesByBodypart(bodyPart,requireContext())
+                            sessionViewModel.filterRemainExercisesByBodypart(bodyPart,requireContext())
                         } else if (equipmentGroupFilter && !muscleGroupFilter){
                             val imageBtnName = requireContext().resources.getResourceEntryName(lastSelectedImageBtn!!.id)
                             when (imageBtnName) {
                                 "sec1_short_dumbell_Btn" -> {
-                                    viewModel.filterRemainExercisesByShortDumbbell(requireContext())
+                                    sessionViewModel.filterRemainExercisesByShortDumbbell(requireContext())
                                 }
                                 "sec1_long_dumbell_Btn" -> {
-                                    viewModel.filterRemainExercisesByLongDumbbell(requireContext())
+                                    sessionViewModel.filterRemainExercisesByLongDumbbell(requireContext())
                                 }
                                 "sec1_own_bodyweight_Btn" ->{
-                                    viewModel.filterRemainExercisesByBodyweight(requireContext())
+                                    sessionViewModel.filterRemainExercisesByBodyweight(requireContext())
                                 }
                             }
                         }
@@ -279,7 +282,7 @@ class AllExerciseListForEditSessionFragment : Fragment() {
 
                 resetBtn.setOnClickListener {
                     if (lastSelectedImageBtnIndex != -1 ||lastSelectedTextBtnIndex != -1) {
-                        viewModel.retrieveRemainExercisesByBodyparts()
+                        sessionViewModel.retrieveRemainExercisesByBodyparts()
                         if (allImageButtons.any { it?.isSelected==true }&& (textButtons.all { it?.isSelected != true })){
                             allImageButtons.forEach { imageButton ->
                                 imageButton?.setImageResource(
@@ -322,7 +325,7 @@ class AllExerciseListForEditSessionFragment : Fragment() {
 
                 dialogResetBtn?.setOnClickListener {
                     if (lastSelectedImageBtnIndex != -1 || lastSelectedTextBtnIndex != -1) {
-                        viewModel.retrieveRemainExercisesByBodyparts()
+                        sessionViewModel.retrieveRemainExercisesByBodyparts()
                         if (allImageButtons.any { it?.isSelected==true }&& (textButtons.all { it?.isSelected != true })){
                             allImageButtons.forEach { imageButton ->
                                 imageButton?.setImageResource(
@@ -418,7 +421,7 @@ class AllExerciseListForEditSessionFragment : Fragment() {
     fun cancelProcess(){
         var cancelBtn = binding.cancelSessionBtn
         cancelBtn.setOnClickListener {
-            viewModel.remainExercisesForAddInSession.value?.forEach { it.addedToSession = false }
+            sessionViewModel.remainExercisesForAddInSession.value?.forEach { it.addedToSession = false }
             viewModel.addToSessionExercises.value?.removeAll { it.addedToSession == true }
             findNavController().navigate(R.id.myTrainingScreen)
         }
@@ -443,7 +446,7 @@ class AllExerciseListForEditSessionFragment : Fragment() {
     fun addExerciseSelectionSession() {
         var addToWorkoutBtn = binding.addExerciseToSessionBtn
         addToWorkoutBtn.setOnClickListener {
-            var addedToSessionExercises = viewModel.selectedTraininingssession.value?.trainingsSession ?: mutableListOf()
+            var addedToSessionExercises = sessionViewModel.selectedTraininingssession.value?.trainingsSession ?: mutableListOf()
             var tag = "Radiocheck??"
             Log.i(tag, "Länge der Liste: ${addedToSessionExercises.size}")
             try {

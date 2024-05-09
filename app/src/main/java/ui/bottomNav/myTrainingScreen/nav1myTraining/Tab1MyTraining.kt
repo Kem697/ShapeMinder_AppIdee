@@ -10,13 +10,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.shapeminder_appidee.databinding.FragmentTrainingNav1Binding
+import ui.viewModel.ContentViewModel
 import ui.viewModel.HomeViewModel
+import ui.viewModel.TrainingsessionViewModel
 
 
 class Tab1MyTraining : Fragment() {
 
     private lateinit var binding: FragmentTrainingNav1Binding
     val viewModel: HomeViewModel by activityViewModels()
+    val sessionViewModel: TrainingsessionViewModel by activityViewModels()
+    private val contentViewModel: ContentViewModel by activityViewModels()
+
 
 
     override fun onCreateView(
@@ -94,7 +99,7 @@ class Tab1MyTraining : Fragment() {
     fun setUpAdapters(){
         viewModel.savedExercises.observe(viewLifecycleOwner){
             var rigedExercise= it.onEach { it.isInExerciseList = false }
-            binding.rvFavouriteExercises.adapter = ItemAdapter(rigedExercise,viewModel,requireContext())
+            binding.rvFavouriteExercises.adapter = ItemAdapter(rigedExercise,viewModel,contentViewModel,requireContext())
         }
 
 
@@ -102,8 +107,8 @@ class Tab1MyTraining : Fragment() {
         * Daten beobachtet werden. Wahrscheinlich weil die Datenbank
         * leer ist*/
 
-        viewModel.savedTrainingsSessions.observe(viewLifecycleOwner){
-            binding.rvYourSessions.adapter = TrainingSessionsAdapter(it,viewModel,requireContext())
+        sessionViewModel.savedTrainingsSessions.observe(viewLifecycleOwner){
+            binding.rvYourSessions.adapter = TrainingSessionsAdapter(it,sessionViewModel,requireContext())
         }
     }
 

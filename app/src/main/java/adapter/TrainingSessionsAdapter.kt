@@ -9,9 +9,11 @@ import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.ListItemMySessionBinding
 import model.data.local.model.myTraining.TrainingsSession
 import ui.viewModel.HomeViewModel
+import ui.viewModel.TrainingsessionViewModel
+
 class TrainingSessionsAdapter (
     private val dataset: List<TrainingsSession>,
-    private val viewModel: HomeViewModel,
+    private val sessionViewModel: TrainingsessionViewModel,
     private var context: Context
 ): RecyclerView.Adapter<TrainingSessionsAdapter.TrainingsSessionItemViewHolder>() {
     inner class TrainingsSessionItemViewHolder(val binding: ListItemMySessionBinding) :
@@ -49,7 +51,7 @@ class TrainingSessionsAdapter (
             holder.binding.sessionTitle.text = item.sessionName
             holder.binding.contentImage.setImageResource(R.drawable.content2_img)
             holder.binding.materialCardView.setOnClickListener {
-                viewModel.getCurrentTrainingsession(item)
+                sessionViewModel.getCurrentTrainingsession(item)
                 holder.binding.root.findNavController().navigate(R.id.editTrainingSessionFragment)
             }
         }

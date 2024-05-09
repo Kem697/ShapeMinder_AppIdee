@@ -1,4 +1,4 @@
-package ui.bottomNav.myNutritionScreen.nav2diary
+package ui.bottomNav.myNutritionScreen.nav2foodScanner
 
 
 import android.app.AlertDialog
@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.BarcodeScan
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentFoodscannerNav2Binding

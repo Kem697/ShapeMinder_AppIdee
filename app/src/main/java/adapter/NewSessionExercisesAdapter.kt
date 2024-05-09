@@ -40,7 +40,7 @@ class NewSessionExercisesAdapter (
         holder.binding.exerciseImage.setImageResource(exercise.imageRessource)
         holder.binding.saveExerciseCheckbox.isChecked = exercise.addedToSession == true
         holder.binding.materialCardView.setOnClickListener {
-            viewModel.navigateDetailView(exercise)
+            viewModel.navigateSelectedExercises(exercise)
             holder.binding.root.findNavController().navigate(R.id.exercisePreviewFragment)
         }
 

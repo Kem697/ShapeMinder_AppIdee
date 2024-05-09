@@ -16,12 +16,15 @@ import com.example.shapeminder_appidee.databinding.FragmentEditTrainingSessionBi
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import model.data.local.model.myTraining.TrainingsSession
 import ui.viewModel.HomeViewModel
+import ui.viewModel.TrainingsessionViewModel
 
 
 class EditTrainingSessionFragment : Fragment() {
 
     private lateinit var binding: FragmentEditTrainingSessionBinding
     val viewModel: HomeViewModel by activityViewModels()
+
+    val sessionViewModel: TrainingsessionViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -57,7 +60,7 @@ class EditTrainingSessionFragment : Fragment() {
 
 
     fun setUpAdapter() {
-        viewModel.selectedTraininingssession.observe(viewLifecycleOwner) {
+        sessionViewModel.selectedTraininingssession.observe(viewLifecycleOwner) {
             if (it.sessionDate.isNullOrBlank()){
                 binding.materialCardSessionDate.isInvisible = true
             } else{
@@ -65,7 +68,7 @@ class EditTrainingSessionFragment : Fragment() {
                 binding.sessionDate.setText(it.sessionDate)
             }
             binding.sessionName.setText(it.sessionName)
-            binding.rvEditCurrentWorkout.adapter = EditTrainingAdapter(it.trainingsSession, viewModel, requireContext())
+            binding.rvEditCurrentWorkout.adapter = EditTrainingAdapter(it.trainingsSession, sessionViewModel, requireContext())
             saveSessionChanges(it)
             deleteSession(it)
             addWorkout(it)
@@ -76,7 +79,7 @@ class EditTrainingSessionFragment : Fragment() {
     fun saveSessionChanges(currentSession: TrainingsSession) {
         var saveBtn = binding.saveWorkoutBtn
         saveBtn.setOnClickListener {
-            viewModel.updateTrainingsession(currentSession)
+            sessionViewModel.updateTrainingsession(currentSession)
             Toast.makeText(requireContext(), context?.getString(R.string.toastSessionUpdatedHint), Toast.LENGTH_SHORT)
                 .show()
             findNavController().navigate(R.id.myTrainingScreen)
@@ -87,7 +90,7 @@ class EditTrainingSessionFragment : Fragment() {
     fun deleteSession(currentSession: TrainingsSession) {
         var deletBtn = binding.deleteWorkoutBtn
         deletBtn.setOnClickListener {
-            viewModel.deleteTrainingsession(currentSession)
+            sessionViewModel.deleteTrainingsession(currentSession)
             Toast.makeText(requireContext(), context?.getString(R.string.toastSessionDeletedHint), Toast.LENGTH_SHORT)
                 .show()
             findNavController().navigate(R.id.myTrainingScreen)
@@ -105,7 +108,7 @@ class EditTrainingSessionFragment : Fragment() {
         var addExerciseBtn = binding.addExerciseBtn
         addExerciseBtn.setOnClickListener {
             var action = EditTrainingSessionFragmentDirections.actionEditTrainingSessionFragmentToAllExerciseListForEditSessionFragment()
-            viewModel.excludeExercises(currentSession)
+            sessionViewModel.excludeExercises(currentSession)
             findNavController().navigate(action)
         }
     }

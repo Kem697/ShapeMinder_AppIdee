@@ -29,7 +29,7 @@ class Tab2Exercises : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.bodyparts.observe(viewLifecycleOwner){
+        viewModel.listOfBodyparts.observe(viewLifecycleOwner){
             binding.bodypartsGrid.adapter = GridAdapterMyTraining(it,viewModel,requireContext())
         }
     }

@@ -17,6 +17,7 @@ import com.example.shapeminder_appidee.databinding.FragmentHomeScreenBinding
 import com.google.android.libraries.places.api.Places
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import ui.viewModel.ContentViewModel
 import ui.viewModel.GymLocationsViewModel
 import ui.viewModel.HomeViewModel
 
@@ -25,6 +26,8 @@ class MyHomeScreen : Fragment() {
 
     private lateinit var binding: FragmentHomeScreenBinding
     private val viewModel: HomeViewModel by activityViewModels()
+    private val contentViewModel: ContentViewModel by activityViewModels()
+
     private val gymPlaceViewModel: GymLocationsViewModel by activityViewModels()
 
     private lateinit var auth: FirebaseAuth
@@ -81,11 +84,11 @@ class MyHomeScreen : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.textView.setText("${requireContext().getString(R.string.homeScreenHeader)} ${auth.currentUser?.displayName?:" "}")
         setUpAdapter()
-        viewModel.contents.observe(viewLifecycleOwner) {
+        contentViewModel.contents.observe(viewLifecycleOwner) {
             var navigationBar =
                 requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
             navigationBar.isInvisible = false
-            binding.recyclerView.adapter = ItemAdapter(it, viewModel,requireContext())
+            binding.recyclerView.adapter = ItemAdapter(it, viewModel,contentViewModel,requireContext())
 
         }
     }
