@@ -38,27 +38,20 @@ import androidx.core.view.isInvisible
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shapeminder_appidee.R
-import com.example.shapeminder_appidee.databinding.ListItemBinding
 import com.example.shapeminder_appidee.databinding.ListItemExerciseBinding
 import com.example.shapeminder_appidee.databinding.ListItemMyTrainingBinding
-import model.data.local.model.myTraining.Content
-import ui.viewModel.ContentViewModel
-import ui.viewModel.HomeViewModel
+import model.data.local.model.myTraining.Exercise
+import ui.viewModel.ExercisesViewModel
 
 
-class ItemAdapter(
-    private val dataset: List<Content>,
-    private val viewModel: HomeViewModel,
-    private val contentViewModel: ContentViewModel,
+class ExerciseAdapter(
+    private val dataset: List<Exercise>,
+    private val viewModel: ExercisesViewModel,
     private var context: Context
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    val contentCard = 1
     val smallContentCard = 2
     val exerciseListCards = 3
-
-    inner class ContentItemViewHolder(val binding: ListItemBinding) :
-        RecyclerView.ViewHolder(binding.root)
 
     inner class SmallContentItemViewHolder(val binding: ListItemMyTrainingBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -71,20 +64,14 @@ class ItemAdapter(
         val item = dataset[position]
         return if (item.isExercise && !item.isInExerciseList) {
             smallContentCard
-        }  else if (item.isExercise && item.isInExerciseList) {
+        }  else  {
             exerciseListCards
-        } else {
-            contentCard
         }
     }
 
     @SuppressLint("SuspiciousIndentation")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return if (viewType == contentCard) {
-            val binding =
-                ListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-            ContentItemViewHolder(binding)
-        } else if (viewType == exerciseListCards) {
+        return if (viewType == exerciseListCards) {
             val binding =
                 ListItemExerciseBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             ExerciseListItemViewHolder(binding)
@@ -99,15 +86,8 @@ class ItemAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        var content = dataset[position]
-        if (holder is ContentItemViewHolder) {
-            holder.binding.contentImage.setImageResource(content.imageRessource)
-            holder.binding.contentTitle.setText(content.stringRessourceTitle)
-            holder.binding.materialCardView.setOnClickListener {
-                contentViewModel.navigateContentDetailView(content)
-                holder.binding.root.findNavController().navigate(R.id.homeContentDetailView)
-            }
-        } else if (holder is ExerciseListItemViewHolder) {
+        var exercise = dataset[position]
+        if (holder is ExerciseListItemViewHolder) {
 
             /*De:
             * Damit bei der Übungsbeschreibung nur die ersten drei Wörter angezeigt werden,
@@ -123,17 +103,17 @@ class ItemAdapter(
             * be separated by a space
             * */
 
-            var getContentDescription = context.getString(content.stringRessourceText)
+            var getContentDescription = context.getString(exercise.stringRessourceText)
             val words = getContentDescription.split(" ")
             val truncatedDescription = words.take(3).joinToString(" ")
 
 
-            holder.binding.contentImage.setImageResource(content.imageRessource)
-            holder.binding.contentTitle.setText(content.stringRessourceTitle)
+            holder.binding.contentImage.setImageResource(exercise.imageRessource)
+            holder.binding.contentTitle.setText(exercise.stringRessourceTitle)
             holder.binding.contentTextSnippet.text = "${truncatedDescription}..."
-            holder.binding.containtsVideo.isInvisible = content.video == null
+            holder.binding.containtsVideo.isInvisible = exercise.video == null
             holder.binding.materialCardView.setOnClickListener {
-                viewModel.navigateSelectedExercises(content)
+                viewModel.navigateSelectedExercises(exercise)
                 holder.binding.root.findNavController().navigate(R.id.exercisePreviewFragment)
             }
 
@@ -161,25 +141,25 @@ class ItemAdapter(
             * */
 
             var saveBtn = holder.binding.saveExerciseBtn
-            saveBtn.setImageResource(if (content.isSaved) R.drawable.favorite_fill1_wght400_grad0_opsz24 else R.drawable.favorite_fill0_wght400_grad0_opsz24)
+            saveBtn.setImageResource(if (exercise.isSaved) R.drawable.favorite_fill1_wght400_grad0_opsz24 else R.drawable.favorite_fill0_wght400_grad0_opsz24)
             saveBtn.setOnClickListener {
-                if (content.isSaved) {
-                    viewModel.isExerciseSaved(!content.isSaved, content)
+                if (exercise.isSaved) {
+                    viewModel.isExerciseSaved(!exercise.isSaved, exercise)
                     holder.binding.saveExerciseBtn.setImageResource(R.drawable.favorite_fill0_wght400_grad0_opsz24)
-                    content.isSaved = false
+                    exercise.isSaved = false
                     var tag = "Fehler"
                     Log.e(
                         tag,
-                        "Ungespeichertes Element:${position} ${content.isSaved} ${viewModel.savedExercises.value}"
+                        "Ungespeichertes Element:${position} ${exercise.isSaved} ${viewModel.savedExercises.value}"
                     )
                 } else {
-                    viewModel.isExerciseSaved(!content.isSaved, content)
+                    viewModel.isExerciseSaved(!exercise.isSaved, exercise)
                     holder.binding.saveExerciseBtn.setImageResource(R.drawable.favorite_fill1_wght400_grad0_opsz24)
-                    content.isSaved = true
+                    exercise.isSaved = true
                     var tag = "Fehler"
                     Log.e(
                         tag,
-                        "Gespeichertes Element:$position ${content.isSaved} ${viewModel.savedExercises.value}"
+                        "Gespeichertes Element:$position ${exercise.isSaved} ${viewModel.savedExercises.value}"
                     )
                 }
             }
@@ -196,15 +176,12 @@ class ItemAdapter(
                 }
             }
             else {
-                holder.binding.contentImage.setImageResource(content.imageRessource)
-                holder.binding.contentTitle.setText(content.stringRessourceTitle)
+                holder.binding.contentImage.setImageResource(exercise.imageRessource)
+                holder.binding.contentTitle.setText(exercise.stringRessourceTitle)
                 holder.binding.materialCardView.setOnClickListener {
-                    if (content.isSaved && !content.isInExerciseList) {
-                        viewModel.navigateSelectedExercises(content)
+                    if (exercise.isSaved) {
+                        viewModel.navigateSelectedExercises(exercise)
                         holder.binding.root.findNavController().navigate(R.id.exercisePreviewFragment)
-                    } else {
-                        contentViewModel.navigateContentDetailView(content)
-                        holder.binding.root.findNavController().navigate(R.id.homeContentDetailView)
                     }
                 }
             }

@@ -12,8 +12,6 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import com.example.shapeminder_appidee.R
 import model.data.local.model.myNutrion.FoodFinderCategory
-import ui.bottomNav.myNutritionScreen.nav1foodFinder.FoodFinderNav1FragmentDirections
-import ui.viewModel.HomeViewModel
 import ui.viewModel.NutrionViewModel
 
 

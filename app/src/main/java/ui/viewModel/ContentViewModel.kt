@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import model.data.local.LocalRepository
 import model.data.local.getTrainingDatabase
 import model.data.local.model.myTraining.Content
+import model.data.local.model.myTraining.Exercise
 
 class ContentViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -26,7 +27,7 @@ class ContentViewModel(application: Application) : AndroidViewModel(application)
 
 
     private var _selectedContent = MutableLiveData(allContent[index])
-    val selectedContent: LiveData<Content>
+    val selectedExercise: LiveData<Content>
         get() = _selectedContent
 
 

@@ -10,7 +10,6 @@ import coil.load
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.ListItemFoodBinding
 import model.data.remote.api_model.openFoodFacts.Product
-import ui.viewModel.HomeViewModel
 import ui.viewModel.NutrionViewModel
 
 class FoodItemAdapter(

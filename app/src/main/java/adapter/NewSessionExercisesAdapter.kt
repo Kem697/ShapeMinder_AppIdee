@@ -10,12 +10,12 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.ListItemNewSessionExerciseBinding
-import model.data.local.model.myTraining.Content
-import ui.viewModel.HomeViewModel
+import model.data.local.model.myTraining.Exercise
+import ui.viewModel.ExercisesViewModel
 
 class NewSessionExercisesAdapter (
-    private val dataset: List<Content>,
-    private val viewModel: HomeViewModel,
+    private val dataset: List<Exercise>,
+    private val viewModel: ExercisesViewModel,
     private val context: Context
 ): RecyclerView.Adapter<NewSessionExercisesAdapter.ExerciseItemViewHolder>(){
 

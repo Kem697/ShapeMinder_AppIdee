@@ -8,8 +8,8 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat.getString
 import androidx.navigation.findNavController
 import com.example.shapeminder_appidee.R
-import model.data.local.model.myTraining.Content
-import ui.viewModel.HomeViewModel
+import model.data.local.model.myTraining.Bodypart
+import ui.viewModel.ExercisesViewModel
 
 /*
 DE:
@@ -86,8 +86,8 @@ This is essentially the functionality of the `GridAdapter`. It connects the data
 */
 class GridAdapterMyTraining(
 
-    private val dataset: List<Content>,
-    private val viewModel: HomeViewModel,
+    private val dataset: List<Bodypart>,
+    private val viewModel: ExercisesViewModel,
     private val context: Context,
 ) : BaseAdapter() {
 

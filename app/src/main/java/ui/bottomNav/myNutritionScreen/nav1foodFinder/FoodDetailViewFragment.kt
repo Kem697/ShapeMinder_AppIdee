@@ -3,25 +3,19 @@ package ui.bottomNav.myNutritionScreen.nav1foodFinder
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isInvisible
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import coil.load
-import com.example.shapeminder_appidee.MainActivity
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentFoodDetailViewBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import model.data.local.model.myTraining.Content
 import model.data.remote.api_model.openFoodFacts.Product
-import ui.viewModel.HomeViewModel
 import ui.viewModel.NutrionViewModel
 
 class FoodDetailViewFragment : Fragment() {

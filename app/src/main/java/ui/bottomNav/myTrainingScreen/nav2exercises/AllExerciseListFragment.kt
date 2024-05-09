@@ -24,13 +24,13 @@ import com.example.shapeminder_appidee.databinding.FragmentAllExerciseListBindin
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
-import ui.viewModel.HomeViewModel
+import ui.viewModel.ExercisesViewModel
 import java.lang.Exception
 
 class AllExerciseListFragment : Fragment() {
     private lateinit var binding: FragmentAllExerciseListBinding
 
-    val viewModel: HomeViewModel by activityViewModels()
+    val viewModel: ExercisesViewModel by activityViewModels()
 
 
 

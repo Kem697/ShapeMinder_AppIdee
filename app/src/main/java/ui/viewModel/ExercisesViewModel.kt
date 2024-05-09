@@ -12,24 +12,25 @@ import androidx.lifecycle.viewModelScope
 import com.example.shapeminder_appidee.R
 import model.data.local.LocalRepository
 import kotlinx.coroutines.launch
-import model.data.local.model.myTraining.Content
+import model.data.local.model.myTraining.Exercise
 import model.data.local.getTrainingDatabase
+import model.data.local.model.myTraining.Bodypart
 
-class HomeViewModel(application: Application) : AndroidViewModel(application) {
+class ExercisesViewModel(application: Application) : AndroidViewModel(application) {
     private var trainingDatabase = getTrainingDatabase(application)
     private val repository = LocalRepository(trainingDatabase)
     private val allBodyparts = repository.bodyParts
-    private var allExercisesByBodyparts = repository.exercisesByBodyparts
+    private var allExercisesByBodyparts = repository.allExercisesByBodyparts
 
 
     private var _listOfAllExercises = MutableLiveData(allExercisesByBodyparts)
-    val listOfAllExercises: MutableLiveData<List<Content>>
+    val listOfAllExercises: MutableLiveData<List<Exercise>>
         get() = _listOfAllExercises
 
 
 
     private var _listOfBodyparts = MutableLiveData(allBodyparts)
-    val listOfBodyparts: LiveData<List<Content>>
+    val listOfBodyparts: LiveData<List<Bodypart>>
         get() = _listOfBodyparts
 
 
@@ -44,30 +45,30 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     * I ve created this livedata to fetch a specific
     * ecercise of my dataset of exercises.*/
 
-    private var _selectedExercise = MutableLiveData<Content>()
-    val selectedExercise: LiveData<Content>
+    private var _selectedExercise = MutableLiveData<Exercise>()
+    val selectedExercise: LiveData<Exercise>
         get() = _selectedExercise
 
 
 
     private var _exercisesByBodyparts = MutableLiveData(allExercisesByBodyparts)
 
-    val exercisesByBodyparts: LiveData<List<Content>>
+    val exercisesByBodyparts: LiveData<List<Exercise>>
         get() = _exercisesByBodyparts
 
 
 
     private var _savedExercises = MutableLiveData(
         mutableListOf(
-            Content(0, 0, 0, true, false, 0, false, null, null)
+            Exercise(0, 0, 0, true, false, 0, false, null, null)
         )
     )
-    val savedExercises: LiveData<MutableList<Content>>
+    val savedExercises: LiveData<MutableList<Exercise>>
         get() = _savedExercises
 
 
-    private var _addToSessionExercises = MutableLiveData<MutableList<Content>>()
-    val addToSessionExercises: LiveData<MutableList<Content>>
+    private var _addToSessionExercises = MutableLiveData<MutableList<Exercise>>()
+    val addToSessionExercises: LiveData<MutableList<Exercise>>
 
         get() = _addToSessionExercises
 
@@ -433,12 +434,12 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
-    fun addToNewWorkout(content: Content) {
-        content.addedToSession = true
-        _addToSessionExercises.value = mutableListOf(content)
+    fun addToNewWorkout(exercise: Exercise) {
+        exercise.addedToSession = true
+        _addToSessionExercises.value = mutableListOf(exercise)
     }
 
-    fun setOriginalList(exercises: List<Content>, bodypart: String,context: Context) {
+    fun setOriginalList(exercises: List<Exercise>, bodypart: String, context: Context) {
         exercises.filter { context.getString(it.bodyPart) == bodypart }
         _exercisesByBodyparts.value = exercises
     }
@@ -486,7 +487,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     * um den Speicherstatus einer Übung zu aktualisieren und die Liste der gespeicherten Übungen zu verwalten,
     * wobei entsprechende Protokolleinträge erstellt werden, um den Vorgang zu verfolgen.*/
 
-    fun isExerciseSaved(saved: Boolean, exercise: Content) {
+    fun isExerciseSaved(saved: Boolean, exercise: Exercise) {
         val updatedExercises = _savedExercises.value ?: mutableListOf()
 
         if (saved) {
@@ -505,7 +506,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         _savedExercises.value = updatedExercises
     }
 
-    fun savedInWorkoutSession(addedExercise: Boolean, exercise: Content) {
+    fun savedInWorkoutSession(addedExercise: Boolean, exercise: Exercise) {
         val updatedExercises = addToSessionExercises.value ?: mutableListOf()
 
         if (addedExercise) {
@@ -527,7 +528,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         _addToSessionExercises.value = updatedExercises
     }
 
-    fun resetSavedInWorkoutSession(addedToSessionExercises: MutableList<Content>) {
+    fun resetSavedInWorkoutSession(addedToSessionExercises: MutableList<Exercise>) {
         addedToSessionExercises.forEach { it.addedToSession = false }
         addedToSessionExercises.removeAll { it.addedToSession == false }
         var tag = "Liste zurücksetzen"
@@ -537,7 +538,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
 
 
-    fun navigateSelectedExercises(exercise: Content) {
+    fun navigateSelectedExercises(exercise: Exercise) {
         _selectedExercise.value = exercise
     }
 

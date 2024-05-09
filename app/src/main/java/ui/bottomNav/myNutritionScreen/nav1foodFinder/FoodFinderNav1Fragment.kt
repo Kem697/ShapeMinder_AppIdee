@@ -1,24 +1,13 @@
 package ui.bottomNav.myNutritionScreen.nav1foodFinder
 
 import adapter.GridAdapterMyNutrition
-import android.content.res.ColorStateList
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import androidx.core.content.ContextCompat
-import androidx.core.view.isInvisible
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
-import com.example.shapeminder_appidee.MainActivity
-import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentFoodFinderNav1Binding
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import ui.viewModel.HomeViewModel
 import ui.viewModel.NutrionViewModel
 
 

@@ -13,7 +13,7 @@ import com.example.shapeminder_appidee.R
 import kotlinx.coroutines.launch
 import model.data.local.LocalRepository
 import model.data.local.getTrainingDatabase
-import model.data.local.model.myTraining.Content
+import model.data.local.model.myTraining.Exercise
 import model.data.local.model.myTraining.TrainingsSession
 
 class TrainingsessionViewModel (application: Application) : AndroidViewModel(application) {
@@ -49,16 +49,16 @@ class TrainingsessionViewModel (application: Application) : AndroidViewModel(app
     * Diese Funktionen und Methoden beziehen sich auf die App Funktion
     * zur Bearbeitung des Trainingsplans */
 
-    private val _remainExercisesForAddInSession = MutableLiveData<List<Content>>()
+    private val _remainExercisesForAddInSession = MutableLiveData<List<Exercise>>()
 
-    val remainExercisesForAddInSession: MutableLiveData<List<Content>>
+    val remainExercisesForAddInSession: MutableLiveData<List<Exercise>>
 
         get() = _remainExercisesForAddInSession
 
 
-    fun excludeExercises(trainingsSession: TrainingsSession) : MutableList<Content> {
+    fun excludeExercises(trainingsSession: TrainingsSession) : MutableList<Exercise> {
         val tag = "Apply"
-        val list = mutableListOf<Content>()
+        val list = mutableListOf<Exercise>()
         val allExercises = repository.loadExercisesByBodypart().toMutableList() ?: mutableListOf()
         val sessionExercises = trainingsSession.trainingsSession
 
@@ -229,7 +229,7 @@ class TrainingsessionViewModel (application: Application) : AndroidViewModel(app
     }
 
 
-    fun deleteWorkoutInEditSession(addedExercise: Boolean, exercise: Content) {
+    fun deleteWorkoutInEditSession(addedExercise: Boolean, exercise: Exercise) {
         val updatedSession = selectedTraininingssession.value?.trainingsSession ?: mutableListOf()
 
         if (addedExercise) {

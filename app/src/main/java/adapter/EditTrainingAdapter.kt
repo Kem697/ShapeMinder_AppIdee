@@ -6,13 +6,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shapeminder_appidee.databinding.ListItemEditSessionBinding
-import model.data.local.model.myTraining.Content
-import ui.viewModel.HomeViewModel
+import model.data.local.model.myTraining.Exercise
 import ui.viewModel.TrainingsessionViewModel
 
 
 class EditTrainingAdapter (
-    private val dataset: List<Content>,
+    private val dataset: List<Exercise>,
     private val sessionViewModel: TrainingsessionViewModel,
     private var context: Context
 ): RecyclerView.Adapter<EditTrainingAdapter.EditSessionItemViewHolder>() {

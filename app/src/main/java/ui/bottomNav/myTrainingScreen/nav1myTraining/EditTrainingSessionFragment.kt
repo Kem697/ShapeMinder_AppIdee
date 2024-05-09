@@ -15,14 +15,14 @@ import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentEditTrainingSessionBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import model.data.local.model.myTraining.TrainingsSession
-import ui.viewModel.HomeViewModel
+import ui.viewModel.ExercisesViewModel
 import ui.viewModel.TrainingsessionViewModel
 
 
 class EditTrainingSessionFragment : Fragment() {
 
     private lateinit var binding: FragmentEditTrainingSessionBinding
-    val viewModel: HomeViewModel by activityViewModels()
+    val viewModel: ExercisesViewModel by activityViewModels()
 
     val sessionViewModel: TrainingsessionViewModel by activityViewModels()
 

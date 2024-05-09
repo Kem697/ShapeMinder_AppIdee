@@ -1,6 +1,6 @@
 package ui.bottomNav.myTrainingScreen.nav1myTraining
 
-import adapter.ItemAdapter
+import adapter.ExerciseAdapter
 import adapter.TrainingSessionsAdapter
 import android.os.Bundle
 import android.util.Log
@@ -11,14 +11,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.shapeminder_appidee.databinding.FragmentTrainingNav1Binding
 import ui.viewModel.ContentViewModel
-import ui.viewModel.HomeViewModel
+import ui.viewModel.ExercisesViewModel
 import ui.viewModel.TrainingsessionViewModel
 
 
 class Tab1MyTraining : Fragment() {
 
     private lateinit var binding: FragmentTrainingNav1Binding
-    val viewModel: HomeViewModel by activityViewModels()
+    val viewModel: ExercisesViewModel by activityViewModels()
     val sessionViewModel: TrainingsessionViewModel by activityViewModels()
     private val contentViewModel: ContentViewModel by activityViewModels()
 
@@ -99,7 +99,7 @@ class Tab1MyTraining : Fragment() {
     fun setUpAdapters(){
         viewModel.savedExercises.observe(viewLifecycleOwner){
             var rigedExercise= it.onEach { it.isInExerciseList = false }
-            binding.rvFavouriteExercises.adapter = ItemAdapter(rigedExercise,viewModel,contentViewModel,requireContext())
+            binding.rvFavouriteExercises.adapter = ExerciseAdapter(rigedExercise,viewModel,requireContext())
         }
 
 

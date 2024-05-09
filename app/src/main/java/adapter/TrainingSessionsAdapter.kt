@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.ListItemMySessionBinding
 import model.data.local.model.myTraining.TrainingsSession
-import ui.viewModel.HomeViewModel
 import ui.viewModel.TrainingsessionViewModel
 
 class TrainingSessionsAdapter (

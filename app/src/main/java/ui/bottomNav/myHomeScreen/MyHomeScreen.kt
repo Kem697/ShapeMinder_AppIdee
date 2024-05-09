@@ -1,7 +1,7 @@
 package ui.bottomNav.myHomeScreen
 
+import adapter.ContentAdapter
 import adapter.GetGymLocationAdapter
-import adapter.ItemAdapter
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -19,13 +19,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import ui.viewModel.ContentViewModel
 import ui.viewModel.GymLocationsViewModel
-import ui.viewModel.HomeViewModel
 
 
 class MyHomeScreen : Fragment() {
 
     private lateinit var binding: FragmentHomeScreenBinding
-    private val viewModel: HomeViewModel by activityViewModels()
     private val contentViewModel: ContentViewModel by activityViewModels()
 
     private val gymPlaceViewModel: GymLocationsViewModel by activityViewModels()
@@ -88,7 +86,7 @@ class MyHomeScreen : Fragment() {
             var navigationBar =
                 requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
             navigationBar.isInvisible = false
-            binding.recyclerView.adapter = ItemAdapter(it, viewModel,contentViewModel,requireContext())
+            binding.recyclerView.adapter = ContentAdapter(it,contentViewModel)
 
         }
     }

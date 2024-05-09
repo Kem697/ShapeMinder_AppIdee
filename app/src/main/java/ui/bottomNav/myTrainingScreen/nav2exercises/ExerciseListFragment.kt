@@ -1,6 +1,6 @@
 package ui.bottomNav.myTrainingScreen.nav2exercises
 
-import adapter.ItemAdapter
+import adapter.ExerciseAdapter
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.util.Log
@@ -24,16 +24,16 @@ import com.example.shapeminder_appidee.databinding.FragmentExerciseListBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
-import model.data.local.model.myTraining.Content
+import model.data.local.model.myTraining.Exercise
 import ui.viewModel.ContentViewModel
-import ui.viewModel.HomeViewModel
+import ui.viewModel.ExercisesViewModel
 
 class ExerciseListFragment : Fragment() {
     private lateinit var binding: FragmentExerciseListBinding
-    val viewModel: HomeViewModel by activityViewModels()
+    val viewModel: ExercisesViewModel by activityViewModels()
     private val contentViewModel: ContentViewModel by activityViewModels()
 
-    private lateinit var orginalExercises: List<Content>
+    private lateinit var orginalExercises: List<Exercise>
 
     private var lastSelectedButtonIndex: Int = -1
 
@@ -406,7 +406,7 @@ class ExerciseListFragment : Fragment() {
     fun setUpAdapter() {
         viewModel.exercisesByBodyparts.observe(viewLifecycleOwner) { exercise ->
             orginalExercises = exercise
-            binding.listOfExercises.adapter = ItemAdapter(exercise, viewModel,contentViewModel,requireContext())
+            binding.listOfExercises.adapter = ExerciseAdapter(exercise, viewModel,requireContext())
             binding.screenTitle.setText(viewModel.selectedExerciseTitle.value)
 
             /*DE:

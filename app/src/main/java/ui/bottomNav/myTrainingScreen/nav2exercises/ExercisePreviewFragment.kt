@@ -17,14 +17,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import model.data.local.model.myTraining.Content
-import ui.viewModel.HomeViewModel
+import model.data.local.model.myTraining.Exercise
+import ui.viewModel.ExercisesViewModel
 
 
 class ExercisePreviewFragment : Fragment() {
     private lateinit var binding: FragmentExercisePreviewBinding
 
-    val viewModel: HomeViewModel by activityViewModels()
+    val viewModel: ExercisesViewModel by activityViewModels()
 
     private var lastPosition: Int = 0
     private var isVideoPaused: Boolean = false
@@ -142,18 +142,18 @@ class ExercisePreviewFragment : Fragment() {
       */
 
 
-    fun saveExercise(content: Content){
+    fun saveExercise(exercise: Exercise){
         var saveBtn = binding.saveExerciseBtn
-        saveBtn.setImageResource(if (content.isSaved) R.drawable.favorite_fill1_wght400_grad0_opsz24 else R.drawable.favorite_fill0_wght400_grad0_opsz24)
+        saveBtn.setImageResource(if (exercise.isSaved) R.drawable.favorite_fill1_wght400_grad0_opsz24 else R.drawable.favorite_fill0_wght400_grad0_opsz24)
         saveBtn.setOnClickListener {
-            if (content.isSaved) {
-                viewModel.isExerciseSaved(!content.isSaved, content)
+            if (exercise.isSaved) {
+                viewModel.isExerciseSaved(!exercise.isSaved, exercise)
                 binding.saveExerciseBtn.setImageResource(R.drawable.favorite_fill0_wght400_grad0_opsz24)
-                content.isSaved = false
+                exercise.isSaved = false
             } else {
-                viewModel.isExerciseSaved(!content.isSaved, content)
+                viewModel.isExerciseSaved(!exercise.isSaved, exercise)
                 binding.saveExerciseBtn.setImageResource(R.drawable.favorite_fill1_wght400_grad0_opsz24)
-                content.isSaved = true
+                exercise.isSaved = true
             }
         }
     }
@@ -163,7 +163,7 @@ class ExercisePreviewFragment : Fragment() {
     /*DE:
     * Muss überarbeitet werden..*/
 
-    fun shareExercise(videoExercise: Content) {
+    fun shareExercise(videoExercise: Exercise) {
         var shareBtn = binding.shareBtn
         val url = videoExercise.video?.let { "https://www.youtube.com/watch?v=${getString(it)}" }
         shareBtn.setOnClickListener {
@@ -207,7 +207,7 @@ class ExercisePreviewFragment : Fragment() {
     *  is automatically displayed in the view. In addition, a tag is called in the logcat.
     * */
 
-    fun playVideoOnYoutube(videoExercise: Content){
+    fun playVideoOnYoutube(videoExercise: Exercise){
         var ytPlayer = binding.videoViewYtPlayer
         lifecycle.addObserver(ytPlayer)
         ytPlayer.addYouTubePlayerListener(object : AbstractYouTubePlayerListener(){
@@ -236,7 +236,7 @@ class ExercisePreviewFragment : Fragment() {
     }
 
 
-    fun addExerciseToTraining(exercise: Content){
+    fun addExerciseToTraining(exercise: Exercise){
         binding.addTrainingBtn.setOnClickListener {
             viewModel.addToNewWorkout(exercise)
             findNavController().navigate(R.id.newTrainingsSessionFragment)

@@ -1,7 +1,8 @@
 package model.data.local.model.myTraining
 
-data class Content (
+data class Bodypart(
     val stringRessourceTitle: Int,
     val stringRessourceText: Int,
     val imageRessource: Int,
+    val isCategory: Boolean = true,
 )

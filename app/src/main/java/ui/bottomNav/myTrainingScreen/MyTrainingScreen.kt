@@ -7,23 +7,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ImageView
 import androidx.core.view.isInvisible
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
 import androidx.viewpager.widget.ViewPager
-import coil.load
 import com.example.shapeminder_appidee.MainActivity
 import com.example.shapeminder_appidee.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.search.SearchBar
 import com.google.android.material.tabs.TabLayout
-import com.google.firebase.auth.FirebaseAuth
 import ui.bottomNav.myTrainingScreen.nav1myTraining.Tab1MyTraining
 import ui.bottomNav.myTrainingScreen.nav2exercises.Tab2Exercises
-import ui.viewModel.HomeViewModel
+import ui.viewModel.ExercisesViewModel
 
 
 class MyTrainingScreen : Fragment() {
@@ -31,7 +25,7 @@ class MyTrainingScreen : Fragment() {
 
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager
-    val viewModel: HomeViewModel by activityViewModels()
+    val viewModel: ExercisesViewModel by activityViewModels()
 
 
 

@@ -13,7 +13,7 @@ import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentHomeContentDetailViewBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ui.viewModel.ContentViewModel
-import ui.viewModel.HomeViewModel
+import ui.viewModel.ExercisesViewModel
 
 class MyHomeContentDetailView : Fragment() {
 
@@ -21,7 +21,7 @@ class MyHomeContentDetailView : Fragment() {
     private val contentViewModel: ContentViewModel by activityViewModels()
 
 
-    private val viewModel: HomeViewModel by activityViewModels()
+    private val viewModel: ExercisesViewModel by activityViewModels()
 
 
 
@@ -47,7 +47,7 @@ class MyHomeContentDetailView : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navigateBack()
-        contentViewModel.selectedContent.observe(viewLifecycleOwner){
+        contentViewModel.selectedExercise.observe(viewLifecycleOwner){
             binding.contentImage.setImageResource(it.imageRessource)
             binding.contentTitle.setText(it.stringRessourceTitle)
             binding.contentText.setText(it.stringRessourceText)

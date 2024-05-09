@@ -18,9 +18,9 @@ import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentNewTrainingsSessionBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.datepicker.MaterialDatePicker
-import model.data.local.model.myTraining.Content
+import model.data.local.model.myTraining.Exercise
 import model.data.local.model.myTraining.TrainingsSession
-import ui.viewModel.HomeViewModel
+import ui.viewModel.ExercisesViewModel
 import ui.viewModel.TrainingsessionViewModel
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -31,7 +31,7 @@ class NewTrainingsSessionFragment : Fragment() {
     private lateinit var binding: FragmentNewTrainingsSessionBinding
     val sessionViewModel: TrainingsessionViewModel by activityViewModels()
 
-    val viewModel: HomeViewModel by activityViewModels()
+    val viewModel: ExercisesViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -97,7 +97,7 @@ class NewTrainingsSessionFragment : Fragment() {
         }
     }
 
-    fun saveTrainingSession(addedToSessionExercises: MutableList<Content>) {
+    fun saveTrainingSession(addedToSessionExercises: MutableList<Exercise>) {
         var saveBtn = binding.saveWorkoutBtn
         var editSessionName = binding.editSessionName
         var sessionName = ""
@@ -170,7 +170,7 @@ class NewTrainingsSessionFragment : Fragment() {
         }
 
 
-    fun cancelProcess(addedToSessionExercises: MutableList<Content>){
+    fun cancelProcess(addedToSessionExercises: MutableList<Exercise>){
         var cancelBtn = binding.cancelSessionBtn
         cancelBtn.setOnClickListener {
             var tag = "CancelBtn"
