@@ -176,7 +176,7 @@
     <string name="myAccountBottomNav">Benim Yerim</string>
     <string name="developerBtnText">Atla</string>
     <string name="toastFailedAccountCreation">Kullanıcı hesabı oluşturulamadı!</string>
-    <string name="toastSuccesfulAccountCreation">Kullanıcı hesabı başarıyla oluşturuldu!</string>
+    <string name="toastSuccesfulAccountCreation">Hesap kaydınızı tamamlamak için lütfen aktivasyon bağlantısını onaylayın.</string>
     <string name="toastFailedLogIn">Giriş başarısız oldu. Lütfen girişlerinizi kontrol edin.</string>
     <string name="toastUserInputHint">Lütfen bir giriş yapın!</string>
     <string name="toastLoadVideoFailure">Youtube\'dan video alınırken hata oluştu!</string>
@@ -193,6 +193,8 @@
     <string name="toastScanStopHint">Barkod tarayıcı durduruldu!</string>
     <string name="toastResetPasswordLinkSentHint">Şifre sıfırlama e-postası kayıtlı e-postaya gönderildi!</string>
     <string name="toastLogOutHint">Başarıyla çıkış yaptınız!</string>
+    <string name="toastEmailVerificationRequired">E-postanız onaylanmadı! Lütfen e-posta gelen kutunuzu kontrol edin.</string>
+
 
 
 

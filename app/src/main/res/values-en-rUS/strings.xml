@@ -185,7 +185,7 @@
     <!--Toast text-->
 
     <string name="toastFailedAccountCreation">User account could not be created!</string>
-    <string name="toastSuccesfulAccountCreation">User account has been successfully created!</string>
+    <string name="toastSuccesfulAccountCreation">Please confirm the activation link to complete your account registration.</string>
     <string name="toastFailedLogIn">Login failed. Please check your entries.</string>
     <string name="toastUserInputHint">Please make an entry!</string>
     <string name="toastLoadVideoFailure">Error when retrieving the video from Youtube!</string>
@@ -202,6 +202,9 @@
     <string name="toastScanStopHint">Barcode scanner has been stopped!</string>
     <string name="toastResetPasswordLinkSentHint">Password reset e-mail has been sent to the registered e-mail!</string>
     <string name="toastLogOutHint">You have been successfully logged out!</string>
+
+    <string name="toastEmailVerificationRequired">Your e-mail has not been confirmed! Please check your e-mail inbox.</string>
+
 
 
     <string name="noBarcodeDetectedText">No barcode detected!</string>

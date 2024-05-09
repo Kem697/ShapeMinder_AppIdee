@@ -174,7 +174,7 @@
     <string name="myAccountBottomNav">Min konto</string>
     <string name="developerBtnText">Hopp over</string>
     <string name="toastFailedAccountCreation">Brukerkonto kunne ikke opprettes!</string>
-    <string name="toastSuccesfulAccountCreation">Brukerkontoen har blitt opprettet!</string>
+    <string name="toastSuccesfulAccountCreation">Bekreft aktiveringslenken for å fullføre registreringen av kontoen din.</string>
     <string name="toastFailedLogIn">Innlogging mislyktes. Vennligst sjekk oppføringene dine.</string>
     <string name="toastUserInputHint">Vennligst skriv inn et bidrag!</string>
     <string name="toastLoadVideoFailure">Feil ved henting av video fra Youtube!</string>
@@ -191,6 +191,8 @@
     <string name="toastScanStopHint">Strekkodeskanneren har blitt stoppet!</string>
     <string name="toastResetPasswordLinkSentHint">E-post om tilbakestilling av passord er sendt til den registrerte e-postadressen!</string>
     <string name="toastLogOutHint">Du har blitt logget ut!</string>
+    <string name="toastEmailVerificationRequired">E-posten din er ikke bekreftet! Vennligst sjekk innboksen.</string>
+
 
 
     <string name="barcodeScannerTitle">Strekkodeskanner</string>

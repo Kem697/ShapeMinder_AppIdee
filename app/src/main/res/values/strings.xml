@@ -257,7 +257,7 @@
 
     <!--Toast text-->
     <string name="toastFailedAccountCreation">Nutzerkonto konnte nicht angelegt werden!</string>
-    <string name="toastSuccesfulAccountCreation">Nutzerkonto wurde erfolgreich angelegt!</string>
+    <string name="toastSuccesfulAccountCreation">Bitte bestätige den Aktivierungslink, um deine Kontoregistrierung abzuschließen.</string>
     <string name="toastFailedLogIn">Anmeldung fehlgeschlagen. Bitte überprüfe deine Eingaben.</string>
     <string name="toastUserInputHint">Bitte mach eine Eingabe!</string>
     <string name="toastLoadVideoFailure">Fehler beim Abruf des Videos von Youtube!</string>
@@ -274,6 +274,10 @@
     <string name="toastScanStopHint">Barcode Scanner wurde angehalten!</string>
     <string name="toastResetPasswordLinkSentHint">E-Mail zum Zurücksetzen des Passwort wurde an die registrierte E-Mail gesendet!</string>
     <string name="toastLogOutHint">Du wurdest erfolgreich abgemeldet!</string>
+    <string name="toastEmailVerificationRequired">Deine E-Mail wurde nicht bestätigt! Bitte überprüfe dein E-Mail Postfach.</string>
+
+
+
 
     <string name="barcodeScannerTitle">Barcode Scanner</string>
     <string name="noBarcodeDetectedText">Kein Barcode gefunden!</string>

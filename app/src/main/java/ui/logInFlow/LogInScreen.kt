@@ -174,17 +174,50 @@ class LogInScreen : Fragment() {
 
     }
 
+//    private fun signInUser(email: String, password: String) {
+//        auth.signInWithEmailAndPassword(email, password)
+//            .addOnCompleteListener(requireActivity()) { task ->
+//                var progressBar = binding.logInProgressbar
+//                if (task.isSuccessful) {
+//                    // Sign in success, navigate to home screen
+//                    val user = auth.currentUser
+//                    updateUI(user)
+//                    findNavController().navigate(R.id.homeScreen)
+//                } else {
+//                    // If sign in fails, display a message to the user.
+//                    Toast.makeText(
+//                        requireContext(),
+//                        context?.getString(R.string.toastFailedLogIn),
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//                progressBar.visibility = View.GONE
+//            }
+//    }
+
+
+
     private fun signInUser(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(requireActivity()) { task ->
+            .addOnCompleteListener(requireActivity()) { signInTask ->
                 var progressBar = binding.logInProgressbar
-                if (task.isSuccessful) {
-                    // Sign in success, navigate to home screen
+                if (signInTask.isSuccessful) {
+                    // Sign-in success, check if email is verified
                     val user = auth.currentUser
-                    updateUI(user)
-                    findNavController().navigate(R.id.homeScreen)
+                    if (user?.isEmailVerified == true) {
+                        // Email is verified, navigate to home screen
+                        updateUI(user)
+                        findNavController().navigate(R.id.homeScreen)
+                    } else {
+                        // Email is not verified, prompt user to check email for verification link
+                        Toast.makeText(
+                            requireContext(),
+                            context?.getString(R.string.toastEmailVerificationRequired),
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
                 } else {
-                    // If sign in fails, display a message to the user.
+                    // If sign-in fails, display a message to the user.
                     Toast.makeText(
                         requireContext(),
                         context?.getString(R.string.toastFailedLogIn),
@@ -194,6 +227,7 @@ class LogInScreen : Fragment() {
                 progressBar.visibility = View.GONE
             }
     }
+
 
 
     fun forgotPassword(){

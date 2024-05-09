@@ -61,55 +61,6 @@ class RegisterScreen : Fragment() {
         }
     }
 
-/*
-    fun register(){
-        binding.submitButton.setOnClickListener {
-            var progressbar = binding.registerProgressbar
-            var nameInput = binding.inputName.text.toString()
-            var emailInput = binding.inputEmail.text.toString()
-            var passwordInput = binding.inputPassword.text.toString()
-            var passwordRepeatInput = binding.inputPasswordRepeat.text.toString()
-            if (emailInput.isNotBlank() && passwordInput.isNotBlank()
-                && nameInput.isNotBlank() && passwordRepeatInput.isNotBlank()
-                && passwordInput == passwordRepeatInput) {
-                progressbar.visibility = View.VISIBLE
-                auth.createUserWithEmailAndPassword(emailInput, passwordInput)
-                    .addOnCompleteListener { task ->
-                        var tag = "Registrierung?"
-                        progressbar.visibility = View.GONE
-                        if (task.isSuccessful) {
-                            auth.currentUser?.sendEmailVerification()
-                            profileRef = fireStore.collection("profiles").document(auth.currentUser!!.uid)
-                            // Ein neues, leeres Profil wird für jeden User erstellt der zum ersten mal einen Account für die App anlegt
-                            profileRef.set(Profile(nameInput))
-                            // Danach führen wir logout Funktion aus, da beim Erstellen eines Users dieser sofort eingeloggt wird
-                            auth.signOut()
-                            findNavController().navigate(R.id.logInScreen)
-                            Log.w(tag, "Nutzerkonto angelegt??", task.exception)
-                            Toast.makeText(
-                                binding.root.context,
-                                context?.getString(R.string.toastSuccesfulAccountCreation),
-                                Toast.LENGTH_SHORT,
-                            ).show()
-                        } else {
-                            Log.w(tag, "Nutzerkonto angelegt??", task.exception)
-                            Toast.makeText(
-                                binding.root.context,
-                                context?.getString(R.string.toastFailedAccountCreation),
-                                Toast.LENGTH_SHORT,
-                            ).show()
-                        }
-                    }
-
-            } else {
-                Toast.makeText(binding.root.context, context?.getString(R.string.toastUserInputHint), Toast.LENGTH_SHORT)
-                    .show()
-                return@setOnClickListener
-            }
-
-        }
-    }
-*/
 
     fun register(){
         binding.submitButton.setOnClickListener {
