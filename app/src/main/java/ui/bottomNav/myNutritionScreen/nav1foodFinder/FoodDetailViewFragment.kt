@@ -80,14 +80,14 @@ class FoodDetailViewFragment : Fragment() {
 
             if (it.productNameDe.isNullOrEmpty()) {
                 binding.foodName.setText(requireContext().getString(R.string.unknownFoodName))
-                binding.categorie.setText(it.categories.first())
+                binding.categorie.setText(it.categories.firstOrNull()?.substring(3)?.replace("-"," ").toString())
                 binding.calories.setText(it!!.nutriments!!.calories.toString() + " kcal")
                 binding.carbsAmount.setText("${it.nutriments?.carbohydrates.toString()}" + " g")
                 binding.fatsAmount.setText("${it.nutriments?.fat.toString()}" + " g")
                 binding.proteinAmount.setText("${it.nutriments?.proteins.toString()}" + " g")
             } else {
                 binding.foodName.setText(it.productNameDe)
-                binding.categorie.setText(it.categories.first())
+                binding.categorie.setText(it.categories.firstOrNull()?.substring(3)?.replace("-"," ").toString())
                 binding.calories.setText(it!!.nutriments!!.calories.toString() + " kcal")
                 binding.carbsAmount.setText("${it.nutriments?.carbohydrates.toString()}" + " g")
                 binding.fatsAmount.setText("${it.nutriments?.fat.toString()}" + " g")

@@ -52,14 +52,14 @@ class FoodItemAdapter(
             holder.binding.fats.setText("${context.getString(R.string.fatsText)} " + food!!.nutriments!!.fat.toString()+ " g")
             holder.binding.proteins.setText("${context.getString(R.string.proteinText)} " + food!!.nutriments!!.proteins.toString()+ " g")
             holder.binding.carbs.setText("${context.getString(R.string.carbsText)} " + food!!.nutriments!!.carbohydrates.toString()+ " g")
-            holder.binding.foodCategory.setText(food!!.categories.toString())
+            holder.binding.foodCategory.setText(food!!.categories.firstOrNull()?.substring(3)?.replace("-"," ").toString())
         } else{
             holder.binding.foodName.setText("${truncatedFoodName}...")
             holder.binding.calories.setText(food!!.nutriments!!.calories.toString() + " kcal")
             holder.binding.fats.setText("${context.getString(R.string.fatsText)} " + food!!.nutriments!!.fat.toString()+ " g")
             holder.binding.proteins.setText("${context.getString(R.string.proteinText)} " + food!!.nutriments!!.proteins.toString()+ " g")
             holder.binding.carbs.setText("${context.getString(R.string.carbsText)} " + food!!.nutriments!!.carbohydrates.toString()+ " g")
-            holder.binding.foodCategory.setText(food!!.categories.toString())
+            holder.binding.foodCategory.setText(food!!.categories.firstOrNull()?.substring(3)?.replace("-"," ").toString())
         }
 
         holder.binding.materialCardView.setOnClickListener {

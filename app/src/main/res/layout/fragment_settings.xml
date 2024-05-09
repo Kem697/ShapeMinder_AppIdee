@@ -15,8 +15,9 @@
 
         <ImageView
             android:id="@+id/profile_img"
-            android:layout_width="143dp"
-            android:layout_height="161dp"
+            android:layout_marginTop="16dp"
+            android:layout_width="140dp"
+            android:layout_height="160dp"
             android:src="@drawable/account_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
