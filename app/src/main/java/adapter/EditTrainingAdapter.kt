@@ -36,6 +36,7 @@ class EditTrainingAdapter (
         holder.binding.exerciseBodyPart.setText(exercise.bodyPart)
         holder.binding.exerciseImage.setImageResource(exercise.imageRessource)
 
+        //Um die Trainingsleistungen für jede Übung vom Nutzer abspeichern zu lassen, muss ich auf die EditText views der EditSessionItems zugreifen.
 
         holder.binding.deleteExercise.setOnClickListener{
             if (exercise.addedToSession == true){
