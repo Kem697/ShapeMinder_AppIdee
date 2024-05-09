@@ -72,16 +72,16 @@ class MyHomeScreen : Fragment() {
         super.onCreate(savedInstanceState)
         initializePlacesClient(requireContext())
         auth = FirebaseAuth.getInstance()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val user = auth.currentUser
         if (user != null) {
             if (user.photoUrl != null) {
                 binding.userPhotoToolbar.load(user.photoUrl)
             }
         }
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         binding.textView.setText("${requireContext().getString(R.string.homeScreenHeader)} ${auth.currentUser?.displayName?:" "}")
         setUpAdapter()
         contentViewModel.contents.observe(viewLifecycleOwner) {

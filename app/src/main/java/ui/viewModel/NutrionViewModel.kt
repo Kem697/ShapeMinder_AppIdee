@@ -9,7 +9,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 //import model.data.local.getProductDatabase
 import model.data.local.model.myNutrion.FoodFinderCategory
-import model.data.remote.OpenFoodFactsApi
+import model.data.remote.api_model.openFoodFacts.OpenFoodFactsApi
 import model.data.remote.RemoteRepositoryFood
 import model.data.remote.api_model.openFoodFacts.Product
 

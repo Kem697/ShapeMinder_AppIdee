@@ -5,11 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import com.example.shapeminder_appidee.R
 //import model.data.local.ProductDatabase
 import model.data.local.model.myNutrion.FoodFinderCategory
+import model.data.remote.api_model.openFoodFacts.OpenFoodFactsApi
 import model.data.remote.api_model.openFoodFacts.Product
 import kotlin.Exception
 
 class RemoteRepositoryFood (
-    private val openFoodApi: OpenFoodFactsApi)
+    private val openFoodApi: OpenFoodFactsApi
+)
 //    private val productDatabase: ProductDatabase)
 {
     var groceryCategories = loadGroceryCategories()
