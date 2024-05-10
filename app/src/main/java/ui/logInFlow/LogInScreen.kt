@@ -9,19 +9,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isInvisible
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentLogInScreenBinding
-import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.GoogleAuthProvider
-import ui.bottomNav.mySettingsScreen.MySettingsScreen
+import ui.viewModel.GoogleFireBaseViewModel
 
 
 class LogInScreen : Fragment() {
@@ -32,7 +30,8 @@ class LogInScreen : Fragment() {
     }
 
     private lateinit var binding: FragmentLogInScreenBinding
-//    private val firebaseViewModel: FirebaseViewModel by viewModels()
+
+    private val googleFireBaseViewModel: GoogleFireBaseViewModel by viewModels()
 
     private lateinit var auth: FirebaseAuth
 
@@ -64,19 +63,14 @@ class LogInScreen : Fragment() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
-        Log.d(TAG,"Log In Screen || On Start: + ${auth.currentUser?.email}")
+        Log.d(TAG, "Log In Screen || On Start: + ${auth.currentUser?.email}")
         updateUI(currentUser)
     }
 
     private fun updateUI(user: FirebaseUser?) {
-        if (user == null){
-       /*     Toast.makeText(
-                requireContext(),
-                context?.getString(R.string.toastFailedLogIn),
-                Toast.LENGTH_SHORT
-            ).show()*/
+        if (user == null) {
             return
-        } else{
+        } else {
             findNavController().navigate(R.id.homeScreen)
         }
     }
@@ -88,35 +82,18 @@ class LogInScreen : Fragment() {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val acount = task.getResult(ApiException::class.java)!!
-                Log.d(TAG,"firebaseauthGooge: + ${acount.id}")
-                firebaseAuthWithGoogle(acount.idToken?:return)
+                Log.d(TAG, "firebaseauthGooge: + ${acount.id}")
+                firebaseAuthWithGoogle(acount.idToken ?: return)
             } catch (e: ApiException) {
                 // ...
-                Log.w(TAG,"Google anmeldung fehlgeschlagen!")
+                Log.w(TAG, "Google anmeldung fehlgeschlagen!")
             }
 
         }
     }
 
-    private fun firebaseAuthWithGoogle (idToken:String){
-        val credential = GoogleAuthProvider.getCredential(idToken,null)
-        auth.signInWithCredential(credential)
-            .addOnCompleteListener {task->
-                if (task.isSuccessful){
-                    Log.d(TAG,"signIn with Credential sucessfull")
-                    val user = auth.currentUser
-                    updateUI(user)
-                } else{
-                    Log.w(TAG,"signInWithCredential failed",task.exception)
-                    Toast.makeText(
-                        requireContext(),
-                        context?.getString(R.string.toastFailedLogIn),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    updateUI(null)
-                }
-            }
-
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        googleFireBaseViewModel.firebaseAuthWithGoogle(idToken, auth)
     }
 
 
@@ -131,7 +108,6 @@ class LogInScreen : Fragment() {
         binding.inputPassword.text.clear()
     }
 
-
     fun logIn() {
         binding.logInButton.setOnClickListener {
             var progressBar = binding.logInProgressbar
@@ -139,7 +115,22 @@ class LogInScreen : Fragment() {
             var emailInput = binding.inputEmail.text.toString()
             var passwordInput = binding.inputPassword.text.toString()
             if (emailInput.isNotBlank() && passwordInput.isNotBlank()) {
-                signInUser(emailInput, passwordInput)
+
+                googleFireBaseViewModel.fireBaseSignInUser(emailInput, passwordInput, auth)
+
+                googleFireBaseViewModel.signInResult.observe(viewLifecycleOwner) { isSuccess ->
+                    if (isSuccess) {
+                        findNavController().navigate(R.id.homeScreen)
+                    } else {
+                        Toast.makeText(
+                            requireContext(),
+                            getString(R.string.toastFailedLogIn),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    binding.logInProgressbar.visibility = View.GONE
+                }
+
             } else {
                 Toast.makeText(
                     binding.root.context,
@@ -164,86 +155,44 @@ class LogInScreen : Fragment() {
         googleSignInBtn.setOnClickListener {
             val signInIntent = client.signInIntent
             startActivityForResult(signInIntent, RC_GOOGLE_SIGN_IN)
+
+            googleFireBaseViewModel.googleSignInResult.observe(viewLifecycleOwner) { isSuccess ->
+                if (isSuccess) {
+                    findNavController().navigate(R.id.homeScreen)
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.toastFailedLogIn),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                binding.logInProgressbar.visibility = View.GONE
+            }
         }
     }
 
     fun register() {
-        binding.registerButton.setOnClickListener {
-            findNavController().navigate(R.id.registerScreen)
-        }
-
-    }
-
-//    private fun signInUser(email: String, password: String) {
-//        auth.signInWithEmailAndPassword(email, password)
-//            .addOnCompleteListener(requireActivity()) { task ->
-//                var progressBar = binding.logInProgressbar
-//                if (task.isSuccessful) {
-//                    // Sign in success, navigate to home screen
-//                    val user = auth.currentUser
-//                    updateUI(user)
-//                    findNavController().navigate(R.id.homeScreen)
-//                } else {
-//                    // If sign in fails, display a message to the user.
-//                    Toast.makeText(
-//                        requireContext(),
-//                        context?.getString(R.string.toastFailedLogIn),
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                }
-//                progressBar.visibility = View.GONE
-//            }
-//    }
-
-
-
-    private fun signInUser(email: String, password: String) {
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(requireActivity()) { signInTask ->
-                var progressBar = binding.logInProgressbar
-                if (signInTask.isSuccessful) {
-                    // Sign-in success, check if email is verified
-                    val user = auth.currentUser
-                    if (user?.isEmailVerified == true) {
-                        // Email is verified, navigate to home screen
-                        updateUI(user)
-                        findNavController().navigate(R.id.homeScreen)
-                    } else {
-                        // Email is not verified, prompt user to check email for verification link
-                        Toast.makeText(
-                            requireContext(),
-                            context?.getString(R.string.toastEmailVerificationRequired),
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-                } else {
-                    // If sign-in fails, display a message to the user.
-                    Toast.makeText(
-                        requireContext(),
-                        context?.getString(R.string.toastFailedLogIn),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-                progressBar.visibility = View.GONE
+            binding.registerButton.setOnClickListener {
+                findNavController().navigate(R.id.registerScreen)
             }
-    }
 
-
-
-    fun forgotPassword(){
-        var forgotPasswordBtn = binding.forgotPasswordView
-        forgotPasswordBtn.setOnClickListener {
-            findNavController().navigate(R.id.forgotPasswordScreen)
         }
-    }
+
+    fun forgotPassword() {
+            var forgotPasswordBtn = binding.forgotPasswordView
+            forgotPasswordBtn.setOnClickListener {
+                findNavController().navigate(R.id.forgotPasswordScreen)
+            }
+        }
 
 
 //    Diese Methode muss in der App Fertigstellung gelöscht werden!
 
     fun developerSkip() {
-        binding.skipBtn.setOnClickListener {
-            findNavController().navigate(R.id.homeScreen)
+            binding.skipBtn.setOnClickListener {
+                findNavController().navigate(R.id.homeScreen)
+            }
         }
+
     }
 
-}

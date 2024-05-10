@@ -1,8 +1,6 @@
 package ui.logInFlow
 
-import FirebaseViewModel
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,16 +11,16 @@ import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentRegisterScreenBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
-import model.Profile
+import ui.viewModel.GoogleFireBaseViewModel
 
 
 class RegisterScreen : Fragment() {
     private lateinit var binding: FragmentRegisterScreenBinding
 
-    private val firebaseViewModel: FirebaseViewModel by viewModels()
+
+    private val googleFireBaseViewModel: GoogleFireBaseViewModel by viewModels()
 
     private val fireStore = FirebaseFirestore.getInstance()
 
@@ -62,6 +60,9 @@ class RegisterScreen : Fragment() {
     }
 
 
+
+
+/*
     fun register(){
         binding.submitButton.setOnClickListener {
             var progressbar = binding.registerProgressbar
@@ -79,7 +80,9 @@ class RegisterScreen : Fragment() {
                         progressbar.visibility = View.GONE
                         if (task.isSuccessful) {
                             val user = auth.currentUser
-                            /*Hier werden die Profildaten anhand der Usereingaben gesetzt.*/
+                            */
+/*Hier werden die Profildaten anhand der Usereingaben gesetzt.*//*
+
                             val profileUpdates = UserProfileChangeRequest.Builder()
                                 .setDisplayName(nameInput)
                                 .build()
@@ -117,6 +120,43 @@ class RegisterScreen : Fragment() {
                 return@setOnClickListener
             }
 
+        }
+    }
+*/
+
+
+    fun register() {
+        binding.submitButton.setOnClickListener {
+            var progressbar = binding.registerProgressbar
+            var nameInput = binding.inputName.text.toString()
+            var emailInput = binding.inputEmail.text.toString()
+            var passwordInput = binding.inputPassword.text.toString()
+            var passwordRepeatInput = binding.inputPasswordRepeat.text.toString()
+
+            googleFireBaseViewModel.fireBaseRegister(nameInput,emailInput,passwordInput,passwordRepeatInput,auth,fireStore)
+            progressbar.visibility = View.VISIBLE
+
+            googleFireBaseViewModel.registrationResult.observe(viewLifecycleOwner) { isSuccess ->
+                if (isSuccess) {
+                    // Erfolgreiche Registrierung
+                    findNavController().navigate(R.id.logInScreen)
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.toastSuccesfulAccountCreation),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    progressbar.visibility = View.GONE
+
+                } else {
+                    // Fehler bei der Registrierung
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.toastFailedAccountCreation),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    progressbar.visibility = View.GONE
+                }
+            }
         }
     }
 
