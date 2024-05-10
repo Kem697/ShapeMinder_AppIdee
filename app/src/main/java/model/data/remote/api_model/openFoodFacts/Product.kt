@@ -6,8 +6,13 @@ import com.squareup.moshi.Json
 import kotlinx.serialization.Serializable
 
 
+
+@Entity
 @Serializable
 data class Product(
+
+    @PrimaryKey(autoGenerate = true)
+    val id: Long = 0,
 
     @Json(name = "product_name_de")
     val productNameDe: String?,

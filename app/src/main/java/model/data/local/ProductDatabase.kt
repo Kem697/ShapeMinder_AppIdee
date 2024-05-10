@@ -1,35 +1,38 @@
 /*
 package model.data.local
 
-import androidx.room.Dao
 
-import androidx.lifecycle.LiveData
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Update
-import model.data.local.model.myTraining.Content
-import model.data.local.model.myTraining.TrainingsSession
+import android.content.Context
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import model.data.remote.api_model.openFoodFacts.Product
+import model.data.remote.api_model.openFoodFacts.ProductConv
 
-@Dao
-interface TrainingSessionsDataDao {
+@Database(entities = [Product::class], version = 1)
+@TypeConverters(ProductConv::class)
+abstract class ProductDatabase : RoomDatabase(){
 
+    abstract val productDao: ProductDataDao
 
-    @Query("SELECT * FROM TRAININGSSESSION")
-    fun getAll(): LiveData<List<TrainingsSession>>
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertSession(newTrainingsSession: TrainingsSession)
-
-    @Update
-    suspend fun updateSession(trainingsSession: TrainingsSession)
+}
+@Volatile
+private lateinit var INSTANCE: ProductDatabase
 
 
-    @Delete
-    suspend fun deleteSession(trainingsSession: TrainingsSession)
+fun getProductDatabase(context: Context) : ProductDatabase {
 
-    */
-/*    @Delete
-        suspend fun deleteExerciseFromDb(exercise: Content)*//*
 
+    synchronized(ProductDatabase::class.java){
+        if (!::INSTANCE.isInitialized) {
+
+            INSTANCE = Room.databaseBuilder(
+                context.applicationContext,
+                ProductDatabase::class.java,
+                "database_products"
+            ).build()
+        }
+        return INSTANCE
+    }
 }*/

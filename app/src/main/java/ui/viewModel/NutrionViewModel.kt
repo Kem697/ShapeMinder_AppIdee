@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 //import model.data.local.getProductDatabase
+//import model.data.local.getProductDatabase
 import model.data.local.model.myNutrion.FoodFinderCategory
 import model.data.remote.api_model.openFoodFacts.OpenFoodFactsApi
 import model.data.remote.RemoteRepositoryFood
@@ -21,7 +22,7 @@ class NutrionViewModel(application: Application) : AndroidViewModel(application)
 
     private var groceryCategories = remoteRepositoryFood.groceryCategories
 
-//    val productsInDatabase = remoteRepository.savedFoodList
+//    val productsInDatabase = remoteRepositoryFood.savedFoodList
 
 
 
@@ -153,20 +154,20 @@ class NutrionViewModel(application: Application) : AndroidViewModel(application)
     /*EN:
     * These methods are related to alterations in the productDatabase*/
 
-//    init {
-//        setUpProductDatabase()
-//    }
+ /*   init {
+        setUpProductDatabase()
+    }*/
 
 
 /*    fun setUpProductDatabase (){
         viewModelScope.launch {
-            remoteRepository.insertProduct(Product(1,null, listOf(),null,"",null,null,true))
+            remoteRepositoryFood.insertProduct(Product(1,null, listOf(),null,"",null,null,true))
         }
-    }
+    }*/
 
-    fun insertProduct (product: Product){
+  /*  fun insertProduct (product: Product){
         viewModelScope.launch {
-            remoteRepository.insertProduct(product)
+            remoteRepositoryFood.insertProduct(product)
         }
     }*/
 }

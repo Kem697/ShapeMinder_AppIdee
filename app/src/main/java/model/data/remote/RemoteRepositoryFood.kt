@@ -1,6 +1,7 @@
 package model.data.remote
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.shapeminder_appidee.R
 //import model.data.local.ProductDatabase
@@ -10,9 +11,10 @@ import model.data.remote.api_model.openFoodFacts.Product
 import kotlin.Exception
 
 class RemoteRepositoryFood (
-    private val openFoodApi: OpenFoodFactsApi
+    private val openFoodApi: OpenFoodFactsApi,
+//    private val productDatabase: ProductDatabase
 )
-//    private val productDatabase: ProductDatabase)
+
 {
     var groceryCategories = loadGroceryCategories()
 
@@ -82,7 +84,7 @@ class RemoteRepositoryFood (
     }
 
 
-/*    suspend fun insertProduct (product: Product){
+   /* suspend fun insertProduct (product: Product){
         try {
             productDatabase.productDao.insertProduct(product)
         } catch (e:Exception){
