@@ -259,6 +259,9 @@
     <string name="toastFailedAccountCreation">Nutzerkonto konnte nicht angelegt werden!</string>
     <string name="toastSuccesfulAccountCreation">Bitte bestätige den Aktivierungslink, um deine Kontoregistrierung abzuschließen.</string>
     <string name="toastFailedLogIn">Anmeldung fehlgeschlagen. Bitte überprüfe deine Eingaben.</string>
+
+    <string name="toastSucessfulLogIn">Anmeldung erfolgreich!</string>
+
     <string name="toastUserInputHint">Bitte mach eine Eingabe!</string>
     <string name="toastLoadVideoFailure">Fehler beim Abruf des Videos von Youtube!</string>
     <string name="toastShareVideoFailure">Kein Video zum Teilen vorhanden!</string>

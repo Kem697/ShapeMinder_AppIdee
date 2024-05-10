@@ -120,6 +120,11 @@ class LogInScreen : Fragment() {
 
                 googleFireBaseViewModel.signInResult.observe(viewLifecycleOwner) { isSuccess ->
                     if (isSuccess) {
+                        Toast.makeText(
+                            requireContext(),
+                            getString(R.string.toastSucessfulLogIn),
+                            Toast.LENGTH_SHORT
+                        ).show()
                         findNavController().navigate(R.id.homeScreen)
                     } else {
                         Toast.makeText(

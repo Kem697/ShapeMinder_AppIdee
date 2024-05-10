@@ -186,6 +186,7 @@
 
     <string name="toastFailedAccountCreation">User account could not be created!</string>
     <string name="toastSuccesfulAccountCreation">Please confirm the activation link to complete your account registration.</string>
+    <string name="toastSucessfulLogIn">Log in successful!</string>
     <string name="toastFailedLogIn">Login failed. Please check your entries.</string>
     <string name="toastUserInputHint">Please make an entry!</string>
     <string name="toastLoadVideoFailure">Error when retrieving the video from Youtube!</string>

@@ -175,6 +175,8 @@
     <string name="developerBtnText">Hopp over</string>
     <string name="toastFailedAccountCreation">Brukerkonto kunne ikke opprettes!</string>
     <string name="toastSuccesfulAccountCreation">Bekreft aktiveringslenken for å fullføre registreringen av kontoen din.</string>
+    <string name="toastSucessfulLogIn">Innlogging vellykket!</string>
+
     <string name="toastFailedLogIn">Innlogging mislyktes. Vennligst sjekk oppføringene dine.</string>
     <string name="toastUserInputHint">Vennligst skriv inn et bidrag!</string>
     <string name="toastLoadVideoFailure">Feil ved henting av video fra Youtube!</string>

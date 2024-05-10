@@ -177,6 +177,8 @@
     <string name="developerBtnText">Atla</string>
     <string name="toastFailedAccountCreation">Kullanıcı hesabı oluşturulamadı!</string>
     <string name="toastSuccesfulAccountCreation">Hesap kaydınızı tamamlamak için lütfen aktivasyon bağlantısını onaylayın.</string>
+    <string name="toastSucessfulLogIn">Giriş başarılı!</string>
+
     <string name="toastFailedLogIn">Giriş başarısız oldu. Lütfen girişlerinizi kontrol edin.</string>
     <string name="toastUserInputHint">Lütfen bir giriş yapın!</string>
     <string name="toastLoadVideoFailure">Youtube\'dan video alınırken hata oluştu!</string>
