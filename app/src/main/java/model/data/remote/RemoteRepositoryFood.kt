@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.shapeminder_appidee.R
+import model.data.local.ProductDatabase
 //import model.data.local.ProductDatabase
 import model.data.local.model.myNutrion.FoodFinderCategory
 import model.data.remote.api_model.openFoodFacts.OpenFoodFactsApi
@@ -12,13 +13,13 @@ import kotlin.Exception
 
 class RemoteRepositoryFood (
     private val openFoodApi: OpenFoodFactsApi,
-//    private val productDatabase: ProductDatabase
+    private val productDatabase: ProductDatabase
 )
 
 {
     var groceryCategories = loadGroceryCategories()
 
-//    val savedFoodList : LiveData<List<Product>> = productDatabase.productDao.getAllProduct()
+    val savedFoodList : LiveData<List<Product>> = productDatabase.productDao.getAllProduct()
 
 
     private var _getFood = MutableLiveData<List<Product>>()
@@ -84,14 +85,24 @@ class RemoteRepositoryFood (
     }
 
 
-   /* suspend fun insertProduct (product: Product){
+    suspend fun insertProduct (product: Product){
         try {
             productDatabase.productDao.insertProduct(product)
         } catch (e:Exception){
             var tag = "Eintrag in Produktdatenbank"
             Log.i(tag,"Fehler bei der Speicherung des Produtkts in die DB: $e")
         }
-    }*/
+    }
+
+
+    suspend fun deleteProduct (product: Product){
+        try {
+            productDatabase.productDao.deleteProduct(product)
+        } catch (e:Exception){
+            var tag = "Austrag in Produktdatenbank"
+            Log.i(tag,"Fehler bei der Entfernung des Produtkts in der DB: $e")
+        }
+    }
 
 
 }

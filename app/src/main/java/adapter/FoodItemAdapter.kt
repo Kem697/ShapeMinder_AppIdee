@@ -74,6 +74,7 @@ class FoodItemAdapter(
                 nutrionViewModel.isSaved(!food.isSaved, food)
                 saveBtn.setImageResource(R.drawable.bookmark_fill0_wght400_grad0_opsz24)
                 food.isSaved = false
+//                nutrionViewModel.deleteProduct(food)
                 var tag = "Fehler"
                 Log.e(
                     tag,
@@ -83,6 +84,7 @@ class FoodItemAdapter(
                 nutrionViewModel.isSaved(!food.isSaved, food)
                 saveBtn.setImageResource(R.drawable.bookmark_fill1_wght400_grad0_opsz24)
                 food.isSaved = true
+//                nutrionViewModel.insertProduct(food)
                 var tag = "Fehler"
                 Log.e(
                     tag,

@@ -1,7 +1,9 @@
 package model.data.remote.api_model.openFoodFacts
 
+import androidx.room.Entity
 import com.squareup.moshi.Json
 import kotlinx.serialization.Serializable
+
 
 @Serializable
 data class Nutriments(

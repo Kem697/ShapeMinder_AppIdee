@@ -1,4 +1,3 @@
-/*
 package model.data.local
 
 
@@ -35,4 +34,4 @@ fun getProductDatabase(context: Context) : ProductDatabase {
         }
         return INSTANCE
     }
-}*/
+}
