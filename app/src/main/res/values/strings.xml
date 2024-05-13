@@ -220,7 +220,7 @@
     <string name="savedExercise">Gespeicherte Übungen</string>
     <string name="setsText">Sätze</string>
     <string name="repText">Wdh.</string>
-    <string name="weightText">Gewicht</string>
+    <string name="weightText">Gewicht(kg)</string>
     <string name="nutrionFactsText">Nährwerte pro 100g</string>
     <string name="calText">Kalorien</string>
     <string name="fatsText">Fette</string>

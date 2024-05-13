@@ -11,5 +11,6 @@ data class TrainingsSession(
 
     var sessionName : String = "",
     var sessionDate : String = "",
+
     var trainingsSession: MutableList<Exercise>
 )

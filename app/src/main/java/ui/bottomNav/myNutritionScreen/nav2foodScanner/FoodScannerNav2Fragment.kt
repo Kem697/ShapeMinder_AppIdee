@@ -78,7 +78,6 @@ class FoodScannerNav2Fragment : Fragment() {
                         setPositiveButton("Speichern") { dialog, _ ->
                             nutritionViewModel.isSaved(!food.isSaved,food)
                             food.isSaved = true
-//                            nutritionViewModel.insertProduct(food)
                             dialog.dismiss()
                         }
 

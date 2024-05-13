@@ -155,7 +155,7 @@
     <string name="savedExercise">Lagrede øvelser</string>
     <string name="setsText">Sett</string>
     <string name="repText">Reps</string>
-    <string name="weightText">Vekt</string>
+    <string name="weightText">Vekt(kg)</string>
     <string name="nutrionFactsText">Næringsverdier per 100 g</string>
     <string name="calText">Kalorier</string>
     <string name="fatsText">Fett</string>

@@ -157,7 +157,7 @@
     <string name="savedExercise">Kayıtlı egzersizler</string>
     <string name="setsText">Setler</string>
     <string name="repText">Temsilciler</string>
-    <string name="weightText">Ağırlık</string>
+    <string name="weightText">Ağırlık(kg)</string>
     <string name="nutrionFactsText">100g başına besin değerleri</string>
     <string name="calText">Kalori</string>
     <string name="fatsText">Yağlar</string>

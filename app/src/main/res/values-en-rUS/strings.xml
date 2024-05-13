@@ -157,7 +157,7 @@
     <string name="savedExercise">Saved exercises</string>
     <string name="setsText">Sets</string>
     <string name="repText">Reps</string>
-    <string name="weightText">Weight</string>
+    <string name="weightText">Weight(lbs)</string>
     <string name="nutrionFactsText">Nutritional values per 100g</string>
     <string name="calText">Calories</string>
     <string name="fatsText">Fats</string>
