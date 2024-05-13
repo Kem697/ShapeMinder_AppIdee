@@ -49,6 +49,10 @@
     <string name="weLH_Squats">LH-Squats</string>
     <string name="weKH_SideRaiseLayOnBench">KH-Side raises on the bench</string>
     <string name="weCable_Row">MA-Cable rows</string>
+
+    <string name="weKH_Row">KH-Row</string>
+    <string name="weLH_Row">LH-Row</string>
+
     <string name="weKH_BicepscurlsInstruction">Stand tall with a dumbbell in each hand, palms facing forward. Bend your elbows to bring the dumbbells toward your shoulders by activating your biceps muscles. Lower the dumbbells slowly and in a controlled manner to stretch the muscles.</string>
     <string name="we_LungesInstruction">Stand tall and take a big step forward. Bend both knees until both legs form a 90-degree angle. Push yourself back up with your front leg and repeat on the other side.</string>
     <string name="weLH_BicepscurlsInstructions">Stand upright with a barbell in your hands, keeping your hands shoulder-width apart, palms facing forward. Bend your elbows to bring the barbell toward your shoulder by activating your biceps muscles. Lower the barbell slowly and in a controlled manner to stretch the muscles.</string>
@@ -67,6 +71,11 @@
     <string name="weSquatsInstructions">Stand upright with a barbell on your shoulders, feet slightly wider than shoulder-width apart. Bend your knees to lower your body until your thighs are parallel to the floor.</string>
     <string name="weKH_SideRaiseLayOnBenchInstruction">Lie on your stomach on a bench and hold a dumbbell in each hand. Raise the dumbbells to the sides until both of your inner arms are parallel to the floor by activating your hamstrings. Lower the dumbbells slowly and in a controlled manner to stretch the muscles.</string>
     <string name="weCable_RowInstructions">Position yourself in front of the cable machine with your handle. Pull the handle toward your stomach area by squeezing your shoulder blades together. Hold the tension briefly and lower the handle back in a controlled manner. Breathe out as you pull and inhale as you lower. Make sure your back is straight and your movements are controlled.</string>
+
+    <string name="weKH_RowInstructions">Hold a dumbbell in one hand, support yourself on the incline bench with the other hand and pull your elbows back to guide the dumbbells to the side of your upper body. Pause briefly and then lower the dumbbells in a controlled manner. Keep your back straight to avoid injury.</string>
+    <string name="weLH_RowInstructions">In barbell rows, you grab a barbell with both hands, bend forward slightly and pull the barbell close to your upper body. Then lower it again in a controlled manner. This strengthens your upper back, shoulders and arms.</string>
+
+
     <string name="ecBenchpress">Bench press</string>
     <string name="ecShoulderpress">Shoulder press</string>
     <string name="addExercise">Add exercise</string>

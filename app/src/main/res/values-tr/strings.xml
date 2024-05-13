@@ -45,6 +45,11 @@
     <string name="weLH_Squats">LH-Squats</string>
     <string name="weKH_SideRaiseLayOnBench">KH-Side raises on the bench</string>
     <string name="weCable_Row">MA-Cable rows</string>
+
+    <string name="weKH_Row">KH-Row</string>
+    <string name="weLH_Row">LH-Row</string>
+
+
     <string name="weKH_BicepscurlsInstruction">Avuç içleri öne bakacak şekilde her iki elinize birer dambıl alarak ayakta durun. Biceps kaslarınızı harekete geçirerek dambılları omuzlarınıza doğru getirmek için dirseklerinizi bükün. Kasları esnetmek için dambılları yavaşça ve kontrollü bir şekilde indirin.</string>
     <string name="we_LungesInstruction">Dik durun ve öne doğru büyük bir adım atın. Her iki bacak 90 derecelik bir açı oluşturana kadar her iki dizinizi bükün. Ön bacağınızla kendinizi yukarı itin ve diğer tarafta tekrarlayın.</string>
     <string name="weLH_BicepscurlsInstructions">Ellerinizde bir halterle dik durun, ellerinizi omuz genişliğinde açık tutun, avuç içleriniz öne baksın. Biseps kaslarınızı aktive ederek halteri omzunuza doğru getirmek için dirseklerinizi bükün. Kasları esnetmek için halteri yavaşça ve kontrollü bir şekilde indirin.</string>
@@ -63,6 +68,11 @@
     <string name="weSquatsInstructions">Stand upright with a barbell on your shoulders, feet slightly wider than shoulder-width apart. Bend your knees to lower your body until your thighs are parallel to the floor.</string>
     <string name="weKH_SideRaiseLayOnBenchInstruction">Bir bankın üzerine yüzüstü uzanın ve her iki elinizde birer dambıl tutun. Hamstring kaslarınızı harekete geçirerek iç kollarınızın her ikisi de yere paralel olana kadar dambılları yanlara doğru kaldırın. Kasları esnetmek için dambılları yavaşça ve kontrollü bir şekilde indirin.</string>
     <string name="weCable_RowInstructions">Kendinizi kolunuzla birlikte kablo makinesinin önünde konumlandırın. Kürek kemiklerinizi birbirine doğru sıkarak tutamağı karın bölgenize doğru çekin. Gerginliği kısa bir süre tutun ve kolu kontrollü bir şekilde geri indirin. Çekerken nefes verin ve indirirken nefes alın. Sırtınızın düz ve hareketlerinizin kontrollü olduğundan emin olun.</string>
+
+    <string name="weKH_RowInstructions">Bir elinizde bir dambıl tutun, diğer elinizle eğimli bankta kendinizi destekleyin ve dambılları üst vücudunuzun yan tarafına yönlendirmek için dirseklerinizi geri çekin. Kısa bir süre duraklayın ve ardından dambılları kontrollü bir şekilde indirin. Yaralanmaları önlemek için sırtınızı düz tutun.</string>
+    <string name="weLH_RowInstructions">Barbell row hareketinde, bir halteri iki elinizle tutarsınız, hafifçe öne doğru eğilirsiniz ve halteri vücudunuzun üst kısmına doğru çekersiniz. Ardından kontrollü bir şekilde tekrar indirin. Bu üst sırtınızı, omuzlarınızı ve kollarınızı güçlendirir.</string>
+
+
     <string name="ecBenchpress">Bench press</string>
     <string name="ecShoulderpress">Shoulder press</string>
     <string name="addExercise">Egzersiz ekleyin</string>

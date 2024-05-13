@@ -81,6 +81,10 @@
     <string name="weCable_Row">MA-Kabelrudern</string>
 
 
+    <string name="weKH_Row">KH-Rudern</string>
+    <string name="weLH_Row">LH-Rudern</string>
+
+
     <!--exerciseText-->
 
     <string name="weKH_BicepscurlsInstruction">" Stehe aufrecht mit einer Kurzhantel in jeder Hand, die Handflächen zeigen nach vorne. Beuge deine Ellbogen, um die Hanteln zur Schulter zu bringen, indem du deine Bizepsmuskeln aktivierst. Senke die Hanteln langsam und kontrolliert wieder ab, um die Muskeln zu dehnen."</string>
@@ -102,6 +106,9 @@
     <string name="weSquatsInstructions">" Stehe aufrecht mit einer Langhantel auf den Schultern, die Füße etwas weiter als schulterbreit auseinander. Beuge die Knie, um den Körper abzusenken, bis die Oberschenkel parallel zum Boden sind.     "</string>
     <string name="weKH_SideRaiseLayOnBenchInstruction">" Lege dich mit dem Bauch auf eine Bank und halte in jeder Hand eine Kurzhantel. Hebe die Hanteln seitlich hoch, bis deine beiden Arminneseiten parallel zum Boden sind, indem du deine hinter Schultermuskeln aktivierst. Senke die Hanteln langsam und kontrolliert ab, um die Muskeln zu dehnen.     "</string>
     <string name="weCable_RowInstructions">" Positioniere dich vor dem Kabelzuggerät mit deinem Griff. Ziehe den Griff zur Bauchgegend, indem du die Schulterblätter zusammenziehst. Halte die Spannung kurz und senke den Griff kontrolliert zurück. Atme aus, wenn du ziehst, und ein, wenn du senkst. Achte auf eine gerade Rückenhaltung und kontrollierte Bewegungen.     "</string>
+
+    <string name="weKH_RowInstructions">Halte eine Hantel in einer Hand, stütze dich mit der anderen Hand auf der Schrägbank und ziehe die Ellbogen nach hinten, um die Hanteln seitlich am Oberkörper zu führen. Halte kurz inne und senke dann die Hanteln kontrolliert ab. Halte dabei den Rücken gerade, um Verletzungen zu vermeiden.</string>
+    <string name="weLH_RowInstructions">Beim Langhantelrudern greifst du eine Langhantel mit beiden Händen, beugst dich leicht nach vorne und ziehst die Langhantel eng an deinen Oberkörper. Dann senkst du sie wieder kontrolliert ab. Das stärkt den oberen Rücken, Schultern und Arme.</string>
 
 
     <!--exerciseVideos-->

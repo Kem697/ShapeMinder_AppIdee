@@ -45,6 +45,11 @@
     <string name="weLH_Squats">LH-Squats</string>
     <string name="weKH_SideRaiseLayOnBench">KH-Sidehevinger på benken</string>
     <string name="weCable_Row">MA-Kabelrekker</string>
+
+    <string name="weKH_Row">KH-Rekker</string>
+    <string name="weLH_Row">LH-Rekker</string>
+
+
     <string name="weKH_BicepscurlsInstruction">Stå oppreist med en manual i hver hånd, håndflatene vendt fremover. Bøy albuene for å føre manualene mot skuldrene ved å aktivere bicepsmusklene. Senk manualene sakte og kontrollert for å strekke musklene.</string>
     <string name="we_LungesInstruction">Stå oppreist og ta et stort skritt fremover. Bøy begge knærne til begge bena danner en 90-graders vinkel. Skyv deg opp igjen med det fremre benet og gjenta på den andre siden.</string>
     <string name="weLH_BicepscurlsInstructions">Stå oppreist med en vektstang i hendene, hold hendene i skulderbreddes avstand og håndflatene vendt fremover. Bøy albuene for å føre vektstangen mot skulderen ved å aktivere bicepsmusklene. Senk vektstangen sakte og kontrollert for å strekke musklene.</string>
@@ -63,6 +68,11 @@
     <string name="weSquatsInstructions">Stå oppreist med en vektstang på skuldrene, med føttene litt bredere enn skulderbredde fra hverandre. Bøy knærne for å senke kroppen til lårene er parallelle med gulvet.</string>
     <string name="weKH_SideRaiseLayOnBenchInstruction">Ligg på magen på en benk og hold en manual i hver hånd. Løft manualene til siden til begge de indre armene er parallelle med gulvet ved å aktivere hamstringsmusklene. Senk manualene sakte og kontrollert for å tøye musklene.</string>
     <string name="weCable_RowInstructions">Plasser deg foran kabelmaskinen med håndtaket. Trekk håndtaket mot magen ved å klemme skulderbladene sammen. Hold spenningen en kort stund og senk håndtaket kontrollert ned igjen. Pust ut mens du trekker og pust inn mens du senker. Sørg for at ryggen er rett og at bevegelsene er kontrollerte.</string>
+
+    <string name="weKH_RowInstructions">Hold en manual i den ene hånden, støtt deg på skråbenken med den andre hånden og trekk albuene bakover for å føre manualene til siden av overkroppen. Ta en kort pause og senk deretter manualene kontrollert ned. Hold ryggen rett for å unngå skader.</string>
+    <string name="weLH_RowInstructions">I roing med vektstang tar du tak i en vektstang med begge hender, bøyer deg litt forover og trekker vektstangen tett inntil overkroppen. Deretter senker du den kontrollert ned igjen. Dette styrker øvre del av ryggen, skuldrene og armene.</string>
+
+
     <string name="ecBenchpress">Benkpress</string>
     <string name="ecShoulderpress">Skulderpress</string>
     <string name="addExercise">Legg til trening</string>
