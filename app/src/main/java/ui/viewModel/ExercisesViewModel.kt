@@ -436,7 +436,9 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
 
     fun addToNewWorkout(exercise: Exercise) {
         exercise.addedToSession = true
-        _addToSessionExercises.value = mutableListOf(exercise)
+        val sessionExercises = _addToSessionExercises.value?: mutableListOf()
+        sessionExercises.add(exercise)
+        _addToSessionExercises.value = sessionExercises
     }
 
     fun setOriginalList(exercises: List<Exercise>, bodypart: String, context: Context) {
