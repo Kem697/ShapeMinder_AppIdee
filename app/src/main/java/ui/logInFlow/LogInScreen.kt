@@ -126,7 +126,7 @@ class LogInScreen : Fragment() {
                             Toast.LENGTH_SHORT
                         ).show()
                         findNavController().navigate(R.id.homeScreen)
-                    } else {
+                    }   else {
                         Toast.makeText(
                             requireContext(),
                             getString(R.string.toastFailedLogIn),
