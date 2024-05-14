@@ -259,8 +259,11 @@ class TrainingsessionViewModel (application: Application) : AndroidViewModel(app
                 "Übung wirdd gespeichert!!:${exercise} Zustand: ${addedExercise}. Die Liste enthält: ${updatedSession.size}"
             )
         } else {
-            updatedSession.remove(exercise)
-            updatedPerformance.remove(Performance())
+            val index = updatedSession.indexOf(exercise)
+            if (updatedPerformance.isNotEmpty() && index != -1){
+                updatedSession.remove(exercise)
+                updatedPerformance.removeAt(index)
+            }
             var tag = "Radiocheck??"
             Log.e(
                 tag,

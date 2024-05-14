@@ -49,9 +49,12 @@ class EditTrainingAdapter (
         Log.i("Session", "Übungen: ${trainingsSession.trainingsSession.size} Trainingsdaten: ${trainingsSession.performance.size}")
         holder.binding.deleteExercise.setOnClickListener{
             if (exercise.addedToSession == true){
+                val getElementIndexPosition = holder.adapterPosition
                 sessionViewModel.deleteWorkoutInEditSession(!exercise.addedToSession!!,exercise)
-                val getPosition = holder.adapterPosition
-                notifyItemRemoved(getPosition)
+                notifyItemRemoved(getElementIndexPosition)
+//                holder.binding.editSets.setText(trainingsSession.performance[getElementIndexPosition-1].sets)
+//                holder.binding.editReps.setText(trainingsSession.performance[getElementIndexPosition-1].reps)
+//                holder.binding.editWeight.setText(trainingsSession.performance[getElementIndexPosition-1].weight)
                 var tag = "Delete Btn check??"
                 Log.i(tag, "Übung wurde gelöscht: ${exercise.addedToSession} ${dataset.indexOf(exercise)} $position | Größe Performance Liste: ${trainingsSession.performance.size}")
             }
