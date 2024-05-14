@@ -19,6 +19,7 @@ import com.example.shapeminder_appidee.databinding.FragmentNewTrainingsSessionBi
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.datepicker.MaterialDatePicker
 import model.data.local.model.myTraining.Exercise
+import model.data.local.model.myTraining.Performance
 import model.data.local.model.myTraining.TrainingsSession
 import ui.viewModel.ExercisesViewModel
 import ui.viewModel.TrainingsessionViewModel
@@ -114,7 +115,8 @@ class NewTrainingsSessionFragment : Fragment() {
         saveBtn.setOnClickListener {
             if (sessionName.isNotBlank()|| editSessionName.text.isNotBlank()) {
                 if (addedToSessionExercises.size > 0) {
-                    var newSession = TrainingsSession(sessionName = editSessionName.text.toString(), sessionDate = binding.dateView.text.toString(),trainingsSession = addedToSessionExercises)
+                    var trainingPerformance: MutableList<Performance> = MutableList(addedToSessionExercises.size){Performance()}
+                    var newSession = TrainingsSession(sessionName = editSessionName.text.toString(), sessionDate = binding.dateView.text.toString(),trainingsSession = addedToSessionExercises, performance = trainingPerformance )
                     sessionViewModel.insertNewTrainingssession(newSession)
                     Toast.makeText(
                         requireContext(),

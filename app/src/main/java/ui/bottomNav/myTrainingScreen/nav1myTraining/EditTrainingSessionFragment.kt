@@ -68,7 +68,7 @@ class EditTrainingSessionFragment : Fragment() {
                 binding.sessionDate.setText(it.sessionDate)
             }
             binding.sessionName.setText(it.sessionName)
-            binding.rvEditCurrentWorkout.adapter = EditTrainingAdapter(it.trainingsSession, sessionViewModel, requireContext())
+            binding.rvEditCurrentWorkout.adapter = EditTrainingAdapter(it,it.trainingsSession, sessionViewModel, requireContext())
             saveSessionChanges(it)
             deleteSession(it)
             addWorkout(it)

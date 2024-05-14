@@ -1,20 +1,20 @@
 package adapter
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.EditText
-import androidx.core.view.isInvisible
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shapeminder_appidee.databinding.ListItemEditSessionBinding
 import model.data.local.model.myTraining.Exercise
+import model.data.local.model.myTraining.TrainingsSession
 import ui.viewModel.TrainingsessionViewModel
 
 
 class EditTrainingAdapter (
+    private val trainingsSession: TrainingsSession,
     private val dataset: List<Exercise>,
     private val sessionViewModel: TrainingsessionViewModel,
     private var context: Context
@@ -35,7 +35,9 @@ class EditTrainingAdapter (
     override fun onBindViewHolder(holder: EditSessionItemViewHolder, position: Int) {
         val exercise = dataset[position]
 
-
+        var userInputReps = holder.binding.editReps
+        var userInputSets = holder.binding.editSets
+        var userInputWeight = holder.binding.editWeight
 
         var tag = "Delete Btn check??"
         Log.i(tag, "Übung wurde gelöscht: ${exercise.addedToSession} ${dataset.indexOf(exercise)} $position")
@@ -43,58 +45,55 @@ class EditTrainingAdapter (
         holder.binding.exerciseBodyPart.setText(exercise.bodyPart)
         holder.binding.exerciseImage.setImageResource(exercise.imageRessource)
 
+
+        Log.i("Session", "Übungen: ${trainingsSession.trainingsSession.size} Trainingsdaten: ${trainingsSession.performance.size}")
         holder.binding.deleteExercise.setOnClickListener{
             if (exercise.addedToSession == true){
                 sessionViewModel.deleteWorkoutInEditSession(!exercise.addedToSession!!,exercise)
                 val getPosition = holder.adapterPosition
                 notifyItemRemoved(getPosition)
                 var tag = "Delete Btn check??"
-                Log.i(tag, "Übung wurde gelöscht: ${exercise.addedToSession} ${dataset.indexOf(exercise)} $position")
+                Log.i(tag, "Übung wurde gelöscht: ${exercise.addedToSession} ${dataset.indexOf(exercise)} $position | Größe Performance Liste: ${trainingsSession.performance.size}")
             }
         }
 
         //Um die Trainingsleistungen für jede Übung vom Nutzer abspeichern zu lassen, muss ich auf die EditText views der EditSessionItems zugreifen.
 
-
-        /*      val sharedPreferences = context.getSharedPreferences("user_inputs", Context.MODE_PRIVATE)
-              val editor = sharedPreferences.edit()
-
-              var userInputReps = holder.binding.editReps
-              var userInputSets = holder.binding.editSets
-              var userInputWeight = holder.binding.editWeight*/
-
-        /*  saveData(editor,userInputReps,userInputSets,userInputWeight)
-          loadData(holder,position,sharedPreferences)*/
+          editPerformance(userInputReps,userInputSets,userInputWeight,holder)
     }
 
+    var tag = "Performance Save"
 
-    fun saveData(editor: SharedPreferences.Editor,userInputReps: EditText, userInputSets: EditText, userInputWeight: EditText){
+
+    fun editPerformance(userInputReps: EditText, userInputSets: EditText, userInputWeight: EditText, holder: EditSessionItemViewHolder,){
+        val getElementIndexPosition = holder.adapterPosition
+
         userInputReps.addTextChangedListener { userInput ->
-            editor.putString("reps", userInput.toString())
-            editor.apply()
+            userInput.toString()
+            sessionViewModel.editTrainingPerformance(getElementIndexPosition,context,userInput.toString(),userInputReps.id,trainingsSession)
+            Log.i("User Input","Reps Input: ${userInput.toString()} | Adapter Position: $getElementIndexPosition")
         }
         userInputSets.addTextChangedListener { userInput ->
-            editor.putString("sets", userInput.toString())
-            editor.apply()
+           sessionViewModel.editTrainingPerformance(getElementIndexPosition,context,userInput.toString(),userInputSets.id,trainingsSession)
+           Log.i("User Input","Sets Input: ${userInput.toString()} | Adapter Position: $getElementIndexPosition")
         }
         userInputWeight.addTextChangedListener { userInput ->
-            editor.putString("weight", userInput.toString())
-            editor.apply()
+           userInput.toString()
+           sessionViewModel.editTrainingPerformance(getElementIndexPosition,context,userInput.toString(),userInputWeight.id,trainingsSession)
+           Log.i("User Input","Weight Input: ${userInput.toString()} | Adapter Position: $getElementIndexPosition")
         }
+
+        holder.binding.editSets.setText(trainingsSession.performance[getElementIndexPosition].sets)
+        holder.binding.editReps.setText(trainingsSession.performance[getElementIndexPosition].reps)
+        holder.binding.editWeight.setText(trainingsSession.performance[getElementIndexPosition].weight)
+
+
+
+
+
+        Log.i(tag,"Sets: ${trainingsSession.performance.firstOrNull()?.sets} | Reps: ${trainingsSession.performance.firstOrNull()?.reps}  Weight: ${trainingsSession.performance.firstOrNull()?.weight}|")
+
     }
-
-
-    fun loadData(holder: EditSessionItemViewHolder, position: Int, sharedPreferences: SharedPreferences){
-        val savedReps = sharedPreferences.getString("reps",null)
-        val savedSets = sharedPreferences.getString("sets",null)
-        val savedWeight = sharedPreferences.getString("weight",null)
-
-        holder.binding.editReps.setText(savedReps)
-        holder.binding.editSets.setText(savedSets)
-        holder.binding.editWeight.setText(savedWeight)
-
-    }
-
 }
 
 

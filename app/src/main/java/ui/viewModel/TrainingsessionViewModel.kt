@@ -14,6 +14,7 @@ import kotlinx.coroutines.launch
 import model.data.local.LocalRepository
 import model.data.local.getTrainingDatabase
 import model.data.local.model.myTraining.Exercise
+import model.data.local.model.myTraining.Performance
 import model.data.local.model.myTraining.TrainingsSession
 
 class TrainingsessionViewModel (application: Application) : AndroidViewModel(application) {
@@ -228,12 +229,30 @@ class TrainingsessionViewModel (application: Application) : AndroidViewModel(app
         _selectedTraininingssession.value = currentSession
     }
 
+    fun editTrainingPerformance(getElementIndexPosition: Int, context: Context, userInput: String,propertyName: Int, trainingsSession: TrainingsSession) {
+        val performance = trainingsSession.performance[getElementIndexPosition]
+        val propertyNameString = context.resources.getResourceEntryName(propertyName)
+        when (propertyNameString) {
+            "editReps"-> performance.reps = userInput
+            "editSets" -> performance.sets = userInput
+            "editWeight"-> performance.weight = userInput
+            else -> {
+                // Fügen Sie hier eine Behandlung für den Fall hinzu, dass der propertyName nicht erkannt wird
+                // Möglicherweise möchten Sie eine Benachrichtigung anzeigen oder eine Standardaktion ausführen
+            }
+        }
+        updateTrainingsession(trainingsSession)
+    }
+
+
 
     fun deleteWorkoutInEditSession(addedExercise: Boolean, exercise: Exercise) {
         val updatedSession = selectedTraininingssession.value?.trainingsSession ?: mutableListOf()
+        val updatedPerformance = selectedTraininingssession.value?.performance ?: mutableListOf()
 
         if (addedExercise) {
             updatedSession.add(exercise)
+            updatedPerformance.add(Performance())
             var tag = "Radiocheck??"
             Log.e(
                 tag,
@@ -241,6 +260,7 @@ class TrainingsessionViewModel (application: Application) : AndroidViewModel(app
             )
         } else {
             updatedSession.remove(exercise)
+            updatedPerformance.remove(Performance())
             var tag = "Radiocheck??"
             Log.e(
                 tag,
@@ -249,6 +269,7 @@ class TrainingsessionViewModel (application: Application) : AndroidViewModel(app
         }
 
         _selectedTraininingssession.value?.trainingsSession = updatedSession
+        _selectedTraininingssession.value?.performance = updatedPerformance
     }
 
 
@@ -264,7 +285,7 @@ class TrainingsessionViewModel (application: Application) : AndroidViewModel(app
             repository.insertNewTrainingSession(
                 TrainingsSession(
                     1,
-                    trainingsSession = mutableListOf()
+                    trainingsSession = mutableListOf(), performance = mutableListOf()
                 )
             )
         }

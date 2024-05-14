@@ -102,7 +102,7 @@ class LocalRepository (private val trainingDatabase: TrainingSessionsDatabase) {
             Exercise(R.string.weLH_Benchpress,R.string.weLH_BenchpressInstructions, R.drawable.ex_lh_benchpress,true,true,R.string.bpBrust,false,R.string.weLH_BenchpressYtVideo,false),
             Exercise(R.string.weLH_Incline_Benchpress,R.string.weLH_InclineBenchpressInstructions, R.drawable.ex_lh_benchpress_inclined,true,true,R.string.bpBrust,false,R.string.weLH_InclineBenchpressYtVideo,false),
             Exercise(R.string.weKH_Incline_Benchpress,R.string.weKH_InclineBenchpressInstructions, R.drawable.ex_kh_benchpress_inclined,true,true,R.string.bpBrust,false,R.string.weKH_InclineBenchpressYtVideo,false),
-            Exercise(R.string.we_Dips,R.string.we_DipsInstructions, R.drawable.bp1arms,true,true,R.string.bpBrust,false,null,false),
+            Exercise(R.string.we_Dips,R.string.we_DipsInstructions, R.drawable.ex_dips,true,true,R.string.bpBrust,false,null,false),
 
 
             Exercise(R.string.weLH_Row,R.string.weLH_RowInstructions, R.drawable.ex_lh_row,true,true,R.string.bpRücken,false,R.string.weLH_RowYtVideo,false),
