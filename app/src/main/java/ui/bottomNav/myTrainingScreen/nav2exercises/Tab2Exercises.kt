@@ -7,13 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import com.example.shapeminder_appidee.databinding.FragmentExercisesNav3Binding
+import com.example.shapeminder_appidee.databinding.FragmentExercisesNav2Binding
 import ui.viewModel.ExercisesViewModel
 
 
 class Tab2Exercises : Fragment() {
 
-    private lateinit var binding: FragmentExercisesNav3Binding
+    private lateinit var binding: FragmentExercisesNav2Binding
     val viewModel: ExercisesViewModel by activityViewModels()
 
 
@@ -22,7 +22,7 @@ class Tab2Exercises : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentExercisesNav3Binding.inflate(layoutInflater)
+        binding = FragmentExercisesNav2Binding.inflate(layoutInflater)
         return binding.root
     }
 

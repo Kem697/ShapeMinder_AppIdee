@@ -33,7 +33,7 @@ class ContentAdapter(
             holder.binding.contentTitle.setText(content.stringRessourceTitle)
             holder.binding.materialCardView.setOnClickListener {
                 contentViewModel.navigateContentDetailView(content)
-                holder.binding.root.findNavController().navigate(R.id.homeContentDetailView)
+                holder.binding.root.findNavController().navigate(R.id.action_homeScreen_to_homeContentDetailView)
             }
         }
     }

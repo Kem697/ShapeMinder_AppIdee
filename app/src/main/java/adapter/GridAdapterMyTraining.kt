@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat.getString
 import androidx.navigation.findNavController
 import com.example.shapeminder_appidee.R
 import model.data.local.model.myTraining.Bodypart
+import ui.bottomNav.myTrainingScreen.nav2exercises.Tab2ExercisesDirections
 import ui.viewModel.ExercisesViewModel
 
 /*

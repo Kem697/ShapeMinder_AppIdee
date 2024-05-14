@@ -114,7 +114,7 @@ class ExerciseAdapter(
             holder.binding.containtsVideo.isInvisible = exercise.video == null
             holder.binding.materialCardView.setOnClickListener {
                 viewModel.navigateSelectedExercises(exercise)
-                holder.binding.root.findNavController().navigate(R.id.exercisePreviewFragment)
+                holder.binding.root.findNavController().navigate(R.id.action_exerciseListFragment_to_exercisePreviewFragment)
             }
 
 

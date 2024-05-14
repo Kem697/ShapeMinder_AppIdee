@@ -14,10 +14,18 @@
             app:destination="@id/homeScreen" />
         <action
             android:id="@+id/action_logInScreen_to_registerScreen"
-            app:destination="@id/registerScreen" />
+            app:destination="@id/registerScreen"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
         <action
             android:id="@+id/action_logInScreen_to_forgotPasswordScreen"
-            app:destination="@id/forgotPasswordScreen" />
+            app:destination="@id/forgotPasswordScreen"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/homeScreen"
@@ -25,7 +33,11 @@
         android:label="HomeScreen" >
         <action
             android:id="@+id/action_homeScreen_to_homeContentDetailView"
-            app:destination="@id/homeContentDetailView" />
+            app:destination="@id/homeContentDetailView"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/myTrainingScreen"
@@ -35,11 +47,15 @@
             android:id="@+id/action_myTrainingScreen_to_trainingNav1"
             app:destination="@id/trainingNav1" />
         <action
-            android:id="@+id/action_myTrainingScreen_to_progressionNav2"
-            app:destination="@id/progressionNav2" />
-        <action
             android:id="@+id/action_myTrainingScreen_to_exercisesNav3"
-            app:destination="@id/exercisesNav3" />
+            app:destination="@id/exercisesNav2" />
+        <action
+            android:id="@+id/action_myTrainingScreen_to_exerciseListFragment"
+            app:destination="@id/exerciseListFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/homeContentDetailView"
@@ -51,33 +67,30 @@
             app:destination="@id/homeScreen" />
     </fragment>
     <fragment
-        android:id="@+id/exercisesNav3"
+        android:id="@+id/exercisesNav2"
         android:name="ui.bottomNav.myTrainingScreen.nav2exercises.Tab2Exercises"
-        android:label="fragment_exercises_nav3"
-        tools:layout="@layout/fragment_exercises_nav3" >
+        android:label="fragment_exercises_nav2"
+        tools:layout="@layout/fragment_exercises_nav2" >
         <action
-            android:id="@+id/action_exercisesNav3_to_exerciseListFragment"
-            app:destination="@id/exerciseListFragment" />
-        <action
-            android:id="@+id/action_exercisesNav3_to_exerciseListFragment2"
-            app:destination="@id/exerciseListFragment" />
-        <action
-            android:id="@+id/action_exercisesNav3_to_exerciseListFragment3"
-            app:destination="@id/exerciseListFragment" />
-        <action
-            android:id="@+id/action_exercisesNav3_to_exerciseListFragment4"
-            app:destination="@id/exerciseListFragment" />
+            android:id="@+id/action_exercisesNav2_to_exerciseListFragment"
+            app:destination="@id/exerciseListFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/trainingNav1"
         android:name="ui.bottomNav.myTrainingScreen.nav1myTraining.Tab1MyTraining"
         android:label="fragment_training_nav1"
-        tools:layout="@layout/fragment_training_nav1" />
-    <fragment
-        android:id="@+id/progressionNav2"
-        android:name="ui.bottomNav.myTrainingScreen.nav2progression.ProgressionNav2"
-        android:label="fragment_progression_nav2"
-        tools:layout="@layout/fragment_progression_nav2" />
+        tools:layout="@layout/fragment_training_nav1" >
+        <action
+            android:id="@+id/action_trainingNav1_to_editTrainingSessionFragment"
+            app:destination="@id/editTrainingSessionFragment" />
+        <action
+            android:id="@+id/action_trainingNav1_to_newTrainingsSessionFragment"
+            app:destination="@id/newTrainingsSessionFragment" />
+    </fragment>
     <fragment
         android:id="@+id/mySettings"
         android:name="ui.bottomNav.mySettingsScreen.MySettingsScreen"
@@ -88,7 +101,11 @@
         android:label="ExerciseListFragment" >
         <action
             android:id="@+id/action_exerciseListFragment_to_exercisePreviewFragment"
-            app:destination="@id/exercisePreviewFragment" />
+            app:destination="@id/exercisePreviewFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/registerScreen"
@@ -195,5 +212,6 @@
     <fragment
         android:id="@+id/forgotPasswordScreen"
         android:name="ui.logInFlow.ForgotPasswordScreen"
-        android:label="ForgotPasswordScreen" />
+        android:label="ForgotPasswordScreen"
+        />
 </navigation>

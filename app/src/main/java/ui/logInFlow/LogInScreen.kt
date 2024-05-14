@@ -178,7 +178,7 @@ class LogInScreen : Fragment() {
 
     fun register() {
             binding.registerButton.setOnClickListener {
-                findNavController().navigate(R.id.registerScreen)
+                findNavController().navigate(R.id.action_logInScreen_to_registerScreen)
             }
 
         }
@@ -186,7 +186,7 @@ class LogInScreen : Fragment() {
     fun forgotPassword() {
             var forgotPasswordBtn = binding.forgotPasswordView
             forgotPasswordBtn.setOnClickListener {
-                findNavController().navigate(R.id.forgotPasswordScreen)
+                findNavController().navigate(R.id.action_logInScreen_to_forgotPasswordScreen)
             }
         }
 
