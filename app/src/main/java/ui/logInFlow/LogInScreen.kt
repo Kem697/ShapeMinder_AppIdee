@@ -71,7 +71,7 @@ class LogInScreen : Fragment() {
         if (user == null) {
             return
         } else {
-            findNavController().navigate(R.id.homeScreen)
+            findNavController().navigate(R.id.action_logInScreen_to_homeScreen)
         }
     }
 
@@ -125,7 +125,7 @@ class LogInScreen : Fragment() {
                             getString(R.string.toastSucessfulLogIn),
                             Toast.LENGTH_SHORT
                         ).show()
-                        findNavController().navigate(R.id.homeScreen)
+                        findNavController().navigate(R.id.action_logInScreen_to_homeScreen)
                     }   else {
                         Toast.makeText(
                             requireContext(),
@@ -163,7 +163,7 @@ class LogInScreen : Fragment() {
 
             googleFireBaseViewModel.googleSignInResult.observe(viewLifecycleOwner) { isSuccess ->
                 if (isSuccess) {
-                    findNavController().navigate(R.id.homeScreen)
+                    findNavController().navigate(R.id.action_logInScreen_to_homeScreen)
                 } else {
                     Toast.makeText(
                         requireContext(),

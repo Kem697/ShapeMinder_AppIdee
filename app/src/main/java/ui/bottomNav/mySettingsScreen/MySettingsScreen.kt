@@ -58,7 +58,7 @@ class MySettingsScreen : Fragment() {
             Log.d(TAG,"Logout: + ${auth.currentUser?.email}")
             Toast.makeText(binding.root.context,requireContext().getString(R.string.toastLogOutHint), Toast.LENGTH_SHORT)
                 .show()
-            findNavController().navigate(R.id.logInScreen)
+            findNavController().navigate(R.id.action_mySettings_to_logInScreen)
         }
     }
 
