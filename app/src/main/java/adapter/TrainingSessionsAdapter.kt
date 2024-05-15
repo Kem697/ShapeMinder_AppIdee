@@ -42,7 +42,7 @@ class TrainingSessionsAdapter (
             holder.binding.contentImage.setColorFilter(context.getColor(R.color.white))
             holder.binding.contentImage.scaleType = ImageView.ScaleType.CENTER
             holder.binding.materialCardView.setOnClickListener {
-                holder.binding.root.findNavController().navigate(R.id.newTrainingsSessionFragment)
+                holder.binding.root.findNavController().navigate(R.id.action_myTrainingScreen_to_newTrainingsSessionFragment)
             }
 
         } else {
@@ -51,7 +51,7 @@ class TrainingSessionsAdapter (
             holder.binding.contentImage.setImageResource(R.drawable.content2_img)
             holder.binding.materialCardView.setOnClickListener {
                 sessionViewModel.getCurrentTrainingsession(item)
-                holder.binding.root.findNavController().navigate(R.id.editTrainingSessionFragment)
+                holder.binding.root.findNavController().navigate(R.id.action_myTrainingScreen_to_editTrainingSessionFragment)
             }
         }
     }

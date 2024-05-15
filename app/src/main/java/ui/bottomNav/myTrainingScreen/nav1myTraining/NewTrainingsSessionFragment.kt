@@ -94,7 +94,7 @@ class NewTrainingsSessionFragment : Fragment() {
     fun addMoreExercise() {
         binding.addExerciseBtn.setOnClickListener {
             saveData()
-            findNavController().navigate(R.id.allExerciseListFragment)
+            findNavController().navigate(R.id.action_newTrainingsSessionFragment_to_allExerciseListFragment)
         }
     }
 

@@ -172,7 +172,7 @@ class ExerciseAdapter(
                 holder.binding.contentImage.setColorFilter(context.getColor(R.color.white))
                 holder.binding.contentImage.scaleType = ImageView.ScaleType.CENTER
                 holder.binding.materialCardView.setOnClickListener {
-                    holder.binding.root.findNavController().navigate(R.id.allExerciseListFragment)
+                    holder.binding.root.findNavController().navigate(R.id.action_myTrainingScreen_to_allExerciseListFragment)
                 }
             }
             else {
@@ -181,7 +181,7 @@ class ExerciseAdapter(
                 holder.binding.materialCardView.setOnClickListener {
                     if (exercise.isSaved) {
                         viewModel.navigateSelectedExercises(exercise)
-                        holder.binding.root.findNavController().navigate(R.id.exercisePreviewFragment)
+                        holder.binding.root.findNavController().navigate(R.id.action_myTrainingScreen_to_exercisePreviewFragment)
                     }
                 }
             }

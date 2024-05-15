@@ -239,7 +239,7 @@ class ExercisePreviewFragment : Fragment() {
     fun addExerciseToTraining(exercise: Exercise){
         binding.addTrainingBtn.setOnClickListener {
             viewModel.addToNewWorkout(exercise)
-            findNavController().navigate(R.id.newTrainingsSessionFragment)
+            findNavController().navigate(R.id.action_exercisePreviewFragment_to_newTrainingsSessionFragment)
         }
     }
 }

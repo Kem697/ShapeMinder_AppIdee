@@ -41,7 +41,7 @@ class CurrentSessionExerciseAdapter (
         holder.binding.saveExerciseCheckbox.isChecked = exercise.addedToSession == true
         holder.binding.materialCardView.setOnClickListener {
             viewModel.navigateSelectedExercises(exercise)
-            holder.binding.root.findNavController().navigate(R.id.exercisePreviewFragment)
+            holder.binding.root.findNavController().navigate(R.id.action_allExerciseListForEditSessionFragment_to_exercisePreviewFragment)
         }
 
 

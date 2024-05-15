@@ -54,12 +54,33 @@
             android:id="@+id/action_myTrainingScreen_to_exercisesNav3"
             app:destination="@id/exercisesNav2" />
         <action
-            android:id="@+id/action_myTrainingScreen_to_exerciseListFragment"
-            app:destination="@id/exerciseListFragment"
+            android:id="@+id/action_myTrainingScreen_to_allExerciseListFragment"
+            app:destination="@id/allExerciseListFragment"
             app:enterAnim="@anim/enter_anim"
             app:exitAnim="@anim/exit_anim"
             app:popEnterAnim="@anim/pop_enter_anim"
-            app:popExitAnim="@anim/exit_anim" />
+            app:popExitAnim="@anim/pop_exit_anim" />
+        <action
+            android:id="@+id/action_myTrainingScreen_to_newTrainingsSessionFragment"
+            app:destination="@id/newTrainingsSessionFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
+        <action
+            android:id="@+id/action_myTrainingScreen_to_editTrainingSessionFragment"
+            app:destination="@id/editTrainingSessionFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
+        <action
+            android:id="@+id/action_myTrainingScreen_to_exercisePreviewFragment"
+            app:destination="@id/exercisePreviewFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/homeContentDetailView"
@@ -138,7 +159,11 @@
         tools:layout="@layout/fragment_exercise_preview" >
         <action
             android:id="@+id/action_exercisePreviewFragment_to_newTrainingsSessionFragment"
-            app:destination="@id/newTrainingsSessionFragment" />
+            app:destination="@id/newTrainingsSessionFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/diaryNav2Fragment"
@@ -164,7 +189,15 @@
         android:id="@+id/groceryListNav3Fragment"
         android:name="ui.bottomNav.myNutritionScreen.nav3groceryList.GroceryListNav3Fragment"
         android:label="fragment_grocery_list_nav3"
-        tools:layout="@layout/fragment_grocery_list_nav3" />
+        tools:layout="@layout/fragment_grocery_list_nav3" >
+        <action
+            android:id="@+id/action_groceryListNav3Fragment_to_foodDetailViewFragment"
+            app:destination="@id/foodDetailViewFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
+    </fragment>
     <fragment
         android:id="@+id/myNutrionScreen"
         android:name="ui.bottomNav.myTrainingScreen.MyNutrionScreen"
@@ -185,7 +218,11 @@
         android:label="FoodListFragment" >
         <action
             android:id="@+id/action_foodListFragment_to_foodDetailViewFragment"
-            app:destination="@id/foodDetailViewFragment" />
+            app:destination="@id/foodDetailViewFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
         <argument
             android:name="category"
             app:argType="string" />
@@ -199,7 +236,11 @@
         android:label="NewTrainingsSessionFragment" >
         <action
             android:id="@+id/action_newTrainingsSessionFragment_to_allExerciseListFragment"
-            app:destination="@id/allExerciseListFragment" />
+            app:destination="@id/allExerciseListFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/allExerciseListFragment"
@@ -215,7 +256,11 @@
             android:defaultValue="true" />
         <action
             android:id="@+id/action_editTrainingSessionFragment_to_allExerciseListForEditSessionFragment"
-            app:destination="@id/allExerciseListForEditSessionFragment" />
+            app:destination="@id/allExerciseListForEditSessionFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/foodDetailViewFragment"
@@ -224,7 +269,15 @@
     <fragment
         android:id="@+id/allExerciseListForEditSessionFragment"
         android:name="ui.bottomNav.myTrainingScreen.nav1myTraining.AllExerciseListForEditSessionFragment"
-        android:label="AllExerciseListForEditSessionFragment" />
+        android:label="AllExerciseListForEditSessionFragment" >
+        <action
+            android:id="@+id/action_allExerciseListForEditSessionFragment_to_exercisePreviewFragment"
+            app:destination="@id/exercisePreviewFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
+    </fragment>
     <fragment
         android:id="@+id/forgotPasswordScreen"
         android:name="ui.logInFlow.ForgotPasswordScreen"

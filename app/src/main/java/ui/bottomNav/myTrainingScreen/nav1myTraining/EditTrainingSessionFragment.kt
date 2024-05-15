@@ -107,9 +107,8 @@ class EditTrainingSessionFragment : Fragment() {
     fun addWorkout(currentSession: TrainingsSession){
         var addExerciseBtn = binding.addExerciseBtn
         addExerciseBtn.setOnClickListener {
-            var action = EditTrainingSessionFragmentDirections.actionEditTrainingSessionFragmentToAllExerciseListForEditSessionFragment()
             sessionViewModel.excludeExercises(currentSession)
-            findNavController().navigate(action)
+            findNavController().navigate(R.id.action_editTrainingSessionFragment_to_allExerciseListForEditSessionFragment)
         }
     }
 
