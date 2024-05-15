@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import coil.load
@@ -30,6 +31,8 @@ class MySettingsScreen : Fragment() {
     private lateinit var binding: FragmentSettingsBinding
     private lateinit var auth: FirebaseAuth
 
+    var darkModeOn = false
+
 
 
     override fun onCreateView(
@@ -46,6 +49,7 @@ class MySettingsScreen : Fragment() {
         logout()
         personalSettings()
         shareApp()
+        modeSwitch()
 
     }
 
@@ -95,6 +99,40 @@ class MySettingsScreen : Fragment() {
 
         }
     }
+
+
+    fun modeSwitch() {
+        val modeSwitchToggle = binding.darkLightModeToogle
+
+        modeSwitchToggle.setOnClickListener {
+            if (darkModeOn) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                modeSwitchToggle.text = requireContext().getString(R.string.lightModeText)
+                darkModeOn = false
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                modeSwitchToggle.text = requireContext().getString(R.string.darkModeText)
+                darkModeOn = true
+            }
+        }
+
+        when (AppCompatDelegate.getDefaultNightMode()) {
+            AppCompatDelegate.MODE_NIGHT_NO -> {
+                darkModeOn = false
+                modeSwitchToggle.text = requireContext().getString(R.string.lightModeText)
+            }
+            AppCompatDelegate.MODE_NIGHT_YES -> {
+                darkModeOn = true
+                modeSwitchToggle.text = requireContext().getString(R.string.darkModeText)
+            }
+            else -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                darkModeOn = false
+                modeSwitchToggle.text = requireContext().getString(R.string.lightModeText)
+            }
+        }
+    }
+
 }
 
 

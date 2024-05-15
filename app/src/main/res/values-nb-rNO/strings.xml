@@ -224,4 +224,6 @@
     <string name="resetPasswordBtnText">Tilbakestill passord</string>
     <string name="closeText">stengt</string>
     <string name="openText">åpen</string>
+    <string name="lightModeText">Light mode</string>
+    <string name="darkModeText">Dark Mode</string>
 </resources>

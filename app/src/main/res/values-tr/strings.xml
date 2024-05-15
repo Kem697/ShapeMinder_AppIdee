@@ -228,5 +228,7 @@
     <string name="resetPasswordBtnText">Şifreyi sıfırla</string>
     <string name="closeText">kapalı</string>
     <string name="openText">açık</string>
+    <string name="lightModeText">Light mode</string>
+    <string name="darkModeText">Dark Mode</string>
 
 </resources>

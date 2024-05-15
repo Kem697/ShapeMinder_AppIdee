@@ -307,6 +307,8 @@
     <string name="resetPasswordBtnText">Passwort zurücksetzen</string>
     <string name="closeText">geschlossen</string>
     <string name="openText">offen</string>
+    <string name="lightModeText">Light mode</string>
+    <string name="darkModeText">Dark Mode</string>
 
 
 </resources>
