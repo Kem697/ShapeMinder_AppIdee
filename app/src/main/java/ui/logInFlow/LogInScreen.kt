@@ -19,6 +19,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.FirebaseFirestore
 import ui.viewModel.GoogleFireBaseViewModel
 
 
@@ -34,6 +35,9 @@ class LogInScreen : Fragment() {
     private val googleFireBaseViewModel: GoogleFireBaseViewModel by viewModels()
 
     private lateinit var auth: FirebaseAuth
+
+    private val fireStore = FirebaseFirestore.getInstance()
+
 
 
     override fun onCreateView(
@@ -93,7 +97,7 @@ class LogInScreen : Fragment() {
     }
 
     private fun firebaseAuthWithGoogle(idToken: String) {
-        googleFireBaseViewModel.firebaseAuthWithGoogle(idToken, auth)
+        googleFireBaseViewModel.firebaseAuthWithGoogle(idToken, auth,fireStore)
     }
 
 
@@ -108,32 +112,39 @@ class LogInScreen : Fragment() {
         binding.inputPassword.text.clear()
     }
 
+
     fun logIn() {
         binding.logInButton.setOnClickListener {
-            var progressBar = binding.logInProgressbar
+            val progressBar = binding.logInProgressbar
             progressBar.visibility = View.VISIBLE
-            var emailInput = binding.inputEmail.text.toString()
-            var passwordInput = binding.inputPassword.text.toString()
+            val emailInput = binding.inputEmail.text.toString()
+            val passwordInput = binding.inputPassword.text.toString()
+
             if (emailInput.isNotBlank() && passwordInput.isNotBlank()) {
+                // Erst alle vorherigen Observer entfernen, um Mehrfachausführungen zu vermeiden
+                googleFireBaseViewModel.signInResult.removeObservers(viewLifecycleOwner)
 
                 googleFireBaseViewModel.fireBaseSignInUser(emailInput, passwordInput, auth)
 
                 googleFireBaseViewModel.signInResult.observe(viewLifecycleOwner) { isSuccess ->
+                    progressBar.visibility = View.GONE
+                    val user = auth.currentUser
                     if (isSuccess) {
+                        if (user != null && user.isEmailVerified) {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.toastSucessfulLogIn),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            findNavController().navigate(R.id.action_logInScreen_to_homeScreen)
+                        }
+                    } else if (user!=null && !user.isEmailVerified) {
                         Toast.makeText(
                             requireContext(),
-                            getString(R.string.toastSucessfulLogIn),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        findNavController().navigate(R.id.action_logInScreen_to_homeScreen)
-                    }   else {
-                        Toast.makeText(
-                            requireContext(),
-                            getString(R.string.toastFailedLogIn),
+                            getString(R.string.toastEmailVerificationRequired),
                             Toast.LENGTH_SHORT
                         ).show()
                     }
-                    binding.logInProgressbar.visibility = View.GONE
                 }
 
             } else {
@@ -141,13 +152,12 @@ class LogInScreen : Fragment() {
                     binding.root.context,
                     context?.getString(R.string.toastUserInputHint),
                     Toast.LENGTH_SHORT
-                )
-                    .show()
+                ).show()
                 progressBar.visibility = View.GONE
             }
         }
-
     }
+
 
     fun googleLogIn() {
         var signInRequest = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

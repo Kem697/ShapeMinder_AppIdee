@@ -31,7 +31,6 @@ import ui.viewModel.ExercisesViewModel
 class ExerciseListFragment : Fragment() {
     private lateinit var binding: FragmentExerciseListBinding
     val viewModel: ExercisesViewModel by activityViewModels()
-    private val contentViewModel: ContentViewModel by activityViewModels()
 
     private lateinit var orginalExercises: List<Exercise>
 

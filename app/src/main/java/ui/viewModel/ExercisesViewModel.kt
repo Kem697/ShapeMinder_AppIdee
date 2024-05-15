@@ -124,9 +124,9 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
         viewModelScope.launch {
             val filteredExercises = exercisesByBodyparts.value?.filter { context.getString(it.bodyPart) == bodypart }
             val sortedExercises = if (sort) {
-                filteredExercises?.sortedByDescending { it.stringRessourceText }
+                filteredExercises?.sortedByDescending { context.getString(it.stringRessourceTitle) }
             } else {
-                filteredExercises?.sortedBy { it.stringRessourceText }
+                filteredExercises?.sortedBy { context.getString(it.stringRessourceTitle) }
             }
             _exercisesByBodyparts.value = sortedExercises
         }
@@ -325,7 +325,7 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
                     _exercisesByBodyparts.value = filteredExercises
                     var tag4 = "Filter in ViewModel??"
                     Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
-                } else {
+                } else  {
                     retrieveExercisesByBodyparts(bodypart,context)
                 }
             }
@@ -343,7 +343,7 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
                     _exercisesByBodyparts.value = filteredExercises
                     var tag4 = "Filter in ViewModel??"
                     Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
-                } else {
+                } else  {
                     retrieveExercisesByBodyparts(bodypart,context)
                 }
             }
@@ -361,7 +361,7 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
                     _exercisesByBodyparts.value = filteredExercises
                     var tag4 = "Filter in ViewModel??"
                     Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
-                } else {
+                } else  {
                     retrieveExercisesByBodyparts(bodypart,context)
                 }
             }
@@ -379,7 +379,7 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
                     _exercisesByBodyparts.value = filteredExercises
                     var tag4 = "Filter in ViewModel??"
                     Log.e(tag4, "Wurde gefiltert?: $filteredExercises")
-                } else {
+                } else  {
                     retrieveExercisesByBodyparts(bodypart,context)
                 }
             }

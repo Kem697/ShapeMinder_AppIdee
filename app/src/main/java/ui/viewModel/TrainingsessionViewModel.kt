@@ -87,13 +87,13 @@ class TrainingsessionViewModel (application: Application) : AndroidViewModel(app
     }
 
 
-    fun sortRemainExercisesByAlphabet(sort: Boolean) {
+    fun sortRemainExercisesByAlphabet(sort: Boolean, context: Context) {
         viewModelScope.launch {
             val filteredExercises = remainExercisesForAddInSession.value
             val sortedExercises = if (sort) {
-                filteredExercises?.sortedByDescending { it.stringRessourceText }
+                filteredExercises?.sortedByDescending { context.getString(it.stringRessourceTitle) }
             } else {
-                filteredExercises?.sortedBy { it.stringRessourceText }
+                filteredExercises?.sortedBy { context.getString(it.stringRessourceTitle) }
             }
             _remainExercisesForAddInSession.value = sortedExercises?: mutableListOf()
         }

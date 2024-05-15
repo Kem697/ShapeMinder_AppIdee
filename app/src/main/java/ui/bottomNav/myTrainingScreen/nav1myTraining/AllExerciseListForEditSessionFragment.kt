@@ -151,12 +151,12 @@ class AllExerciseListForEditSessionFragment : Fragment() {
                     when (checkedId) {
                         R.id.a_z_ascending -> {
                             isSortedDescending = false
-                            sessionViewModel.sortRemainExercisesByAlphabet(isSortedDescending)
+                            sessionViewModel.sortRemainExercisesByAlphabet(isSortedDescending,requireContext())
                         }
 
                         R.id.z_a_descending -> {
                             isSortedDescending = true
-                            sessionViewModel.sortRemainExercisesByAlphabet(isSortedDescending)
+                            sessionViewModel.sortRemainExercisesByAlphabet(isSortedDescending,requireContext())
                         }
                     }
                     //DE: Schließen Sie den Dialog, nachdem eine Auswahl getroffen wurde

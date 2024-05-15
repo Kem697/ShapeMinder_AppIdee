@@ -1,6 +1,7 @@
 package ui.viewModel
 
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,9 +13,10 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import model.Profile
 
-class GoogleFireBaseViewModel: ViewModel() {
+class GoogleFireBaseViewModel : ViewModel() {
 
     private val firebaseAuth = FirebaseAuth.getInstance()
+
     // Instanz von Firebase Firestore
     private val fireStore = FirebaseFirestore.getInstance()
 
@@ -70,7 +72,6 @@ class GoogleFireBaseViewModel: ViewModel() {
         passwordInput: String,
         passwordRepeatInput: String,
         auth: FirebaseAuth,
-        fireStore: FirebaseFirestore
     ) {
         if (emailInput.isNotBlank() && passwordInput.isNotBlank()
             && nameInput.isNotBlank() && passwordRepeatInput.isNotBlank()
@@ -87,11 +88,24 @@ class GoogleFireBaseViewModel: ViewModel() {
                             ?.addOnCompleteListener { profileTask ->
                                 if (profileTask.isSuccessful) {
                                     auth.currentUser?.sendEmailVerification()
-                                    val profileRef =
-                                        fireStore.collection("profiles").document(auth.currentUser!!.uid)
-                                    profileRef.set(Profile(nameInput))
-                                    auth.signOut()
-                                    _registrationResult.postValue(true)
+                                        ?.addOnCompleteListener {
+                                            emailverification->
+                                            if (emailverification.isSuccessful){
+                                                _registrationResult.postValue(true)
+                                                val profileRef =
+                                                    fireStore.collection("profiles").document(auth.currentUser!!.uid)
+                                                profileRef.set(Profile(nameInput)).addOnCompleteListener {
+                                                    task->
+                                                    if (task.isSuccessful){
+                                                        var tag ="Profile Referenzen"
+                                                        Log.i("$tag"," Erfolg: ${profileRef.id}")
+                                                    }
+                                                }
+                                                auth.signOut()
+                                            } else{
+                                                _registrationResult.postValue(false)
+                                            }
+                                    }
                                 } else {
                                     _registrationResult.postValue(false)
                                 }
@@ -102,6 +116,19 @@ class GoogleFireBaseViewModel: ViewModel() {
                 }
         } else {
             _registrationResult.postValue(false)
+        }
+    }
+
+
+    fun createProfile(auth: FirebaseAuth, nameInput: String) {
+        auth.currentUser!!.reload().addOnCompleteListener {
+            if (auth.currentUser!= null){
+                if (auth.currentUser?.isEmailVerified == true){
+                } else{
+                }
+            } else{
+
+            }
         }
     }
 
@@ -118,17 +145,38 @@ class GoogleFireBaseViewModel: ViewModel() {
             }
     }
 
-    fun firebaseAuthWithGoogle(idToken: String, auth: FirebaseAuth) {
+    fun firebaseAuthWithGoogle(idToken: String, auth: FirebaseAuth, fireStore: FirebaseFirestore) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val user = auth.currentUser
-                    _googleSignInResult.postValue(user != null)
+                    if (user != null) {
+                        val profileRef = fireStore.collection("profiles").document(user.uid)
+                        profileRef.get().addOnSuccessListener { document ->
+                            if (!document.exists()) {
+                                val profile = Profile(user.displayName ?: "Unknown") // Handling null displayName
+                                profileRef.set(profile)
+                                    .addOnSuccessListener {
+                                        _googleSignInResult.postValue(true)
+                                    }
+                                    .addOnFailureListener {
+                                        _googleSignInResult.postValue(false)
+                                    }
+                            } else {
+                                _googleSignInResult.postValue(true)
+                            }
+                        }.addOnFailureListener {
+                            _googleSignInResult.postValue(false)
+                        }
+                    } else {
+                        _googleSignInResult.postValue(false)
+                    }
                 } else {
                     _googleSignInResult.postValue(false)
                 }
             }
     }
+
 
 }
