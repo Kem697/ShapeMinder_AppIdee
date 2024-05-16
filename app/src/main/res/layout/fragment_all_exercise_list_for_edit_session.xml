@@ -61,7 +61,7 @@
                     android:layout_width="60dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginLeft="8dp"
                     android:backgroundTint="#00FFFFFF"
                     android:src="@drawable/arrow_back_fill0_wght400_grad0_opsz24" />
 
@@ -158,7 +158,6 @@
             android:layout_margin="16dp"
             android:fontFamily="@font/montserrat"
             android:text="@string/addToWorkout"
-            android:textSize="16dp"
             android:textStyle="bold"
             app:icon="@drawable/add_fill0_wght400_grad0_opsz24"
             app:layout_constraintBottom_toBottomOf="parent"

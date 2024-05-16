@@ -20,6 +20,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+
             <LinearLayout
                 android:id="@+id/toolbarLayout"
                 android:layout_width="match_parent"
@@ -35,7 +36,7 @@
                     android:layout_width="60dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginLeft="8dp"
                     android:layout_weight="1"
                     android:backgroundTint="#00FFFFFF"
                     android:src="@drawable/arrow_back_fill0_wght400_grad0_opsz24" />
@@ -49,7 +50,7 @@
                     android:layout_weight="1"
                     android:text="@string/newWorkScreenHeader"
                     android:textColor="#FFFFFF"
-                    android:textSize="22dp" />
+                    android:textSize="26dp" />
 
                 <Button
                     android:id="@+id/saveWorkoutBtn"
@@ -124,6 +125,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="16dp"
                 android:hint="@string/setWorkoutName"
+                android:textColor="?android:attr/textColor"
                 android:background="@null"
                 android:inputType="text" />
 

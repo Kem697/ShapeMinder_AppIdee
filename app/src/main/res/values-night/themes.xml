@@ -6,6 +6,7 @@
         <item name="android:buttonTint">@color/white</item>
         <item name="android:backgroundTint">@color/black</item>
         <item name="android:textColor">@color/tertiary</item>
+        <item name="background">@color/white</item>
 
 
 
