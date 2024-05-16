@@ -6,7 +6,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:title="@string/myTraininBottomNav"
-
         android:icon="@drawable/exercise_icon"/>
     <item
         android:id="@+id/homeScreen"

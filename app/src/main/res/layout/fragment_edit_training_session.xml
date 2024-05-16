@@ -85,7 +85,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="16dp"
                 android:background="@null"
-                android:textColor="@color/tertiary"
+                android:textColor="?android:attr/textColor"
                 android:fontFamily="@font/montserrat"
                 android:inputType="text"
                 android:text="@string/setDatBtnText"

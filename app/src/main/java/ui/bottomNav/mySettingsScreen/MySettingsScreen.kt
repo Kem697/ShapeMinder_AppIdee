@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import coil.load
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentSettingsBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
