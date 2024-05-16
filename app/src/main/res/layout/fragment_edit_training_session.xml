@@ -113,7 +113,7 @@
                 android:fontFamily="@font/lato"
                 android:inputType="text"
                 android:text=""
-                android:textColor="@color/tertiary"
+                android:textColor="?android:attr/textColor"
                 android:textAlignment="center"
                 android:textSize="14dp" />
 

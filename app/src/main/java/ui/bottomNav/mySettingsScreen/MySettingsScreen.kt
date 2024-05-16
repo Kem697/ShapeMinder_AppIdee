@@ -102,6 +102,11 @@ class MySettingsScreen : Fragment() {
     }
 
 
+    /*EN:
+    * This function is the implementation of the dark/light mode switch in my app.
+    * When the user switches the toggle, the modes of app will change there the
+    * user get different design. the sate of a variable, which pose
+    * the dark/light mode state of the, */
     fun modeSwitch() {
         val modeSwitchToggle = binding.darkLightModeToogle
 

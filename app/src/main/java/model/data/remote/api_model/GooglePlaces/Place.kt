@@ -10,7 +10,6 @@ import kotlinx.serialization.Serializable
 data class Place(
     val name: String,
 
-
     @Json(name="formatted_address")
     val address: String,
 
