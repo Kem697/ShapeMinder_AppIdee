@@ -99,6 +99,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/exerciseName"
+                        android:textColor="@color/black"
                         android:textSize="20dp"
                         android:textStyle="bold" />
 
@@ -108,6 +109,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:layout_marginTop="30dp"
+                        android:textColor="@color/black"
                         android:text="@string/bodypartSubtitle"
                         android:textSize="16dp" />
 
@@ -171,13 +173,12 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/addTrainingBtn"
+            style="@style/material_button_style"
             android:layout_width="150dp"
             android:layout_height="60dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_margin="16dp"
-            android:fontFamily="@font/montserrat"
             app:icon="@drawable/add_fill0_wght400_grad0_opsz24"
-            android:backgroundTint="@color/black"
             android:text="@string/addToTrainingBtnText"
             app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
 
@@ -202,6 +203,7 @@
                 android:padding="8dp"
                 android:text="@string/descriptionHeader"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 android:fontFamily="@font/montserrat"
                 android:textSize="20dp"/>
         </com.google.android.material.card.MaterialCardView>
@@ -231,6 +233,7 @@
                 android:padding="8dp"
                 android:text=""
                 android:textAlignment="viewStart"
+                android:textColor="@color/black"
                 android:textSize="18dp" />
         </com.google.android.material.card.MaterialCardView>
 

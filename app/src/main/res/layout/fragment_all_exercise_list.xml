@@ -143,7 +143,7 @@
             android:layout_margin="16dp"
             android:fontFamily="@font/montserrat"
             android:text="@string/exerciseListTitle"
-            android:textColor="@color/black"
+            android:textColor="?android:attr/textColor"
             android:textSize="26dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -151,11 +151,10 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/addExerciseToSessionBtn"
+            style="@style/material_button_style"
             android:layout_width="170dp"
             android:layout_height="60dp"
             android:layout_margin="16dp"
-            android:backgroundTint="@color/black"
-            android:fontFamily="@font/montserrat"
             android:text="@string/addToWorkout"
             android:textSize="16dp"
             android:textStyle="bold"
@@ -186,14 +185,16 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_margin="18dp"
+            android:layout_marginStart="16dp"
             android:fontFamily="@font/montserrat"
             android:text="@string/amountOfExercises"
-            android:textColor="@color/black"
+            android:textColor="?android:attr/textColor"
             android:textSize="16dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/materialCardContentView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/myT_searchBar" />
+            app:layout_constraintTop_toBottomOf="@+id/myT_searchBar"
+            app:layout_constraintVertical_bias="0.444" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/resetFilterBtn"

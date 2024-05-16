@@ -32,7 +32,7 @@
             android:layout_marginTop="4dp"
             android:text=""
             android:textSize="26dp"
-            android:textColor="@color/white"
+            android:textColor="?android:attr/textColorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile_img" />
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:text=""
-            android:textColor="@color/white"
+            android:textColor="?android:attr/textColorPrimary"
             android:textSize="22dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +57,7 @@
             android:layout_margin="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/user_Email">
+            app:layout_constraintTop_toBottomOf="@+id/darkLightModeToogle">
 
 
             <LinearLayout
@@ -69,19 +69,19 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/optionCard1"
-                    style="@style/content_Card"
+                    style="@style/mySettings_option_card"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginBottom="4dp"
                     android:layout_marginLeft="26dp"
-                    android:layout_marginRight="26dp"
-                    app:strokeColor="@color/white">
+                    android:layout_marginRight="26dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="@string/opt_my_profileText"
-                        android:textColor="@color/white"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="20dp">
 
                     </TextView>
@@ -92,19 +92,20 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/optionCard2"
-                    style="@style/content_Card"
+                    style="@style/mySettings_option_card"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginBottom="4dp"
+
                     android:layout_marginLeft="26dp"
-                    android:layout_marginRight="26dp"
-                    app:strokeColor="@color/white">
+                    android:layout_marginRight="26dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="@string/opt_my_healthText"
-                        android:textColor="@color/white"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="20dp">
 
                     </TextView>
@@ -115,19 +116,20 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/optionCard3"
-                    style="@style/content_Card"
+                    style="@style/mySettings_option_card"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginBottom="4dp"
+
                     android:layout_marginLeft="26dp"
-                    android:layout_marginRight="26dp"
-                    app:strokeColor="@color/white">
+                    android:layout_marginRight="26dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="@string/opt3_my_favText"
-                        android:textColor="@color/white"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="20dp">
 
                     </TextView>
@@ -138,19 +140,20 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/optionCard4"
-                    style="@style/content_Card"
+                    style="@style/mySettings_option_card"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginBottom="4dp"
+
                     android:layout_marginLeft="26dp"
-                    android:layout_marginRight="26dp"
-                    app:strokeColor="@color/white">
+                    android:layout_marginRight="26dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="@string/opt4_my_filesText"
-                        android:textColor="@color/white"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="20dp">
 
                     </TextView>
@@ -185,21 +188,22 @@
                 android:layout_marginBottom="16dp"
                 android:orientation="vertical">
 
+
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/optionCard5"
-                    style="@style/content_Card"
-                    app:strokeColor="@color/white"
+                    style="@style/mySettings_option_card"
                     android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="4dp"
                     android:layout_marginLeft="26dp"
-                    android:layout_marginRight="26dp"
-                    android:layout_height="50dp">
+                    android:layout_marginRight="26dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="@string/opt5_socialMediaText"
-                        android:textColor="@color/white"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="20dp">
 
                     </TextView>
@@ -207,13 +211,12 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
-
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/optionCard6"
-                    style="@style/content_Card"
-                    app:strokeColor="@color/white"
+                    style="@style/mySettings_option_card"
                     android:layout_width="match_parent"
                     android:layout_marginLeft="26dp"
+                    android:layout_marginBottom="4dp"
                     android:layout_marginRight="26dp"
                     android:layout_height="50dp">
 
@@ -222,7 +225,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="@string/opt6_cloud_linksText"
-                        android:textColor="@color/white"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="20dp">
 
                     </TextView>
@@ -259,10 +262,10 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/optionCard7"
-                    style="@style/content_Card"
-                    app:strokeColor="@color/white"
+                    style="@style/mySettings_option_card"
                     android:layout_width="match_parent"
                     android:layout_marginLeft="26dp"
+                    android:layout_marginBottom="4dp"
                     android:layout_marginRight="26dp"
                     android:layout_height="50dp">
 
@@ -271,7 +274,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="@string/opt7_inviteFriendsText"
-                        android:textColor="@color/white"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="20dp">
 
                     </TextView>
@@ -282,10 +285,10 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/optionCard8"
-                    style="@style/content_Card"
-                    app:strokeColor="@color/white"
+                    style="@style/mySettings_option_card"
                     android:layout_width="match_parent"
                     android:layout_marginLeft="26dp"
+                    android:layout_marginBottom="4dp"
                     android:layout_marginRight="26dp"
                     android:layout_height="50dp">
 
@@ -294,7 +297,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="@string/opt8_log_outText"
-                        android:textColor="@color/white"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="20dp">
 
                     </TextView>
@@ -312,11 +315,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:textSize="16dp"
-            android:fontFamily="@font/montserrat"
+            android:fontFamily="@font/lato"
             android:text="@string/darkModeText"
-            app:layout_constraintBottom_toTopOf="@+id/materialCard_Background"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:textStyle="bold"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user_Email" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

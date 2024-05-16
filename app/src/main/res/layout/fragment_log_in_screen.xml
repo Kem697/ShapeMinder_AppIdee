@@ -42,14 +42,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/googleSignInBtn" />
 
-    <com.google.android.gms.common.SignInButton
+    <Button
         android:id="@+id/googleSignInBtn"
+        style="@style/googleButton"
+        android:text="@string/logInBtnText"
+        android:drawableLeft="@drawable/icons8_google_logo_48"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginLeft="32dp"
-        app:cornerRadius="0dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginLeft="36dp"
+        android:drawablePadding="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="58dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/forgotPasswordView" />
@@ -69,14 +74,13 @@
 
     <Button
         android:id="@+id/registerButton"
-        style="@style/customButton"
+        style="@style/customSecondaryButton"
         android:layout_width="match_parent"
         android:layout_height="58dp"
         app:cornerRadius="2dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="36dp"
         android:layout_marginLeft="36dp"
-        android:backgroundTint="@color/white"
         android:text="@string/registerBtnText"
         android:textColor="@color/tertiary"
         app:layout_constraintEnd_toEndOf="parent"
@@ -157,7 +161,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:fontFamily="@font/lato"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
@@ -173,6 +177,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="@string/developerBtnText"
+        app:iconTint="@color/white"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

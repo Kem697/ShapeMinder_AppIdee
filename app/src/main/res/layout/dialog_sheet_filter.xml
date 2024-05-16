@@ -44,6 +44,7 @@
                 android:layout_gravity="start|center"
                 android:layout_margin="16dp"
                 android:text="@string/dialogSheetTitle"
+                android:textColor="@color/black"
                 android:textSize="30dp"
                 android:textStyle="bold" />
 
@@ -56,6 +57,7 @@
                 android:layout_margin="16dp"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/equipmentTitle"
+                android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
@@ -131,6 +133,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/shDumbellBtnTitle"
                     android:textSize="13dp"
+                    android:textColor="@color/black"
                     android:textStyle="bold">
 
                 </TextView>
@@ -141,6 +144,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
                     android:text="@string/lhDumbellBtnTitle"
+                    android:textColor="@color/black"
                     android:textSize="13dp"
                     android:layout_marginRight="10dp"
                     android:textStyle="bold">
@@ -152,6 +156,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
+                    android:textColor="@color/black"
                     android:layout_marginLeft="4dp"
                     android:text="@string/ownBodyBtnTitle"
                     android:textSize="13dp"
@@ -171,6 +176,7 @@
                 android:layout_margin="16dp"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/instructionTitle"
+                android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
@@ -229,6 +235,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/videoBtnTitle"
                     android:textSize="12dp"
+                    android:textColor="@color/black"
                     android:textStyle="bold">
 
                 </TextView>
@@ -240,6 +247,7 @@
                     android:layout_marginLeft="30dp"
                     android:text="@string/noVideoBtnTitle"
                     android:textSize="12dp"
+                    android:textColor="@color/black"
                     android:textStyle="bold">
 
                 </TextView>
@@ -257,6 +265,7 @@
                 app:cornerRadius="5dp"
                 android:backgroundTint="@color/black"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:textSize="18dp"
                 android:text="@string/resultBtnTitle" />
 

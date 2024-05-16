@@ -124,21 +124,21 @@
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        style="@style/customUserInput"
+                        style="@style/custom_user_input_edit_session"
                         app:strokeWidth="2dp"
                         android:layout_marginRight="8dp"
                         android:layout_weight="1">
 
                     <EditText
+                        style="@style/editText"
                         android:id="@+id/editSets"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/roboto"
                         android:text=" "
-                        android:background="@null"
+                        android:background="#FDECCE"
                         android:inputType="number"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
                         android:textSize="16dp" />
 
                     </com.google.android.material.card.MaterialCardView>
@@ -147,22 +147,22 @@
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="wrap_content"
                         android:layout_weight="1"
-                        style="@style/customUserInput"
+                        style="@style/custom_user_input_edit_session"
                         app:strokeWidth="2dp"
                         android:layout_marginRight="8dp"
                         android:layout_height="30dp">
 
                     <EditText
                         android:id="@+id/editReps"
+                        style="@style/editText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/roboto"
                         android:text=" "
                         android:inputType="number"
                         android:textAlignment="center"
-                        android:background="@null"
+                        android:background="#FDECCE"
                         android:layout_weight="1"
-                        android:textColor="@color/black"
                         android:textSize="16dp" />
 
                     </com.google.android.material.card.MaterialCardView>
@@ -171,7 +171,7 @@
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="wrap_content"
                         android:layout_weight="1"
-                        style="@style/customUserInput"
+                        style="@style/custom_user_input_edit_session"
                         app:strokeWidth="2dp"
                         android:layout_height="30dp">
 
@@ -181,10 +181,10 @@
                             android:layout_height="match_parent"
                             android:fontFamily="@font/roboto"
                             android:text=" "
+                            style="@style/editText"
                             android:inputType="number"
-                            android:background="@null"
+                            android:background="#FDECCE"
                             android:textAlignment="center"
-                            android:textColor="@color/black"
                             android:textSize="16dp" />
 
                     </com.google.android.material.card.MaterialCardView>

@@ -42,6 +42,7 @@
                     android:layout_gravity="start|center"
                     android:layout_margin="16dp"
                     android:text="@string/dialogSheetTitle"
+                    android:textColor="@color/black"
                     android:textSize="30dp"
                     android:textStyle="bold" />
 
@@ -53,6 +54,7 @@
                     android:layout_margin="16dp"
                     android:fontFamily="@font/montserrat"
                     android:text="@string/musclegroupTitle"
+                    android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
@@ -172,6 +174,7 @@
                     android:layout_margin="16dp"
                     android:fontFamily="@font/montserrat"
                     android:text="@string/equipmentTitle"
+                    android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
@@ -243,6 +246,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/shDumbellBtnTitle"
+                        android:textColor="@color/black"
                         android:textSize="13dp"
                         android:textStyle="bold">
 
@@ -255,6 +259,7 @@
                         android:layout_marginLeft="25dp"
                         android:layout_marginRight="10dp"
                         android:text="@string/lhDumbellBtnTitle"
+                        android:textColor="@color/black"
                         android:textSize="13dp"
                         android:textStyle="bold">
 
@@ -268,6 +273,7 @@
                         android:layout_marginLeft="4dp"
                         android:text="@string/ownBodyBtnTitle"
                         android:textSize="13dp"
+                        android:textColor="@color/black"
                         android:textStyle="bold">
 
                     </TextView>
@@ -286,6 +292,7 @@
                     android:layout_marginBottom="16dp"
                     android:backgroundTint="@color/black"
                     android:text="@string/resultBtnTitle"
+                    android:textColor="@color/white"
                     android:textSize="18dp"
                     app:cornerRadius="5dp" />
 

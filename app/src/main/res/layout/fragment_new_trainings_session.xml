@@ -58,6 +58,8 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="8dp"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:backgroundTint="?android:attr/buttonTint"
                     android:textStyle="bold"
                     android:layout_weight="1"
                     android:text="@string/save" />
@@ -153,10 +155,10 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/addExerciseBtn"
+            style="@style/material_button_style"
             android:layout_width="200dp"
             android:layout_height="60dp"
             android:layout_margin="16dp"
-            android:backgroundTint="@color/black"
             android:fontFamily="@font/montserrat"
             android:text="@string/addExercise"
             app:icon="@drawable/add_fill0_wght400_grad0_opsz24"

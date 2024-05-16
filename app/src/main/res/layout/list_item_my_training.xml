@@ -36,7 +36,7 @@
             android:fontFamily="@font/montserrat"
             android:text="TextView"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="?android:attr/textColorPrimary"
             android:textSize="16dp" />
     </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

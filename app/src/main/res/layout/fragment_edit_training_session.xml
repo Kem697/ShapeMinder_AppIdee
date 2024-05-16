@@ -57,8 +57,8 @@
                     android:layout_gravity="center"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"
-                    android:backgroundTint="@color/black"
-                    android:layout_marginRight="8dp"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:backgroundTint="?android:attr/buttonTint"                    android:layout_marginRight="8dp"
                     android:textStyle="bold"
                     android:layout_weight="1"
                     android:text="@string/save" />
@@ -85,6 +85,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="16dp"
                 android:background="@null"
+                android:textColor="@color/tertiary"
                 android:fontFamily="@font/montserrat"
                 android:inputType="text"
                 android:text="@string/setDatBtnText"
@@ -112,6 +113,7 @@
                 android:fontFamily="@font/lato"
                 android:inputType="text"
                 android:text=""
+                android:textColor="@color/tertiary"
                 android:textAlignment="center"
                 android:textSize="14dp" />
 
@@ -123,10 +125,10 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/addExerciseBtn"
+            style="@style/material_button_style"
             android:layout_width="300dp"
             android:layout_height="60dp"
             android:layout_margin="16dp"
-            android:backgroundTint="@color/black"
             android:fontFamily="@font/montserrat"
             android:text="@string/addExercise"
             app:icon="@drawable/add_fill0_wght400_grad0_opsz24"

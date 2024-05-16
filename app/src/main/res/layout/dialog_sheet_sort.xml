@@ -27,6 +27,7 @@
                 android:layout_margin="16dp"
                 android:layout_gravity="center"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 android:text="@string/sortByText"
                 android:textSize="30dp" />
 
@@ -43,6 +44,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="32dp"
+                    android:textColor="@color/black"
                     android:text="@string/alphabetAscendingText"
                     android:checked="true"
                     android:textSize="20dp">
@@ -53,6 +55,7 @@
                     android:id="@+id/z_a_descending"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:textColor="@color/black"
                     android:text="@string/alphabetDescendingText"
                     android:textSize="20dp">
 

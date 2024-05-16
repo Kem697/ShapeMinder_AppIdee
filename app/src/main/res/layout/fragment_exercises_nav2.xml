@@ -23,7 +23,7 @@
             android:text="@string/exerciseNavHeaderText"
             android:layout_marginTop="8dp"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="?android:attr/textColorPrimary"
             android:textSize="28dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"

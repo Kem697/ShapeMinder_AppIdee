@@ -8,8 +8,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/foodCatMaterialCardView"
-        style="@style/content_Card"
-        android:backgroundTint="@color/white"
+        style="@style/food_Cat_Card"
         android:layout_width="170dp"
         android:layout_height="200dp"
         android:layout_marginLeft="16dp"

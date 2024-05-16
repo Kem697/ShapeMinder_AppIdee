@@ -92,6 +92,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text=""
+                        android:textColor="@color/black"
                         android:textSize="20dp"
                         android:textStyle="bold" />
 
@@ -102,6 +103,7 @@
                         android:layout_gravity="bottom"
                         android:layout_marginTop="8dp"
                         android:text=""
+                        android:textColor="@color/black"
                         android:textSize="16dp" />
 
 
@@ -189,6 +191,7 @@
                     android:padding="8dp"
                     android:text="@string/nutritionFacts"
                     android:textSize="18dp"
+                    android:textColor="@color/black"
                     android:textStyle="bold" />
 
 
@@ -205,6 +208,7 @@
                         android:padding="8dp"
                         android:text="@string/calText"
                         android:textSize="16dp"
+                        android:textColor="@color/black"
                         android:textStyle="bold" />
 
                     <TextView
@@ -215,6 +219,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/lato"
                         android:text="@string/calText"
+                        android:textColor="@color/black"
                         android:textSize="16dp" />
 
                 </LinearLayout>
@@ -252,6 +257,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textStyle="bold"
+                    android:textColor="@color/black"
                     android:text="@string/carbsText"
                     android:textSize="16dp">
 
@@ -262,6 +268,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textStyle="bold"
+                    android:textColor="@color/black"
                     android:text="@string/proteinText"
                     android:textSize="16dp">
 
@@ -272,6 +279,7 @@
                     android:layout_weight="1"
                     android:textStyle="bold"
                     android:text="@string/fatsText"
+                    android:textColor="@color/black"
                     android:textSize="16dp">
 
                 </TextView>
@@ -298,6 +306,7 @@
                     android:layout_weight="1"
                     android:textAlignment="center"
                     android:fontFamily="@font/lato"
+                    android:textColor="@color/black"
                     android:text="@string/carbsText"
                     android:textSize="16dp">
 
@@ -310,6 +319,7 @@
                     android:textAlignment="center"
                     android:layout_weight="1"
                     android:fontFamily="@font/lato"
+                    android:textColor="@color/black"
                     android:text="@string/proteinText"
                     android:textSize="16dp">
 
@@ -322,6 +332,7 @@
                     android:textAlignment="center"
                     android:fontFamily="@font/lato"
                     android:text="@string/fatsText"
+                    android:textColor="@color/black"
                     android:textSize="16dp">
 
                 </TextView>

@@ -1,13 +1,19 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.ShapeMinder_AppIdee" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.ShapeMinder_AppIdee" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
 
 
 
-        <item name="colorPrimary">#4D000000</item>
-<!--        <item name="colorPrimary">@color/tertiary</item>-->
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:buttonTint">@color/black</item>
+        <item name="android:textColor">@color/black</item>
+
+
+
+
+        <!--        <item name="colorPrimary">@color/tertiary</item>-->
         <!--<item name="colorSecondary">#D1CDCD</item>
         <item name="colorTertiary">@color/black</item>
 
