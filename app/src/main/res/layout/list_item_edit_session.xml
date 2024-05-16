@@ -9,8 +9,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
-        style="@style/content_Card"
-        android:backgroundTint="#FEF5E7"
+        style="@style/list_item_Card"
         android:layout_width="match_parent"
         android:layout_height="110dp"
         app:layout_constraintBottom_toBottomOf="parent"
