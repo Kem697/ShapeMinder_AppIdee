@@ -125,7 +125,6 @@
                         android:layout_height="30dp"
                         app:cardCornerRadius="5dp"
                         style="@style/custom_user_input_edit_session"
-                        app:strokeWidth="2dp"
                         android:layout_marginRight="8dp"
                         android:layout_weight="1">
 
@@ -148,7 +147,6 @@
                         android:layout_width="wrap_content"
                         android:layout_weight="1"
                         style="@style/custom_user_input_edit_session"
-                        app:strokeWidth="2dp"
                         app:cardCornerRadius="5dp"
                         android:layout_marginRight="8dp"
                         android:layout_height="30dp">
@@ -173,7 +171,6 @@
                         android:layout_width="wrap_content"
                         android:layout_weight="1"
                         style="@style/custom_user_input_edit_session"
-                        app:strokeWidth="2dp"
                         app:cardCornerRadius="5dp"
                         android:layout_height="30dp">
 
