@@ -252,5 +252,16 @@
 
 
 
+    <style name="bodyPart_Card" parent="CardView">
+        <item name="cardCornerRadius">5dp</item>
+        <item name="strokeColor">@color/white</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="navigationIconTint">@color/white</item>
+        <item name="android:backgroundTint">@color/black</item>
+    </style>
+
+
+
+
 
 </resources>

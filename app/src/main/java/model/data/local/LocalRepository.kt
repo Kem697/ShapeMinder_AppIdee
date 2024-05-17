@@ -97,7 +97,7 @@ class LocalRepository (private val trainingDatabase: TrainingSessionsDatabase) {
             Exercise(R.string.we_RisingLegs,R.string.we_RisingLegsInstructions, R.drawable.ex_rise_legs,true,true,R.string.bpBauch,false,R.string.we_Rising_LegsYtVideo,false),
             Exercise(R.string.weLH_Squats,R.string.weSquatsInstructions, R.drawable.bp2legs,true,true,R.string.bpBeine,false,null,false),
             Exercise(R.string.we_Lunges,R.string.we_LungesInstruction, R.drawable.ex_lunges,true,true,R.string.bpBeine,false,R.string.we_LungesYtVideo,false),
-            Exercise(R.string.weSZ_Push_ups,R.string.wePush_upsInstructions, R.drawable.bp1arms,true,true,R.string.bpBrust,false,null,false),
+            Exercise(R.string.weSZ_Push_ups,R.string.wePush_upsInstructions, R.drawable.ex_push_ups,true,true,R.string.bpBrust,false,null,false),
             Exercise(R.string.weKH_Benchpress,R.string.weKH_BenchpressInstructions, R.drawable.ex_kh_benchpress,true,true,R.string.bpBrust,false,R.string.weKH_BenchpressYtVideo,false),
             Exercise(R.string.weLH_Benchpress,R.string.weLH_BenchpressInstructions, R.drawable.ex_lh_benchpress,true,true,R.string.bpBrust,false,R.string.weLH_BenchpressYtVideo,false),
             Exercise(R.string.weLH_Incline_Benchpress,R.string.weLH_InclineBenchpressInstructions, R.drawable.ex_lh_benchpress_inclined,true,true,R.string.bpBrust,false,R.string.weLH_InclineBenchpressYtVideo,false),
