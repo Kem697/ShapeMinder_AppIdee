@@ -54,7 +54,7 @@
                 <Button
                     android:id="@+id/saveWorkoutBtn"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"
@@ -74,6 +74,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCardSessionName"
             style="@style/customUserInput"
+            app:cardCornerRadius="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -99,6 +100,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCardSessionDate"
             style="@style/customUserInput"
+            app:cardCornerRadius="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"

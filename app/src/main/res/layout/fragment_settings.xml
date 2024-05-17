@@ -314,13 +314,13 @@
         <Switch
             android:id="@+id/darkLightModeToogle"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_margin="16dp"
             android:fontFamily="@font/lato"
             android:text="@string/darkModeText"
-            android:textStyle="bold"
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="16dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/user_Email" />
 
