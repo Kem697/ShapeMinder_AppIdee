@@ -261,6 +261,14 @@
     </style>
 
 
+<!--
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        &lt;!&ndash; <item name="colorPrimary">@color/color_primary</item>
+         <item name="colorPrimaryDark">@color/color_secondary</item>
+         <item name="colorAccent">@color/color_accent</item>&ndash;&gt;
+        <item name="android:statusBarColor">@color/black</item>
+    </style>
+-->
 
 
 

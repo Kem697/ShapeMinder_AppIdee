@@ -61,7 +61,7 @@
         <item name="strokeColor">@color/white</item>
         <item name="strokeWidth">1dp</item>
         <item name="navigationIconTint">@color/white</item>
-        <item name="android:backgroundTint">#CECECE</item>
+        <item name="android:backgroundTint">#E6E4E4</item>
     </style>
 
 
@@ -225,13 +225,13 @@
         <item name="strokeColor">@color/white</item>
         <item name="strokeWidth">2dp</item>
         <item name="navigationIconTint">@color/white</item>
-        <item name="android:backgroundTint">#CECECE</item>
+        <item name="android:backgroundTint">#E6E4E4</item>
     </style>
 
 
 
     <style name="main_bottom_nav" parent="Widget.Material3.BottomNavigationView" >
-        <item name="android:background">#CECECE</item>
+        <item name="android:background">#E6E4E4</item>
         <item name="elevation">5dp</item>
         <item name="itemIconTint">@color/tertiary</item>
         <item name="itemTextColor">@color/tertiary</item>
@@ -246,7 +246,7 @@
 
 
     <style name="toolbarLayout" parent="Widget.AppCompat.Toolbar">
-        <item name="android:background">#CECECE</item>
+        <item name="android:background">#E6E4E4</item>
     </style>
 
     <style name="bodyPart_Card" parent="CardView">
@@ -257,6 +257,13 @@
         <item name="android:backgroundTint">@color/black</item>
     </style>
 
+
+   <!-- <style name="AppTheme" parent="Theme.AppCompat.Light">
+       &lt;!&ndash; <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_secondary</item>
+        <item name="colorAccent">@color/color_accent</item>&ndash;&gt;
+        <item name="android:statusBarColor">@color/black</item>
+    </style>-->
 
 
 
