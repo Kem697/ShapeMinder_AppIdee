@@ -125,7 +125,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="16dp"
                 android:hint="@string/setWorkoutName"
-                android:textColor="?android:attr/textColor"
+                style="@style/editTextUserIntput"
                 android:background="@null"
                 android:inputType="text" />
 

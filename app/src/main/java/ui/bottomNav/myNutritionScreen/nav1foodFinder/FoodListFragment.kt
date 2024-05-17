@@ -29,7 +29,7 @@ class FoodListFragment : Fragment() {
     val nutritionViewModel: NutrionViewModel by activityViewModels()
 
 
-    private lateinit var orginalFoodRequest : List<Product>
+    private var orginalFoodRequest : List<Product> = listOf()
 
 
     override fun onCreateView(
@@ -138,8 +138,6 @@ class FoodListFragment : Fragment() {
                 binding.foodListSearchBar.clearText()
                 binding.progressBar.visibility = View.VISIBLE
                 nutritionViewModel.searchFood()
-
-//                binding.resetFilterBtn.isInvisible = true
             }
         }
     }
