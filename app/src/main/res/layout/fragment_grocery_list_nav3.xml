@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="100dp"
+    android:paddingBottom="90dp"
     tools:context="ui.bottomNav.myNutritionScreen.nav2foodScanner.FoodScannerNav2Fragment">
 
 
