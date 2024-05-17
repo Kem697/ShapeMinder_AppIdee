@@ -246,5 +246,11 @@
     </style>
 
 
+    <style name="toolbarLayout" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/black</item>
+    </style>
+
+
+
 
 </resources>

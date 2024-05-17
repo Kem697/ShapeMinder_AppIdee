@@ -83,7 +83,7 @@
                             android:backgroundTint="@color/white"
                             android:scaleType="centerCrop"
                             android:src="@drawable/short_dumbell_unchecked"
-                            android:text="@string/bpArme"
+                            android:text="@string/bpBiceps"
                             android:textColor="@color/black"
                             android:textSize="16dp" />
 

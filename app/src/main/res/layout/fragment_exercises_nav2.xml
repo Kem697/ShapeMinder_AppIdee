@@ -33,9 +33,9 @@
             android:id="@+id/materialCardContentView"
             style="@style/content_CardDecription"
             android:layout_width="match_parent"
-            android:layout_height="660dp"
-            android:layout_marginLeft="16dp"
+            android:layout_height="810dp"
             android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +50,7 @@
                 android:layout_marginBottom="16dp"
                 android:numColumns="2"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                tools:listitem="@layout/grid_item_bodyparts"/>
+                tools:listitem="@layout/grid_item_bodyparts" />
         </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

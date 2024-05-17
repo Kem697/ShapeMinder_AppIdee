@@ -72,21 +72,21 @@ class LocalRepository (private val trainingDatabase: TrainingSessionsDatabase) {
 
     fun loadBodyparts(): List<Bodypart>{
         return listOf(
-            Bodypart(R.string.bpBauch, R.string.text1, R.drawable.bp5abs,true),
-            Bodypart(R.string.bpArme, R.string.title2,R.drawable.bp1arms,true),
-            Bodypart(R.string.bpSchulter, R.string.title3, R.drawable.bp3shoulders,true),
-            Bodypart(R.string.bpRücken, R.string.text1, R.drawable.bp4back,true),
-            Bodypart(R.string.bpBeine, R.string.title2,R.drawable.bp2legs,true),
-            Bodypart(R.string.bpBrust, R.string.title2,R.drawable.bp6chest,true)
+            Bodypart(R.string.bpBauch, R.drawable.bp5_abs_silhouette,true),
+            Bodypart(R.string.bpBiceps, R.drawable.bp1_biceps_silhouette_png,true),
+            Bodypart(R.string.bpSchulter, R.drawable.bp3_shoulders_silhouette_png,true),
+            Bodypart(R.string.bpRücken,  R.drawable.bp4_back_silhoette,true),
+            Bodypart(R.string.bpBeine, R.drawable.bp2_legs_silhouette_png,true),
+            Bodypart(R.string.bpBrust,R.drawable.bp6_chest_silhouette,true)
             )
     }
 
 
     fun loadExercisesByBodypart(): List<Exercise>{
         return listOf(
-            Exercise(R.string.weKH_Bicepscurls,R.string.weKH_BicepscurlsInstruction, R.drawable.ex_kh_bicepscurls,true,true,R.string.bpArme,false,R.string.weKH_BicepscurlsYtVideo,false),
-            Exercise(R.string.weLH_Bicepscurls,R.string.weLH_BicepscurlsInstructions, R.drawable.ex_lh_bicepscurls,true,true,R.string.bpArme,false,R.string.weLH_BicepscurlsYtVideo,false),
-            Exercise(R.string.weSZ_Bicepscurls,R.string.weSZ_BicepscurlsInstructions, R.drawable.ex_sz_bicepscurls,true,true,R.string.bpArme,false,R.string.weSZ_BizepscurlsYtVideo,false),
+            Exercise(R.string.weKH_Bicepscurls,R.string.weKH_BicepscurlsInstruction, R.drawable.ex_kh_bicepscurls,true,true,R.string.bpBiceps,false,R.string.weKH_BicepscurlsYtVideo,false),
+            Exercise(R.string.weLH_Bicepscurls,R.string.weLH_BicepscurlsInstructions, R.drawable.ex_lh_bicepscurls,true,true,R.string.bpBiceps,false,R.string.weLH_BicepscurlsYtVideo,false),
+            Exercise(R.string.weSZ_Bicepscurls,R.string.weSZ_BicepscurlsInstructions, R.drawable.ex_sz_bicepscurls,true,true,R.string.bpBiceps,false,R.string.weSZ_BizepscurlsYtVideo,false),
             Exercise(R.string.weKH_Shoulderpress,R.string.weKH_ShoulderpressInstructions, R.drawable.ex_kh_shoulderpress,true,true,R.string.bpSchulter,false,R.string.weKH_ShoulderpressYtVideo,false),
             Exercise(R.string.weKH_SideRaise,R.string.weKH_SideRaiseInstructions, R.drawable.ex_kh_side_rise,true,true,R.string.bpSchulter,false,R.string.weKH_SideRaiseYtVideo,false),
             Exercise(R.string.weKH_SideRaiseLayOnBench,R.string.weKH_SideRaiseLayOnBenchInstruction, R.drawable.ex_kh_reverse_side_rise,true,true,R.string.bpSchulter,false,R.string.weKH_SideRaiseLayOnBenchYtVideo,false),

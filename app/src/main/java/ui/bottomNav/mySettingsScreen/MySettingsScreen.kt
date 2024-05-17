@@ -61,10 +61,16 @@ class MySettingsScreen : Fragment() {
             Log.d(TAG,"Logout: + ${auth.currentUser?.displayName}")
             auth.signOut()
             Log.d(TAG,"Logout: + ${auth.currentUser?.email}")
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            darkModeOn = false
+
+
+
             Toast.makeText(binding.root.context,requireContext().getString(R.string.toastLogOutHint), Toast.LENGTH_SHORT)
                 .show()
             findNavController().navigate(R.id.action_mySettings_to_logInScreen)
         }
+        binding.darkLightModeToogle.text = requireContext().getString(R.string.lightModeText)
     }
 
 

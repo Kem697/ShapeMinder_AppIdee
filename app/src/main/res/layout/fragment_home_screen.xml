@@ -27,7 +27,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/gymLocationTitle"
             tools:listitem="@layout/list_gym" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/toolbar_constraints"
             android:layout_width="match_parent"
@@ -72,6 +71,12 @@
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+   <!--     <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -103,8 +108,8 @@
             android:id="@+id/gymLocationTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
             android:text="@string/gymLocationHeaderText"
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="24dp"

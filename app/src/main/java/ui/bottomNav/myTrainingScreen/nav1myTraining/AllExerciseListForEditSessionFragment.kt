@@ -246,7 +246,7 @@ class AllExerciseListForEditSessionFragment : Fragment() {
                         } else if (muscleGroupFilter && !equipmentGroupFilter){
                             val textButtonName = resources.getResourceEntryName(lastSelectedTextBtn!!.id)
                             val bodyPart = when (textButtonName) {
-                                "sec0_armsBtn" -> requireContext().resources.getString(R.string.bpArme)
+                                "sec0_armsBtn" -> requireContext().resources.getString(R.string.bpBiceps)
                                 "sec0_absBtn" -> requireContext().resources.getString(R.string.bpBauch)
                                 "sec0_legsBtn" -> requireContext().resources.getString(R.string.bpBeine)
                                 "sec0_chestBtn" -> requireContext().resources.getString(R.string.bpBrust)

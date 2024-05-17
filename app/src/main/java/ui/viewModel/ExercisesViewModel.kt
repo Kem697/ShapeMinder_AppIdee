@@ -229,7 +229,7 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
     ) {
         val textButtonName = context.resources.getResourceEntryName(textButton.id)
         val bodyPart = when (textButtonName) {
-            "sec0_armsBtn" -> context.resources.getString(R.string.bpArme)
+            "sec0_armsBtn" -> context.resources.getString(R.string.bpBiceps)
             "sec0_absBtn" -> context.resources.getString(R.string.bpBauch)
             "sec0_legsBtn" -> context.resources.getString(R.string.bpBeine)
             "sec0_chestBtn" -> context.resources.getString(R.string.bpBrust)

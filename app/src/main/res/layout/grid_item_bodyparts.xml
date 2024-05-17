@@ -10,7 +10,7 @@
         android:id="@+id/materialCardView"
         style="@style/content_Card"
         android:layout_width="170dp"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
@@ -27,8 +27,8 @@
             android:layout_marginTop="2dp"
             android:layout_marginRight="2dp"
             android:layout_marginBottom="40dp"
-            android:scaleType="centerCrop"
-            tools:srcCompat="@drawable/ec1squats_img" />
+            android:scaleType="fitCenter"
+            tools:srcCompat="@drawable/bp6_chest_silhouette" />
 
         <TextView
             android:id="@+id/contentTitle"

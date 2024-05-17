@@ -9,7 +9,6 @@ import androidx.core.content.ContextCompat.getString
 import androidx.navigation.findNavController
 import com.example.shapeminder_appidee.R
 import model.data.local.model.myTraining.Bodypart
-import ui.bottomNav.myTrainingScreen.nav2exercises.Tab2ExercisesDirections
 import ui.viewModel.ExercisesViewModel
 
 /*
@@ -154,9 +153,9 @@ class GridAdapterMyTraining(
 
 
         when (viewHolder.textViewTitle.text) {
-           getString(context,R.string.bpArme) -> {
+           getString(context,R.string.bpBiceps) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedBodypart = getString(context,R.string.bpArme)
+                    val selectedBodypart = getString(context,R.string.bpBiceps)
                     viewModel.getBodypartCategoryTitle(selectedBodypart)
                     viewModel.filterExercisesByBodypart(selectedBodypart,context)
                     viewHolder.imageViewIcon.findNavController().navigate(R.id.exerciseListFragment)

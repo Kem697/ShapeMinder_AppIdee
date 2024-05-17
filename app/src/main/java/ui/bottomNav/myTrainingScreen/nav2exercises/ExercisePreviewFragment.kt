@@ -54,39 +54,39 @@ class ExercisePreviewFragment : Fragment() {
         viewModel.selectedExercise.observe(viewLifecycleOwner) {
             binding.title.setText(it.stringRessourceTitle)
             when (getString(it.bodyPart)) {
-                getString(R.string.bpArme) -> {
+                getString(R.string.bpBiceps) -> {
                     binding.subTitle.text = getString(R.string.bpArmeSubTitle)
-                    binding.bodyPartView.setImageResource(R.drawable.bp1arms)
+                    binding.bodyPartView.setImageResource(R.drawable.small_bp1_biceps_silhoette_png)
                     binding.descriptionText.setText(it.stringRessourceText)
                 }
 
                 getString(R.string.bpBauch) -> {
                     binding.subTitle.text = getString(R.string.bpBauchSubTitle)
-                    binding.bodyPartView.setImageResource(R.drawable.bp5abs)
+                    binding.bodyPartView.setImageResource(R.drawable.small_bp5_abs_silhoette_png)
                     binding.descriptionText.setText(it.stringRessourceText)
                 }
 
                 getString(R.string.bpSchulter) -> {
                     binding.subTitle.text = getString(R.string.bpSchulterSubTitle)
-                    binding.bodyPartView.setImageResource(R.drawable.bp3shoulders)
+                    binding.bodyPartView.setImageResource(R.drawable.small_bp3_shoulder_silhoette_png)
                     binding.descriptionText.setText(it.stringRessourceText)
                 }
 
                 getString(R.string.bpRücken) -> {
                     binding.subTitle.text = getString(R.string.bpRückenSubTitle)
-                    binding.bodyPartView.setImageResource(R.drawable.bp4back)
+                    binding.bodyPartView.setImageResource(R.drawable.small_bp4_back_silhoette_png)
                     binding.descriptionText.setText(it.stringRessourceText)
                 }
 
                 getString(R.string.bpBeine) -> {
                     binding.subTitle.text = getString(R.string.bpBeineSubTitle)
-                    binding.bodyPartView.setImageResource(R.drawable.bp2legs)
+                    binding.bodyPartView.setImageResource(R.drawable.small_bp2_legs_silhoette_png)
                     binding.descriptionText.setText(it.stringRessourceText)
                 }
 
                 getString(R.string.bpBrust) -> {
                     binding.subTitle.text = getString(R.string.bpBrustSubTitle)
-                    binding.bodyPartView.setImageResource(R.drawable.bp6chest)
+                    binding.bodyPartView.setImageResource(R.drawable.small_bp6_chest_silhoette_png)
                     binding.descriptionText.setText(it.stringRessourceText)
                 }
             }

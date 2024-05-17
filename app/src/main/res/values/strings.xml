@@ -45,7 +45,7 @@
 
     <!--bodyparts-->
 
-    <string name="bpArme">Arme</string>
+    <string name="bpBiceps">Bizeps</string>
     <string name="bpBeine">Beine</string>
     <string name="bpSchulter">Schulter</string>
     <string name="bpRücken">Rücken</string>

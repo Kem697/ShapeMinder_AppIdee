@@ -25,7 +25,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
 import model.data.local.model.myTraining.Exercise
-import ui.viewModel.ContentViewModel
 import ui.viewModel.ExercisesViewModel
 
 class ExerciseListFragment : Fragment() {
@@ -438,28 +437,28 @@ class ExerciseListFragment : Fragment() {
 
 
             when (getString(exercise.first().bodyPart)) {
-                getString(R.string.bpArme) -> {
-                    binding.bodyPartView.setImageResource(R.drawable.bp1arms)
+                getString(R.string.bpBiceps) -> {
+                    binding.bodyPartView.setImageResource(R.drawable.small_bp1_biceps_silhoette_png)
                 }
 
                 getString(R.string.bpBauch) -> {
-                    binding.bodyPartView.setImageResource(R.drawable.bp5abs)
+                    binding.bodyPartView.setImageResource(R.drawable.small_bp5_abs_silhoette_png)
                 }
 
                 getString(R.string.bpSchulter) -> {
-                    binding.bodyPartView.setImageResource(R.drawable.bp3shoulders)
+                    binding.bodyPartView.setImageResource(R.drawable.small_bp3_shoulder_silhoette_png)
                 }
 
                 getString(R.string.bpRücken) -> {
-                    binding.bodyPartView.setImageResource(R.drawable.bp4back)
+                    binding.bodyPartView.setImageResource(R.drawable.small_bp4_back_silhoette_png)
                 }
 
                 getString(R.string.bpBeine) -> {
-                    binding.bodyPartView.setImageResource(R.drawable.bp2legs)
+                    binding.bodyPartView.setImageResource(R.drawable.small_bp2_legs_silhoette_png)
                 }
 
                 getString(R.string.bpBrust) -> {
-                    binding.bodyPartView.setImageResource(R.drawable.bp6chest)
+                    binding.bodyPartView.setImageResource(R.drawable.small_bp6_chest_silhoette_png)
                 }
 
                 else -> {
