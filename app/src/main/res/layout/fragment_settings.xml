@@ -19,6 +19,7 @@
             android:layout_marginTop="16dp"
             android:layout_width="140dp"
             android:layout_height="160dp"
+            app:tint="?android:attr/textColorPrimary"
             android:src="@drawable/account_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"

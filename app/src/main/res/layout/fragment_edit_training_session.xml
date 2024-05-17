@@ -36,6 +36,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_marginLeft="8dp"
+                    app:tint="?android:attr/textColorPrimary"
                     android:backgroundTint="#00FFFFFF"
                     android:src="@drawable/arrow_back_fill0_wght400_grad0_opsz24" />
 
@@ -47,7 +48,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:text="@string/editWorkoutTitle"
-                    android:textColor="#FFFFFF"
+                    android:textColor="?android:attr/textColorPrimary"
                     android:textSize="18dp" />
 
                 <Button

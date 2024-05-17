@@ -19,6 +19,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/black"
+            app:tint="?android:attr/textColorPrimary"
             android:src="@drawable/arrow_back_fill0_wght400_grad0_opsz24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

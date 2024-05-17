@@ -189,6 +189,7 @@
         android:src="@drawable/arrow_back_fill0_wght400_grad0_opsz24"
         android:backgroundTint="@color/black"
         app:strokeWidth="1dp"
+        app:tint="?android:attr/textColorPrimary"
         app:strokeColor= "@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -53,6 +53,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_marginLeft="16dp"
+                    app:tint="?android:attr/textColorPrimary"
                     android:backgroundTint="#00FFFFFF"
                     android:src="@drawable/account_icon" />
 
@@ -64,7 +65,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:text="@string/homeScreenHeader"
-                    android:textColor="#FFFFFF"
+                    android:textColor="?android:attr/textColorPrimary"
                     android:textSize="26dp" />
 
 

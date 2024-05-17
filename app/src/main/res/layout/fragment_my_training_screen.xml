@@ -74,7 +74,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="50dp"
                 android:text="@string/myTrainingScreenHeader"
-                android:textColor="#FFFFFF"
+                android:textColor="?android:attr/textColorPrimary"
                 android:textSize="26dp" />
 
                 <ImageView

@@ -246,7 +246,7 @@
 
 
     <style name="toolbarLayout" parent="Widget.AppCompat.Toolbar">
-        <item name="android:background">@color/white</item>
+        <item name="android:background">#CECECE</item>
     </style>
 
 
