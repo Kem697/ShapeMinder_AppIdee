@@ -1,16 +1,24 @@
 package ui.bottomNav.mySettingsScreen
 
+import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
+import android.os.LocaleList
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import coil.load
+import com.example.shapeminder_appidee.MainActivity
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentSettingsBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -18,6 +26,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import ui.logInFlow.LogInScreen
+import java.util.Locale
 
 
 class MySettingsScreen : Fragment() {
@@ -51,9 +60,14 @@ class MySettingsScreen : Fragment() {
         personalSettings()
         shareApp()
         modeSwitch()
+        changeInAppLanguage()
 
     }
 
+    override fun onStop() {
+        super.onStop()
+
+    }
 
     fun logout(){
         binding.optionCard8.setOnClickListener {
@@ -144,6 +158,79 @@ class MySettingsScreen : Fragment() {
             }
         }
     }
+
+
+//    I need to improve this function, because it doesnt work correctly.
+    fun changeInAppLanguage(){
+        var setLanguageSpinner = binding.languageSpinner
+        val currentLocale = Locale.getDefault().language
+        val languageOptions = mapOf(
+            "en" to requireContext().getString(R.string.language_english),
+            "de" to requireContext().getString(R.string.language_german),
+            "tr" to requireContext().getString(R.string.language_turkish),
+            "nb" to requireContext().getString(R.string.language_norwegian)
+        )
+
+
+        val languages = mutableListOf<String>()
+        val currentLanguageText = languageOptions[currentLocale] ?: getString(R.string.language_english)
+        languages.add(currentLanguageText)
+
+        for ((code, name) in languageOptions) {
+            if (code != currentLocale) {
+                languages.add(name)
+            }
+        }
+
+
+
+        var adapter = ArrayAdapter<String>(requireContext(),android.R.layout.simple_spinner_item,languages)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        setLanguageSpinner.adapter = adapter
+        setLanguageSpinner.setSelection(0)
+
+        setLanguageSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                val selectedLanguageCode = when (position) {
+                    0 -> currentLocale // First item is always the current locale
+                    else -> languageOptions.keys.toList()[position]
+                }
+
+                if (currentLocale != selectedLanguageCode) {
+                    setLocale(selectedLanguageCode)
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Do nothing
+            }
+        }
+    }
+
+    private fun setLocale(languageCode: String) {
+
+        val currentLocale = resources.configuration.locale.language
+        if (currentLocale == languageCode) {
+            // If the selected language is the same as the current language, do nothing
+            return
+        }
+
+        val locale = Locale(languageCode)
+        Locale.setDefault(locale)
+        val config = resources.configuration
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
+
+
+        // Restart the activity to apply the new language settings
+//        val refresh = Intent(requireActivity(), MainActivity::class.java)
+//        startActivity(refresh)
+//        requireActivity().finish()
+
+//        findNavController().navigate(R.id.action_mySettings_to_homeScreen)
+
+    }
+
 
 }
 

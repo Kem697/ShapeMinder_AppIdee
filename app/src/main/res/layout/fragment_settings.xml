@@ -6,31 +6,34 @@
     android:layout_height="match_parent"
     android:background="@color/tertiary"
     android:orientation="vertical"
-    android:paddingBottom="90dp">
+    android:paddingBottom="0dp">
+
+
+<!--android:paddingBottom="90dp">-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_Constraint"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
 
         <ImageView
             android:id="@+id/profile_img"
-            android:layout_marginTop="16dp"
-            android:layout_width="140dp"
-            android:layout_height="160dp"
-            app:tint="?android:attr/textColorPrimary"
+            android:layout_width="200dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="80dp"
             android:src="@drawable/account_icon"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <TextView
             android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="16dp"
             android:text=""
             android:textSize="26dp"
             android:textColor="?android:attr/textColorPrimary"
@@ -38,11 +41,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile_img" />
 
+        <!--  Original MarginTop UserName:      android:layout_marginTop="4dp"-->
+
+
         <TextView
             android:id="@+id/user_Email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="16dp"
             android:text=""
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="22dp"
@@ -50,125 +56,133 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/userName" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCard_Background"
-            style="@style/content_CardDecription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/darkLightModeToogle">
+
+        <!--  Original MarginTop User Email:      android:layout_marginTop="4dp"-->
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:orientation="vertical">
+        <!--I suspend which code parts, in order to make adjustments later.
+        Until the delivery time I want the app with it accomplished functionality-->
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/optionCard1"
-                    style="@style/mySettings_option_card"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginLeft="26dp"
-                    android:layout_marginRight="26dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="@string/opt_my_profileText"
-                        android:textColor="?android:attr/textColorPrimary"
-                        android:textSize="20dp">
-
-                    </TextView>
+        <!--  <com.google.android.material.card.MaterialCardView
+              android:id="@+id/materialCard_Background"
+              style="@style/content_CardDecription"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_margin="16dp"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              tools:layout_editor_absoluteY="333dp">
 
 
-                </com.google.android.material.card.MaterialCardView>
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_marginTop="16dp"
+                  android:layout_marginBottom="16dp"
+                  android:orientation="vertical">
+
+                  <com.google.android.material.card.MaterialCardView
+                      android:id="@+id/optionCard1"
+                      style="@style/mySettings_option_card"
+                      android:layout_width="match_parent"
+                      android:layout_height="50dp"
+                      android:layout_marginLeft="26dp"
+                      android:layout_marginRight="26dp"
+                      android:layout_marginBottom="4dp">
+
+                      <TextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:text="@string/opt_my_profileText"
+                          android:textColor="?android:attr/textColorPrimary"
+                          android:textSize="20dp">
+
+                      </TextView>
 
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/optionCard2"
-                    style="@style/mySettings_option_card"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="4dp"
-
-                    android:layout_marginLeft="26dp"
-                    android:layout_marginRight="26dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="@string/opt_my_healthText"
-                        android:textColor="?android:attr/textColorPrimary"
-                        android:textSize="20dp">
-
-                    </TextView>
+                  </com.google.android.material.card.MaterialCardView>
 
 
-                </com.google.android.material.card.MaterialCardView>
+                  <com.google.android.material.card.MaterialCardView
+                      android:id="@+id/optionCard2"
+                      style="@style/mySettings_option_card"
+                      android:layout_width="match_parent"
+                      android:layout_height="50dp"
+                      android:layout_marginLeft="26dp"
+
+                      android:layout_marginRight="26dp"
+                      android:layout_marginBottom="4dp">
+
+                      <TextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:text="@string/opt_my_healthText"
+                          android:textColor="?android:attr/textColorPrimary"
+                          android:textSize="20dp">
+
+                      </TextView>
 
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/optionCard3"
-                    style="@style/mySettings_option_card"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="4dp"
-
-                    android:layout_marginLeft="26dp"
-                    android:layout_marginRight="26dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="@string/opt3_my_favText"
-                        android:textColor="?android:attr/textColorPrimary"
-                        android:textSize="20dp">
-
-                    </TextView>
+                  </com.google.android.material.card.MaterialCardView>
 
 
-                </com.google.android.material.card.MaterialCardView>
+                  <com.google.android.material.card.MaterialCardView
+                      android:id="@+id/optionCard3"
+                      style="@style/mySettings_option_card"
+                      android:layout_width="match_parent"
+                      android:layout_height="50dp"
+                      android:layout_marginLeft="26dp"
+
+                      android:layout_marginRight="26dp"
+                      android:layout_marginBottom="4dp">
+
+                      <TextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:text="@string/opt3_my_favText"
+                          android:textColor="?android:attr/textColorPrimary"
+                          android:textSize="20dp">
+
+                      </TextView>
 
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/optionCard4"
-                    style="@style/mySettings_option_card"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="4dp"
-
-                    android:layout_marginLeft="26dp"
-                    android:layout_marginRight="26dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="@string/opt4_my_filesText"
-                        android:textColor="?android:attr/textColorPrimary"
-                        android:textSize="20dp">
-
-                    </TextView>
+                  </com.google.android.material.card.MaterialCardView>
 
 
-                </com.google.android.material.card.MaterialCardView>
+                  <com.google.android.material.card.MaterialCardView
+                      android:id="@+id/optionCard4"
+                      style="@style/mySettings_option_card"
+                      android:layout_width="match_parent"
+                      android:layout_height="50dp"
+                      android:layout_marginLeft="26dp"
+
+                      android:layout_marginRight="26dp"
+                      android:layout_marginBottom="4dp">
+
+                      <TextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:text="@string/opt4_my_filesText"
+                          android:textColor="?android:attr/textColorPrimary"
+                          android:textSize="20dp">
+
+                      </TextView>
 
 
-            </LinearLayout>
+                  </com.google.android.material.card.MaterialCardView>
 
 
-        </com.google.android.material.card.MaterialCardView>
+              </LinearLayout>
 
 
+          </com.google.android.material.card.MaterialCardView>
+  -->
+
+<!--
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCard_Background2"
@@ -239,8 +253,7 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-
-
+-->
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCard_Background3"
@@ -251,13 +264,13 @@
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialCard_Background2">
+            app:layout_constraintTop_toBottomOf="@+id/darkLightModeToogle">
 
 
             <LinearLayout
-                android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:orientation="vertical">
 
@@ -265,10 +278,10 @@
                     android:id="@+id/optionCard7"
                     style="@style/mySettings_option_card"
                     android:layout_width="match_parent"
+                    android:layout_height="50dp"
                     android:layout_marginLeft="26dp"
-                    android:layout_marginBottom="4dp"
                     android:layout_marginRight="26dp"
-                    android:layout_height="50dp">
+                    android:layout_marginBottom="4dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -288,10 +301,10 @@
                     android:id="@+id/optionCard8"
                     style="@style/mySettings_option_card"
                     android:layout_width="match_parent"
+                    android:layout_height="50dp"
                     android:layout_marginLeft="26dp"
-                    android:layout_marginBottom="4dp"
                     android:layout_marginRight="26dp"
-                    android:layout_height="50dp">
+                    android:layout_marginBottom="4dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -323,6 +336,19 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/user_Email" />
+
+<!--        I should shift this View and it function to the
+log in screen-->
+
+        <Spinner
+            android:id="@+id/languageSpinner"
+            android:layout_width="150dp"
+            android:backgroundTint="?android:attr/textColor"
+            android:layout_margin="16dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

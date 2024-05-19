@@ -46,6 +46,7 @@
             android:value="AIzaSyCkZf1Yv5d4k1rI_0eH61GSZFY_LxgmowE" />
 
 
+
         <activity android:name=".BarcodeScan"
             android:screenOrientation="portrait"
             android:stateNotNeeded="true"
@@ -53,3 +54,4 @@
     </application>
 
 </manifest>
+

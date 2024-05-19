@@ -14,6 +14,8 @@ android {
     namespace = "com.example.shapeminder_appidee"
     compileSdk = 34
 
+
+
     defaultConfig {
         applicationId = "com.example.shapeminder_appidee"
         minSdk = 26
@@ -138,6 +140,9 @@ dependencies {
 
     implementation ("com.google.protobuf:protobuf-javalite:3.22.3")
     implementation ("com.google.protobuf:protobuf-kotlin-lite:3.20.1")
+
+
+
 
 
 
