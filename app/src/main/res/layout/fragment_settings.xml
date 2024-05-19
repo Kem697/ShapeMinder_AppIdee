@@ -340,7 +340,7 @@
 <!--        I should shift this View and it function to the
 log in screen-->
 
-        <Spinner
+<!--        <Spinner
             android:id="@+id/languageSpinner"
             android:layout_width="150dp"
             android:backgroundTint="?android:attr/textColor"
@@ -348,7 +348,7 @@ log in screen-->
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

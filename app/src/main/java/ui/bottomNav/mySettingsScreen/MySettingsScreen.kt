@@ -60,7 +60,7 @@ class MySettingsScreen : Fragment() {
         personalSettings()
         shareApp()
         modeSwitch()
-        changeInAppLanguage()
+//        changeInAppLanguage()
 
     }
 
@@ -161,7 +161,7 @@ class MySettingsScreen : Fragment() {
 
 
 //    I need to improve this function, because it doesnt work correctly.
-    fun changeInAppLanguage(){
+ /*   fun changeInAppLanguage(){
         var setLanguageSpinner = binding.languageSpinner
         val currentLocale = Locale.getDefault().language
         val languageOptions = mapOf(
@@ -229,7 +229,7 @@ class MySettingsScreen : Fragment() {
 
 //        findNavController().navigate(R.id.action_mySettings_to_homeScreen)
 
-    }
+    }*/
 
 
 }

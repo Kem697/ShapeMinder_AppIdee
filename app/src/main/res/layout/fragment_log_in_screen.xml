@@ -93,7 +93,7 @@
         android:id="@+id/appLogo"
         android:layout_width="226dp"
         android:layout_height="142dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         android:src="@drawable/applogo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -173,18 +173,33 @@
 
     </TextView>
 
-    <Button
-        android:id="@+id/skipBtn"
-        android:layout_width="wrap_content"
+
+    <Spinner
+        android:id="@+id/languageSpinner"
+        android:layout_width="150dp"
+        android:background="@color/green"
+        android:backgroundTint="@color/white"
+        android:layout_margin="16dp"
         android:layout_height="wrap_content"
-        android:text="@string/developerBtnText"
-        android:layout_marginTop="32dp"
-        android:textColor="@color/white"
-        app:iconTint="@color/white"
+        android:layout_marginHorizontal="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerButton" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!---->
+
+<!--    <Button-->
+<!--        android:id="@+id/skipBtn"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/developerBtnText"-->
+<!--        android:layout_marginTop="32dp"-->
+<!--        android:textColor="@color/white"-->
+<!--        app:iconTint="@color/white"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.497"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/registerButton" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

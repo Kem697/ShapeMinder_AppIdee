@@ -7,10 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.view.isInvisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.shapeminder_appidee.MainActivity
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentLogInScreenBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -21,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import ui.viewModel.GoogleFireBaseViewModel
+import java.util.Locale
 
 
 class LogInScreen : Fragment() {
@@ -58,8 +62,9 @@ class LogInScreen : Fragment() {
         forgotPassword()
         logIn()
         register()
-        developerSkip()
+//        developerSkip()
         googleLogIn()
+        changeInAppLanguage()
     }
 
 
@@ -201,13 +206,97 @@ class LogInScreen : Fragment() {
         }
 
 
+
+//    I need to improve this
+
+    fun changeInAppLanguage(){
+        var setLanguageSpinner = binding.languageSpinner
+        val currentLocale = Locale.getDefault().language
+        val languageOptions = mapOf(
+            "de" to requireContext().getString(R.string.language_german),
+            "en" to requireContext().getString(R.string.language_english),
+            "tr" to requireContext().getString(R.string.language_turkish),
+            "nb" to requireContext().getString(R.string.language_norwegian)
+        )
+
+
+        val languages = mutableListOf<String>()
+        val currentLanguageText = languageOptions[currentLocale] ?: getString(R.string.language_english)
+        languages.add(currentLanguageText)
+
+        for ((code, name) in languageOptions) {
+            if (code != currentLocale) {
+                languages.add(name)
+            }
+        }
+
+
+        var tag = "Sprache??"
+        Log.i(tag,"Aktuelle Sprache: $currentLocale" )
+
+
+
+
+        var adapter = ArrayAdapter<String>(requireContext(),android.R.layout.simple_spinner_item,languages)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        setLanguageSpinner.adapter = adapter
+        setLanguageSpinner.setSelection(0)
+
+        setLanguageSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                val selectedLanguageCode = when (position) {
+                    0 -> currentLocale // First item is always the current locale
+                    else -> languageOptions.keys.toList()[position]
+                }
+
+                var tag = "Sprache??"
+                Log.i(tag,"Kürzel: $selectedLanguageCode| Position : $position | Aktuelle Sprache: $currentLocale" )
+
+
+                if (currentLocale != selectedLanguageCode) {
+                    setLocale(selectedLanguageCode)
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Do nothing
+            }
+        }
+    }
+
+    private fun setLocale(languageCode: String) {
+
+        val currentLocale = resources.configuration.locale.language
+        if (currentLocale == languageCode) {
+            // If the selected language is the same as the current language, do nothing
+            return
+        }
+
+        val locale = Locale(languageCode)
+        Locale.setDefault(locale)
+        val config = resources.configuration
+        config.setLocale(locale)
+        Locale.setDefault(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
+
+
+        // Restart the activity to apply the new language settings
+        val refresh = Intent(requireActivity(), MainActivity::class.java)
+        requireActivity().finish()
+        startActivity(refresh)
+
+
+
+    }
+
+
 //    Diese Methode muss in der App Fertigstellung gelöscht werden!
 
-    fun developerSkip() {
+   /* fun developerSkip() {
             binding.skipBtn.setOnClickListener {
                 findNavController().navigate(R.id.homeScreen)
             }
-        }
+        }*/
 
     }
 
