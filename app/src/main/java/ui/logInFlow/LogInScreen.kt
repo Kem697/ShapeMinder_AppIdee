@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.core.view.isInvisible
 import androidx.fragment.app.viewModels
@@ -39,6 +40,8 @@ class LogInScreen : Fragment() {
     private val googleFireBaseViewModel: GoogleFireBaseViewModel by viewModels()
 
     private lateinit var auth: FirebaseAuth
+
+
 
     private val fireStore = FirebaseFirestore.getInstance()
 
@@ -207,54 +210,69 @@ class LogInScreen : Fragment() {
 
 
 
-//    I need to improve this
+    /*EN:
+    This method need to be improved, due to the display of the wrong language
+    name after the change of the in app language. It stays as default german,
+    which is no wanted.
+    */
 
-    fun changeInAppLanguage(){
-        var setLanguageSpinner = binding.languageSpinner
-        val currentLocale = Locale.getDefault().language
+    fun changeInAppLanguage() {
+        val setLanguageSpinner = binding.languageSpinner
+        var currentLocale = Locale.getDefault().language
         val languageOptions = mapOf(
-            "de" to requireContext().getString(R.string.language_german),
-            "en" to requireContext().getString(R.string.language_english),
-            "tr" to requireContext().getString(R.string.language_turkish),
-            "nb" to requireContext().getString(R.string.language_norwegian)
+            "de" to getString(R.string.language_german),
+            "en" to getString(R.string.language_english),
+            "tr" to getString(R.string.language_turkish),
+            "nb" to getString(R.string.language_norwegian)
         )
 
-
         val languages = mutableListOf<String>()
-        val currentLanguageText = languageOptions[currentLocale] ?: getString(R.string.language_english)
-        languages.add(currentLanguageText)
+        languages.addAll(languageOptions.values)
 
-        for ((code, name) in languageOptions) {
-            if (code != currentLocale) {
-                languages.add(name)
-            }
-        }
+        val tag = "Sprache??"
+        Log.i(tag, "Aktuelle Sprache: $currentLocale")
 
-
-        var tag = "Sprache??"
-        Log.i(tag,"Aktuelle Sprache: $currentLocale" )
-
-
-
-
-        var adapter = ArrayAdapter<String>(requireContext(),android.R.layout.simple_spinner_item,languages)
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, languages)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         setLanguageSpinner.adapter = adapter
-        setLanguageSpinner.setSelection(0)
+
+        val currentLanguageIndex = languageOptions.keys.indexOf(languageOptions.keys.find { it == currentLocale })
+        setLanguageSpinner.setSelection(currentLanguageIndex)
+
 
         setLanguageSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                val selectedLanguageCode = when (position) {
-                    0 -> currentLocale // First item is always the current locale
-                    else -> languageOptions.keys.toList()[position]
-                }
+                val selectedLanguageCode = languageOptions.keys.toList()[position]
 
-                var tag = "Sprache??"
-                Log.i(tag,"Kürzel: $selectedLanguageCode| Position : $position | Aktuelle Sprache: $currentLocale" )
-
+                Log.i(tag, "Kürzel: $selectedLanguageCode | Position: $position | Neue Sprache: ${languageOptions[selectedLanguageCode]}")
 
                 if (currentLocale != selectedLanguageCode) {
-                    setLocale(selectedLanguageCode)
+                    when(selectedLanguageCode){
+                        "de" ->{
+                            setLocale(selectedLanguageCode)
+                            currentLocale = Locale.setDefault(Locale("de")).toString()
+                        }
+
+                        "en" ->{
+                            setLocale(selectedLanguageCode)
+                            currentLocale = Locale.setDefault(Locale("en")).toString()
+                        }
+                        "tr" ->{
+                            setLocale(selectedLanguageCode)
+                            currentLocale = Locale.setDefault(Locale("tr")).toString()
+                        }
+                        "nb" ->{
+                            setLocale(selectedLanguageCode)
+                            currentLocale = Locale.setDefault(Locale("nb")).toString()
+                        }
+
+                        else->{
+                            setLocale(currentLocale)
+                        }
+                    }
+
+                    Log.i(tag, "Code: $selectedLanguageCode || Kürzel: $currentLocale | Position: $position | Neue Sprache: ${languageOptions[selectedLanguageCode]}")
+                    refresh(MainActivity())
                 }
             }
 
@@ -265,29 +283,20 @@ class LogInScreen : Fragment() {
     }
 
     private fun setLocale(languageCode: String) {
-
-        val currentLocale = resources.configuration.locale.language
-        if (currentLocale == languageCode) {
-            // If the selected language is the same as the current language, do nothing
-            return
-        }
-
         val locale = Locale(languageCode)
         Locale.setDefault(locale)
         val config = resources.configuration
         config.setLocale(locale)
-        Locale.setDefault(locale)
         resources.updateConfiguration(config, resources.displayMetrics)
-
-
-        // Restart the activity to apply the new language settings
-        val refresh = Intent(requireActivity(), MainActivity::class.java)
-        requireActivity().finish()
-        startActivity(refresh)
-
-
-
     }
+
+    fun refresh(activity: MainActivity){
+        val refresh = Intent(requireActivity(), activity::class.java)
+        refresh.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(refresh)
+        requireActivity().finish()
+    }
+
 
 
 //    Diese Methode muss in der App Fertigstellung gelöscht werden!

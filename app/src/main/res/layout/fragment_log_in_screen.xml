@@ -177,8 +177,8 @@
     <Spinner
         android:id="@+id/languageSpinner"
         android:layout_width="150dp"
-        android:background="@color/green"
-        android:backgroundTint="@color/white"
+        android:background="@color/white"
+        android:backgroundTint="?android:attr/textColorPrimary"
         android:layout_margin="16dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
