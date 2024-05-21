@@ -11,8 +11,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.shapeminder_appidee.R
 import com.example.shapeminder_appidee.databinding.FragmentRegisterScreenBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.FirebaseFirestore
 import ui.viewModel.GoogleFireBaseViewModel
 
 
@@ -21,12 +19,6 @@ class RegisterScreen : Fragment() {
 
 
     private val googleFireBaseViewModel: GoogleFireBaseViewModel by viewModels()
-
-    private val fireStore = FirebaseFirestore.getInstance()
-
-    lateinit var profileRef: DocumentReference
-
-
 
     private lateinit var auth: FirebaseAuth
 
@@ -39,6 +31,7 @@ class RegisterScreen : Fragment() {
         auth = FirebaseAuth.getInstance()
         return binding.root
     }
+
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
