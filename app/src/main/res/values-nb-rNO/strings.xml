@@ -228,4 +228,5 @@
     <string name="openText">åpen</string>
     <string name="lightModeText">Light mode</string>
     <string name="darkModeText">Dark Mode</string>
+    <string name="selectLanguageHint">Velg språk</string>
 </resources>

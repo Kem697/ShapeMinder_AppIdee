@@ -243,6 +243,7 @@
     <string name="openText">open</string>
     <string name="lightModeText">Light mode</string>
     <string name="darkModeText">Dark Mode</string>
+    <string name="selectLanguageHint">Select language</string>
 
 
 </resources>

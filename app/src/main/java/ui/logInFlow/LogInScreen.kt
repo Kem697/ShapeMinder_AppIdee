@@ -9,8 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Spinner
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.isInvisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -36,6 +38,8 @@ class LogInScreen : Fragment() {
     }
 
     private lateinit var binding: FragmentLogInScreenBinding
+
+
 
     private val googleFireBaseViewModel: GoogleFireBaseViewModel by viewModels()
 
@@ -211,9 +215,11 @@ class LogInScreen : Fragment() {
 
 
     /*EN:
-    This method need to be improved, due to the display of the wrong language
-    name after the change of the in app language. It stays as default german,
-    which is no wanted.
+    This methode serves to allow the user to change the in app language
+    in the login screen. The intent is to improve the user experience from specific
+    point of views. For example the in app language change is more accessible for
+    users, because they do not delve into system settings. Besides providing an in-app language
+    switch demonstrates cultural sensitivity and respect for the user's language preferences.
     */
 
     fun changeInAppLanguage() {
@@ -226,53 +232,62 @@ class LogInScreen : Fragment() {
             "nb" to getString(R.string.language_norwegian)
         )
 
-        val languages = mutableListOf<String>()
-        languages.addAll(languageOptions.values)
+        val languages = mutableListOf(getString(R.string.selectLanguageHint)).apply {
+            addAll(languageOptions.values)
+        }
 
-        val tag = "Sprache??"
-        Log.i(tag, "Aktuelle Sprache: $currentLocale")
+        val tag = "LanguageSelection"
 
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, languages)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        Log.i(tag, "Current language: $currentLocale")
+
+        val adapter = object : ArrayAdapter<String>(requireContext(), R.layout.list_item_language, languages) {
+            override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.list_item_language, parent, false)
+                val languageText = view.findViewById<TextView>(R.id.languageName)
+                val languageImage = view.findViewById<ImageView>(R.id.languageImage)
+
+                languageText.text = getItem(position)
+                if (position != 0) {
+                    val languageCode = languageOptions.keys.elementAt(position - 1)
+                    val drawableRes = when (languageCode) {
+                        "de" -> R.drawable.de_icon
+                        "en" -> R.drawable.us_icon
+                        "tr" -> R.drawable.tr_icon
+                        "nb" -> R.drawable.no_icon
+                        else -> R.drawable.earth_icon
+                    }
+                    languageImage.setImageResource(drawableRes)
+                } else {
+                    languageImage.setImageResource(R.drawable.earth_icon)
+                }
+                return view
+            }
+
+            override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+                return getView(position, convertView, parent)
+            }
+        }
+
+        adapter.setDropDownViewResource(R.layout.list_item_language)
         setLanguageSpinner.adapter = adapter
 
-        val currentLanguageIndex = languageOptions.keys.indexOf(languageOptions.keys.find { it == currentLocale })
-        setLanguageSpinner.setSelection(currentLanguageIndex)
-
+        setLanguageSpinner.setSelection(0)
 
         setLanguageSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                val selectedLanguageCode = languageOptions.keys.toList()[position]
+                if (position == 0) return
 
-                Log.i(tag, "Kürzel: $selectedLanguageCode | Position: $position | Neue Sprache: ${languageOptions[selectedLanguageCode]}")
+                val selectedLanguageCode = languageOptions.keys.elementAt(position - 1)
+                Log.i(tag, "Code: $selectedLanguageCode | Position: $position | New language: ${languageOptions[selectedLanguageCode]}")
 
                 if (currentLocale != selectedLanguageCode) {
-                    when(selectedLanguageCode){
-                        "de" ->{
-                            setLocale(selectedLanguageCode)
-                            currentLocale = Locale.setDefault(Locale("de")).toString()
-                        }
-
-                        "en" ->{
-                            setLocale(selectedLanguageCode)
-                            currentLocale = Locale.setDefault(Locale("en")).toString()
-                        }
-                        "tr" ->{
-                            setLocale(selectedLanguageCode)
-                            currentLocale = Locale.setDefault(Locale("tr")).toString()
-                        }
-                        "nb" ->{
-                            setLocale(selectedLanguageCode)
-                            currentLocale = Locale.setDefault(Locale("nb")).toString()
-                        }
-
-                        else->{
-                            setLocale(currentLocale)
-                        }
-                    }
-
-                    Log.i(tag, "Code: $selectedLanguageCode || Kürzel: $currentLocale | Position: $position | Neue Sprache: ${languageOptions[selectedLanguageCode]}")
-                    refresh(MainActivity())
+                    setLocale(selectedLanguageCode)
+                    currentLocale = selectedLanguageCode
+                    refreshActivity(MainActivity())
+                    Log.i(tag, "Language changed to: $currentLocale")
+                } else{
+                    setLocale(selectedLanguageCode)
+                    refreshActivity(MainActivity())
                 }
             }
 
@@ -290,11 +305,12 @@ class LogInScreen : Fragment() {
         resources.updateConfiguration(config, resources.displayMetrics)
     }
 
-    fun refresh(activity: MainActivity){
+    fun refreshActivity(activity: MainActivity){
         val refresh = Intent(requireActivity(), activity::class.java)
         refresh.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(refresh)
         requireActivity().finish()
+
     }
 
 

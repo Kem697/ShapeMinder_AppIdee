@@ -233,5 +233,6 @@
     <string name="openText">açık</string>
     <string name="lightModeText">Light mode</string>
     <string name="darkModeText">Dark Mode</string>
+    <string name="selectLanguageHint">Dil seçin</string>
 
 </resources>
