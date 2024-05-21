@@ -16,6 +16,7 @@
     <string name="language_turkish">Türkçe</string>
     <string name="language_norwegian">Norsk</string>
     <string name="language_french">Français</string>
+    <string name="language_spanish">Español</string>
 
 
     <!--contentTitles-->
@@ -176,7 +177,7 @@
     <string name="musclegroupTitle">Muskelgruppe</string>
     <string name="registerScreenText">Willkommen! Bitte mache deine Angaben.</string>
     <string name="registerBtnText">Registrieren</string>
-    <string name="logInScreenText">Bitte nenne deine Anmeldedaten:</string>
+    <string name="logInScreenText">Bitte gebe deine Anmeldedaten ein:</string>
     <string name="logInBtnText">Anmelden</string>
 
 
