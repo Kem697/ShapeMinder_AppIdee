@@ -11,6 +11,7 @@
   <string name="language_french">Français</string>
 -->
 
+
     <string name="app_name">ShapeMinder</string>
     <string name="eMailInput">Entrez votre adresse e-mail...</string>
     <string name="nameInput">Entrer le nom et le prénom...</string>
