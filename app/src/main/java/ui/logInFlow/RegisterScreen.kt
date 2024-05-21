@@ -44,7 +44,7 @@ class RegisterScreen : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         register()
-        navigateBack()
+//        navigateBack()
     }
 
     override fun onStop() {
@@ -53,11 +53,13 @@ class RegisterScreen : Fragment() {
     }
 
 
+/*
     fun navigateBack(){
         binding.backBtn.setOnClickListener {
             findNavController().navigateUp()
         }
     }
+*/
 
     fun register() {
         binding.submitButton.setOnClickListener {

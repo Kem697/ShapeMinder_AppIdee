@@ -33,16 +33,16 @@ class ForgotPasswordScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navigateBack()
+//        navigateBack()
         startResetPasswordRequest()
     }
 
 
-    fun navigateBack(){
+/*    fun navigateBack(){
         binding.backBtn.setOnClickListener {
             findNavController().navigateUp()
         }
-    }
+    }*/
 
     fun startResetPasswordRequest(){
         val resetPasswordBtn = binding.resetPasswordButton
