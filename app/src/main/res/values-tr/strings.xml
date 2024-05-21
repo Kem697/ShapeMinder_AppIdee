@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <string name="language">Türkçe</string>
+
+
     <string name="app_name">ShapeMinder</string>
     <string name="eMailInput">E-posta adresinizi girin...</string>
     <string name="nameInput">Adınızı ve soyadınızı girin...</string>
     <string name="passwordInput">Şifreyi girin...</string>
     <string name="passwordRepeatInput">Şifreyi tekrar et...</string>
 
-    <string name="language">Türkçe</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title1">Dinlenme</string>

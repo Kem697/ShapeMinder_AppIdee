@@ -15,6 +15,8 @@
     <string name="language_german">Deutsch</string>
     <string name="language_turkish">Türkçe</string>
     <string name="language_norwegian">Norsk</string>
+    <string name="language_french">Français</string>
+
 
     <!--contentTitles-->
     <string name="title1">Erholung</string>
@@ -59,7 +61,7 @@
     <string name="bpBrust">Brust</string>
 
     <string name="bpArmeSubTitle">Arme Übung</string>
-    <string name="bpBeineSubTitle">Beine Übung</string>
+    <string name="bpBeineSubTitle">Bein Übung</string>
     <string name="bpSchulterSubTitle">Schulter Übung</string>
     <string name="bpRückenSubTitle">Rücken Übung</string>
     <string name="bpBauchSubTitle">Bauch Übung</string>

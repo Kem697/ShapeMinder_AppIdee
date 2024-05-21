@@ -228,6 +228,7 @@ class LogInScreen : Fragment() {
         val languageOptions = mapOf(
             "de" to getString(R.string.language_german),
             "en" to getString(R.string.language_english),
+            "fr" to getString(R.string.language_french),
             "tr" to getString(R.string.language_turkish),
             "nb" to getString(R.string.language_norwegian)
         )
@@ -252,6 +253,7 @@ class LogInScreen : Fragment() {
                     val drawableRes = when (languageCode) {
                         "de" -> R.drawable.de_icon
                         "en" -> R.drawable.us_icon
+                        "fr" -> R.drawable.fr_icon
                         "tr" -> R.drawable.tr_icon
                         "nb" -> R.drawable.no_icon
                         else -> R.drawable.earth_icon

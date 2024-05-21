@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+
+    <string name="language">English</string>
+
     <string name="app_name">ShapeMinder</string>
     <string name="eMailInput">Enter your e-mail address...</string>
     <string name="nameInput">Enter first and last name...</string>
@@ -8,7 +12,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-    <string name="language">English</string>
 
 
 
@@ -27,13 +30,13 @@
     <string name="ecDeadlift">Deadlift</string>
     <string name="ecSquats">Squat</string>
     <string name="bpBiceps">Biceps</string>
-    <string name="bpBeine">Legs</string>
-    <string name="bpSchulter">Shoulders</string>
+    <string name="bpBeine">Leg</string>
+    <string name="bpSchulter">Shoulder</string>
     <string name="bpRücken">Back</string>
     <string name="bpBauch">Abs</string>
     <string name="bpBrust">Chest</string>
     <string name="bpArmeSubTitle">Arms exercise</string>
-    <string name="bpBeineSubTitle">Legs exercise</string>
+    <string name="bpBeineSubTitle">Leg exercise</string>
     <string name="bpSchulterSubTitle">Shoulder exercise</string>
     <string name="bpRückenSubTitle">Back exercise</string>
     <string name="bpBauchSubTitle">Belly exercise</string>
@@ -127,7 +130,7 @@
     <string name="deleteSessionBtnText">Delete training</string>
     <string name="addNewTrainingsessionText">New training</string>
     <string name="searchExerciseForFav">Search exercise</string>
-    <string name="setDatBtnText">Set Date</string>
+    <string name="setDatBtnText">Set date</string>
     <string name="editWorkoutTitle">Edit workout</string>
     <string name="myTrainingScreenHeader">My training</string>
     <string name="searchBarHint">Search</string>

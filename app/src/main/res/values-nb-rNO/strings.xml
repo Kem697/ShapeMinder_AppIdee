@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
+
+    <string name="language">Norsk</string>
+
+
     <string name="app_name">ShapeMinder</string>
     <string name="eMailInput">Skriv inn e-postadressen din...</string>
     <string name="nameInput">Skriv inn for- og etternavn...</string>
     <string name="passwordInput">Skriv inn passord...</string>
     <string name="passwordRepeatInput">Gjenta passord...</string>
-    <string name="language">Norsk</string>
 
     <string name="title1">Fritid</string>
     <string name="title2">Trening</string>
