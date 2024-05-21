@@ -170,7 +170,7 @@
     <string name="gc_fruits_and_vegetable">Fruits et légumes</string>
     <string name="gc_grain_and_corn">Céréales</string>
     <string name="gc_oil_and_fats">Huiles et graisses</string>
-    <string name="gc_milk_and_eg">Produits laitiers et œufs</string>
+    <string name="gc_milk_and_eg">Produits laitiers</string>
     <string name="gc_meat_and_fish">Poisson et viande</string>
     <string name="gc_sweets">Sucreries</string>
     <string name="failedStoreFinderText">Erreur d\'ouverture de Google Maps !</string>

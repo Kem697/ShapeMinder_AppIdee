@@ -73,8 +73,10 @@ class GoogleFireBaseViewModel : ViewModel() {
         passwordRepeatInput: String,
         auth: FirebaseAuth,
     ) {
-        if (emailInput.isNotBlank() && passwordInput.isNotBlank()
-            && nameInput.isNotBlank() && passwordRepeatInput.isNotBlank()
+        if (emailInput.isNotBlank() && emailInput.contains("@")
+            && passwordInput.isNotBlank()
+            && nameInput.isNotBlank()
+            && passwordRepeatInput.isNotBlank()
             && passwordInput == passwordRepeatInput
         ) {
             auth.createUserWithEmailAndPassword(emailInput, passwordInput)
