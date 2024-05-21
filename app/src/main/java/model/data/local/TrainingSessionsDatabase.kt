@@ -23,6 +23,7 @@ private lateinit var INSTANCE: TrainingSessionsDatabase
 fun getTrainingDatabase(context: Context) : TrainingSessionsDatabase {
 
 
+
     synchronized(TrainingSessionsDatabase::class.java){
         if (!::INSTANCE.isInitialized) {
 
