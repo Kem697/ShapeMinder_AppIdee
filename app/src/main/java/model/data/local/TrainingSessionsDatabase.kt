@@ -31,7 +31,12 @@ fun getTrainingDatabase(context: Context) : TrainingSessionsDatabase {
                 context.applicationContext,
                 TrainingSessionsDatabase::class.java,
                 "database_training"
-            ).build()
+            )
+                /*Using .fallbackToDestructiveMigration() tells Room to perform a
+                destructive migration if it encounters a version mismatch
+                (i.e., if the current database version doesn't match the version expected by the app).*/
+                .fallbackToDestructiveMigration()
+                .build()
         }
         return INSTANCE
     }

@@ -84,7 +84,6 @@ class RemoteRepositoryFood (
             FoodFinderSubCategory(   R.string.gc_meat_and_fish,R.drawable.foodcat3_meat_img,R.string.parentCat_Protein,R.string.apiSearchTag_meat),
             FoodFinderSubCategory(R.string.gc_fruits_and_vegetable,R.drawable.foodcat4_fruits_and_vegetables,R.string.parentCat_Fibers,R.string.apiSearchTag_fruits),
             FoodFinderSubCategory(R.string.gc_oil_and_fats,R.drawable.foodcat2_oil_img,R.string.parentCat_Fats,R.string.apiSearchTag_olive_oils),
-
         )
     }
 
