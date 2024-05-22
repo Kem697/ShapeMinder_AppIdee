@@ -238,4 +238,22 @@
     <string name="darkModeText">Dark Mode</string>
     <string name="selectLanguageHint">Dil seçin</string>
 
+
+    <string name="parentCat_Carbs">Karbonhidratlar</string>
+    <string name="parentCat_Fats">Yağlar</string>
+    <string name="parentCat_Fibers">Lifler</string>
+    <string name="parentCat_Protein">Proteinler</string>
+
+
+    <!--Open Food Facts Api Search Tags-->
+
+    <string name="apiSearchTag_pastas">pastas</string>
+    <string name="apiSearchTag_fruits">fruits</string>
+    <string name="apiSearchTag_meat">meats and their products</string>
+    <string name="apiSearchTag_milks">milks</string>
+    <string name="apiSearchTag_olive_oils">olive oils</string>
+    <string name="apiSearchTag_sweet_snacks">sweet snacks</string>
+
+
+
 </resources>

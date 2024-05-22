@@ -57,68 +57,55 @@ class GridAdapterMyNutrition(
         viewHolder.imageViewIcon.setImageResource(item.imageRessource)
 
 
+        /*1.
+             The value of selectedCategory must correspond with parentCategory
+             value of the aimed sub Categories. This necessitate that I change
+             the name of the stringRessourceTitle according to the name of the parent
+             category
+             2.
+             After this step I have to initialize the navController to retrieve
+             the list of foodSubCategories which are befitting with the parent
+             Categories*/
+
+
 
         when (viewHolder.textViewTitle.text) {
-            ContextCompat.getString(context, R.string.gc_grain_and_corn) -> {
+            ContextCompat.getString(context, R.string.parentCat_Carbs) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedCategory = ContextCompat.getString(context, R.string.gc_grain_and_corn)
-                    nutrionViewModel.getFoodTitle(selectedCategory)
-                    nutrionViewModel.setCountyAndCategory("pastas",
-                        context.getString(R.string.apiCountrySearchTag))
-                    nutrionViewModel.searchFood()
-                    viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
+                    var getSubCategory = ContextCompat.getString(context,R.string.parentCat_Carbs)
+                    nutrionViewModel.getFoodSubCategory(getSubCategory)
+                    nutrionViewModel.getFoodSubCats(getSubCategory,context, listOf())
+                    viewHolder.imageViewIcon.findNavController().navigate(R.id.foodSubCategoriesFragment)
                 }
             }
 
-            ContextCompat.getString(context, R.string.gc_fruits_and_vegetable) -> {
+            ContextCompat.getString(context, R.string.parentCat_Fibers) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedCategory = ContextCompat.getString(context, R.string.gc_fruits_and_vegetable)
-                    nutrionViewModel.getFoodTitle(selectedCategory)
-                    nutrionViewModel.setCountyAndCategory("fruits",context.getString(R.string.apiCountrySearchTag))
-                    nutrionViewModel.searchFood()
-                    viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
+                    var getSubCategory = ContextCompat.getString(context,R.string.parentCat_Fibers)
+                    nutrionViewModel.getFoodSubCategory(getSubCategory)
+                    nutrionViewModel.getFoodSubCats(getSubCategory,context, listOf())
+                    viewHolder.imageViewIcon.findNavController().navigate(R.id.foodSubCategoriesFragment)
                 }
             }
 
-            ContextCompat.getString(context, R.string.gc_milk_and_eg) -> {
+            ContextCompat.getString(context, R.string.parentCat_Protein) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedCategory = ContextCompat.getString(context, R.string.gc_milk_and_eg)
-                    nutrionViewModel.getFoodTitle(selectedCategory)
-                    nutrionViewModel.setCountyAndCategory("milks",context.getString(R.string.apiCountrySearchTag))
-                    nutrionViewModel.searchFood()
-                    viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
+                    var getSubCategory = ContextCompat.getString(context,R.string.parentCat_Protein)
+                    nutrionViewModel.getFoodSubCategory(getSubCategory)
+                    nutrionViewModel.getFoodSubCats(getSubCategory,context, listOf())
+                    viewHolder.imageViewIcon.findNavController().navigate(R.id.foodSubCategoriesFragment)
                 }
             }
 
-            ContextCompat.getString(context, R.string.gc_oil_and_fats) -> {
+            ContextCompat.getString(context, R.string.parentCat_Fats) -> {
                 viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedCategory = ContextCompat.getString(context, R.string.gc_oil_and_fats)
-                    nutrionViewModel.getFoodTitle(selectedCategory)
-                    nutrionViewModel.setCountyAndCategory("olive oils",context.getString(R.string.apiCountrySearchTag))
-                    nutrionViewModel.searchFood()
-                    viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
+                        var getSubCategory = ContextCompat.getString(context, R.string.parentCat_Fats)
+                        nutrionViewModel.getFoodSubCategory(getSubCategory)
+                        nutrionViewModel.getFoodSubCats(getSubCategory, context, listOf())
+                        viewHolder.imageViewIcon.findNavController().navigate(R.id.foodSubCategoriesFragment)
                 }
             }
 
-            ContextCompat.getString(context, R.string.gc_meat_and_fish) -> {
-                viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedCategory = ContextCompat.getString(context, R.string.gc_meat_and_fish)
-                    nutrionViewModel.getFoodTitle(selectedCategory)
-                    nutrionViewModel.setCountyAndCategory("meats and their products",context.getString(R.string.apiCountrySearchTag))
-                    nutrionViewModel.searchFood()
-                    viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
-                }
-            }
-
-            ContextCompat.getString(context, R.string.gc_sweets) -> {
-                viewHolder.imageViewIcon.setOnClickListener {
-                    val selectedCategory = ContextCompat.getString(context, R.string.gc_sweets)
-                    nutrionViewModel.getFoodTitle(selectedCategory)
-                    nutrionViewModel.setCountyAndCategory("sweet snacks",context.getString(R.string.apiCountrySearchTag))
-                    nutrionViewModel.searchFood()
-                    viewHolder.imageViewIcon.findNavController().navigate(R.id.foodListFragment)
-                }
-            }
         }
 
 

@@ -296,8 +296,6 @@
     <string name="toastEmailVerificationRequired">Deine E-Mail wurde nicht bestätigt! Bitte überprüfe dein E-Mail Postfach.</string>
 
 
-
-
     <string name="barcodeScannerTitle">Barcode Scanner</string>
     <string name="noBarcodeDetectedText">Kein Barcode gefunden!</string>
     <string name="barcodeResult">Ergebnis</string>
@@ -319,6 +317,23 @@
     <string name="lightModeText">Light mode</string>
     <string name="darkModeText">Dark Mode</string>
     <string name="selectLanguageHint">Sprache wählen</string>
+
+
+
+    <string name="parentCat_Carbs">Kohlenhydrate</string>
+    <string name="parentCat_Fats">Fette</string>
+    <string name="parentCat_Fibers">Balaststoffe</string>
+    <string name="parentCat_Protein">Proteine</string>
+
+
+    <!--Open Food Facts Api Search Tags-->
+
+    <string name="apiSearchTag_pastas">pastas</string>
+    <string name="apiSearchTag_fruits">fruits</string>
+    <string name="apiSearchTag_milks">milks</string>
+    <string name="apiSearchTag_meat">meats and their products</string>
+    <string name="apiSearchTag_olive_oils">olive oils</string>
+    <string name="apiSearchTag_sweet_snacks">sweet snacks</string>
 
 
 </resources>

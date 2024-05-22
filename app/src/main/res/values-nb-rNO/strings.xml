@@ -232,4 +232,21 @@
     <string name="lightModeText">Light mode</string>
     <string name="darkModeText">Dark Mode</string>
     <string name="selectLanguageHint">Velg språk</string>
+
+
+    <string name="parentCat_Carbs">Karbohydrater</string>
+    <string name="parentCat_Fats">Fett</string>
+    <string name="parentCat_Fibers">Fiberr</string>
+    <string name="parentCat_Protein">Proteiner</string>
+
+    <!--Open Food Facts Api Search Tags-->
+
+    <string name="apiSearchTag_pastas">pastas</string>
+    <string name="apiSearchTag_fruits">fruits</string>
+    <string name="apiSearchTag_meat">meats and their products</string>
+    <string name="apiSearchTag_milks">milks</string>
+    <string name="apiSearchTag_olive_oils">olive oils</string>
+    <string name="apiSearchTag_sweet_snacks">sweet snacks</string>
+
+
 </resources>

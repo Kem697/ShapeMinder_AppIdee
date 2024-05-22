@@ -62,6 +62,7 @@ class FoodDetailViewFragment : Fragment() {
 
     fun setUpView() {
         nutrionViewModel.selectedFood.observe(viewLifecycleOwner) {
+            binding.foodDetailViewTitle.setText(nutrionViewModel.selectedContentTitle.value)
             when (it.url) {
                 "" -> {
                     binding.foodImage.setImageResource(R.drawable.noimage)

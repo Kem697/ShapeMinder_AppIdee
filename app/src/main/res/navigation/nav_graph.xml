@@ -178,15 +178,15 @@
         android:name="ui.bottomNav.myNutritionScreen.nav1foodFinder.FoodFinderNav1Fragment"
         android:label="fragment_food_finder_nav1"
         tools:layout="@layout/fragment_food_finder_nav1" >
-        <action
-            android:id="@+id/action_foodFinderNav1Fragment_to_foodListFragment"
-            app:destination="@id/foodListFragment" />
         <argument
             android:name="country"
             app:argType="string" />
         <argument
             android:name="category"
             app:argType="string" />
+        <action
+            android:id="@+id/action_foodFinderNav1Fragment_to_foodSubCategoriesFragment"
+            app:destination="@id/foodSubCategoriesFragment" />
     </fragment>
     <fragment
         android:id="@+id/groceryListNav3Fragment"
@@ -286,4 +286,16 @@
         android:name="ui.logInFlow.ForgotPasswordScreen"
         android:label="ForgotPasswordScreen"
         />
+    <fragment
+        android:id="@+id/foodSubCategoriesFragment"
+        android:name="ui.bottomNav.myNutritionScreen.nav1foodFinder.FoodSubCategoriesFragment"
+        android:label="FoodSubCategoriesFragment" >
+        <action
+            android:id="@+id/action_foodSubCategoriesFragment_to_foodListFragment"
+            app:destination="@id/foodListFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/exit_anim" />
+    </fragment>
 </navigation>

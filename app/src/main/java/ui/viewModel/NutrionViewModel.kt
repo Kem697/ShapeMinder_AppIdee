@@ -1,16 +1,19 @@
 package ui.viewModel
 
 import android.app.Application
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.shapeminder_appidee.R
 import kotlinx.coroutines.launch
 import model.data.local.getProductDatabase
 //import model.data.local.getProductDatabase
 //import model.data.local.getProductDatabase
 import model.data.local.model.myNutrion.FoodFinderCategory
+import model.data.local.model.myNutrion.FoodFinderSubCategory
 import model.data.remote.api_model.openFoodFacts.OpenFoodFactsApi
 import model.data.remote.RemoteRepositoryFood
 import model.data.remote.api_model.openFoodFacts.Product
@@ -23,10 +26,9 @@ class NutrionViewModel(application: Application) : AndroidViewModel(application)
 
     private val remoteRepositoryFood = RemoteRepositoryFood(OpenFoodFactsApi,productDatabase)
 
-    val productsInDatabase = remoteRepositoryFood.savedFoodList
-
-
     private var groceryCategories = remoteRepositoryFood.groceryCategories
+
+    private var grocerySubCategories = remoteRepositoryFood.grocerySubCategories
 
 
 
@@ -34,6 +36,10 @@ class NutrionViewModel(application: Application) : AndroidViewModel(application)
     private var _foodCategories = MutableLiveData(groceryCategories)
     val foodCategories: LiveData<List<FoodFinderCategory>>
         get() = _foodCategories
+
+    private var _foodSubCategories = MutableLiveData(grocerySubCategories)
+    val foodSubCategories : LiveData<List<FoodFinderSubCategory>>
+        get() = _foodSubCategories
 
 
     private var _selectedFood = MutableLiveData<Product>()
@@ -45,6 +51,11 @@ class NutrionViewModel(application: Application) : AndroidViewModel(application)
     private val _selectedContentTitle = MutableLiveData<String>()
     val selectedContentTitle: LiveData<String>
         get() = _selectedContentTitle
+
+
+    private val _selectedFoodSubCategory = MutableLiveData<String>()
+    val selectedFoodSubCategory: LiveData<String>
+        get() = _selectedFoodSubCategory
 
 
 
@@ -99,8 +110,12 @@ class NutrionViewModel(application: Application) : AndroidViewModel(application)
         country = foodOrigin
     }
 
-    fun getFoodTitle(bodypart: String) {
-        _selectedContentTitle.value = bodypart
+    fun getFoodTitle(foodTitle: String) {
+        _selectedContentTitle.value = foodTitle
+    }
+
+    fun getFoodSubCategory(foodTitle: String) {
+        _selectedFoodSubCategory.value = foodTitle
     }
 
     fun retrieveNaturalFoodList(nonFilteredList: List<Product>) {
@@ -183,4 +198,63 @@ class NutrionViewModel(application: Application) : AndroidViewModel(application)
             remoteRepositoryFood.deleteProduct(product)
         }
     }
+
+
+//    sub
+fun getFoodSubCats(subcats: String, context: Context, originalFoodSubCategories: List<FoodFinderSubCategory>) {
+    var tag = "SubCatFilter?"
+
+    var currentSubCategories = grocerySubCategories
+    val filteredSubCategories = currentSubCategories.filter { context.getString(it.parentCategory) == subcats }
+    Log.i(tag,"Orginal List : ${_foodSubCategories.value?.size}")
+
+    if (filteredSubCategories != null && filteredSubCategories.isNotEmpty()) {
+        _foodSubCategories.value = filteredSubCategories
+    } else {
+        retrieveUnfilteredNaturalSubCats()
+    }
+
+    Log.i(tag, "Filtered List Size: ${_foodSubCategories.value?.size}")
+
+}
+
+    fun retrieveUnfilteredNaturalSubCats() {
+        _foodSubCategories.value = grocerySubCategories
+    }
+
+    fun filterFoodSubCategoriesByInput(userInput: String,context: Context) {
+        viewModelScope.launch {
+            if (userInput.isNotEmpty()) {
+                val filteredFood = _foodSubCategories.value?.filter { food ->
+                    context.getString(food.stringRessourceTitle).startsWith(userInput, ignoreCase = true)
+                        ?: false
+                }
+
+                if (filteredFood != null) {
+                    _foodSubCategories.value = filteredFood
+                    Log.e("Filter", "Filtered food list: $filteredFood")
+                }
+            } else {
+                retrieveFilteredNaturalSubCats(context,userInput)
+            }
+        }
+    }
+
+    fun retrieveFilteredNaturalSubCats(context: Context, text : String) {
+        _foodSubCategories.value = grocerySubCategories.filter { context.getString(it.parentCategory) == text  }
+    }
+
+
+    fun sortFoodSubCategoriesByAlphabet(sort: Boolean,context: Context) {
+        viewModelScope.launch {
+            val filteredExercises = _foodSubCategories.value
+            val sortedExercises = if (sort) {
+                filteredExercises?.sortedByDescending { context.getString(it.stringRessourceTitle) }
+            } else {
+                filteredExercises?.sortedBy { context.getString(it.stringRessourceTitle) }
+            }
+            _foodSubCategories.value = sortedExercises
+        }
+    }
+
 }

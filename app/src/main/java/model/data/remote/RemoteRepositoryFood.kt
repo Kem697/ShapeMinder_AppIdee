@@ -7,6 +7,7 @@ import com.example.shapeminder_appidee.R
 import model.data.local.ProductDatabase
 //import model.data.local.ProductDatabase
 import model.data.local.model.myNutrion.FoodFinderCategory
+import model.data.local.model.myNutrion.FoodFinderSubCategory
 import model.data.remote.api_model.openFoodFacts.OpenFoodFactsApi
 import model.data.remote.api_model.openFoodFacts.Product
 import kotlin.Exception
@@ -18,6 +19,7 @@ class RemoteRepositoryFood (
 
 {
     var groceryCategories = loadGroceryCategories()
+    var grocerySubCategories = loadGrocerySubCategories()
 
     val savedFoodList : LiveData<List<Product>> = productDatabase.productDao.getAllProduct()
 
@@ -60,27 +62,29 @@ class RemoteRepositoryFood (
         }
     }
 
-
-
-
     fun loadGroceryCategories(): List<FoodFinderCategory>{
         return listOf(
             FoodFinderCategory(
-                R.string.gc_grain_and_corn,
-                R.drawable.foodcat1_noodles_img,"Getreide",true),
+                R.string.parentCat_Carbs,
+                R.drawable.food_main_cats_carbs,"Getreide",true),
             FoodFinderCategory(
-                R.string.gc_fruits_and_vegetable,
-                R.drawable.foodcat4_fruits_and_vegetables,"Obst und Gemüse",true),
+                R.string.parentCat_Fats,
+                R.drawable.food_main_cats_fats,"Obst und Gemüse",true),
             FoodFinderCategory(
-                R.string.gc_milk_and_eg,
-                R.drawable.foodcat5_milk_and_eggs,"Molkerei und Eier",true),
+                R.string.parentCat_Protein,
+                R.drawable.food_main_cats_proteins,"Molkerei und Eier",true),
             FoodFinderCategory(
-                R.string.gc_oil_and_fats,
-                R.drawable.foodcat2_oil_img,"Öle und Fette",true),
-            FoodFinderCategory(
-                R.string.gc_meat_and_fish,
-                R.drawable.foodcat3_meat_img,"Fleisch und Fisch",true),
-            FoodFinderCategory(R.string.gc_sweets, R.drawable.foodcat6_sweets,"Süssigkeiten",true)
+                R.string.parentCat_Fibers,
+                R.drawable.food_main_cats_fibers,"Öle und Fette",true))
+    }
+
+    fun loadGrocerySubCategories() : List<FoodFinderSubCategory>{
+        return listOf(
+            FoodFinderSubCategory(R.string.gc_grain_and_corn,R.drawable.foodcat1_noodles_img,R.string.parentCat_Carbs,R.string.apiSearchTag_pastas),
+            FoodFinderSubCategory(   R.string.gc_meat_and_fish,R.drawable.foodcat3_meat_img,R.string.parentCat_Protein,R.string.apiSearchTag_meat),
+            FoodFinderSubCategory(R.string.gc_fruits_and_vegetable,R.drawable.foodcat4_fruits_and_vegetables,R.string.parentCat_Fibers,R.string.apiSearchTag_fruits),
+            FoodFinderSubCategory(R.string.gc_oil_and_fats,R.drawable.foodcat2_oil_img,R.string.parentCat_Fats,R.string.apiSearchTag_olive_oils),
+
         )
     }
 

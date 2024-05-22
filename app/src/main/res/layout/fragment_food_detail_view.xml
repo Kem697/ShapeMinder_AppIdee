@@ -41,7 +41,7 @@
                     android:src="@drawable/arrow_back_fill0_wght400_grad0_opsz24" />
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/foodDetailViewTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
