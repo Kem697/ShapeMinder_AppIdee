@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:238411082980:android:282f1985ae0b1ebc9f90f1",
         "android_client_info": {
-          "package_name": "com.example.shapeminder_appidee"
+          "package_name": "de.kem697.shapeminder"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "238411082980-5i0b1raja8thrrnlmcea7nah08h0gi99.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.shapeminder_appidee",
+            "package_name": "de.kem697.shapeminder",
             "certificate_hash": "17fe98bd10e4828cbefc62fd0899bcade7c53e04"
           }
         },

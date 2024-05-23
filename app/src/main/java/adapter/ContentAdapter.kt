@@ -4,10 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shapeminder_appidee.R
-import com.example.shapeminder_appidee.databinding.ListItemBinding
-import model.data.local.model.myTraining.Content
-import ui.viewModel.ContentViewModel
+import de.kem697.shapeminder.R
+import de.kem697.shapeminder.databinding.ListItemBinding
+import de.kem697.shapeminder.model.data.local.model.myTraining.Content
+import de.kem697.shapeminder.ui.viewModel.ContentViewModel
+
 
 class ContentAdapter(
     private val dataset: List<Content>,

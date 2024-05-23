@@ -3,25 +3,17 @@ package adapter
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.shapeminder_appidee.BuildConfig
-import com.example.shapeminder_appidee.R
-import com.example.shapeminder_appidee.databinding.ListGymBinding
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.fido.fido2.api.common.RequestOptions
-import com.google.android.libraries.places.api.Places
-import com.google.android.libraries.places.api.model.PhotoMetadata
-import com.google.android.libraries.places.api.net.FetchPlaceRequest
-import com.google.android.libraries.places.api.net.FetchResolvedPhotoUriRequest
-import model.data.remote.api_model.GooglePlaces.Place
-import ui.viewModel.GymLocationsViewModel
-import com.google.android.libraries.places.api.model.Place.Field
+import de.kem697.shapeminder.BuildConfig
+import de.kem697.shapeminder.R
+import de.kem697.shapeminder.databinding.ListGymBinding
+import de.kem697.shapeminder.model.data.remote.api_model.GooglePlaces.Place
+import de.kem697.shapeminder.ui.viewModel.GymLocationsViewModel
 
 
 class GetGymLocationAdapter (

@@ -37,11 +37,11 @@ import android.widget.ImageView
 import androidx.core.view.isInvisible
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shapeminder_appidee.R
-import com.example.shapeminder_appidee.databinding.ListItemExerciseBinding
-import com.example.shapeminder_appidee.databinding.ListItemMyTrainingBinding
-import model.data.local.model.myTraining.Exercise
-import ui.viewModel.ExercisesViewModel
+import de.kem697.shapeminder.R
+import de.kem697.shapeminder.databinding.ListItemExerciseBinding
+import de.kem697.shapeminder.databinding.ListItemMyTrainingBinding
+import de.kem697.shapeminder.model.data.local.model.myTraining.Exercise
+import de.kem697.shapeminder.ui.viewModel.ExercisesViewModel
 
 
 class ExerciseAdapter(

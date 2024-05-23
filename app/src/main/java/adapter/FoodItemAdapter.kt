@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.shapeminder_appidee.R
-import com.example.shapeminder_appidee.databinding.ListItemFoodBinding
-import model.data.remote.api_model.openFoodFacts.Product
-import ui.viewModel.NutrionViewModel
+import de.kem697.shapeminder.R
+import de.kem697.shapeminder.databinding.ListItemFoodBinding
+import de.kem697.shapeminder.model.data.remote.api_model.openFoodFacts.Product
+import de.kem697.shapeminder.ui.viewModel.NutrionViewModel
+
 
 class FoodItemAdapter(
     private val dataset: List<Product>,

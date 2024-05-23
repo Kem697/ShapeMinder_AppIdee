@@ -7,7 +7,7 @@
     app:startDestination="@id/logInScreen">
     <fragment
         android:id="@+id/logInScreen"
-        android:name="ui.logInFlow.LogInScreen"
+        android:name="de.kem697.shapeminder.ui.logInFlow.LogInScreen"
         android:label="LogInScreen" >
         <action
             android:id="@+id/action_logInScreen_to_homeScreen"
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeScreen"
-        android:name="ui.bottomNav.myHomeScreen.MyHomeScreen"
+        android:name="de.kem697.shapeminder.ui.bottomNav.myHomeScreen.MyHomeScreen"
         android:label="HomeScreen" >
         <action
             android:id="@+id/action_homeScreen_to_homeContentDetailView"
@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/myTrainingScreen"
-        android:name="ui.bottomNav.myTrainingScreen.MyTrainingScreen"
+        android:name="de.kem697.shapeminder.ui.bottomNav.myTrainingScreen.MyTrainingScreen"
         android:label="MyTrainingScreen" >
         <action
             android:id="@+id/action_myTrainingScreen_to_trainingNav1"
@@ -84,7 +84,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeContentDetailView"
-        android:name="ui.bottomNav.myHomeScreen.MyHomeContentDetailView"
+        android:name="de.kem697.shapeminder.ui.bottomNav.myHomeScreen.MyHomeContentDetailView"
         android:label="fragment_home_content_detail_view"
         tools:layout="@layout/fragment_home_content_detail_view" >
         <action
@@ -93,7 +93,7 @@
     </fragment>
     <fragment
         android:id="@+id/exercisesNav2"
-        android:name="ui.bottomNav.myTrainingScreen.nav2exercises.Tab2Exercises"
+        android:name="de.kem697.shapeminder.ui.bottomNav.myTrainingScreen.nav2exercises.Tab2Exercises"
         android:label="fragment_exercises_nav2"
         tools:layout="@layout/fragment_exercises_nav2" >
         <action
@@ -106,7 +106,7 @@
     </fragment>
     <fragment
         android:id="@+id/trainingNav1"
-        android:name="ui.bottomNav.myTrainingScreen.nav1myTraining.Tab1MyTraining"
+        android:name="de.kem697.shapeminder.ui.bottomNav.myTrainingScreen.nav1myTraining.Tab1MyTraining"
         android:label="fragment_training_nav1"
         tools:layout="@layout/fragment_training_nav1" >
         <action
@@ -122,7 +122,7 @@
     </fragment>
     <fragment
         android:id="@+id/mySettings"
-        android:name="ui.bottomNav.mySettingsScreen.MySettingsScreen"
+        android:name="de.kem697.shapeminder.ui.bottomNav.mySettingsScreen.MySettingsScreen"
         android:label="Settings" >
         <action
             android:id="@+id/action_mySettings_to_logInScreen"
@@ -137,7 +137,7 @@
     </fragment>
     <fragment
         android:id="@+id/exerciseListFragment"
-        android:name="ui.bottomNav.myTrainingScreen.nav2exercises.ExerciseListFragment"
+        android:name="de.kem697.shapeminder.ui.bottomNav.myTrainingScreen.nav2exercises.ExerciseListFragment"
         android:label="ExerciseListFragment" >
         <action
             android:id="@+id/action_exerciseListFragment_to_exercisePreviewFragment"
@@ -149,7 +149,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerScreen"
-        android:name="ui.logInFlow.RegisterScreen"
+        android:name="de.kem697.shapeminder.ui.logInFlow.RegisterScreen"
         android:label="RegisterScreen" >
         <action
             android:id="@+id/action_registerScreen_to_homeScreen"
@@ -157,7 +157,7 @@
     </fragment>
     <fragment
         android:id="@+id/exercisePreviewFragment"
-        android:name="ui.bottomNav.myTrainingScreen.nav2exercises.ExercisePreviewFragment"
+        android:name="de.kem697.shapeminder.ui.bottomNav.myTrainingScreen.nav2exercises.ExercisePreviewFragment"
         android:label="fragment_exercise_preview"
         tools:layout="@layout/fragment_exercise_preview" >
         <action
@@ -170,12 +170,12 @@
     </fragment>
     <fragment
         android:id="@+id/diaryNav2Fragment"
-        android:name="ui.bottomNav.myNutritionScreen.nav2foodScanner.FoodScannerNav2Fragment"
+        android:name="de.kem697.shapeminder.ui.bottomNav.myNutritionScreen.nav2foodScanner.FoodScannerNav2Fragment"
         android:label="fragment_diary_nav2"
         tools:layout="@layout/fragment_foodscanner_nav2" />
     <fragment
         android:id="@+id/foodFinderNav1Fragment"
-        android:name="ui.bottomNav.myNutritionScreen.nav1foodFinder.FoodFinderNav1Fragment"
+        android:name="de.kem697.shapeminder.ui.bottomNav.myNutritionScreen.nav1foodFinder.FoodFinderNav1Fragment"
         android:label="fragment_food_finder_nav1"
         tools:layout="@layout/fragment_food_finder_nav1" >
         <argument
@@ -190,7 +190,7 @@
     </fragment>
     <fragment
         android:id="@+id/groceryListNav3Fragment"
-        android:name="ui.bottomNav.myNutritionScreen.nav3groceryList.GroceryListNav3Fragment"
+        android:name="de.kem697.shapeminder.ui.bottomNav.myNutritionScreen.nav3groceryList.GroceryListNav3Fragment"
         android:label="fragment_grocery_list_nav3"
         tools:layout="@layout/fragment_grocery_list_nav3" >
         <action
@@ -202,9 +202,9 @@
             app:popExitAnim="@anim/pop_exit_anim" />
     </fragment>
     <fragment
-        android:id="@+id/myNutrionScreen"
-        android:name="ui.bottomNav.myTrainingScreen.MyNutrionScreen"
-        android:label="MyNutrionScreen" >
+        android:id="@+id/myNutritionScreen"
+        android:name="de.kem697.shapeminder.ui.bottomNav.myNutritionScreen.MyNutritionScreen"
+        android:label="MyNutritionScreen" >
         <action
             android:id="@+id/action_myNutrionScreen3_to_foodFinderNav1Fragment"
             app:destination="@id/foodFinderNav1Fragment" />
@@ -217,7 +217,7 @@
     </fragment>
     <fragment
         android:id="@+id/foodListFragment"
-        android:name="ui.bottomNav.myNutritionScreen.nav1foodFinder.FoodListFragment"
+        android:name="de.kem697.shapeminder.ui.bottomNav.myNutritionScreen.nav1foodFinder.FoodListFragment"
         android:label="FoodListFragment" >
         <action
             android:id="@+id/action_foodListFragment_to_foodDetailViewFragment"
@@ -235,7 +235,7 @@
     </fragment>
     <fragment
         android:id="@+id/newTrainingsSessionFragment"
-        android:name="ui.bottomNav.myTrainingScreen.nav1myTraining.NewTrainingsSessionFragment"
+        android:name="de.kem697.shapeminder.ui.bottomNav.myTrainingScreen.nav1myTraining.NewTrainingsSessionFragment"
         android:label="NewTrainingsSessionFragment" >
         <action
             android:id="@+id/action_newTrainingsSessionFragment_to_allExerciseListFragment"
@@ -247,11 +247,11 @@
     </fragment>
     <fragment
         android:id="@+id/allExerciseListFragment"
-        android:name="ui.bottomNav.myTrainingScreen.nav2exercises.AllExerciseListFragment"
+        android:name="de.kem697.shapeminder.ui.bottomNav.myTrainingScreen.nav2exercises.AllExerciseListFragment"
         android:label="AllExerciseListFragment" />
     <fragment
         android:id="@+id/editTrainingSessionFragment"
-        android:name="ui.bottomNav.myTrainingScreen.nav1myTraining.EditTrainingSessionFragment"
+        android:name="de.kem697.shapeminder.ui.bottomNav.myTrainingScreen.nav1myTraining.EditTrainingSessionFragment"
         android:label="EditTrainingSessionFragment" >
         <argument
             android:name="test"
@@ -267,11 +267,11 @@
     </fragment>
     <fragment
         android:id="@+id/foodDetailViewFragment"
-        android:name="ui.bottomNav.myNutritionScreen.nav1foodFinder.FoodDetailViewFragment"
+        android:name="de.kem697.shapeminder.ui.bottomNav.myNutritionScreen.nav1foodFinder.FoodDetailViewFragment"
         android:label="FoodDetailViewFragment" />
     <fragment
         android:id="@+id/allExerciseListForEditSessionFragment"
-        android:name="ui.bottomNav.myTrainingScreen.nav1myTraining.AllExerciseListForEditSessionFragment"
+        android:name="de.kem697.shapeminder.ui.bottomNav.myTrainingScreen.nav1myTraining.AllExerciseListForEditSessionFragment"
         android:label="AllExerciseListForEditSessionFragment" >
         <action
             android:id="@+id/action_allExerciseListForEditSessionFragment_to_exercisePreviewFragment"
@@ -283,12 +283,12 @@
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordScreen"
-        android:name="ui.logInFlow.ForgotPasswordScreen"
+        android:name="de.kem697.shapeminder.ui.logInFlow.ForgotPasswordScreen"
         android:label="ForgotPasswordScreen"
         />
     <fragment
         android:id="@+id/foodSubCategoriesFragment"
-        android:name="ui.bottomNav.myNutritionScreen.nav1foodFinder.FoodSubCategoriesFragment"
+        android:name="de.kem697.shapeminder.ui.bottomNav.myNutritionScreen.nav1foodFinder.FoodSubCategoriesFragment"
         android:label="FoodSubCategoriesFragment" >
         <action
             android:id="@+id/action_foodSubCategoriesFragment_to_foodListFragment"

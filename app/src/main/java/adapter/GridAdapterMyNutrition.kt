@@ -10,9 +10,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
-import com.example.shapeminder_appidee.R
-import model.data.local.model.myNutrion.FoodFinderCategory
-import ui.viewModel.NutrionViewModel
+import de.kem697.shapeminder.R
+import de.kem697.shapeminder.model.data.local.model.myNutrion.FoodFinderCategory
+import de.kem697.shapeminder.ui.viewModel.NutrionViewModel
+
 
 
 class GridAdapterMyNutrition(

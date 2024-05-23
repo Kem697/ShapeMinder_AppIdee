@@ -5,10 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shapeminder_appidee.R
-import com.example.shapeminder_appidee.databinding.ListFoodSubCategorieBinding
-import model.data.local.model.myNutrion.FoodFinderSubCategory
-import ui.viewModel.NutrionViewModel
+import de.kem697.shapeminder.R
+import de.kem697.shapeminder.databinding.ListFoodSubCategorieBinding
+import de.kem697.shapeminder.model.data.local.model.myNutrion.FoodFinderSubCategory
+import de.kem697.shapeminder.ui.viewModel.NutrionViewModel
+
 
 class FoodSubCatsAdapter (
     private val dataset: List<FoodFinderSubCategory>,

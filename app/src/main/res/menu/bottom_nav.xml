@@ -14,7 +14,7 @@
         android:title="@string/startBottomNav"
         android:icon="@drawable/home_icon"/>
     <item
-        android:id="@+id/myNutrionScreen"
+        android:id="@+id/myNutritionScreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:title="@string/myNutritionBottomNav"

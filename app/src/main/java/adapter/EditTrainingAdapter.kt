@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shapeminder_appidee.databinding.ListItemEditSessionBinding
-import model.data.local.model.myTraining.Exercise
-import model.data.local.model.myTraining.TrainingsSession
-import ui.viewModel.TrainingsessionViewModel
+import de.kem697.shapeminder.databinding.ListItemEditSessionBinding
+import de.kem697.shapeminder.model.data.local.model.myTraining.Exercise
+import de.kem697.shapeminder.model.data.local.model.myTraining.TrainingsSession
+import de.kem697.shapeminder.ui.viewModel.TrainingsessionViewModel
 
 
 class EditTrainingAdapter (

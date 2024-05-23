@@ -8,10 +8,11 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shapeminder_appidee.R
-import com.example.shapeminder_appidee.databinding.ListItemNewSessionExerciseBinding
-import model.data.local.model.myTraining.Exercise
-import ui.viewModel.ExercisesViewModel
+import de.kem697.shapeminder.R
+import de.kem697.shapeminder.databinding.ListItemNewSessionExerciseBinding
+import de.kem697.shapeminder.model.data.local.model.myTraining.Exercise
+import de.kem697.shapeminder.ui.viewModel.ExercisesViewModel
+
 
 class NewSessionExercisesAdapter (
     private val dataset: List<Exercise>,

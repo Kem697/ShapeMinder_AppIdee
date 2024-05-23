@@ -7,9 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat.getString
 import androidx.navigation.findNavController
-import com.example.shapeminder_appidee.R
-import model.data.local.model.myTraining.Bodypart
-import ui.viewModel.ExercisesViewModel
+import de.kem697.shapeminder.R
+import de.kem697.shapeminder.model.data.local.model.myTraining.Bodypart
+import de.kem697.shapeminder.ui.viewModel.ExercisesViewModel
+
 
 /*
 DE:

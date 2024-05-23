@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shapeminder_appidee.R
-import com.example.shapeminder_appidee.databinding.ListItemMySessionBinding
-import model.data.local.model.myTraining.TrainingsSession
-import ui.viewModel.TrainingsessionViewModel
+import de.kem697.shapeminder.R
+import de.kem697.shapeminder.databinding.ListItemMySessionBinding
+import de.kem697.shapeminder.model.data.local.model.myTraining.TrainingsSession
+import de.kem697.shapeminder.ui.viewModel.TrainingsessionViewModel
+
 
 class TrainingSessionsAdapter (
     private val dataset: List<TrainingsSession>,

@@ -11,13 +11,13 @@ val apiKey: String = com.android.build.gradle.internal.cxx.configure.gradleLocal
 
 android {
 
-    namespace = "com.example.shapeminder_appidee"
+    namespace = "de.kem697.shapeminder"
     compileSdk = 34
 
 
 
     defaultConfig {
-        applicationId = "com.example.shapeminder_appidee"
+        applicationId = "de.kem697.shapeminder"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
