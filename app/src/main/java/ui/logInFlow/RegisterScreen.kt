@@ -1,5 +1,6 @@
 package ui.logInFlow
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -63,6 +64,7 @@ class RegisterScreen : Fragment() {
             var passwordRepeatInput = binding.inputPasswordRepeat.text.toString()
 
             googleFireBaseViewModel.fireBaseRegister(nameInput,emailInput,passwordInput,passwordRepeatInput,auth)
+
             progressbar.visibility = View.VISIBLE
 
             googleFireBaseViewModel.registrationResult.observe(viewLifecycleOwner) { isSuccess ->

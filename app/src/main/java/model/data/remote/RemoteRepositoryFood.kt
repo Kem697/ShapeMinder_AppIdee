@@ -72,7 +72,7 @@ class RemoteRepositoryFood (
                 R.drawable.food_main_cats_fats,"Obst und Gemüse",true),
             FoodFinderCategory(
                 R.string.parentCat_Protein,
-                R.drawable.food_main_cats_proteins,"Molkerei und Eier",true),
+                R.drawable.food_main_cats_protein,"Molkerei und Eier",true),
             FoodFinderCategory(
                 R.string.parentCat_Fibers,
                 R.drawable.food_main_cats_fibers,"Öle und Fette",true))

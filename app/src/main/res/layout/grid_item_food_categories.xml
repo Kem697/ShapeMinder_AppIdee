@@ -10,7 +10,7 @@
         android:id="@+id/foodCatMaterialCardView"
         style="@style/food_Cat_Card"
         android:layout_width="170dp"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
@@ -44,7 +44,7 @@
             android:fontFamily="@font/roboto"
             android:layout_margin="8dp"
             android:textAlignment="center"
-            android:text="TextView"
+            android:text=" "
             android:textColor="?android:attr/textColor"
             android:textSize="20dp" />
 
