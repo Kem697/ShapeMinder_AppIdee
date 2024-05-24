@@ -24,9 +24,9 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="100dp"
+                android:layout_width="85dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="16dp"
@@ -35,7 +35,7 @@
                 <ImageView
                     android:id="@+id/foodImage"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="70dp"
                     android:layout_marginTop="2dp"
                     android:layout_gravity="start"
                     android:layout_marginBottom="8dp"
@@ -66,9 +66,9 @@
 
 
             <LinearLayout
-                android:layout_width="170dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="2dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="8dp"
@@ -101,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:text="@string/fatsText"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="6dp"
                     android:textColor="@color/black"
                     android:textSize="14dp" />
 
@@ -111,7 +111,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:text="@string/proteinText"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="6dp"
                     android:textColor="@color/black"
                     android:textSize="14dp" />
 
@@ -121,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:text="@string/carbsText"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="6dp"
                     android:textColor="@color/black"
                     android:textSize="14dp" />
 
