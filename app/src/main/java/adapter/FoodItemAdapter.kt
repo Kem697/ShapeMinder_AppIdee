@@ -37,6 +37,12 @@ class FoodItemAdapter(
         val words = foodName.split(" ","-")
         val truncatedFoodName = words.take(1).joinToString(" ")
 
+        val roundedValueCal = "%.1f".format(food!!.nutriments!!.calories)
+        val roundedValueFats = "%.1f".format(food!!.nutriments!!.fat)
+        val roundedValueProteins = "%.1f".format(food!!.nutriments!!.proteins)
+        val roundedValueCarbs = "%.1f".format(food!!.nutriments!!.carbohydrates)
+
+
         when(food.url){
             "" ->{
                 holder.binding.foodImage.setImageResource(R.drawable.noimage)
@@ -48,17 +54,17 @@ class FoodItemAdapter(
 
         if (food.productNameDe.isNullOrEmpty()){
             holder.binding.foodName.setText(context.getString(R.string.unknownFoodName))
-            holder.binding.calories.setText(food!!.nutriments!!.calories.toString() + " kcal")
-            holder.binding.fats.setText("${context.getString(R.string.fatsText)} " + food!!.nutriments!!.fat.toString()+ " g")
-            holder.binding.proteins.setText("${context.getString(R.string.proteinText)} " + food!!.nutriments!!.proteins.toString()+ " g")
-            holder.binding.carbs.setText("${context.getString(R.string.carbsText)} " + food!!.nutriments!!.carbohydrates.toString()+ " g")
+            holder.binding.calories.setText(roundedValueCal + " kcal")
+            holder.binding.fats.setText("${context.getString(R.string.fatsText)} " + roundedValueFats + " g")
+            holder.binding.proteins.setText("${context.getString(R.string.proteinText)} " + roundedValueProteins + " g")
+            holder.binding.carbs.setText("${context.getString(R.string.carbsText)} " + roundedValueCarbs + " g")
             holder.binding.foodCategory.setText(food!!.categories.firstOrNull()?.substring(3)?.replace("-"," ").toString())
         } else{
             holder.binding.foodName.setText("${truncatedFoodName}...")
-            holder.binding.calories.setText(food!!.nutriments!!.calories.toString() + " kcal")
-            holder.binding.fats.setText("${context.getString(R.string.fatsText)} " + food!!.nutriments!!.fat.toString()+ " g")
-            holder.binding.proteins.setText("${context.getString(R.string.proteinText)} " + food!!.nutriments!!.proteins.toString()+ " g")
-            holder.binding.carbs.setText("${context.getString(R.string.carbsText)} " + food!!.nutriments!!.carbohydrates.toString()+ " g")
+            holder.binding.calories.setText(roundedValueCal + " kcal")
+            holder.binding.fats.setText("${context.getString(R.string.fatsText)} " + roundedValueFats + " g")
+            holder.binding.proteins.setText("${context.getString(R.string.proteinText)} " + roundedValueProteins + " g")
+            holder.binding.carbs.setText("${context.getString(R.string.carbsText)} " + roundedValueCarbs + " g")
             holder.binding.foodCategory.setText(food!!.categories.firstOrNull()?.substring(3)?.replace("-"," ").toString())
         }
 

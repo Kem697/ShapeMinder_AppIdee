@@ -62,36 +62,41 @@ class FoodDetailViewFragment : Fragment() {
 
 
     fun setUpView() {
-        nutrionViewModel.selectedFood.observe(viewLifecycleOwner) {
+        nutrionViewModel.selectedFood.observe(viewLifecycleOwner) { food ->
+            val roundedValueCal = "%.1f".format(food!!.nutriments!!.calories)
+            val roundedValueFats = "%.1f".format(food.nutriments!!.fat)
+            val roundedValueProteins = "%.1f".format(food.nutriments!!.proteins)
+            val roundedValueCarbs = "%.1f".format(food.nutriments!!.carbohydrates)
+
             binding.foodDetailViewTitle.setText(nutrionViewModel.selectedContentTitle.value)
-            when (it.url) {
+            when (food.url) {
                 "" -> {
                     binding.foodImage.setImageResource(R.drawable.noimage)
                 }
 
                 else -> {
-                    binding.foodImage.load(it.url)
+                    binding.foodImage.load(food.url)
                 }
             }
 
-            if (it.productNameDe.isNullOrEmpty()) {
+            if (food.productNameDe.isNullOrEmpty()) {
                 binding.foodName.setText(requireContext().getString(R.string.unknownFoodName))
-                binding.categorie.setText(it.categories.firstOrNull()?.substring(3)?.replace("-"," ").toString())
-                binding.calories.setText(it!!.nutriments!!.calories.toString() + " kcal")
-                binding.carbsAmount.setText("${it.nutriments?.carbohydrates.toString()}" + " g")
-                binding.fatsAmount.setText("${it.nutriments?.fat.toString()}" + " g")
-                binding.proteinAmount.setText("${it.nutriments?.proteins.toString()}" + " g")
+                binding.categorie.setText(food.categories.firstOrNull()?.substring(3)?.replace("-"," ").toString())
+                binding.calories.setText(roundedValueCal + " kcal")
+                binding.carbsAmount.setText(roundedValueCarbs + " g")
+                binding.fatsAmount.setText(roundedValueFats + " g")
+                binding.proteinAmount.setText(roundedValueProteins + " g")
             } else {
-                binding.foodName.setText(it.productNameDe)
-                binding.categorie.setText(it.categories.firstOrNull()?.substring(3)?.replace("-"," ").toString())
-                binding.calories.setText(it!!.nutriments!!.calories.toString() + " kcal")
-                binding.carbsAmount.setText("${it.nutriments?.carbohydrates.toString()}" + " g")
-                binding.fatsAmount.setText("${it.nutriments?.fat.toString()}" + " g")
-                binding.proteinAmount.setText("${it.nutriments?.proteins.toString()}" + " g")
+                binding.foodName.setText(food.productNameDe)
+                binding.categorie.setText(food.categories.firstOrNull()?.substring(3)?.replace("-"," ").toString())
+                binding.calories.setText(roundedValueCal + " kcal")
+                binding.carbsAmount.setText(roundedValueCarbs + " g")
+                binding.fatsAmount.setText(roundedValueFats + " g")
+                binding.proteinAmount.setText(roundedValueProteins + " g")
 
             }
-            saveFood(it)
-            storeFinder(it)
+            saveFood(food)
+            storeFinder(food)
         }
     }
 

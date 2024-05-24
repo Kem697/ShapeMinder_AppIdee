@@ -80,7 +80,7 @@ class FoodListFragment : Fragment() {
         dialog.setContentView(R.layout.dialog_sheet_sort)
         dialog.setCancelable(true)
         dialog.setCanceledOnTouchOutside(true)
-        var isSortedDescending = false
+        var isSortedDescending: Boolean
 
         binding.sortByNameBtn.setOnClickListener {
             if (!dialog.isShowing) {
