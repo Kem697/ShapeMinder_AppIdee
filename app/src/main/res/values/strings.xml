@@ -248,11 +248,13 @@
     <!--Search for Food String Ressources-->
 
     <string name="gc_fruits_and_vegetable">Obst und Gemüse</string>
-    <string name="gc_grain_and_corn">Getreide</string>
-    <string name="gc_oil_and_fats">Öle und Fette</string>
+    <string name="gc_noodles">Nudeln</string>
+    <string name="gc_oils">Öle</string>
     <string name="gc_milk_and_eg">Molkerei und Eier</string>
-    <string name="gc_meat_and_fish">Fleisch und Fisch</string>
+    <string name="gc_meatproducts">Fleischprodukte</string>
     <string name="gc_sweets">Süssigkeiten</string>
+    <string name="gc_bread_bread_products">Brot-und Backware</string>
+
 
 
     <string name="unknownFoodName">(K.A.)</string>
@@ -334,6 +336,25 @@
     <string name="apiSearchTag_meat">meats and their products</string>
     <string name="apiSearchTag_olive_oils">olive oils</string>
     <string name="apiSearchTag_sweet_snacks">sweet snacks</string>
+    <string name="apiSearchTag_bread">bread</string>
+    <string name="gc_rice_rice_products">Reisprodukte</string>
+    <string name="apiSearchTag_rice">rice</string>
+    <string name="apiSearchTag_cereals">cereals</string>
+    <string name="gc_cereals_cereals_products">Müsli,Cerealien</string>
+    <string name="gc_beans">Bohnen</string>
+    <string name="apiSearchTag_beans">beans</string>
+    <string name="gc_seeds">Samenerzeugnisse</string>
+    <string name="apiSearchTag_seeds">seeds</string>
+    <string name="apiSearchTag_dairy">dairy</string>
+    <string name="gc_dairy_and_dairy_products">Molkerei</string>
+    <string name="apiSearchTag_cheese">cheese</string>
+    <string name="gc_cheese_products">Käseerzeugnisse</string>
+    <string name="apiSearchTag_fish">fish</string>
+    <string name="gc_fishproducts">Fischprodukte</string>
+    <string name="apiSearchTag_vegetables">vegetables</string>
+    <string name="gc_greens_greens_products">Gemüseerzeugnisse</string>
+    <string name="apiSearchTag_nuts">nuts</string>
+    <string name="gc_nuts">Nüsse</string>
 
 
 </resources>

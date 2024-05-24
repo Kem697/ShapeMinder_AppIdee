@@ -159,10 +159,10 @@
     <string name="apiRequestRegionDE">ES</string>
     <string name="recommendFriendsText">Hey, mira esta aplicación:</string>
     <string name="gc_fruits_and_vegetable">Frutas y verduras</string>
-    <string name="gc_grain_and_corn">Grano</string>
-    <string name="gc_oil_and_fats">Aceites y grasas</string>
+    <string name="gc_noodles">Noodles</string>
+    <string name="gc_oils">Aceites</string>
     <string name="gc_milk_and_eg">Lácteos y huevos</string>
-    <string name="gc_meat_and_fish">Pescado y carne</string>
+    <string name="gc_meatproducts">Productos cárnicos</string>
     <string name="gc_sweets">Dulces</string>
     <string name="unknownFoodName">(desconocido)</string>
     <string name="failedStoreFinderText">Error al abrir Google Maps</string>
@@ -231,6 +231,26 @@
     <string name="apiSearchTag_milks">milks</string>
     <string name="apiSearchTag_olive_oils">olive oils</string>
     <string name="apiSearchTag_sweet_snacks">sweet snacks</string>
+    <string name="gc_bread_bread_products">Pan y productos de pastelería</string>
+    <string name="apiSearchTag_bread">bread</string>
+    <string name="gc_rice_rice_products">Productos de arroz</string>
+    <string name="apiSearchTag_rice">rice</string>
+    <string name="apiSearchTag_cereals">cereals</string>
+    <string name="gc_cereals_cereals_products">Muesli, cereales</string>
+    <string name="gc_beans">Judías</string>
+    <string name="apiSearchTag_beans">beans</string>
+    <string name="gc_seeds">Semillas</string>
+    <string name="apiSearchTag_seeds">seeds</string>
+    <string name="apiSearchTag_dairy">dairy</string>
+    <string name="gc_dairy_and_dairy_products">Lácteos</string>
+    <string name="apiSearchTag_cheese">cheese</string>
+    <string name="gc_cheese_products">Quesos</string>
+    <string name="apiSearchTag_fish">fish</string>
+    <string name="gc_fishproducts">Productos pesqueros</string>
+    <string name="apiSearchTag_vegetables">vegetables</string>
+    <string name="gc_greens_greens_products">Productos vegetales</string>
+    <string name="apiSearchTag_nuts">nuts</string>
+    <string name="gc_nuts">Nueces</string>
 
 
 </resources>

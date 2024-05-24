@@ -68,7 +68,7 @@ class EditTrainingAdapter (
     var tag = "Performance Save"
 
 
-    fun editPerformance(userInputReps: EditText, userInputSets: EditText, userInputWeight: EditText, holder: EditSessionItemViewHolder,){
+    fun editPerformance(userInputReps: EditText, userInputSets: EditText, userInputWeight: EditText, holder: EditSessionItemViewHolder){
         val getElementIndexPosition = holder.adapterPosition
 
         userInputReps.addTextChangedListener { userInput ->

@@ -175,10 +175,10 @@
     <string name="allExercisesSearchbarHint">Egzersizler için arama yapın</string>
     <string name="recommendFriendsText">Kanka şu uygulamaya bir bak:</string>
     <string name="gc_fruits_and_vegetable">Meyve ve sebzeler</string>
-    <string name="gc_grain_and_corn">Tahıl</string>
-    <string name="gc_oil_and_fats">Yağlar ve katı yağlar</string>
+    <string name="gc_noodles">Makarna</string>
+    <string name="gc_oils">Yağlar</string>
     <string name="gc_milk_and_eg">Süt ürünleri, yumurta</string>
-    <string name="gc_meat_and_fish">Balık ve et</string>
+    <string name="gc_meatproducts">Et ürünleri</string>
     <string name="gc_sweets">Tatlılar</string>
     <string name="unknownFoodName">(bilinmiyor)</string>
     <string name="failedStoreFinderText">Google Maps açılırken hata oluştu!</string>
@@ -253,7 +253,28 @@
     <string name="apiSearchTag_milks">milks</string>
     <string name="apiSearchTag_olive_oils">olive oils</string>
     <string name="apiSearchTag_sweet_snacks">sweet snacks</string>
+    <string name="gc_bread_bread_products">Ekmek ve unlu mamüller</string>
 
+
+    <string name="apiSearchTag_bread">bread</string>
+    <string name="gc_rice_rice_products">Pirinç ürünleri</string>
+    <string name="apiSearchTag_rice">rice</string>
+    <string name="apiSearchTag_cereals">cereals</string>
+    <string name="gc_cereals_cereals_products">Müsli, tahıllar</string>
+    <string name="gc_beans">Fasulye</string>
+    <string name="apiSearchTag_beans">beans</string>
+    <string name="gc_seeds">Tohum ürünleri</string>
+    <string name="apiSearchTag_seeds">seeds</string>
+    <string name="apiSearchTag_dairy">dairy</string>
+    <string name="gc_dairy_and_dairy_products">Süt Ürünleri</string>
+    <string name="apiSearchTag_cheese">cheese</string>
+    <string name="gc_cheese_products">Peynir ürünleri</string>
+    <string name="apiSearchTag_fish">fish</string>
+    <string name="gc_fishproducts">Balık ürünleri</string>
+    <string name="apiSearchTag_vegetables">vegetables</string>
+    <string name="gc_greens_greens_products">Sebze ürünleri</string>
+    <string name="apiSearchTag_nuts">nuts</string>
+    <string name="gc_nuts">Fındık</string>
 
 
 </resources>

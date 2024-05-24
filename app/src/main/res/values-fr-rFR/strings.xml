@@ -169,10 +169,10 @@
     <string name="apiRequestRegionDE">FR</string>
     <string name="recommendFriendsText">Hé, regardez cette application:</string>
     <string name="gc_fruits_and_vegetable">Fruits et légumes</string>
-    <string name="gc_grain_and_corn">Céréales</string>
-    <string name="gc_oil_and_fats">Huiles et graisses</string>
+    <string name="gc_noodles">Pâtes alimentaires</string>
+    <string name="gc_oils">Huiles</string>
     <string name="gc_milk_and_eg">Produits laitiers</string>
-    <string name="gc_meat_and_fish">Poisson et viande</string>
+    <string name="gc_meatproducts">Produits carnés</string>
     <string name="gc_sweets">Sucreries</string>
     <string name="unknownFoodName">(inconnu)</string>
     <string name="failedStoreFinderText">Erreur d\'ouverture de Google Maps !</string>
@@ -240,6 +240,26 @@
    <string name="apiSearchTag_milks">milks</string>
    <string name="apiSearchTag_olive_oils">olive oils</string>
    <string name="apiSearchTag_sweet_snacks">sweet snacks</string>
+    <string name="gc_bread_bread_products">Pain et pâtisseries</string>
+    <string name="apiSearchTag_bread">bread</string>
+   <string name="gc_rice_rice_products">Produits de riz</string>
+   <string name="apiSearchTag_rice">rice</string>
+   <string name="apiSearchTag_cereals">cereals</string>
+   <string name="gc_cereals_cereals_products">Muesli, céréales</string>
+   <string name="gc_beans">Haricots</string>
+   <string name="apiSearchTag_beans">beans</string>
+   <string name="gc_seeds">Produits de graines</string>
+   <string name="apiSearchTag_seeds">seeds</string>
+   <string name="apiSearchTag_dairy">dairy</string>
+   <string name="gc_dairy_and_dairy_products">Laiterie</string>
+   <string name="apiSearchTag_cheese">cheese</string>
+   <string name="gc_cheese_products">Produits fromagers</string>
+   <string name="apiSearchTag_fish">fish</string>
+   <string name="gc_fishproducts">Produits de la mer</string>
+   <string name="apiSearchTag_vegetables">vegetables</string>
+   <string name="gc_greens_greens_products">Produits maraîchers</string>
+   <string name="apiSearchTag_nuts">nuts</string>
+   <string name="gc_nuts">Noix</string>
 
 
 </resources>

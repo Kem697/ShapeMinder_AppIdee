@@ -180,10 +180,10 @@
     <string name="apiRequestRegionDE">US</string>
     <string name="recommendFriendsText">Hey, check out this app:</string>
     <string name="gc_fruits_and_vegetable">Fruit and vegetables</string>
-    <string name="gc_grain_and_corn">Grain</string>
-    <string name="gc_oil_and_fats">Oils and fats</string>
+    <string name="gc_noodles">Pasta</string>
+    <string name="gc_oils">Oils</string>
     <string name="gc_milk_and_eg">Dairy and eggs</string>
-    <string name="gc_meat_and_fish">Fish and meat</string>
+    <string name="gc_meatproducts">Meatproducts</string>
     <string name="gc_sweets">Sweets</string>
     <string name="unknownFoodName">(unknown)</string>
     <string name="failedStoreFinderText">Error opening Google Maps!</string>
@@ -265,8 +265,26 @@
     <string name="apiSearchTag_milks">milks</string>
     <string name="apiSearchTag_olive_oils">olive oils</string>
     <string name="apiSearchTag_sweet_snacks">sweet snacks</string>
-
-
+    <string name="gc_bread_bread_products">Bread and baked goods</string>
+    <string name="apiSearchTag_bread">bread</string>
+    <string name="gc_rice_rice_products">Rice products</string>
+    <string name="apiSearchTag_rice">rice</string>
+    <string name="apiSearchTag_cereals">cereals</string>
+    <string name="gc_cereals_cereals_products">Muesli, Cereal</string>
+    <string name="gc_beans">Beans</string>
+    <string name="apiSearchTag_beans">beans</string>
+    <string name="gc_seeds">Seed products</string>
+    <string name="apiSearchTag_seeds">seeds</string>
+    <string name="apiSearchTag_dairy">dairy</string>
+    <string name="gc_dairy_and_dairy_products">Dairy</string>
+    <string name="apiSearchTag_cheese">cheese</string>
+    <string name="gc_cheese_products">Cheese products</string>
+    <string name="apiSearchTag_fish">fish</string>
+    <string name="gc_fishproducts">Seafood products</string>
+    <string name="apiSearchTag_vegetables">vegetables</string>
+    <string name="gc_greens_greens_products">Vegetable produce</string>
+    <string name="apiSearchTag_nuts">nuts</string>
+    <string name="gc_nuts">Nuts</string>
 
 
 </resources>

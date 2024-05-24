@@ -172,10 +172,10 @@
     <string name="allExercisesSearchbarHint">Søk etter øvelser</string>
     <string name="recommendFriendsText">Hei, sjekk ut denne appen:</string>
     <string name="gc_fruits_and_vegetable">Frukt og grønnsaker</string>
-    <string name="gc_grain_and_corn">Korn</string>
-    <string name="gc_oil_and_fats">Oljer og fett</string>
+    <string name="gc_noodles">Nudler</string>
+    <string name="gc_oils">Oljer</string>
     <string name="gc_milk_and_eg">Meieriprodukter, egg</string>
-    <string name="gc_meat_and_fish">Fisk og kjøtt</string>
+    <string name="gc_meatproducts">Kjøttprodukter</string>
     <string name="gc_sweets">Godteri</string>
     <string name="unknownFoodName">(ukjent)</string>
     <string name="failedStoreFinderText">Feil ved åpning av Google Maps!</string>
@@ -247,6 +247,26 @@
     <string name="apiSearchTag_milks">milks</string>
     <string name="apiSearchTag_olive_oils">olive oils</string>
     <string name="apiSearchTag_sweet_snacks">sweet snacks</string>
+    <string name="gc_bread_bread_products">Brød og bakevarer</string>
+    <string name="apiSearchTag_bread">bread</string>
+    <string name="gc_rice_rice_products">Risprodukter</string>
+    <string name="apiSearchTag_rice">rice</string>
+    <string name="apiSearchTag_cereals">cereals</string>
+    <string name="gc_cereals_cereals_products">Müsli, frokostblandinger</string>
+    <string name="gc_beans">Bønner</string>
+    <string name="apiSearchTag_beans">beans</string>
+    <string name="gc_seeds">Såfrøprodukter</string>
+    <string name="apiSearchTag_seeds">seeds</string>
+    <string name="apiSearchTag_dairy">dairy</string>
+    <string name="gc_dairy_and_dairy_products">Meieri</string>
+    <string name="apiSearchTag_cheese">cheese</string>
+    <string name="gc_cheese_products">Osteprodukter</string>
+    <string name="apiSearchTag_fish">fish</string>
+    <string name="gc_fishproducts">Fiskeprodukter</string>
+    <string name="apiSearchTag_vegetables">vegetables</string>
+    <string name="gc_greens_greens_products">Grønnsaksprodukter</string>
+    <string name="apiSearchTag_nuts">nuts</string>
+    <string name="gc_nuts">Nøtter</string>
 
 
 </resources>

@@ -80,10 +80,23 @@ class RemoteRepositoryFood (
 
     fun loadGrocerySubCategories() : List<FoodFinderSubCategory>{
         return listOf(
-            FoodFinderSubCategory(R.string.gc_grain_and_corn,R.drawable.foodcat1_noodles_img,R.string.parentCat_Carbs,R.string.apiSearchTag_pastas),
-            FoodFinderSubCategory(   R.string.gc_meat_and_fish,R.drawable.foodcat3_meat_img,R.string.parentCat_Protein,R.string.apiSearchTag_meat),
+            FoodFinderSubCategory(R.string.gc_noodles,R.drawable.carbs_subcat_pastas,R.string.parentCat_Carbs,R.string.apiSearchTag_pastas),
+            FoodFinderSubCategory(R.string.gc_bread_bread_products,R.drawable.carbs_subcat_bread,R.string.parentCat_Carbs,R.string.apiSearchTag_bread),
+            FoodFinderSubCategory(R.string.gc_rice_rice_products,R.drawable.carbs_subcat_rice,R.string.parentCat_Carbs,R.string.apiSearchTag_rice),
+            FoodFinderSubCategory(R.string.gc_cereals_cereals_products,R.drawable.carbs_subcat_cereals,R.string.parentCat_Carbs,R.string.apiSearchTag_cereals),
+
+            FoodFinderSubCategory(R.string.gc_meatproducts,R.drawable.foodcat3_meat_img,R.string.parentCat_Protein,R.string.apiSearchTag_meat),
+            FoodFinderSubCategory(R.string.gc_fishproducts,R.drawable.proteins_subcat_fish,R.string.parentCat_Protein,R.string.apiSearchTag_fish),
+            FoodFinderSubCategory(R.string.gc_dairy_and_dairy_products,R.drawable.proteins_subcat_dairys,R.string.parentCat_Protein,R.string.apiSearchTag_dairy),
+            FoodFinderSubCategory(R.string.gc_cheese_products,R.drawable.proteins_subcat_cheese,R.string.parentCat_Protein,R.string.apiSearchTag_cheese),
+
             FoodFinderSubCategory(R.string.gc_fruits_and_vegetable,R.drawable.foodcat4_fruits_and_vegetables,R.string.parentCat_Fibers,R.string.apiSearchTag_fruits),
-            FoodFinderSubCategory(R.string.gc_oil_and_fats,R.drawable.foodcat2_oil_img,R.string.parentCat_Fats,R.string.apiSearchTag_olive_oils),
+            FoodFinderSubCategory(R.string.gc_beans,R.drawable.fibers_subcat_beans,R.string.parentCat_Fibers,R.string.apiSearchTag_beans),
+            FoodFinderSubCategory(R.string.gc_seeds,R.drawable.fibers_subcat_seeds,R.string.parentCat_Fibers,R.string.apiSearchTag_seeds),
+            FoodFinderSubCategory(R.string.gc_greens_greens_products,R.drawable.fibers_subcat_vegetables,R.string.parentCat_Fibers,R.string.apiSearchTag_vegetables),
+
+            FoodFinderSubCategory(R.string.gc_oils,R.drawable.foodcat2_oil_img,R.string.parentCat_Fats,R.string.apiSearchTag_olive_oils),
+            FoodFinderSubCategory(R.string.gc_nuts,R.drawable.fats_subcat_nuts,R.string.parentCat_Fats,R.string.apiSearchTag_nuts),
         )
     }
 

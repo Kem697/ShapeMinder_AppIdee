@@ -75,7 +75,7 @@
                     android:layout_marginLeft="22dp"
                     android:text="@string/foodCategoryHeader"
                     android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="28dp" />
+                    android:textSize="20dp" />
 
 
 
