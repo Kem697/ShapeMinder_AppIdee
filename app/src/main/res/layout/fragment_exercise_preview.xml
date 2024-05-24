@@ -1,257 +1,264 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/tertiary"
     tools:context="ui.bottomNav.myTrainingScreen.nav2exercises.ExercisePreviewFragment">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbar_constraints"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/toolbar_constraints"
+        <LinearLayout
+            android:id="@+id/toolbarLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
+            android:background="@color/black"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
-                android:id="@+id/toolbarLayout"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="@color/black"
-                android:orientation="horizontal"
+            <ImageButton
+                android:id="@+id/backBtn"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:backgroundTint="#00FFFFFF"
+                android:src="@drawable/arrow_back_fill0_wght400_grad0_opsz24"
+                app:tint="?android:attr/textColorPrimary" />
+
+            <TextView
+                android:id="@+id/screenTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/previewScreenTitle"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="26dp" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_constraints">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardImage"
+                style="@style/content_CardDecription"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <ImageButton
-                    android:id="@+id/backBtn"
-                    android:layout_width="60dp"
+
+                <ImageView
+                    android:id="@+id/bodyPartView"
+                    android:layout_width="76dp"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="8dp"
-                    android:backgroundTint="#00FFFFFF"
-                    app:tint="?android:attr/textColorPrimary"
-                    android:src="@drawable/arrow_back_fill0_wght400_grad0_opsz24" />
+                    android:layout_gravity="end|center"
+                    android:padding="4dp"
+                    android:scaleType="fitXY"
+                    tools:src="@drawable/bp2legs" />
 
-                <TextView
-                    android:id="@+id/screenTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:textSize="26dp"
-                    android:layout_gravity="center"
-                    android:text="@string/previewScreenTitle"
-                    android:textColor="?android:attr/textColorPrimary" />
+            </com.google.android.material.card.MaterialCardView>
 
 
-
-
-            </LinearLayout>
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardImage"
-            style="@style/content_CardDecription"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_constraints">
-
-
-            <ImageView
-                android:id="@+id/bodyPartView"
-                android:layout_width="76dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="end|center"
-                android:padding="4dp"
-                android:scaleType="fitXY"
-                tools:src="@drawable/bp2legs" />
-
-        </com.google.android.material.card.MaterialCardView>
-
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardPreviewHeader"
-            style="@style/content_CardDecription"
-            android:layout_width="260dp"
-            android:layout_height="100dp"
-            android:layout_margin="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_constraints"
-            app:strokeColor="@color/white">
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardPreviewHeader"
+                style="@style/content_CardDecription"
+                android:layout_width="260dp"
+                android:layout_height="100dp"
+                android:layout_margin="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:strokeColor="@color/white">
 
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="80dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginBottom="4dp"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/title"
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/exerciseName"
-                        android:textColor="@color/black"
-                        android:textSize="20dp"
-                        android:textStyle="bold" />
+                        android:layout_height="80dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/subTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:layout_marginTop="30dp"
-                        android:text="@string/bodypartSubtitle"
-                        android:textColor="@color/black"
-                        android:textSize="16dp" />
+                        <TextView
+                            android:id="@+id/title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/exerciseName"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
 
+                        <TextView
+                            android:id="@+id/subTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="30dp"
+                            android:text="@string/bodypartSubtitle"
+                            android:textColor="@color/black"
+                            android:textSize="16dp" />
+
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
+            </com.google.android.material.card.MaterialCardView>
 
 
-
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView2"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_margin="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardPreviewHeader"
-            app:strokeColor="@color/white"
-            app:strokeWidth="2dp">
-
-            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-                android:id="@+id/videoView_YtPlayer"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                android:src="@drawable/bp2legs">
-
-            </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
-
-        </com.google.android.material.card.MaterialCardView>
-
-
-        <ImageButton
-            android:id="@+id/shareBtn"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_margin="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="@color/white"
-            android:scaleType="centerCrop"
-            android:src="@drawable/share_fill1_wght400_grad0_opsz24"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
-
-
-        <ImageButton
-            android:id="@+id/saveExerciseBtn"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_gravity="end|bottom"
-            android:layout_margin="16dp"
-            android:layout_marginTop="27dp"
-            android:backgroundTint="@color/white"
-            android:scaleType="centerCrop"
-            android:src="@drawable/favorite_fill0_wght400_grad0_opsz24"
-            app:layout_constraintStart_toEndOf="@+id/shareBtn"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/addTrainingBtn"
-            style="@style/material_button_style"
-            android:layout_width="150dp"
-            android:layout_height="60dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="16dp"
-            app:icon="@drawable/add_fill0_wght400_grad0_opsz24"
-            android:text="@string/addToTrainingBtnText"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
-
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView3"
-            style="@style/content_CardDecription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/shareBtn"
-            app:strokeColor="@color/white"
-            app:strokeWidth="2dp">
-
-
-            <TextView
-                android:id="@+id/descriptionHeader"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:padding="8dp"
-                android:text="@string/descriptionHeader"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:fontFamily="@font/montserrat"
-                android:textSize="20dp"/>
-        </com.google.android.material.card.MaterialCardView>
-
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView4"
-            style="@style/content_CardDecription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView3"
-            app:strokeColor="@color/white"
-            app:strokeWidth="2dp">
-
-
-            <TextView
-                android:id="@+id/descriptionText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
+                android:layout_height="300dp"
                 android:layout_margin="16dp"
-                android:fontFamily="@font/montserrat"
-                android:padding="8dp"
-                android:text=""
-                android:textAlignment="viewStart"
-                android:textColor="@color/black"
-                android:textSize="18dp" />
-        </com.google.android.material.card.MaterialCardView>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardPreviewHeader"
+                app:strokeColor="@color/white"
+                app:strokeWidth="2dp">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+                <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                    android:id="@+id/videoView_YtPlayer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/bp2legs">
+
+                </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <ImageButton
+                android:id="@+id/shareBtn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/white"
+                android:scaleType="centerCrop"
+                android:src="@drawable/share_fill1_wght400_grad0_opsz24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
+
+
+            <ImageButton
+                android:id="@+id/saveExerciseBtn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="end|bottom"
+                android:layout_margin="16dp"
+                android:layout_marginTop="27dp"
+                android:backgroundTint="@color/white"
+                android:scaleType="centerCrop"
+                android:src="@drawable/favorite_fill0_wght400_grad0_opsz24"
+                app:layout_constraintStart_toEndOf="@+id/shareBtn"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/addTrainingBtn"
+                style="@style/material_button_style"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_margin="16dp"
+                android:text="@string/addToTrainingBtnText"
+                app:icon="@drawable/add_fill0_wght400_grad0_opsz24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView3"
+                style="@style/content_CardDecription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/shareBtn"
+                app:strokeColor="@color/white"
+                app:strokeWidth="2dp">
+
+
+                <TextView
+                    android:id="@+id/descriptionHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:fontFamily="@font/montserrat"
+                    android:padding="8dp"
+                    android:text="@string/descriptionHeader"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView4"
+                style="@style/content_CardDecription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView3"
+                app:strokeColor="@color/white"
+                app:strokeWidth="2dp">
+
+
+                <TextView
+                    android:id="@+id/descriptionText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="16dp"
+                    android:fontFamily="@font/montserrat"
+                    android:padding="8dp"
+                    android:text=""
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

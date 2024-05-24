@@ -12,75 +12,75 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <com.google.android.material.search.SearchBar
-        android:id="@+id/myT_searchBar"
-        style="@style/searchview_Card"
-        android:hint="@string/searchBarHint"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_constraints">
-
-
-        <EditText
-            app:backgroundTint="@color/white"
-            android:background="@android:color/transparent"
-            android:textColor="@color/white"
-            android:id="@+id/myT_searchBar_textInput"
-            android:layout_width="match_parent"
-            android:paddingLeft="64dp"
-            android:layout_height="match_parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-    </com.google.android.material.search.SearchBar>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/toolbar_constraints"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:id="@+id/toolbarLayout"
-            android:background="@color/black"
+        <com.google.android.material.search.SearchBar
+            android:id="@+id/myT_searchBar"
+            style="@style/searchview_Card"
+            android:hint="@string/searchBarHint"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_constraints">
+
+
+            <EditText
+                app:backgroundTint="@color/white"
+                android:background="@android:color/transparent"
+                android:textColor="@color/white"
+                android:id="@+id/myT_searchBar_textInput"
+                android:layout_width="match_parent"
+                android:paddingLeft="64dp"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        </com.google.android.material.search.SearchBar>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolbar_constraints"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageButton
-                android:id="@+id/backBtn"
-                android:layout_width="60dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginLeft="8dp"
-                android:backgroundTint="#00FFFFFF"
-                app:tint="?android:attr/textColorPrimary"
-                android:src="@drawable/arrow_back_fill0_wght400_grad0_opsz24" />
+            <LinearLayout
+                android:id="@+id/toolbarLayout"
+                android:background="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/screenTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:textSize="26dp"
-                android:text="@string/myTrainingScreenHeader"
-                android:textColor="?android:attr/textColorPrimary" />
+                <ImageButton
+                    android:id="@+id/backBtn"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="8dp"
+                    android:backgroundTint="#00FFFFFF"
+                    app:tint="?android:attr/textColorPrimary"
+                    android:src="@drawable/arrow_back_fill0_wght400_grad0_opsz24" />
+
+                <TextView
+                    android:id="@+id/screenTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:textSize="26dp"
+                    android:text="@string/myTrainingScreenHeader"
+                    android:textColor="?android:attr/textColorPrimary" />
 
 
-        </LinearLayout>
+            </LinearLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <com.google.android.material.card.MaterialCardView
@@ -157,52 +157,52 @@
         </com.google.android.material.card.MaterialCardView>
 
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/materialCardContentView"
-        style="@style/content_CardDecription"
-        android:layout_width="match_parent"
-        android:layout_height="340dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#D5FEF5E7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sortByNameBtn"
-        app:strokeColor="@color/white">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listOfExercises"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardContentView"
+            style="@style/content_CardDecription"
             android:layout_width="match_parent"
+            android:layout_height="340dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#D5FEF5E7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sortByNameBtn"
+            app:strokeColor="@color/white">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listOfExercises"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/list_item_exercise" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/sortByNameBtn"
+            style="@style/customSecondaryButton"
+            app:icon="@drawable/swap_vert_fill0_wght400_grad0_opsz24"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="16dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/list_item_exercise" />
-    </com.google.android.material.card.MaterialCardView>
+            android:text="@string/sortBtnTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardExerciseHeader" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/sortByNameBtn"
-        style="@style/customSecondaryButton"
-        app:icon="@drawable/swap_vert_fill0_wght400_grad0_opsz24"
-        android:layout_marginTop="12dp"
-        android:layout_marginLeft="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sortBtnTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardExerciseHeader" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/setFilterBtn"
-        style="@style/customSecondaryButton"
-        app:icon="@drawable/tune_fill0_wght400_grad0_opsz24"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/filterBtnTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardExerciseHeader" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/setFilterBtn"
+            style="@style/customSecondaryButton"
+            app:icon="@drawable/tune_fill0_wght400_grad0_opsz24"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filterBtnTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardExerciseHeader" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/resetFilterBtn"
