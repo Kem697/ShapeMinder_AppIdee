@@ -21,7 +21,7 @@ class RemoteRepositoryFood (
     var groceryCategories = loadGroceryCategories()
     var grocerySubCategories = loadGrocerySubCategories()
 
-    val savedFoodList : LiveData<List<Product>> = productDatabase.productDao.getAllProduct()
+//    val savedFoodList : LiveData<List<Product>> = productDatabase.productDao.getAllProduct()
 
 
     private var _getFood = MutableLiveData<List<Product>>()

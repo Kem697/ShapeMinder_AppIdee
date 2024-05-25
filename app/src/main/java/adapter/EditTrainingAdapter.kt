@@ -5,8 +5,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
+import de.kem697.shapeminder.R
 import de.kem697.shapeminder.databinding.ListItemEditSessionBinding
 import de.kem697.shapeminder.model.data.local.model.myTraining.Exercise
 import de.kem697.shapeminder.model.data.local.model.myTraining.TrainingsSession
@@ -52,9 +54,6 @@ class EditTrainingAdapter (
                 val getElementIndexPosition = holder.adapterPosition
                 sessionViewModel.deleteWorkoutInEditSession(!exercise.addedToSession!!,exercise)
                 notifyItemRemoved(getElementIndexPosition)
-//                holder.binding.editSets.setText(trainingsSession.performance[getElementIndexPosition-1].sets)
-//                holder.binding.editReps.setText(trainingsSession.performance[getElementIndexPosition-1].reps)
-//                holder.binding.editWeight.setText(trainingsSession.performance[getElementIndexPosition-1].weight)
                 var tag = "Delete Btn check??"
                 Log.i(tag, "Übung wurde gelöscht: ${exercise.addedToSession} ${dataset.indexOf(exercise)} $position | Größe Performance Liste: ${trainingsSession.performance.size}")
             }
@@ -62,40 +61,48 @@ class EditTrainingAdapter (
 
         //Um die Trainingsleistungen für jede Übung vom Nutzer abspeichern zu lassen, muss ich auf die EditText views der EditSessionItems zugreifen.
 
-          editPerformance(userInputReps,userInputSets,userInputWeight,holder)
+
+         try {
+             editPerformance(userInputReps,userInputSets,userInputWeight,holder)
+         } catch (e:Exception){
+             Log.e("EditTrainingAdapter", "Error in editPerformance: ${e.message}", e)
+             Toast.makeText(context,context.getString(R.string.toastUnknownFailure),Toast.LENGTH_SHORT).show()
+        }
     }
 
     var tag = "Performance Save"
 
 
     fun editPerformance(userInputReps: EditText, userInputSets: EditText, userInputWeight: EditText, holder: EditSessionItemViewHolder){
-        val getElementIndexPosition = holder.adapterPosition
 
-        userInputReps.addTextChangedListener { userInput ->
-            userInput.toString()
-            sessionViewModel.editTrainingPerformance(getElementIndexPosition,context,userInput.toString(),userInputReps.id,trainingsSession)
-            Log.i("User Input","Reps Input: ${userInput.toString()} | Adapter Position: $getElementIndexPosition")
+
+            val getElementIndexPosition = holder.adapterPosition
+
+            userInputReps.addTextChangedListener { userInput ->
+                userInput.toString()
+                sessionViewModel.editTrainingPerformance(getElementIndexPosition,context,userInput.toString(),userInputReps.id,trainingsSession)
+                Log.i("User Input","Reps Input: ${userInput.toString()} | Adapter Position: $getElementIndexPosition")
+            }
+            userInputSets.addTextChangedListener { userInput ->
+                sessionViewModel.editTrainingPerformance(getElementIndexPosition,context,userInput.toString(),userInputSets.id,trainingsSession)
+                Log.i("User Input","Sets Input: ${userInput.toString()} | Adapter Position: $getElementIndexPosition")
+            }
+            userInputWeight.addTextChangedListener { userInput ->
+                userInput.toString()
+                sessionViewModel.editTrainingPerformance(getElementIndexPosition,context,userInput.toString(),userInputWeight.id,trainingsSession)
+                Log.i("User Input","Weight Input: ${userInput.toString()} | Adapter Position: $getElementIndexPosition")
+            }
+
+        //This ensures a safely access to the performance data to avoid potential IndexOutOfBoundsExceptions
+
+        trainingsSession.performance.getOrNull(getElementIndexPosition)?.let {
+            holder.binding.editSets.setText(it.sets)
+            holder.binding.editReps.setText(it.reps)
+            holder.binding.editWeight.setText(it.weight)
+        } ?: run {
+            Log.e("Performance Save", "Invalid index: $getElementIndexPosition")
         }
-        userInputSets.addTextChangedListener { userInput ->
-           sessionViewModel.editTrainingPerformance(getElementIndexPosition,context,userInput.toString(),userInputSets.id,trainingsSession)
-           Log.i("User Input","Sets Input: ${userInput.toString()} | Adapter Position: $getElementIndexPosition")
-        }
-        userInputWeight.addTextChangedListener { userInput ->
-           userInput.toString()
-           sessionViewModel.editTrainingPerformance(getElementIndexPosition,context,userInput.toString(),userInputWeight.id,trainingsSession)
-           Log.i("User Input","Weight Input: ${userInput.toString()} | Adapter Position: $getElementIndexPosition")
-        }
-
-        holder.binding.editSets.setText(trainingsSession.performance[getElementIndexPosition].sets)
-        holder.binding.editReps.setText(trainingsSession.performance[getElementIndexPosition].reps)
-        holder.binding.editWeight.setText(trainingsSession.performance[getElementIndexPosition].weight)
-
-
-
-
-
-        Log.i(tag,"Sets: ${trainingsSession.performance.firstOrNull()?.sets} | Reps: ${trainingsSession.performance.firstOrNull()?.reps}  Weight: ${trainingsSession.performance.firstOrNull()?.weight}|")
-
+            Log.i(tag,"Sets: ${trainingsSession.performance.firstOrNull()?.sets} | Reps: ${trainingsSession.performance.firstOrNull()?.reps}  Weight: ${trainingsSession.performance.firstOrNull()?.weight}|")
     }
 }
 
