@@ -251,6 +251,7 @@
     <string name="gc_greens_greens_products">Productos vegetales</string>
     <string name="apiSearchTag_nuts">nuts</string>
     <string name="gc_nuts">Nueces</string>
+    <string name="toastInvalidIndexError">¡Error al guardar los datos!</string>
 
 
 </resources>

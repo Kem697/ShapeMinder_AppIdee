@@ -267,6 +267,7 @@
     <string name="gc_greens_greens_products">Grønnsaksprodukter</string>
     <string name="apiSearchTag_nuts">nuts</string>
     <string name="gc_nuts">Nøtter</string>
+    <string name="toastInvalidIndexError">Feil ved lagring av data!</string>
 
 
 </resources>

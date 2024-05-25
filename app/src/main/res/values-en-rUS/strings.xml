@@ -285,6 +285,7 @@
     <string name="gc_greens_greens_products">Vegetable produce</string>
     <string name="apiSearchTag_nuts">nuts</string>
     <string name="gc_nuts">Nuts</string>
+    <string name="toastInvalidIndexError">Error when saving the data!</string>
 
 
 </resources>

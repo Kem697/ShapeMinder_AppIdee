@@ -260,6 +260,7 @@
    <string name="gc_greens_greens_products">Produits maraîchers</string>
    <string name="apiSearchTag_nuts">nuts</string>
    <string name="gc_nuts">Noix</string>
+    <string name="toastInvalidIndexError">Erreur de sauvegarde des données!</string>
 
 
 </resources>

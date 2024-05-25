@@ -275,6 +275,7 @@
     <string name="gc_greens_greens_products">Sebze ürünleri</string>
     <string name="apiSearchTag_nuts">nuts</string>
     <string name="gc_nuts">Fındık</string>
+    <string name="toastInvalidIndexError">Veriler kaydedilirken hata oluştu!</string>
 
 
 </resources>

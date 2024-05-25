@@ -5,6 +5,7 @@ import android.content.Context
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -230,19 +231,31 @@ class TrainingsessionViewModel (application: Application) : AndroidViewModel(app
         _selectedTraininingssession.value = currentSession
     }
 
-    fun editTrainingPerformance(getElementIndexPosition: Int, context: Context, userInput: String,propertyName: Int, trainingsSession: TrainingsSession) {
-        val performance = trainingsSession.performance[getElementIndexPosition]
-        val propertyNameString = context.resources.getResourceEntryName(propertyName)
-        when (propertyNameString) {
-            "editReps"-> performance.reps = userInput
-            "editSets" -> performance.sets = userInput
-            "editWeight"-> performance.weight = userInput
-            else -> {
-                // Fügen Sie hier eine Behandlung für den Fall hinzu, dass der propertyName nicht erkannt wird
-                // Möglicherweise möchten Sie eine Benachrichtigung anzeigen oder eine Standardaktion ausführen
+    fun editTrainingPerformance(getElementIndexPosition: Int, context: Context, userInput: String, propertyName: Int, trainingsSession: TrainingsSession) {
+        try {
+            val performance = trainingsSession.performance[getElementIndexPosition]
+            val propertyNameString = context.resources.getResourceEntryName(propertyName)
+
+            when (propertyNameString) {
+                "editReps" -> performance.reps = userInput
+                "editSets" -> performance.sets = userInput
+                "editWeight" -> performance.weight = userInput
+                else -> {
+                    // Handle the case where propertyName is not recognized
+                    // Optionally, you can show a notification or perform a default action
+                    Log.w("editTrainingPerformance", "Unknown propertyName: $propertyNameString")
+                }
             }
+
+            updateTrainingsession(trainingsSession)
+        } catch (e: IndexOutOfBoundsException) {
+            Log.e("editTrainingPerformance", "Invalid index: $getElementIndexPosition", e)
+            Toast.makeText(context,
+                context.getString(R.string.toastInvalidIndexError), Toast.LENGTH_SHORT).show()
+        } catch (e: Exception) {
+            Log.e("editTrainingPerformance", "Error updating performance", e)
+            Toast.makeText(context, context.getString(R.string.toastUnknownFailure), Toast.LENGTH_SHORT).show()
         }
-        updateTrainingsession(trainingsSession)
     }
 
 
