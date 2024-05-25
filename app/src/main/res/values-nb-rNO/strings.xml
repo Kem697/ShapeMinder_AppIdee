@@ -268,6 +268,10 @@
     <string name="apiSearchTag_nuts">nuts</string>
     <string name="gc_nuts">Nøtter</string>
     <string name="toastInvalidIndexError">Feil ved lagring av data!</string>
+    <string name="contentDescBackBtn">Navigate back</string>
+    <string name="contentDescShareBtn">Share video</string>
+    <string name="contentDescrSaveFoodBtn">Save food</string>
+    <string name="contentDescrLocateBtn">Locate store</string>
 
 
 </resources>

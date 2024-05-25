@@ -29,6 +29,7 @@
             <ImageButton
                 android:id="@+id/backBtn"
                 android:layout_width="60dp"
+                android:contentDescription="@string/contentDescBackBtn"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginLeft="8dp"
@@ -129,17 +130,21 @@
             style="@style/customUserInput"
             app:cardCornerRadius="5dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_margin="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_constraints">
+            app:layout_constraintTop_toTopOf="parent" >
 
             <EditText
                 android:id="@+id/editSessionName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="16dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:textSize="18dp"
+                android:layout_marginRight="8dp"
                 android:hint="@string/setWorkoutName"
                 style="@style/editTextUserIntput"
                 android:background="@null"

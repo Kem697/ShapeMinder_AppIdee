@@ -29,12 +29,13 @@
                 <ImageButton
                     android:id="@+id/backBtn"
                     android:layout_width="60dp"
+                    android:contentDescription="@string/contentDescBackBtn"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_marginLeft="8dp"
                     android:backgroundTint="#00FFFFFF"
-                    app:tint="?android:attr/textColorPrimary"
-                    android:src="@drawable/arrow_back_fill0_wght400_grad0_opsz24" />
+                    android:src="@drawable/arrow_back_fill0_wght400_grad0_opsz24"
+                    app:tint="?android:attr/textColorPrimary" />
 
                 <TextView
                     android:id="@+id/foodDetailViewTitle"
@@ -79,10 +80,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            app:strokeColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_constraints">
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/white">
 
 
             <LinearLayout
@@ -94,10 +95,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginBottom="4dp"
                     android:layout_margin="8dp"
+                    android:layout_marginLeft="12dp"
                     android:layout_marginRight="120dp"
+                    android:layout_marginBottom="4dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -155,6 +156,8 @@
             android:id="@+id/saveFoodBtn"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:contentDescription="@string/contentDescrSaveFoodBtn"
+
             android:layout_gravity="end|bottom"
             android:layout_margin="16dp"
             android:layout_marginTop="27dp"
@@ -169,6 +172,8 @@
             android:id="@+id/storeFinderBtn"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:contentDescription="@string/contentDescrLocateBtn"
+
             android:layout_gravity="end|bottom"
             android:layout_margin="16dp"
             android:layout_marginTop="16dp"

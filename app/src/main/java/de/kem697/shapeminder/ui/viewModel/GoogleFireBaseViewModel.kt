@@ -97,7 +97,7 @@ class GoogleFireBaseViewModel : ViewModel() {
                                                 val profileRef =
                                                     fireStore.collection("profiles").document(auth.currentUser!!.uid)
                                                 profileRef.set(
-                                                    de.kem697.shapeminder.model.Profile(
+                                                    Profile(
                                                         nameInput
                                                     )
                                                 ).addOnCompleteListener {
@@ -161,7 +161,7 @@ class GoogleFireBaseViewModel : ViewModel() {
                         val profileRef = fireStore.collection("profiles").document(user.uid)
                         profileRef.get().addOnSuccessListener { document ->
                             if (!document.exists()) {
-                                val profile = de.kem697.shapeminder.model.Profile(
+                                val profile = Profile(
                                     user.displayName ?: "Unknown"
                                 ) // Handling null displayName
                                 profileRef.set(profile)

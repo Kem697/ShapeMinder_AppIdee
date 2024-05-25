@@ -261,6 +261,11 @@
    <string name="apiSearchTag_nuts">nuts</string>
    <string name="gc_nuts">Noix</string>
     <string name="toastInvalidIndexError">Erreur de sauvegarde des données!</string>
+   <string name="contentDescBackBtn">Navigate back</string>
+   <string name="contentDescShareBtn">Share video</string>
+   <string name="save_exercise">Save exercise</string>
+   <string name="contentDescrSaveFoodBtn">Save food</string>
+   <string name="contentDescrLocateBtn">Locate store</string>
 
 
 </resources>

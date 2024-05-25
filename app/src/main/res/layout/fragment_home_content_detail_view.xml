@@ -22,6 +22,7 @@
             android:id="@+id/backBtn"
             android:layout_width="60dp"
             android:layout_height="match_parent"
+            android:contentDescription="@string/contentDescBackBtn"
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
             android:backgroundTint="#00FFFFFF"
