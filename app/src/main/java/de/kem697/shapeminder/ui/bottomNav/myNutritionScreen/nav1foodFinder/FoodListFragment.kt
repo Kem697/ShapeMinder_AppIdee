@@ -116,6 +116,11 @@ class FoodListFragment : Fragment() {
 
     fun setUpAdapter(){
         nutritionViewModel.searchFood.observe(viewLifecycleOwner){ product->
+         /*   if (product.isEmpty()|| orginalFoodRequest.isEmpty()){
+                binding.sortByNameBtn.visibility = View.INVISIBLE
+            } else {
+                binding.sortByNameBtn.visibility = View.VISIBLE
+            }*/
             binding.screenTitle.text = nutritionViewModel.selectedContentTitle.value
             binding.listOfFood.adapter = FoodItemAdapter(product,nutritionViewModel,requireContext())
             orginalFoodRequest = product

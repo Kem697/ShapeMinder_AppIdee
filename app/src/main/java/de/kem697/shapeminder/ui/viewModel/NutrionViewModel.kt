@@ -139,15 +139,24 @@ class NutrionViewModel(application: Application) : AndroidViewModel(application)
 
     fun sortFoodsByAlphabet(sort: Boolean) {
         viewModelScope.launch {
-            val filteredExercises = _searchFood.value
-            val sortedExercises = if (sort) {
-                filteredExercises?.sortedByDescending { it.productNameDe }
-            } else {
-                filteredExercises?.sortedBy { it.productNameDe }
+            try {
+                val filteredExercises = _searchFood.value
+                if (filteredExercises.isNullOrEmpty()) {
+                    throw Exception("Empty list")
+                }
+                val sortedExercises = if (sort) {
+                    filteredExercises.sortedByDescending { it.productNameDe }
+                } else {
+                    filteredExercises.sortedBy { it.productNameDe }
+                }
+                _searchFood.value = sortedExercises
+            } catch (e: Exception) {
+                // Fehlerbehandlung für eine leere Liste oder andere potenzielle Fehler
+                Log.e("sortFoodsByAlphabet", "Error retrieving the sorted list: ${e.message}")
             }
-            _searchFood.value = sortedExercises
         }
     }
+
 
     fun isSaved(saved: Boolean, food: Product) {
         val savedFood = _savedFoods.value ?: mutableListOf()
