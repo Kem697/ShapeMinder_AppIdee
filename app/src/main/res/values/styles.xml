@@ -242,8 +242,8 @@
 
 
     <style name="editTextUserIntput" parent="TextAppearance.AppCompat">
-        <item name="android:textColorHint">#B30E0E0E</item>
-        <item name="android:textColor">#B30E0E0E</item>
+        <item name="android:textColorHint">#B3202020</item>
+        <item name="android:textColor">@color/black</item>
 
     </style>
 
