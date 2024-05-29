@@ -22,7 +22,7 @@ data class Place(
     val reference : String,
 
     @Json(name="opening_hours")
-    val currentlyOpen: OpeningHours,
+    val currentlyOpen: OpeningHours?,
 
     @Contextual
     val photos: List<Photo> = listOf(),

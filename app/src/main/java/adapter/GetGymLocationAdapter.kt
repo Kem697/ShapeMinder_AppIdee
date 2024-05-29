@@ -48,7 +48,9 @@ class GetGymLocationAdapter (
             holder.binding.gymImage.setImageResource(R.drawable.content2_img)
         }
 
-        if (!gym.currentlyOpen.openNow){
+        var gymCurrentlyOpen = gym.currentlyOpen?.openNow?:false
+
+        if (!gymCurrentlyOpen){
             holder.binding.gymOpening.setText(context.getString(R.string.closeText))
         } else{
             holder.binding.gymOpening.setTextColor(ContextCompat.getColor(context, R.color.green))

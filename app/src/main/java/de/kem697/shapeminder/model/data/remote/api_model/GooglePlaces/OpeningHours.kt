@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class OpeningHours(
     @Json(name="open_now")
-    val openNow: Boolean
+    val openNow: Boolean?
 )
