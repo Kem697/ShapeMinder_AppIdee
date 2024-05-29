@@ -52,6 +52,7 @@ class GetGymLocationAdapter (
 
         if (!gymCurrentlyOpen){
             holder.binding.gymOpening.setText(context.getString(R.string.closeText))
+            holder.binding.gymOpening.setTextColor(ContextCompat.getColor(context, R.color.red))
         } else{
             holder.binding.gymOpening.setTextColor(ContextCompat.getColor(context, R.color.green))
             holder.binding.gymOpening.setText(context.getString(R.string.openText))
