@@ -266,6 +266,11 @@
    <string name="save_exercise">Save exercise</string>
    <string name="contentDescrSaveFoodBtn">Save food</string>
    <string name="contentDescrLocateBtn">Locate store</string>
+    <string name="imgBtnOwnBodyContentDescr">Own bodyweight</string>
+   <string name="imgBtnLongDumbbellContentDescr">Long dumbbell</string>
+   <string name="imgBtnShortDumContentDescr">Short dumbbell</string>
+   <string name="imgBtnOnlyVidContentDescr">Only video</string>
+   <string name="imgBtnNoVideoContentDescr">No video</string>
 
 
 </resources>

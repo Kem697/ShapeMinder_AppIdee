@@ -74,8 +74,9 @@
 
                 <ImageButton
                     android:id="@+id/sec1_short_dumbell_Btn"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="90dp"
+                    android:contentDescription="@string/imgBtnShortDumContentDescr"
+                    android:layout_height="90dp"
                     android:layout_margin="8dp"
                     android:backgroundTint="@color/white"
                     android:scaleType="centerCrop"
@@ -88,9 +89,10 @@
 
                 <ImageButton
                     android:id="@+id/sec1_long_dumbell_Btn"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
                     android:layout_margin="8dp"
+                    android:contentDescription="@string/imgBtnLongDumbbellContentDescr"
                     android:backgroundTint="@color/white"
                     android:scaleType="centerCrop"
                     android:src="@drawable/long_dumbell_unchecked"
@@ -102,9 +104,10 @@
 
                 <ImageButton
                     android:id="@+id/sec1_own_bodyweight_Btn"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
                     android:layout_margin="8dp"
+                    android:contentDescription="@string/imgBtnOwnBodyContentDescr"
                     android:backgroundTint="@color/white"
                     android:scaleType="centerCrop"
                     android:src="@drawable/bodyweight_unchecked"
@@ -118,7 +121,7 @@
 
             <LinearLayout
                 android:id="@+id/section1_equipment_subtitles"
-                android:layout_width="wrap_content"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:orientation="horizontal"
@@ -129,7 +132,9 @@
 
                 <TextView
                     android:id="@+id/sec1_short_dumbell"
-                    android:layout_width="75dp"
+                    android:layout_width="90dp"
+                    android:textAlignment="center"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="@string/shDumbellBtnTitle"
                     android:textSize="13dp"
@@ -140,24 +145,24 @@
 
                 <TextView
                     android:id="@+id/sec1_long_dumbell"
-                    android:layout_width="wrap_content"
+                    android:layout_width="90dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
                     android:text="@string/lhDumbellBtnTitle"
                     android:textColor="@color/black"
                     android:textSize="13dp"
-                    android:layout_marginRight="10dp"
+                    android:textAlignment="center"
+                    android:layout_weight="1"
                     android:textStyle="bold">
 
                 </TextView>
 
                 <TextView
                     android:id="@+id/sec1_own_bodyweight"
-                    android:layout_width="wrap_content"
+                    android:layout_width="90dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
+                    android:textAlignment="center"
+                    android:layout_weight="1"
                     android:textColor="@color/black"
-                    android:layout_marginLeft="4dp"
                     android:text="@string/ownBodyBtnTitle"
                     android:textSize="13dp"
                     android:textStyle="bold">
@@ -192,8 +197,9 @@
 
                 <ImageButton
                     android:id="@+id/sec2_with_video_Btn"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:contentDescription="@string/imgBtnOnlyVidContentDescr"
                     android:layout_margin="8dp"
                     android:backgroundTint="@color/white"
                     android:scaleType="centerCrop"
@@ -205,8 +211,9 @@
 
                 <ImageButton
                     android:id="@+id/sec2_no_video_Btn"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:contentDescription="@string/imgBtnNoVideoContentDescr"
                     android:layout_margin="8dp"
                     android:backgroundTint="@color/white"
                     android:scaleType="centerCrop"
@@ -222,7 +229,7 @@
 
             <LinearLayout
                 android:id="@+id/section2_instructions_subtitles"
-                android:layout_width="wrap_content"
+                android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="16dp"
@@ -233,7 +240,9 @@
                     android:id="@+id/sec2_with_video"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="@string/videoBtnTitle"
+                    android:textAlignment="center"
                     android:textSize="12dp"
                     android:textColor="@color/black"
                     android:textStyle="bold">
@@ -244,7 +253,8 @@
                     android:id="@+id/sec2_no_video"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
+                    android:textAlignment="center"
+                    android:layout_weight="1"
                     android:text="@string/noVideoBtnTitle"
                     android:textSize="12dp"
                     android:textColor="@color/black"
