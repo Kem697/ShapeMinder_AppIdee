@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.auth.userProfileChangeRequest
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -24,6 +25,7 @@ class GoogleFireBaseViewModel : ViewModel() {
     private val storage = FirebaseStorage.getInstance()
     private val storageRef = storage.reference
     lateinit var profileRef: DocumentReference
+
 
 
     private val _registrationResult = MutableLiveData<Boolean>()
@@ -52,16 +54,28 @@ class GoogleFireBaseViewModel : ViewModel() {
 
 
     fun uploadImage(uri: Uri) {
-        // Erstellen einer Referenz und des Upload Tasks
-        val imageRef = storageRef.child("images/${firebaseAuth.currentUser!!.uid}/profilePic")
+        val firebaseAuth = FirebaseAuth.getInstance() // Ensure you have initialized Firebase Auth
+
+        // Creating a reference and the upload task
+        val imageRef = storageRef.child("profiles/${firebaseAuth.currentUser!!.uid}/profilePicture")
         val uploadTask = imageRef.putFile(uri)
 
-        // Wenn UploadTask ausgeführt und erfolgreich ist, wird die Download-Url des Bildes an die setUserImage Funktion weitergegeben
-        uploadTask.addOnCompleteListener {
-            imageRef.downloadUrl.addOnCompleteListener {
-                if (it.isSuccessful) {
-                    setUserImage(it.result)
+        // When UploadTask is executed and successful, pass the download URL of the image to the setUserImage function
+        uploadTask.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                imageRef.downloadUrl.addOnCompleteListener { uriTask ->
+                    if (uriTask.isSuccessful) {
+                        val downloadUri = uriTask.result
+                        updateUserProfile(downloadUri)
+
+                    } else {
+                        // Handle failures
+//                        Toast.makeText(this, "Failed to retrieve download URL", Toast.LENGTH_SHORT).show()
+                    }
                 }
+            } else {
+                // Handle failures
+//                Toast.makeText(this, "Image upload failed", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -126,17 +140,43 @@ class GoogleFireBaseViewModel : ViewModel() {
     }
 
 
-    fun createProfile(auth: FirebaseAuth, nameInput: String) {
-        auth.currentUser!!.reload().addOnCompleteListener {
-            if (auth.currentUser!= null){
-                if (auth.currentUser?.isEmailVerified == true){
-                } else{
-                }
-            } else{
+    private fun updateUserProfile(downloadUrl: Uri) {
+        val user = firebaseAuth.currentUser ?: return
+        val profileUpdates = userProfileChangeRequest {
+            photoUri = downloadUrl
+        }
+        user.updateProfile(profileUpdates).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Log.d("Profile", "User profile updated.")
+                setUserImage(downloadUrl)
+                uploadImageToFirebaseStorage(downloadUrl)
 
             }
         }
     }
+
+    fun uploadImageToFirebaseStorage(imageUri: Uri) {
+        val fileRef = storageRef.child("profile.jpg")
+
+        Log.i("ProfileImage", "Starting upload to Firebase Storage...")
+        fileRef.putFile(imageUri)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.i("ProfileImage", "Upload successful!")
+                    fileRef.downloadUrl.addOnSuccessListener { uri ->
+                        Log.i("ProfileImage", "File available at: $uri")
+                    }
+                } else {
+                    Log.e("ProfileImage", "Upload failed: ${task.exception?.message}")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.e("ProfileImage", "Upload failed with exception: ${exception.message}")
+            }
+    }
+
+
+
 
 
     fun fireBaseSignInUser(email: String, password: String, auth: FirebaseAuth) {

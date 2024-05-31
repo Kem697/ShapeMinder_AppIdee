@@ -1,14 +1,18 @@
 package de.kem697.shapeminder.ui.bottomNav.mySettingsScreen
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import coil.load
 import de.kem697.shapeminder.R
@@ -16,6 +20,7 @@ import de.kem697.shapeminder.databinding.FragmentSettingsBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import de.kem697.shapeminder.ui.viewModel.GoogleFireBaseViewModel
 
 
 class MySettingsScreen : Fragment() {
@@ -29,8 +34,24 @@ class MySettingsScreen : Fragment() {
 
     private lateinit var binding: FragmentSettingsBinding
     private lateinit var auth: FirebaseAuth
-
+    private val googleFireBaseViewModel: GoogleFireBaseViewModel by viewModels()
     var darkModeOn = false
+
+    private val changeImage = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            result.data?.data?.let { imageUri ->
+                requireContext().contentResolver.takePersistableUriPermission(
+                    imageUri, Intent.FLAG_GRANT_READ_URI_PERMISSION
+                )
+                googleFireBaseViewModel.uploadImage(imageUri)
+
+                Log.i("ProfileImage", "Image Uri : ${auth.currentUser?.photoUrl.toString()}")
+                binding.profileImg.setImageURI(imageUri)
+            }
+        }
+    }
 
 
 
@@ -45,10 +66,16 @@ class MySettingsScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setUpUI()
+
+    }
+
+    fun setUpUI(){
         logout()
         personalSettings()
         shareApp()
         modeSwitch()
+        changeProfileImage()
     }
 
 
@@ -69,6 +96,8 @@ class MySettingsScreen : Fragment() {
         }
         binding.darkLightModeToogle.text = requireContext().getString(R.string.lightModeText)
     }
+
+
 
 
     fun personalSettings(){
@@ -140,6 +169,22 @@ class MySettingsScreen : Fragment() {
             }
         }
     }
+
+
+    fun changeProfileImage(){
+        var profileImage = binding.profileImg
+        profileImage.setOnClickListener {
+            val openGalleryIntent = Intent(Intent.ACTION_OPEN_DOCUMENT, MediaStore.Images.Media.EXTERNAL_CONTENT_URI).apply {
+                addCategory(Intent.CATEGORY_OPENABLE)
+                type = "image/*"
+            }
+            changeImage.launch(openGalleryIntent)
+        }
+    }
+
+
+
+
 
 }
 

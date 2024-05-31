@@ -224,7 +224,7 @@
     <string name="apiRequestRegionDE">NO</string>
     <string name="cameraPromptHint">Volum opp for å blinke på</string>
     <string name="your_web_client_id">238411082980-h1lhj2vj9gru8lka98k7487md1t7hag9.apps.googleusercontent.com</string>
-    <string name="forgetPasswordHint">Har du glemt passordet ditt??</string>
+    <string name="forgetPasswordHint">Har du glemt passordet ditt?</string>
     <string name="forgotPasswordScreenHint">Vennligst skriv inn e-postadressen som er knyttet til kontoen din for å tilbakestille passordet ditt!</string>
     <string name="resetPasswordBtnText">Tilbakestill passord</string>
     <string name="closeText">stengt</string>
