@@ -17,14 +17,14 @@
         android:layout_height="wrap_content">
 
 
-   <!--     <ProgressBar
+  <!--      <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="150dp"
-            android:visibility="gone"
+            android:layout_marginTop="200dp"
+            android:visibility="invisible"
             app:layout_constraintTop_toTopOf="parent" />-->
 
         <ImageView

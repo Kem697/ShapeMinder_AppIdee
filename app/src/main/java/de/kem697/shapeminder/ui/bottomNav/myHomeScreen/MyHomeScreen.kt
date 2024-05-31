@@ -2,7 +2,9 @@ package de.kem697.shapeminder.ui.bottomNav.myHomeScreen
 
 import adapter.ContentAdapter
 import adapter.GetGymLocationAdapter
+import android.app.Activity
 import android.content.Context
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,6 +19,7 @@ import de.kem697.shapeminder.databinding.FragmentHomeScreenBinding
 import com.google.android.libraries.places.api.Places
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import de.kem697.shapeminder.ui.viewModel.ContentViewModel
 import de.kem697.shapeminder.ui.viewModel.GymLocationsViewModel
 
@@ -77,7 +80,8 @@ class MyHomeScreen : Fragment() {
         val user = auth.currentUser
         if (user != null) {
             if (user.photoUrl != null) {
-                binding.userPhotoToolbar.load(user.photoUrl)
+                loadProfileImage(user)
+//                binding.userPhotoToolbar.load(user.photoUrl)
             }
         }
         binding.textView.setText("${requireContext().getString(R.string.homeScreenHeader)} ${auth.currentUser?.displayName?:" "}")
@@ -109,6 +113,25 @@ class MyHomeScreen : Fragment() {
         if (!Places.isInitialized()) {
             Places.initialize(context.applicationContext,key)
         }
+    }
+
+
+    private fun loadProfileImage(currentUser: FirebaseUser) {
+        val sharedPreferences = requireContext().getSharedPreferences("ProfilePrefs", Activity.MODE_PRIVATE)
+        val uriString = sharedPreferences.getString("profileImageUri", null)
+        if (uriString!=null){
+            uriString?.let {
+                val imageUri = Uri.parse(it)
+                binding.userPhotoToolbar.load(imageUri) // Verwende Coil oder eine andere Image-Loading-Bibliothek
+            }
+        } else{
+            if (currentUser!= null){
+                if (currentUser.photoUrl!=null){
+                    binding.userPhotoToolbar.load(currentUser.photoUrl) // Verwende Coil oder eine andere Image-Loading-Bibliothek
+                }
+            }
+        }
+
     }
 
 }

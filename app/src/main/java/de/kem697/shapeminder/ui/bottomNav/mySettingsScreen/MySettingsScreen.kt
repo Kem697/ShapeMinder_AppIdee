@@ -2,6 +2,7 @@ package de.kem697.shapeminder.ui.bottomNav.mySettingsScreen
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -47,10 +48,15 @@ class MySettingsScreen : Fragment() {
                 )
 
 
+
+                saveImageUri(imageUri)
+
                 Log.i("ProfileImage", "Image Uri : ${auth.currentUser?.photoUrl.toString()}")
                 googleFireBaseViewModel.uploadImage(imageUri)
                 Toast.makeText(context,
                     getString(R.string.toastChangeProfilePicHint),Toast.LENGTH_SHORT).show()
+                binding.profileImg.load(imageUri)
+
 
 
 
@@ -73,11 +79,12 @@ class MySettingsScreen : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setUpUI()
 
+
     }
 
     fun setUpUI(){
-        googleFireBaseViewModel.imageUploadSuccess.observe(viewLifecycleOwner){
-            binding.profileImg.load(it)
+        loadImageUri()?.let { uri ->
+            binding.profileImg.load(uri) // Verwende entweder coil.load oder Glide
         }
         logout()
         personalSettings()
@@ -188,6 +195,21 @@ class MySettingsScreen : Fragment() {
         }
     }
 
+
+
+    private fun saveImageUri(uri: Uri) {
+        val sharedPreferences = requireContext().getSharedPreferences("ProfilePrefs", Activity.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("profileImageUri", uri.toString())
+        editor.apply()
+    }
+
+
+    private fun loadImageUri(): Uri? {
+        val sharedPreferences = requireContext().getSharedPreferences("ProfilePrefs", Activity.MODE_PRIVATE)
+        val uriString = sharedPreferences.getString("profileImageUri", null)
+        return uriString?.let { Uri.parse(it) }
+    }
 
 
 
