@@ -41,6 +41,11 @@ class GoogleFireBaseViewModel : ViewModel() {
     val googleSignInResult: LiveData<Boolean>
         get() = _googleSignInResult
 
+    private val _imageUploadSuccess = MutableLiveData<Uri>()
+    val imageUploadSuccess : LiveData<Uri>
+
+        get() = _imageUploadSuccess
+
 
     init {
         if (firebaseAuth.currentUser != null) {
@@ -54,6 +59,7 @@ class GoogleFireBaseViewModel : ViewModel() {
 
 
     fun uploadImage(uri: Uri) {
+        _imageUploadSuccess.postValue(uri)
         val firebaseAuth = FirebaseAuth.getInstance() // Ensure you have initialized Firebase Auth
 
         // Creating a reference and the upload task
@@ -165,6 +171,7 @@ class GoogleFireBaseViewModel : ViewModel() {
                     Log.i("ProfileImage", "Upload successful!")
                     fileRef.downloadUrl.addOnSuccessListener { uri ->
                         Log.i("ProfileImage", "File available at: $uri")
+                        _imageUploadSuccess.postValue(uri)
                     }
                 } else {
                     Log.e("ProfileImage", "Upload failed: ${task.exception?.message}")
@@ -224,6 +231,14 @@ class GoogleFireBaseViewModel : ViewModel() {
                     _googleSignInResult.postValue(false)
                 }
             }
+    }
+
+
+    fun currentUser(){
+        var currentUser = firebaseAuth.currentUser
+        if (currentUser!=null){
+            _imageUploadSuccess.postValue(currentUser.photoUrl)
+        }
     }
 
 

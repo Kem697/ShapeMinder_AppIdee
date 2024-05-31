@@ -45,10 +45,15 @@ class MySettingsScreen : Fragment() {
                 requireContext().contentResolver.takePersistableUriPermission(
                     imageUri, Intent.FLAG_GRANT_READ_URI_PERMISSION
                 )
-                googleFireBaseViewModel.uploadImage(imageUri)
+
 
                 Log.i("ProfileImage", "Image Uri : ${auth.currentUser?.photoUrl.toString()}")
-                binding.profileImg.setImageURI(imageUri)
+                googleFireBaseViewModel.uploadImage(imageUri)
+                Toast.makeText(context,
+                    getString(R.string.toastChangeProfilePicHint),Toast.LENGTH_SHORT).show()
+
+
+
             }
         }
     }
@@ -71,6 +76,9 @@ class MySettingsScreen : Fragment() {
     }
 
     fun setUpUI(){
+        googleFireBaseViewModel.imageUploadSuccess.observe(viewLifecycleOwner){
+            binding.profileImg.load(it)
+        }
         logout()
         personalSettings()
         shareApp()
@@ -104,14 +112,12 @@ class MySettingsScreen : Fragment() {
             Firebase.auth.currentUser?.let { user ->
                 binding.userName.text = user.displayName
                 binding.userEmail.text = user.email
+//                binding.profileImg.setImageURI(googleFireBaseViewModel.imageUploadSuccess.value)
                 /*Hiermit soll das Profilbild hochgeladen werden.
                 * Bei einem Account wird das Bild angezeigt, bei einem anderen nicht.
                 * Vielleicht liegt es am Bildformat?*/
-                if (user.photoUrl!=null){
-                    binding.profileImg.load(user.photoUrl)
-                } else{
-                }
             }
+        googleFireBaseViewModel.currentUser()
     }
 
 

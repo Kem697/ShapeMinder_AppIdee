@@ -271,6 +271,7 @@
    <string name="imgBtnShortDumContentDescr">Short dumbbell</string>
    <string name="imgBtnOnlyVidContentDescr">Only video</string>
    <string name="imgBtnNoVideoContentDescr">No video</string>
+    <string name="toastChangeProfilePicHint">Photo de profil modifiée ! La mise en ligne de la nouvelle image prendra du temps.</string>
 
 
 </resources>

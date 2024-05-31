@@ -262,6 +262,7 @@
     <string name="imgBtnShortDumContentDescr">Short dumbbell</string>
     <string name="imgBtnOnlyVidContentDescr">Only video</string>
     <string name="imgBtnNoVideoContentDescr">No video</string>
+    <string name="toastChangeProfilePicHint">Se ha cambiado la foto del perfil. La actualización de la nueva imagen llevará algún tiempo.</string>
 
 
 </resources>

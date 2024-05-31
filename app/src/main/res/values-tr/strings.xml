@@ -286,6 +286,7 @@
     <string name="imgBtnShortDumContentDescr">Short dumbbell</string>
     <string name="imgBtnOnlyVidContentDescr">Only video</string>
     <string name="imgBtnNoVideoContentDescr">No video</string>
+    <string name="toastChangeProfilePicHint">Profil resmi değişti! Yeni resmin hayata geçirilmesi biraz zaman alacaktır.</string>
 
 
 </resources>
