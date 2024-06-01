@@ -83,9 +83,7 @@ class MySettingsScreen : Fragment() {
     }
 
     fun setUpUI(){
-        loadImageUri()?.let { uri ->
-            binding.profileImg.load(uri) // Verwende entweder coil.load oder Glide
-        }
+
         logout()
         personalSettings()
         shareApp()
@@ -119,11 +117,25 @@ class MySettingsScreen : Fragment() {
             Firebase.auth.currentUser?.let { user ->
                 binding.userName.text = user.displayName
                 binding.userEmail.text = user.email
-//                binding.profileImg.setImageURI(googleFireBaseViewModel.imageUploadSuccess.value)
+                binding.profileImg.load(user.photoUrl)
+
+                Log.i("ProfileImage","User Image Uri: ${auth.currentUser?.photoUrl.toString()}")
+
+                loadImageUri()?.let { uri ->
+                    binding.profileImg.load(uri) // Verwende entweder coil.load oder Glide
+                    Log.i("ProfileImage","After Change Image Uri: ${uri.toString()}")
+
+                }
+
+
+
                 /*Hiermit soll das Profilbild hochgeladen werden.
                 * Bei einem Account wird das Bild angezeigt, bei einem anderen nicht.
                 * Vielleicht liegt es am Bildformat?*/
             }
+
+
+
         googleFireBaseViewModel.currentUser()
     }
 

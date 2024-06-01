@@ -9,7 +9,6 @@
     android:paddingBottom="16dp">
 
 
-<!--android:paddingBottom="90dp">-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_Constraint"
@@ -17,20 +16,10 @@
         android:layout_height="wrap_content">
 
 
-  <!--      <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="200dp"
-            android:visibility="invisible"
-            app:layout_constraintTop_toTopOf="parent" />-->
-
         <ImageView
             android:id="@+id/profile_img"
             android:layout_width="200dp"
-            android:layout_height="270dp"
+            android:layout_height="200dp"
             android:layout_marginTop="60dp"
             android:src="@drawable/account_icon"
             app:layout_constraintEnd_toEndOf="parent"
