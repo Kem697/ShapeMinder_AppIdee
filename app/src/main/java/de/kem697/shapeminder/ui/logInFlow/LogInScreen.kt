@@ -68,7 +68,7 @@ class LogInScreen : Fragment() {
         forgotPassword()
         logIn()
         register()
-//        developerSkip()
+        developerSkip()
         googleLogIn()
         changeInAppLanguage()
     }
@@ -97,7 +97,7 @@ class LogInScreen : Fragment() {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val acount = task.getResult(ApiException::class.java)!!
-                Log.d(TAG, "firebaseauthGooge: + ${acount.id}")
+                Log.d(TAG, "firebaseauthGoogle: + ${acount.id}")
                 firebaseAuthWithGoogle(acount.idToken ?: return)
             } catch (e: ApiException) {
                 // ...
@@ -320,11 +320,11 @@ class LogInScreen : Fragment() {
 
 //    Diese Methode dient zum Überspringen des LogIn Prozesses zum Testen der App!
 
-   /* fun developerSkip() {
+    fun developerSkip() {
             binding.skipBtn.setOnClickListener {
                 findNavController().navigate(R.id.homeScreen)
             }
-        }*/
+        }
 
     }
 

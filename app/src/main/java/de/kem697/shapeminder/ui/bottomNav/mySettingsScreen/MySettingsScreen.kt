@@ -150,7 +150,7 @@ class MySettingsScreen : Fragment() {
                 Intent.EXTRA_TITLE,
                 getString(R.string.recommendFriendsText)
             )
-            sendIntent.putExtra(Intent.EXTRA_TEXT,"Url")
+            sendIntent.putExtra(Intent.EXTRA_TEXT,"https://play.google.com/store/apps/details?id=de.kem697.shapeminder")
             val chooser = Intent.createChooser(sendIntent, getString(R.string.intentShareText))
             requireActivity().startActivity(chooser)
 

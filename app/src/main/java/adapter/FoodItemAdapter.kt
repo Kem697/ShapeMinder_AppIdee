@@ -37,8 +37,10 @@ class FoodItemAdapter(
         val words = foodName.split(" ","-")
         val truncatedFoodName = words.take(1).joinToString(" ")
 
-        val category = food!!.categories.firstOrNull()?.substring(3)?.replace("-", " ")
-        val categoryFirstWord = category?.split("\\s+".toRegex())?.firstOrNull()
+//        val category = food!!.categories.firstOrNull()?.substring(3)?.replace("-", " ")
+//        val categoryFirstWord = category?.split("\\s+".toRegex())?.firstOrNull()
+
+
 
         val roundedValueCal = "%.1f".format(food!!.nutriments!!.calories)
         val roundedValueFats = "%.1f".format(food!!.nutriments!!.fat)
@@ -61,14 +63,15 @@ class FoodItemAdapter(
             holder.binding.fats.setText("${context.getString(R.string.fatsText)} " + roundedValueFats + " g")
             holder.binding.proteins.setText("${context.getString(R.string.proteinText)} " + roundedValueProteins + " g")
             holder.binding.carbs.setText("${context.getString(R.string.carbsText)} " + roundedValueCarbs + " g")
-            holder.binding.foodCategory.setText(categoryFirstWord + "...")
+//            holder.binding.foodCategory.setText(categoryFirstWord + "...")
         } else{
             holder.binding.foodName.setText("${truncatedFoodName}...")
             holder.binding.calories.setText(roundedValueCal + " kcal")
             holder.binding.fats.setText("${context.getString(R.string.fatsText)} " + roundedValueFats + " g")
             holder.binding.proteins.setText("${context.getString(R.string.proteinText)} " + roundedValueProteins + " g")
             holder.binding.carbs.setText("${context.getString(R.string.carbsText)} " + roundedValueCarbs + " g")
-            holder.binding.foodCategory.setText(categoryFirstWord + "...")
+
+//            holder.binding.foodCategory.setText(categoryFirstWord + "...")
         }
 
         holder.binding.materialCardView.setOnClickListener {

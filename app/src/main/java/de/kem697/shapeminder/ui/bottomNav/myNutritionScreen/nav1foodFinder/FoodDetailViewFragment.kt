@@ -81,14 +81,16 @@ class FoodDetailViewFragment : Fragment() {
 
             if (food.productNameDe.isNullOrEmpty()) {
                 binding.foodName.setText(requireContext().getString(R.string.unknownFoodName))
-                binding.categorie.setText(food.categories.firstOrNull()?.substring(3)?.replace("-"," ").toString())
+                binding.categorie.setText(nutrionViewModel.selectedContentTitle.value)
+//                binding.categorie.setText(food.categories.firstOrNull()?.substring(3)?.replace("-"," ").toString())
                 binding.calories.setText(roundedValueCal + " kcal")
                 binding.carbsAmount.setText(roundedValueCarbs + " g")
                 binding.fatsAmount.setText(roundedValueFats + " g")
                 binding.proteinAmount.setText(roundedValueProteins + " g")
             } else {
                 binding.foodName.setText(food.productNameDe)
-                binding.categorie.setText(food.categories.firstOrNull()?.substring(3)?.replace("-"," ").toString())
+                binding.categorie.setText(nutrionViewModel.selectedContentTitle.value)
+//                binding.categorie.setText(food.categories.firstOrNull()?.substring(3)?.replace("-"," ").toString())
                 binding.calories.setText(roundedValueCal + " kcal")
                 binding.carbsAmount.setText(roundedValueCarbs + " g")
                 binding.fatsAmount.setText(roundedValueFats + " g")
