@@ -68,7 +68,7 @@ class LogInScreen : Fragment() {
         forgotPassword()
         logIn()
         register()
-        developerSkip()
+//        developerSkip()
         googleLogIn()
         changeInAppLanguage()
     }
@@ -320,11 +320,11 @@ class LogInScreen : Fragment() {
 
 //    Diese Methode dient zum Überspringen des LogIn Prozesses zum Testen der App!
 
-    fun developerSkip() {
+   /* fun developerSkip() {
             binding.skipBtn.setOnClickListener {
                 findNavController().navigate(R.id.homeScreen)
             }
-        }
+        }*/
 
     }
 
